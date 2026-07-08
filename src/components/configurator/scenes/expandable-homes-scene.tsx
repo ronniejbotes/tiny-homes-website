@@ -4,23 +4,32 @@ import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { getProduct } from "@/data/products";
 import type { SceneProps } from "./types";
 import {
+  AirconSplit,
   BaseFloor,
-  Bed,
   CoffeeTable,
   Cupboards,
+  Curtains,
+  DeckExtension,
+  DoubleBed,
+  FloorPlant,
+  GlazingHighlight,
   InsulationBand,
   Kitchen,
   Layer,
+  PendantLamp,
+  PictureFrames,
   Plant,
   PlankFloor,
   Rug,
   Scenery,
+  ShelvingUnit,
   Shrub,
   SideTable,
   SlatWalls,
-  SofaItem,
+  SofaWithCushions,
+  SolarPanels,
   Tree,
-  WallArt,
+  WallTv,
   WetRoom,
   INK,
   SW,
@@ -33,6 +42,9 @@ import {
 /* (ix .. ix+iw, centred on x=400), whether the slid-out wings and     */
 /* raised centre module are present, and where each option layer and   */
 /* furniture item sits. Floor stays at y=400, ground at y=432.         */
+/* Solar sits on the raised centre roof (y142) for winged variants and */
+/* on the flat roof (y182) for slim shells; the deck hangs off the     */
+/* right wall and tracks the variant width.                            */
 /* ------------------------------------------------------------------ */
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -61,8 +73,16 @@ interface VariantGeom {
   rug: { cx: number; rx: number };
   bed: XW;
   table: { x: number } | null;
-  plant: { x: number } | null;
-  art: { x: number; y: number };
+  /** Large potted plant (scaled) or the compact one where space is tight. */
+  plantBig: { x: number; s: number } | null;
+  plantSmall: { x: number } | null;
+  tv: { x: number; y: number; w: number };
+  frames: { x: number; y: number };
+  shelf: { x: number; y: number } | null;
+  pendant: { x: number; top: number; drop: number };
+  aircon: { x: number; y: number };
+  solar: XW;
+  deck: XW;
   /** B40 only: two partition walls + a second bed = three-bedroom read. */
   threeBed: { partitions: [number, number]; bed2: XW } | null;
 }
@@ -78,18 +98,25 @@ const B40: VariantGeom = {
   kitchen: { x: 168, w: 118 },
   cup: { x: 174, w: 96 },
   wet: { x: 322, partitions: "both" },
-  sofa: { x: 414, w: 46 },
-  coffee: { x: 472, w: 20 },
-  rug: { cx: 442, rx: 28 },
-  bed: { x: 500, w: 54 },
-  table: { x: 562 },
-  plant: { x: 290 },
-  art: { x: 420, y: 236 },
-  threeBed: { partitions: [496, 584], bed2: { x: 588, w: 46 } },
+  sofa: { x: 414, w: 48 },
+  coffee: null,
+  rug: { cx: 445, rx: 28 },
+  bed: { x: 500, w: 66 },
+  table: null,
+  plantBig: { x: 294, s: 0.8 },
+  plantSmall: null,
+  tv: { x: 420, y: 244, w: 46 },
+  frames: { x: 506, y: 252 },
+  shelf: { x: 590, y: 224 },
+  pendant: { x: 540, top: 196, drop: 20 },
+  aircon: { x: 184, y: 236 },
+  solar: { x: 330, w: 160 },
+  deck: { x: 650, w: 60 },
+  threeBed: { partitions: [496, 584], bed2: { x: 588, w: 42 } },
 };
 
 const GEOM: Record<string, VariantGeom> = {
-  /* Compact single module, studio interior — no wings, no sofa. */
+  /* Compact single module, studio interior — no wings, no sofa/shelving. */
   "b20-slim": {
     ix: 280,
     iw: 240,
@@ -97,16 +124,23 @@ const GEOM: Record<string, VariantGeom> = {
     cx0: 316,
     cw: 168,
     win: { x: 298, y: 234, w: 40, h: 38 },
-    kitchen: { x: 286, w: 84 },
-    cup: { x: 290, w: 70 },
+    kitchen: { x: 286, w: 74 },
+    cup: { x: 290, w: 62 },
     wet: { x: 432, partitions: "left" },
     sofa: null,
     coffee: null,
-    rug: { cx: 402, rx: 22 },
-    bed: { x: 378, w: 46 },
+    rug: { cx: 392, rx: 22 },
+    bed: { x: 366, w: 42 },
     table: null,
-    plant: null,
-    art: { x: 378, y: 234 },
+    plantBig: null,
+    plantSmall: { x: 415 },
+    tv: { x: 370, y: 230, w: 42 },
+    frames: { x: 368, y: 200 },
+    shelf: null,
+    pendant: { x: 435, top: 196, drop: 26 },
+    aircon: { x: 446, y: 204 },
+    solar: { x: 340, w: 120 },
+    deck: { x: 528, w: 80 },
     threeBed: null,
   },
   /* Medium shell: centre module + two modest slid-out wings. */
@@ -120,13 +154,20 @@ const GEOM: Record<string, VariantGeom> = {
     kitchen: { x: 228, w: 84 },
     cup: { x: 232, w: 72 },
     wet: { x: 490, partitions: "left" },
-    sofa: { x: 326, w: 40 },
+    sofa: { x: 348, w: 40 },
     coffee: null,
-    rug: { cx: 348, rx: 26 },
-    bed: { x: 388, w: 68 },
-    table: null,
-    plant: { x: 464 },
-    art: { x: 326, y: 230 },
+    rug: { cx: 372, rx: 26 },
+    bed: { x: 404, w: 58 },
+    table: { x: 472 },
+    plantBig: { x: 320, s: 0.75 },
+    plantSmall: null,
+    tv: { x: 350, y: 238, w: 44 },
+    frames: { x: 440, y: 240 },
+    shelf: { x: 246, y: 218 },
+    pendant: { x: 334, top: 160, drop: 56 },
+    aircon: { x: 522, y: 216 },
+    solar: { x: 340, w: 130 },
+    deck: { x: 586, w: 70 },
     threeBed: null,
   },
   /* Long slim single-width module — open plan, full furniture run. */
@@ -140,13 +181,20 @@ const GEOM: Record<string, VariantGeom> = {
     kitchen: { x: 200, w: 110 },
     cup: { x: 206, w: 92 },
     wet: { x: 522, partitions: "left" },
-    sofa: { x: 334, w: 46 },
-    coffee: { x: 394, w: 20 },
-    rug: { cx: 360, rx: 30 },
-    bed: { x: 420, w: 68 },
-    table: { x: 496 },
-    plant: { x: 316 },
-    art: { x: 430, y: 238 },
+    sofa: { x: 346, w: 44 },
+    coffee: { x: 404, w: 18 },
+    rug: { cx: 378, rx: 30 },
+    bed: { x: 428, w: 64 },
+    table: { x: 502 },
+    plantBig: { x: 318, s: 0.75 },
+    plantSmall: null,
+    tv: { x: 432, y: 230, w: 46 },
+    frames: { x: 486, y: 236 },
+    shelf: { x: 216, y: 214 },
+    pendant: { x: 306, top: 196, drop: 30 },
+    aircon: { x: 556, y: 212 },
+    solar: { x: 330, w: 160 },
+    deck: { x: 618, w: 64 },
     threeBed: null,
   },
   b40: B40,
@@ -185,16 +233,23 @@ function Slide({ x, y = 0, children }: { x: number; y?: number; children: React.
  * shell, B40 is the full-width three-bedroom silhouette. All option layers
  * reposition from the variant geometry; a dimension line under the house
  * shows the variant's floor area.
+ *
+ * Worst-case collision walk (all visuals on + furnished) per variant is
+ * encoded in the GEOM coordinates: floor runs left→right as
+ * kitchen | plant | sofa (+coffee) | bed (+table) | wet room, and the wall
+ * hangs shelving / tv / frames / pendant / aircon in non-overlapping slots
+ * clear of the window + curtain drapes and of headboards below.
  */
-export function ExpandableHomesScene({ selected, furnished, variantId }: SceneProps) {
+export function ExpandableHomesScene({ visuals, furnished, variantId }: SceneProps) {
   const reduce = useReducedMotion();
   const g = (variantId ? GEOM[variantId] : undefined) ?? B40;
   const sizeLabel = variantId ? SIZE_LABELS[variantId] : undefined;
   const t: Transition = reduce ? { duration: 0 } : { duration: 0.35, ease: EASE };
-  const kitchenOn = Boolean(selected["kitchen-unit"]);
+  const kitchenOn = Boolean(visuals["kitchen"]);
   const right = g.ix + g.iw;
   const seamL = g.cx0;
   const seamR = g.cx0 + g.cw;
+  const solarY = g.wings ? 116 : 156;
 
   return (
     <svg
@@ -219,7 +274,7 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
 
       <Scenery />
       <Tree x={80} h={100} />
-      <Shrub x={720} />
+      <Shrub x={744} />
 
       {/* Interior back walls: full-width base + raised centre (wings only) */}
       <motion.rect
@@ -238,19 +293,44 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
         height={36}
         fill="var(--color-parchment)"
       />
+      {/* Depth wash over the interior wall */}
+      <motion.rect
+        initial={false}
+        animate={{ attrX: g.ix, width: g.iw }}
+        transition={t}
+        y={194}
+        height={206}
+        fill="url(#th-wall-wash)"
+        opacity={0.45}
+      />
 
       {/* Upgraded walls layer (clipped to the animating interior) */}
       <g clipPath="url(#exp-interior-clip)">
-        <Layer id="walls" show={Boolean(selected["upgraded-walls"])}>
+        <Layer id="walls" show={Boolean(visuals["walls"])}>
           <SlatWalls x={158} w={484} top={200} bottom={400} />
         </Layer>
       </g>
 
-      {/* Window on the back wall */}
+      {/* Window on the back wall (glass sheen for depth) */}
       <Slide x={g.win.x} y={g.win.y}>
         <rect x={0} y={0} width={g.win.w} height={g.win.h} rx={2} fill="var(--color-cream)" stroke={INK} strokeWidth={1.8} strokeOpacity={0.7} />
+        <rect x={2.5} y={2.5} width={g.win.w - 5} height={g.win.h - 5} rx={1.5} fill="url(#th-glass)" />
         <line x1={g.win.w / 2} y1={0} x2={g.win.w / 2} y2={g.win.h} stroke={INK} strokeWidth={1.2} strokeOpacity={0.5} />
       </Slide>
+
+      {/* Double-glazing highlight, tracking the window */}
+      <Layer id="glazing" show={Boolean(visuals["glazing"])}>
+        <Slide x={g.win.x} y={g.win.y}>
+          <GlazingHighlight x={0} y={0} w={g.win.w} h={g.win.h} />
+        </Slide>
+      </Layer>
+
+      {/* Curtains hugging the window */}
+      <Layer id="curtains" show={Boolean(visuals["curtains"])}>
+        <Slide x={g.win.x} y={g.win.y}>
+          <Curtains x={0} y={-4} w={g.win.w} h={g.win.h + 10} />
+        </Slide>
+      </Layer>
 
       {/* Shell: slab + plinths */}
       <motion.rect
@@ -272,6 +352,13 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
       {/* Outer walls */}
       <motion.rect initial={false} animate={{ attrX: g.ix - 8 }} transition={t} y={190} width={8} height={210} fill="var(--color-sand)" stroke={INK} strokeWidth={SW} strokeOpacity={0.85} />
       <motion.rect initial={false} animate={{ attrX: right }} transition={t} y={190} width={8} height={210} fill="var(--color-sand)" stroke={INK} strokeWidth={SW} strokeOpacity={0.85} />
+
+      {/* Timber deck off the right wall, tracking the variant width */}
+      <Layer id="deck" show={Boolean(visuals["deck"])}>
+        <Slide x={g.deck.x}>
+          <DeckExtension x={0} w={g.deck.w} />
+        </Slide>
+      </Layer>
 
       {/* Winged roofscape: raised centre module + wing roofs (B20 / B40) */}
       <motion.g initial={false} animate={{ opacity: g.wings ? 1 : 0 }} transition={t}>
@@ -344,16 +431,23 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
         />
       </motion.g>
 
+      {/* Solar array: centre-module roof (wings) or flat roof (slim) */}
+      <Layer id="solar" show={Boolean(visuals["solar"])}>
+        <Slide x={g.solar.x} y={solarY}>
+          <SolarPanels x={0} y={0} w={g.solar.w} />
+        </Slide>
+      </Layer>
+
       {/* Floor finish (clipped to the animating interior) */}
       <g clipPath="url(#exp-interior-clip)">
         <BaseFloor x={158} w={484} floor={FLOOR} />
-        <Layer id="floors" show={Boolean(selected["upgraded-floors"])}>
+        <Layer id="floors" show={Boolean(visuals["floors"])}>
           <PlankFloor x={158} w={484} floor={FLOOR} />
         </Layer>
       </g>
 
       {/* Premium insulation */}
-      <Layer id="insulation" show={Boolean(selected["premium-insulation"])}>
+      <Layer id="insulation" show={Boolean(visuals["insulation"])}>
         <Slide x={g.ix - 4}>
           <InsulationBand x1={0} y1={196} x2={0} y2={396} />
         </Slide>
@@ -370,8 +464,15 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
         </motion.g>
       </Layer>
 
+      {/* Wall-split aircon */}
+      <Layer id="aircon" show={Boolean(visuals["aircon"])}>
+        <Slide x={g.aircon.x} y={g.aircon.y}>
+          <AirconSplit x={0} y={0} />
+        </Slide>
+      </Layer>
+
       {/* Modules */}
-      <Layer id="wet-room" show={Boolean(selected["wet-room"])}>
+      <Layer id="wet-room" show={Boolean(visuals["wet-room"])}>
         <Slide x={g.wet.x}>
           <WetRoom x={0} floor={FLOOR} w={88} partitions={g.wet.partitions} />
         </Slide>
@@ -381,7 +482,7 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
           <Kitchen x={0} floor={FLOOR} w={g.kitchen.w} />
         </Slide>
       </Layer>
-      <Layer id="cupboards" show={kitchenOn && Boolean(selected["overhead-cupboards"])}>
+      <Layer id="cupboards" show={kitchenOn && Boolean(visuals["cupboards"])}>
         <Slide x={g.cup.x}>
           <Cupboards x={0} w={g.cup.w} bottom={336} />
         </Slide>
@@ -395,17 +496,17 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
       </Layer>
       <Layer id="f-sofa" show={furnished && Boolean(g.sofa)} delay={0.06}>
         <Slide x={g.sofa?.x ?? 0}>
-          <SofaItem x={0} floor={FLOOR} w={g.sofa?.w ?? 46} />
+          <SofaWithCushions x={0} floor={FLOOR} w={g.sofa?.w ?? 44} />
         </Slide>
       </Layer>
       <Layer id="f-coffee" show={furnished && Boolean(g.coffee)} delay={0.12}>
         <Slide x={g.coffee?.x ?? 0}>
-          <CoffeeTable x={0} floor={FLOOR} w={g.coffee?.w ?? 20} />
+          <CoffeeTable x={0} floor={FLOOR} w={g.coffee?.w ?? 18} />
         </Slide>
       </Layer>
       <Layer id="f-bed" show={furnished} delay={0.18}>
         <Slide x={g.bed.x}>
-          <Bed x={0} floor={FLOOR} w={g.bed.w} />
+          <DoubleBed x={0} floor={FLOOR} w={g.bed.w} />
         </Slide>
       </Layer>
       <Layer id="f-table" show={furnished && Boolean(g.table)} delay={0.24}>
@@ -413,23 +514,42 @@ export function ExpandableHomesScene({ selected, furnished, variantId }: ScenePr
           <SideTable x={0} floor={FLOOR} />
         </Slide>
       </Layer>
-      <Layer id="f-plant" show={furnished && Boolean(g.plant)} delay={0.3}>
-        <Slide x={g.plant?.x ?? 0}>
-          <Plant x={0} floor={FLOOR} />
+      <Layer id="f-plant" show={furnished && Boolean(g.plantBig ?? g.plantSmall)} delay={0.3}>
+        <Slide x={g.plantBig?.x ?? g.plantSmall?.x ?? 0}>
+          {g.plantBig ? (
+            <FloorPlant x={0} floor={FLOOR} scale={g.plantBig.s} />
+          ) : (
+            <Plant x={0} floor={FLOOR} />
+          )}
         </Slide>
       </Layer>
-      <Layer id="f-art" show={furnished} delay={0.36}>
-        <Slide x={g.art.x} y={g.art.y}>
-          <WallArt x={0} y={0} />
+      <Layer id="f-tv" show={furnished} delay={0.36}>
+        <Slide x={g.tv.x} y={g.tv.y}>
+          <WallTv x={0} y={0} w={g.tv.w} />
+        </Slide>
+      </Layer>
+      <Layer id="f-frames" show={furnished} delay={0.42}>
+        <Slide x={g.frames.x} y={g.frames.y}>
+          <PictureFrames x={0} y={0} />
+        </Slide>
+      </Layer>
+      <Layer id="f-shelf" show={furnished && Boolean(g.shelf)} delay={0.48}>
+        <Slide x={g.shelf?.x ?? 0} y={g.shelf?.y ?? 0}>
+          <ShelvingUnit x={0} y={0} w={44} />
+        </Slide>
+      </Layer>
+      <Layer id="f-pendant" show={furnished} delay={0.54}>
+        <Slide x={g.pendant.x} y={g.pendant.top}>
+          <PendantLamp x={0} top={0} drop={g.pendant.drop} />
         </Slide>
       </Layer>
       {/* B40 three-bedroom character: partition walls + second bed */}
-      <Layer id="f-threebed" show={furnished && Boolean(g.threeBed)} delay={0.42}>
+      <Layer id="f-threebed" show={furnished && Boolean(g.threeBed)} delay={0.6}>
         {g.threeBed && (
           <g>
             <line x1={g.threeBed.partitions[0]} y1={196} x2={g.threeBed.partitions[0]} y2={398} stroke={INK} strokeWidth={SW} strokeOpacity={0.85} strokeLinecap="round" />
             <line x1={g.threeBed.partitions[1]} y1={196} x2={g.threeBed.partitions[1]} y2={398} stroke={INK} strokeWidth={SW} strokeOpacity={0.85} strokeLinecap="round" />
-            <Bed x={g.threeBed.bed2.x} floor={FLOOR} w={g.threeBed.bed2.w} />
+            <DoubleBed x={g.threeBed.bed2.x} floor={FLOOR} w={g.threeBed.bed2.w} />
           </g>
         )}
       </Layer>

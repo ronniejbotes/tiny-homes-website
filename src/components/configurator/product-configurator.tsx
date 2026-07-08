@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import {
   AnimatePresence,
   motion,
@@ -8,20 +16,32 @@ import {
   useReducedMotion,
   useSpring,
 } from "framer-motion";
-import { Armchair, Box, RotateCcw, Sofa } from "lucide-react";
+import Image from "next/image";
 import {
+  Armchair,
+  Box,
+  Home,
+  Image as ImageIcon,
+  LayoutGrid,
+  RotateCcw,
+  Sofa,
+} from "lucide-react";
+import {
+  activeVisuals,
   configuredPrice,
   type CustomOption,
   type OptionCategory,
-  type OptionId,
   type Product,
+  type VisualKey,
 } from "@/data/products";
+import manifest from "@/data/images.json";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { ButtonLink, Button } from "@/components/ui/button";
 import { scenes } from "./scenes";
 import { FoldingHomesScene } from "./scenes/folding-homes-scene";
+import { FloorPlanView } from "./floorplan";
 
 /* ------------------------------------------------------------------ */
 /* Animated price readout                                              */
@@ -73,8 +93,11 @@ function OptionToggle({
       type="button"
       role="switch"
       aria-checked={checked}
-      disabled={disabled}
-      onClick={onToggle}
+      // aria-disabled (not native disabled) keeps the row in the Tab order so
+      // keyboard users can reach the "Add the … first" helper text. Unlike
+      // native disabled it does not suppress clicks, so guard the handler.
+      aria-disabled={disabled || undefined}
+      onClick={disabled ? undefined : onToggle}
       className={cn(
         "group flex w-full items-start gap-4 rounded-2xl border px-4 py-4 text-left transition-colors duration-200 min-h-[44px]",
         checked ? "border-forest/40 bg-parchment" : "border-border bg-cream hover:border-stone/50",
@@ -85,7 +108,7 @@ function OptionToggle({
         <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="font-medium text-ink">{option.label}</span>
           <span className="text-sm font-medium text-clay-dark">+{formatZAR(option.price)}</span>
-          {option.placeholder && (
+          {option.provisional && (
             <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
               provisional
             </span>
@@ -114,24 +137,134 @@ function OptionToggle({
 }
 
 /* ------------------------------------------------------------------ */
+/* View tabs — Cutaway · Floor plan · Photos (SPEC-VISUALIZER-V2 §2)   */
+/* ------------------------------------------------------------------ */
+
+const VIEW_TABS = [
+  { id: "cutaway", label: "Cutaway", icon: Home },
+  { id: "floorplan", label: "Floor plan", icon: LayoutGrid },
+  { id: "photos", label: "Photos", icon: ImageIcon },
+] as const;
+
+type ViewId = (typeof VIEW_TABS)[number]["id"];
+
+/* ------------------------------------------------------------------ */
+/* Photos panel — real imagery from the manifest                       */
+/* ------------------------------------------------------------------ */
+
+interface ManifestImage {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  kind: string;
+  hero: boolean;
+}
+
+const manifestProductImages = manifest.products as Record<string, ManifestImage[]>;
+const manifestGalleryImages = manifest.gallery as ManifestImage[];
+
+/** Lookup of every manifest image by src — option photos may live anywhere. */
+const imageBySrc = new Map<string, ManifestImage>();
+for (const list of [...Object.values(manifestProductImages), manifestGalleryImages]) {
+  for (const img of list) {
+    if (!imageBySrc.has(img.src)) imageBySrc.set(img.src, img);
+  }
+}
+
+const PHOTO_SIZES = "(min-width: 1024px) 30vw, 45vw";
+
+function PhotosPanel({
+  product,
+  activeOptions,
+}: {
+  product: Product;
+  activeOptions: CustomOption[];
+}) {
+  const photos = (manifestProductImages[product.slug] ?? []).filter(
+    (img) => img.kind !== "diagram" && img.kind !== "icon",
+  );
+  const optionPhotos = activeOptions.filter((o) => o.photo);
+
+  return (
+    <div>
+      {/* Real photos of active selections, when we have them (never fabricated) */}
+      {optionPhotos.length > 0 && (
+        <div className="mb-6">
+          <h3 className="text-eyebrow mb-3 text-clay-dark">Your selections in real life</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {optionPhotos.map((option) => {
+              const entry = imageBySrc.get(option.photo as string);
+              return (
+                <figure
+                  key={option.id}
+                  className="overflow-hidden rounded-2xl border border-border bg-cream"
+                >
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={option.photo as string}
+                      alt={entry?.alt ?? `Example image for ${option.label}`}
+                      fill
+                      sizes={PHOTO_SIZES}
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="px-3 py-2 text-xs leading-relaxed text-stone">
+                    {option.label} — example; finishes confirmed on your quote
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Product gallery */}
+      {photos.length > 0 ? (
+        <div className="grid grid-cols-2 gap-3">
+          {photos.map((img) => (
+            <div
+              key={img.src}
+              className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-cream"
+            >
+              <Image src={img.src} alt={img.alt} fill sizes={PHOTO_SIZES} className="object-cover" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="py-8 text-center text-sm leading-relaxed text-stone">
+          Photos of this unit are on their way — the cutaway and floor plan views show your full
+          configuration in the meantime.
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Main configurator                                                   */
 /* ------------------------------------------------------------------ */
 
-const CATEGORY_ORDER: OptionCategory[] = ["structure", "interior", "modules"];
+const CATEGORY_ORDER: OptionCategory[] = ["structure", "interior", "modules", "energy", "comfort"];
 const CATEGORY_LABELS: Record<OptionCategory, string> = {
   structure: "Structure",
   interior: "Interior",
   modules: "Modules",
+  energy: "Energy",
+  comfort: "Comfort",
 };
 
-const NO_OPTIONS: Partial<Record<OptionId, boolean>> = {};
+const NO_OPTIONS: Partial<Record<string, boolean>> = {};
 
 export function ProductConfigurator({ product }: { product: Product }) {
   const reduce = useReducedMotion();
-  const [selected, setSelected] = useState<Partial<Record<OptionId, boolean>>>(NO_OPTIONS);
+  const uid = useId();
+  const [selected, setSelected] = useState<Partial<Record<string, boolean>>>(NO_OPTIONS);
   const [furnished, setFurnished] = useState(false);
   const [variantId, setVariantId] = useState<string | undefined>(product.variants?.[0]?.id);
+  const [view, setView] = useState<ViewId>("cutaway");
   const [announcement, setAnnouncement] = useState("");
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const total = useMemo(
     () => configuredPrice(product, selected, variantId),
@@ -144,7 +277,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
     (option: CustomOption) => {
       setSelected((prev) => {
         const turningOn = !prev[option.id];
-        const next: Partial<Record<OptionId, boolean>> = { ...prev, [option.id]: turningOn };
+        const next: Partial<Record<string, boolean>> = { ...prev, [option.id]: turningOn };
         // Deselecting a prerequisite unchecks its dependents.
         if (!turningOn) {
           for (const opt of product.options) {
@@ -177,6 +310,28 @@ export function ProductConfigurator({ product }: { product: Product }) {
     setFurnished(value);
     setAnnouncement(value ? "Furnished view shown." : "Empty shell view shown.");
   }, []);
+
+  const pickView = useCallback((id: ViewId) => {
+    setView(id);
+    const tab = VIEW_TABS.find((t) => t.id === id);
+    if (tab) setAnnouncement(`${tab.label} view.`);
+  }, []);
+
+  /* Roving tabindex: Left/Right (plus Home/End) move focus AND selection. */
+  const onTabKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+      let next: number | null = null;
+      if (event.key === "ArrowRight") next = (index + 1) % VIEW_TABS.length;
+      else if (event.key === "ArrowLeft") next = (index - 1 + VIEW_TABS.length) % VIEW_TABS.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = VIEW_TABS.length - 1;
+      if (next === null) return;
+      event.preventDefault();
+      pickView(VIEW_TABS[next].id);
+      tabRefs.current[next]?.focus();
+    },
+    [pickView],
+  );
 
   const reset = useCallback(() => {
     setSelected(NO_OPTIONS);
@@ -221,42 +376,114 @@ export function ProductConfigurator({ product }: { product: Product }) {
       <div className="grid gap-8 lg:grid-cols-[3fr_2fr] lg:items-start">
         {/* ------------------------------------------------ Scene column */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          {/* Furnish segmented control */}
-          <div
-            className="mb-4 inline-flex rounded-full border border-border bg-cream p-1"
-            role="group"
-            aria-label="Interior view"
-          >
-            <button
-              type="button"
-              aria-pressed={!furnished}
-              onClick={() => setFurnish(false)}
-              className={cn(
-                "inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200",
-                !furnished ? "bg-forest text-cream" : "text-stone hover:text-ink",
-              )}
+          {/* View tabs + furnish segmented control */}
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <div
+              role="tablist"
+              aria-label="Visualiser view"
+              className="inline-flex rounded-full border border-border bg-cream p-1"
             >
-              <Box className="h-4 w-4" aria-hidden="true" />
-              Empty shell
-            </button>
-            <button
-              type="button"
-              aria-pressed={furnished}
-              onClick={() => setFurnish(true)}
-              className={cn(
-                "inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200",
-                furnished ? "bg-forest text-cream" : "text-stone hover:text-ink",
-              )}
-            >
-              <Sofa className="h-4 w-4" aria-hidden="true" />
-              Furnished
-            </button>
+              {VIEW_TABS.map((tab, index) => {
+                const active = view === tab.id;
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    ref={(el) => {
+                      tabRefs.current[index] = el;
+                    }}
+                    type="button"
+                    role="tab"
+                    id={`${uid}-tab-${tab.id}`}
+                    aria-selected={active}
+                    aria-controls={`${uid}-panel-${tab.id}`}
+                    tabIndex={active ? 0 : -1}
+                    onClick={() => pickView(tab.id)}
+                    onKeyDown={(event) => onTabKeyDown(event, index)}
+                    className={cn(
+                      "inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 text-sm font-medium transition-colors duration-200 sm:px-5",
+                      active ? "bg-forest text-cream" : "text-stone hover:text-ink",
+                    )}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Furnish control affects Cutaway and Floor plan; hidden on Photos */}
+            {view !== "photos" && (
+              <div
+                className="inline-flex rounded-full border border-border bg-cream p-1"
+                role="group"
+                aria-label="Interior view"
+              >
+                <button
+                  type="button"
+                  aria-pressed={!furnished}
+                  onClick={() => setFurnish(false)}
+                  className={cn(
+                    "inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200",
+                    !furnished ? "bg-forest text-cream" : "text-stone hover:text-ink",
+                  )}
+                >
+                  <Box className="h-4 w-4" aria-hidden="true" />
+                  Empty shell
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={furnished}
+                  onClick={() => setFurnish(true)}
+                  className={cn(
+                    "inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200",
+                    furnished ? "bg-forest text-cream" : "text-stone hover:text-ink",
+                  )}
+                >
+                  <Sofa className="h-4 w-4" aria-hidden="true" />
+                  Furnished
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Scene card */}
-          <div className="overflow-hidden rounded-3xl border border-border bg-parchment p-4 sm:p-6">
-            <SceneSlot slug={product.slug} selected={selected} furnished={furnished} variantId={variantId} />
-          </div>
+          {/* View panels — crossfade; state lives in the parent so only the
+              active panel needs to stay mounted */}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={view}
+              role="tabpanel"
+              id={`${uid}-panel-${view}`}
+              aria-labelledby={`${uid}-tab-${view}`}
+              tabIndex={0}
+              initial={reduce ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reduce ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.2 }}
+            >
+              <div className="overflow-hidden rounded-3xl border border-border bg-parchment p-4 sm:p-6">
+                {view === "cutaway" && (
+                  <SceneSlot
+                    slug={product.slug}
+                    visuals={activeVisuals(product, selected)}
+                    furnished={furnished}
+                    variantId={variantId}
+                  />
+                )}
+                {view === "floorplan" && (
+                  <FloorPlanView
+                    product={product}
+                    selected={selected}
+                    furnished={furnished}
+                    variantId={variantId}
+                  />
+                )}
+                {view === "photos" && (
+                  <PhotosPanel product={product} activeOptions={activeOptions} />
+                )}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Active selection chips */}
           <div className="mt-4 flex min-h-[2rem] flex-wrap items-center gap-2" aria-hidden="true">
@@ -384,18 +611,18 @@ export function ProductConfigurator({ product }: { product: Product }) {
 
 function SceneSlot({
   slug,
-  selected,
+  visuals,
   furnished,
   variantId,
 }: {
   slug: string;
-  selected: Partial<Record<OptionId, boolean>>;
+  visuals: Partial<Record<VisualKey, boolean>>;
   furnished: boolean;
   variantId?: string;
 }) {
   // Component map lookup — falls back to the folding scene for unknown slugs.
   const Scene = scenes[slug] ?? FoldingHomesScene;
-  return <Scene selected={selected} furnished={furnished} variantId={variantId} />;
+  return <Scene visuals={visuals} furnished={furnished} variantId={variantId} />;
 }
 
 /* ------------------------------------------------------------------ */

@@ -4,30 +4,53 @@
  * This file is the single source of truth for product content, pricing and
  * configurator options. All prices are in ZAR and EXCLUDE VAT.
  *
- * Customisation options marked `placeholder: true` carry provisional pricing —
+ * Customisation options marked `provisional: true` carry provisional pricing —
  * they will be replaced with the real options list from company documents.
  */
 
-export type OptionCategory = "structure" | "interior" | "modules";
+export type OptionCategory = "structure" | "interior" | "modules" | "energy" | "comfort";
+
+/** What an option draws in the cutaway scene and floor plan. */
+export type VisualKey =
+  | "floors"
+  | "walls"
+  | "insulation"
+  | "wet-room"
+  | "kitchen"
+  | "cupboards"
+  | "solar"
+  | "aircon"
+  | "deck"
+  | "glazing"
+  | "curtains"
+  | "heating"
+  | "stack"
+  | "none";
 
 export interface CustomOption {
-  id: OptionId;
+  id: string;
   label: string;
   description: string;
-  price: number; // ZAR ex VAT
+  price: number; // ZAR ex VAT — selling price
+  /** Estimated supplier/installed cost, ZAR ex VAT. Internal only — never rendered. */
+  cost?: number;
   category: OptionCategory;
+  visual: VisualKey;
   /** Option only makes sense when another option is selected first. */
-  requires?: OptionId;
-  placeholder: boolean;
+  requires?: string;
+  /** Pricing to be confirmed by the company. */
+  provisional: boolean;
+  /** Manifest path of a real photo showing this option, when one exists. */
+  photo?: string;
+  /** Floor area the option consumes, m² — used by the floor plan space math. */
+  footprintM2?: number;
+  /**
+   * Variants on which footprintM2 applies (the option genuinely adds the module
+   * there). On other variants the same option is a finish upgrade of an included
+   * room and consumes no new floor. Omit when the footprint applies everywhere.
+   */
+  footprintVariantIds?: string[];
 }
-
-export type OptionId =
-  | "upgraded-floors"
-  | "upgraded-walls"
-  | "premium-insulation"
-  | "wet-room"
-  | "kitchen-unit"
-  | "overhead-cupboards";
 
 export interface ProductVariant {
   id: string;
@@ -66,7 +89,7 @@ export interface Product {
 }
 
 /** Standard placeholder option set, priced per product tier. */
-function standardOptions(tier: number, overrides?: Partial<Record<OptionId, Partial<CustomOption>>>): CustomOption[] {
+function standardOptions(tier: number, overrides?: Record<string, Partial<CustomOption>>): CustomOption[] {
   const round = (n: number) => Math.round((n * tier) / 500) * 500;
   const base: CustomOption[] = [
     {
@@ -75,7 +98,8 @@ function standardOptions(tier: number, overrides?: Partial<Record<OptionId, Part
       description: "Premium wood-look vinyl plank flooring throughout, warmer underfoot and more durable than the standard finish.",
       price: round(12500),
       category: "interior",
-      placeholder: true,
+      visual: "floors",
+      provisional: true,
     },
     {
       id: "upgraded-walls",
@@ -83,7 +107,8 @@ function standardOptions(tier: number, overrides?: Partial<Record<OptionId, Part
       description: "Timber-panelled interior wall cladding for a warm, architectural feel in place of the standard panels.",
       price: round(15000),
       category: "interior",
-      placeholder: true,
+      visual: "walls",
+      provisional: true,
     },
     {
       id: "premium-insulation",
@@ -91,36 +116,116 @@ function standardOptions(tier: number, overrides?: Partial<Record<OptionId, Part
       description: "Thicker multi-layer thermal insulation in the walls and roof for cooler summers, warmer winters and lower energy bills.",
       price: round(9500),
       category: "structure",
-      placeholder: true,
+      visual: "insulation",
+      provisional: true,
     },
     {
       id: "wet-room",
       label: "Wet room unit",
       description: "Fully plumbed bathroom module with shower, toilet and basin, factory-fitted and ready to connect on site.",
-      price: round(42500),
+      price: round(56500), // ~30% margin on researched pod cost
+      cost: round(39500),
       category: "modules",
-      placeholder: true,
+      visual: "wet-room",
+      footprintM2: 2.8,
+      provisional: true,
     },
     {
       id: "kitchen-unit",
       label: "Kitchen unit",
       description: "Fitted kitchenette with counter, sink, cabinet storage and space for a two-plate hob and under-counter fridge.",
-      price: round(38000),
+      price: round(33000), // ~30% margin on researched 2.4–3 m kitchenette cost
+      cost: round(23000),
       category: "modules",
-      placeholder: true,
+      visual: "kitchen",
+      footprintM2: 1.5,
+      provisional: true,
     },
     {
       id: "overhead-cupboards",
       label: "Overhead cupboards",
       description: "Wall-mounted overhead cupboards above the kitchen counter for extra storage without losing floor space.",
-      price: round(14500),
+      price: round(10000), // ~30% margin on researched cost
+      cost: round(7000),
       category: "modules",
+      visual: "cupboards",
       requires: "kitchen-unit",
-      placeholder: true,
+      provisional: true,
     },
   ];
   return base.map((o) => ({ ...o, ...(overrides?.[o.id] ?? {}) }));
 }
+
+/* --------------------------------------------------------------------------
+ * Researched optional extras (sources: research/pricing.md). Selling prices
+ * hold ~30% margin on estimated SA supplier/installed cost — above the 25%
+ * floor. All remain provisional until confirmed by the company.
+ * ------------------------------------------------------------------------ */
+
+const extra = (o: Omit<CustomOption, "provisional">): CustomOption => ({ ...o, provisional: true });
+
+const foldingExtras: CustomOption[] = [
+  extra({ id: "double-glazed-windows", label: "Double-glazed aluminium windows (pair)", description: "Replaces the two standard PVC windows with double-glazed aluminium units for better insulation and quiet.", price: 13000, cost: 9000, category: "structure", visual: "glazing" }),
+  extra({ id: "sliding-door", label: "Aluminium sliding door", description: "Full-height aluminium sliding door in place of a window panel — opens the room to a deck or garden.", price: 12000, cost: 8500, category: "structure", visual: "glazing" }),
+  extra({ id: "stacking-kit", label: "Two-high stacking kit", description: "Reinforced corner castings and link plates to stack a second unit on top or link units side by side.", price: 6000, cost: 4200, category: "structure", visual: "stack" }),
+  extra({ id: "timber-deck", label: "Timber deck (5 m²)", description: "Treated-pine deck along the entrance side — an outdoor room for the price of a weekend away.", price: 7500, cost: 5250, category: "structure", visual: "deck" }),
+  extra({ id: "exterior-cladding", label: "Wood-grain exterior cladding", description: "Wood-grain or colour cladding wrap over the standard panel exterior.", price: 25500, cost: 18000, category: "structure", visual: "none" }),
+  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed. A big-ticket add-on that takes the whole unit off-grid.", price: 74500, cost: 52000, category: "energy", visual: "solar" }),
+  extra({ id: "backup-power", label: "Plug-in backup power kit", description: "1.5–2 kVA inverter trolley with battery — keeps lights, Wi-Fi and the fridge running through load-shedding.", price: 16500, cost: 11500, category: "energy", visual: "none" }),
+  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "SAQCC-compliant gas geyser installed for instant hot water without straining the electrical feed.", price: 11500, cost: 8000, category: "energy", visual: "none" }),
+  extra({ id: "aircon-9k", label: "Inverter aircon (9 000 BTU)", description: "Midwall inverter split installed — heats in winter, cools in summer, sized for the 15 m² room.", price: 13000, cost: 9000, category: "comfort", visual: "aircon" }),
+  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Fingerprint/keypad smart lock on the steel door — no keys to lose between guests.", price: 5500, cost: 3800, category: "comfort", visual: "none" }),
+  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains and rails for both windows — dark, cool sleep in summer.", price: 7000, cost: 5000, category: "comfort", visual: "curtains" }),
+  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package with app control for warm, layered evening light.", price: 8000, cost: 5500, category: "comfort", visual: "none" }),
+];
+
+const expandableExtras: CustomOption[] = [
+  extra({ id: "double-glazed-windows", label: "Double-glazed aluminium windows (pair)", description: "Upgrades two standard windows to double-glazed aluminium for insulation and quiet.", price: 13000, cost: 9000, category: "structure", visual: "glazing" }),
+  extra({ id: "sliding-door", label: "Aluminium sliding door", description: "Full-height sliding door on the living-room wing, opening onto your stoep or garden.", price: 12000, cost: 8500, category: "structure", visual: "glazing" }),
+  extra({ id: "exterior-cladding", label: "Wood-grain exterior cladding", description: "Wood-grain or colour cladding wrap over the standard exterior panels.", price: 43000, cost: 30000, category: "structure", visual: "none" }),
+  extra({ id: "timber-deck", label: "Timber deck (10 m²)", description: "Treated-pine deck along the entrance side — outdoor living to match the indoor space.", price: 15000, cost: 10500, category: "structure", visual: "deck" }),
+  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed — load-shedding-proof from day one.", price: 74500, cost: 52000, category: "energy", visual: "solar" }),
+  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "SAQCC-compliant gas geyser installed for instant hot water.", price: 11500, cost: 8000, category: "energy", visual: "none" }),
+  extra({ id: "aircon-12k", label: "Inverter aircon (12 000 BTU)", description: "Midwall inverter split sized for the open-plan living space.", price: 15000, cost: 10500, category: "comfort", visual: "aircon" }),
+  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Fingerprint/keypad entry on the main door.", price: 5500, cost: 3800, category: "comfort", visual: "none" }),
+  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains and rails throughout the bedroom wing.", price: 7000, cost: 5000, category: "comfort", visual: "curtains" }),
+  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package with app control.", price: 8000, cost: 5500, category: "comfort", visual: "none" }),
+];
+
+const natureExtras: CustomOption[] = [
+  extra({ id: "double-glazed-window", label: "Double-glazed window upgrade", description: "Double-glazed aluminium unit in place of a standard window — worthwhile in mountain and coastal weather.", price: 6500, cost: 4500, category: "structure", visual: "glazing" }),
+  extra({ id: "balcony-railing", label: "Deck railing kit", description: "Aluminium balustrade around the included 1.8 m deck for exposed or elevated sites.", price: 13000, cost: 9000, category: "structure", visual: "none" }),
+  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery — the full off-grid package.", price: 74500, cost: 52000, category: "energy", visual: "solar" }),
+  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "Instant gas hot water for the included bathroom — ideal off-grid.", price: 11500, cost: 8000, category: "energy", visual: "none" }),
+  extra({ id: "underfloor-heating", label: "Under-floor heating (21 m²)", description: "Electric under-floor heating mats with thermostat under the full cabin floor.", price: 18000, cost: 12600, category: "comfort", visual: "heating" }),
+  extra({ id: "aircon-9k", label: "Inverter aircon (9 000 BTU)", description: "Midwall inverter split sized for the cabin.", price: 13000, cost: 9000, category: "comfort", visual: "aircon" }),
+  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains for the gable glass and windows — guests sleep past sunrise.", price: 7000, cost: 5000, category: "comfort", visual: "curtains" }),
+  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Keypad/fingerprint entry — no key handovers between bookings.", price: 5500, cost: 3800, category: "comfort", visual: "none" }),
+];
+
+const domeExtras: CustomOption[] = [
+  extra({ id: "underfloor-heating", label: "Under-floor heating (24.6 m²)", description: "Electric under-floor heating with thermostat — the dome stays warm on clear winter nights.", price: 21000, cost: 15000, category: "comfort", visual: "heating" }),
+  extra({ id: "aircon-floor", label: "Climate unit (9 000 BTU)", description: "Discreet floor-standing inverter unit — cooling and heating without piercing the shell.", price: 13000, cost: 9000, category: "comfort", visual: "aircon", footprintM2: 0.1 }),
+  extra({ id: "smart-lock", label: "Smart electronic key-lock", description: "Smart electronic key-lock on the arched door for self-check-in guests.", price: 5500, cost: 3800, category: "comfort", visual: "none" }),
+  extra({ id: "backup-power", label: "Plug-in backup power kit", description: "1.5–2 kVA inverter trolley with battery for lights and essentials through load-shedding.", price: 16500, cost: 11500, category: "energy", visual: "none" }),
+  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "Instant gas hot water for the bathroom unit.", price: 11500, cost: 8000, category: "energy", visual: "none" }),
+];
+
+const appleExtras: CustomOption[] = [
+  extra({ id: "underfloor-heating", label: "Under-floor heating (36.8 m²)", description: "Electric under-floor heating mats with thermostat under the full cabin floor.", price: 31500, cost: 22000, category: "comfort", visual: "heating" }),
+  extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "Bolt-on balcony platform with aluminium balustrade along the glass wall.", price: 13000, cost: 9000, category: "structure", visual: "deck" }),
+  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery (roof supports up to 4 kW).", price: 74500, cost: 52000, category: "energy", visual: "solar" }),
+  extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the panoramic glass — open the view from bed.", price: 8000, cost: 5600, category: "comfort", visual: "curtains" }),
+  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package for evening ambience.", price: 8000, cost: 5500, category: "comfort", visual: "none" }),
+];
+
+const glampingExtras: CustomOption[] = [
+  extra({ id: "underfloor-heating", label: "Under-floor heating (36.8 m²)", description: "Electric under-floor heating mats with thermostat throughout the capsule.", price: 31500, cost: 22000, category: "comfort", visual: "heating" }),
+  extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "The optional capsule balcony: bolt-on platform with glass-line balustrade.", price: 13000, cost: 9000, category: "structure", visual: "deck" }),
+  extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the 270° glazing.", price: 8000, cost: 5600, category: "comfort", visual: "curtains" }),
+  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery (roof supports up to 4 kW).", price: 74500, cost: 52000, category: "energy", visual: "solar" }),
+  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package for hotel-grade evening light.", price: 8000, cost: 5500, category: "comfort", visual: "none" }),
+];
 
 export const products: Product[] = [
   {
@@ -155,7 +260,16 @@ export const products: Product[] = [
       "Ideal for emergency and rapid-deployment housing",
     ],
     useCases: ["Garden room", "Home office", "Guest suite", "Rental unit", "Site office", "Emergency housing"],
-    options: standardOptions(0.8),
+    options: [
+      ...standardOptions(0.8, {
+        "wet-room": {
+          label: "Plug-in shower-toilet pod",
+          description: "The factory shower-toilet pod: fully plumbed shower, toilet and basin module that plugs into the unit on site.",
+          photo: "/images/products/expandable-homes/installation-collage.png",
+        },
+      }),
+      ...foldingExtras,
+    ],
     faqs: [
       {
         q: "How long does it take to set up a folding home?",
@@ -221,16 +335,23 @@ export const products: Product[] = [
       { id: "b40-slim", name: "B40 Slim", size: "48 m²", price: 450000, description: "Long-format shell with generous open-plan living space. Indicative price — confirmed on your quote." },
       { id: "b40", name: "B40", size: "72 m²", price: 600000, description: "Fully specced family home with three- or four-bedroom layouts." },
     ],
-    options: standardOptions(1, {
-      "wet-room": {
-        label: "Wet room unit / upgrade",
-        description: "Adds a fully plumbed bathroom module to the Slim shells — on the fully kitted B20 and B40 this upgrades the included bathroom's fittings and finishes.",
-      },
-      "kitchen-unit": {
-        label: "Kitchen unit / upgrade",
-        description: "Adds a fitted kitchenette to the Slim shells — on the fully kitted B20 and B40 this upgrades the included kitchen's counters and cabinetry.",
-      },
-    }),
+    options: [
+      ...standardOptions(1, {
+        "wet-room": {
+          label: "Wet room unit / upgrade",
+          description: "Adds a fully plumbed bathroom module to the Slim shells — on the fully kitted B20 and B40 this upgrades the included bathroom's fittings and finishes.",
+          photo: "/images/products/expandable-homes/interior-lounge.jpg",
+          footprintVariantIds: ["b20-slim", "b40-slim"], // only the Slim shells gain a new module footprint
+        },
+        "kitchen-unit": {
+          label: "Kitchen unit / upgrade",
+          description: "Adds a fitted kitchenette to the Slim shells — on the fully kitted B20 and B40 this upgrades the included kitchen's counters and cabinetry.",
+          photo: "/images/products/expandable-homes/interior-living-room.png",
+          footprintVariantIds: ["b20-slim", "b40-slim"], // only the Slim shells gain a new module footprint
+        },
+      }),
+      ...expandableExtras,
+    ],
     faqs: [
       {
         q: "How big can an expandable home get?",
@@ -287,12 +408,16 @@ export const products: Product[] = [
       "Turnkey interior options for hospitality use",
     ],
     useCases: ["Guest farm unit", "Airbnb cabin", "Bush retreat", "Coastal getaway", "Backyard studio", "Lodge accommodation"],
-    options: standardOptions(1.2, {
-      "wet-room": {
-        label: "Premium wet room upgrade",
-        description: "Upgrades the included fully equipped bathroom with premium finishes, fittings and a rainfall shower.",
-      },
-    }),
+    options: [
+      ...standardOptions(1.2, {
+        "wet-room": {
+          label: "Premium wet room upgrade",
+          description: "Upgrades the included fully equipped bathroom with premium finishes, fittings and a rainfall shower.",
+          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
+        },
+      }),
+      ...natureExtras,
+    ],
     faqs: [
       {
         q: "Where can a nature cabin be installed?",
@@ -347,21 +472,29 @@ export const products: Product[] = [
       "Professional installation in 2–3 days",
     ],
     useCases: ["Luxury glamping", "Boutique dining", "Airbnb experience", "Guest accommodation", "Garden lounge", "Private retreat"],
-    options: standardOptions(1, {
-      "upgraded-walls": {
-        label: "Automated electric curtains",
-        description: "Upgrades the blackout curtain system to an automated electric track — open the whole dome to the view at the touch of a button.",
-        category: "interior",
-      },
-      "premium-insulation": {
-        label: "Wind-proof kit & reinforced base",
-        description: "Robust wind-proof kit with prefabricated connectors and a reinforced, insulated base for exposed sites.",
-      },
-      "wet-room": {
-        label: "Integrated bathroom unit",
-        description: "Factory-fitted bathroom unit with shower, toilet and basin, plumbed and ready to connect on site.",
-      },
-    }),
+    options: [
+      ...standardOptions(1, {
+        "upgraded-walls": {
+          label: "Automated electric curtains",
+          description: "Upgrades the blackout curtain system to an automated electric track — open the whole dome to the view at the touch of a button.",
+          category: "interior",
+          visual: "curtains",
+          price: 8000,
+          cost: 5600,
+          photo: "/images/products/the-dome/interior-bedroom.jpg",
+        },
+        "premium-insulation": {
+          label: "Wind-proof kit & reinforced base",
+          description: "Robust wind-proof kit with prefabricated connectors and a reinforced, insulated base for exposed sites.",
+        },
+        "wet-room": {
+          label: "Integrated bathroom unit",
+          description: "Factory-fitted bathroom unit with shower, toilet and basin, plumbed and ready to connect on site.",
+          photo: "/images/products/the-dome/exterior-dome-render.png",
+        },
+      }),
+      ...domeExtras,
+    ],
     faqs: [
       {
         q: "Does The Dome get hot in the South African sun?",
@@ -397,10 +530,11 @@ export const products: Product[] = [
     sizeLabel: "36.8 m²",
     bedrooms: "2 rooms + central bathroom",
     setupTime: "2–3 days",
-    dims: { length: 11.5, width: 2.2, height: 2.48 },
+    // NOTE: site lists 2.2 m (transport width?) but 36.8 m² requires 3.2 m — confirm with supplier
+    dims: { length: 11.5, width: 3.2, height: 2.48 },
     specs: [
       { label: "Floor area", value: "36.8 m²" },
-      { label: "External size", value: "11.5 m × 2.2 m × 2.48 m" },
+      { label: "External size", value: "11.5 m × 3.2 m × 2.48 m" },
       { label: "Layout", value: "Two rooms with central bathroom" },
       { label: "Glazing", value: "180° floor-to-ceiling panoramic glass" },
       { label: "Bathroom", value: "Rainfall shower, stone vanity" },
@@ -417,16 +551,23 @@ export const products: Product[] = [
       "Optional balcony and under-floor heating",
     ],
     useCases: ["Eco-resort unit", "Vineyard suite", "Safari accommodation", "Airbnb flagship", "Entertainment pod", "Executive retreat"],
-    options: standardOptions(1.5, {
-      "wet-room": {
-        label: "Premium wet room upgrade",
-        description: "Upgrade the included central bathroom with premium stone finishes, black fittings and a double rainfall shower.",
-      },
-      "kitchen-unit": {
-        label: "Premium kitchen upgrade",
-        description: "Upgrade the included kitchen with stone counters, integrated appliances and soft-close cabinetry.",
-      },
-    }),
+    options: [
+      ...standardOptions(1.5, {
+        "wet-room": {
+          label: "Premium wet room upgrade",
+          description: "Upgrade the included central bathroom with premium stone finishes, black fittings and a double rainfall shower.",
+          photo: "/images/products/apple-cabins/interior-bathroom.jpg",
+          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
+        },
+        "kitchen-unit": {
+          label: "Premium kitchen upgrade",
+          description: "Upgrade the included kitchen with stone counters, integrated appliances and soft-close cabinetry.",
+          photo: "/images/products/apple-cabins/interior-kitchenette-render.jpg",
+          footprintM2: undefined, // finish upgrade of the included kitchen — no new floor consumed
+        },
+      }),
+      ...appleExtras,
+    ],
     faqs: [
       {
         q: "What is included in an Apple Cabin?",
@@ -482,16 +623,21 @@ export const products: Product[] = [
       "Proven hospitality returns — ROI in 18–24 months",
     ],
     useCases: ["Luxury lodge suite", "Vineyard accommodation", "Private estate retreat", "Premium Airbnb", "Wellness resort", "Honeymoon suite"],
-    options: standardOptions(1.8, {
-      "wet-room": {
-        label: "Premium wet room upgrade",
-        description: "Upgrade the included central bathroom with premium stone finishes, black fittings and a double rainfall shower.",
-      },
-      "kitchen-unit": {
-        label: "Premium kitchen upgrade",
-        description: "Upgrade the included kitchen with stone counters, integrated appliances and soft-close cabinetry.",
-      },
-    }),
+    options: [
+      ...standardOptions(1.8, {
+        "wet-room": {
+          label: "Premium wet room upgrade",
+          description: "Upgrade the included central bathroom with premium stone finishes, black fittings and a double rainfall shower.",
+          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
+        },
+        "kitchen-unit": {
+          label: "Premium kitchen upgrade",
+          description: "Upgrade the included kitchen with stone counters, integrated appliances and soft-close cabinetry.",
+          footprintM2: undefined, // finish upgrade of the included kitchen — no new floor consumed
+        },
+      }),
+      ...glampingExtras,
+    ],
     faqs: [
       {
         q: "What returns do Glamping Capsules generate?",
@@ -522,8 +668,21 @@ export function getProduct(slug: string): Product | undefined {
 
 export const productSlugs = products.map((p) => p.slug);
 
+/** Visual layers implied by the active options (dependents count only when their requirement is met). */
+export function activeVisuals(
+  product: Product,
+  selected: Partial<Record<string, boolean>>,
+): Partial<Record<VisualKey, boolean>> {
+  const visuals: Partial<Record<VisualKey, boolean>> = {};
+  for (const opt of product.options) {
+    const active = selected[opt.id] && (!opt.requires || selected[opt.requires]);
+    if (active && opt.visual !== "none") visuals[opt.visual] = true;
+  }
+  return visuals;
+}
+
 /** Sum of base price + selected options for a product. */
-export function configuredPrice(product: Product, selected: Partial<Record<OptionId, boolean>>, variantId?: string): number {
+export function configuredPrice(product: Product, selected: Partial<Record<string, boolean>>, variantId?: string): number {
   const variant = product.variants?.find((v) => v.id === variantId);
   const base = variant ? variant.price : product.startingPrice;
   return product.options.reduce((total, opt) => {

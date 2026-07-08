@@ -16,6 +16,7 @@ import {
 } from "@/components/product/product-images";
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductGallery } from "@/components/product/product-gallery";
+import { Product3D } from "@/components/product/product-3d";
 import { OverviewSpecs } from "@/components/product/overview-specs";
 import { VariantCards } from "@/components/product/variant-cards";
 import { ConfiguratorSection } from "@/components/product/configurator-section";
@@ -154,6 +155,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       />
       <ProductHero product={product} image={hero} />
       <ProductGallery productName={product.name} images={gallery} />
+      <Product3D slug={product.slug} productName={product.name} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
       <ConfiguratorSection product={product} />
