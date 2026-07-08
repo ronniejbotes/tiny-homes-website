@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Tiny Homes SA palette: warm, natural, architectural ---- */
+  --color-cream: #faf6ef;
+  --color-parchment: #f4eee2;
+  --color-sand: #e9dfce;
+  --color-ink: #1c1b17;
+  --color-stone: #67635a;
+  --color-forest: #1e3a2b;
+  --color-forest-light: #2d5540;
+  --color-moss: #44684f;
+  --color-sage: #a8bfa0;
+  --color-clay: #b4552d;
+  --color-clay-dark: #9a4522;
+  --color-clay-light: #c96a41;
+  --color-whatsapp: #25d366;
+
+  /* Semantic aliases */
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-ink);
+  --color-primary: var(--color-forest);
+  --color-accent: var(--color-clay);
+  --color-muted: var(--color-stone);
+  --color-border: #ddd3c1;
+
+  /* Typography */
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows tuned warm, not gray */
+  --shadow-soft: 0 2px 8px rgba(28, 27, 23, 0.06), 0 8px 24px rgba(28, 27, 23, 0.07);
+  --shadow-lifted: 0 4px 12px rgba(28, 27, 23, 0.08), 0 16px 40px rgba(28, 27, 23, 0.12);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+/* Editorial display headings */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-variation-settings: "SOFT" 40, "WONK" 0;
+}
+
+.text-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Focus visibility (keyboard nav) */
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Clay reads at only 2.5:1 on forest — swap to cream on dark surfaces (WCAG 1.4.11) */
+.bg-forest :focus-visible,
+.bg-forest:focus-visible {
+  outline-color: var(--color-cream);
+}
+
+/* Subtle grain texture for hero surfaces */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Marquee for trust strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+/* Courtesy pause on hover; the visible Pause button toggles .marquee-paused (WCAG 2.2.2) */
+.animate-marquee:hover,
+.marquee-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* CSS-only hero entrance: content is visible before JS, animates when motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-rise-in {
+    animation: rise-in 0.85s var(--ease-out-expo) both;
+    animation-delay: var(--rise-delay, 0s);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s var(--ease-smooth) both;
+    animation-delay: var(--fade-delay, 0s);
+  }
+}
+
+/* Configurator SVG option layers transition softly */
+.scene-layer {
+  transition: opacity 320ms var(--ease-smooth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-layer {
+    transition: none;
+  }
+}
