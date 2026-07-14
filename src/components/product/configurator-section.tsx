@@ -5,6 +5,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { ProductConfigurator } from "@/components/configurator/product-configurator";
 
 export function ConfiguratorSection({ product }: { product: Product }) {
+  // Products without options (outdoor kitchens, safari tents) are quoted, not
+  // configured — never render an empty configurator.
+  if (product.options.length === 0) return null;
+
   return (
     <section
       id="configure"

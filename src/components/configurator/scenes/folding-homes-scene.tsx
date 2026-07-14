@@ -4,7 +4,6 @@ import type { SceneProps } from "./types";
 import {
   AirconSplit,
   BaseFloor,
-  Cupboards,
   Curtains,
   DeckExtension,
   DoubleBed,
@@ -48,8 +47,10 @@ import {
  *   roof:  solar 336–466 (y162–188) | stack ghost 244–576 (y20–154)
  *   right: deck 580–652 (ground) | shrub 666+
  */
-export function FoldingHomesScene({ visuals, furnished }: SceneProps) {
-  const kitchenOn = Boolean(visuals["kitchen"]);
+export function FoldingHomesScene({ visuals, furnished, variantId }: SceneProps) {
+  // The bathroom and kitchen are factory-fitted on the X-Fold BK and Flat Pack
+  // variants — they are part of the unit, not configurator options.
+  const fitted = variantId === "x-fold-bk" || variantId === "flat-pack-roof";
   return (
     <svg
       viewBox="0 0 800 500"
@@ -139,15 +140,12 @@ export function FoldingHomesScene({ visuals, furnished }: SceneProps) {
         <DeckExtension x={580} w={72} />
       </Layer>
 
-      {/* Modules */}
-      <Layer id="wet-room" show={Boolean(visuals["wet-room"])}>
+      {/* Factory-fitted rooms (bathroom-and-kitchen variants only) */}
+      <Layer id="wet-room" show={fitted}>
         <WetRoom x={486} floor={400} w={86} partitions="left" />
       </Layer>
-      <Layer id="kitchen" show={kitchenOn}>
+      <Layer id="kitchen" show={fitted}>
         <Kitchen x={260} floor={400} w={88} />
-      </Layer>
-      <Layer id="cupboards" show={kitchenOn && Boolean(visuals["cupboards"])}>
-        <Cupboards x={264} w={76} bottom={336} />
       </Layer>
 
       {/* Furnished */}

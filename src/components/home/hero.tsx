@@ -10,7 +10,10 @@ import { formatZAR } from "@/lib/format";
 import manifest from "@/data/images.json";
 
 const heroImage = manifest.products["nature-cabins"][0];
-const lowestStartingPrice = Math.min(...products.map((p) => p.startingPrice));
+/* Price-on-request products carry a 0 sentinel — exclude them from the range. */
+const lowestStartingPrice = Math.min(
+  ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
+);
 
 /* CSS-only staggered entrance (animate-rise-in in globals.css) so the headline,
    copy and CTAs are visible before JavaScript hydrates. */
@@ -57,7 +60,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-40 sm:px-8 sm:pb-32 lg:px-12">
         <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.15)}>
-          Prefab tiny homes · South Africa
+          Innovative instant housing · South Africa
         </p>
         <h1
           className="text-display animate-rise-in mt-5 max-w-4xl text-5xl text-cream sm:text-7xl lg:text-8xl"

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { getProduct } from "@/data/products";
+import { DEFAULT_EXPANDABLE_VARIANT } from "../floorplan/plans";
 import type { SceneProps } from "./types";
 import {
   AirconSplit,
@@ -87,7 +88,7 @@ interface VariantGeom {
   threeBed: { partitions: [number, number]; bed2: XW } | null;
 }
 
-/** B40 — full-width shell with wings; also the fallback geometry. */
+/** B40 (12m Expandable Home) — full-width shell with wings. */
 const B40: VariantGeom = {
   ix: 158,
   iw: 484,
@@ -170,33 +171,8 @@ const GEOM: Record<string, VariantGeom> = {
     deck: { x: 586, w: 70 },
     threeBed: null,
   },
-  /* Long slim single-width module — open plan, full furniture run. */
-  "b40-slim": {
-    ix: 190,
-    iw: 420,
-    wings: false,
-    cx0: 316,
-    cw: 168,
-    win: { x: 360, y: 234, w: 48, h: 38 },
-    kitchen: { x: 200, w: 110 },
-    cup: { x: 206, w: 92 },
-    wet: { x: 522, partitions: "left" },
-    sofa: { x: 346, w: 44 },
-    coffee: { x: 404, w: 18 },
-    rug: { cx: 378, rx: 30 },
-    bed: { x: 428, w: 64 },
-    table: { x: 502 },
-    plantBig: { x: 318, s: 0.75 },
-    plantSmall: null,
-    tv: { x: 432, y: 230, w: 46 },
-    frames: { x: 486, y: 236 },
-    shelf: { x: 216, y: 214 },
-    pendant: { x: 306, top: 196, drop: 30 },
-    aircon: { x: 556, y: 212 },
-    solar: { x: 330, w: 160 },
-    deck: { x: 618, w: 64 },
-    threeBed: null,
-  },
+  // b40-slim was removed from the catalogue (the Slim 12m shell is available
+  // on request only) — its geometry went with it.
   b40: B40,
 };
 
@@ -228,11 +204,10 @@ function Slide({ x, y = 0, children }: { x: number; y?: number; children: React.
 /* ------------------------------------------------------------------ */
 
 /**
- * Expandable home — the shell resizes per variant: B20 Slim is a compact
- * studio module, B20 adds modest wings, B40 Slim is a long single-width
- * shell, B40 is the full-width three-bedroom silhouette. All option layers
- * reposition from the variant geometry; a dimension line under the house
- * shows the variant's floor area.
+ * Expandable home — the shell resizes per variant: the Slim 6m is a compact
+ * studio module, the 6m adds modest wings, and the 12m is the full-width
+ * three-bedroom silhouette. All option layers reposition from the variant
+ * geometry; a dimension line under the house shows the variant's floor area.
  *
  * Worst-case collision walk (all visuals on + furnished) per variant is
  * encoded in the GEOM coordinates: floor runs left→right as
@@ -242,7 +217,8 @@ function Slide({ x, y = 0, children }: { x: number; y?: number; children: React.
  */
 export function ExpandableHomesScene({ visuals, furnished, variantId }: SceneProps) {
   const reduce = useReducedMotion();
-  const g = (variantId ? GEOM[variantId] : undefined) ?? B40;
+  // Same fallback as the floor plan (plans.ts) — the catalogue's first variant.
+  const g = GEOM[variantId ?? DEFAULT_EXPANDABLE_VARIANT] ?? GEOM[DEFAULT_EXPANDABLE_VARIANT];
   const sizeLabel = variantId ? SIZE_LABELS[variantId] : undefined;
   const t: Transition = reduce ? { duration: 0 } : { duration: 0.35, ease: EASE };
   const kitchenOn = Boolean(visuals["kitchen"]);

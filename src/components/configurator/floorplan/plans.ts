@@ -37,6 +37,12 @@ export interface PlanZone {
    * and always counted by the space summary, with no option selected.
    */
   standard?: boolean;
+  /**
+   * Variants on which the room ships as standard (e.g. the kitchen included
+   * in the 11.5 m cabin but not the 8.5 m). getPlan() resolves `standard`
+   * from the selected variant; without a variant the base flag applies.
+   */
+  standardVariantIds?: string[];
 }
 
 export type FixtureKind = "shower" | "wc" | "basin" | "sink" | "hob";
@@ -153,10 +159,15 @@ function kitchenFixtures(sink: [number, number], hob: [number, number]): PlanFix
 /* Fixed-footprint products                                            */
 /* ------------------------------------------------------------------ */
 
-/** Folding home — 5.8 × 2.4 m external, interior ≈ 5.6 × 2.2 m. */
+/**
+ * Folding home — 5.8 × 2.48 m external (X-Fold), interior ≈ 5.6 × 2.28 m.
+ * The bathroom and kitchen are factory-fitted on the X-Fold BK and Flat Pack
+ * variants (no configurator option adds them); the base X-Fold has neither.
+ * Geometry is drawn once — the 18 m² Flat Pack shares this representative plan.
+ */
 const FOLDING_PLAN: ProductPlan = {
-  exterior: { w: 5.8, d: 2.4 },
-  interior: { w: 5.6, d: 2.2 },
+  exterior: { w: 5.8, d: 2.48 },
+  interior: { w: 5.6, d: 2.28 },
   wall: WALL_M,
   shape: "rect",
   floorAreaM2: 15,
@@ -167,14 +178,28 @@ const FOLDING_PLAN: ProductPlan = {
     { side: "bottom", offset: 2.6, length: 0.9 },
   ],
   zones: [
-    wetRoomZone(r(0, 0, 1.3, 2.2)),
-    kitchenZone(r(1.45, 0, 3.65, 0.68)),
-    cupboardZone(r(1.45, 0, 3.65, 0.38)),
+    {
+      key: "wet-room",
+      label: "Wet room",
+      rect: r(0, 0, 1.15, 1.4), // enclosed bathroom, 1.15 × 1.4 m (doc-sourced)
+      areaM2: 1.6,
+      standardVariantIds: ["x-fold-bk", "flat-pack-roof"],
+    },
+    {
+      key: "kitchen",
+      label: "Kitchen",
+      rect: r(1.45, 0, 2.45, 0.5), // compact kitchen unit, 1.0 × 0.5 m (doc-sourced)
+      areaM2: 0.5,
+      standardVariantIds: ["x-fold-bk", "flat-pack-roof"],
+    },
     airconZone(r(5.32, 1.15, 5.58, 1.55)),
   ],
   fixtures: [
-    ...wetFixtures([0.45, 0.5], [0.42, 1.7], [0.95, 1.05]),
-    ...kitchenFixtures([2.0, 0.35], [3.1, 0.35]),
+    { kind: "shower", zone: "wet-room", cx: 0.4, cy: 0.4 },
+    { kind: "wc", zone: "wet-room", cx: 0.3, cy: 1.1 },
+    { kind: "basin", zone: "wet-room", cx: 0.88, cy: 1.0 },
+    // The 1 m kitchen unit only fits a sink glyph — the hob sits on the counter.
+    { kind: "sink", zone: "kitchen", cx: 1.95, cy: 0.25 },
   ],
   furniture: [
     { id: "bed", label: "Single bed", rect: r(3.7, 0.05, 5.6, 1.0) },
@@ -184,7 +209,7 @@ const FOLDING_PLAN: ProductPlan = {
   ],
   // ~5 m² along the entrance side; the door (offset 1.4–2.3, inward swing) opens onto it.
   deck: {
-    rect: r(0.3, 2.3, 3.63, 3.8),
+    rect: r(0.3, 2.38, 3.63, 3.88),
     label: "Timber deck",
     standard: false,
   },
@@ -196,7 +221,7 @@ const NATURE_PLAN: ProductPlan = {
   interior: { w: 6.1, d: 3.0 },
   wall: WALL_M,
   shape: "rect",
-  floorAreaM2: 21,
+  floorAreaM2: 20.1,
   door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
   windows: [
     { side: "top", offset: 2.2, length: 1.0 },
@@ -251,11 +276,7 @@ const DOME_PLAN: ProductPlan = {
     { id: "coffee-table", label: "Table", rect: r(1.8, 2.15, 2.7, 2.65) },
     { id: "tv", label: "TV unit", rect: r(4.2, 3.25, 5.4, 3.65) },
   ],
-  deck: {
-    rect: r(1.5, 3.9, 5.3, 5.7),
-    label: "Terrace — standard",
-    standard: true,
-  },
+  // No deck: the dome ships without an outdoor terrace in the documented spec.
 };
 
 /** Apple cabin — 11.5 × 3.2 m external (36.8 m² = 11.5 × 3.2); two rooms + central bathroom zone. */
@@ -272,8 +293,9 @@ const APPLE_PLAN: ProductPlan = {
     { side: "top", offset: 9.5, length: 1.2 },
   ],
   zones: [
-    wetRoomZone(r(4.95, 0, 6.35, 2.0), true), // central bathroom included as standard (1.4 × 2.0 = 2.8)
-    kitchenZone(r(0.8, 0, 3.1, 0.65), true), // fitted kitchen included as standard
+    wetRoomZone(r(4.95, 0, 6.35, 2.0), true), // bathroom included in both sizes (1.4 × 2.0 = 2.8)
+    // Kitchen ships with the 11.5 m cabin; the 8.5 m adds it via the kitchen-unit option.
+    { ...kitchenZone(r(0.8, 0, 3.1, 0.65), true), standardVariantIds: ["apple-11-5"] },
     cupboardZone(r(0.8, 0, 3.1, 0.35)),
     airconZone(r(8.55, 0.05, 8.8, 0.3)),
   ],
@@ -310,8 +332,9 @@ const CAPSULE_PLAN: ProductPlan = {
     { side: "right", offset: 0.8, length: 1.4 },
   ],
   zones: [
-    wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included as standard
-    kitchenZone(r(1.0, 0, 3.3, 0.65), true), // fitted kitchen included as standard
+    wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included in both sizes
+    // Kitchen ships with the 11.5 m capsule; the 8.5 m adds it via the kitchen-unit option.
+    { ...kitchenZone(r(1.0, 0, 3.3, 0.65), true), standardVariantIds: ["capsule-11-5"] },
     cupboardZone(r(1.0, 0, 3.3, 0.35)),
     airconZone(r(8.3, 0.05, 8.55, 0.3)),
   ],
@@ -339,10 +362,10 @@ const CAPSULE_PLAN: ProductPlan = {
 /* ------------------------------------------------------------------ */
 
 const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
-  /** B20 Slim — 5.94 × 4.64 m (27.5 m² ≈ 5.94 × 4.64 = 27.56), single wing (seam at core edge). */
+  /** Slim 6m — 5.9 × 4.8 m expanded (marketed floor area 27.5 m²), single wing (seam at core edge). */
   "b20-slim": {
-    exterior: { w: 5.94, d: 4.64 },
-    interior: { w: 5.74, d: 4.44 },
+    exterior: { w: 5.9, d: 4.8 },
+    interior: { w: 5.7, d: 4.6 },
     wall: WALL_M,
     shape: "rect",
     floorAreaM2: 27.5,
@@ -353,13 +376,13 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       { side: "left", offset: 3.2, length: 1.0 },
     ],
     zones: [
-      wetRoomZone(r(4.09, 0, 5.74, 1.7)),
+      wetRoomZone(r(4.05, 0, 5.7, 1.7)),
       kitchenZone(r(0.05, 0, 2.35, 0.65)),
       cupboardZone(r(0.05, 0, 2.35, 0.35)),
       airconZone(r(2.55, 0.05, 2.8, 0.3)),
     ],
     fixtures: [
-      ...wetFixtures([4.54, 0.45], [4.54, 1.3], [5.39, 0.85]),
+      ...wetFixtures([4.5, 0.45], [4.5, 1.3], [5.35, 0.85]),
       ...kitchenFixtures([0.65, 0.35], [1.75, 0.35]),
     ],
     furniture: [
@@ -370,14 +393,14 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     ],
     // 10 m² along the entrance wall; the door (offset 2.08–2.98, inward swing) opens onto it.
     deck: {
-      rect: r(0.5, 4.54, 4.5, 7.04),
+      rect: r(0.5, 4.7, 4.5, 7.2),
       label: "Timber deck",
       standard: false,
     },
-    seams: [{ x1: 0, y1: 2.34, x2: 5.74, y2: 2.34 }],
+    seams: [{ x1: 0, y1: 2.34, x2: 5.7, y2: 2.34 }],
   },
 
-  /** B20 — 5.9 × 6.3 m, wings both sides of a central core. */
+  /** 6m Expandable Home — 6.3 × 5.9 m expanded (drawn portrait), wings both sides of a central core. */
   b20: {
     exterior: { w: 5.9, d: 6.3 },
     interior: { w: 5.7, d: 6.1 },
@@ -420,51 +443,13 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     ],
   },
 
-  /** B40 Slim — 11.5 × 4.8 m, single wing. */
-  "b40-slim": {
-    exterior: { w: 11.5, d: 4.8 },
-    interior: { w: 11.3, d: 4.6 },
-    wall: WALL_M,
-    shape: "rect",
-    floorAreaM2: 48,
-    door: { side: "bottom", offset: 5.1, width: 0.9, hinge: "start" },
-    windows: [
-      { side: "top", offset: 3.6, length: 1.2 },
-      { side: "top", offset: 6.8, length: 1.2 },
-      { side: "bottom", offset: 1.2, length: 1.2 },
-      { side: "bottom", offset: 7.4, length: 1.2 },
-    ],
-    zones: [
-      wetRoomZone(r(9.45, 0, 11.1, 1.7)),
-      kitchenZone(r(0.1, 0, 2.4, 0.65)),
-      cupboardZone(r(0.1, 0, 2.4, 0.35)),
-      airconZone(r(2.9, 0.05, 3.15, 0.3)),
-    ],
-    fixtures: [
-      ...wetFixtures([9.9, 0.45], [9.9, 1.3], [10.75, 0.85]),
-      ...kitchenFixtures([0.7, 0.35], [1.8, 0.35]),
-    ],
-    furniture: [
-      { id: "bed", label: "Double bed", rect: r(9.3, 2.5, 10.7, 4.4) },
-      { id: "wardrobe", label: "Wardrobe", rect: r(8.3, 3.1, 8.9, 4.3) },
-      { id: "sofa", label: "Sofa", rect: r(0.9, 2.5, 2.7, 3.35) },
-      { id: "tv", label: "TV unit", rect: r(1.2, 1.4, 2.4, 1.8) },
-      { id: "coffee-table", label: "Table", rect: r(1.3, 1.9, 2.2, 2.4) },
-      { id: "dining-table", label: "Dining", rect: r(3.3, 1.1, 4.5, 1.9) },
-    ],
-    // 10 m² along the entrance wall; the door (offset 5.1–6.0, inward swing) opens onto it.
-    deck: {
-      rect: r(3.0, 4.7, 8.0, 6.7),
-      label: "Timber deck",
-      standard: false,
-    },
-    seams: [{ x1: 0, y1: 2.34, x2: 11.3, y2: 2.34 }],
-  },
+  // b40-slim was removed from the catalogue (the Slim 12m shell is available
+  // on request only) — its plan went with it.
 
-  /** B40 — 11.8 × 6.22 m, wings both sides. */
+  /** 12m Expandable Home — 11.9 × 6.3 m expanded, wings both sides. */
   b40: {
-    exterior: { w: 11.8, d: 6.22 },
-    interior: { w: 11.6, d: 6.02 },
+    exterior: { w: 11.9, d: 6.3 },
+    interior: { w: 11.7, d: 6.1 },
     wall: WALL_M,
     shape: "rect",
     floorAreaM2: 72,
@@ -496,18 +481,19 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     ],
     // 10 m² along the entrance wall; the door (offset 5.25–6.15, inward swing) opens onto it.
     deck: {
-      rect: r(3.2, 6.12, 8.2, 8.12),
+      rect: r(3.2, 6.2, 8.2, 8.2),
       label: "Timber deck",
       standard: false,
     },
     seams: [
-      { x1: 0, y1: 1.79, x2: 11.6, y2: 1.79 },
-      { x1: 0, y1: 4.23, x2: 11.6, y2: 4.23 },
+      { x1: 0, y1: 1.79, x2: 11.7, y2: 1.79 },
+      { x1: 0, y1: 4.23, x2: 11.7, y2: 4.23 },
     ],
   },
 };
 
-const DEFAULT_EXPANDABLE_VARIANT = "b20-slim";
+/** Fallback expandable variant — the catalogue's first (and configurator default). */
+export const DEFAULT_EXPANDABLE_VARIANT = "b20-slim";
 
 const PLANS: Record<string, ProductPlan> = {
   "folding-homes": FOLDING_PLAN,
@@ -517,15 +503,35 @@ const PLANS: Record<string, ProductPlan> = {
   "glamping-capsules": CAPSULE_PLAN,
 };
 
-/** Resolve the plan for a product (variant-aware for expandable homes). */
+/**
+ * Bake the selected variant into a plan: the marketed floor area tracks the
+ * variant's catalogue size, and rooms flagged standardVariantIds are drawn
+ * as standard only on the variants that ship with them. Geometry itself is
+ * shared — representative of the range, exact for the largest size.
+ */
+function resolveForVariant(plan: ProductPlan, product: Product, variantId?: string): ProductPlan {
+  const variant = product.variants?.find((v) => v.id === variantId);
+  if (!variant) return plan;
+  const areaM2 = parseFloat(variant.size); // "27.2 m²" → 27.2
+  return {
+    ...plan,
+    floorAreaM2: Number.isFinite(areaM2) ? areaM2 : plan.floorAreaM2,
+    zones: plan.zones.map((zone) =>
+      zone.standardVariantIds
+        ? { ...zone, standard: zone.standardVariantIds.includes(variant.id) }
+        : zone,
+    ),
+  };
+}
+
+/** Resolve the plan for a product (per-variant geometry for expandable homes). */
 export function getPlan(product: Product, variantId?: string): ProductPlan {
-  if (product.slug === "expandable-homes") {
-    return (
-      EXPANDABLE_PLANS[variantId ?? DEFAULT_EXPANDABLE_VARIANT] ??
-      EXPANDABLE_PLANS[DEFAULT_EXPANDABLE_VARIANT]
-    );
-  }
-  return PLANS[product.slug] ?? FOLDING_PLAN;
+  const base =
+    product.slug === "expandable-homes"
+      ? EXPANDABLE_PLANS[variantId ?? DEFAULT_EXPANDABLE_VARIANT] ??
+        EXPANDABLE_PLANS[DEFAULT_EXPANDABLE_VARIANT]
+      : PLANS[product.slug] ?? FOLDING_PLAN;
+  return resolveForVariant(base, product, variantId);
 }
 
 /** All plans, keyed for test/collision tooling. */

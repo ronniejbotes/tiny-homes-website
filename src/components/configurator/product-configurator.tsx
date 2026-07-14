@@ -107,8 +107,10 @@ function OptionToggle({
       <span className="flex-1">
         <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="font-medium text-ink">{option.label}</span>
-          <span className="text-sm font-medium text-clay-dark">+{formatZAR(option.price)}</span>
-          {option.provisional && (
+          <span className="text-sm font-medium text-clay-dark">
+            {option.price > 0 ? `+${formatZAR(option.price)}` : "priced on quotation"}
+          </span>
+          {option.provisional && option.price > 0 && (
             <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
               provisional
             </span>

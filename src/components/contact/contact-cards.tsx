@@ -85,8 +85,8 @@ export function ContactCards() {
       <ContactCard
         icon={<MapPin className="h-5 w-5" aria-hidden="true" />}
         label="Our base"
-        value="Raslouw, Centurion, Gauteng"
-        detail="Based in Raslouw, Centurion — we deliver nationwide."
+        value={`${site.address.streetAddress}, ${site.address.locality}`}
+        detail={`${site.address.city}, ${site.address.region} — we deliver nationwide.`}
         delay={0.24}
       />
       <Reveal delay={0.3}>

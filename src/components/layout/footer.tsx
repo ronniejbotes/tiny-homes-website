@@ -54,7 +54,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Our homes">
-            <p className="text-eyebrow text-sage">Our Homes</p>
+            <p className="text-eyebrow text-sage">Our Tiny Solutions</p>
             <ul className="mt-5 space-y-3">
               {nav.products.map((p) => (
                 <li key={p.slug}>
@@ -121,6 +121,13 @@ export function Footer() {
             </Link>
           </p>
         </div>
+
+        <p className="mt-6 max-w-4xl text-xs leading-relaxed text-cream/45">
+          All prices exclude VAT and are quoted as delivered in Durban — transport to your site
+          is quoted separately. Prices are for the product only and exclude earthworks or the
+          provision of services, which are quoted separately. Prices can change without notice.
+          T&apos;s and C&apos;s apply. E&amp;OE.
+        </p>
       </div>
     </footer>
   );

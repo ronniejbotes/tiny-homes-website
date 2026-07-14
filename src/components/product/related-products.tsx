@@ -20,8 +20,8 @@ export function RelatedProducts({ current }: { current: Product }) {
       <Container>
         <SectionHeading
           eyebrow="Keep exploring"
-          title="Explore other homes"
-          intro="Six ways into tiny living, from flat-pack starters to flagship glamping suites. All prices exclude VAT."
+          title="Explore the rest of the range"
+          intro="Eight product lines, from flat-pack starters to flagship glamping suites, outdoor kitchens and safari tents. All prices exclude VAT."
         />
         <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((p) => {
@@ -55,10 +55,16 @@ export function RelatedProducts({ current }: { current: Product }) {
                     </p>
                     <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                       <p className="text-ink">
-                        <span className="font-medium">
-                          From {formatZAR(p.startingPrice)}
-                        </span>{" "}
-                        <span className="text-xs text-stone">ex VAT</span>
+                        {p.priceOnRequest ? (
+                          <span className="font-medium">Price on request</span>
+                        ) : (
+                          <>
+                            <span className="font-medium">
+                              From {formatZAR(p.startingPrice)}
+                            </span>{" "}
+                            <span className="text-xs text-stone">ex VAT</span>
+                          </>
+                        )}
                       </p>
                       <span className="inline-flex items-center gap-1.5 text-sm font-medium text-clay">
                         View

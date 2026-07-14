@@ -1,431 +1,563 @@
 {
- "products": {
-  "folding-homes": [
-   {
-    "src": "/images/products/folding-homes/exterior-snow-timber.jpg",
-    "width": 1366,
-    "height": 610,
-    "alt": "Timber-clad folding home installed on a snowy mountain site with alpine views",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/folding-homes/exterior-lawn-1.jpg",
-    "width": 1600,
-    "height": 750,
-    "alt": "White flat-pack folding home with security window and steel door set up on a green lawn",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/folding-homes/exterior-forest-render.jpg",
-    "width": 600,
-    "height": 600,
-    "alt": "Grey folding home cabin with single door and window in a pine forest clearing",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/folding-homes/exterior-woodland-1.jpg",
-    "width": 1366,
-    "height": 610,
-    "alt": "Grey folding container home with white windows and double doors among woodland trees",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/folding-homes/folding-mechanism.png",
-    "width": 466,
-    "height": 412,
-    "alt": "Folding home shown half-folded, demonstrating the flat-pack folding mechanism",
-    "kind": "detail",
-    "hero": false
-   },
-   {
-    "src": "/images/products/folding-homes/site-installations-collage.png",
-    "width": 466,
-    "height": 412,
-    "alt": "Collage of folding home installations including double-storey and multi-unit site configurations",
-    "kind": "collage",
-    "hero": false
-   }
-  ],
-  "expandable-homes": [
-   {
-    "src": "/images/products/expandable-homes/exterior-deployed-lawn.jpg",
-    "width": 1600,
-    "height": 750,
-    "alt": "White expandable container home fully deployed on a grassy field with glass entrance doors",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/expandable-homes/exterior-deploying-wing.png",
-    "width": 749,
-    "height": 523,
-    "alt": "Expandable home mid-deployment with roof wing folding out over the entrance stairs",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/exterior-front-stairs.png",
-    "width": 884,
-    "height": 522,
-    "alt": "Front view of an expandable home with both side wings folded out and entrance staircase",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/exterior-side-1.png",
-    "width": 392,
-    "height": 392,
-    "alt": "Side view of a white expandable container home with fold-out wings and glass sliding doors",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/interior-living-room.png",
-    "width": 749,
-    "height": 523,
-    "alt": "Expandable home interior living area with orange sofa, coffee table and kitchenette",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/interior-living-dining.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "Expandable home open-plan interior with lounge suite, TV wall, dining area and bathroom",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/interior-lounge.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "Furnished expandable home lounge with sofa, coffee table and en-suite shower room",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/floor-plan-1.png",
-    "width": 1024,
-    "height": 310,
-    "alt": "Expandable home floor plan options showing open-plan, one-bedroom and office layouts",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/floor-plan-2.png",
-    "width": 1024,
-    "height": 310,
-    "alt": "Expandable home floor plan options with two-bedroom and bathroom configurations",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/floor-plan-3.png",
-    "width": 1024,
-    "height": 310,
-    "alt": "Expandable home four-bed dormitory floor plan with central bathroom",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/tech-specs-table.jpg",
-    "width": 750,
-    "height": 139,
-    "alt": "Expandable homes technical specifications table with model sizes and covered areas",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/expandable-homes/installation-collage.png",
-    "width": 819,
-    "height": 1024,
-    "alt": "Collage of an expandable home module being craned into place and an integrated bathroom pod",
-    "kind": "collage",
-    "hero": false
-   }
-  ],
-  "nature-cabins": [
-   {
-    "src": "/images/products/nature-cabins/exterior-timber-render.jpg",
-    "width": 1600,
-    "height": 750,
-    "alt": "Timber nature cabin with arched gable glass facade and wooden deck on a grassy hillside",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/nature-cabins/exterior-two-cabins.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "Two wood-panelled nature cabins with full-height glass fronts on a manicured lawn",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/nature-cabins/exterior-white-cabin-deck.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "White nature cabin with gable glass front and railed timber deck under a blue sky",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/nature-cabins/interior-gable-lounge.jpeg",
-    "width": 730,
-    "height": 548,
-    "alt": "Nature cabin interior with peaked gable window, balcony access and wood-look flooring",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/nature-cabins/resort-render.jpg",
-    "width": 600,
-    "height": 600,
-    "alt": "Resort concept render with nature cabins, pools, palm trees and a sail-shaped glass pavilion",
-    "kind": "exterior",
-    "hero": false
-   }
-  ],
-  "the-dome": [
-   {
-    "src": "/images/products/the-dome/exterior-night-leds.jpg",
-    "width": 1440,
-    "height": 1080,
-    "alt": "The Dome transparent suite glowing at night with blue LED ribs and warm base lighting on a deck",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/the-dome/exterior-mountain-deck.png",
-    "width": 466,
-    "height": 412,
-    "alt": "The Dome transparent glamping suite on a timber deck with a furnished bedroom and mountain backdrop",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/the-dome/exterior-dome-render.png",
-    "width": 466,
-    "height": 412,
-    "alt": "Render of The Dome showing the clear panoramic shell, bedroom, lounge and en-suite shower pod",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/the-dome/exterior-garden-1.jpg",
-    "width": 800,
-    "height": 760,
-    "alt": "The Dome transparent suite with white privacy curtains and arched doors set on a garden lawn",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/the-dome/exterior-night-event.jpeg",
-    "width": 1440,
-    "height": 1080,
-    "alt": "Evening celebration outside The Dome with champagne table, balloons and fairy lights",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/the-dome/interior-bedroom.jpg",
-    "width": 1600,
-    "height": 1066,
-    "alt": "Inside The Dome bedroom with draped canopy ceiling, double bed, bedside lamp and arched bathroom pod door",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/the-dome/floor-plan-top-view.png",
-    "width": 466,
-    "height": 412,
-    "alt": "Top-down layout of The Dome showing bed, seating area and bathroom arrangement",
-    "kind": "diagram",
-    "hero": false
-   }
-  ],
-  "apple-cabins": [
-   {
-    "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
-    "width": 1080,
-    "height": 1440,
-    "alt": "White apple cabin with full-length glazed wall and timber deck platform under a sunset sky",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
-    "width": 1600,
-    "height": 900,
-    "alt": "Elevated apple cabin with glass facade, long timber deck and forest backdrop",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/apple-cabins/exterior-office-pod-render.jpg",
-    "width": 800,
-    "height": 800,
-    "alt": "Apple cabin pod with rounded shell and sliding glass doors furnished as a garden office and bedroom",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/apple-cabins/exterior-double-storey.png",
-    "width": 466,
-    "height": 412,
-    "alt": "Two stacked apple cabin pods forming a double-storey unit with rooftop terrace and umbrella",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/apple-cabins/interior-kitchenette-render.jpg",
-    "width": 1080,
-    "height": 1440,
-    "alt": "Apple cabin interior with stone-look kitchenette counter, bar chair and warm timber flooring",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/apple-cabins/interior-bathroom.jpg",
-    "width": 1200,
-    "height": 1600,
-    "alt": "Apple cabin bathroom with marble-look panels, LED mirror, stone vanity and glass rainfall shower",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/floor-plans.jpg",
-    "width": 1140,
-    "height": 759,
-    "alt": "Floor plans for the 8.5 m and 11.5 m pod models with dimensions and areas",
-    "kind": "diagram",
-    "hero": false
-   }
-  ],
-  "glamping-capsules": [
-   {
-    "src": "/images/products/glamping-capsules/exterior-forest-1.jpg",
-    "width": 1600,
-    "height": 750,
-    "alt": "Futuristic white glamping capsule with tinted panoramic windows nestled among gum trees",
-    "kind": "exterior",
-    "hero": true
-   },
-   {
-    "src": "/images/products/glamping-capsules/exterior-balcony-deck.jpg",
-    "width": 1380,
-    "height": 1157,
-    "alt": "Glamping capsule E8 with glass-balustraded balcony, outdoor table and entry deck on a lawn",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/exterior-terrace-1.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "White glamping capsule with wraparound glazing, railed terrace and entry steps",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/interior-lounge.jpg",
-    "width": 600,
-    "height": 450,
-    "alt": "Glamping capsule lounge interior with tan leather sofa and curved panoramic windows",
-    "kind": "interior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/floor-plans.jpg",
-    "width": 1140,
-    "height": 759,
-    "alt": "Glamping capsule floor plans for 8.5m and 11.5m models with dimensions and areas",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/floor-plan-3d.jpeg",
-    "width": 730,
-    "height": 730,
-    "alt": "3D top-view floor plan of a glamping capsule with bedroom, bathroom, kitchenette and curved deck",
-    "kind": "diagram",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
-    "width": 1080,
-    "height": 718,
-    "alt": "White glamping capsule with curved panoramic glass and sleek shell below a forested peak",
-    "kind": "exterior",
-    "hero": false
-   },
-   {
-    "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
-    "width": 2048,
-    "height": 1365,
-    "alt": "Glamping capsule lit by LED trim at night with a guest relaxing in the plunge pool beside the deck",
-    "kind": "exterior",
-    "hero": false
-   }
-  ]
- },
- "gallery": [
-  {
-   "src": "/images/gallery/tiny-homes-gallery-1.jpg",
-   "width": 800,
-   "height": 600,
-   "alt": "White flat-pack tiny home unit with barred window and steel door inside the factory warehouse",
-   "kind": "exterior",
-   "hero": false
+  "products": {
+    "folding-homes": [
+      {
+        "src": "/images/products/folding-homes/exterior-snow-timber.jpg",
+        "width": 1366,
+        "height": 610,
+        "alt": "Timber-clad folding home installed on a snowy mountain site with alpine views",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-woodland-1.jpg",
+        "width": 1366,
+        "height": 610,
+        "alt": "Grey folding container home with white windows and double doors among woodland trees",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-assembled-showroom.jpg",
+        "width": 1079,
+        "height": 1076,
+        "alt": "Assembled light grey folding home showroom unit with barred window and steel door",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-colour-options.jpg",
+        "width": 1200,
+        "height": 1200,
+        "alt": "Folding home shown in four exterior finish options: wood-grain brown, cream, light grey and charcoal panels",
+        "kind": "detail",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/folding-mechanism.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Folding home shown half-folded, demonstrating the flat-pack folding mechanism",
+        "kind": "detail",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/site-installations-collage.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Collage of folding home installations including double-storey and multi-unit site configurations",
+        "kind": "collage",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-forest-render.jpg",
+        "width": 600,
+        "height": 600,
+        "alt": "Grey folding home cabin with single door and window in a pine forest clearing",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-lawn-1.jpg",
+        "width": 1600,
+        "height": 750,
+        "alt": "White flat-pack folding home with security window and steel door set up on a green lawn",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/unfold-mechanism-diagram.jpg",
+        "width": 1000,
+        "height": 1000,
+        "alt": "Diagram showing the X-Fold folding home in its assembled state, flat-packed for transport, and unfolding",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/interior-facilities-collage.png",
+        "width": 750,
+        "height": 671,
+        "alt": "Folding home interior facilities collage showing a bunk bed, kitchenette sink unit and bathroom fittings",
+        "kind": "diagram",
+        "hero": false
+      }
+    ],
+    "expandable-homes": [
+      {
+        "src": "/images/products/expandable-homes/exterior-deployed-lawn.jpg",
+        "width": 1600,
+        "height": 750,
+        "alt": "White expandable container home fully deployed on a grassy field with glass entrance doors",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/expandable-homes/exterior-deploying-wing.png",
+        "width": 749,
+        "height": 523,
+        "alt": "Expandable home mid-deployment with roof wing folding out over the entrance stairs",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/exterior-front-stairs.png",
+        "width": 884,
+        "height": 522,
+        "alt": "Front view of an expandable home with both side wings folded out and entrance staircase",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/exterior-side-1.png",
+        "width": 392,
+        "height": 392,
+        "alt": "Side view of a white expandable container home with fold-out wings and glass sliding doors",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/interior-living-room.png",
+        "width": 749,
+        "height": 523,
+        "alt": "Expandable home interior living area with orange sofa, coffee table and kitchenette",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/interior-living-dining.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "Expandable home open-plan interior with lounge suite, TV wall, dining area and bathroom",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/interior-lounge.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "Furnished expandable home lounge with sofa, coffee table and en-suite shower room",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/floor-plan-1.png",
+        "width": 1024,
+        "height": 310,
+        "alt": "Expandable home floor plan options showing open-plan, one-bedroom and office layouts",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/floor-plan-2.png",
+        "width": 1024,
+        "height": 310,
+        "alt": "Expandable home floor plan options with two-bedroom and bathroom configurations",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/floor-plan-3.png",
+        "width": 1024,
+        "height": 310,
+        "alt": "Expandable home four-bed dormitory floor plan with central bathroom",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/tech-specs-table.jpg",
+        "width": 750,
+        "height": 139,
+        "alt": "Expandable homes technical specifications table with model sizes and covered areas",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/installation-collage.png",
+        "width": 819,
+        "height": 1024,
+        "alt": "Collage of an expandable home module being craned into place and an integrated bathroom pod",
+        "kind": "collage",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/spc-floor-colours.jpg",
+        "width": 800,
+        "height": 487,
+        "alt": "SPC flooring colour swatches available as an optional upgrade for expandable homes",
+        "kind": "detail",
+        "hero": false
+      }
+    ],
+    "nature-cabins": [
+      {
+        "src": "/images/products/nature-cabins/exterior-timber-render.jpg",
+        "width": 1600,
+        "height": 750,
+        "alt": "Timber nature cabin with arched gable glass facade and wooden deck on a grassy hillside",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/nature-cabins/exterior-two-cabins.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "Two wood-panelled nature cabins with full-height glass fronts on a manicured lawn",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/nature-cabins/exterior-white-cabin-deck.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "White nature cabin with gable glass front and railed timber deck under a blue sky",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/nature-cabins/interior-gable-lounge.jpeg",
+        "width": 730,
+        "height": 548,
+        "alt": "Nature cabin interior with peaked gable window, balcony access and wood-look flooring",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/nature-cabins/resort-render.jpg",
+        "width": 600,
+        "height": 600,
+        "alt": "Resort concept render with nature cabins, pools, palm trees and a sail-shaped glass pavilion",
+        "kind": "exterior",
+        "hero": false
+      }
+    ],
+    "the-dome": [
+      {
+        "src": "/images/products/the-dome/exterior-night-leds.jpg",
+        "width": 1440,
+        "height": 1080,
+        "alt": "The Dome transparent suite glowing at night with blue LED ribs and warm base lighting on a deck",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/the-dome/exterior-mountain-deck.png",
+        "width": 466,
+        "height": 412,
+        "alt": "The Dome transparent glamping suite on a timber deck with a furnished bedroom and mountain backdrop",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/the-dome/exterior-dome-render.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Render of The Dome showing the clear panoramic shell, bedroom, lounge and en-suite shower pod",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/the-dome/exterior-garden-1.jpg",
+        "width": 800,
+        "height": 760,
+        "alt": "The Dome transparent suite with white privacy curtains and arched doors set on a garden lawn",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/the-dome/exterior-night-event.jpeg",
+        "width": 1440,
+        "height": 1080,
+        "alt": "Evening celebration outside The Dome with champagne table, balloons and fairy lights",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/the-dome/interior-bedroom.jpg",
+        "width": 1600,
+        "height": 1066,
+        "alt": "Inside The Dome bedroom with draped canopy ceiling, double bed, bedside lamp and arched bathroom pod door",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/the-dome/floor-plan-top-view.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Top-down layout of The Dome showing bed, seating area and bathroom arrangement",
+        "kind": "diagram",
+        "hero": false
+      }
+    ],
+    "apple-cabins": [
+      {
+        "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
+        "width": 1080,
+        "height": 1440,
+        "alt": "White apple cabin with full-length glazed wall and timber deck platform under a sunset sky",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
+        "width": 1600,
+        "height": 900,
+        "alt": "Elevated apple cabin with glass facade, long timber deck and forest backdrop",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/apple-cabins/exterior-office-pod-render.jpg",
+        "width": 800,
+        "height": 800,
+        "alt": "Apple cabin pod with rounded shell and sliding glass doors furnished as a garden office and bedroom",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/apple-cabins/exterior-double-storey.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Two stacked apple cabin pods forming a double-storey unit with rooftop terrace and umbrella",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/apple-cabins/interior-kitchenette-render.jpg",
+        "width": 1080,
+        "height": 1440,
+        "alt": "Apple cabin interior with stone-look kitchenette counter, bar chair and warm timber flooring",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/apple-cabins/interior-bathroom.jpg",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Apple cabin bathroom with marble-look panels, LED mirror, stone vanity and glass rainfall shower",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/floor-plans.jpg",
+        "width": 1140,
+        "height": 759,
+        "alt": "Floor plans for the 8.5 m and 11.5 m pod models with dimensions and areas",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/apple-cabins/promo-luxury-living-redefined.jpg",
+        "width": 2000,
+        "height": 1125,
+        "alt": "Tiny Homes branded promotional render of an apple cabin at dusk with the tagline Luxury Living Redefined",
+        "kind": "detail",
+        "hero": false
+      }
+    ],
+    "glamping-capsules": [
+      {
+        "src": "/images/products/glamping-capsules/exterior-forest-1.jpg",
+        "width": 1600,
+        "height": 750,
+        "alt": "Futuristic white glamping capsule with tinted panoramic windows nestled among gum trees",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/glamping-capsules/exterior-balcony-deck.jpg",
+        "width": 1380,
+        "height": 1157,
+        "alt": "Glamping capsule with glass-balustraded balcony, outdoor table and entry deck on a lawn",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/exterior-terrace-1.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "White glamping capsule with wraparound glazing, railed terrace and entry steps",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/interior-lounge.jpg",
+        "width": 600,
+        "height": 450,
+        "alt": "Glamping capsule lounge interior with tan leather sofa and curved panoramic windows",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/floor-plans.jpg",
+        "width": 1140,
+        "height": 759,
+        "alt": "Glamping capsule floor plans for 8.5m and 11.5m models with dimensions and areas",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/floor-plan-3d.jpeg",
+        "width": 730,
+        "height": 730,
+        "alt": "3D top-view floor plan of a glamping capsule with bedroom, bathroom, kitchenette and curved deck",
+        "kind": "diagram",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
+        "width": 1080,
+        "height": 718,
+        "alt": "White glamping capsule with curved panoramic glass and sleek shell below a forested peak",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Glamping capsule lit by LED trim at night with a guest relaxing in the plunge pool beside the deck",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/promo-glamping-dreams-delivered.jpg",
+        "width": 2000,
+        "height": 1125,
+        "alt": "Tiny Homes branded promotional render of a glamping capsule on a lakeside deck with the tagline Glamping Dreams Delivered",
+        "kind": "detail",
+        "hero": false
+      }
+    ],
+    "outdoor-kitchens": [
+      {
+        "src": "/images/products/outdoor-kitchens/hero-roof-deployed-led-canopy.jpg",
+        "width": 1689,
+        "height": 1650,
+        "alt": "Assembled outdoor kitchen unit with the motorised roof folded out and an LED-lit canopy over a fitted cooking and bar station",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/lifestyle-dusk-bar-seating.jpg",
+        "width": 1689,
+        "height": 1500,
+        "alt": "Dark-finish outdoor kitchen at dusk with built-in grill, drinks fridge and deck seating set up for entertaining",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/detail-kamado-drinks-fridge.jpg",
+        "width": 855,
+        "height": 865,
+        "alt": "Close-up of the outdoor kitchen bar station with kamado grill, integrated sink and glass-door drinks fridge under the lift-up roof",
+        "kind": "detail",
+        "hero": false
+      }
+    ],
+    "safari-tents": [
+      {
+        "src": "/images/products/safari-tents/hero-single-suite-sunset.jpg",
+        "width": 2000,
+        "height": 1414,
+        "alt": "Luxury canvas-roofed tented suite at sunset with a private timber deck and glass folding doors opening onto the bedroom",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/safari-tents/dusk-firepit-dining-deck.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Twilight view of a canvas safari-tent suite with a lit outdoor dining table and fireside seating on the surrounding deck",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/safari-tents/desert-mountain-camp-aerial.jpg",
+        "width": 2000,
+        "height": 869,
+        "alt": "Aerial view of a luxury tented camp built into rocky, mountainous terrain with a private plunge pool on the deck",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/safari-tents/hillside-suite-plunge-pool-sunset.jpg",
+        "width": 2000,
+        "height": 1140,
+        "alt": "Elevated tented suite at sunset with its own timber deck and plunge pool overlooking the valley below",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/safari-tents/twilight-tented-suite-reflection.jpg",
+        "width": 2000,
+        "height": 1250,
+        "alt": "Twin-peaked canvas tented suite lit at twilight, reflected in the still water in front of its deck",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/safari-tents/deck-lounge-firepit-twilight.jpg",
+        "width": 2000,
+        "height": 1330,
+        "alt": "Twilight deck lounge with curved bench seating around a fire pit outside a canvas-roofed tented suite",
+        "kind": "exterior",
+        "hero": false
+      }
+    ]
   },
-  {
-   "src": "/images/gallery/our-process.jpg",
-   "width": 1366,
-   "height": 610,
-   "alt": "Tiny Homes SA five-step process infographic: discuss, design, quote, build and delivery",
-   "kind": "diagram",
-   "hero": false
-  },
-  {
-   "src": "/images/gallery/icon-nature-cabin.png",
-   "width": 536,
-   "height": 363,
-   "alt": "Line icon of a nature cabin with gable roof and balcony",
-   "kind": "icon",
-   "hero": false
-  },
-  {
-   "src": "/images/gallery/icon-capsule-pod.png",
-   "width": 536,
-   "height": 364,
-   "alt": "Line icon of a capsule pod home on legs with side deck",
-   "kind": "icon",
-   "hero": false
-  },
-  {
-   "src": "/images/gallery/icon-container-cabin.png",
-   "width": 536,
-   "height": 364,
-   "alt": "Line icon of a container cabin with slanted glazed panels",
-   "kind": "icon",
-   "hero": false
-  },
-  {
-   "src": "/images/gallery/icon-folding-home.png",
-   "width": 536,
-   "height": 364,
-   "alt": "Line icon of a folding home shown mid-fold",
-   "kind": "icon",
-   "hero": false
+  "gallery": [
+    {
+      "src": "/images/gallery/tiny-homes-gallery-1.jpg",
+      "width": 800,
+      "height": 600,
+      "alt": "White flat-pack tiny home unit with barred window and steel door inside the factory warehouse",
+      "kind": "exterior",
+      "hero": false
+    },
+    {
+      "src": "/images/gallery/our-process.jpg",
+      "width": 1366,
+      "height": 610,
+      "alt": "Tiny Homes SA five-step process infographic: discuss, design, quote, build and delivery",
+      "kind": "diagram",
+      "hero": false
+    },
+    {
+      "src": "/images/gallery/icon-nature-cabin.png",
+      "width": 536,
+      "height": 363,
+      "alt": "Line icon of a nature cabin with gable roof and balcony",
+      "kind": "icon",
+      "hero": false
+    },
+    {
+      "src": "/images/gallery/icon-capsule-pod.png",
+      "width": 536,
+      "height": 364,
+      "alt": "Line icon of a capsule pod home on legs with side deck",
+      "kind": "icon",
+      "hero": false
+    },
+    {
+      "src": "/images/gallery/icon-container-cabin.png",
+      "width": 536,
+      "height": 364,
+      "alt": "Line icon of a container cabin with slanted glazed panels",
+      "kind": "icon",
+      "hero": false
+    },
+    {
+      "src": "/images/gallery/icon-folding-home.png",
+      "width": 536,
+      "height": 364,
+      "alt": "Line icon of a folding home shown mid-fold",
+      "kind": "icon",
+      "hero": false
+    }
+  ],
+  "brand": {
+    "logo": "/images/brand/logo.png",
+    "logoAlt": "Tiny Homes South Africa logo",
+    "favicon": "/images/brand/favicon.png"
   }
- ],
- "brand": {
-  "logo": "/images/brand/logo.png",
-  "logoAlt": "Tiny Homes South Africa logo",
-  "favicon": "/images/brand/favicon.png"
- }
 }

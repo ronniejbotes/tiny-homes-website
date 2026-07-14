@@ -2,8 +2,11 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { productSlugs } from "@/data/products";
 
+/** Date of the last content/pricing pass. Bump this when the site content changes. */
+const SITE_UPDATED = new Date("2026-07-14");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = SITE_UPDATED;
 
   return [
     {

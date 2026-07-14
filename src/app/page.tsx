@@ -7,6 +7,7 @@ import { CustomiseTeaser } from "@/components/home/customise-teaser";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { WhyTinyLiving } from "@/components/home/why-tiny-living";
 import { GalleryStrip } from "@/components/home/gallery-strip";
+import { VideoCarousel } from "@/components/home/video-carousel";
 import { homeFaqs } from "@/components/home/home-faqs";
 import { Accordion } from "@/components/ui/accordion";
 import { Container } from "@/components/ui/container";
@@ -21,11 +22,14 @@ import images from "@/data/images.json";
 /* Same manifest image the visible hero uses (hero.tsx). */
 const heroImage = images.products["nature-cabins"][0];
 
-const lowestStartingPrice = Math.min(...products.map((p) => p.startingPrice));
+/* Safari tents carry a price-on-request 0 sentinel — never let it win the range. */
+const lowestStartingPrice = Math.min(
+  ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
+);
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R54 950 ex VAT. Folding homes, cabins, domes and glamping capsules built in Centurion, delivered across South Africa in ±90 days.";
+  "Prefab tiny homes from R54 950 ex VAT with a 10-year guarantee. Folding homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {
@@ -81,12 +85,17 @@ const itemListJsonLd = {
       name: p.name,
       description: p.summary,
       url: `${site.url}/${p.slug}`,
-      offers: {
-        "@type": "Offer",
-        price: p.startingPrice,
-        priceCurrency: "ZAR",
-        availability: "https://schema.org/InStock",
-      },
+      // Price-on-request products publish no offer — a R0 offer would be a false price claim.
+      ...(p.priceOnRequest
+        ? {}
+        : {
+            offers: {
+              "@type": "Offer",
+              price: p.startingPrice,
+              priceCurrency: "ZAR",
+              availability: "https://schema.org/InStock",
+            },
+          }),
     },
   })),
 };
@@ -110,6 +119,7 @@ export default function HomePage() {
       <HowItWorks />
       <WhyTinyLiving />
       <GalleryStrip />
+      <VideoCarousel />
 
       <section aria-labelledby="faq-heading" className="py-20 sm:py-28">
         <Container>

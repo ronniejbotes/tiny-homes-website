@@ -1,16 +1,17 @@
 export const site = {
   name: "Tiny Homes SA",
-  legalName: "Tiny Homes South Africa",
-  tagline: "Build your dream tiny home",
+  legalName: "Tiny Homes (Pty) Ltd",
+  tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, domes, apple cabins and glamping capsules — delivered nationwide from Centurion, Gauteng.",
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, domes, apple cabins and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide from Centurion, Gauteng.",
   url: "https://www.tinyhomesa.com",
   phone: "+27 83 660 3743",
   phoneDisplay: "083 660 3743",
   whatsapp: "https://wa.me/27836603743",
-  email: "admin@tinyhomesa.com",
+  email: "sales@tinyhomesa.com",
   address: {
-    locality: "Raslouw",
+    streetAddress: "187 Gouws Ave",
+    locality: "Raslouw AH",
     city: "Centurion",
     region: "Gauteng",
     country: "South Africa",
@@ -27,7 +28,11 @@ export const site = {
   },
   leadTimeDays: 90,
   deliveryNote:
-    "Delivery across South Africa averages R6 000 – R22 000 per unit, depending on distance, diesel rates and abnormal-load permits.",
+    "Delivery is quoted separately based on your location and site accessibility — we deliver nationwide.",
+  /** 10-year guarantee, sales deck slide 11 — quote verbatim across features/about/FAQ. */
+  guarantee: "10-year guarantee on all our products",
+  /** Finance/lay-bye line, official price list — always pair with "subject to credit approval". */
+  finance: "Finance & lay-bye options available, subject to credit approval",
 } as const;
 
 export const nav = {
@@ -38,6 +43,8 @@ export const nav = {
     { slug: "the-dome", label: "The Dome" },
     { slug: "apple-cabins", label: "Apple Cabins" },
     { slug: "glamping-capsules", label: "Glamping Capsules" },
+    { slug: "outdoor-kitchens", label: "Outdoor Kitchens" },
+    { slug: "safari-tents", label: "Safari Tents" },
   ],
   pages: [
     { href: "/about", label: "About" },

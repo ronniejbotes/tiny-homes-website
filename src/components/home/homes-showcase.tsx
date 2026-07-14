@@ -25,7 +25,15 @@ function heroImageFor(slug: string): ManifestImage | undefined {
   return images?.find((img) => img.hero) ?? images?.[0];
 }
 
-/* Alternating wide/narrow rows on lg for an editorial, asymmetric rhythm. */
+/* Per-product framing tweaks for the 4:3 crop — the safari tent's sail-like
+   roofline (its signature silhouette) sits high in the hero, so bias the crop
+   upward instead of using the default centre crop. */
+const cropPosition: Record<string, string> = {
+  "safari-tents": "object-[50%_35%]",
+};
+
+/* Alternating wide/narrow rows on lg for an editorial, asymmetric rhythm —
+   cycled with modulo so the grid stays balanced however many products exist. */
 const spanClasses = [
   "lg:col-span-7",
   "lg:col-span-5",
@@ -33,6 +41,8 @@ const spanClasses = [
   "lg:col-span-7",
   "lg:col-span-7",
   "lg:col-span-5",
+  "lg:col-span-5",
+  "lg:col-span-7",
 ];
 
 export function HomesShowcase() {
@@ -40,16 +50,16 @@ export function HomesShowcase() {
     <section id="homes" aria-label="Our homes" className="scroll-mt-24 py-24 sm:py-32">
       <Container>
         <SectionHeading
-          eyebrow="Our homes"
-          title="Six ways to live tiny"
-          intro="From a flat-pack folding home you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — every home is factory-built in steel and delivered nationwide. All prices exclude VAT."
+          eyebrow="Our range"
+          title="Eight ways to build it better"
+          intro="From a flat-pack folding home you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 
         <Stagger className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-y-16">
           {products.map((product, i) => {
             const image = heroImageFor(product.slug);
             return (
-              <StaggerItem key={product.slug} className={spanClasses[i]}>
+              <StaggerItem key={product.slug} className={spanClasses[i % spanClasses.length]}>
                 <Link href={`/${product.slug}`} className="group block rounded-3xl">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-sand">
                     {image && (
@@ -58,7 +68,10 @@ export function HomesShowcase() {
                         alt={image.alt}
                         fill
                         sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
+                        className={cn(
+                          "object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105",
+                          cropPosition[product.slug],
+                        )}
                       />
                     )}
                   </div>
@@ -68,11 +81,20 @@ export function HomesShowcase() {
                         {product.name}
                       </h3>
                       <p className="mt-1.5 text-sm text-stone">
-                        {product.sizeLabel} · From{" "}
-                        <span className="font-medium text-ink">
-                          {formatZAR(product.startingPrice)}
-                        </span>{" "}
-                        ex VAT
+                        {product.priceOnRequest ? (
+                          <>
+                            {product.sizeLabel} ·{" "}
+                            <span className="font-medium text-ink">Price on request</span>
+                          </>
+                        ) : (
+                          <>
+                            {product.sizeLabel} · From{" "}
+                            <span className="font-medium text-ink">
+                              {formatZAR(product.startingPrice)}
+                            </span>{" "}
+                            ex VAT
+                          </>
+                        )}
                       </p>
                       <p className="mt-2 max-w-md leading-relaxed text-stone">
                         {product.tagline}

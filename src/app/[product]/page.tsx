@@ -7,13 +7,9 @@ import {
   JsonLd,
   breadcrumbSchema,
   faqPageSchema,
-  type SchemaObject,
+  productSchema,
 } from "@/lib/schema";
-import {
-  getGalleryImages,
-  getHeroImage,
-  getProductImages,
-} from "@/components/product/product-images";
+import { getGalleryImages, getHeroImage } from "@/components/product/product-images";
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { Product3D } from "@/components/product/product-3d";
@@ -25,6 +21,7 @@ import { UseCaseChips } from "@/components/product/use-case-chips";
 import { ProductFaq } from "@/components/product/product-faq";
 import { RelatedProducts } from "@/components/product/related-products";
 import { ProductCta } from "@/components/product/product-cta";
+import models from "@/data/models.json";
 
 export const dynamicParams = false;
 
@@ -43,7 +40,10 @@ type Params = Promise<{ product: string }>;
 const MAX_DESCRIPTION = 155;
 
 function metaDescription(product: Product): string {
-  const lead = `${product.shortName} from ${formatZAR(product.startingPrice)} ex VAT. `;
+  // Price-on-request products carry a 0 sentinel — never lead with "from R 0".
+  const lead = product.priceOnRequest
+    ? `${product.shortName} — price on request. `
+    : `${product.shortName} from ${formatZAR(product.startingPrice)} ex VAT. `;
   const budget = MAX_DESCRIPTION - lead.length;
   const summary = product.summary;
   if (summary.length <= budget) return `${lead}${summary}`;
@@ -64,7 +64,9 @@ export async function generateMetadata({
   if (!product) return {};
 
   const hero = getHeroImage(slug);
-  const title = `${product.name} from ${formatZAR(product.startingPrice)}`;
+  const title = product.priceOnRequest
+    ? `${product.name} — Price on Request`
+    : `${product.name} from ${formatZAR(product.startingPrice)}`;
   const description = metaDescription(product);
 
   return {
@@ -77,6 +79,8 @@ export async function generateMetadata({
       description,
       url: `/${slug}`,
       type: "website",
+      locale: "en_ZA",
+      siteName: site.name,
       ...(hero
         ? {
             images: [
@@ -90,46 +94,12 @@ export async function generateMetadata({
           }
         : {}),
     },
-  };
-}
-
-/**
- * schema.org Product node. Uses an AggregateOffer spanning the variant range
- * when the product has size variants, otherwise a single ex-VAT Offer.
- */
-function productJsonLd(product: Product): SchemaObject {
-  const url = `${site.url}/${product.slug}`;
-  const image = getProductImages(product.slug).map(
-    (img) => `${site.url}${img.src}`,
-  );
-
-  const offers = product.variants?.length
-    ? {
-        "@type": "AggregateOffer",
-        url,
-        lowPrice: Math.min(...product.variants.map((v) => v.price)),
-        highPrice: Math.max(...product.variants.map((v) => v.price)),
-        offerCount: product.variants.length,
-        priceCurrency: "ZAR",
-        availability: "https://schema.org/InStock",
-      }
-    : {
-        "@type": "Offer",
-        url,
-        price: product.startingPrice,
-        priceCurrency: "ZAR",
-        availability: "https://schema.org/InStock",
-      };
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.summary,
-    image,
-    brand: { "@type": "Organization", name: site.name },
-    url,
-    offers,
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(hero ? { images: [hero.src] } : {}),
+    },
   };
 }
 
@@ -145,7 +115,7 @@ export default async function ProductPage({ params }: { params: Params }) {
     <>
       <JsonLd
         data={[
-          productJsonLd(product),
+          productSchema(product),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: product.name, path: `/${slug}` },
@@ -155,10 +125,14 @@ export default async function ProductPage({ params }: { params: Params }) {
       />
       <ProductHero product={product} image={hero} />
       <ProductGallery productName={product.name} images={gallery} />
-      <Product3D slug={product.slug} productName={product.name} />
+      {/* Only products with a 3D model in models.json render the viewer. */}
+      {product.slug in models && (
+        <Product3D slug={product.slug} productName={product.name} />
+      )}
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
-      <ConfiguratorSection product={product} />
+      {/* No options, no configurator — kitchens and safari tents are quoted, not configured. */}
+      {product.options.length > 0 && <ConfiguratorSection product={product} />}
       <FeatureGrid product={product} />
       <UseCaseChips product={product} />
       <ProductFaq product={product} />

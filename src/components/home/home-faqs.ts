@@ -1,5 +1,6 @@
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
+import { site } from "@/lib/site";
 
 /**
  * Homepage FAQ content. Rendered by the accordion AND serialised into
@@ -10,33 +11,43 @@ export interface HomeFaq {
   a: string;
 }
 
-/* Prices derived from products.ts so the FAQ (and its JSON-LD) never drifts. */
-const lowestStartingPrice = Math.min(...products.map((p) => p.startingPrice));
-const highestStartingPrice = Math.max(...products.map((p) => p.startingPrice));
+/* Prices derived from products.ts so the FAQ (and its JSON-LD) never drifts.
+   Price-on-request products carry a 0 sentinel and are excluded from the range. */
+const pricedProducts = products.filter((p) => !p.priceOnRequest);
+const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPrice));
+/* Highest price across every variant (not just startingPrice) — the top of
+   the range is the 11.5 m glamping capsule variant, not its base price. */
+const highestPrice = Math.max(
+  ...pricedProducts.flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice])),
+);
 
 export const homeFaqs: HomeFaq[] = [
   {
     q: "How much does delivery cost?",
-    a: "Delivery across South Africa averages R 6 000 – R 22 000 per unit, depending on distance from Centurion, current diesel rates and abnormal-load permits. We deliver nationwide.",
+    a: `${site.deliveryNote} Ask about our turnkey service and we can arrange the groundwork, connections and installation for you too.`,
   },
   {
     q: "How long until I can move in?",
-    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: a folding home unfolds in 10–30 minutes, an expandable home deploys in under 2 hours, and cabins, domes and capsules install in 1–3 days.",
+    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: a folding home unfolds in minutes, an expandable home deploys within hours, and cabins, domes and capsules are professionally assembled on a prepared site.",
   },
   {
     q: "Do prices include VAT?",
-    a: `No — all prices on this site exclude VAT. The range starts at ${formatZAR(lowestStartingPrice)} ex VAT for a folding home and extends to ${formatZAR(highestStartingPrice)} ex VAT for the flagship glamping capsule.`,
+    a: `No — all prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for a folding home and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're configured to your site and brief, so they're priced on request after a consultation.`,
   },
   {
     q: "What foundations do I need?",
-    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Glamping capsules use six precast piers or ground screws. We confirm the exact requirement for your model and site when you order.",
+    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Larger units — cabins, domes and capsules — are professionally assembled on a prepared foundation. We confirm the exact requirement for your model and site when you order, or our turnkey team can prepare the groundwork for you.",
   },
   {
     q: "Can the homes run off-grid?",
-    a: "Yes. The range is designed to pair with solar power, gas geysers and rainwater tanks. Apple cabins and glamping capsules support up to 4 kW of roof solar with a 7 kWh lithium battery for full off-grid operation.",
+    a: "Yes. The range is designed to pair with solar power, gas geysers and rainwater tanks — we size and quote the right off-grid setup for your model and site.",
   },
   {
     q: "Can I finance a tiny home?",
-    a: "Financing depends on your circumstances and how the home will be sited. Ask us when you request a quote — we'll talk you through the options available to you.",
+    a: `${site.finance}. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record — a deposit may be required depending on the unit. Ask us when you request a quote.`,
+  },
+  {
+    q: "Is there a guarantee on Tiny Homes SA products?",
+    a: `Yes — we offer a ${site.guarantee}, and we provide full after-sales support.`,
   },
 ];

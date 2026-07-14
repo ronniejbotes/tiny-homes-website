@@ -18,13 +18,18 @@ const ORG_ID = `${site.url}/#organization`;
 
 /** Organization + LocalBusiness node for the whole site. */
 export function organizationSchema(): SchemaObject {
-  const prices = products.map((p) => p.startingPrice);
+  // Range across every variant, not just base prices — the 11.5 m capsule tops
+  // out at R1.3M. Price-on-request products carry a 0 sentinel and are excluded.
+  const prices = products
+    .filter((p) => !p.priceOnRequest)
+    .flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice]));
   return {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
     "@id": ORG_ID,
     name: site.name,
     legalName: site.legalName,
+    slogan: "Innovative Instant Housing Solutions",
     description: site.description,
     url: site.url,
     logo: `${site.url}${images.brand.logo}`,
@@ -34,7 +39,7 @@ export function organizationSchema(): SchemaObject {
     priceRange: `${formatZAR(Math.min(...prices))} – ${formatZAR(Math.max(...prices))} ex VAT`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.locality,
+      streetAddress: `${site.address.streetAddress}, ${site.address.locality}`,
       addressLocality: site.address.city,
       addressRegion: site.address.region,
       addressCountry: site.address.countryCode,
@@ -80,32 +85,94 @@ export function breadcrumbSchema(items: { name: string; path: string }[]): Schem
   };
 }
 
-/** schema.org Product node with an ex-VAT ZAR offer. */
+/** ISO date this catalogue's prices are valid until — bump when the price list is reissued. */
+const PRICE_VALID_UNTIL = "2026-12-31";
+
+/**
+ * schema.org Product node — the single JSON-LD builder for every product page.
+ * Uses an AggregateOffer spanning the variant range (with a nested per-variant
+ * Offer carrying its own sku) when the product has size variants, otherwise a
+ * single ex-VAT Offer. All prices are ZAR, VAT-exclusive per PriceSpecification.
+ * Price-on-request products emit the Product node WITHOUT offers — their 0
+ * sentinel price must never reach structured data.
+ */
 export function productSchema(product: Product): SchemaObject {
   const productImages =
     (images.products as Record<string, { src: string }[]>)[product.slug] ?? [];
+  const image = productImages.map((img) => `${site.url}${img.src}`);
+  const url = `${site.url}/${product.slug}`;
+  const seller = { "@id": ORG_ID };
+  const areaServed = { "@type": "Country", name: site.address.country };
+
+  if (product.priceOnRequest) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `${product.name} — ${site.name}`,
+      description: product.summary,
+      image,
+      brand: { "@type": "Brand", name: site.name },
+      url,
+    };
+  }
+
+  const priceSpecification = (price: number) => ({
+    "@type": "PriceSpecification",
+    price,
+    priceCurrency: "ZAR",
+    valueAddedTaxIncluded: false,
+  });
+
+  const offers = product.variants?.length
+    ? {
+        "@type": "AggregateOffer",
+        url,
+        priceCurrency: "ZAR",
+        lowPrice: Math.min(...product.variants.map((v) => v.price)),
+        highPrice: Math.max(...product.variants.map((v) => v.price)),
+        offerCount: product.variants.length,
+        priceValidUntil: PRICE_VALID_UNTIL,
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        seller,
+        areaServed,
+        offers: product.variants.map((variant) => ({
+          "@type": "Offer",
+          url,
+          name: variant.name,
+          sku: variant.id,
+          price: variant.price,
+          priceCurrency: "ZAR",
+          priceSpecification: priceSpecification(variant.price),
+          priceValidUntil: PRICE_VALID_UNTIL,
+          itemCondition: "https://schema.org/NewCondition",
+          availability: "https://schema.org/InStock",
+          seller,
+        })),
+      }
+    : {
+        "@type": "Offer",
+        url,
+        sku: product.slug,
+        price: product.startingPrice,
+        priceCurrency: "ZAR",
+        priceSpecification: priceSpecification(product.startingPrice),
+        priceValidUntil: PRICE_VALID_UNTIL,
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        seller,
+        areaServed,
+      };
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${product.name} — ${site.name}`,
     description: product.summary,
-    image: productImages.map((img) => `${site.url}${img.src}`),
+    image,
     brand: { "@type": "Brand", name: site.name },
-    url: `${site.url}/${product.slug}`,
-    offers: {
-      "@type": "Offer",
-      url: `${site.url}/${product.slug}`,
-      price: product.startingPrice,
-      priceCurrency: "ZAR",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        price: product.startingPrice,
-        priceCurrency: "ZAR",
-        valueAddedTaxIncluded: false,
-      },
-      seller: { "@id": ORG_ID },
-      areaServed: { "@type": "Country", name: site.address.country },
-    },
+    url,
+    offers,
   };
 }
 

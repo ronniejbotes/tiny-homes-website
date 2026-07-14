@@ -66,24 +66,54 @@ export function ProductHero({
             </ul>
 
             <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className="text-display text-3xl text-ink sm:text-4xl">
-                From {formatZAR(product.startingPrice)}
-              </p>
-              <p className="text-sm text-stone">ex VAT</p>
+              {product.priceOnRequest ? (
+                <>
+                  <p className="text-display text-3xl text-ink sm:text-4xl">
+                    Price on request
+                  </p>
+                  <p className="text-sm text-stone">quoted to your site and brief</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-display text-3xl text-ink sm:text-4xl">
+                    From {formatZAR(product.startingPrice)}
+                  </p>
+                  <p className="text-sm text-stone">ex VAT</p>
+                </>
+              )}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="#configure" variant="accent" size="lg">
-                Customise yours
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ButtonLink>
-              <ButtonLink
-                href={`/contact?product=${product.slug}`}
-                variant="outline"
-                size="lg"
-              >
-                Request a call
-              </ButtonLink>
+              {/* No options means no #configure section to anchor to — lead with the quote instead. */}
+              {product.options.length > 0 ? (
+                <>
+                  <ButtonLink href="#configure" variant="accent" size="lg">
+                    Customise yours
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </ButtonLink>
+                  <ButtonLink
+                    href={`/contact?product=${product.slug}`}
+                    variant="outline"
+                    size="lg"
+                  >
+                    Request a call
+                  </ButtonLink>
+                </>
+              ) : (
+                <>
+                  <ButtonLink
+                    href={`/contact?product=${product.slug}`}
+                    variant="accent"
+                    size="lg"
+                  >
+                    {product.priceOnRequest ? "Request a quote" : "Get a quote"}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </ButtonLink>
+                  <ButtonLink href="/#homes" variant="outline" size="lg">
+                    Explore the range
+                  </ButtonLink>
+                </>
+              )}
             </div>
           </Reveal>
 

@@ -10,7 +10,7 @@ const steps = [
   {
     number: "01",
     title: "Choose & customise",
-    body: "Pick one of six home styles, then make it yours in the online configurator — finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
+    body: "Pick from six home styles — plus outdoor kitchens and safari tents — then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
   },
   {
     number: "02",
@@ -20,12 +20,12 @@ const steps = [
   {
     number: "03",
     title: "We deliver nationwide",
-    body: "Your home travels anywhere in South Africa from Centurion, Gauteng. Delivery averages R 6 000 – R 22 000 per unit, depending on distance and permits.",
+    body: "Your home travels anywhere in South Africa from Centurion, Gauteng — delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
   },
   {
     number: "04",
     title: "Move in",
-    body: "Setup runs from under 30 minutes for a folding home to 2–3 days for a capsule. Move in — or hand the keys to your first paying guests.",
+    body: "Setup runs from minutes for a folding home to professional on-site assembly for cabins, domes and capsules. Move in — or hand the keys to your first paying guests.",
   },
 ];
 

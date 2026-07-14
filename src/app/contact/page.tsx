@@ -11,10 +11,13 @@ const pageDescription =
   "Call 083 660 3743 or WhatsApp Tiny Homes SA in Centurion, Gauteng for quotes on prefab tiny homes — delivered nationwide across South Africa in ±90 days.";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Tiny Homes SA | Get a Prefab Home Quote",
   description: pageDescription,
   alternates: { canonical: "/contact" },
   openGraph: {
+    type: "website",
+    locale: "en_ZA",
+    siteName: site.name,
     title: "Contact Tiny Homes SA",
     description: pageDescription,
     url: `${site.url}/contact`,
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
         alt: images.products["expandable-homes"][0].alt,
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Tiny Homes SA",
+    description: pageDescription,
+    images: [`${site.url}${images.products["expandable-homes"][0].src}`],
   },
 };
 
@@ -39,7 +48,6 @@ export default function ContactPage() {
             description: pageDescription,
             path: "/contact",
           }),
-          organizationSchema(),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Contact", path: "/contact" },

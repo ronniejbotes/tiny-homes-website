@@ -51,7 +51,8 @@ export function Product3D({ slug, productName }: { slug: string; productName: st
         <SectionHeading
           id={`model-3d-${slug}`}
           eyebrow="Walk around it"
-          title={`See the ${productName} in 3D`}
+          // Strip a leading "The" so 'The Dome' doesn't render as "See the The Dome".
+          title={`See the ${productName.replace(/^the\s+/i, "")} in 3D`}
           intro="Drag to rotate and scroll to zoom. This interactive model is generated from product photography — representative of shape and finish; final details are confirmed on your quote."
         />
         <div
@@ -65,6 +66,10 @@ export function Product3D({ slug, productName }: { slug: string; productName: st
               poster={entry.poster}
               alt={entry.alt}
               camera-controls=""
+              /* Default framing (105% radius) leaves a wide empty band around
+                 the model — start at the orbit clamp's closest allowed radius
+                 so the model fills more of the 560px frame. */
+              camera-orbit="0deg 75deg 90%"
               {...(entry.orbitMin ? { "min-camera-orbit": entry.orbitMin } : {})}
               {...(entry.orbitMax ? { "max-camera-orbit": entry.orbitMax } : {})}
               {...(reduce || entry.orbitMin ? {} : { "auto-rotate": "", "auto-rotate-delay": "1500" })}

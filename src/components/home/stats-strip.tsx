@@ -4,16 +4,16 @@ import { site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { Stagger, StaggerItem } from "@/components/ui/reveal";
 
-const lowestPrice = Math.min(...products.map((p) => p.startingPrice));
+/* Price-on-request products carry a 0 sentinel — exclude them from the range. */
+const lowestPrice = Math.min(
+  ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
+);
 
 const stats: { value: string; label: string }[] = [
   { value: `From ${formatZAR(lowestPrice)}`, label: "Starting price, ex VAT" },
-  { value: `${products.length} styles`, label: "Folding homes to glamping capsules" },
+  { value: `${products.length} styles`, label: "Folding homes to safari tents" },
   { value: `±${site.leadTimeDays} days`, label: "From deposit to move-in" },
-  {
-    value: "Nationwide",
-    label: `Delivery ${formatZAR(6000)} – ${formatZAR(22000)} per unit`,
-  },
+  { value: "10-year guarantee", label: "On every home we build" },
 ];
 
 export function StatsStrip() {

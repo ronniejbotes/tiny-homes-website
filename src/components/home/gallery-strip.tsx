@@ -6,32 +6,67 @@ import { Pause, Play } from "lucide-react";
 import { cn } from "@/lib/cn";
 import manifest from "@/data/images.json";
 
-const p = manifest.products;
-const g = manifest.gallery;
+type ManifestImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  kind: string;
+  hero: boolean;
+};
+
+const productImages = manifest.products as Record<string, ManifestImage[]>;
+
+/** The designated hero shot for a product, falling back to its first photo. */
+function heroPhoto(slug: string): ManifestImage {
+  const images = productImages[slug];
+  return images.find((img) => img.hero) ?? images[0];
+}
+
+/** Look up a real photo by a filename fragment — explicit and immune to
+    reordering, unlike indexing into the manifest array by position. */
+function photoNamed(slug: string, filenameContains: string): ManifestImage {
+  const images = productImages[slug];
+  const match = images.find((img) => img.src.includes(filenameContains));
+  if (!match) throw new Error(`gallery-strip: no image matching "${filenameContains}" in ${slug}`);
+  return match;
+}
 
 /* Curated photo strip; fixed widths/heights so the marquee never shifts layout.
-   Each entry carries a sizes string matching its rendered card width. */
+   Each entry carries a sizes string matching its rendered card width. Every
+   image is a real product photo — looked up by filename/hero flag, not by
+   array index, so the manifest can be reordered without breaking this row. */
 const shots = [
   {
-    image: p["folding-homes"][0],
+    image: heroPhoto("folding-homes"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },
-  { image: g[3], width: "w-52 sm:w-60", sizes: "(min-width: 640px) 240px, 208px" }, // portrait bathroom
-  { image: p["the-dome"][0], width: "w-72 sm:w-80", sizes: "(min-width: 640px) 320px, 288px" },
   {
-    image: p["apple-cabins"][1],
+    image: photoNamed("apple-cabins", "interior-bathroom"),
+    width: "w-52 sm:w-60",
+    sizes: "(min-width: 640px) 240px, 208px",
+  },
+  { image: heroPhoto("the-dome"), width: "w-72 sm:w-80", sizes: "(min-width: 640px) 320px, 288px" },
+  {
+    image: heroPhoto("apple-cabins"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },
-  { image: p["nature-cabins"][1], width: "w-72 sm:w-80", sizes: "(min-width: 640px) 320px, 288px" },
   {
-    image: p["glamping-capsules"][1],
+    image: photoNamed("nature-cabins", "exterior-two-cabins"),
     width: "w-72 sm:w-80",
     sizes: "(min-width: 640px) 320px, 288px",
   },
   {
-    image: p["expandable-homes"][4],
+    /* The hero, not exterior-balcony-deck — that shot carries a baked-in
+       watermark and a legible third-party badge on the pod itself. */
+    image: heroPhoto("glamping-capsules"),
+    width: "w-72 sm:w-80",
+    sizes: "(min-width: 640px) 320px, 288px",
+  },
+  {
+    image: photoNamed("expandable-homes", "interior-living-room"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },

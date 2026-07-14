@@ -38,8 +38,13 @@ export function ProductCta({ product }: { product: Product }) {
             </ButtonAnchor>
           </div>
           <p className="mt-7 text-sm text-cream/75">
-            ±{site.leadTimeDays} days from deposit to move-in · Delivered
-            nationwide across South Africa
+            {/* The ±90-day claim is documented for the homes range only — the
+                kitchens and safari tents are quoted per order/project. */}
+            {product.slug === "safari-tents"
+              ? "Lead time quoted per project · Supplied and installed nationwide across South Africa"
+              : product.slug === "outdoor-kitchens"
+                ? "Delivered ready to use · Nationwide across South Africa"
+                : `±${site.leadTimeDays} days from deposit to move-in · Delivered nationwide across South Africa`}
           </p>
         </Reveal>
       </Container>

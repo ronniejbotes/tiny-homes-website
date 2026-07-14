@@ -1,18 +1,19 @@
-import { Bed, Leaf, Shield, Sun, Timer, Truck } from "lucide-react";
+import { BadgeCheck, Leaf, Shield, Sun, Timer, Truck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/reveal";
+import { site } from "@/lib/site";
 
 const values = [
   {
     icon: Sun,
     title: "Off-grid & solar ready",
-    body: "Solar roofs of up to 4 kW, battery banks, gas geysers and rainwater tanks on selected models — designed to keep running through load-shedding and far beyond the grid.",
+    body: "Solar power, battery banks, gas geysers and rainwater tanks can be paired with selected models — sized and quoted for your site, and designed to keep running through load-shedding and far beyond the grid.",
   },
   {
     icon: Timer,
     title: "Rapid deployment",
-    body: "A folding home unfolds in under 30 minutes; even the flagship capsule installs in 2–3 days. Months faster than a conventional brick build.",
+    body: "A folding home unfolds in minutes; even the flagship capsule is professionally assembled on site in days, not months. Far faster than a conventional brick build.",
   },
   {
     icon: Truck,
@@ -20,9 +21,9 @@ const values = [
     body: "Steel-framed and crane-ready. If life moves, your home moves with it — fold it back down or lift it whole onto a truck and redeploy it.",
   },
   {
-    icon: Bed,
-    title: "Hospitality income",
-    body: "Lodges and vineyards run glamping capsules at R 2 500 – R 4 000 a night, with most operators reaching return on investment in 18–24 months.",
+    icon: BadgeCheck,
+    title: "Backed for the long haul",
+    body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation — and ${site.finance.toLowerCase()}.`,
   },
   {
     icon: Leaf,
@@ -31,8 +32,8 @@ const values = [
   },
   {
     icon: Shield,
-    title: "Engineered for SA conditions",
-    body: "Fireproof insulated panels, anti-UV glazing and weather-resistant shells proven in coastal, bushveld and mountain conditions.",
+    title: "Engineered for South African conditions",
+    body: "Fireproof insulated panels, anti-UV dome panels and weather-resistant steel shells designed for South Africa's climate — from coastal humidity to inland heat and cold.",
   },
 ];
 

@@ -1,7 +1,14 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { MotionConfig, motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/cn";
+
+/* Reduced-motion handling is delegated to <MotionConfig reducedMotion="user">:
+   framer-motion disables the transform (y) animation for prefers-reduced-motion
+   visitors while the opacity fade still completes, so revealed content always
+   reaches its visible state. Deriving this manually from useReducedMotion()
+   left Stagger grids permanently invisible — the hook resolves only after the
+   hidden `initial` state has been committed, and `initial` is mount-only. */
 
 /**
  * Scroll-triggered reveal. Fades + rises content into view once, when ~20%
@@ -20,19 +27,20 @@ export function Reveal({
   y?: number;
   as?: "div" | "section" | "li" | "span";
 }) {
-  const reduce = useReducedMotion();
   const MotionTag = motion[Tag];
 
   return (
-    <MotionTag
-      className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </MotionTag>
+    <MotionConfig reducedMotion="user">
+      <MotionTag
+        className={className}
+        initial={{ opacity: 0, y }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
+        transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {children}
+      </MotionTag>
+    </MotionConfig>
   );
 }
 
@@ -54,17 +62,18 @@ export function Stagger({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
   return (
-    <motion.div
-      className={className}
-      variants={reduce ? undefined : staggerParent}
-      initial={reduce ? false : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
-    >
-      {children}
-    </motion.div>
+    <MotionConfig reducedMotion="user">
+      <motion.div
+        className={className}
+        variants={staggerParent}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+      >
+        {children}
+      </motion.div>
+    </MotionConfig>
   );
 }
 
@@ -75,9 +84,8 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
   return (
-    <motion.div className={cn(className)} variants={reduce ? undefined : staggerChild}>
+    <motion.div className={cn(className)} variants={staggerChild}>
       {children}
     </motion.div>
   );

@@ -105,7 +105,7 @@ export function Navbar() {
                 isProductActive ? "text-clay" : "text-ink",
               )}
             >
-              Our Homes
+              Our Tiny Solutions
               <ChevronDown
                 className={cn("h-4 w-4 transition-transform duration-200", productsOpen && "rotate-180")}
               />
@@ -194,7 +194,7 @@ export function Navbar() {
             className="overflow-hidden border-t border-border bg-cream lg:hidden"
           >
             <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto px-5 pb-8 pt-4">
-              <p className="text-eyebrow mb-2 mt-2 text-stone">Our Homes</p>
+              <p className="text-eyebrow mb-2 mt-2 text-stone">Our Tiny Solutions</p>
               {nav.products.map((p) => (
                 <Link
                   key={p.slug}
