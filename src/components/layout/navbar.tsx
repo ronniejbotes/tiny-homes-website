@@ -74,7 +74,8 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || mobileOpen
           ? "bg-cream/90 backdrop-blur-md border-b border-border shadow-[0_1px_0_rgba(28,27,23,0.04)]"
-          : "bg-transparent",
+          : // Soft cream fade keeps the dark logo/links readable over dark hero imagery.
+            "bg-gradient-to-b from-cream/90 via-cream/50 to-transparent",
       )}
     >
       <nav

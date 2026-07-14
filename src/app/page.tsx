@@ -19,8 +19,11 @@ import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
-/* Same manifest image the visible hero uses (hero.tsx). */
-const heroImage = images.products["nature-cabins"][0];
+/* Same manifest image the visible hero uses (hero.tsx) — the 2048px night-pool shot. */
+const heroImage =
+  images.products["glamping-capsules"].find((img) =>
+    img.src.endsWith("exterior-night-pool.jpg"),
+  ) ?? images.products["glamping-capsules"][0];
 
 /* Safari tents carry a price-on-request 0 sentinel — never let it win the range. */
 const lowestStartingPrice = Math.min(

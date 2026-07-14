@@ -172,11 +172,19 @@
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/installation-collage.png",
-        "width": 819,
-        "height": 1024,
-        "alt": "Collage of an expandable home module being craned into place and an integrated bathroom pod",
-        "kind": "collage",
+        "src": "/images/products/expandable-homes/installation-crane-pool.jpg",
+        "width": 795,
+        "height": 503,
+        "alt": "Expandable home module being craned into position on a paved poolside site",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/interior-bathroom-pod.jpg",
+        "width": 795,
+        "height": 480,
+        "alt": "Integrated bathroom pod with sliding glass shower enclosure, toilet and basin",
+        "kind": "interior",
         "hero": false
       },
       {
@@ -212,22 +220,6 @@
         "alt": "White nature cabin with gable glass front and railed timber deck under a blue sky",
         "kind": "exterior",
         "hero": false
-      },
-      {
-        "src": "/images/products/nature-cabins/interior-gable-lounge.jpeg",
-        "width": 730,
-        "height": 548,
-        "alt": "Nature cabin interior with peaked gable window, balcony access and wood-look flooring",
-        "kind": "interior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/nature-cabins/resort-render.jpg",
-        "width": 600,
-        "height": 600,
-        "alt": "Resort concept render with nature cabins, pools, palm trees and a sail-shaped glass pavilion",
-        "kind": "exterior",
-        "hero": false
       }
     ],
     "the-dome": [
@@ -256,14 +248,6 @@
         "hero": false
       },
       {
-        "src": "/images/products/the-dome/exterior-garden-1.jpg",
-        "width": 800,
-        "height": 760,
-        "alt": "The Dome transparent suite with white privacy curtains and arched doors set on a garden lawn",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
         "src": "/images/products/the-dome/exterior-night-event.jpeg",
         "width": 1440,
         "height": 1080,
@@ -280,6 +264,14 @@
         "hero": false
       },
       {
+        "src": "/images/products/the-dome/exterior-garden-1.jpg",
+        "width": 800,
+        "height": 760,
+        "alt": "The Dome transparent suite with white privacy curtains and arched doors set on a garden lawn",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
         "src": "/images/products/the-dome/floor-plan-top-view.png",
         "width": 466,
         "height": 412,
@@ -289,14 +281,6 @@
       }
     ],
     "apple-cabins": [
-      {
-        "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
-        "width": 1080,
-        "height": 1440,
-        "alt": "White apple cabin with full-length glazed wall and timber deck platform under a sunset sky",
-        "kind": "exterior",
-        "hero": false
-      },
       {
         "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
         "width": 1600,
@@ -310,14 +294,6 @@
         "width": 800,
         "height": 800,
         "alt": "Apple cabin pod with rounded shell and sliding glass doors furnished as a garden office and bedroom",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/apple-cabins/exterior-double-storey.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Two stacked apple cabin pods forming a double-storey unit with rooftop terrace and umbrella",
         "kind": "exterior",
         "hero": false
       },
@@ -338,19 +314,19 @@
         "hero": false
       },
       {
-        "src": "/images/products/glamping-capsules/floor-plans.jpg",
-        "width": 1140,
-        "height": 759,
-        "alt": "Floor plans for the 8.5 m and 11.5 m pod models with dimensions and areas",
-        "kind": "diagram",
+        "src": "/images/products/apple-cabins/exterior-double-storey.png",
+        "width": 466,
+        "height": 412,
+        "alt": "Two stacked apple cabin pods forming a double-storey unit with rooftop terrace and umbrella",
+        "kind": "exterior",
         "hero": false
       },
       {
-        "src": "/images/products/apple-cabins/promo-luxury-living-redefined.jpg",
-        "width": 2000,
-        "height": 1125,
-        "alt": "Tiny Homes branded promotional render of an apple cabin at dusk with the tagline Luxury Living Redefined",
-        "kind": "detail",
+        "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
+        "width": 1080,
+        "height": 1440,
+        "alt": "White apple cabin with full-length glazed wall and timber deck platform under a sunset sky",
+        "kind": "exterior",
         "hero": false
       }
     ],
@@ -364,10 +340,18 @@
         "hero": true
       },
       {
-        "src": "/images/products/glamping-capsules/exterior-balcony-deck.jpg",
-        "width": 1380,
-        "height": 1157,
-        "alt": "Glamping capsule with glass-balustraded balcony, outdoor table and entry deck on a lawn",
+        "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
+        "width": 1080,
+        "height": 718,
+        "alt": "White glamping capsule with curved panoramic glass and sleek shell below a forested peak",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Glamping capsule lit by LED trim at night with a guest relaxing in the plunge pool beside the deck",
         "kind": "exterior",
         "hero": false
       },
@@ -402,35 +386,11 @@
         "alt": "3D top-view floor plan of a glamping capsule with bedroom, bathroom, kitchenette and curved deck",
         "kind": "diagram",
         "hero": false
-      },
-      {
-        "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
-        "width": 1080,
-        "height": 718,
-        "alt": "White glamping capsule with curved panoramic glass and sleek shell below a forested peak",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
-        "width": 2048,
-        "height": 1365,
-        "alt": "Glamping capsule lit by LED trim at night with a guest relaxing in the plunge pool beside the deck",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/glamping-capsules/promo-glamping-dreams-delivered.jpg",
-        "width": 2000,
-        "height": 1125,
-        "alt": "Tiny Homes branded promotional render of a glamping capsule on a lakeside deck with the tagline Glamping Dreams Delivered",
-        "kind": "detail",
-        "hero": false
       }
     ],
     "outdoor-kitchens": [
       {
-        "src": "/images/products/outdoor-kitchens/hero-roof-deployed-led-canopy.jpg",
+        "src": "/images/products/outdoor-kitchens/kitchen-open-garden.jpg",
         "width": 1689,
         "height": 1650,
         "alt": "Assembled outdoor kitchen unit with the motorised roof folded out and an LED-lit canopy over a fitted cooking and bar station",
@@ -438,15 +398,7 @@
         "hero": true
       },
       {
-        "src": "/images/products/outdoor-kitchens/lifestyle-dusk-bar-seating.jpg",
-        "width": 1689,
-        "height": 1500,
-        "alt": "Dark-finish outdoor kitchen at dusk with built-in grill, drinks fridge and deck seating set up for entertaining",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/outdoor-kitchens/detail-kamado-drinks-fridge.jpg",
+        "src": "/images/products/outdoor-kitchens/kitchen-kamado-detail.jpg",
         "width": 855,
         "height": 865,
         "alt": "Close-up of the outdoor kitchen bar station with kamado grill, integrated sink and glass-door drinks fridge under the lift-up roof",

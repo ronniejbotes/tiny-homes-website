@@ -9,7 +9,13 @@ import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import manifest from "@/data/images.json";
 
-const heroImage = manifest.products["nature-cabins"][0];
+/* Highest-resolution photo in the library (2048px) — a full-bleed hero upscales
+   anything smaller into visible blur. Selected by filename so manifest
+   reordering can't silently swap it. */
+const heroImage =
+  manifest.products["glamping-capsules"].find((img) =>
+    img.src.endsWith("exterior-night-pool.jpg"),
+  ) ?? manifest.products["glamping-capsules"][0];
 /* Price-on-request products carry a 0 sentinel — exclude them from the range. */
 const lowestStartingPrice = Math.min(
   ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
