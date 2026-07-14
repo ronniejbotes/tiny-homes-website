@@ -98,8 +98,11 @@ const PRICE_VALID_UNTIL = "2026-12-31";
  */
 export function productSchema(product: Product): SchemaObject {
   const productImages =
-    (images.products as Record<string, { src: string }[]>)[product.slug] ?? [];
-  const image = productImages.map((img) => `${site.url}${img.src}`);
+    (images.products as Record<string, { src: string; kind?: string }[]>)[product.slug] ?? [];
+  // Photos only — diagrams/spec sheets in Product structured data hurt image rich results.
+  const image = productImages
+    .filter((img) => img.kind !== "diagram")
+    .map((img) => `${site.url}${img.src}`);
   const url = `${site.url}/${product.slug}`;
   const seller = { "@id": ORG_ID };
   const areaServed = { "@type": "Country", name: site.address.country };
