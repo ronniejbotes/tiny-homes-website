@@ -1,71 +1,92 @@
 import Image from "next/image";
 import { Warehouse } from "lucide-react";
-import type { CustomOption, Product, ProductVariant } from "@/data/products";
+import type { Product } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { getHeroImage } from "@/components/product/product-images";
+import type { QuoteLine } from "./quote-form";
 
-export function SummaryCard({
-  product,
-  variant,
-  activeOptions,
-  total,
-}: {
-  product: Product | undefined;
-  variant: ProductVariant | undefined;
-  activeOptions: CustomOption[];
-  total: number;
-}) {
+/** A single configured unit as it appears on the estimate. */
+function LineRow({ line }: { line: QuoteLine }) {
+  const { product, variant, activeOptions, quantity, lineTotal } = line;
+  const name = variant ? variant.name : product.shortName;
+
+  return (
+    <li className="flex items-start gap-3">
+      <SummaryThumb product={product} />
+      <div className="min-w-0 flex-1">
+        <p className="text-sm leading-snug text-ink">
+          <span className="font-medium tabular-nums">{quantity} ×</span> {name}
+        </p>
+        {activeOptions.length > 0 && (
+          <p className="mt-0.5 text-xs leading-relaxed text-stone">
+            {activeOptions.map((o) => o.label).join(", ")}
+          </p>
+        )}
+      </div>
+      <span className="shrink-0 text-right text-sm font-medium tabular-nums text-ink">
+        {product.priceOnRequest ? (
+          <span className="text-xs font-normal text-stone">priced after consultation</span>
+        ) : (
+          formatZAR(lineTotal)
+        )}
+      </span>
+    </li>
+  );
+}
+
+export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
+  const pricedLines = lines.filter((l) => !l.product.priceOnRequest);
+  const hasPricedTotal = pricedLines.length > 0;
+  const someOnRequest = lines.some((l) => l.product.priceOnRequest);
+  const grandTotal = pricedLines.reduce((sum, l) => sum + l.lineTotal, 0);
+  const totalUnits = lines.reduce((sum, l) => sum + l.quantity, 0);
+
   return (
     <div className="rounded-3xl border border-border bg-parchment/70 p-6 sm:p-7">
       <p className="text-eyebrow text-clay-dark">Your estimate</p>
 
-      {!product ? (
+      {lines.length === 0 ? (
         <p className="mt-4 text-sm leading-relaxed text-stone">
-          Choose a home above to build your estimate. We&apos;ll add your size and any extras here as
-          you go.
+          Choose a home above to build your estimate. We&apos;ll add each unit, its size and any
+          extras here as you go.
         </p>
       ) : (
         <>
-          <div className="mt-4 flex items-center gap-4">
-            <SummaryThumb product={product} />
-            <div>
-              <h3 className="font-display text-lg text-ink">{product.name}</h3>
-              {variant && <p className="text-sm text-stone">{variant.name}</p>}
-            </div>
-          </div>
+          <p className="mt-1 text-sm text-stone">
+            {totalUnits} {totalUnits === 1 ? "unit" : "units"} across {lines.length}{" "}
+            {lines.length === 1 ? "configuration" : "configurations"}
+          </p>
 
-          {activeOptions.length > 0 && (
-            <ul className="mt-5 space-y-2 border-t border-border pt-5">
-              {activeOptions.map((option) => (
-                <li key={option.id} className="flex items-baseline justify-between gap-3 text-sm">
-                  <span className="text-stone">{option.label}</span>
-                  <span className="shrink-0 font-medium tabular-nums text-ink">
-                    {option.price > 0 ? `+${formatZAR(option.price)}` : "on quotation"}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
+          <ul className="mt-5 space-y-4 border-t border-border pt-5">
+            {lines.map((line) => (
+              <LineRow key={line.id} line={line} />
+            ))}
+          </ul>
 
           <div className="mt-5 border-t border-border pt-5">
-            {product.priceOnRequest ? (
+            {hasPricedTotal ? (
+              <>
+                <p className="text-sm font-medium text-stone">Estimated total</p>
+                <p className="mt-1 flex items-baseline gap-2">
+                  <span className="text-display text-3xl text-ink sm:text-4xl tabular-nums">
+                    {formatZAR(grandTotal)}
+                  </span>
+                  <span className="text-sm font-medium text-stone">ex VAT</span>
+                </p>
+                {someOnRequest && (
+                  <p className="mt-2 text-sm leading-relaxed text-stone">
+                    Plus any units priced after consultation — quoted separately.
+                  </p>
+                )}
+              </>
+            ) : (
               <>
                 <p className="text-display text-2xl text-ink sm:text-3xl">
                   Priced after consultation
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-stone">
-                  Every safari tent is configured to your site and brief, so there&apos;s no fixed
+                  Every unit here is configured to your site and brief, so there&apos;s no fixed
                   price — we send an itemised quotation after a short consultation.
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="text-sm font-medium text-stone">Estimated total</p>
-                <p className="mt-1 flex items-baseline gap-2">
-                  <span className="text-display text-3xl text-ink sm:text-4xl tabular-nums">
-                    {formatZAR(total)}
-                  </span>
-                  <span className="text-sm font-medium text-stone">ex VAT</span>
                 </p>
               </>
             )}
@@ -75,7 +96,7 @@ export function SummaryCard({
             Delivery is quoted from your address — based on your location and site accessibility. We
             deliver nationwide.
           </p>
-          {!product.priceOnRequest && (
+          {hasPricedTotal && (
             <p className="mt-2 text-xs leading-relaxed text-stone">
               This is an estimate — optional extras carry provisional pricing, and your final figure
               is confirmed line by line on your formal quotation.
@@ -91,14 +112,14 @@ function SummaryThumb({ product }: { product: Product }) {
   const hero = getHeroImage(product.slug);
   if (!hero) {
     return (
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sand text-stone">
-        <Warehouse className="h-6 w-6" aria-hidden="true" />
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sand text-stone">
+        <Warehouse className="h-5 w-5" aria-hidden="true" />
       </div>
     );
   }
   return (
-    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-sand">
-      <Image src={hero.src} alt="" fill sizes="56px" className="object-cover" />
+    <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg bg-sand">
+      <Image src={hero.src} alt="" fill sizes="44px" className="object-cover" />
     </div>
   );
 }

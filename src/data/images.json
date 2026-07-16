@@ -3,65 +3,65 @@
     "folding-homes": [
       {
         "src": "/images/products/folding-homes/exterior-snow-timber.jpg",
-        "width": 1366,
-        "height": 610,
-        "alt": "Timber-clad folding home installed on a snowy mountain site with alpine views",
+        "width": 2400,
+        "height": 1018,
+        "alt": "Timber-clad folding home with a black steel frame standing on a paved concrete plinth on a level lawn, with a low boundary wall, leafy trees and a fire pit beside an outdoor table in late-afternoon light.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/folding-homes/exterior-woodland-1.jpg",
-        "width": 1366,
-        "height": 610,
-        "alt": "Grey folding container home with white windows and double doors among woodland trees",
+        "width": 1541,
+        "height": 688,
+        "alt": "Grey folding home with white-framed windows, a sliding glass door and cream double entrance doors, set on a paved concrete plinth in a level suburban lawn with a low boundary wall, leafy trees and a small braai at dusk.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/exterior-assembled-showroom.jpg",
-        "width": 1079,
-        "height": 1076,
-        "alt": "Assembled light grey folding home showroom unit with barred window and steel door",
+        "width": 1024,
+        "height": 1024,
+        "alt": "White flat-pack folding home with a security-barred window and steel door, standing on a paved concrete plinth in a suburban back garden at late afternoon.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/exterior-colour-options.jpg",
-        "width": 1200,
-        "height": 1200,
-        "alt": "Folding home shown in four exterior finish options: wood-grain brown, cream, light grey and charcoal panels",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Four exterior finish options for the folding tiny home shown side by side: wood-grain, light grey, white and charcoal panels, each with a white steel frame and barred window.",
         "kind": "detail",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/folding-mechanism.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Folding home shown half-folded, demonstrating the flat-pack folding mechanism",
+        "width": 1600,
+        "height": 1421,
+        "alt": "A folding container home shown half-folded, its hinged white wall panels opening in an X shape above the floor pan, photographed against a plain white studio background.",
         "kind": "detail",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/site-installations-collage.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Collage of folding home installations including double-storey and multi-unit site configurations",
+        "width": 1600,
+        "height": 1421,
+        "alt": "Collage of five real site installations of white prefabricated folding container homes, including a compact two-storey unit with a balcony and a long double-storey accommodation block with an external steel staircase.",
         "kind": "collage",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/exterior-forest-render.jpg",
-        "width": 600,
-        "height": 600,
-        "alt": "Grey folding home cabin with single door and window in a pine forest clearing",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Grey-panel folding cabin with a white door and window standing on a paved concrete plinth in a level suburban lawn, with a bistro table, low brick boundary wall and leafy trees behind in golden-hour light.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/folding-homes/exterior-lawn-1.jpg",
-        "width": 1600,
-        "height": 750,
-        "alt": "White flat-pack folding home with security window and steel door set up on a green lawn",
+        "width": 1584,
+        "height": 672,
+        "alt": "White flat-pack folding home with barred security window and steel door on a paved concrete plinth in a fenced suburban garden at golden hour",
         "kind": "exterior",
         "hero": false
       },
@@ -75,9 +75,9 @@
       },
       {
         "src": "/images/products/folding-homes/interior-facilities-collage.png",
-        "width": 750,
-        "height": 671,
-        "alt": "Folding home interior facilities collage showing a bunk bed, kitchenette sink unit and bathroom fittings",
+        "width": 1600,
+        "height": 1440,
+        "alt": "Five-panel collage of folding home fit-out options showing the unit exterior with door and security window, a steel bunk bed, a kitchen sink cabinet, the empty insulated interior shell, and partitioned bathroom stalls with a basin.",
         "kind": "diagram",
         "hero": false
       }
@@ -85,113 +85,113 @@
     "expandable-homes": [
       {
         "src": "/images/products/expandable-homes/exterior-deployed-lawn.jpg",
-        "width": 1600,
-        "height": 750,
-        "alt": "White expandable container home fully deployed on a grassy field with glass entrance doors",
+        "width": 2400,
+        "height": 1018,
+        "alt": "Fully deployed white expandable container home with glass double-door entry on a level gravel pad in a South African mountain forest clearing at dusk, with a set outdoor dinner table and stone fire pit beside it.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/expandable-homes/exterior-deploying-wing.png",
-        "width": 749,
-        "height": 523,
-        "alt": "Expandable home mid-deployment with roof wing folding out over the entrance stairs",
+        "width": 1237,
+        "height": 864,
+        "alt": "Grey expandable tiny home with its roof wing folding open mid-deployment beside the glass entrance door and stairs, standing on jack legs on a gravel pad in a South African mountain forest clearing at golden hour.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/exterior-front-stairs.png",
-        "width": 884,
-        "height": 522,
-        "alt": "Front view of an expandable home with both side wings folded out and entrance staircase",
+        "width": 1328,
+        "height": 784,
+        "alt": "Symmetrical front view of an expandable tiny home with both wings folded out and an entrance staircase, standing on a gravel-and-grass mountain forest clearing with a stone fire pit ring in the foreground.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/exterior-side-1.png",
-        "width": 392,
-        "height": 392,
-        "alt": "Side view of a white expandable container home with fold-out wings and glass sliding doors",
+        "width": 1024,
+        "height": 1024,
+        "alt": "White expandable prefab home with both wings extended and its glass sliding doors open onto grass, standing on a gravel pad in a South African mountain forest clearing at sunset, with kids' bikes by the step and an outdoor dinner table and fire pit nearby.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/interior-living-room.png",
-        "width": 749,
-        "height": 523,
-        "alt": "Expandable home interior living area with orange sofa, coffee table and kitchenette",
+        "width": 1600,
+        "height": 1073,
+        "alt": "Living room of an expandable tiny home with a tan two-seater sofa, white coffee table and kitchen pass-through counter, its sliding glass doors opening onto a gravel-and-grass clearing with indigenous trees and a mountain ridge at sunset.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/interior-living-dining.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "Expandable home open-plan interior with lounge suite, TV wall, dining area and bathroom",
+        "width": 1600,
+        "height": 1195,
+        "alt": "Open-plan living and dining area inside an expandable tiny home, with a cream leather sofa, coffee table, TV console, dining table, compact kitchenette and en-suite bathroom visible beyond.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/interior-lounge.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "Furnished expandable home lounge with sofa, coffee table and en-suite shower room",
+        "width": 1195,
+        "height": 896,
+        "alt": "Expandable home lounge interior with grey sofa, white coffee table, dining nook and kitchenette on wood-look flooring",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/floor-plan-1.png",
-        "width": 1024,
-        "height": 310,
-        "alt": "Expandable home floor plan options showing open-plan, one-bedroom and office layouts",
+        "width": 1600,
+        "height": 481,
+        "alt": "Floor plans of three expandable tiny home layouts: an open-plan living and dining room, a one-bedroom option with bathroom, and a one-bedroom option with dining area.",
         "kind": "diagram",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/floor-plan-2.png",
-        "width": 1024,
-        "height": 310,
-        "alt": "Expandable home floor plan options with two-bedroom and bathroom configurations",
+        "width": 1600,
+        "height": 481,
+        "alt": "Floor plan sheet showing three layout configurations of a two-bedroom expandable tiny home, each with an open-plan living area, corner shower bathroom, kitchenette and two single-bed bedrooms.",
         "kind": "diagram",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/floor-plan-3.png",
-        "width": 1024,
-        "height": 310,
-        "alt": "Expandable home four-bed dormitory floor plan with central bathroom",
+        "width": 1600,
+        "height": 1400,
+        "alt": "Floor plan of a four-bedroom expandable tiny home showing single beds in each room, a central corridor, and a shared bathroom with corner shower, toilet and basin.",
         "kind": "diagram",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/tech-specs-table.jpg",
-        "width": 750,
-        "height": 139,
-        "alt": "Expandable homes technical specifications table with model sizes and covered areas",
+        "width": 1600,
+        "height": 295,
+        "alt": "Specification table listing the four expandable home models with exterior dimensions in millimetres and covered floor areas from 27.5 to 72 square metres.",
         "kind": "diagram",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/installation-crane-pool.jpg",
-        "width": 795,
-        "height": 503,
-        "alt": "Expandable home module being craned into position on a paved poolside site",
+        "width": 1264,
+        "height": 848,
+        "alt": "A flat-packed expandable home module with timber-look panels and white steel framing is lowered by crane onto a gravel pad in a South African mountain forest clearing, with a stone fire pit and outdoor table nearby.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/interior-bathroom-pod.jpg",
-        "width": 795,
-        "height": 480,
-        "alt": "Integrated bathroom pod with sliding glass shower enclosure, toilet and basin",
+        "width": 1325,
+        "height": 800,
+        "alt": "Factory-fitted bathroom pod with corner shower enclosure, toilet and wall-mounted basin in an expandable home",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/expandable-homes/spc-floor-colours.jpg",
-        "width": 800,
-        "height": 487,
-        "alt": "SPC flooring colour swatches available as an optional upgrade for expandable homes",
+        "width": 1600,
+        "height": 968,
+        "alt": "Ten SPC vinyl flooring plank colour options standing side by side, ranging from pale oak and honey tones through walnut and mahogany to light, medium and charcoal greys.",
         "kind": "detail",
         "hero": false
       }
@@ -199,25 +199,25 @@
     "nature-cabins": [
       {
         "src": "/images/products/nature-cabins/exterior-timber-render.jpg",
-        "width": 1600,
-        "height": 750,
-        "alt": "Timber nature cabin with arched gable glass facade and wooden deck on a grassy hillside",
+        "width": 2400,
+        "height": 1018,
+        "alt": "Arched-gable timber cabin with a full-height glass front and wooden deck in a misty mountain meadow at golden hour, with a small fire pit and two chairs beside it.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/nature-cabins/exterior-two-cabins.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "Two wood-panelled nature cabins with full-height glass fronts on a manicured lawn",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Two timber-clad cabins with fully glazed fronts and cream arched roof trim standing side by side in a misty indigenous forest clearing at dawn, with a footpath and fire pit between them.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/nature-cabins/exterior-white-cabin-deck.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "White nature cabin with gable glass front and railed timber deck under a blue sky",
+        "width": 1600,
+        "height": 1200,
+        "alt": "White gable cabin with a full-height glass front and railed timber deck overlooking a misty golden grassland valley at sunrise.",
         "kind": "exterior",
         "hero": false
       }
@@ -225,57 +225,57 @@
     "the-dome": [
       {
         "src": "/images/products/the-dome/exterior-night-leds.jpg",
-        "width": 1440,
-        "height": 1080,
-        "alt": "The Dome transparent suite glowing at night with blue LED ribs and warm base lighting on a deck",
+        "width": 2400,
+        "height": 1792,
+        "alt": "Transparent capsule dome suite with an arched glass door glowing with warm interior light at dusk, set on a timber deck among proteas below a flat-topped mountain.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/the-dome/exterior-mountain-deck.png",
-        "width": 466,
-        "height": 412,
-        "alt": "The Dome transparent glamping suite on a timber deck with a furnished bedroom and mountain backdrop",
+        "width": 1104,
+        "height": 976,
+        "alt": "Transparent dome pod with white frame ribs and a timber-slat privacy wall on a raised wooden deck above fynbos at dusk, with its bed and green chairs visible in warm interior light.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/the-dome/exterior-dome-render.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Render of The Dome showing the clear panoramic shell, bedroom, lounge and en-suite shower pod",
+        "width": 1600,
+        "height": 1421,
+        "alt": "Transparent dome suite with LED-edged ribs, glowing en-suite pod, lounge and freestanding bath on a timber deck in a fynbos clearing at dusk, mountains silhouetted behind.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/the-dome/exterior-night-event.jpeg",
-        "width": 1440,
-        "height": 1080,
-        "alt": "Evening celebration outside The Dome with champagne table, balloons and fairy lights",
+        "width": 1195,
+        "height": 896,
+        "alt": "Transparent barrel-vault dome suite glowing warmly at dusk on a fynbos mountain plateau, with a candlelit champagne table for two on its deck beneath the Milky Way.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/the-dome/interior-bedroom.jpg",
         "width": 1600,
-        "height": 1066,
-        "alt": "Inside The Dome bedroom with draped canopy ceiling, double bed, bedside lamp and arched bathroom pod door",
+        "height": 1069,
+        "alt": "Bedroom inside The Dome tiny home with a draped fabric canopy, double bed, warm bedside lamp and an arched white door to the ensuite.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/the-dome/exterior-garden-1.jpg",
-        "width": 800,
-        "height": 760,
-        "alt": "The Dome transparent suite with white privacy curtains and arched doors set on a garden lawn",
+        "width": 1600,
+        "height": 1521,
+        "alt": "White dome glamping pod with a transparent arched-glass front, open white curtains and a warmly lit bed inside, standing on a timber deck in a fynbos garden at dusk with a mountain ridge and first stars behind.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/the-dome/floor-plan-top-view.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Top-down layout of The Dome showing bed, seating area and bathroom arrangement",
+        "width": 1600,
+        "height": 1195,
+        "alt": "Top-down cutaway floor plan of The Dome tiny home showing a double bed, two lounge chairs with a plant table, and an en-suite bathroom inside its oval shell.",
         "kind": "diagram",
         "hero": false
       }
@@ -283,49 +283,49 @@
     "apple-cabins": [
       {
         "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
-        "width": 1600,
-        "height": 900,
-        "alt": "Elevated apple cabin with glass facade, long timber deck and forest backdrop",
+        "width": 2400,
+        "height": 1340,
+        "alt": "Long glass-walled Apple Cabin with a white shell, black-framed glazing and sage curtains, resting on a low timber deck at a pine-forest edge with two armchairs and a side table facing the garden in soft morning light.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/apple-cabins/exterior-office-pod-render.jpg",
-        "width": 800,
-        "height": 800,
-        "alt": "Apple cabin pod with rounded shell and sliding glass doors furnished as a garden office and bedroom",
+        "width": 1600,
+        "height": 1600,
+        "alt": "White apple cabin office pod with a dark timber-slat end wall and full-height glass sliding doors, set on a concrete plinth with a small timber deck at a misty garden edge in soft morning light.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/apple-cabins/interior-kitchenette-render.jpg",
-        "width": 1080,
-        "height": 1440,
-        "alt": "Apple cabin interior with stone-look kitchenette counter, bar chair and warm timber flooring",
+        "width": 896,
+        "height": 1195,
+        "alt": "Apple Cabin kitchenette and work counter with walnut cabinetry, stone waterfall countertop and leather stool, lit by soft morning sun through a glass wall overlooking a garden edge.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/apple-cabins/interior-bathroom.jpg",
-        "width": 1200,
-        "height": 1600,
-        "alt": "Apple cabin bathroom with marble-look panels, LED mirror, stone vanity and glass rainfall shower",
+        "width": 1600,
+        "height": 2133,
+        "alt": "Compact fitted bathroom inside an Apple Cabins tiny home, with marble-look wall panels, an LED-lit mirror above the vanity basin, a toilet and a glass-screened shower.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/apple-cabins/exterior-double-storey.png",
-        "width": 466,
-        "height": 412,
-        "alt": "Two stacked apple cabin pods forming a double-storey unit with rooftop terrace and umbrella",
+        "width": 1600,
+        "height": 1421,
+        "alt": "Double-storey apple cabin of two stacked white capsule pods with a railed rooftop terrace and umbrella, set on a misty forest edge with a small timber deck at ground level.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
-        "width": 1080,
-        "height": 1440,
-        "alt": "White apple cabin with full-length glazed wall and timber deck platform under a sunset sky",
+        "width": 896,
+        "height": 1195,
+        "alt": "White apple cabin with a full-height glazed front wall and timber deck platform at a garden edge, morning sun breaking through the forest border behind.",
         "kind": "exterior",
         "hero": false
       }
@@ -333,57 +333,57 @@
     "glamping-capsules": [
       {
         "src": "/images/products/glamping-capsules/exterior-forest-1.jpg",
-        "width": 1600,
-        "height": 750,
-        "alt": "Futuristic white glamping capsule with tinted panoramic windows nestled among gum trees",
+        "width": 2400,
+        "height": 1018,
+        "alt": "White glamping capsule with panoramic glass ends and a central door standing on a low timber deck in golden bushveld grass, framed by acacia trees with hazy koppies behind at late afternoon.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
-        "width": 1080,
-        "height": 718,
-        "alt": "White glamping capsule with curved panoramic glass and sleek shell below a forested peak",
+        "width": 1600,
+        "height": 1069,
+        "alt": "White capsule-style glamping pod with panoramic curved glazing, railed terrace and glass balcony on a stone plinth, overlooking golden savanna grass toward a distant rocky koppie at golden hour.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
-        "width": 2048,
-        "height": 1365,
-        "alt": "Glamping capsule lit by LED trim at night with a guest relaxing in the plunge pool beside the deck",
+        "width": 1600,
+        "height": 1069,
+        "alt": "White capsule-style glamping pod with warm LED trim and panoramic glass beside a deck-edge plunge pool at dusk, set in South African bushveld with golden grass, acacia trees and rocky koppies under an orange afterglow sky.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/glamping-capsules/exterior-terrace-1.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "White glamping capsule with wraparound glazing, railed terrace and entry steps",
+        "width": 1195,
+        "height": 896,
+        "alt": "Glamping capsule with panoramic glass walls and wooden terrace in golden bushveld with acacia trees and distant koppies",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/glamping-capsules/interior-lounge.jpg",
-        "width": 600,
-        "height": 450,
-        "alt": "Glamping capsule lounge interior with tan leather sofa and curved panoramic windows",
+        "width": 1600,
+        "height": 1195,
+        "alt": "Lounge inside a glamping capsule with a tan leather sofa, armchair and ottoman, its wraparound glazing looking out over golden bushveld grass, acacia trees and distant koppies.",
         "kind": "interior",
         "hero": false
       },
       {
         "src": "/images/products/glamping-capsules/floor-plans.jpg",
-        "width": 1140,
-        "height": 759,
-        "alt": "Glamping capsule floor plans for 8.5m and 11.5m models with dimensions and areas",
+        "width": 1600,
+        "height": 1069,
+        "alt": "Two-dimensional floor plans of the glamping capsule in two sizes, the 8.5 m model (27.2 m2) and the 11.5 m model (36.8 m2), showing bedroom, bathroom, kitchenette and deck layouts with overall dimensions.",
         "kind": "diagram",
         "hero": false
       },
       {
         "src": "/images/products/glamping-capsules/floor-plan-3d.jpeg",
-        "width": 730,
-        "height": 730,
-        "alt": "3D top-view floor plan of a glamping capsule with bedroom, bathroom, kitchenette and curved deck",
+        "width": 1600,
+        "height": 1600,
+        "alt": "3D cutaway floor plan of a glamping capsule showing the bathroom, kitchenette, double bed, lounge chair and curved end deck.",
         "kind": "diagram",
         "hero": false
       }
@@ -391,17 +391,17 @@
     "outdoor-kitchens": [
       {
         "src": "/images/products/outdoor-kitchens/kitchen-open-garden.jpg",
-        "width": 1689,
-        "height": 1650,
-        "alt": "Assembled outdoor kitchen unit with the motorised roof folded out and an LED-lit canopy over a fitted cooking and bar station",
+        "width": 2048,
+        "height": 2048,
+        "alt": "Open-front outdoor kitchen unit with its perforated LED canopy raised, built-in stainless steel braai and grey cabinetry, standing on a paved patio at dusk with festoon lights and a set dining table nearby",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-kamado-detail.jpg",
-        "width": 855,
-        "height": 865,
-        "alt": "Close-up of the outdoor kitchen bar station with kamado grill, integrated sink and glass-door drinks fridge under the lift-up roof",
+        "width": 1024,
+        "height": 1036,
+        "alt": "Stainless-steel outdoor kitchen with built-in green kamado grill, sink and glass-door drinks fridge on a paved patio at dusk under festoon lights",
         "kind": "detail",
         "hero": false
       }
@@ -409,49 +409,49 @@
     "safari-tents": [
       {
         "src": "/images/products/safari-tents/hero-single-suite-sunset.jpg",
-        "width": 2000,
-        "height": 1414,
-        "alt": "Luxury canvas-roofed tented suite at sunset with a private timber deck and glass folding doors opening onto the bedroom",
+        "width": 2400,
+        "height": 1792,
+        "alt": "Canvas-roofed tented suite with glass folding doors open to the bedroom, on a raised timber deck with a sundowner table and fire pit, set in golden bushveld grass with acacia trees at sunset.",
         "kind": "exterior",
         "hero": true
       },
       {
         "src": "/images/products/safari-tents/dusk-firepit-dining-deck.jpg",
-        "width": 2000,
-        "height": 1333,
-        "alt": "Twilight view of a canvas safari-tent suite with a lit outdoor dining table and fireside seating on the surrounding deck",
+        "width": 1600,
+        "height": 1069,
+        "alt": "Canvas safari tent suite with a scalloped olive roof on a raised timber deck at sunset, with a lantern-lit dining table and glowing fire pit bowl on the deck surrounded by golden bushveld grass and acacia trees.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/safari-tents/desert-mountain-camp-aerial.jpg",
-        "width": 2000,
-        "height": 869,
-        "alt": "Aerial view of a luxury tented camp built into rocky, mountainous terrain with a private plunge pool on the deck",
+        "width": 1200,
+        "height": 896,
+        "alt": "Aerial view at sunset of a single canvas safari tent suite with a plunge pool and loungers on its raised wooden deck, set among golden bushveld grass and acacia trees.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/safari-tents/hillside-suite-plunge-pool-sunset.jpg",
-        "width": 2000,
-        "height": 1140,
-        "alt": "Elevated tented suite at sunset with its own timber deck and plunge pool overlooking the valley below",
+        "width": 1375,
+        "height": 784,
+        "alt": "Elevated canvas safari suite with a glass facade, wraparound timber deck, pergola loungers and square plunge pool overlooking a golden acacia-dotted bushveld valley at sunset.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/safari-tents/twilight-tented-suite-reflection.jpg",
-        "width": 2000,
-        "height": 1250,
-        "alt": "Twin-peaked canvas tented suite lit at twilight, reflected in the still water in front of its deck",
+        "width": 1306,
+        "height": 816,
+        "alt": "Twin-peaked canvas safari tented suite on a timber deck glowing with lantern light at dusk, reflected in a still bushveld waterhole framed by golden grass and acacia trees.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/safari-tents/deck-lounge-firepit-twilight.jpg",
-        "width": 2000,
-        "height": 1330,
-        "alt": "Twilight deck lounge with curved bench seating around a fire pit outside a canvas-roofed tented suite",
+        "width": 1251,
+        "height": 832,
+        "alt": "Curved bench with striped cushions around a flickering fire pit on the timber deck of a canvas-roofed safari tented suite, with lanterns glowing and golden bushveld fading to sunset behind.",
         "kind": "exterior",
         "hero": false
       }
@@ -460,49 +460,49 @@
   "gallery": [
     {
       "src": "/images/gallery/tiny-homes-gallery-1.jpg",
-      "width": 800,
-      "height": 600,
-      "alt": "White flat-pack tiny home unit with barred window and steel door inside the factory warehouse",
+      "width": 1195,
+      "height": 896,
+      "alt": "White flat-pack folding tiny home with its steel door open and interior light glowing, set on a garden lawn against golden bushveld grass and sunlit mountains at dusk",
       "kind": "exterior",
       "hero": false
     },
     {
       "src": "/images/gallery/our-process.jpg",
-      "width": 1366,
-      "height": 610,
-      "alt": "Tiny Homes SA five-step process infographic: discuss, design, quote, build and delivery",
+      "width": 1600,
+      "height": 715,
+      "alt": "Five-step process infographic — discuss, design, quote, build and delivery — arranged around a 3D render of a timber-clad tiny home with a glazed gable end and wooden deck.",
       "kind": "diagram",
       "hero": false
     },
     {
       "src": "/images/gallery/icon-nature-cabin.png",
-      "width": 536,
-      "height": 363,
-      "alt": "Line icon of a nature cabin with gable roof and balcony",
+      "width": 1600,
+      "height": 1085,
+      "alt": "Teal line-drawing icon of a nature cabin with a double-height glazed gable, long sloping roofline, side window and railed front deck.",
       "kind": "icon",
       "hero": false
     },
     {
       "src": "/images/gallery/icon-capsule-pod.png",
-      "width": 536,
-      "height": 364,
-      "alt": "Line icon of a capsule pod home on legs with side deck",
+      "width": 1600,
+      "height": 1087,
+      "alt": "Teal line-drawing icon of a capsule pod tiny home with panoramic windows, a central entrance module, and an attached raised deck with railing, standing on pedestal supports.",
       "kind": "icon",
       "hero": false
     },
     {
       "src": "/images/gallery/icon-container-cabin.png",
-      "width": 536,
-      "height": 364,
-      "alt": "Line icon of a container cabin with slanted glazed panels",
+      "width": 1600,
+      "height": 1087,
+      "alt": "Teal line-art icon of an expandable container cabin with a fold-out side room and an angled five-panel glass wall.",
       "kind": "icon",
       "hero": false
     },
     {
       "src": "/images/gallery/icon-folding-home.png",
-      "width": 536,
-      "height": 364,
-      "alt": "Line icon of a folding home shown mid-fold",
+      "width": 1600,
+      "height": 1087,
+      "alt": "Teal line-art icon of a folding tiny home shown mid-unfold, its roof and wall panels opening outward above a flat base platform with interior floor detail.",
       "kind": "icon",
       "hero": false
     }

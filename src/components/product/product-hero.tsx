@@ -119,7 +119,10 @@ export function ProductHero({
 
           {/* LCP image: rendered statically (no Reveal) so the preloaded
               hero can paint before hydration. Entrance animation stays on
-              the text column only. */}
+              the text column only. The image itself gets the same CSS-only
+              ken-burns settle as the landing hero (globals.css) — a gentle
+              scale-only zoom that starts after paint, so LCP timing is
+              unaffected, and is fully removed for prefers-reduced-motion. */}
           {image && (
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[var(--shadow-lifted)]">
               <Image
@@ -128,7 +131,7 @@ export function ProductHero({
                 fill
                 priority
                 sizes="(min-width: 1024px) 48vw, 92vw"
-                className="object-cover"
+                className="animate-hero-kenburns object-cover"
               />
             </div>
           )}

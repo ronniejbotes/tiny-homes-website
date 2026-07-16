@@ -88,6 +88,8 @@ export function Product3D({ slug, productName }: { slug: string; productName: st
             <img
               src={entry.poster}
               alt={entry.alt}
+              loading="lazy"
+              decoding="async"
               className="block h-[min(70vh,560px)] w-full object-contain"
             />
           )}
