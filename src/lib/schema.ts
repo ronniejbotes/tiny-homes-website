@@ -19,9 +19,11 @@ const ORG_ID = `${site.url}/#organization`;
 /** Organization + LocalBusiness node for the whole site. */
 export function organizationSchema(): SchemaObject {
   // Range across every variant, not just base prices — the 11.5 m capsule tops
-  // out at R1.3M. Price-on-request products carry a 0 sentinel and are excluded.
+  // out at R950 000. Price-on-request products carry a 0 sentinel and are excluded.
+  // Garages are a DIY steel-kit line, not a home — excluded so the advertised
+  // homes price range matches the site-wide "homes from R55 000" copy.
   const prices = products
-    .filter((p) => !p.priceOnRequest)
+    .filter((p) => !p.priceOnRequest && p.slug !== "garages")
     .flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice]));
   return {
     "@context": "https://schema.org",

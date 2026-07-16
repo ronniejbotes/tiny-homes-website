@@ -171,6 +171,7 @@ const foldingExtras: CustomOption[] = [
   extra({ id: "glass-entrance-wood-trim", label: "Glass entrance with wood-trim finish", description: "Full glass entrance with a warm wood-trim finish for a more architectural front — priced on your quotation.", price: 0, category: "structure", visual: "glazing" }),
   extra({ id: "double-glazed-windows", label: "Double-glazed aluminium windows (pair)", description: "Replaces the two standard PVC windows with double-glazed aluminium units for better insulation and quiet.", price: 13000, category: "structure", visual: "glazing" }),
   extra({ id: "sliding-door", label: "Aluminium sliding door", description: "Full-height aluminium sliding door in place of a window panel — opens the room to a deck or garden.", price: 12000, category: "structure", visual: "glazing" }),
+  extra({ id: "electric-sliding-door", label: "Electric sliding door upgrade", description: "Upgrades the aluminium sliding door to a motorised electric track — glide it open at the touch of a button, priced on your quotation.", price: 0, category: "structure", visual: "glazing", requires: "sliding-door" }),
   extra({ id: "stacking-kit", label: "Two-high stacking kit", description: "Reinforced corner castings and link plates to stack a second unit on top or link units side by side.", price: 6000, category: "structure", visual: "stack" }),
   extra({ id: "timber-deck", label: "Timber deck (5 m²)", description: "Treated-pine deck along the entrance side — an outdoor room for the price of a weekend away.", price: 7500, category: "structure", visual: "deck" }),
   extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed. A big-ticket add-on that takes the whole unit off-grid.", price: 74500, category: "energy", visual: "solar" }),
@@ -184,6 +185,9 @@ const foldingExtras: CustomOption[] = [
 
 const expandableExtras: CustomOption[] = [
   extra({ id: "pu-wall-panels", label: "Polyurethane wall panel upgrade", description: "Upgrades the 75 mm EPS walls to polyurethane panels for enhanced thermal insulation and improved fire-retardant performance — priced on your quotation.", price: 0, category: "structure", visual: "walls" }),
+  extra({ id: "balcony", label: "Balcony platform", description: "Bolt-on balcony platform along the entrance side — priced on your quotation.", price: 0, category: "structure", visual: "deck" }),
+  extra({ id: "pitched-roof", label: "Pitched roof", description: "Adds a pitched roof over the flat-roof unit — priced on your quotation.", price: 0, category: "structure", visual: "none" }),
+  extra({ id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall — priced on your quotation.", price: 0, category: "structure", visual: "glazing" }),
   extra({ id: "timber-deck", label: "Timber deck (10 m²)", description: "Treated-pine deck along the entrance side — outdoor living to match the indoor space.", price: 15000, category: "structure", visual: "deck" }),
   extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed — load-shedding-proof from day one.", price: 74500, category: "energy", visual: "solar" }),
   extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "SAQCC-compliant gas geyser installed for instant hot water.", price: 11500, category: "energy", visual: "none" }),
@@ -218,6 +222,8 @@ const domeOptions: CustomOption[] = [
 
 const appleExtras: CustomOption[] = [
   extra({ id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating mats with thermostat, sized to your cabin.", price: 31500, category: "comfort", visual: "heating" }),
+  extra({ id: "central-ac", label: "Central air-conditioning", description: "Integrated central air-conditioning to heat and cool the whole cabin — priced on your quotation.", price: 0, category: "comfort", visual: "aircon" }),
+  extra({ id: "smart-toilet", label: "Smart toilet", description: "Upgrades the included bathroom to a smart toilet with heated seat, bidet wash and auto flush — priced on your quotation.", price: 0, category: "comfort", visual: "none" }),
   extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "Bolt-on balcony platform with aluminium balustrade along the glass wall.", price: 13000, category: "structure", visual: "deck" }),
   extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery — solar and battery systems are sized and quoted for your site.", price: 74500, category: "energy", visual: "solar" }),
   extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the panoramic glass — open the view from bed.", price: 8000, category: "comfort", visual: "curtains" }),
@@ -226,6 +232,7 @@ const appleExtras: CustomOption[] = [
 
 const glampingExtras: CustomOption[] = [
   extra({ id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating mats with thermostat, sized to your capsule.", price: 31500, category: "comfort", visual: "heating" }),
+  extra({ id: "smart-toilet", label: "Smart toilet", description: "Upgrades the central bathroom to a smart toilet with heated seat, bidet wash and auto flush — priced on your quotation.", price: 0, category: "comfort", visual: "none" }),
   extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "The optional capsule balcony: bolt-on platform with glass-line balustrade, removable to extend the indoor space.", price: 13000, category: "structure", visual: "deck" }),
   extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the 270° glazing.", price: 8000, category: "comfort", visual: "curtains" }),
   extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery — integrated solar is sized and quoted for your site.", price: 74500, category: "energy", visual: "solar" }),
@@ -239,10 +246,10 @@ export const products: Product[] = [
     shortName: "Folding Home",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold folding home flips from flat-pack to a fully enclosed, insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, from R54 950 ex VAT, with a factory-fitted bathroom-and-kitchen option.",
+      "The X-Fold folding home flips from flat-pack to a fully enclosed, insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, from R55 000 ex VAT, with a factory-fitted bathroom-and-kitchen option.",
     description:
       "Folding homes are the cost-smart start to tiny living: act today, be ready tomorrow. Each X-Fold unit arrives flat on a truck and unfolds into a weather-tight, insulated home with a galvanised steel frame, fire-resistant rock-wool panels, PVC windows, a steel door and pre-installed electrics — two workers complete the four-step setup in minutes. Want it move-in ready? The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the 18 m² Flat Pack with Roof (R85 900 ex VAT) adds a pitched roof with bathroom and kitchen included. A Flat Pack without roof (5.9 × 2.9 × 2.8 m, 18 m²) is also available for tight-access sites — price on request. Waterproof, fire-resistant and stackable two units high, folding homes suit garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all backed by our 10-year guarantee.",
-    startingPrice: 54950,
+    startingPrice: 55000,
     sizeLabel: "15 – 18 m²",
     setupTime: "Unfolds in minutes",
     dims: { length: 5.8, width: 2.48, height: 2.56 },
@@ -269,7 +276,8 @@ export const products: Product[] = [
     ],
     useCases: ["Garden room", "Home office", "Guest suite", "Rental unit", "Site office", "Worker housing", "Emergency housing"],
     variants: [
-      { id: "x-fold", name: "X-Fold", size: "15 m²", price: 54950, description: "Weather-tight folding unit with pre-installed electrics — bathroom and kitchen optional." },
+      { id: "x-fold", name: "X-Fold", size: "15 m²", price: 55000, description: "Weather-tight folding unit with pre-installed electrics — bathroom and kitchen optional." },
+      { id: "x-fold-upgraded", name: "X-Fold Upgraded", size: "15 m²", price: 60000, description: "The structurally upgraded X-Fold. Add a Metal Carved Panel exterior finish (R65 000), SPC stone-composite flooring (R62 500), or both upgrades (R67 500 ex VAT)." },
       { id: "x-fold-bk", name: "X-Fold + bathroom & kitchen", size: "15 m²", price: 68900, description: "The same unit factory-fitted with an enclosed bathroom (shower, toilet and basin, 1.15 × 1.4 m) and a compact 1.0 × 0.5 m kitchen unit." },
       { id: "flat-pack-roof", name: "Flat Pack with Roof", size: "18 m²", price: 85900, description: "5.99 × 2.99 × 2.8 m pitched-roof version, assembled on site (not foldable) — bathroom and kitchen included, open-plan as standard." },
     ],
@@ -316,16 +324,16 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     tagline: "Smart living — fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 72 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R330 000 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R200 000 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single 6 m or 12 m module, each home expands on site within hours, revealing insulated rooms with double-glazed aluminium windows and factory-installed plumbing and electrics. Fully fitted homes start with the 6m Expandable Home at R330 000 ex VAT — two bedrooms, bathroom and stainless-steel kitchen included — and go up to the 72 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. Watching the budget? The Slim 6m studio shell (no bathroom or kitchen) starts at R200 000 ex VAT. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request. Pick your exterior from 107 colours and finishes, place windows and doors where you want them, and let our turnkey team handle the groundwork and connections.",
-    startingPrice: 330000,
-    sizeLabel: "27.5 – 72 m²",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single 6 m or 12 m module, each home expands on site within hours, revealing insulated rooms with double-glazed aluminium windows and factory-installed plumbing and electrics. Fully fitted homes start with the 6m Expandable Home at R330 000 ex VAT — two bedrooms, bathroom and stainless-steel kitchen included — and go up to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. A compact 6×3 m home with bathroom and kitchen included opens the range at R200 000 ex VAT, while the Slim 6m studio shell (no bathroom or kitchen) is R275 000 ex VAT. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request. Pick your exterior from 107 colours and finishes, place windows and doors where you want them, and let our turnkey team handle the groundwork and connections.",
+    startingPrice: 200000,
+    sizeLabel: "18 – 74 m²",
     bedrooms: "Studio to 4 bedrooms",
     setupTime: "Expands within hours",
     dims: { length: 11.9, width: 6.3, height: 2.48 },
     specs: [
-      { label: "Sizes", value: "27.5 m² to 72 m²" },
+      { label: "Sizes", value: "18 m² to 74 m²" },
       { label: "Deployment", value: "Arrives as one module, expands on site — move-in ready within hours on a prepared site" },
       { label: "Transport size", value: "6m: 5.8 × 3.3 × 2.5 m; 12m: 12 × 2.2 × 2.5 m — compact for delivery, spacious when opened" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
@@ -346,9 +354,11 @@ export const products: Product[] = [
     ],
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
-      { id: "b20", name: "6m Expandable Home", size: "37 m²", price: 330000, description: "6.3 × 5.9 × 2.48 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
-      { id: "b40", name: "12m Expandable Home", size: "72 m²", price: 600000, description: "11.9 × 6.3 × 2.48 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
-      { id: "b20-slim", name: "Slim 6m", size: "27.5 m²", price: 200000, description: "5.9 × 4.8 × 2.48 m expanded. Budget studio shell with four double-glazed aluminium windows, aluminium door, two sockets and 50 mm insulated walls — no bathroom or kitchen." },
+      { id: "b10-bk", name: "6m Compact — bathroom & kitchen", size: "18 m²", price: 200000, description: "6.3 × 2.95 × 2.5 m expanded — a compact fully fitted home with bathroom and kitchen included, four windows and all electrics. With the Metal Carved Panel exterior and SPC flooring upgrade, R270 000 ex VAT." },
+      { id: "b20-slim", name: "Slim 6m", size: "28 m²", price: 275000, description: "5.9 × 4.8 × 2.5 m expanded. Budget studio shell with four double-glazed aluminium windows, aluminium door, two sockets and 50 mm insulated walls — no bathroom or kitchen. With the Metal Carved Panel exterior and SPC flooring upgrade, R330 000 ex VAT." },
+      { id: "b20-open", name: "6m Open Plan", size: "37 m²", price: 300000, description: "5.9 × 6.3 × 2.5 m expanded — open-plan single-space layout with fully fitted bathroom and kitchen. With the Metal Carved Panel exterior and SPC flooring upgrade, R330 000 ex VAT." },
+      { id: "b20", name: "6m Expandable Home", size: "37 m²", price: 330000, description: "5.9 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics. With the Metal Carved Panel exterior and SPC flooring upgrade, R360 000 ex VAT." },
+      { id: "b40", name: "12m Expandable Home", size: "74 m²", price: 600000, description: "11.8 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included. With the Metal Carved Panel exterior and SPC flooring upgrade, R640 000 ex VAT." },
     ],
     options: [
       ...standardOptions(1, {
@@ -370,7 +380,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "How big can an expandable home get?",
-        a: "From the 27.5 m² Slim 6m studio to the 72 m² 12m Expandable Home with layouts of up to four bedrooms. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request.",
+        a: "From the 18 m² 6×3 compact home to the 74 m² 12m Expandable Home with layouts of up to four bedrooms. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request.",
       },
       {
         q: "How long does installation take?",
@@ -542,17 +552,17 @@ export const products: Product[] = [
     summary:
       "Big living in a small package — a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R450 000 ex VAT.",
     description:
-      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes — luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in both sizes, with a kitchen included in the 11.5 m cabin, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready. Choose the 27.2 m² Apple Cabin 8.5m from R450 000 ex VAT or the 36.8 m² Apple Cabin 11.5m at R550 000, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed — ready for occupation within hours.",
+      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes — luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchen included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R450 000 ex VAT, the 20 m² Apple Cabin 9m at R550 000 or the 26.5 m² Apple Cabin 11.8m at R650 000, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed — ready for occupation within hours.",
     startingPrice: 450000,
-    sizeLabel: "27.2 – 36.8 m²",
+    sizeLabel: "13 – 26.5 m²",
     setupTime: "Ready within hours",
-    dims: { length: 11.5, width: 3.2, height: 3.2 },
+    dims: { length: 11.8, width: 2.25, height: 2.63 },
     specs: [
-      { label: "Sizes", value: "27.2 m² (8.5 m) or 36.8 m² (11.5 m) — various sizes and designs available" },
-      { label: "External size", value: "Up to 11.5 m × 3.2 m × 3.2 m" },
+      { label: "Sizes", value: "13 m² (5.8 m), 20 m² (9 m) or 26.5 m² (11.8 m) — various sizes and designs available" },
+      { label: "External size", value: "Up to 11.8 m × 2.25 m × 2.63 m" },
       { label: "Glazing", value: "Floor-to-ceiling panoramic glass with double-glazed windows" },
-      { label: "Bathroom", value: "Luxurious bathroom fittings included in both sizes" },
-      { label: "Kitchen", value: "Included in the 11.5 m cabin" },
+      { label: "Bathroom", value: "Luxurious bathroom fittings included in all three sizes" },
+      { label: "Kitchen", value: "Included in the 9 m and 11.8 m cabins" },
       { label: "Interior", value: "Premium finishes with curtain tracks included" },
       { label: "Services", value: "Integrated lighting and plumbing — plug in and you're ready" },
       { label: "Build", value: "Insulated, low-maintenance construction with smart-lock entry" },
@@ -560,16 +570,17 @@ export const products: Product[] = [
     ],
     features: [
       "Floor-to-ceiling panoramic glass",
-      "Luxurious bathroom fittings in both sizes",
-      "Kitchen included in the 11.5 m cabin",
+      "Luxurious bathroom fittings in all three sizes",
+      "Kitchen included in the 9 m and 11.8 m cabins",
       "Double-glazed windows and an insulated, low-maintenance build",
       "Smart-lock entry and premium interior finishes",
       "Arrives fully assembled — ready for occupation within hours",
     ],
     useCases: ["Eco-resort unit", "Airbnb getaway", "Backyard guest suite", "Scenic escape", "Stylish rental", "Vineyard suite"],
     variants: [
-      { id: "apple-8-5", name: "Apple Cabin 8.5m", size: "27.2 m²", price: 450000, description: "8.5 × 3.2 × 3.2 m with luxurious bathroom fittings included." },
-      { id: "apple-11-5", name: "Apple Cabin 11.5m", size: "36.8 m²", price: 550000, description: "11.5 × 3.2 × 3.2 m with luxurious bathroom fittings and a kitchen included." },
+      { id: "apple-5-8", name: "Apple Cabin 5.8m", size: "13 m²", price: 450000, description: "5.8 × 2.25 × 2.63 m — luxurious bathroom fittings included." },
+      { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 550000, description: "9 × 2.25 × 2.63 m — luxurious bathroom fittings and a kitchen included." },
+      { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 650000, description: "11.8 × 2.25 × 2.63 m — the largest Apple cabin, with bathroom and kitchen included." },
     ],
     options: [
       ...standardOptions(1.5, {
@@ -581,9 +592,9 @@ export const products: Product[] = [
         },
         "kitchen-unit": {
           label: "Kitchen unit / upgrade",
-          description: "Adds a fitted kitchen to the 8.5 m cabin — on the 11.5 m it upgrades the included kitchen's counters and cabinetry.",
+          description: "Adds a fitted kitchen to the 5.8 m cabin — on the 9 m and 11.8 m cabins it upgrades the included kitchen's counters and cabinetry.",
           photo: "/images/products/apple-cabins/interior-kitchenette-render.jpg",
-          footprintVariantIds: ["apple-8-5"], // only the 8.5 m cabin gains a new module footprint
+          footprintVariantIds: ["apple-5-8"], // only the 5.8 m cabin gains a new module footprint
         },
       }),
       ...appleExtras,
@@ -591,7 +602,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "What is included in an Apple Cabin?",
-        a: "Luxurious bathroom fittings in both sizes, a kitchen in the 11.5 m cabin, double-glazed windows, premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready.",
+        a: "Luxurious bathroom fittings in all three sizes, a kitchen in the 9 m and 11.8 m cabins, double-glazed windows, premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready.",
       },
       {
         q: "How are Apple Cabins delivered and installed?",
@@ -620,20 +631,20 @@ export const products: Product[] = [
     shortName: "Glamping Capsule",
     tagline: "Luxury in the heart of nature — the art of glamping, perfected.",
     summary:
-      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R1 100 000 ex VAT.",
+      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R690 000 ex VAT.",
     description:
       "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom (the 11.5 m capsule adds a luxurious kitchen), each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system and intelligent front-door access all come standard, with an optional balcony that can be removed to extend the indoor space. High-tech options run from floor heating and triple-glazed skylights to smart voice control, with various designs and sizes to choose from. Each capsule is transported in sections and professionally assembled at your site — ready for immediate occupancy.",
-    startingPrice: 1100000,
-    sizeLabel: "27.2 – 36.8 m²",
+    startingPrice: 690000,
+    sizeLabel: "18.6 – 38 m²",
     bedrooms: "2 rooms + central bathroom",
     setupTime: "Professional on-site assembly",
     dims: { length: 11.5, width: 3.2, height: 3.2 },
     specs: [
-      { label: "Sizes", value: "27.2 m² (8.5 m) or 36.8 m² (11.5 m)" },
+      { label: "Sizes", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 38 m² (11.5 m)" },
       { label: "External size", value: "Up to 11.5 m × 3.2 m × 3.2 m" },
       { label: "Glazing", value: "270° oversized floor-to-ceiling double-glazed windows in each room" },
       { label: "Layout", value: "Two rooms separated by a central bathroom — kitchen included in the 11.5 m" },
-      { label: "Sleeps", value: "2 (8.5 m) or 2–4 (11.5 m)" },
+      { label: "Sleeps", value: "2 (5.85 m and 9.5 m) or 2–4 (11.5 m)" },
       { label: "Standard", value: "Multi-layer insulation, HVAC & geyser, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
       { label: "High-tech options", value: "Smart access, floor heating, A/C, triple-glazed skylight and windows, smart voice control" },
       { label: "Assembly", value: "Transported in sections, professionally assembled on site — ready for immediate occupancy" },
@@ -648,8 +659,9 @@ export const products: Product[] = [
     ],
     useCases: ["Luxury lodge suite", "Vineyard accommodation", "Beach retreat", "Bush getaway", "Premium Airbnb", "Honeymoon suite"],
     variants: [
-      { id: "capsule-8-5", name: "Glamping Capsule 8.5m", size: "27.2 m²", price: 1100000, description: "8.5 × 3.2 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
-      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "36.8 m²", price: 1300000, description: "11.5 × 3.2 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
+      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 690000, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, the entry to the capsule range." },
+      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 850000, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
+      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 950000, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
     ],
     options: [
       ...standardOptions(1.8, {
@@ -660,8 +672,8 @@ export const products: Product[] = [
         },
         "kitchen-unit": {
           label: "Kitchen unit / upgrade",
-          description: "Adds a fitted kitchen to the 8.5 m capsule — on the 11.5 m it upgrades the included luxurious kitchen.",
-          footprintVariantIds: ["capsule-8-5"], // only the 8.5 m capsule gains a new module footprint
+          description: "Adds a fitted kitchen to the 5.85 m and 9.5 m capsules — on the 11.5 m it upgrades the included luxurious kitchen.",
+          footprintVariantIds: ["capsule-8-5", "capsule-5-85"], // the 5.85 m and 9.5 m capsules gain a new kitchen-module footprint
         },
       }),
       ...glampingExtras,
@@ -698,10 +710,10 @@ export const products: Product[] = [
     shortName: "Outdoor Kitchen",
     tagline: "Braai, cook, host — then close the roof on the weather.",
     summary:
-      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink — four lengths from 2.5 m to 3.9 m, delivered ready to use from R159 500 ex VAT.",
+      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink — four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
     description:
-      "South Africans entertain outside — the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths — 2.5, 2.9, 3.5 or 3.9 m — and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours with add-ons like a gas braai grill, induction cooktop, bar fridge, range hood, outdoor audio or an illuminated 'starry sky' roof, each quoted on your quotation. From R159 500 ex VAT, delivered ready to use.",
-    startingPrice: 159500,
+      "South Africans entertain outside — the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths — 2.5, 2.9, 3.5 or 3.9 m — and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours with add-ons like a gas braai grill, induction cooktop, bar fridge, range hood, outdoor audio or an illuminated 'starry sky' roof, each quoted on your quotation. From R154 400 ex VAT, delivered ready to use.",
+    startingPrice: 154400,
     sizeLabel: "2.5 – 3.9 m",
     setupTime: "Delivered ready to use",
     dims: { length: 2.5, width: 0.8, height: 2.4 },
@@ -729,6 +741,14 @@ export const products: Product[] = [
       "Add-ons from gas braai grills to bar fridges and kamado grills — quoted on your quotation",
     ],
     useCases: ["Patio & braai area", "Entertainment area", "Lodge or guest farm", "Pool deck", "Developer amenity", "Garden bar"],
+    variants: [
+      { id: "ok-2-5", name: "2.5 m Outdoor Kitchen", size: "2.5 m", price: 154400, description: "2.5 × 0.8 × 2.4 m, approx 500 kg — the compact entertainer." },
+      { id: "ok-2-9", name: "2.9 m Outdoor Kitchen", size: "2.9 m", price: 164500, description: "2.9 × 0.8 × 2.4 m, approx 600 kg." },
+      { id: "ok-3-5", name: "3.5 m Outdoor Kitchen", size: "3.5 m", price: 183700, description: "3.5 × 0.8 × 2.4 m, approx 700 kg." },
+      { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 196800, description: "3.9 × 0.8 × 2.4 m — the largest, for serious entertaining." },
+    ],
+    // No configurator: outdoor kitchens have no scene or floor plan, so options
+    // must stay empty (a single option would fall back to the wrong cutaway).
     options: [],
     faqs: [
       {
@@ -822,6 +842,49 @@ export const products: Product[] = [
       "lodge tents South Africa",
       "Bushtec safari tents",
     ],
+  },
+  {
+    slug: "garages",
+    name: "DIY Garages",
+    shortName: "Garage",
+    tagline: "Flat-pack steel garages you bolt together yourself.",
+    summary:
+      "Galvanised-steel DIY garage kits in three sizes — single, double and triple — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R50 000 ex VAT.",
+    description:
+      "DIY garage kits are the fast, affordable way to add secure, weatherproof storage — a garage, workshop or store-room you build yourself. Each kit is delivered flat-packed with a galvanised-steel frame, wall and roof sheeting, fixings and instructions, sized to bolt together on a level slab over a weekend. Choose from three sizes: the 6.1 × 4 m single garage (24.4 m²) from R50 000 ex VAT, the 6.1 × 6.1 m double (37.2 m²) at R85 000, or the 6.1 × 9.15 m triple/workshop (55.8 m²) at R105 000 — all 3.6 m to the wall. Delivered nationwide, with slab and assembly available from our turnkey team.",
+    startingPrice: 50000,
+    sizeLabel: "24.4 – 55.8 m²",
+    setupTime: "Self-assembly kit",
+    dims: { length: 9.15, width: 6.1, height: 3.6 },
+    specs: [
+      { label: "Sizes", value: "6.1 × 4 m (24.4 m²), 6.1 × 6.1 m (37.2 m²) or 6.1 × 9.15 m (55.8 m²)" },
+      { label: "Wall height", value: "3.6 m" },
+      { label: "Weight", value: "From approx 590 kg (6.1 × 4 m kit)" },
+      { label: "Structure", value: "Galvanised steel frame with steel wall and roof sheeting" },
+      { label: "Delivery", value: "Flat-packed for self-assembly on a level slab" },
+      { label: "Foundation", value: "Level concrete slab — by you or our turnkey team" },
+    ],
+    features: [
+      "Flat-packed DIY kit — assemble it yourself over a weekend",
+      "Galvanised steel frame and sheeting — weatherproof and low-maintenance",
+      "Three sizes: single, double and triple/workshop",
+      "3.6 m wall height for vehicles, storage or a workshop",
+      "Delivered nationwide",
+      "Turnkey slab and assembly available on request",
+    ],
+    useCases: ["Garage", "Workshop", "Storeroom", "Farm store", "Carport enclosure", "Site store"],
+    variants: [
+      { id: "garage-6x4", name: "Single Garage Kit (6.1 × 4 m)", size: "24.4 m²", price: 50000, description: "6.1 × 4 × 3.6 m single garage kit, approx 590 kg — flat-packed for self-assembly." },
+      { id: "garage-6x6", name: "Double Garage Kit (6.1 × 6.1 m)", size: "37.2 m²", price: 85000, description: "6.1 × 6.1 × 3.6 m double garage kit — flat-packed for self-assembly." },
+      { id: "garage-6x9", name: "Triple / Workshop Kit (6.1 × 9.15 m)", size: "55.8 m²", price: 105000, description: "6.1 × 9.15 × 3.6 m triple garage or workshop kit — flat-packed for self-assembly." },
+    ],
+    options: [],
+    faqs: [
+      { q: "Do I assemble the garage myself?", a: "Yes — the kit is delivered flat-packed with the frame, sheeting, fixings and instructions to bolt together on a level slab. Our turnkey team can prepare the slab and assemble it for you if you prefer." },
+      { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit. We can quote the groundwork separately." },
+      { q: "What sizes are available?", a: "Three: 6.1 × 4 m (24.4 m²), 6.1 × 6.1 m (37.2 m²) and 6.1 × 9.15 m (55.8 m²), all 3.6 m to the wall." },
+    ],
+    seoKeywords: ["DIY garage kit South Africa", "steel garage kit price", "flat pack garage", "prefab garage South Africa", "double garage kit"],
   },
 ];
 

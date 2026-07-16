@@ -39,8 +39,8 @@ export interface PlanZone {
   standard?: boolean;
   /**
    * Variants on which the room ships as standard (e.g. the kitchen included
-   * in the 11.5 m cabin but not the 8.5 m). getPlan() resolves `standard`
-   * from the selected variant; without a variant the base flag applies.
+   * in the 9 m and 11.8 m Apple cabins but not the 5.8 m). getPlan() resolves
+   * `standard` from the selected variant; without a variant the base flag applies.
    */
   standardVariantIds?: string[];
 }
@@ -279,13 +279,19 @@ const DOME_PLAN: ProductPlan = {
   // No deck: the dome ships without an outdoor terrace in the documented spec.
 };
 
-/** Apple cabin — 11.5 × 3.2 m external (36.8 m² = 11.5 × 3.2); two rooms + central bathroom zone. */
+/**
+ * Apple cabin — representative shell (geometry exact for the largest size).
+ * The catalogue variants run 5.8/9/11.8 m at 2.25 m wide; the drawn footprint
+ * stays a single representative rectangle and getPlan() rebases floorAreaM2 to
+ * the selected variant's size. Bathroom is central; kitchen ships on the 9 m
+ * and 11.8 m cabins.
+ */
 const APPLE_PLAN: ProductPlan = {
   exterior: { w: 11.5, d: 3.2 },
   interior: { w: 11.3, d: 3.0 },
   wall: WALL_M,
   shape: "rect",
-  floorAreaM2: 36.8,
+  floorAreaM2: 26.5,
   door: { side: "bottom", offset: 3.6, width: 0.9, hinge: "start" },
   windows: [
     { side: "bottom", offset: 0.6, length: 2.4 },
@@ -293,9 +299,9 @@ const APPLE_PLAN: ProductPlan = {
     { side: "top", offset: 9.5, length: 1.2 },
   ],
   zones: [
-    wetRoomZone(r(4.95, 0, 6.35, 2.0), true), // bathroom included in both sizes (1.4 × 2.0 = 2.8)
-    // Kitchen ships with the 11.5 m cabin; the 8.5 m adds it via the kitchen-unit option.
-    { ...kitchenZone(r(0.8, 0, 3.1, 0.65), true), standardVariantIds: ["apple-11-5"] },
+    wetRoomZone(r(4.95, 0, 6.35, 2.0), true), // bathroom included in all three sizes (1.4 × 2.0 = 2.8)
+    // Kitchen ships with the 9 m and 11.8 m cabins; the 5.8 m adds it via the kitchen-unit option.
+    { ...kitchenZone(r(0.8, 0, 3.1, 0.65), true), standardVariantIds: ["apple-9", "apple-11-8"] },
     cupboardZone(r(0.8, 0, 3.1, 0.35)),
     airconZone(r(8.55, 0.05, 8.8, 0.3)),
   ],
@@ -324,7 +330,7 @@ const CAPSULE_PLAN: ProductPlan = {
   interior: { w: 11.3, d: 3.0 },
   wall: WALL_M,
   shape: "rect",
-  floorAreaM2: 36.8,
+  floorAreaM2: 38,
   door: { side: "bottom", offset: 5.2, width: 0.9, hinge: "start" },
   windows: [
     { side: "bottom", offset: 0.8, length: 3.4 },
@@ -332,8 +338,8 @@ const CAPSULE_PLAN: ProductPlan = {
     { side: "right", offset: 0.8, length: 1.4 },
   ],
   zones: [
-    wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included in both sizes
-    // Kitchen ships with the 11.5 m capsule; the 8.5 m adds it via the kitchen-unit option.
+    wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included in every size
+    // Kitchen ships with the 11.5 m capsule; the 5.85 m and 9.5 m add it via the kitchen-unit option.
     { ...kitchenZone(r(1.0, 0, 3.3, 0.65), true), standardVariantIds: ["capsule-11-5"] },
     cupboardZone(r(1.0, 0, 3.3, 0.35)),
     airconZone(r(8.3, 0.05, 8.55, 0.3)),
@@ -362,13 +368,50 @@ const CAPSULE_PLAN: ProductPlan = {
 /* ------------------------------------------------------------------ */
 
 const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
-  /** Slim 6m — 5.9 × 4.8 m expanded (marketed floor area 27.5 m²), single wing (seam at core edge). */
+  /** 6m Compact (b10-bk) — 6.3 × 2.95 m expanded, 18 m², bathroom + kitchen fitted as standard. */
+  "b10-bk": {
+    exterior: { w: 6.3, d: 2.95 },
+    interior: { w: 6.1, d: 2.75 },
+    wall: WALL_M,
+    shape: "rect",
+    floorAreaM2: 18,
+    door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
+    windows: [
+      { side: "top", offset: 2.2, length: 1.0 },
+      { side: "right", offset: 0.6, length: 1.0 },
+      { side: "bottom", offset: 4.0, length: 1.2 },
+    ],
+    zones: [
+      wetRoomZone(r(0.05, 0.05, 1.7, 1.75), true), // bathroom included as standard
+      kitchenZone(r(1.95, 0.05, 4.25, 0.7), true), // kitchen included as standard
+      cupboardZone(r(1.95, 0.05, 4.25, 0.4)),
+      airconZone(r(5.6, 2.05, 5.85, 2.35)),
+    ],
+    fixtures: [
+      ...wetFixtures([0.5, 0.5], [0.5, 1.4], [1.3, 0.9]),
+      ...kitchenFixtures([2.5, 0.37], [3.7, 0.37]),
+    ],
+    furniture: [
+      { id: "bed", label: "Double bed", rect: r(4.55, 0.1, 5.95, 1.9) },
+      { id: "sofa", label: "Sofa", rect: r(0.25, 1.95, 2.05, 2.7) },
+      { id: "tv", label: "TV unit", rect: r(3.7, 2.35, 4.9, 2.7) },
+    ],
+    // 8 m² along the entrance wall; the door (offset 2.6–3.5, inward swing) opens onto it.
+    deck: {
+      rect: r(0.5, 2.85, 4.5, 5.35),
+      label: "Timber deck",
+      standard: false,
+    },
+    seams: [{ x1: 0, y1: 1.4, x2: 6.1, y2: 1.4 }],
+  },
+
+  /** Slim 6m — 5.9 × 4.8 m expanded (marketed floor area 28 m²), single wing (seam at core edge). */
   "b20-slim": {
     exterior: { w: 5.9, d: 4.8 },
     interior: { w: 5.7, d: 4.6 },
     wall: WALL_M,
     shape: "rect",
-    floorAreaM2: 27.5,
+    floorAreaM2: 28,
     door: { side: "bottom", offset: 2.08, width: 0.9, hinge: "start" },
     windows: [
       { side: "top", offset: 2.6, length: 0.7 },
@@ -443,6 +486,46 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     ],
   },
 
+  /** 6m Open Plan — 5.9 × 6.3 m expanded, 37 m², single open space with fitted bathroom + kitchen. */
+  "b20-open": {
+    exterior: { w: 5.9, d: 6.3 },
+    interior: { w: 5.7, d: 6.1 },
+    wall: WALL_M,
+    shape: "rect",
+    floorAreaM2: 37,
+    door: { side: "bottom", offset: 2.3, width: 0.9, hinge: "start" },
+    windows: [
+      { side: "top", offset: 2.55, length: 1.1 },
+      { side: "bottom", offset: 4.0, length: 1.2 },
+      { side: "left", offset: 4.6, length: 1.0 },
+    ],
+    zones: [
+      wetRoomZone(r(3.85, 0, 5.5, 1.7), true), // fitted bathroom included
+      kitchenZone(r(0.05, 0, 2.35, 0.65), true), // fitted kitchen included
+      cupboardZone(r(0.05, 0, 2.35, 0.35)),
+      airconZone(r(2.6, 0.05, 2.85, 0.3)),
+    ],
+    fixtures: [
+      ...wetFixtures([4.3, 0.45], [4.3, 1.3], [5.15, 0.85]),
+      ...kitchenFixtures([0.65, 0.35], [1.75, 0.35]),
+    ],
+    furniture: [
+      { id: "bed", label: "Double bed", rect: r(4.05, 3.8, 5.45, 5.7) },
+      { id: "sofa", label: "Sofa", rect: r(0.05, 2.2, 0.9, 4.0) },
+      { id: "tv", label: "TV unit", rect: r(1.9, 2.5, 2.3, 3.7) },
+      { id: "dining-table", label: "Dining", rect: r(2.5, 1.2, 3.7, 2.0) },
+      { id: "coffee-table", label: "Table", rect: r(1.15, 4.3, 2.05, 4.8) },
+    ],
+    // 10 m² along the entrance wall; the door (offset 2.3–3.2, inward swing) opens onto it.
+    deck: {
+      rect: r(0.5, 6.2, 4.5, 8.7),
+      label: "Timber deck",
+      standard: false,
+    },
+    // Open plan expands as a single volume — one seam line.
+    seams: [{ x1: 0, y1: 3.05, x2: 5.7, y2: 3.05 }],
+  },
+
   // b40-slim was removed from the catalogue (the Slim 12m shell is available
   // on request only) — its plan went with it.
 
@@ -452,7 +535,7 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     interior: { w: 11.7, d: 6.1 },
     wall: WALL_M,
     shape: "rect",
-    floorAreaM2: 72,
+    floorAreaM2: 74,
     door: { side: "bottom", offset: 5.25, width: 0.9, hinge: "start" },
     windows: [
       { side: "top", offset: 3.6, length: 1.2 },
@@ -512,7 +595,7 @@ const PLANS: Record<string, ProductPlan> = {
 function resolveForVariant(plan: ProductPlan, product: Product, variantId?: string): ProductPlan {
   const variant = product.variants?.find((v) => v.id === variantId);
   if (!variant) return plan;
-  const areaM2 = parseFloat(variant.size); // "27.2 m²" → 27.2
+  const areaM2 = parseFloat(variant.size); // "30.4 m²" → 30.4
   return {
     ...plan,
     floorAreaM2: Number.isFinite(areaM2) ? areaM2 : plan.floorAreaM2,

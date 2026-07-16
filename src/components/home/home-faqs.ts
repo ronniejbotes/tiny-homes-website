@@ -12,8 +12,10 @@ export interface HomeFaq {
 }
 
 /* Prices derived from products.ts so the FAQ (and its JSON-LD) never drifts.
-   Price-on-request products carry a 0 sentinel and are excluded from the range. */
-const pricedProducts = products.filter((p) => !p.priceOnRequest);
+   Price-on-request products carry a 0 sentinel and are excluded from the range.
+   Garages are a DIY steel-kit line, not a home — excluded so the "starts at …
+   for a folding home" answer keeps naming the genuine cheapest home. */
+const pricedProducts = products.filter((p) => !p.priceOnRequest && p.slug !== "garages");
 const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPrice));
 /* Highest price across every variant (not just startingPrice) — the top of
    the range is the 11.5 m glamping capsule variant, not its base price. */

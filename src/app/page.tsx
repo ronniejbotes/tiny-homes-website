@@ -25,14 +25,18 @@ const heroImage =
     img.src.endsWith("exterior-night-pool.jpg"),
   ) ?? images.products["glamping-capsules"][0];
 
-/* Safari tents carry a price-on-request 0 sentinel — never let it win the range. */
+/* Safari tents carry a price-on-request 0 sentinel — never let it win the range.
+   Garages are a DIY steel-kit line, not a home — excluded so the "From …" CTA
+   under "Your tiny home starts here" names the cheapest actual home. */
 const lowestStartingPrice = Math.min(
-  ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
+  ...products
+    .filter((p) => !p.priceOnRequest && p.slug !== "garages")
+    .map((p) => p.startingPrice),
 );
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R54 950 ex VAT with a 10-year guarantee. Folding homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
+  "Prefab tiny homes from R55 000 ex VAT with a 10-year guarantee. Folding homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {

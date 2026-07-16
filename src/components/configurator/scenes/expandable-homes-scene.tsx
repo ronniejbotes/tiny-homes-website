@@ -117,6 +117,34 @@ const B40: VariantGeom = {
 };
 
 const GEOM: Record<string, VariantGeom> = {
+  /* 6m Compact (b10-bk) — compact fully fitted module; shares the Slim's
+     single-module silhouette (representative), no wings. */
+  "b10-bk": {
+    ix: 280,
+    iw: 240,
+    wings: false,
+    cx0: 316,
+    cw: 168,
+    win: { x: 298, y: 234, w: 40, h: 38 },
+    kitchen: { x: 286, w: 74 },
+    cup: { x: 290, w: 62 },
+    wet: { x: 432, partitions: "left" },
+    sofa: null,
+    coffee: null,
+    rug: { cx: 392, rx: 22 },
+    bed: { x: 366, w: 42 },
+    table: null,
+    plantBig: null,
+    plantSmall: { x: 415 },
+    tv: { x: 370, y: 230, w: 42 },
+    frames: { x: 368, y: 200 },
+    shelf: null,
+    pendant: { x: 435, top: 196, drop: 26 },
+    aircon: { x: 446, y: 204 },
+    solar: { x: 340, w: 120 },
+    deck: { x: 528, w: 80 },
+    threeBed: null,
+  },
   /* Compact single module, studio interior — no wings, no sofa/shelving. */
   "b20-slim": {
     ix: 280,
@@ -171,12 +199,39 @@ const GEOM: Record<string, VariantGeom> = {
     deck: { x: 586, w: 70 },
     threeBed: null,
   },
+  /* 6m Open Plan — same winged shell as the 6m, single open volume. */
+  "b20-open": {
+    ix: 222,
+    iw: 356,
+    wings: true,
+    cx0: 318,
+    cw: 164,
+    win: { x: 392, y: 192, w: 40, h: 30 },
+    kitchen: { x: 228, w: 84 },
+    cup: { x: 232, w: 72 },
+    wet: { x: 490, partitions: "left" },
+    sofa: { x: 348, w: 40 },
+    coffee: null,
+    rug: { cx: 372, rx: 26 },
+    bed: { x: 404, w: 58 },
+    table: { x: 472 },
+    plantBig: { x: 320, s: 0.75 },
+    plantSmall: null,
+    tv: { x: 350, y: 238, w: 44 },
+    frames: { x: 440, y: 240 },
+    shelf: { x: 246, y: 218 },
+    pendant: { x: 334, top: 160, drop: 56 },
+    aircon: { x: 522, y: 216 },
+    solar: { x: 340, w: 130 },
+    deck: { x: 586, w: 70 },
+    threeBed: null,
+  },
   // b40-slim was removed from the catalogue (the Slim 12m shell is available
   // on request only) — its geometry went with it.
   b40: B40,
 };
 
-/** Variant id → size string ("27.5 m²"), read from the catalogue. */
+/** Variant id → size string ("28 m²"), read from the catalogue. */
 const SIZE_LABELS: Record<string, string> = Object.fromEntries(
   (getProduct("expandable-homes")?.variants ?? []).map((v) => [v.id, v.size]),
 );

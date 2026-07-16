@@ -51,8 +51,8 @@ export function HomesShowcase() {
       <Container>
         <SectionHeading
           eyebrow="Our range"
-          title="Eight ways to build it better"
-          intro="From a flat-pack folding home you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
+          title="Nine ways to build it better"
+          intro="From a flat-pack folding home you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 
         <Stagger className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-y-16">

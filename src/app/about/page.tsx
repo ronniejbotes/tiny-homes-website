@@ -23,12 +23,12 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R54 950 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
+  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
 
 export const metadata: Metadata = {
   title: "About Tiny Homes SA | Prefab Home Builder in Centurion",
   description:
-    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R54 950 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
@@ -73,10 +73,12 @@ const bathroomImage = findImage(images.products["apple-cabins"], "interior-bathr
 const bandImage = findImage(images.products["nature-cabins"], "exterior-timber-render.jpg");
 
 // True range across every variant, not just each product's headline starting
-// price — the flagship glamping capsule's top variant is R1 300 000.
+// price — the flagship glamping capsule's top variant is R950 000.
 // Price-on-request products carry a 0 sentinel and are excluded from the range.
+// Garages are a DIY steel-kit line, not a home — excluded so the "from the
+// R… X-Fold folding home" copy keeps naming the cheapest actual home.
 const allPrices = products
-  .filter((p) => !p.priceOnRequest)
+  .filter((p) => !p.priceOnRequest && p.slug !== "garages")
   .flatMap((p) => [p.startingPrice, ...(p.variants?.map((v) => v.price) ?? [])]);
 const minPrice = Math.min(...allPrices);
 const maxPrice = Math.max(...allPrices);

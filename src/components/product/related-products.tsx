@@ -21,7 +21,7 @@ export function RelatedProducts({ current }: { current: Product }) {
         <SectionHeading
           eyebrow="Keep exploring"
           title="Explore the rest of the range"
-          intro="Eight product lines, from flat-pack starters to flagship glamping suites, outdoor kitchens and safari tents. All prices exclude VAT."
+          intro="Nine product lines, from flat-pack starters to flagship glamping suites, outdoor kitchens, DIY garages and safari tents. All prices exclude VAT."
         />
         <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((p) => {

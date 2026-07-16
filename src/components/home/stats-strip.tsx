@@ -4,9 +4,13 @@ import { site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { Stagger, StaggerItem } from "@/components/ui/reveal";
 
-/* Price-on-request products carry a 0 sentinel — exclude them from the range. */
+/* Price-on-request products carry a 0 sentinel — exclude them from the range.
+   Garages are a DIY steel-kit line, not a home — their R50 000 entry price stays
+   out of the homes starting-price stat. */
 const lowestPrice = Math.min(
-  ...products.filter((p) => !p.priceOnRequest).map((p) => p.startingPrice),
+  ...products
+    .filter((p) => !p.priceOnRequest && p.slug !== "garages")
+    .map((p) => p.startingPrice),
 );
 
 const stats: { value: string; label: string }[] = [
