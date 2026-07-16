@@ -16,7 +16,7 @@ const optionChips = [
 export function CustomiseTeaser() {
   return (
     <section aria-label="Customise your home" className="bg-forest bg-grain text-cream">
-      <Container className="py-24 sm:py-32">
+      <Container className="py-28 sm:py-36">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <p className="text-eyebrow text-sage">Online configurator</p>

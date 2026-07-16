@@ -242,23 +242,23 @@ const glampingExtras: CustomOption[] = [
 export const products: Product[] = [
   {
     slug: "folding-homes",
-    name: "Folding Homes",
-    shortName: "Folding Home",
+    name: "X-Folds",
+    shortName: "X-Fold",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold folding home flips from flat-pack to a fully enclosed, insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, from R55 000 ex VAT, with a factory-fitted bathroom-and-kitchen option.",
+      "The X-Fold flips from flat-pack to a fully enclosed, insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, from R65 000 ex VAT with every structural upgrade standard, plus a factory-fitted bathroom-and-kitchen option.",
     description:
-      "Folding homes are the cost-smart start to tiny living: act today, be ready tomorrow. Each X-Fold unit arrives flat on a truck and unfolds into a weather-tight, insulated home with a galvanised steel frame, fire-resistant rock-wool panels, PVC windows, a steel door and pre-installed electrics — two workers complete the four-step setup in minutes. Want it move-in ready? The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the 18 m² Flat Pack with Roof (R85 900 ex VAT) adds a pitched roof with bathroom and kitchen included. A Flat Pack without roof (5.9 × 2.9 × 2.8 m, 18 m²) is also available for tight-access sites — price on request. Waterproof, fire-resistant and stackable two units high, folding homes suit garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all backed by our 10-year guarantee.",
-    startingPrice: 55000,
+      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight, insulated home with a reinforced 12-beam galvanised steel frame, metal-carved-panel exterior, SPC stone-composite floors, PVC windows, a steel door and pre-installed electrics — all standard, and two workers complete the four-step setup in minutes. From R65 000 ex VAT. Want it move-in ready? The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the 18 m² Flat Pack with Roof (R85 900 ex VAT) adds a pitched roof with bathroom and kitchen included. A Flat Pack without roof (5.9 × 2.9 × 2.8 m, 18 m²) is also available for tight-access sites — price on request. Waterproof, insulated and stackable two units high, X-Folds suit garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all backed by our 10-year guarantee.",
+    startingPrice: 65000,
     sizeLabel: "15 – 18 m²",
     setupTime: "Unfolds in minutes",
     dims: { length: 5.8, width: 2.48, height: 2.56 },
     specs: [
       { label: "Floor area", value: "15 m² (18 m² Flat Pack versions)" },
       { label: "External size", value: "5.8 m × 2.48 m × 2.56 m" },
-      { label: "Structure", value: "Galvanised steel frame with anti-corrosion coating" },
-      { label: "Walls", value: "50 mm insulated, fireproof rock-wool panels" },
-      { label: "Flooring", value: "Durable MGO board" },
+      { label: "Structure", value: "Reinforced 12-beam galvanised steel frame with anti-corrosion coating — standard" },
+      { label: "Walls", value: "50 mm insulated panels with metal-carved-panel exterior finish — standard" },
+      { label: "Flooring", value: "SPC stone-composite flooring — standard" },
       { label: "Doors & windows", value: "1 steel door, 2 PVC windows (optional burglar bars)" },
       { label: "Electrical", value: "2 SA-standard sockets, LED light & switch, DB board with earth leakage" },
       { label: "Finish", value: "White frame with grey walls, or wood-grain walls with white or black frame" },
@@ -267,8 +267,8 @@ export const products: Product[] = [
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
+      "Every structural upgrade standard — 12-beam frame, metal-carved-panel exterior and SPC floors",
       "Waterproof and fully insulated for summer and winter",
-      "Fire-resistant panels protect occupants and adjacent units",
       "Pre-installed electrics with DB board, earth leakage and LED lighting",
       "Stackable up to two units high",
       "Relocatable — fold it back down and move it",
@@ -276,31 +276,30 @@ export const products: Product[] = [
     ],
     useCases: ["Garden room", "Home office", "Guest suite", "Rental unit", "Site office", "Worker housing", "Emergency housing"],
     variants: [
-      { id: "x-fold", name: "X-Fold", size: "15 m²", price: 55000, description: "Weather-tight folding unit with pre-installed electrics — bathroom and kitchen optional." },
-      { id: "x-fold-upgraded", name: "X-Fold Upgraded", size: "15 m²", price: 60000, description: "The structurally upgraded X-Fold. Add a Metal Carved Panel exterior finish (R65 000), SPC stone-composite flooring (R62 500), or both upgrades (R67 500 ex VAT)." },
-      { id: "x-fold-bk", name: "X-Fold + bathroom & kitchen", size: "15 m²", price: 68900, description: "The same unit factory-fitted with an enclosed bathroom (shower, toilet and basin, 1.15 × 1.4 m) and a compact 1.0 × 0.5 m kitchen unit." },
+      { id: "x-fold", name: "X-Fold", size: "15 m²", price: 65000, description: "Weather-tight folding unit with every structural upgrade standard — reinforced 12-beam frame, metal-carved-panel exterior, SPC stone-composite floors and pre-installed electrics. Bathroom and kitchen optional." },
+      { id: "x-fold-bk", name: "X-Fold + bathroom & kitchen", size: "15 m²", price: 68900, description: "The same fully upgraded unit factory-fitted with an enclosed bathroom (shower, toilet and basin, 1.15 × 1.4 m) and a compact 1.0 × 0.5 m kitchen unit." },
       { id: "flat-pack-roof", name: "Flat Pack with Roof", size: "18 m²", price: 85900, description: "5.99 × 2.99 × 2.8 m pitched-roof version, assembled on site (not foldable) — bathroom and kitchen included, open-plan as standard." },
     ],
-    options: [...standardOptions(0.8).filter((o) => o.category !== "modules"), ...foldingExtras],
+    options: [...foldingExtras],
     faqs: [
       {
-        q: "How long does it take to set up a folding home?",
+        q: "How long does it take to set up an X-Fold?",
         a: "Minutes, not days. A crane or forklift offloads the unit, then two workers unfold and secure it in four simple steps — walls, windows, door and electrics arrive already installed.",
       },
       {
-        q: "What foundation does a folding home need?",
+        q: "What foundation does an X-Fold need?",
         a: "A level concrete slab or properly levelled precast plinths. If you'd rather not manage that yourself, our turnkey team can prepare the groundwork while your home is being built.",
       },
       {
-        q: "Can folding homes be moved after installation?",
+        q: "Can X-Folds be moved after installation?",
         a: "Yes. Fold the unit back down, load it and redeploy it somewhere new — that's the whole point of the design.",
       },
       {
-        q: "Are folding homes insulated?",
-        a: "Yes — 50 mm insulated, fire-resistant rock-wool panels keep the unit comfortable in both summer and winter. Double-glazed aluminium window upgrades are also available.",
+        q: "What comes standard on an X-Fold?",
+        a: "Every structural upgrade is included as standard: the reinforced 12-beam galvanised frame, metal-carved-panel exterior, SPC stone-composite floors, 50 mm insulated walls and pre-installed electrics. Double-glazed aluminium window upgrades are also available.",
       },
       {
-        q: "Can I get a bathroom and kitchen in a folding home?",
+        q: "Can I get a bathroom and kitchen in an X-Fold?",
         a: "Yes. The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the Flat Pack versions include a bathroom and kitchen as standard.",
       },
       {
@@ -324,20 +323,20 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     tagline: "Smart living — fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R200 000 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R330 000 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single 6 m or 12 m module, each home expands on site within hours, revealing insulated rooms with double-glazed aluminium windows and factory-installed plumbing and electrics. Fully fitted homes start with the 6m Expandable Home at R330 000 ex VAT — two bedrooms, bathroom and stainless-steel kitchen included — and go up to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. A compact 6×3 m home with bathroom and kitchen included opens the range at R200 000 ex VAT, while the Slim 6m studio shell (no bathroom or kitchen) is R275 000 ex VAT. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request. Pick your exterior from 107 colours and finishes, place windows and doors where you want them, and let our turnkey team handle the groundwork and connections.",
-    startingPrice: 200000,
-    sizeLabel: "18 – 74 m²",
-    bedrooms: "Studio to 4 bedrooms",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single 6 m or 12 m module, each home expands on site within hours, revealing insulated rooms with double-glazed aluminium windows and factory-installed plumbing and electrics. The range starts with the 6m Expandable Home at R330 000 ex VAT — two bedrooms, bathroom and stainless-steel kitchen included — and goes up to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. Pick your exterior from 107 colours and finishes, place windows and doors where you want them, and let our turnkey team handle the groundwork and connections.",
+    startingPrice: 330000,
+    sizeLabel: "37 – 74 m²",
+    bedrooms: "2 – 4 bedrooms",
     setupTime: "Expands within hours",
     dims: { length: 11.9, width: 6.3, height: 2.48 },
     specs: [
-      { label: "Sizes", value: "18 m² to 74 m²" },
+      { label: "Sizes", value: "37 m² to 74 m²" },
       { label: "Deployment", value: "Arrives as one module, expands on site — move-in ready within hours on a prepared site" },
       { label: "Transport size", value: "6m: 5.8 × 3.3 × 2.5 m; 12m: 12 × 2.2 × 2.5 m — compact for delivery, spacious when opened" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
-      { label: "Walls & roof", value: "75 mm EPS sandwich panel walls (Slim: 50 mm insulated walls); 50 mm EPS roof" },
+      { label: "Walls & roof", value: "75 mm EPS sandwich panel walls; 50 mm EPS roof" },
       { label: "Windows & doors", value: "Aluminium double-glazed with fly screens; sliding glass and aluminium entry door" },
       { label: "Floor", value: "Water- and insect-resistant magnesium concrete composite; timber-look vinyl standard (SPC, laminate or wood upgrades)" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
@@ -354,25 +353,22 @@ export const products: Product[] = [
     ],
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
-      { id: "b10-bk", name: "6m Compact — bathroom & kitchen", size: "18 m²", price: 200000, description: "6.3 × 2.95 × 2.5 m expanded — a compact fully fitted home with bathroom and kitchen included, four windows and all electrics. With the Metal Carved Panel exterior and SPC flooring upgrade, R270 000 ex VAT." },
-      { id: "b20-slim", name: "Slim 6m", size: "28 m²", price: 275000, description: "5.9 × 4.8 × 2.5 m expanded. Budget studio shell with four double-glazed aluminium windows, aluminium door, two sockets and 50 mm insulated walls — no bathroom or kitchen. With the Metal Carved Panel exterior and SPC flooring upgrade, R330 000 ex VAT." },
-      { id: "b20-open", name: "6m Open Plan", size: "37 m²", price: 300000, description: "5.9 × 6.3 × 2.5 m expanded — open-plan single-space layout with fully fitted bathroom and kitchen. With the Metal Carved Panel exterior and SPC flooring upgrade, R330 000 ex VAT." },
       { id: "b20", name: "6m Expandable Home", size: "37 m²", price: 330000, description: "5.9 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics. With the Metal Carved Panel exterior and SPC flooring upgrade, R360 000 ex VAT." },
       { id: "b40", name: "12m Expandable Home", size: "74 m²", price: 600000, description: "11.8 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included. With the Metal Carved Panel exterior and SPC flooring upgrade, R640 000 ex VAT." },
     ],
     options: [
       ...standardOptions(1, {
         "wet-room": {
-          label: "Wet room unit / upgrade",
-          description: "Adds a fully plumbed bathroom module to the Slim 6m shell — on the fully fitted 6m and 12m homes this upgrades the included bathroom's fittings and finishes.",
+          label: "Wet room upgrade",
+          description: "Upgrades the included bathroom's fittings and finishes — every expandable home ships with a fully plumbed bathroom as standard.",
           photo: "/images/products/expandable-homes/interior-lounge.jpg",
-          footprintVariantIds: ["b20-slim"], // only the Slim shell gains a new module footprint
+          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
         },
         "kitchen-unit": {
-          label: "Kitchen unit / upgrade",
-          description: "Adds a fitted kitchenette to the Slim 6m shell — on the fully fitted 6m and 12m homes this upgrades the included kitchen's counters and cabinetry.",
+          label: "Kitchen upgrade",
+          description: "Upgrades the included stainless-steel kitchen's counters and cabinetry — a fitted kitchen is standard on every expandable home.",
           photo: "/images/products/expandable-homes/interior-living-room.png",
-          footprintVariantIds: ["b20-slim"], // only the Slim shell gains a new module footprint
+          footprintM2: undefined, // finish upgrade of the included kitchen — no new floor consumed
         },
       }),
       ...expandableExtras,
@@ -380,7 +376,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "How big can an expandable home get?",
-        a: "From the 18 m² 6×3 compact home to the 74 m² 12m Expandable Home with layouts of up to four bedrooms. A Slim 12m shell (11.8 × 4.8 m, 55 m², no bathroom or kitchen) is also available — price on request.",
+        a: "From the 37 m² 6m Expandable Home to the 74 m² 12m Expandable Home with layouts of up to four bedrooms.",
       },
       {
         q: "How long does installation take?",
@@ -388,7 +384,7 @@ export const products: Product[] = [
       },
       {
         q: "What's included as standard?",
-        a: "The 6m and 12m homes include two bedrooms, a fully fitted bathroom with separate shower, a stainless-steel kitchen and factory-installed plumbing and electrics. The Slim shells are open studios without bathroom or kitchen — ideal as offices, classrooms or blank canvases.",
+        a: "Both the 6m and 12m homes include two bedrooms, a fully fitted bathroom with separate shower, a stainless-steel kitchen and factory-installed plumbing and electrics.",
       },
       {
         q: "How much does delivery cost?",

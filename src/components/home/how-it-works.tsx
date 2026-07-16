@@ -25,7 +25,7 @@ const steps = [
   {
     number: "04",
     title: "Move in",
-    body: "Setup runs from minutes for a folding home to professional on-site assembly for cabins, domes and capsules. Move in — or hand the keys to your first paying guests.",
+    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins, domes and capsules. Move in — or hand the keys to your first paying guests.",
   },
 ];
 
@@ -40,7 +40,7 @@ export function HowItWorks() {
   });
 
   return (
-    <section aria-label="How it works" className="py-24 sm:py-32">
+    <section aria-label="How it works" className="py-28 sm:py-36">
       <Container>
         <SectionHeading
           eyebrow="How it works"

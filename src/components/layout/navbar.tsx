@@ -161,10 +161,10 @@ export function Navbar() {
           </a>
 
           <Link
-            href="/contact"
-            className="ml-2 inline-flex h-11 cursor-pointer items-center rounded-full bg-forest px-6 text-[0.9375rem] font-medium text-cream shadow-[var(--shadow-soft)] transition-all duration-200 hover:-translate-y-px hover:bg-forest-light"
+            href="/quote"
+            className="ml-2 inline-flex h-11 cursor-pointer items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream shadow-[var(--shadow-soft)] transition-all duration-200 hover:-translate-y-px hover:bg-clay-dark"
           >
-            Get a Quote
+            Get a quote
           </Link>
         </div>
 
@@ -225,11 +225,11 @@ export function Navbar() {
               ))}
               <div className="mt-6 flex flex-col gap-3">
                 <Link
-                  href="/contact"
+                  href="/quote"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex h-13 items-center justify-center rounded-full bg-forest px-8 text-base font-medium text-cream"
+                  className="inline-flex h-13 items-center justify-center rounded-full bg-clay px-8 text-base font-medium text-cream"
                 >
-                  Get a Quote
+                  Get a quote
                 </Link>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}

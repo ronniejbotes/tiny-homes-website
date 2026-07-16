@@ -14,7 +14,7 @@ export interface HomeFaq {
 /* Prices derived from products.ts so the FAQ (and its JSON-LD) never drifts.
    Price-on-request products carry a 0 sentinel and are excluded from the range.
    Garages are a DIY steel-kit line, not a home — excluded so the "starts at …
-   for a folding home" answer keeps naming the genuine cheapest home. */
+   for an X-Fold" answer keeps naming the genuine cheapest home. */
 const pricedProducts = products.filter((p) => !p.priceOnRequest && p.slug !== "garages");
 const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPrice));
 /* Highest price across every variant (not just startingPrice) — the top of
@@ -30,11 +30,11 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "How long until I can move in?",
-    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: a folding home unfolds in minutes, an expandable home deploys within hours, and cabins, domes and capsules are professionally assembled on a prepared site.",
+    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home deploys within hours, and cabins, domes and capsules are professionally assembled on a prepared site.",
   },
   {
     q: "Do prices include VAT?",
-    a: `No — all prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for a folding home and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're configured to your site and brief, so they're priced on request after a consultation.`,
+    a: `No — all prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're configured to your site and brief, so they're priced on request after a consultation.`,
   },
   {
     q: "What foundations do I need?",

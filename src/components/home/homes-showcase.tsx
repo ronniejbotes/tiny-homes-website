@@ -47,19 +47,31 @@ const spanClasses = [
 
 export function HomesShowcase() {
   return (
-    <section id="homes" aria-label="Our homes" className="scroll-mt-24 py-24 sm:py-32">
+    <section
+      id="homes"
+      aria-label="Our homes"
+      className="scroll-mt-24 overflow-x-clip py-28 sm:py-36"
+    >
       <Container>
         <SectionHeading
           eyebrow="Our range"
           title="Nine ways to build it better"
-          intro="From a flat-pack folding home you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
+          intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 
         <Stagger className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-y-16">
           {products.map((product, i) => {
             const image = heroImageFor(product.slug);
+            /* Alternating left/right drift on entrance for an editorial rhythm.
+               Kept small and paired with overflow-x-clip on the section so the
+               transient offset can never spill into a mobile scrollbar. */
+            const drift = i % 2 === 0 ? -20 : 20;
             return (
-              <StaggerItem key={product.slug} className={spanClasses[i % spanClasses.length]}>
+              <StaggerItem
+                key={product.slug}
+                x={drift}
+                className={spanClasses[i % spanClasses.length]}
+              >
                 <Link href={`/${product.slug}`} className="group block rounded-3xl">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-sand">
                     {image && (

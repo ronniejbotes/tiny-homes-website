@@ -37,7 +37,7 @@ export const site = {
 
 export const nav = {
   products: [
-    { slug: "folding-homes", label: "Folding Homes" },
+    { slug: "folding-homes", label: "X-Folds" },
     { slug: "expandable-homes", label: "Expandable Homes" },
     { slug: "nature-cabins", label: "Nature Cabins" },
     { slug: "the-dome", label: "The Dome" },

@@ -119,14 +119,22 @@ export function Footer() {
             <Link href="/contact" className="transition-colors hover:text-cream">
               Contact
             </Link>
+            <span className="mx-3">·</span>
+            <Link href="/terms" className="transition-colors hover:text-cream">
+              Terms
+            </Link>
           </p>
         </div>
 
         <p className="mt-6 max-w-4xl text-xs leading-relaxed text-cream/45">
           All prices exclude VAT and are quoted as delivered in Durban — transport to your site
           is quoted separately. Prices are for the product only and exclude earthworks or the
-          provision of services, which are quoted separately. Prices can change without notice.
-          T&apos;s and C&apos;s apply. E&amp;OE.
+          provision of services, which are quoted separately. Site preparation and access are the
+          customer&apos;s responsibility. Prices can change without notice.{" "}
+          <Link href="/terms" className="underline underline-offset-2 transition-colors hover:text-cream">
+            T&apos;s and C&apos;s apply
+          </Link>
+          . E&amp;OE.
         </p>
       </div>
     </footer>

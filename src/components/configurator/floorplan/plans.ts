@@ -368,80 +368,8 @@ const CAPSULE_PLAN: ProductPlan = {
 /* ------------------------------------------------------------------ */
 
 const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
-  /** 6m Compact (b10-bk) — 6.3 × 2.95 m expanded, 18 m², bathroom + kitchen fitted as standard. */
-  "b10-bk": {
-    exterior: { w: 6.3, d: 2.95 },
-    interior: { w: 6.1, d: 2.75 },
-    wall: WALL_M,
-    shape: "rect",
-    floorAreaM2: 18,
-    door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
-    windows: [
-      { side: "top", offset: 2.2, length: 1.0 },
-      { side: "right", offset: 0.6, length: 1.0 },
-      { side: "bottom", offset: 4.0, length: 1.2 },
-    ],
-    zones: [
-      wetRoomZone(r(0.05, 0.05, 1.7, 1.75), true), // bathroom included as standard
-      kitchenZone(r(1.95, 0.05, 4.25, 0.7), true), // kitchen included as standard
-      cupboardZone(r(1.95, 0.05, 4.25, 0.4)),
-      airconZone(r(5.6, 2.05, 5.85, 2.35)),
-    ],
-    fixtures: [
-      ...wetFixtures([0.5, 0.5], [0.5, 1.4], [1.3, 0.9]),
-      ...kitchenFixtures([2.5, 0.37], [3.7, 0.37]),
-    ],
-    furniture: [
-      { id: "bed", label: "Double bed", rect: r(4.55, 0.1, 5.95, 1.9) },
-      { id: "sofa", label: "Sofa", rect: r(0.25, 1.95, 2.05, 2.7) },
-      { id: "tv", label: "TV unit", rect: r(3.7, 2.35, 4.9, 2.7) },
-    ],
-    // 8 m² along the entrance wall; the door (offset 2.6–3.5, inward swing) opens onto it.
-    deck: {
-      rect: r(0.5, 2.85, 4.5, 5.35),
-      label: "Timber deck",
-      standard: false,
-    },
-    seams: [{ x1: 0, y1: 1.4, x2: 6.1, y2: 1.4 }],
-  },
-
-  /** Slim 6m — 5.9 × 4.8 m expanded (marketed floor area 28 m²), single wing (seam at core edge). */
-  "b20-slim": {
-    exterior: { w: 5.9, d: 4.8 },
-    interior: { w: 5.7, d: 4.6 },
-    wall: WALL_M,
-    shape: "rect",
-    floorAreaM2: 28,
-    door: { side: "bottom", offset: 2.08, width: 0.9, hinge: "start" },
-    windows: [
-      { side: "top", offset: 2.6, length: 0.7 },
-      { side: "bottom", offset: 0.6, length: 1.0 },
-      { side: "left", offset: 3.2, length: 1.0 },
-    ],
-    zones: [
-      wetRoomZone(r(4.05, 0, 5.7, 1.7)),
-      kitchenZone(r(0.05, 0, 2.35, 0.65)),
-      cupboardZone(r(0.05, 0, 2.35, 0.35)),
-      airconZone(r(2.55, 0.05, 2.8, 0.3)),
-    ],
-    fixtures: [
-      ...wetFixtures([4.5, 0.45], [4.5, 1.3], [5.35, 0.85]),
-      ...kitchenFixtures([0.65, 0.35], [1.75, 0.35]),
-    ],
-    furniture: [
-      { id: "bed", label: "Double bed", rect: r(3.65, 2.35, 5.05, 4.25) },
-      { id: "sofa", label: "Sofa", rect: r(0.05, 1.15, 0.9, 2.95) },
-      { id: "tv", label: "TV unit", rect: r(1.8, 1.35, 2.2, 2.55) },
-      { id: "dining-table", label: "Dining", rect: r(2.6, 2.0, 3.4, 2.8) },
-    ],
-    // 10 m² along the entrance wall; the door (offset 2.08–2.98, inward swing) opens onto it.
-    deck: {
-      rect: r(0.5, 4.7, 4.5, 7.2),
-      label: "Timber deck",
-      standard: false,
-    },
-    seams: [{ x1: 0, y1: 2.34, x2: 5.7, y2: 2.34 }],
-  },
+  // The sub-R330k units (6m Compact, Slim 6m, 6m Open Plan) were dropped from
+  // the catalogue per the owner — their plans went with them.
 
   /** 6m Expandable Home — 6.3 × 5.9 m expanded (drawn portrait), wings both sides of a central core. */
   b20: {
@@ -485,49 +413,6 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       { x1: 0, y1: 4.27, x2: 5.7, y2: 4.27 },
     ],
   },
-
-  /** 6m Open Plan — 5.9 × 6.3 m expanded, 37 m², single open space with fitted bathroom + kitchen. */
-  "b20-open": {
-    exterior: { w: 5.9, d: 6.3 },
-    interior: { w: 5.7, d: 6.1 },
-    wall: WALL_M,
-    shape: "rect",
-    floorAreaM2: 37,
-    door: { side: "bottom", offset: 2.3, width: 0.9, hinge: "start" },
-    windows: [
-      { side: "top", offset: 2.55, length: 1.1 },
-      { side: "bottom", offset: 4.0, length: 1.2 },
-      { side: "left", offset: 4.6, length: 1.0 },
-    ],
-    zones: [
-      wetRoomZone(r(3.85, 0, 5.5, 1.7), true), // fitted bathroom included
-      kitchenZone(r(0.05, 0, 2.35, 0.65), true), // fitted kitchen included
-      cupboardZone(r(0.05, 0, 2.35, 0.35)),
-      airconZone(r(2.6, 0.05, 2.85, 0.3)),
-    ],
-    fixtures: [
-      ...wetFixtures([4.3, 0.45], [4.3, 1.3], [5.15, 0.85]),
-      ...kitchenFixtures([0.65, 0.35], [1.75, 0.35]),
-    ],
-    furniture: [
-      { id: "bed", label: "Double bed", rect: r(4.05, 3.8, 5.45, 5.7) },
-      { id: "sofa", label: "Sofa", rect: r(0.05, 2.2, 0.9, 4.0) },
-      { id: "tv", label: "TV unit", rect: r(1.9, 2.5, 2.3, 3.7) },
-      { id: "dining-table", label: "Dining", rect: r(2.5, 1.2, 3.7, 2.0) },
-      { id: "coffee-table", label: "Table", rect: r(1.15, 4.3, 2.05, 4.8) },
-    ],
-    // 10 m² along the entrance wall; the door (offset 2.3–3.2, inward swing) opens onto it.
-    deck: {
-      rect: r(0.5, 6.2, 4.5, 8.7),
-      label: "Timber deck",
-      standard: false,
-    },
-    // Open plan expands as a single volume — one seam line.
-    seams: [{ x1: 0, y1: 3.05, x2: 5.7, y2: 3.05 }],
-  },
-
-  // b40-slim was removed from the catalogue (the Slim 12m shell is available
-  // on request only) — its plan went with it.
 
   /** 12m Expandable Home — 11.9 × 6.3 m expanded, wings both sides. */
   b40: {
@@ -576,7 +461,7 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
 };
 
 /** Fallback expandable variant — the catalogue's first (and configurator default). */
-export const DEFAULT_EXPANDABLE_VARIANT = "b20-slim";
+export const DEFAULT_EXPANDABLE_VARIANT = "b20";
 
 const PLANS: Record<string, ProductPlan> = {
   "folding-homes": FOLDING_PLAN,

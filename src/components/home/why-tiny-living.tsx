@@ -13,7 +13,7 @@ const values = [
   {
     icon: Timer,
     title: "Rapid deployment",
-    body: "A folding home unfolds in minutes; even the flagship capsule is professionally assembled on site in days, not months. Far faster than a conventional brick build.",
+    body: "An X-Fold unfolds in minutes; even the flagship capsule is professionally assembled on site in days, not months. Far faster than a conventional brick build.",
   },
   {
     icon: Truck,
@@ -39,7 +39,7 @@ const values = [
 
 export function WhyTinyLiving() {
   return (
-    <section aria-label="Why tiny living" className="border-y border-border bg-parchment py-24 sm:py-32">
+    <section aria-label="Why tiny living" className="border-y border-border bg-parchment py-28 sm:py-36">
       <Container>
         <SectionHeading
           eyebrow="Why tiny living"
@@ -50,7 +50,7 @@ export function WhyTinyLiving() {
         <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {values.map((value) => (
             <StaggerItem key={value.title} className="h-full">
-              <div className="h-full rounded-3xl border border-border bg-cream p-7 sm:p-8">
+              <div className="h-full rounded-3xl border border-border bg-cream p-7 transition-[transform,box-shadow] duration-300 ease-[var(--ease-smooth)] hover:-translate-y-1 hover:shadow-[var(--shadow-lifted)] sm:p-8">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-forest text-cream">
                   <value.icon className="h-5 w-5" aria-hidden="true" />
                 </span>

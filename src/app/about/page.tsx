@@ -23,12 +23,12 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
+  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R65 000 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
 
 export const metadata: Metadata = {
   title: "About Tiny Homes SA | Prefab Home Builder in Centurion",
   description:
-    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R65 000 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
@@ -92,12 +92,12 @@ const values = [
   {
     icon: Check,
     title: "Honest pricing",
-    body: `Every price we publish is ex VAT, from the ${formatZAR(minPrice)} folding home to the ${formatZAR(maxPrice)} glamping capsule — and delivery is quoted upfront.`,
+    body: `Every price we publish is ex VAT, from the ${formatZAR(minPrice)} X-Fold to the ${formatZAR(maxPrice)} glamping capsule — and delivery is quoted upfront.`,
   },
   {
     icon: Timer,
     title: "Speed, without shortcuts",
-    body: "About 90 days from deposit to move-in. On-site setup ranges from minutes for a folding home to professional assembly for cabins, domes and capsules.",
+    body: "About 90 days from deposit to move-in. On-site setup ranges from minutes for an X-Fold to professional assembly for cabins, domes and capsules.",
   },
   {
     icon: Leaf,
@@ -130,7 +130,7 @@ const processSteps = [
   },
   {
     title: "Deliver & install",
-    body: "We truck the finished home anywhere in South Africa and set it up on site — from minutes for a folding home to professional assembly for cabins, domes and capsules.",
+    body: "We truck the finished home anywhere in South Africa and set it up on site — from minutes for an X-Fold to professional assembly for cabins, domes and capsules.",
   },
 ];
 
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   We supply high-end prefab tiny homes from our base in Raslouw, Centurion —
-                  folding homes, expandable homes, nature cabins, domes, apple cabins and
+                  X-Folds, expandable homes, nature cabins, domes, apple cabins and
                   glamping capsules, plus outdoor kitchens and safari tents — delivered
                   anywhere in South Africa.
                 </p>
@@ -192,7 +192,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   The range spans six home designs, from the {formatZAR(minPrice)} X-Fold
-                  folding home to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule —
+                  X-Fold to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule —
                   every price published ex VAT — alongside outdoor entertainment kitchens and
                   luxury safari tents quoted to your site and brief. {site.finance}.
                 </p>

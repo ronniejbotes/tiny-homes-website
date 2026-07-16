@@ -26,7 +26,7 @@ const clips: Clip[] = [
     poster: "/videos/folding-home-setup-poster.jpg",
     width: 256,
     height: 480,
-    label: "Product video: a folding home being lifted into place on site",
+    label: "Product video: an X-Fold being lifted into place on site",
   },
   {
     id: "expandable-home-unfold",
@@ -204,7 +204,7 @@ export function VideoCarousel() {
   };
 
   return (
-    <section aria-labelledby="video-carousel-heading" className="py-20 sm:py-28">
+    <section aria-labelledby="video-carousel-heading" className="py-24 sm:py-32">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading

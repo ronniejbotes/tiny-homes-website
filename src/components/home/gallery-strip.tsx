@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 import { cn } from "@/lib/cn";
 import manifest from "@/data/images.json";
@@ -95,14 +96,27 @@ function Row({ hidden = false }: { hidden?: boolean }) {
 
 export function GalleryStrip() {
   const [paused, setPaused] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  /* Gentle vertical parallax: the whole marquee drifts a touch against the
+     page scroll for depth. It rides on a wrapper element, leaving the marquee's
+     own translateX animation untouched. Transform-only; off for reduced motion. */
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [36, -36]);
 
   return (
-    <section aria-label="Photo gallery" className="overflow-hidden py-24 sm:py-28">
-      <div className={cn("flex w-max animate-marquee", paused && "marquee-paused")}>
-        <Row />
-        {/* Duplicate row makes the -50% marquee loop seamless. */}
-        <Row hidden />
-      </div>
+    <section ref={ref} aria-label="Photo gallery" className="overflow-hidden py-24 sm:py-32">
+      <motion.div style={reduce ? undefined : { y }} className="will-change-transform">
+        <div className={cn("flex w-max animate-marquee", paused && "marquee-paused")}>
+          <Row />
+          {/* Duplicate row makes the -50% marquee loop seamless. */}
+          <Row hidden />
+        </div>
+      </motion.div>
       {/* WCAG 2.2.2: visible mechanism to pause the auto-scrolling gallery. */}
       <button
         type="button"

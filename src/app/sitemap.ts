@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 import { productSlugs } from "@/data/products";
 
 /** Date of the last content/pricing pass. Bump this when the site content changes. */
-const SITE_UPDATED = new Date("2026-07-14");
+const SITE_UPDATED = new Date("2026-07-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = SITE_UPDATED;
@@ -22,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     })),
     {
+      url: `${site.url}/quote`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${site.url}/about`,
       lastModified,
       changeFrequency: "monthly",
@@ -32,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.6,
+    },
+    {
+      url: `${site.url}/terms`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

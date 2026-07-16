@@ -172,3 +172,33 @@ body {
     transition: none;
   }
 }
+
+/* Slow ambient "ken-burns" settle on the hero image — a gentle zoom-out on load
+   that reads as depth without ever moving layout. Layered under the framer-motion
+   scroll parallax (which lives on a separate wrapper element, so the two
+   transforms never fight). Motion-gated: reduced-motion visitors get a static
+   image at its resting scale. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-kenburns {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .animate-hero-kenburns {
+    animation: hero-kenburns 18s var(--ease-out-expo) both;
+    will-change: transform;
+  }
+}
+
+/* Layered hero scrim: a soft radial lift behind the headline column plus the
+   base bottom-up gradient, for more depth than a single flat overlay. Purely
+   decorative, no motion. */
+.hero-scrim {
+  background:
+    radial-gradient(120% 90% at 15% 90%, rgba(28, 27, 23, 0.55), transparent 60%),
+    linear-gradient(to top, rgba(28, 27, 23, 0.72) 0%, rgba(28, 27, 23, 0.3) 42%, rgba(28, 27, 23, 0.12) 100%);
+}

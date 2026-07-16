@@ -26,7 +26,8 @@ const lowestStartingPrice = Math.min(
 );
 
 /* CSS-only staggered entrance (animate-rise-in in globals.css) so the headline,
-   copy and CTAs are visible before JavaScript hydrates. */
+   copy and CTAs are visible before JavaScript hydrates. The two headline lines
+   carry their own delays for a multi-line reveal. */
 const rise = (delay: number): CSSProperties =>
   ({ "--rise-delay": `${delay}s` }) as CSSProperties;
 
@@ -34,12 +35,15 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
-  // Subtle parallax: the image drifts slower than the page as the hero scrolls out.
+  // Subtle parallax + slow zoom: the image drifts slower than the page and
+  // scales up gently as the hero scrolls out. Transform-only, so it stays on
+  // the compositor; disabled entirely for reduced-motion visitors.
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-7%", "8%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
 
   return (
     <section
@@ -47,42 +51,44 @@ export function Hero() {
       aria-label="Introduction"
       className="relative flex min-h-svh items-end overflow-hidden bg-forest"
     >
-      {/* Parallax image (bleeds vertically so the drift never exposes edges) */}
+      {/* Parallax wrapper (bleeds vertically so the drift never exposes edges) */}
       <motion.div
-        className="absolute inset-x-0 -top-[10%] -bottom-[10%] will-change-transform"
-        style={{ y: reduce ? 0 : y }}
+        className="absolute inset-x-0 -top-[12%] -bottom-[12%] will-change-transform"
+        style={reduce ? undefined : { y, scale }}
       >
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        {/* Separate inner element hosts the on-load ken-burns settle, so its
+            CSS scale and the scroll-driven transform above never collide. */}
+        <div className="animate-hero-kenburns relative h-full w-full">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
       </motion.div>
 
-      {/* Scrim for text legibility */}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-ink/10"
-        aria-hidden="true"
-      />
+      {/* Layered scrim (radial lift behind the copy + bottom-up gradient) and grain */}
+      <div className="hero-scrim absolute inset-0" aria-hidden="true" />
+      <div className="bg-grain pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-40 sm:px-8 sm:pb-32 lg:px-12">
-        <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.15)}>
+        <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.12)}>
           Innovative instant housing · South Africa
         </p>
-        <h1
-          className="text-display animate-rise-in mt-5 max-w-4xl text-5xl text-cream sm:text-7xl lg:text-8xl"
-          style={rise(0.27)}
-        >
-          Live large.
-          <br />
-          Build tiny.
+        <h1 className="text-display mt-5 max-w-4xl text-[3.25rem] leading-[0.95] text-cream sm:text-7xl lg:text-8xl">
+          <span className="animate-rise-in block" style={rise(0.24)}>
+            Live large.
+          </span>
+          <span className="animate-rise-in block" style={rise(0.36)}>
+            Build tiny.
+          </span>
         </h1>
         <p
           className="animate-rise-in mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl"
-          style={rise(0.39)}
+          style={rise(0.48)}
         >
           High-end prefab tiny homes from {formatZAR(lowestStartingPrice)} ex VAT — designed
           for affordable, sustainable living and delivered anywhere in South Africa in around
@@ -90,14 +96,14 @@ export function Hero() {
         </p>
         <div
           className="animate-rise-in mt-9 flex flex-wrap items-center gap-4"
-          style={rise(0.51)}
+          style={rise(0.6)}
         >
-          <ButtonLink href="#homes" variant="accent" size="lg">
-            Explore our homes
+          <ButtonLink href="/quote" variant="accent" size="lg">
+            Get an instant quote
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </ButtonLink>
-          <ButtonLink href="/contact" variant="outline-dark" size="lg">
-            Get a quote
+          <ButtonLink href="#homes" variant="outline-dark" size="lg">
+            Explore our homes
           </ButtonLink>
         </div>
       </div>

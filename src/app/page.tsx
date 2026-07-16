@@ -36,7 +36,7 @@ const lowestStartingPrice = Math.min(
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R55 000 ex VAT with a 10-year guarantee. Folding homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
+  "Prefab tiny homes from R65 000 ex VAT with a 10-year guarantee. X-Folds, expandable homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {
@@ -128,7 +128,7 @@ export default function HomePage() {
       <GalleryStrip />
       <VideoCarousel />
 
-      <section aria-labelledby="faq-heading" className="py-20 sm:py-28">
+      <section aria-labelledby="faq-heading" className="py-24 sm:py-32">
         <Container>
           <SectionHeading
             id="faq-heading"
@@ -142,7 +142,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section aria-labelledby="cta-heading" className="bg-forest bg-grain py-24 text-cream sm:py-32">
+      <section aria-labelledby="cta-heading" className="bg-forest bg-grain py-28 text-cream sm:py-36">
         <Container className="text-center">
           <Reveal>
             <p className="text-eyebrow text-sage">From {formatZAR(lowestStartingPrice)} ex VAT</p>
@@ -157,7 +157,10 @@ export default function HomePage() {
               and the delivery, anywhere in South Africa.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <ButtonLink href="/contact" variant="accent" size="lg">
+              <ButtonLink href="/quote" variant="accent" size="lg">
+                Get an instant quote
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="outline-dark" size="lg">
                 Request a call
               </ButtonLink>
               <ButtonAnchor
