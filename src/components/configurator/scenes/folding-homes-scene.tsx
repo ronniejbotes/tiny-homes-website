@@ -48,9 +48,9 @@ import {
  *   right: deck 580–652 (ground) | shrub 666+
  */
 export function FoldingHomesScene({ visuals, furnished, variantId }: SceneProps) {
-  // The bathroom and kitchen are factory-fitted on the X-Fold BK and Flat Pack
-  // variants — they are part of the unit, not configurator options.
-  const fitted = variantId === "x-fold-bk" || variantId === "flat-pack-roof";
+  // The bathroom and kitchen are factory-fitted on the X-Fold BK variant —
+  // they are part of the unit, not configurator options.
+  const fitted = variantId === "x-fold-bk";
   return (
     <svg
       viewBox="0 0 800 500"

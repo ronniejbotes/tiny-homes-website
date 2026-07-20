@@ -12,7 +12,6 @@ import {
 import { getGalleryImages, getHeroImage } from "@/components/product/product-images";
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductGallery } from "@/components/product/product-gallery";
-import { Product3D } from "@/components/product/product-3d";
 import { OverviewSpecs } from "@/components/product/overview-specs";
 import { VariantCards } from "@/components/product/variant-cards";
 import { ConfiguratorSection } from "@/components/product/configurator-section";
@@ -21,7 +20,6 @@ import { UseCaseChips } from "@/components/product/use-case-chips";
 import { ProductFaq } from "@/components/product/product-faq";
 import { RelatedProducts } from "@/components/product/related-products";
 import { ProductCta } from "@/components/product/product-cta";
-import models from "@/data/models.json";
 
 export const dynamicParams = false;
 
@@ -125,10 +123,6 @@ export default async function ProductPage({ params }: { params: Params }) {
       />
       <ProductHero product={product} image={hero} />
       <ProductGallery productName={product.name} images={gallery} />
-      {/* Only products with a 3D model in models.json render the viewer. */}
-      {product.slug in models && (
-        <Product3D slug={product.slug} productName={product.name} />
-      )}
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
       {/* No options, no configurator — kitchens and safari tents are quoted, not configured. */}

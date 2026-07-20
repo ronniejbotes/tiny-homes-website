@@ -183,14 +183,14 @@ const FOLDING_PLAN: ProductPlan = {
       label: "Wet room",
       rect: r(0, 0, 1.15, 1.4), // enclosed bathroom, 1.15 × 1.4 m (doc-sourced)
       areaM2: 1.6,
-      standardVariantIds: ["x-fold-bk", "flat-pack-roof"],
+      standardVariantIds: ["x-fold-bk"],
     },
     {
       key: "kitchen",
       label: "Kitchen",
       rect: r(1.45, 0, 2.45, 0.5), // compact kitchen unit, 1.0 × 0.5 m (doc-sourced)
       areaM2: 0.5,
-      standardVariantIds: ["x-fold-bk", "flat-pack-roof"],
+      standardVariantIds: ["x-fold-bk"],
     },
     airconZone(r(5.32, 1.15, 5.58, 1.55)),
   ],

@@ -33,6 +33,12 @@ export interface CustomOption {
   label: string;
   description: string;
   price: number; // ZAR ex VAT
+  /**
+   * Per-m² pricing — when set, the effective price is pricePerM2 × the selected
+   * variant's areaM2, so the upgrade scales with the chosen size. `price` is
+   * ignored while this is set (use 0). See optionPrice().
+   */
+  pricePerM2?: number;
   category: OptionCategory;
   visual: VisualKey;
   /** Option only makes sense when another option is selected first. */
@@ -56,6 +62,8 @@ export interface ProductVariant {
   name: string;
   size: string;
   price: number; // ZAR ex VAT
+  /** Numeric floor area in m² — drives per-m² option pricing (see optionPrice). */
+  areaM2?: number;
   description: string;
 }
 
@@ -93,71 +101,6 @@ export interface Product {
   seoKeywords: string[];
 }
 
-/** Standard placeholder option set, priced per product tier. */
-function standardOptions(tier: number, overrides?: Record<string, Partial<CustomOption>>): CustomOption[] {
-  const round = (n: number) => Math.round((n * tier) / 500) * 500;
-  const base: CustomOption[] = [
-    {
-      id: "upgraded-floors",
-      label: "Upgraded flooring",
-      description: "Premium wood-look vinyl plank flooring throughout, warmer underfoot and more durable than the standard finish.",
-      price: round(12500),
-      category: "interior",
-      visual: "floors",
-      provisional: true,
-    },
-    {
-      id: "upgraded-walls",
-      label: "Upgraded wall finish",
-      description: "Timber-panelled interior wall cladding for a warm, architectural feel in place of the standard panels.",
-      price: round(15000),
-      category: "interior",
-      visual: "walls",
-      provisional: true,
-    },
-    {
-      id: "premium-insulation",
-      label: "Premium insulation",
-      description: "Thicker multi-layer thermal insulation in the walls and roof for cooler summers, warmer winters and lower energy bills.",
-      price: round(9500),
-      category: "structure",
-      visual: "insulation",
-      provisional: true,
-    },
-    {
-      id: "wet-room",
-      label: "Wet room unit",
-      description: "Fully plumbed bathroom module with shower, toilet and basin, factory-fitted and ready to connect on site.",
-      price: round(56500),
-      category: "modules",
-      visual: "wet-room",
-      footprintM2: 2.8,
-      provisional: true,
-    },
-    {
-      id: "kitchen-unit",
-      label: "Kitchen unit",
-      description: "Fitted kitchenette with counter, sink, cabinet storage and space for a two-plate hob and under-counter fridge.",
-      price: round(33000),
-      category: "modules",
-      visual: "kitchen",
-      footprintM2: 1.5,
-      provisional: true,
-    },
-    {
-      id: "overhead-cupboards",
-      label: "Overhead cupboards",
-      description: "Wall-mounted overhead cupboards above the kitchen counter for extra storage without losing floor space.",
-      price: round(10000),
-      category: "modules",
-      visual: "cupboards",
-      requires: "kitchen-unit",
-      provisional: true,
-    },
-  ];
-  return base.map((o) => ({ ...o, ...(overrides?.[o.id] ?? {}) }));
-}
-
 /* --------------------------------------------------------------------------
  * Optional extras. All remain provisional — every extra is confirmed line by
  * line on the formal quotation. Doc-sourced extras with no published price
@@ -167,76 +110,8 @@ function standardOptions(tier: number, overrides?: Record<string, Partial<Custom
 const extra = (o: Omit<CustomOption, "provisional">): CustomOption => ({ ...o, provisional: true });
 
 const foldingExtras: CustomOption[] = [
-  extra({ id: "burglar-bars", label: "Burglar bars", description: "Steel burglar bars fitted to both windows for extra peace of mind — priced on your quotation.", price: 0, category: "structure", visual: "none" }),
-  extra({ id: "glass-entrance-wood-trim", label: "Glass entrance with wood-trim finish", description: "Full glass entrance with a warm wood-trim finish for a more architectural front — priced on your quotation.", price: 0, category: "structure", visual: "glazing" }),
-  extra({ id: "double-glazed-windows", label: "Double-glazed aluminium windows (pair)", description: "Replaces the two standard PVC windows with double-glazed aluminium units for better insulation and quiet.", price: 13000, category: "structure", visual: "glazing" }),
-  extra({ id: "sliding-door", label: "Aluminium sliding door", description: "Full-height aluminium sliding door in place of a window panel — opens the room to a deck or garden.", price: 12000, category: "structure", visual: "glazing" }),
-  extra({ id: "electric-sliding-door", label: "Electric sliding door upgrade", description: "Upgrades the aluminium sliding door to a motorised electric track — glide it open at the touch of a button, priced on your quotation.", price: 0, category: "structure", visual: "glazing", requires: "sliding-door" }),
-  extra({ id: "stacking-kit", label: "Two-high stacking kit", description: "Reinforced corner castings and link plates to stack a second unit on top or link units side by side.", price: 6000, category: "structure", visual: "stack" }),
-  extra({ id: "timber-deck", label: "Timber deck (5 m²)", description: "Treated-pine deck along the entrance side — an outdoor room for the price of a weekend away.", price: 7500, category: "structure", visual: "deck" }),
-  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed. A big-ticket add-on that takes the whole unit off-grid.", price: 74500, category: "energy", visual: "solar" }),
-  extra({ id: "backup-power", label: "Plug-in backup power kit", description: "1.5–2 kVA inverter trolley with battery — keeps lights, Wi-Fi and the fridge running through load-shedding.", price: 16500, category: "energy", visual: "none" }),
-  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "SAQCC-compliant gas geyser installed for instant hot water without straining the electrical feed.", price: 11500, category: "energy", visual: "none" }),
-  extra({ id: "aircon-9k", label: "Inverter aircon (9 000 BTU)", description: "Midwall inverter split installed — heats in winter, cools in summer, sized for the 15 m² room.", price: 13000, category: "comfort", visual: "aircon" }),
-  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Fingerprint/keypad smart lock on the steel door — no keys to lose between guests.", price: 5500, category: "comfort", visual: "none" }),
-  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains and rails for both windows — dark, cool sleep in summer.", price: 7000, category: "comfort", visual: "curtains" }),
-  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package with app control for warm, layered evening light.", price: 8000, category: "comfort", visual: "none" }),
-];
-
-const expandableExtras: CustomOption[] = [
-  extra({ id: "pu-wall-panels", label: "Polyurethane wall panel upgrade", description: "Upgrades the 75 mm EPS walls to polyurethane panels for enhanced thermal insulation and improved fire-retardant performance — priced on your quotation.", price: 0, category: "structure", visual: "walls" }),
-  extra({ id: "balcony", label: "Balcony platform", description: "Bolt-on balcony platform along the entrance side — priced on your quotation.", price: 0, category: "structure", visual: "deck" }),
-  extra({ id: "pitched-roof", label: "Pitched roof", description: "Adds a pitched roof over the flat-roof unit — priced on your quotation.", price: 0, category: "structure", visual: "none" }),
-  extra({ id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall — priced on your quotation.", price: 0, category: "structure", visual: "glazing" }),
-  extra({ id: "timber-deck", label: "Timber deck (10 m²)", description: "Treated-pine deck along the entrance side — outdoor living to match the indoor space.", price: 15000, category: "structure", visual: "deck" }),
-  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery, installed — load-shedding-proof from day one.", price: 74500, category: "energy", visual: "solar" }),
-  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "SAQCC-compliant gas geyser installed for instant hot water.", price: 11500, category: "energy", visual: "none" }),
-  extra({ id: "aircon-12k", label: "Inverter aircon (12 000 BTU)", description: "Midwall inverter split sized for the open-plan living space.", price: 15000, category: "comfort", visual: "aircon" }),
-  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Fingerprint/keypad entry on the main door.", price: 5500, category: "comfort", visual: "none" }),
-  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains and rails throughout the bedroom wing.", price: 7000, category: "comfort", visual: "curtains" }),
-  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package with app control.", price: 8000, category: "comfort", visual: "none" }),
-];
-
-const natureExtras: CustomOption[] = [
-  extra({ id: "balcony-railing", label: "Deck railing kit", description: "Aluminium balustrade around the included 1.8 m deck for exposed or elevated sites.", price: 13000, category: "structure", visual: "none" }),
-  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Six 455 W panels, 3 kW hybrid inverter and 5 kWh lithium battery — the full off-grid package.", price: 74500, category: "energy", visual: "solar" }),
-  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "Instant gas hot water for the included bathroom — ideal off-grid.", price: 11500, category: "energy", visual: "none" }),
-  extra({ id: "underfloor-heating", label: "Under-floor heating (20.1 m²)", description: "Electric under-floor heating mats with thermostat under the full cabin floor.", price: 18000, category: "comfort", visual: "heating" }),
-  extra({ id: "aircon-9k", label: "Inverter aircon (9 000 BTU)", description: "Midwall inverter split sized for the cabin.", price: 13000, category: "comfort", visual: "aircon" }),
-  extra({ id: "blackout-curtains", label: "Blackout curtain set", description: "Blockout curtains for the gable glass and windows — guests sleep past sunrise.", price: 7000, category: "comfort", visual: "curtains" }),
-  extra({ id: "smart-lock", label: "Smart electronic door lock", description: "Keypad/fingerprint entry — no key handovers between bookings.", price: 5500, category: "comfort", visual: "none" }),
-];
-
-const domeOptions: CustomOption[] = [
-  extra({ id: "integrated-bathroom", label: "Integrated bathroom unit", description: "Factory-fitted bathroom unit with shower, toilet and basin, plumbed and ready to connect on site.", price: 56500, category: "modules", visual: "wet-room", footprintM2: 2.8, photo: "/images/products/the-dome/exterior-dome-render.png" }),
-  extra({ id: "partition-wall", label: "Internal partition wall with door", description: "Divides the dome into a private bedroom and living area — priced on your quotation.", price: 0, category: "structure", visual: "walls" }),
-  extra({ id: "electric-curtains", label: "Automated electric curtain system", description: "Upgrades the blackout curtain to an automated electric track — open the whole dome to the view at the touch of a button.", price: 8000, category: "comfort", visual: "curtains", photo: "/images/products/the-dome/interior-bedroom.jpg" }),
-  extra({ id: "led-ambient", label: "Extended ambient lighting", description: "Extended interior and exterior ambient lighting layered over the standard LED system.", price: 8000, category: "comfort", visual: "none" }),
-  extra({ id: "smart-lock", label: "Smart electronic key-lock", description: "Smart electronic key-lock on the arched door for self-check-in guests.", price: 5500, category: "comfort", visual: "none" }),
-  extra({ id: "upgraded-floors", label: "Upgraded flooring", description: "Premium wood-look vinyl plank flooring throughout, warmer underfoot and more durable than the standard finish.", price: 12500, category: "interior", visual: "floors" }),
-  extra({ id: "underfloor-heating", label: "Under-floor heating (24.6 m²)", description: "Electric under-floor heating with thermostat — the dome stays warm on clear winter nights.", price: 21000, category: "comfort", visual: "heating" }),
-  extra({ id: "aircon-floor", label: "Climate unit (9 000 BTU)", description: "Discreet floor-standing inverter unit — cooling and heating without piercing the shell.", price: 13000, category: "comfort", visual: "aircon", footprintM2: 0.1 }),
-  extra({ id: "backup-power", label: "Plug-in backup power kit", description: "1.5–2 kVA inverter trolley with battery for lights and essentials through load-shedding.", price: 16500, category: "energy", visual: "none" }),
-  extra({ id: "gas-geyser", label: "Gas geyser (12 L/min)", description: "Instant gas hot water for the bathroom unit.", price: 11500, category: "energy", visual: "none" }),
-];
-
-const appleExtras: CustomOption[] = [
-  extra({ id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating mats with thermostat, sized to your cabin.", price: 31500, category: "comfort", visual: "heating" }),
-  extra({ id: "central-ac", label: "Central air-conditioning", description: "Integrated central air-conditioning to heat and cool the whole cabin — priced on your quotation.", price: 0, category: "comfort", visual: "aircon" }),
-  extra({ id: "smart-toilet", label: "Smart toilet", description: "Upgrades the included bathroom to a smart toilet with heated seat, bidet wash and auto flush — priced on your quotation.", price: 0, category: "comfort", visual: "none" }),
-  extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "Bolt-on balcony platform with aluminium balustrade along the glass wall.", price: 13000, category: "structure", visual: "deck" }),
-  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery — solar and battery systems are sized and quoted for your site.", price: 74500, category: "energy", visual: "solar" }),
-  extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the panoramic glass — open the view from bed.", price: 8000, category: "comfort", visual: "curtains" }),
-  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package for evening ambience.", price: 8000, category: "comfort", visual: "none" }),
-];
-
-const glampingExtras: CustomOption[] = [
-  extra({ id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating mats with thermostat, sized to your capsule.", price: 31500, category: "comfort", visual: "heating" }),
-  extra({ id: "smart-toilet", label: "Smart toilet", description: "Upgrades the central bathroom to a smart toilet with heated seat, bidet wash and auto flush — priced on your quotation.", price: 0, category: "comfort", visual: "none" }),
-  extra({ id: "balcony-kit", label: "Balcony platform & railing", description: "The optional capsule balcony: bolt-on platform with glass-line balustrade, removable to extend the indoor space.", price: 13000, category: "structure", visual: "deck" }),
-  extra({ id: "electric-curtains", label: "Automated electric curtains", description: "Wi-Fi motorised track across the 270° glazing.", price: 8000, category: "comfort", visual: "curtains" }),
-  extra({ id: "solar-kit", label: "Solar kit — 3 kW hybrid + 5 kWh battery", description: "Roof-mounted array with hybrid inverter and lithium battery — integrated solar is sized and quoted for your site.", price: 74500, category: "energy", visual: "solar" }),
-  extra({ id: "led-ambient", label: "LED ambient lighting package", description: "Smart RGBW strip and spot package for hotel-grade evening light.", price: 8000, category: "comfort", visual: "none" }),
+  extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Upgrades the standard panel exterior to a decorative metal carved board finish, in a wide choice of colours and textures.", price: 10000, category: "structure", visual: "none" }),
+  extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium — R2 000 per window, two windows per unit.", price: 4000, category: "structure", visual: "glazing" }),
 ];
 
 export const products: Product[] = [
@@ -246,40 +121,35 @@ export const products: Product[] = [
     shortName: "X-Fold",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold flips from flat-pack to a fully enclosed, insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, from R65 000 ex VAT with every structural upgrade standard, plus a factory-fitted bathroom-and-kitchen option.",
+      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, at R55 000 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight, insulated home with a reinforced 12-beam galvanised steel frame, metal-carved-panel exterior, SPC stone-composite floors, PVC windows, a steel door and pre-installed electrics — all standard, and two workers complete the four-step setup in minutes. From R65 000 ex VAT. Want it move-in ready? The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the 18 m² Flat Pack with Roof (R85 900 ex VAT) adds a pitched roof with bathroom and kitchen included. A Flat Pack without roof (5.9 × 2.9 × 2.8 m, 18 m²) is also available for tight-access sites — price on request. Waterproof, insulated and stackable two units high, X-Folds suit garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all backed by our 10-year guarantee.",
-    startingPrice: 65000,
-    sizeLabel: "15 – 18 m²",
+      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R55 000 ex VAT and backed by our 10-year guarantee.",
+    startingPrice: 55000,
+    sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
     dims: { length: 5.8, width: 2.48, height: 2.56 },
     specs: [
-      { label: "Floor area", value: "15 m² (18 m² Flat Pack versions)" },
+      { label: "Floor area", value: "15 m²" },
       { label: "External size", value: "5.8 m × 2.48 m × 2.56 m" },
-      { label: "Structure", value: "Reinforced 12-beam galvanised steel frame with anti-corrosion coating — standard" },
-      { label: "Walls", value: "50 mm insulated panels with metal-carved-panel exterior finish — standard" },
-      { label: "Flooring", value: "SPC stone-composite flooring — standard" },
-      { label: "Doors & windows", value: "1 steel door, 2 PVC windows (optional burglar bars)" },
-      { label: "Electrical", value: "2 SA-standard sockets, LED light & switch, DB board with earth leakage" },
-      { label: "Finish", value: "White frame with grey walls, or wood-grain walls with white or black frame" },
+      { label: "Structure", value: "Steel frame with upgraded floor beams for added support" },
+      { label: "Insulation", value: "EPS-insulated panels — warmer in winter, cooler in summer" },
+      { label: "Doors & windows", value: "1 steel door, 2 PVC windows (aluminium-frame upgrade available)" },
+      { label: "Electrical", value: "2 plug points, a light fitting and a small DB board — electricity included" },
+      { label: "Plumbing", value: "None — add a bathroom or wet room with a local installer" },
+      { label: "Finish", value: "White frame with grey walls, or wood-grain walls with white or black frame; optional metal carved board exterior" },
       { label: "Stackable", value: "Up to two units high" },
       { label: "Setup", value: "Unfolds in minutes — 2 workers, 4 steps" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
-      "Every structural upgrade standard — 12-beam frame, metal-carved-panel exterior and SPC floors",
-      "Waterproof and fully insulated for summer and winter",
-      "Pre-installed electrics with DB board, earth leakage and LED lighting",
+      "Upgraded floor beams for added structural support",
+      "EPS insulation — warmer in winter, cooler in summer",
+      "Wired for electricity: two plug points, a light fitting and a small DB board",
+      "No plumbing — add a bathroom or wet room with a local installer",
       "Stackable up to two units high",
       "Relocatable — fold it back down and move it",
-      "Factory-fitted bathroom and kitchen option available",
     ],
     useCases: ["Garden room", "Home office", "Guest suite", "Rental unit", "Site office", "Worker housing", "Emergency housing"],
-    variants: [
-      { id: "x-fold", name: "X-Fold", size: "15 m²", price: 65000, description: "Weather-tight folding unit with every structural upgrade standard — reinforced 12-beam frame, metal-carved-panel exterior, SPC stone-composite floors and pre-installed electrics. Bathroom and kitchen optional." },
-      { id: "x-fold-bk", name: "X-Fold + bathroom & kitchen", size: "15 m²", price: 68900, description: "The same fully upgraded unit factory-fitted with an enclosed bathroom (shower, toilet and basin, 1.15 × 1.4 m) and a compact 1.0 × 0.5 m kitchen unit." },
-      { id: "flat-pack-roof", name: "Flat Pack with Roof", size: "18 m²", price: 85900, description: "5.99 × 2.99 × 2.8 m pitched-roof version, assembled on site (not foldable) — bathroom and kitchen included, open-plan as standard." },
-    ],
     options: [...foldingExtras],
     faqs: [
       {
@@ -296,11 +166,11 @@ export const products: Product[] = [
       },
       {
         q: "What comes standard on an X-Fold?",
-        a: "Every structural upgrade is included as standard: the reinforced 12-beam galvanised frame, metal-carved-panel exterior, SPC stone-composite floors, 50 mm insulated walls and pre-installed electrics. Double-glazed aluminium window upgrades are also available.",
+        a: "Upgraded floor beams for added support, EPS insulation to keep it comfortable year-round, and a basic electrical setup — two plug points, a light fitting and a small DB board. It arrives wired for electricity but without plumbing. A metal carved board exterior finish and aluminium window frames are available upgrades.",
       },
       {
-        q: "Can I get a bathroom and kitchen in an X-Fold?",
-        a: "Yes. The X-Fold with factory-fitted bathroom and kitchen is R68 900 ex VAT, and the Flat Pack versions include a bathroom and kitchen as standard.",
+        q: "Does the X-Fold come with a bathroom or kitchen?",
+        a: "No — the X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, we recommend arranging a local installer to fit one on site.",
       },
       {
         q: "Is there a guarantee?",
@@ -323,24 +193,23 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     tagline: "Smart living — fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R330 000 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R200 000 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single 6 m or 12 m module, each home expands on site within hours, revealing insulated rooms with double-glazed aluminium windows and factory-installed plumbing and electrics. The range starts with the 6m Expandable Home at R330 000 ex VAT — two bedrooms, bathroom and stainless-steel kitchen included — and goes up to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. Pick your exterior from 107 colours and finishes, place windows and doors where you want them, and let our turnkey team handle the groundwork and connections.",
-    startingPrice: 330000,
-    sizeLabel: "37 – 74 m²",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and, on the larger sizes, factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R200 000 ex VAT, step up to the fully fitted 6m Expandable Home at R330 000 — two bedrooms, bathroom and stainless-steel kitchen included — or go all the way to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall, and let our turnkey team handle the groundwork and connections.",
+    startingPrice: 200000,
+    sizeLabel: "18 – 74 m²",
     bedrooms: "2 – 4 bedrooms",
     setupTime: "Expands within hours",
     dims: { length: 11.9, width: 6.3, height: 2.48 },
     specs: [
-      { label: "Sizes", value: "37 m² to 74 m²" },
+      { label: "Sizes", value: "18 m², 37 m² or 74 m²" },
       { label: "Deployment", value: "Arrives as one module, expands on site — move-in ready within hours on a prepared site" },
-      { label: "Transport size", value: "6m: 5.8 × 3.3 × 2.5 m; 12m: 12 × 2.2 × 2.5 m — compact for delivery, spacious when opened" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
-      { label: "Walls & roof", value: "75 mm EPS sandwich panel walls; 50 mm EPS roof" },
-      { label: "Windows & doors", value: "Aluminium double-glazed with fly screens; sliding glass and aluminium entry door" },
-      { label: "Floor", value: "Water- and insect-resistant magnesium concrete composite; timber-look vinyl standard (SPC, laminate or wood upgrades)" },
+      { label: "Walls", value: "75 mm EPS insulated panels — standard (polyurethane upgrade available)" },
+      { label: "Flooring", value: "Vinyl flooring — standard (waterproof SPC laminate upgrade available)" },
+      { label: "Windows & doors", value: "Double-glazed (double-pane) glass windows and a door — standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
-      { label: "Utilities", value: "Plumbing & electrical factory-installed — connect water, power and sewage on site" },
+      { label: "Utilities", value: "6m and 12m: plumbing & electrical factory-installed. 18 m²: budget shell, no bathroom or kitchen" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
@@ -353,38 +222,31 @@ export const products: Product[] = [
     ],
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
-      { id: "b20", name: "6m Expandable Home", size: "37 m²", price: 330000, description: "5.9 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics. With the Metal Carved Panel exterior and SPC flooring upgrade, R360 000 ex VAT." },
-      { id: "b40", name: "12m Expandable Home", size: "74 m²", price: 600000, description: "11.8 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included. With the Metal Carved Panel exterior and SPC flooring upgrade, R640 000 ex VAT." },
+      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 200000, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard. No bathroom or kitchen." },
+      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 330000, description: "5.9 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
+      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 600000, description: "11.8 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
-      ...standardOptions(1, {
-        "wet-room": {
-          label: "Wet room upgrade",
-          description: "Upgrades the included bathroom's fittings and finishes — every expandable home ships with a fully plumbed bathroom as standard.",
-          photo: "/images/products/expandable-homes/interior-lounge.jpg",
-          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
-        },
-        "kitchen-unit": {
-          label: "Kitchen upgrade",
-          description: "Upgrades the included stainless-steel kitchen's counters and cabinetry — a fitted kitchen is standard on every expandable home.",
-          photo: "/images/products/expandable-homes/interior-living-room.png",
-          footprintM2: undefined, // finish upgrade of the included kitchen — no new floor consumed
-        },
-      }),
-      ...expandableExtras,
+      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane — around 40% better insulation. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
+      { id: "spc-flooring", label: "Waterproof SPC laminate flooring", description: "Upgrades the standard vinyl to waterproof SPC stone-composite laminate. Priced per m² of floor area.", price: 0, pricePerM2: 185, category: "interior", visual: "floors", provisional: false },
+      { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 15000, category: "structure", visual: "glazing", provisional: false },
     ],
     faqs: [
       {
-        q: "How big can an expandable home get?",
-        a: "From the 37 m² 6m Expandable Home to the 74 m² 12m Expandable Home with layouts of up to four bedrooms.",
+        q: "What sizes and prices are available?",
+        a: "Three sizes: the compact 18 m² from R200 000 ex VAT (a budget shell, no bathroom or kitchen), the 37 m² 6m Expandable Home at R330 000 and the 74 m² 12m Expandable Home at R600 000. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen, with layouts up to four bedrooms on the 12m.",
       },
       {
         q: "How long does installation take?",
-        a: "The home arrives as one module and expands on site within hours — on a prepared site you can move in the same day. Our turnkey team can handle the groundwork, connections and handover for you.",
+        a: "The 6m and 12m homes arrive as one module and expand on site within hours — on a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect. Our turnkey team can handle the groundwork, connections and handover for you.",
       },
       {
         q: "What's included as standard?",
-        a: "Both the 6m and 12m homes include two bedrooms, a fully fitted bathroom with separate shower, a stainless-steel kitchen and factory-installed plumbing and electrics.",
+        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, and double-glazed glass windows and a door. The 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower, a stainless-steel kitchen and factory-installed plumbing and electrics; the compact 18 m² is a budget shell without a bathroom or kitchen.",
+      },
+      {
+        q: "What upgrades can I add to an expandable home?",
+        a: "Three upgrades are available on every size: polyurethane wall insulation for around 40% better thermal performance (R300 per m²), waterproof SPC laminate flooring (R185 per m²), and a full glass front wall (R15 000). The per-m² upgrades scale with the size you choose.",
       },
       {
         q: "How much does delivery cost?",
@@ -436,16 +298,7 @@ export const products: Product[] = [
       "The cost-effective gateway into premium capsule accommodation",
     ],
     useCases: ["Guest farm unit", "Airbnb cabin", "Bush retreat", "Coastal getaway", "Backyard studio", "Lodge accommodation"],
-    options: [
-      ...standardOptions(1.2, {
-        "wet-room": {
-          label: "Premium wet room upgrade",
-          description: "Upgrades the included fully fitted bathroom with premium finishes, fittings and a rainfall shower.",
-          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
-        },
-      }),
-      ...natureExtras,
-    ],
+    options: [],
     faqs: [
       {
         q: "Where can a nature cabin be installed?",
@@ -509,7 +362,7 @@ export const products: Product[] = [
       "Professional installation in 2 days",
     ],
     useCases: ["Upscale glamping", "Boutique outdoor dining", "Spa or lounge pod", "VIP retreat", "Private studio", "Airbnb experience"],
-    options: domeOptions,
+    options: [],
     faqs: [
       {
         q: "Does The Dome get hot in the South African sun?",
@@ -578,23 +431,7 @@ export const products: Product[] = [
       { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 550000, description: "9 × 2.25 × 2.63 m — luxurious bathroom fittings and a kitchen included." },
       { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 650000, description: "11.8 × 2.25 × 2.63 m — the largest Apple cabin, with bathroom and kitchen included." },
     ],
-    options: [
-      ...standardOptions(1.5, {
-        "wet-room": {
-          label: "Premium wet room upgrade",
-          description: "Upgrades the included bathroom's already-luxurious fittings with premium finishes of your choice.",
-          photo: "/images/products/apple-cabins/interior-bathroom.jpg",
-          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
-        },
-        "kitchen-unit": {
-          label: "Kitchen unit / upgrade",
-          description: "Adds a fitted kitchen to the 5.8 m cabin — on the 9 m and 11.8 m cabins it upgrades the included kitchen's counters and cabinetry.",
-          photo: "/images/products/apple-cabins/interior-kitchenette-render.jpg",
-          footprintVariantIds: ["apple-5-8"], // only the 5.8 m cabin gains a new module footprint
-        },
-      }),
-      ...appleExtras,
-    ],
+    options: [],
     faqs: [
       {
         q: "What is included in an Apple Cabin?",
@@ -659,21 +496,7 @@ export const products: Product[] = [
       { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 850000, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
       { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 950000, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
     ],
-    options: [
-      ...standardOptions(1.8, {
-        "wet-room": {
-          label: "Premium wet room upgrade",
-          description: "Upgrades the included central bathroom's premium fittings with finishes of your choice.",
-          footprintM2: undefined, // finish upgrade of the included bathroom — no new floor consumed
-        },
-        "kitchen-unit": {
-          label: "Kitchen unit / upgrade",
-          description: "Adds a fitted kitchen to the 5.85 m and 9.5 m capsules — on the 11.5 m it upgrades the included luxurious kitchen.",
-          footprintVariantIds: ["capsule-8-5", "capsule-5-85"], // the 5.85 m and 9.5 m capsules gain a new kitchen-module footprint
-        },
-      }),
-      ...glampingExtras,
-    ],
+    options: [],
     faqs: [
       {
         q: "What comes standard in a Glamping Capsule?",
@@ -903,12 +726,19 @@ export function activeVisuals(
   return visuals;
 }
 
+/** Effective price of an option — per-m² options scale with the selected variant's floor area. */
+export function optionPrice(opt: CustomOption, areaM2?: number): number {
+  if (opt.pricePerM2 != null && areaM2 != null) return Math.round(opt.pricePerM2 * areaM2);
+  return opt.price;
+}
+
 /** Sum of base price + selected options for a product. */
 export function configuredPrice(product: Product, selected: Partial<Record<string, boolean>>, variantId?: string): number {
   const variant = product.variants?.find((v) => v.id === variantId);
   const base = variant ? variant.price : product.startingPrice;
+  const areaM2 = variant?.areaM2;
   return product.options.reduce((total, opt) => {
     const active = selected[opt.id] && (!opt.requires || selected[opt.requires]);
-    return active ? total + opt.price : total;
+    return active ? total + optionPrice(opt, areaM2) : total;
   }, base);
 }

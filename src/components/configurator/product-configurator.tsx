@@ -29,6 +29,7 @@ import {
 import {
   activeVisuals,
   configuredPrice,
+  optionPrice,
   type CustomOption,
   type OptionCategory,
   type Product,
@@ -80,14 +81,18 @@ function OptionToggle({
   checked,
   disabled,
   helper,
+  areaM2,
   onToggle,
 }: {
   option: CustomOption;
   checked: boolean;
   disabled: boolean;
   helper?: string;
+  /** Selected variant's floor area — drives per-m² option pricing. */
+  areaM2?: number;
   onToggle: () => void;
 }) {
+  const price = optionPrice(option, areaM2);
   return (
     <button
       type="button"
@@ -108,9 +113,14 @@ function OptionToggle({
         <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="font-medium text-ink">{option.label}</span>
           <span className="text-sm font-medium text-clay-dark">
-            {option.price > 0 ? `+${formatZAR(option.price)}` : "priced on quotation"}
+            {price > 0 ? `+${formatZAR(price)}` : "priced on quotation"}
+            {option.pricePerM2 != null && (
+              <span className="ml-1 font-normal text-stone">
+                (R{option.pricePerM2}/m²)
+              </span>
+            )}
           </span>
-          {option.provisional && option.price > 0 && (
+          {option.provisional && price > 0 && (
             <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
               provisional
             </span>
@@ -565,6 +575,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                       option={option}
                       checked={Boolean(selected[option.id]) && requirementMet}
                       disabled={!requirementMet}
+                      areaM2={activeVariant?.areaM2}
                       helper={
                         !requirementMet
                           ? `Add the ${product.options.find((o) => o.id === option.requires)?.label.toLowerCase() ?? "required option"} first`

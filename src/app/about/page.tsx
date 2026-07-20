@@ -23,12 +23,12 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R65 000 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
+  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Six home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
 
 export const metadata: Metadata = {
   title: "About Tiny Homes SA | Prefab Home Builder in Centurion",
   description:
-    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R65 000 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA builds prefab tiny homes in Centurion and delivers nationwide — six steel-built home designs from R55 000 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",

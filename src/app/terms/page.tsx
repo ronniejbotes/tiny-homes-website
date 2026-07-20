@@ -100,8 +100,8 @@ export default function TermsPage() {
           <Term n={4} title="What's included with delivery">
             <p>
               A standard delivery covers transporting the unit to your site and offloading it as
-              described above. For folding units — the X-Fold and the foldable Flat Pack range —
-              our team will also unfold and set up the unit on your prepared, level surface.
+              described above. For the X-Fold, our team will also unfold and set up the unit on
+              your prepared, level surface.
             </p>
             <p>
               For all other units, on-site assembly or installation is quoted separately as part

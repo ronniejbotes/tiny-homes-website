@@ -21,7 +21,7 @@ export function organizationSchema(): SchemaObject {
   // Range across every variant, not just base prices — the 11.5 m capsule tops
   // out at R950 000. Price-on-request products carry a 0 sentinel and are excluded.
   // Garages are a DIY steel-kit line, not a home — excluded so the advertised
-  // homes price range matches the site-wide "homes from R65 000" copy.
+  // homes price range matches the site-wide "homes from R55 000" copy.
   const prices = products
     .filter((p) => !p.priceOnRequest && p.slug !== "garages")
     .flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice]));
