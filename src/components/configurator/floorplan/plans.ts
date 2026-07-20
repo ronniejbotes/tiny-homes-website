@@ -215,13 +215,13 @@ const FOLDING_PLAN: ProductPlan = {
   },
 };
 
-/** Nature cabin — 6.3 × 3.2 m external + standard 1.8 m deck across the front. */
+/** Nature cabin — 8.1 × 3.2 m external + 1.5 × 3.2 m viewing terrace. (Unused: nature has no configurator.) */
 const NATURE_PLAN: ProductPlan = {
   exterior: { w: 6.3, d: 3.2 },
   interior: { w: 6.1, d: 3.0 },
   wall: WALL_M,
   shape: "rect",
-  floorAreaM2: 20.1,
+  floorAreaM2: 26,
   door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
   windows: [
     { side: "top", offset: 2.2, length: 1.0 },
