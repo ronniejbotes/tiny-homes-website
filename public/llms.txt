@@ -1,5 +1,9 @@
 # Tiny Homes SA
 
+> Tiny Homes SA sells high-end prefab tiny homes, cabins, domes, glamping capsules, outdoor
+> kitchens, DIY garage kits and luxury safari tents, priced from R55 000 to R950 000 ex VAT.
+> The company is based in Centurion, South Africa and delivers nationwide.
+
 Tiny Homes SA (Tiny Homes (Pty) Ltd, trading as Tiny Homes SA, www.tinyhomesa.com) supplies
 high-end prefab tiny homes for affordable, sustainable living in South Africa. The range covers
 nine product lines — X-Folds, expandable homes, nature cabins, transparent domes, apple
@@ -11,8 +15,8 @@ carries a 10-year guarantee, and full after-sales support is provided across the
 and lay-bye options are available,
 subject to credit approval. Tiny Homes can also arrange a full turnkey installation — groundwork,
 plinths, electrical/water/sewerage connections, erection and handover — or clients can use their
-own contractors with a Tiny Homes site manager guiding the process. Typical timeline is about
-90 days (±90 days) from deposit to move-in. Contact: phone 083 660 3743, email
+own contractors with a Tiny Homes site manager guiding the process. Typical timeline is
+±90 days from deposit to move-in. Contact: phone 083 660 3743, email
 sales@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 
 ## Pages
@@ -20,6 +24,8 @@ sales@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 - [Home](https://www.tinyhomesa.com/): Overview of the full range — six prefab tiny home
   designs from R55 000 to R950 000 ex VAT, plus outdoor kitchens, DIY garages and safari tents —
   delivered nationwide from Centurion, with finance and lay-bye options available.
+- [Get a Quote](https://www.tinyhomesa.com/quote): Configure a home — choose size and extras and
+  get an instant price estimate before requesting a formal quotation.
 - [X-Folds](https://www.tinyhomesa.com/folding-homes): 15 m² X-Fold flat-pack home that
   unfolds in minutes; upgraded floor beams, EPS insulation and a basic electrical setup (two
   plug points, a light fitting and a small DB board) standard, stackable two high. Arrives
@@ -44,18 +50,24 @@ sales@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 - [Apple Cabins](https://www.tinyhomesa.com/apple-cabins): Floor-to-ceiling panoramic glass
   cabins, luxurious bathroom fittings included, arrives fully assembled and ready within hours.
   From R450 000 ex VAT (Apple Cabin 5.8m, 13 m²); R550 000 (Apple Cabin 9m, 20 m², kitchenette
-  included); R650 000 (Apple Cabin 11.8m, 26.5 m²).
+  included); R650 000 (Apple Cabin 11.8m, 26.5 m², kitchenette included).
 - [Glamping Capsules](https://www.tinyhomesa.com/glamping-capsules): Flagship two-room capsules
-  with 270° oversized floor-to-ceiling double glazing, premium bathroom fittings, HVAC and geyser
-  standard; transported in sections and professionally assembled on site. From R690 000 ex VAT
-  (Glamping Capsule 5.85m, 18.6 m²); R850 000 (Glamping Capsule 9.5m, 30.4 m², sleeps 2); R950 000
-  (Glamping Capsule 11.5m, 38 m², sleeps 2–4, kitchen included).
+  with 270° oversized floor-to-ceiling double glazing; a central bathroom, premium bathroom
+  fittings, HVAC and geyser are standard on every size. Arrives fully built — delivered and placed
+  on site with no on-site construction. From R690 000 ex VAT (Glamping Capsule 5.85m, 18.6 m²);
+  R850 000 (Glamping Capsule 9.5m, 30.4 m², sleeps 2); R950 000 (Glamping Capsule 11.5m, 38 m²,
+  sleeps 2–4, kitchen included). Optional extras: under-floor heating R14 900, smart double-track
+  curtains R23 900, HD projector and screen R19 900, and a kitchen R39 900 (on the 5.85 m and 9.5 m
+  capsules — the 11.5 m already includes one).
 - [Outdoor Kitchens](https://www.tinyhomesa.com/outdoor-kitchens): All-in-one outdoor
   entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop,
   stainless-steel sink and embedded plumbing and electrical. Four lengths — 2.5, 2.9, 3.5 or
-  3.9 m (all 0.8 m deep × 2.4 m high) — in a wide range of custom colours, with add-ons like gas
-  braai grills, induction cooktops, bar fridges and range hoods quoted on the quotation.
-  From R154 400 ex VAT, delivered ready to use.
+  3.9 m (all 0.8 m deep × 2.4 m high) — in a wide range of custom colours. From R154 400 ex VAT
+  (2.5 m); R164 500 (2.9 m); R183 700 (3.5 m); R196 800 (3.9 m), delivered ready to use. Optional
+  extras (ex VAT): single gas grill R9 300, double gas grill
+  R14 100 (3.5 m and 3.9 m only), induction flat-top stove R4 500, kettle grill R8 200 (3.5 m and
+  3.9 m only), extractor fan R3 400, bar fridge R3 300, stainless-steel countertop R7 800, extra
+  cabinets R3 100/m, aluminium shelf R500, outdoor speaker R1 900, starry-sky ceiling R4 700.
 - [Garages](https://www.tinyhomesa.com/garages): DIY galvanised-steel garage kits delivered
   flat-packed for self-assembly on a level slab — frame, wall and roof sheeting, fixings and
   instructions included, all 3.6 m to the wall. Three sizes: 6.1 × 4 m single (24.4 m², from

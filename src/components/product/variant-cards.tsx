@@ -24,7 +24,7 @@ export function VariantCards({ product }: { product: Product }) {
                   <p className="text-sm font-medium text-stone">{variant.size}</p>
                 </div>
                 <p className="text-display mt-4 text-2xl text-ink">
-                  {formatZAR(variant.price)}
+                  <span className="nums-tabular">{formatZAR(variant.price)}</span>
                 </p>
                 <p className="mt-1 text-xs text-stone">ex VAT</p>
                 <p className="mt-4 text-sm leading-relaxed text-stone">

@@ -36,7 +36,7 @@ const lowestStartingPrice = Math.min(
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R55 000 ex VAT with a 10-year guarantee. X-Folds, expandable homes, cabins, domes and glamping capsules — plus outdoor kitchens and safari tents — delivered nationwide.";
+  "Prefab tiny homes from R55 000 ex VAT with a 10-year guarantee — X-Folds, cabins, domes and glamping capsules, delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {
@@ -145,7 +145,9 @@ export default function HomePage() {
       <section aria-labelledby="cta-heading" className="bg-forest bg-grain py-28 text-cream sm:py-36">
         <Container className="text-center">
           <Reveal>
-            <p className="text-eyebrow text-sage">From {formatZAR(lowestStartingPrice)} ex VAT</p>
+            <p className="text-eyebrow text-sage">
+              From <span className="nums-tabular">{formatZAR(lowestStartingPrice)}</span> ex VAT
+            </p>
             <h2
               id="cta-heading"
               className="text-display mx-auto mt-4 max-w-3xl text-4xl sm:text-6xl lg:text-7xl"

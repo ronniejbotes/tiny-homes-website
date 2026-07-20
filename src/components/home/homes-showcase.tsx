@@ -73,7 +73,7 @@ export function HomesShowcase() {
                 className={spanClasses[i % spanClasses.length]}
               >
                 <Link href={`/${product.slug}`} className="group block rounded-3xl">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-sand">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-sand shadow-[var(--shadow-soft)] transition-shadow duration-500 ease-[var(--ease-smooth)] group-hover:shadow-[var(--shadow-hover)]">
                     {image && (
                       <Image
                         src={image.src}
@@ -101,7 +101,7 @@ export function HomesShowcase() {
                         ) : (
                           <>
                             {product.sizeLabel} · From{" "}
-                            <span className="font-medium text-ink">
+                            <span className="nums-tabular font-medium text-ink">
                               {formatZAR(product.startingPrice)}
                             </span>{" "}
                             ex VAT

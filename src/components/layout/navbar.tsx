@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -83,7 +84,14 @@ export function Navbar() {
         className="mx-auto flex h-16 sm:h-20 w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12"
       >
         <Link href="/" className="flex items-center gap-2.5" aria-label="Tiny Homes SA — home">
-          <HomeMark className="h-8 w-8 text-forest" />
+          <Image
+            src="/images/brand/logo-mark.png"
+            alt=""
+            width={385}
+            height={400}
+            className="h-9 w-auto"
+            priority
+          />
           <span className="font-display text-xl font-semibold tracking-tight text-ink">
             Tiny Homes <span className="text-clay">SA</span>
           </span>
@@ -244,28 +252,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  );
-}
-
-/** Simple tiny-house mark: gabled cabin in a rounded square. */
-function HomeMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden="true">
-      <rect x="1.5" y="1.5" width="29" height="29" rx="8" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M8.5 16.5 16 10l7.5 6.5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.5 15.5V22a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-6.5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path d="M14.5 23v-4.5a1.5 1.5 0 0 1 3 0V23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
   );
 }

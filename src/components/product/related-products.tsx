@@ -33,7 +33,7 @@ export function RelatedProducts({ current }: { current: Product }) {
                   className="group flex w-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment transition-shadow duration-200 hover:shadow-[var(--shadow-soft)]"
                 >
                   {hero && (
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden shadow-[var(--shadow-soft)] transition-shadow duration-500 ease-[var(--ease-smooth)] group-hover:shadow-[var(--shadow-hover)]">
                       <Image
                         src={hero.src}
                         alt={hero.alt}
@@ -59,7 +59,7 @@ export function RelatedProducts({ current }: { current: Product }) {
                           <span className="font-medium">Price on request</span>
                         ) : (
                           <>
-                            <span className="font-medium">
+                            <span className="nums-tabular font-medium">
                               From {formatZAR(p.startingPrice)}
                             </span>{" "}
                             <span className="text-xs text-stone">ex VAT</span>

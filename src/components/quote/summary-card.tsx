@@ -23,7 +23,7 @@ function LineRow({ line }: { line: QuoteLine }) {
           </p>
         )}
       </div>
-      <span className="shrink-0 text-right text-sm font-medium tabular-nums text-ink">
+      <span className="shrink-0 text-right text-sm font-medium tabular-nums nums-tabular text-ink">
         {product.priceOnRequest ? (
           <span className="text-xs font-normal text-stone">priced after consultation</span>
         ) : (
@@ -68,7 +68,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
               <>
                 <p className="text-sm font-medium text-stone">Estimated total</p>
                 <p className="mt-1 flex items-baseline gap-2">
-                  <span className="text-display text-3xl text-ink sm:text-4xl tabular-nums">
+                  <span className="text-display text-3xl text-ink sm:text-4xl tabular-nums nums-tabular">
                     {formatZAR(grandTotal)}
                   </span>
                   <span className="text-sm font-medium text-stone">ex VAT</span>

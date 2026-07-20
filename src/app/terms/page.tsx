@@ -2,12 +2,37 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { site } from "@/lib/site";
+import images from "@/data/images.json";
+
+const termsDescription =
+  "Tiny Homes SA terms and conditions — pricing, delivery and site access, site preparation responsibilities and what's included with every unit.";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description:
-    "Tiny Homes SA terms and conditions — pricing, delivery and site access, site preparation responsibilities and what's included with every unit.",
+  description: termsDescription,
   alternates: { canonical: "/terms" },
+  openGraph: {
+    type: "website",
+    locale: "en_ZA",
+    siteName: site.name,
+    title: "Terms & Conditions | Tiny Homes SA",
+    description: termsDescription,
+    url: `${site.url}/terms`,
+    images: [
+      {
+        url: images.products["nature-cabins"][0].src,
+        width: images.products["nature-cabins"][0].width,
+        height: images.products["nature-cabins"][0].height,
+        alt: images.products["nature-cabins"][0].alt,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions | Tiny Homes SA",
+    description: termsDescription,
+    images: [images.products["nature-cabins"][0].src],
+  },
 };
 
 /** One numbered term section. */

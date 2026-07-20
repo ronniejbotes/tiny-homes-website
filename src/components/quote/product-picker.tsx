@@ -21,9 +21,13 @@ function ProductCard({
   onSelect: () => void;
 }) {
   const hero = getHeroImage(product.slug);
-  const priceLabel = product.priceOnRequest
-    ? "Price on request"
-    : `From ${formatZAR(product.startingPrice)}`;
+  const priceLabel = product.priceOnRequest ? (
+    "Price on request"
+  ) : (
+    <>
+      From <span className="nums-tabular">{formatZAR(product.startingPrice)}</span>
+    </>
+  );
 
   return (
     <button
@@ -132,7 +136,7 @@ export function VariantPicker({
                 {variant.size}
               </span>
             </div>
-            <span className="mt-2 text-xl font-medium tabular-nums">
+            <span className="mt-2 text-xl font-medium tabular-nums nums-tabular">
               {formatZAR(variant.price)}
               <span className={cn("ml-1.5 text-xs font-normal", active ? "text-sage" : "text-stone")}>
                 ex VAT

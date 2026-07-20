@@ -33,9 +33,15 @@ type Params = Promise<{ product: string }>;
  * Meta description: a price-led opener followed by the product summary,
  * trimmed at a word boundary so the whole string fits MAX_DESCRIPTION chars.
  * The ellipsis is only appended when truncation actually happened, and a
- * trailing half-word or dangling punctuation is never left behind.
+ * trailing half-word, dangling punctuation or dangling stopword (a
+ * preposition or article left stranded by the cut, e.g. "…up to 74 m² of…")
+ * is never left behind.
  */
 const MAX_DESCRIPTION = 155;
+
+// Stripped from the end of a truncated summary — otherwise the cut can land
+// right after one of these and leave it dangling before the ellipsis.
+const TRAILING_STOPWORD = /\s+(of|with|in|the|a|an|and|to|for|on)$/i;
 
 function metaDescription(product: Product): string {
   // Price-on-request products carry a 0 sentinel — never lead with "from R 0".
@@ -46,9 +52,14 @@ function metaDescription(product: Product): string {
   const summary = product.summary;
   if (summary.length <= budget) return `${lead}${summary}`;
   const cut = summary.slice(0, budget - 1); // reserve one char for the ellipsis
-  const trimmed = cut
+  let trimmed = cut
     .slice(0, cut.lastIndexOf(" "))
     .replace(/[\s,;:–—-]+$/, "");
+  // Repeat in case removing one stopword exposes another
+  // ("…the most affordable home in the" → "…home").
+  while (TRAILING_STOPWORD.test(trimmed)) {
+    trimmed = trimmed.replace(TRAILING_STOPWORD, "");
+  }
   return `${lead}${trimmed}…`;
 }
 

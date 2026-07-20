@@ -29,6 +29,7 @@ import {
 import {
   activeVisuals,
   configuredPrice,
+  isOptionAvailable,
   optionPrice,
   type CustomOption,
   type OptionCategory,
@@ -69,7 +70,7 @@ function AnimatedPrice({ value }: { value: number }) {
     return unsubscribe;
   }, [spring]);
 
-  return <span className="tabular-nums">{formatZAR(reduce ? value : display)}</span>;
+  return <span className="tabular-nums nums-tabular">{formatZAR(reduce ? value : display)}</span>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -113,9 +114,13 @@ function OptionToggle({
         <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="font-medium text-ink">{option.label}</span>
           <span className="text-sm font-medium text-clay-dark">
-            {price > 0 ? `+${formatZAR(price)}` : "priced on quotation"}
+            {price > 0 ? (
+              <span className="nums-tabular">{`+${formatZAR(price)}`}</span>
+            ) : (
+              "priced on quotation"
+            )}
             {option.pricePerM2 != null && (
-              <span className="ml-1 font-normal text-stone">
+              <span className="ml-1 font-normal text-stone nums-tabular">
                 (R{option.pricePerM2}/m²)
               </span>
             )}
@@ -271,10 +276,14 @@ const NO_OPTIONS: Partial<Record<string, boolean>> = {};
 export function ProductConfigurator({ product }: { product: Product }) {
   const reduce = useReducedMotion();
   const uid = useId();
+  // Cutaway/floor-plan tabs only make sense for products with a real cutaway
+  // scene (the six homes). Products without one — e.g. outdoor kitchens — show
+  // just the Photos panel, so they never fall back to a home's cutaway.
+  const hasScene = product.slug in scenes;
   const [selected, setSelected] = useState<Partial<Record<string, boolean>>>(NO_OPTIONS);
   const [furnished, setFurnished] = useState(false);
   const [variantId, setVariantId] = useState<string | undefined>(product.variants?.[0]?.id);
-  const [view, setView] = useState<ViewId>("cutaway");
+  const [view, setView] = useState<ViewId>(hasScene ? "cutaway" : "photos");
   const [announcement, setAnnouncement] = useState("");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -290,6 +299,14 @@ export function ProductConfigurator({ product }: { product: Product }) {
       setSelected((prev) => {
         const turningOn = !prev[option.id];
         const next: Partial<Record<string, boolean>> = { ...prev, [option.id]: turningOn };
+        // Mutually exclusive group: turning one on clears the others in its group.
+        if (turningOn && option.exclusiveGroup) {
+          for (const opt of product.options) {
+            if (opt.id !== option.id && opt.exclusiveGroup === option.exclusiveGroup) {
+              next[opt.id] = false;
+            }
+          }
+        }
         // Deselecting a prerequisite unchecks its dependents.
         if (!turningOn) {
           for (const opt of product.options) {
@@ -356,9 +373,9 @@ export function ProductConfigurator({ product }: { product: Product }) {
     );
   }, [product]);
 
-  /* Selected chips (effective — dependents only count when prerequisite met) */
+  /* Selected chips (effective — offered on this variant, dependents only count when prerequisite met) */
   const activeOptions = product.options.filter(
-    (o) => selected[o.id] && (!o.requires || selected[o.requires]),
+    (o) => isOptionAvailable(o, variantId) && selected[o.id] && (!o.requires || selected[o.requires]),
   );
 
   const selectedIds = activeOptions.map((o) => o.id);
@@ -370,7 +387,9 @@ export function ProductConfigurator({ product }: { product: Product }) {
 
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
-    options: product.options.filter((o) => o.category === category),
+    options: product.options.filter(
+      (o) => o.category === category && isOptionAvailable(o, variantId),
+    ),
   })).filter((g) => g.options.length > 0);
 
   const chips: { key: string; label: string }[] = [
@@ -389,6 +408,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
         {/* ------------------------------------------------ Scene column */}
         <div className="lg:sticky lg:top-24 lg:self-start">
           {/* View tabs + furnish segmented control */}
+          {hasScene && (
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <div
               role="tablist"
@@ -458,6 +478,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               </div>
             )}
           </div>
+          )}
 
           {/* View panels — crossfade; state lives in the parent so only the
               active panel needs to stay mounted */}
@@ -477,7 +498,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                 {view === "cutaway" && (
                   <SceneSlot
                     slug={product.slug}
-                    visuals={activeVisuals(product, selected)}
+                    visuals={activeVisuals(product, selected, variantId)}
                     furnished={furnished}
                     variantId={variantId}
                   />
@@ -549,7 +570,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                           {variant.size}
                         </span>
                       </span>
-                      <span className={cn("text-sm font-medium tabular-nums", active ? "text-cream" : "text-ink")}>
+                      <span className={cn("text-sm font-medium tabular-nums nums-tabular", active ? "text-cream" : "text-ink")}>
                         {formatZAR(variant.price)}
                       </span>
                     </button>

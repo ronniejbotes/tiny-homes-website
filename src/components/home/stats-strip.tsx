@@ -87,7 +87,7 @@ function CountUp({ stat }: { stat: Stat }) {
   return (
     <>
       <span className="sr-only">{stat.full}</span>
-      <span ref={ref} aria-hidden="true">
+      <span ref={ref} aria-hidden="true" className={stat.format ? "nums-tabular" : undefined}>
         {stat.prefix}
         {shown}
         {stat.suffix}

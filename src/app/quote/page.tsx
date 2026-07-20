@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const pageDescription =
-  "Build your prefab tiny home, pick your size and extras, and get an instant estimate — then send it to Tiny Homes SA for a formal quotation with delivery to your site anywhere in South Africa.";
+  "Build your prefab tiny home, pick your size and extras for an instant estimate, then send it for a formal quote with delivery anywhere in South Africa.";
 
 export const metadata: Metadata = {
   title: "Get an Instant Quote Now",

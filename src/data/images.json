@@ -5,7 +5,7 @@
         "src": "/images/products/folding-homes/exterior-snow-timber.jpg",
         "width": 2400,
         "height": 1018,
-        "alt": "Timber-clad folding home with a black steel frame standing on a paved concrete plinth on a level lawn, with a low boundary wall, leafy trees and a fire pit beside an outdoor table in late-afternoon light.",
+        "alt": "Timber-clad X-Fold folding home with a black steel frame on a paved plinth in late-afternoon light.",
         "kind": "exterior",
         "hero": true
       },
@@ -13,7 +13,7 @@
         "src": "/images/products/folding-homes/exterior-woodland-1.jpg",
         "width": 1586,
         "height": 672,
-        "alt": "Grey X-Fold flat-pack unit with steel corner frame, horizontal fold seam, security-barred window and steel door glowing warmly at dusk on a paved concrete plinth in a walled South African suburban garden, with a small braai and chairs nearby.",
+        "alt": "Grey X-Fold flat-pack unit with a barred window, glowing warmly at dusk in a suburban garden.",
         "kind": "exterior",
         "hero": false
       },
@@ -21,7 +21,7 @@
         "src": "/images/products/folding-homes/exterior-assembled-showroom.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "White X-Fold set up as a backyard guest suite at golden hour, steel door open to a warmly lit interior with a potted-plant-lined path",
+        "alt": "White X-Fold set up as a backyard guest suite with its steel door open at golden hour.",
         "kind": "exterior",
         "hero": false
       },
@@ -29,7 +29,7 @@
         "src": "/images/products/folding-homes/interior-living-warm.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Warm evening interior of an X-Fold cabin with a grey sofa, glowing floor lamp and compact kitchenette, its white panel walls and barred window opening onto a walled suburban lawn at golden hour.",
+        "alt": "Warm evening interior of an X-Fold cabin with a grey sofa, floor lamp and compact kitchenette.",
         "kind": "interior",
         "hero": false
       },
@@ -37,7 +37,7 @@
         "src": "/images/products/folding-homes/exterior-colour-options.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Four X-Fold units lined up on a paved display yard at golden hour in wood-grain brown, cream white, light grey and charcoal exterior finishes",
+        "alt": "Four X-Fold units in wood-grain brown, cream white, light grey and charcoal finishes at golden hour.",
         "kind": "detail",
         "hero": false
       },
@@ -45,7 +45,7 @@
         "src": "/images/products/folding-homes/site-installations-collage.png",
         "width": 1376,
         "height": 768,
-        "alt": "Oblique aerial view of a mine workforce housing camp with about fifty white X-Fold units in neat rows on gravel pads, mine headgear and conveyor in the golden distance",
+        "alt": "Aerial view of a mine workforce housing camp with about fifty white X-Fold units in neat rows.",
         "kind": "exterior",
         "hero": false
       },
@@ -53,7 +53,7 @@
         "src": "/images/products/folding-homes/folding-mechanism.png",
         "width": 1600,
         "height": 1421,
-        "alt": "A folding container home shown half-folded, its hinged white wall panels opening in an X shape above the floor pan, photographed against a plain white studio background.",
+        "alt": "X-Fold folding home shown half-folded, hinged wall panels opening in an X shape, studio background.",
         "kind": "detail",
         "hero": false
       },
@@ -61,7 +61,7 @@
         "src": "/images/products/folding-homes/exterior-forest-render.jpg",
         "width": 1600,
         "height": 1600,
-        "alt": "Grey-panel folding cabin with a white door and window standing on a paved concrete plinth in a level suburban lawn, with a bistro table, low brick boundary wall and leafy trees behind in golden-hour light.",
+        "alt": "Grey-panel X-Fold folding cabin with a white door and window on a paved plinth in golden-hour light.",
         "kind": "exterior",
         "hero": false
       },
@@ -69,7 +69,7 @@
         "src": "/images/products/folding-homes/exterior-lawn-1.jpg",
         "width": 1584,
         "height": 672,
-        "alt": "White flat-pack folding home with barred security window and steel door on a paved concrete plinth in a fenced suburban garden at golden hour",
+        "alt": "White X-Fold folding home with a barred window and steel door in a suburban garden.",
         "kind": "exterior",
         "hero": false
       },
@@ -77,7 +77,7 @@
         "src": "/images/products/folding-homes/exterior-evening-braai.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Timber-clad X-Fold folding cabin with a black steel frame and mid-height fold seam on a paved plinth in a suburban garden at dusk, with a glowing kettle braai, string lights and a small table set for two.",
+        "alt": "Timber-clad X-Fold folding cabin with a black steel frame, glowing kettle braai and string lights at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -93,7 +93,7 @@
         "src": "/images/products/folding-homes/interior-facilities-collage.png",
         "width": 1600,
         "height": 1440,
-        "alt": "Five-panel collage of folding home fit-out options showing the unit exterior with door and security window, a steel bunk bed, a kitchen sink cabinet, the empty insulated interior shell, and partitioned bathroom stalls with a basin.",
+        "alt": "Five-panel collage of X-Fold fit-out options: exterior, steel bunk bed, kitchen sink cabinet and bathroom stalls.",
         "kind": "diagram",
         "hero": false
       }
@@ -103,7 +103,7 @@
         "src": "/images/products/expandable-homes/exterior-deployed-lawn.jpg",
         "width": 2400,
         "height": 1018,
-        "alt": "Fully deployed white expandable container home with glass double-door entry on a level gravel pad in a South African mountain forest clearing at dusk, with a set outdoor dinner table and stone fire pit beside it.",
+        "alt": "Fully deployed white Expandable Home with glass double-door entry in a South African mountain forest clearing at dusk.",
         "kind": "exterior",
         "hero": true
       },
@@ -111,7 +111,7 @@
         "src": "/images/products/expandable-homes/exterior-deploying-wing.png",
         "width": 1237,
         "height": 864,
-        "alt": "Grey expandable tiny home with its roof wing folding open mid-deployment beside the glass entrance door and stairs, standing on jack legs on a gravel pad in a South African mountain forest clearing at golden hour.",
+        "alt": "Grey Expandable Home with its roof wing folding open mid-deployment beside the glass entrance door and stairs.",
         "kind": "exterior",
         "hero": false
       },
@@ -119,7 +119,7 @@
         "src": "/images/products/expandable-homes/exterior-front-stairs.png",
         "width": 1328,
         "height": 784,
-        "alt": "Symmetrical front view of an expandable tiny home with both wings folded out and an entrance staircase, standing on a gravel-and-grass mountain forest clearing with a stone fire pit ring in the foreground.",
+        "alt": "Symmetrical front view of an Expandable Home with both wings folded out and an entrance staircase.",
         "kind": "exterior",
         "hero": false
       },
@@ -127,7 +127,7 @@
         "src": "/images/products/expandable-homes/interior-living-room.png",
         "width": 1600,
         "height": 1073,
-        "alt": "Living room of an expandable tiny home with a tan two-seater sofa, white coffee table and kitchen pass-through counter, its sliding glass doors opening onto a gravel-and-grass clearing with indigenous trees and a mountain ridge at sunset.",
+        "alt": "Living room of an Expandable Home with a tan sofa, glass doors opening onto a mountain forest clearing.",
         "kind": "interior",
         "hero": false
       },
@@ -135,7 +135,7 @@
         "src": "/images/products/expandable-homes/interior-living-dining.jpg",
         "width": 1600,
         "height": 1195,
-        "alt": "Open-plan living and dining area inside an expandable tiny home, with a cream leather sofa, coffee table, TV console, dining table, compact kitchenette and en-suite bathroom visible beyond.",
+        "alt": "Open-plan living and dining area inside an Expandable Home, with a cream leather sofa and compact kitchenette.",
         "kind": "interior",
         "hero": false
       },
@@ -143,7 +143,7 @@
         "src": "/images/products/expandable-homes/exterior-side-1.png",
         "width": 1024,
         "height": 1024,
-        "alt": "White expandable prefab home with both wings extended and its glass sliding doors open onto grass, standing on a gravel pad in a South African mountain forest clearing at sunset, with kids' bikes by the step and an outdoor dinner table and fire pit nearby.",
+        "alt": "White Expandable Home with both wings extended and glass sliding doors open, in a mountain forest clearing at sunset.",
         "kind": "exterior",
         "hero": false
       },
@@ -159,7 +159,7 @@
         "src": "/images/products/expandable-homes/spc-flooring-options.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Expandable home living area with warm oak SPC stone-composite flooring and a fan of sample planks showing the colour range from pale oak to charcoal in golden light",
+        "alt": "Expandable Home living area with warm oak SPC stone-composite flooring and sample planks from pale oak to charcoal.",
         "kind": "detail",
         "hero": false
       },
@@ -167,7 +167,7 @@
         "src": "/images/products/expandable-homes/exterior-family-evening.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Deployed expandable home glowing warmly at dusk in a mountain clearing, with a lantern-lit family dinner table, stone fire pit and children's bicycles on the gravel pad",
+        "alt": "Deployed Expandable Home glowing warmly at dusk in a mountain clearing, with a lantern-lit family dinner table.",
         "kind": "exterior",
         "hero": false
       },
@@ -183,7 +183,7 @@
         "src": "/images/products/expandable-homes/floor-plan-1.png",
         "width": 1600,
         "height": 481,
-        "alt": "Floor plans of three expandable tiny home layouts: an open-plan living and dining room, a one-bedroom option with bathroom, and a one-bedroom option with dining area.",
+        "alt": "Floor plans of three Expandable Home layouts: open-plan living/dining, and two one-bedroom options.",
         "kind": "diagram",
         "hero": false
       },
@@ -191,7 +191,7 @@
         "src": "/images/products/expandable-homes/floor-plan-2.png",
         "width": 1600,
         "height": 481,
-        "alt": "Floor plan sheet showing three layout configurations of a two-bedroom expandable tiny home, each with an open-plan living area, corner shower bathroom, kitchenette and two single-bed bedrooms.",
+        "alt": "Floor plan sheet showing three layouts of a two-bedroom Expandable Home with open-plan living and corner shower bathroom.",
         "kind": "diagram",
         "hero": false
       },
@@ -199,7 +199,7 @@
         "src": "/images/products/expandable-homes/floor-plan-3.png",
         "width": 1600,
         "height": 1400,
-        "alt": "Floor plan of a four-bedroom expandable tiny home showing single beds in each room, a central corridor, and a shared bathroom with corner shower, toilet and basin.",
+        "alt": "Floor plan of a four-bedroom Expandable Home with single beds, a central corridor and shared bathroom.",
         "kind": "diagram",
         "hero": false
       },
@@ -207,7 +207,7 @@
         "src": "/images/products/expandable-homes/tech-specs-table.jpg",
         "width": 1600,
         "height": 295,
-        "alt": "Specification table listing the four expandable home models with exterior dimensions in millimetres and covered floor areas from 27.5 to 72 square metres.",
+        "alt": "Specification table listing four Expandable Home models with dimensions and floor areas from 27.5 to 72 square metres.",
         "kind": "diagram",
         "hero": false
       }
@@ -217,7 +217,7 @@
         "src": "/images/products/nature-cabins/exterior-timber-render.jpg",
         "width": 2400,
         "height": 1018,
-        "alt": "Arched-gable timber cabin with a full-height glass front and wooden deck in a misty mountain meadow at golden hour, with a small fire pit and two chairs beside it.",
+        "alt": "Nature Cabin with arched timber gable and glass front in a misty South African mountain meadow.",
         "kind": "exterior",
         "hero": true
       },
@@ -225,7 +225,7 @@
         "src": "/images/products/nature-cabins/exterior-two-cabins.jpg",
         "width": 1600,
         "height": 1200,
-        "alt": "Two timber-clad cabins with fully glazed fronts and cream arched roof trim standing side by side in a misty indigenous forest clearing at dawn, with a footpath and fire pit between them.",
+        "alt": "Two Nature Cabins with glazed fronts and arched roof trim in a misty forest clearing at dawn.",
         "kind": "exterior",
         "hero": false
       },
@@ -241,7 +241,7 @@
         "src": "/images/products/nature-cabins/interior-bedroom-forest-view.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Timber cabin bedroom with a white linen bed facing the double-height glazed gable end, looking out on a misty indigenous forest with proteas in soft golden morning light.",
+        "alt": "Nature Cabin bedroom with a white linen bed facing the glazed gable end and misty indigenous forest.",
         "kind": "interior",
         "hero": false
       },
@@ -249,7 +249,7 @@
         "src": "/images/products/nature-cabins/interior-fireplace-lounge.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Timber cabin lounge with a glowing modern wood stove on a slate hearth, wool throws on a sofa and armchair, and a double-height glazed gable wall opening onto a misty forest meadow at golden hour.",
+        "alt": "Nature Cabin lounge with a glowing wood stove on a slate hearth and a glazed gable wall facing misty forest.",
         "kind": "interior",
         "hero": false
       },
@@ -257,7 +257,7 @@
         "src": "/images/products/nature-cabins/exterior-deck-morning-mist.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Timber cabin with a glazed gable end in a misty forest clearing at dawn, its railed deck holding two blanket-draped wooden chairs and two steaming coffee cups on a small table.",
+        "alt": "Nature Cabin with a glazed gable end in a misty forest clearing at dawn, deck chairs and coffee cups.",
         "kind": "exterior",
         "hero": false
       },
@@ -265,7 +265,7 @@
         "src": "/images/products/nature-cabins/interior-bathtub-view.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Steaming freestanding bathtub with candles and a folded towel beside the cabin's floor-to-ceiling gable window, looking out over a misty indigenous forest clearing in golden morning light",
+        "alt": "Steaming freestanding bathtub beside a Nature Cabin's floor-to-ceiling gable window, overlooking a misty indigenous forest.",
         "kind": "interior",
         "hero": false
       },
@@ -273,7 +273,7 @@
         "src": "/images/products/nature-cabins/detail-timber-window.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Close-up of a timber cabin's honey-toned horizontal cladding and black-framed window corner in raking golden morning light, with a misty mountain meadow reflected in the glass.",
+        "alt": "Close-up of a Nature Cabin's honey-toned timber cladding and black-framed window corner in golden morning light.",
         "kind": "detail",
         "hero": false
       },
@@ -281,7 +281,7 @@
         "src": "/images/products/nature-cabins/exterior-dusk-firepit.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Timber-clad cabin with a glowing double-height glazed gable and railed deck at dusk in a misty fynbos meadow, a crackling stone fire pit and two wooden chairs in the foreground",
+        "alt": "Timber-clad Nature Cabin with a glowing glazed gable and railed deck at dusk, a stone fire pit in the foreground.",
         "kind": "exterior",
         "hero": false
       },
@@ -289,7 +289,7 @@
         "src": "/images/products/nature-cabins/exterior-forest-aerial.jpg",
         "width": 1376,
         "height": 768,
-        "alt": "Aerial view of a timber-clad cabin with a glazed gable end and railed deck in a misty forest clearing at golden hour, with a winding footpath and firepit nearby",
+        "alt": "Aerial view of a timber-clad Nature Cabin with a glazed gable end and railed deck in a misty forest clearing.",
         "kind": "exterior",
         "hero": false
       }
@@ -299,7 +299,7 @@
         "src": "/images/products/the-dome/exterior-night-leds.jpg",
         "width": 2400,
         "height": 1792,
-        "alt": "Transparent capsule dome suite with an arched glass door glowing with warm interior light at dusk, set on a timber deck among proteas below a flat-topped mountain.",
+        "alt": "The Dome transparent capsule suite with an arched glass door, glowing warmly at dusk on a timber deck.",
         "kind": "exterior",
         "hero": true
       },
@@ -307,7 +307,7 @@
         "src": "/images/products/the-dome/exterior-mountain-deck.png",
         "width": 1104,
         "height": 976,
-        "alt": "Transparent dome pod with white frame ribs and a timber-slat privacy wall on a raised wooden deck above fynbos at dusk, with its bed and green chairs visible in warm interior light.",
+        "alt": "The Dome transparent pod with white frame ribs and a timber-slat privacy wall on a raised deck at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -315,7 +315,7 @@
         "src": "/images/products/the-dome/exterior-dome-render.png",
         "width": 1600,
         "height": 1421,
-        "alt": "Transparent dome suite with LED-edged ribs, glowing en-suite pod, lounge and freestanding bath on a timber deck in a fynbos clearing at dusk, mountains silhouetted behind.",
+        "alt": "The Dome transparent suite with LED-edged ribs, glowing en-suite pod and freestanding bath on a timber deck.",
         "kind": "exterior",
         "hero": false
       },
@@ -323,7 +323,7 @@
         "src": "/images/products/the-dome/interior-bedroom.jpg",
         "width": 1600,
         "height": 1069,
-        "alt": "Bedroom inside The Dome tiny home with a draped fabric canopy, double bed, warm bedside lamp and an arched white door to the ensuite.",
+        "alt": "Bedroom inside The Dome with a draped fabric canopy, double bed and warm bedside lamp.",
         "kind": "interior",
         "hero": false
       },
@@ -331,7 +331,7 @@
         "src": "/images/products/the-dome/interior-stargazing-bed.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Luxury double bed with white linens and warm bedside lamps inside the transparent dome pod, with a deep-blue dusk sky and first stars visible through the clear roof panels and fynbos garden and mountain plateau beyond.",
+        "alt": "Luxury double bed inside The Dome's transparent pod, dusk sky and first stars visible through the clear roof panels.",
         "kind": "interior",
         "hero": false
       },
@@ -339,7 +339,7 @@
         "src": "/images/products/the-dome/exterior-night-event.jpeg",
         "width": 1195,
         "height": 896,
-        "alt": "Transparent barrel-vault dome suite glowing warmly at dusk on a fynbos mountain plateau, with a candlelit champagne table for two on its deck beneath the Milky Way.",
+        "alt": "The Dome barrel-vault suite glowing warmly at dusk, a candlelit champagne table on its deck beneath the Milky Way.",
         "kind": "exterior",
         "hero": false
       },
@@ -347,7 +347,7 @@
         "src": "/images/products/the-dome/interior-lounge-dusk.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Lounge corner inside the transparent dome at dusk, with a cream loveseat, glowing brass lamps and wine glasses, looking through the clear panels to a fynbos garden and flat-topped mountain under an indigo sky.",
+        "alt": "Lounge corner inside The Dome at dusk, with a cream loveseat and brass lamps, clear panels facing the fynbos garden.",
         "kind": "interior",
         "hero": false
       },
@@ -355,7 +355,7 @@
         "src": "/images/products/the-dome/exterior-garden-1.jpg",
         "width": 1600,
         "height": 1521,
-        "alt": "White dome glamping pod with a transparent arched-glass front, open white curtains and a warmly lit bed inside, standing on a timber deck in a fynbos garden at dusk with a mountain ridge and first stars behind.",
+        "alt": "The Dome glamping pod with a transparent arched-glass front and a warmly lit bed, on a timber deck at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -363,7 +363,7 @@
         "src": "/images/products/the-dome/exterior-sunrise-fynbos.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Transparent luxury dome pod with a warmly lit bed inside, set on a timber deck among pink proteas and fynbos at sunrise, with mountains under a soft pink sky behind.",
+        "alt": "The Dome transparent luxury pod with a warmly lit bed, on a timber deck among proteas and fynbos at sunrise.",
         "kind": "exterior",
         "hero": false
       },
@@ -371,7 +371,7 @@
         "src": "/images/products/the-dome/exterior-deck-dinner.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Candlelit dinner table for two with champagne on a timber deck beside a glowing transparent dome suite, surrounded by protea flowers beneath a dusk mountain skyline.",
+        "alt": "Candlelit dinner table for two on a timber deck beside a glowing transparent Dome suite at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -379,7 +379,7 @@
         "src": "/images/products/the-dome/floor-plan-top-view.png",
         "width": 1600,
         "height": 1195,
-        "alt": "Top-down cutaway floor plan of The Dome tiny home showing a double bed, two lounge chairs with a plant table, and an en-suite bathroom inside its oval shell.",
+        "alt": "Top-down cutaway floor plan of The Dome showing a double bed, lounge chairs and an en-suite bathroom.",
         "kind": "diagram",
         "hero": false
       }
@@ -389,7 +389,7 @@
         "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
         "width": 2400,
         "height": 1340,
-        "alt": "Long glass-walled Apple Cabin with a white shell, black-framed glazing and sage curtains, resting on a low timber deck at a pine-forest edge with two armchairs and a side table facing the garden in soft morning light.",
+        "alt": "Long glass-walled Apple Cabin with a white shell and sage curtains, on a timber deck at a pine-forest edge.",
         "kind": "exterior",
         "hero": true
       },
@@ -397,7 +397,7 @@
         "src": "/images/products/apple-cabins/exterior-office-pod-render.jpg",
         "width": 1600,
         "height": 1600,
-        "alt": "White apple cabin office pod with a dark timber-slat end wall and full-height glass sliding doors, set on a concrete plinth with a small timber deck at a misty garden edge in soft morning light.",
+        "alt": "White Apple Cabin office pod with a dark timber-slat end wall and full-height glass sliding doors.",
         "kind": "exterior",
         "hero": false
       },
@@ -405,7 +405,7 @@
         "src": "/images/products/apple-cabins/exterior-double-storey.png",
         "width": 1600,
         "height": 1421,
-        "alt": "Double-storey apple cabin of two stacked white capsule pods with a railed rooftop terrace and umbrella, set on a misty forest edge with a small timber deck at ground level.",
+        "alt": "Double-storey Apple Cabin of two stacked white capsule pods with a railed rooftop terrace and umbrella.",
         "kind": "exterior",
         "hero": false
       },
@@ -413,7 +413,7 @@
         "src": "/images/products/apple-cabins/interior-kitchenette-render.jpg",
         "width": 896,
         "height": 1195,
-        "alt": "Apple Cabin kitchenette and work counter with walnut cabinetry, stone waterfall countertop and leather stool, lit by soft morning sun through a glass wall overlooking a garden edge.",
+        "alt": "Apple Cabin kitchenette with walnut cabinetry, stone waterfall countertop and leather stool beside the glass wall.",
         "kind": "interior",
         "hero": false
       },
@@ -421,7 +421,7 @@
         "src": "/images/products/apple-cabins/interior-bathroom.jpg",
         "width": 1600,
         "height": 2133,
-        "alt": "Compact fitted bathroom inside an Apple Cabins tiny home, with marble-look wall panels, an LED-lit mirror above the vanity basin, a toilet and a glass-screened shower.",
+        "alt": "Compact fitted bathroom inside an Apple Cabin with marble-look panels, an LED-lit mirror and glass-screened shower.",
         "kind": "interior",
         "hero": false
       },
@@ -429,7 +429,7 @@
         "src": "/images/products/apple-cabins/exterior-deck-sunset.jpg",
         "width": 1600,
         "height": 893,
-        "alt": "White apple cabin with a full-height glazed front wall and timber deck platform at a garden edge, morning sun breaking through the forest border behind.",
+        "alt": "White Apple Cabin with a full-height glazed front wall and timber deck at a garden edge in morning sun.",
         "kind": "exterior",
         "hero": false
       },
@@ -437,7 +437,7 @@
         "src": "/images/products/apple-cabins/interior-office-nook.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Bright work-from-home desk nook inside a white capsule cabin, with a laptop and steaming coffee on an oak desk facing the full-height glass front and a misty garden beyond the deck.",
+        "alt": "Work-from-home desk nook inside an Apple Cabin, facing its full-height glass wall and garden.",
         "kind": "interior",
         "hero": false
       },
@@ -445,7 +445,7 @@
         "src": "/images/products/apple-cabins/exterior-night-glow.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "White capsule-shaped cabin glowing warm from inside at night on a low wooden deck at a garden's forest edge, with string lights draped through a nearby tree and a single chair on the deck.",
+        "alt": "Apple Cabin tiny home glowing warm at night on a timber deck at a forest garden edge.",
         "kind": "exterior",
         "hero": false
       },
@@ -453,7 +453,7 @@
         "src": "/images/products/apple-cabins/exterior-garden-path.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "White capsule-shaped cabin with a full-height glass front and black mullions at the end of a flower-lined garden path in soft morning light, with a small deck and two chairs.",
+        "alt": "White Apple Cabin with full-height glass front at the end of a flower-lined garden path.",
         "kind": "exterior",
         "hero": false
       },
@@ -461,7 +461,7 @@
         "src": "/images/products/apple-cabins/interior-reading-corner.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Reading corner inside a white capsule cabin with an oatmeal armchair, wool throw and oak bookshelf beside the full-height glass wall with black mullions, morning light falling across the wooden floor with a deck and misty garden beyond.",
+        "alt": "Reading corner inside an Apple Cabin, armchair and bookshelf beside the glass wall and garden.",
         "kind": "interior",
         "hero": false
       }
@@ -471,7 +471,7 @@
         "src": "/images/products/glamping-capsules/exterior-forest-1.jpg",
         "width": 2400,
         "height": 1018,
-        "alt": "White glamping capsule with panoramic glass ends and a central door standing on a low timber deck in golden bushveld grass, framed by acacia trees with hazy koppies behind at late afternoon.",
+        "alt": "White Glamping Capsule with panoramic glass ends on a timber deck in golden bushveld grass with acacia trees.",
         "kind": "exterior",
         "hero": true
       },
@@ -479,7 +479,7 @@
         "src": "/images/products/glamping-capsules/exterior-mountain-resort.jpg",
         "width": 1600,
         "height": 1069,
-        "alt": "White capsule-style glamping pod with panoramic curved glazing, railed terrace and glass balcony on a stone plinth, overlooking golden savanna grass toward a distant rocky koppie at golden hour.",
+        "alt": "White Glamping Capsule with panoramic curved glazing and railed terrace, overlooking golden savanna grass toward a rocky koppie.",
         "kind": "exterior",
         "hero": false
       },
@@ -487,7 +487,7 @@
         "src": "/images/products/glamping-capsules/exterior-night-pool.jpg",
         "width": 1600,
         "height": 1069,
-        "alt": "White capsule-style glamping pod with warm LED trim and panoramic glass beside a deck-edge plunge pool at dusk, set in South African bushveld with golden grass, acacia trees and rocky koppies under an orange afterglow sky.",
+        "alt": "White Glamping Capsule with panoramic glass beside a deck-edge plunge pool at dusk in South African bushveld.",
         "kind": "exterior",
         "hero": false
       },
@@ -495,7 +495,7 @@
         "src": "/images/products/glamping-capsules/interior-lounge.jpg",
         "width": 1600,
         "height": 1195,
-        "alt": "Lounge inside a glamping capsule with a tan leather sofa, armchair and ottoman, its wraparound glazing looking out over golden bushveld grass, acacia trees and distant koppies.",
+        "alt": "Lounge inside a Glamping Capsule with a tan leather sofa and armchair, wraparound glazing overlooking golden bushveld grass.",
         "kind": "interior",
         "hero": false
       },
@@ -503,7 +503,7 @@
         "src": "/images/products/glamping-capsules/interior-bed-bushveld-view.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Hotel-style double bed with white linen and an ochre throw inside a white glamping capsule, facing black-framed panoramic glass with golden bushveld grass, acacia trees and distant koppies at golden hour.",
+        "alt": "Hotel-style double bed inside a Glamping Capsule, facing black-framed panoramic glass over golden bushveld grass.",
         "kind": "interior",
         "hero": false
       },
@@ -519,7 +519,7 @@
         "src": "/images/products/glamping-capsules/interior-ensuite.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Compact luxury ensuite bathroom inside the white glamping capsule, with a rain shower behind frameless glass, a stone vessel basin on a floating oak vanity, and golden bushveld grass, acacia trees and distant koppies visible through the black-framed panoramic window.",
+        "alt": "Compact luxury ensuite bathroom inside a Glamping Capsule with a rain shower and stone vessel basin on a floating oak vanity.",
         "kind": "interior",
         "hero": false
       },
@@ -527,7 +527,7 @@
         "src": "/images/products/glamping-capsules/detail-panoramic-glass.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Close-up of the white glamping capsule's black-framed panoramic glazing reflecting acacia trees and golden bushveld grass at golden hour, with a plush lounge visible through the glass.",
+        "alt": "Close-up of a Glamping Capsule's black-framed panoramic glazing reflecting acacia trees and golden bushveld grass.",
         "kind": "detail",
         "hero": false
       },
@@ -535,7 +535,7 @@
         "src": "/images/products/glamping-capsules/exterior-capsule-row-dusk.jpg",
         "width": 1376,
         "height": 768,
-        "alt": "Three white glamping capsules with glowing interiors on wooden decks along a bushveld ridge at dusk, connected by a lantern-lit pathway with acacia trees and koppies in the distance",
+        "alt": "Three white Glamping Capsules with glowing interiors on wooden decks along a bushveld ridge at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -543,7 +543,7 @@
         "src": "/images/products/glamping-capsules/exterior-deck-sundowners.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "White glamping capsule with black-framed panoramic glazing on a raised wooden deck at sunset, with two gin-and-tonic sundowners on a side table overlooking golden bushveld grass, acacia trees and distant koppies.",
+        "alt": "White Glamping Capsule with panoramic glazing on a raised deck at sunset, two sundowners on a side table.",
         "kind": "exterior",
         "hero": false
       },
@@ -551,7 +551,7 @@
         "src": "/images/products/glamping-capsules/floor-plans.jpg",
         "width": 1600,
         "height": 1069,
-        "alt": "Two-dimensional floor plans of the glamping capsule in two sizes, the 8.5 m model (27.2 m2) and the 11.5 m model (36.8 m2), showing bedroom, bathroom, kitchenette and deck layouts with overall dimensions.",
+        "alt": "Floor plans of the Glamping Capsule in two sizes, 8.5 m and 11.5 m models, showing bedroom and bathroom layouts.",
         "kind": "diagram",
         "hero": false
       },
@@ -569,7 +569,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-open-garden.jpg",
         "width": 2048,
         "height": 2048,
-        "alt": "Open-front outdoor kitchen unit with its perforated LED canopy raised, built-in stainless steel braai and grey cabinetry, standing on a paved patio at dusk with festoon lights and a set dining table nearby",
+        "alt": "Open-front Outdoor Kitchen with its LED canopy raised, built-in stainless steel braai and grey cabinetry at dusk.",
         "kind": "exterior",
         "hero": true
       },
@@ -577,7 +577,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-braai-dusk.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Stainless-steel modular outdoor kitchen at dusk with its green egg kamado grill open and glowing, food sizzling on the grate beside a candlelit dinner table under festoon lights.",
+        "alt": "Stainless-steel Outdoor Kitchen at dusk with its green kamado grill open and glowing, food sizzling on the grate.",
         "kind": "exterior",
         "hero": false
       },
@@ -585,7 +585,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-patio-pool.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Stainless-steel modular outdoor kitchen with green kamado grill and drinks fridge on a stone patio beside a swimming pool at dusk, with loungers, a set dining table, festoon lights and friends gathered in the background.",
+        "alt": "Stainless-steel Outdoor Kitchen with green kamado grill and drinks fridge on a stone patio beside a swimming pool at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -601,7 +601,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-counter-prep.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Close-up of a stainless-steel outdoor kitchen counter at dusk with raw steaks on a wooden board, fresh vegetables and herbs, and the green kamado grill, glass-door drinks fridge and festoon-lit patio dinner table softly blurred behind.",
+        "alt": "Close-up of a stainless-steel Outdoor Kitchen counter with raw steaks on a wooden board, fresh vegetables and herbs.",
         "kind": "detail",
         "hero": false
       },
@@ -609,7 +609,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-pergola-lights.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Stainless-steel modular outdoor kitchen with green kamado grill and drinks fridge under a wooden pergola with festoon lights at blue hour, a long table set for dinner in the foreground and friends chatting in the garden beyond.",
+        "alt": "Stainless-steel Outdoor Kitchen with green kamado grill and drinks fridge under a wooden pergola with festoon lights at blue hour.",
         "kind": "exterior",
         "hero": false
       },
@@ -617,7 +617,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-morning-coffee.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "A stovetop espresso maker and two steaming cups on the stainless counter of a modular outdoor kitchen with a green kamado grill and drinks fridge, in a garden at sunrise with festoon lights and a set table nearby.",
+        "alt": "Stovetop espresso maker and two steaming cups on the counter of an Outdoor Kitchen with a green kamado grill at sunrise.",
         "kind": "detail",
         "hero": false
       },
@@ -625,7 +625,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-storage-detail.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Stainless-steel outdoor kitchen unit at dusk with its cabinet doors open to reveal neatly stacked plates, linen and glassware, a green egg-shaped kamado grill and a glowing glass-door fridge stocked with unlabelled bottles, beside a candlelit dinner table under festoon lights.",
+        "alt": "Stainless-steel Outdoor Kitchen with its cabinet doors open, revealing stacked plates, glassware and a green kamado grill.",
         "kind": "detail",
         "hero": false
       },
@@ -633,7 +633,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-garden-entertaining.jpg",
         "width": 1376,
         "height": 768,
-        "alt": "Stainless-steel modular outdoor kitchen with a green kamado grill and glass-door drinks fridge on a paved garden patio at dusk, festoon lights overhead, a set dining table in the foreground and friends chatting softly out of focus on the lawn.",
+        "alt": "Stainless-steel Outdoor Kitchen with a green kamado grill and drinks fridge on a paved garden patio at dusk under festoon lights.",
         "kind": "exterior",
         "hero": false
       },
@@ -641,7 +641,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-sunset-profile.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Stainless-steel modular outdoor kitchen with its canopy open, green kamado grill smoking and drinks fridge glowing, on a paved patio at dusk under festoon lights beside a candle-lit dinner table, with friends gathered on the lawn against a dramatic sunset sky and silhouetted trees.",
+        "alt": "Stainless-steel Outdoor Kitchen with its canopy open, green kamado grill smoking, on a paved patio under a dramatic sunset sky.",
         "kind": "exterior",
         "hero": false
       }
@@ -651,7 +651,7 @@
         "src": "/images/products/safari-tents/hero-single-suite-sunset.jpg",
         "width": 2400,
         "height": 1792,
-        "alt": "Canvas-roofed tented suite with glass folding doors open to the bedroom, on a raised timber deck with a sundowner table and fire pit, set in golden bushveld grass with acacia trees at sunset.",
+        "alt": "Luxury canvas safari tent suite on a timber deck in golden South African bushveld at sunset.",
         "kind": "exterior",
         "hero": true
       },
@@ -659,7 +659,7 @@
         "src": "/images/products/safari-tents/dusk-firepit-dining-deck.jpg",
         "width": 1600,
         "height": 1069,
-        "alt": "Canvas safari tent suite with a scalloped olive roof on a raised timber deck at sunset, with a lantern-lit dining table and glowing fire pit bowl on the deck surrounded by golden bushveld grass and acacia trees.",
+        "alt": "Canvas Safari Tent suite with a scalloped olive roof on a timber deck at sunset, lantern-lit dining table and fire pit.",
         "kind": "exterior",
         "hero": false
       },
@@ -667,7 +667,7 @@
         "src": "/images/products/safari-tents/desert-mountain-camp-aerial.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Aerial view at sunset of a single canvas safari tent suite with a plunge pool and loungers on its raised wooden deck, set among golden bushveld grass and acacia trees.",
+        "alt": "Aerial view at sunset of a canvas Safari Tent suite with a plunge pool and loungers on its timber deck.",
         "kind": "exterior",
         "hero": false
       },
@@ -675,7 +675,7 @@
         "src": "/images/products/safari-tents/interior-ensuite-tub.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Freestanding copper bathtub with petals and lanterns in a safari tent ensuite, glass bifold doors open to a wooden deck and golden bushveld sunset with acacia trees",
+        "alt": "Freestanding copper bathtub with petals and lanterns in a Safari Tent ensuite, bifold doors open to a bushveld sunset.",
         "kind": "interior",
         "hero": false
       },
@@ -683,7 +683,7 @@
         "src": "/images/products/safari-tents/interior-lounge-styling.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Lounge corner inside a cream canvas safari tent with two leather butterfly chairs, layered kilim and jute rugs and a brass tray table with red wine, its bifold glass doors open to a wooden deck and golden savanna at sunset.",
+        "alt": "Lounge corner inside a cream canvas Safari Tent with leather butterfly chairs and kilim rugs, bifold doors open to the savanna.",
         "kind": "interior",
         "hero": false
       },
@@ -691,7 +691,7 @@
         "src": "/images/products/safari-tents/hillside-suite-plunge-pool-sunset.jpg",
         "width": 1375,
         "height": 784,
-        "alt": "Elevated canvas safari suite with a glass facade, wraparound timber deck, pergola loungers and square plunge pool overlooking a golden acacia-dotted bushveld valley at sunset.",
+        "alt": "Elevated canvas Safari Tent suite with a glass facade, wraparound deck and plunge pool overlooking a bushveld valley at sunset.",
         "kind": "exterior",
         "hero": false
       },
@@ -699,7 +699,7 @@
         "src": "/images/products/safari-tents/twilight-tented-suite-reflection.jpg",
         "width": 1306,
         "height": 816,
-        "alt": "Twin-peaked canvas safari tented suite on a timber deck glowing with lantern light at dusk, reflected in a still bushveld waterhole framed by golden grass and acacia trees.",
+        "alt": "Twin-peaked canvas Safari Tent suite on a timber deck glowing with lantern light at dusk, reflected in a bushveld waterhole.",
         "kind": "exterior",
         "hero": false
       },
@@ -707,7 +707,7 @@
         "src": "/images/products/safari-tents/deck-lounge-firepit-twilight.jpg",
         "width": 1251,
         "height": 832,
-        "alt": "Curved bench with striped cushions around a flickering fire pit on the timber deck of a canvas-roofed safari tented suite, with lanterns glowing and golden bushveld fading to sunset behind.",
+        "alt": "Curved bench with striped cushions around a fire pit on the deck of a canvas-roofed Safari Tent suite at sunset.",
         "kind": "exterior",
         "hero": false
       },
@@ -715,7 +715,7 @@
         "src": "/images/products/safari-tents/exterior-deck-dinner-dusk.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Lantern-lit dinner table for two on the raised timber deck of a cream canvas safari tent at dusk, with golden bushveld grass and acacia trees beyond.",
+        "alt": "Lantern-lit dinner table for two on the timber deck of a cream canvas Safari Tent at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -723,7 +723,7 @@
         "src": "/images/products/safari-tents/exterior-dawn-mist.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Luxury cream canvas safari tent with a charcoal canopy roof on a raised wooden deck at dawn, low mist drifting over golden savanna grass and acacia trees as warm lamplight glows from inside.",
+        "alt": "Luxury cream canvas Safari Tent with a charcoal canopy roof on a timber deck at dawn, mist drifting over golden savanna grass.",
         "kind": "exterior",
         "hero": false
       }
@@ -734,7 +734,7 @@
       "src": "/images/gallery/tiny-homes-gallery-1.jpg",
       "width": 1195,
       "height": 896,
-      "alt": "White flat-pack folding tiny home with its steel door open and interior light glowing, set on a garden lawn against golden bushveld grass and sunlit mountains at dusk",
+      "alt": "White X-Fold folding tiny home with its steel door open and interior light glowing, on a garden lawn at dusk.",
       "kind": "exterior",
       "hero": false
     },
@@ -742,7 +742,7 @@
       "src": "/images/gallery/our-process.jpg",
       "width": 1600,
       "height": 715,
-      "alt": "Five-step process infographic — discuss, design, quote, build and delivery — arranged around a 3D render of a timber-clad tiny home with a glazed gable end and wooden deck.",
+      "alt": "Five-step process infographic — discuss, design, quote, build and delivery — around a timber-clad tiny home render.",
       "kind": "diagram",
       "hero": false
     },
@@ -758,7 +758,7 @@
       "src": "/images/gallery/icon-capsule-pod.png",
       "width": 1600,
       "height": 1087,
-      "alt": "Teal line-drawing icon of a capsule pod tiny home with panoramic windows, a central entrance module, and an attached raised deck with railing, standing on pedestal supports.",
+      "alt": "Teal line-drawing icon of a capsule pod tiny home with panoramic windows and an attached raised deck.",
       "kind": "icon",
       "hero": false
     },
@@ -774,7 +774,7 @@
       "src": "/images/gallery/icon-folding-home.png",
       "width": 1600,
       "height": 1087,
-      "alt": "Teal line-art icon of a folding tiny home shown mid-unfold, its roof and wall panels opening outward above a flat base platform with interior floor detail.",
+      "alt": "Teal line-art icon of a folding tiny home shown mid-unfold, roof and wall panels opening above a base platform.",
       "kind": "icon",
       "hero": false
     }

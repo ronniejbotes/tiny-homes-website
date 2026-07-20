@@ -55,6 +55,10 @@ export interface CustomOption {
    * room and consumes no new floor. Omit when the footprint applies everywhere.
    */
   footprintVariantIds?: string[];
+  /** Variants this option is offered on. Omit to offer it on every variant. */
+  availableVariantIds?: string[];
+  /** Options sharing an exclusiveGroup are mutually exclusive — only one can be on. */
+  exclusiveGroup?: string;
 }
 
 export interface ProductVariant {
@@ -175,6 +179,10 @@ export const products: Product[] = [
       {
         q: "Is there a guarantee?",
         a: "Yes — every Tiny Homes SA product carries a 10-year guarantee, and we provide full after-sales support.",
+      },
+      {
+        q: "Can I finance an X-Fold?",
+        a: "Yes — finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record.",
       },
     ],
     seoKeywords: [
@@ -378,7 +386,7 @@ export const products: Product[] = [
       },
       {
         q: "Can The Dome have a bathroom or a separate bedroom?",
-        a: "Yes — add the integrated bathroom unit (shower, toilet and basin) and an internal partition wall with door to create a private bedroom. Automated electric curtains, extended ambient lighting and a smart electronic key-lock are also available.",
+        a: "The Dome can be fitted with add-ons such as an integrated bathroom, an internal partition to create a private bedroom, automated curtains and smart entry — tell us what you need and we'll quote it for your Dome.",
       },
       {
         q: "What is The Dome used for?",
@@ -394,7 +402,7 @@ export const products: Product[] = [
       "geodesic dome price",
       "transparent dome accommodation",
       "stargazing dome",
-      "glamping pods for sale South Africa",
+      "transparent dome accommodation South Africa",
     ],
   },
   {
@@ -451,7 +459,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes — every Tiny Homes SA product carries a 10-year guarantee, and we provide full after-sales support.",
+        a: "Yes — every Tiny Homes SA product carries a 10-year guarantee, and finance and lay-bye options are available, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -459,7 +467,7 @@ export const products: Product[] = [
       "panoramic glass cabin",
       "luxury prefab cabin price",
       "eco resort accommodation pods",
-      "glamping pods for sale South Africa",
+      "luxury pod cabin South Africa",
     ],
   },
   {
@@ -470,29 +478,28 @@ export const products: Product[] = [
     summary:
       "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R690 000 ex VAT.",
     description:
-      "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom (the 11.5 m capsule adds a luxurious kitchen), each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system and intelligent front-door access all come standard, with an optional balcony that can be removed to extend the indoor space. High-tech options run from floor heating and triple-glazed skylights to smart voice control, with various designs and sizes to choose from. Each capsule is transported in sections and professionally assembled at your site — ready for immediate occupancy.",
+      "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom, which is standard on every size (the 11.5 m capsule also adds a luxurious kitchen), each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system and intelligent front-door access all come standard, with an optional balcony that can be removed to extend the indoor space. Available in various designs and sizes, each capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy.",
     startingPrice: 690000,
     sizeLabel: "18.6 – 38 m²",
     bedrooms: "2 rooms + central bathroom",
-    setupTime: "Professional on-site assembly",
+    setupTime: "Delivered fully built",
     dims: { length: 11.5, width: 3.2, height: 3.2 },
     specs: [
       { label: "Sizes", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 38 m² (11.5 m)" },
       { label: "External size", value: "Up to 11.5 m × 3.2 m × 3.2 m" },
       { label: "Glazing", value: "270° oversized floor-to-ceiling double-glazed windows in each room" },
-      { label: "Layout", value: "Two rooms separated by a central bathroom — kitchen included in the 11.5 m" },
+      { label: "Layout", value: "Two rooms separated by a central bathroom (standard on every size) — kitchen included in the 11.5 m" },
       { label: "Sleeps", value: "2 (5.85 m and 9.5 m) or 2–4 (11.5 m)" },
-      { label: "Standard", value: "Multi-layer insulation, HVAC & geyser, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
-      { label: "High-tech options", value: "Smart access, floor heating, A/C, triple-glazed skylight and windows, smart voice control" },
-      { label: "Assembly", value: "Transported in sections, professionally assembled on site — ready for immediate occupancy" },
+      { label: "Standard", value: "Central bathroom, multi-layer insulation, HVAC & geyser, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
+      { label: "Assembly", value: "Arrives fully built — delivered and placed on site with no on-site construction, ready for immediate occupancy" },
     ],
     features: [
       "270° oversized double-glazed panoramic windows in each room",
-      "Premium bathroom fittings — luxurious kitchen in the 11.5 m capsule",
+      "Central bathroom standard on every size — luxurious kitchen in the 11.5 m capsule",
       "HVAC and geyser system included as standard",
       "Multi-layer thermal insulation and intelligent front-door access",
       "Optional balcony — removable to extend the indoor space",
-      "Customisable: floor colours, underfloor heating, integrated solar and alternate layouts",
+      "Arrives fully built — no on-site construction",
     ],
     useCases: ["Luxury lodge suite", "Vineyard accommodation", "Beach retreat", "Bush getaway", "Premium Airbnb", "Honeymoon suite"],
     variants: [
@@ -500,19 +507,24 @@ export const products: Product[] = [
       { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 850000, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
       { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 950000, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
     ],
-    options: [],
+    options: [
+      { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule — one price for any size.", price: 14900, category: "comfort", visual: "heating", provisional: false },
+      { id: "smart-curtains", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing, run from the capsule's central control system.", price: 23900, category: "comfort", visual: "curtains", provisional: false },
+      { id: "kitchen", label: "Kitchen", description: "A full kitchen — 2 m cabinet run, stone countertop, sink and a 900 mm double stove with an 80 L oven. Available on the 5.85 m and 9.5 m capsules; the 11.5 m already includes a kitchen.", price: 39900, category: "modules", visual: "kitchen", footprintM2: 1.5, footprintVariantIds: ["capsule-5-85", "capsule-8-5"], availableVariantIds: ["capsule-5-85", "capsule-8-5"], provisional: false },
+      { id: "hd-projector", label: "HD projector and screen", description: "HD projector and screen for cinema nights inside the capsule.", price: 19900, category: "comfort", visual: "none", provisional: false },
+    ],
     faqs: [
       {
         q: "What comes standard in a Glamping Capsule?",
-        a: "Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system, intelligent front-door access and double-glazed windows. The 11.5 m capsule adds a luxurious kitchen.",
+        a: "Every size includes a central bathroom, multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system, intelligent front-door access and double-glazed windows. The 11.5 m capsule adds a luxurious kitchen.",
       },
       {
         q: "How is a Glamping Capsule delivered and installed?",
-        a: "The capsule is transported in sections and professionally assembled at your site, ready for immediate occupancy. We assist with site preparation — groundwork, electrical and plumbing are completed before delivery — and delivery is quoted separately based on your location.",
+        a: "The capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy. We assist with site preparation — groundwork, electrical and plumbing are completed before delivery — and delivery is quoted separately based on your location.",
       },
       {
         q: "Can I customise my capsule?",
-        a: "Yes — floor colours, underfloor heating, integrated solar and alternate layouts, plus high-tech options like smart access, floor heating, A/C, a triple-glazed skylight and windows, and smart voice control. Various designs and sizes are available.",
+        a: "Yes — add under-floor heating (R14 900), smart double-track curtains (R23 900), a full kitchen on the 5.85 m or 9.5 m capsule (R39 900 — the 11.5 m already includes one), or an HD projector and screen (R19 900).",
       },
       {
         q: "Can I finance a Glamping Capsule?",
@@ -535,7 +547,7 @@ export const products: Product[] = [
     summary:
       "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink — four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
     description:
-      "South Africans entertain outside — the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths — 2.5, 2.9, 3.5 or 3.9 m — and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours with add-ons like a gas braai grill, induction cooktop, bar fridge, range hood, outdoor audio or an illuminated 'starry sky' roof, each quoted on your quotation. From R154 400 ex VAT, delivered ready to use.",
+      "South Africans entertain outside — the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths — 2.5, 2.9, 3.5 or 3.9 m — and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours in the configurator with add-ons — a gas grill, induction stove or kettle grill, an extractor fan, bar fridge, stainless-steel countertop, outdoor speaker or an illuminated 'starry sky' ceiling. From R154 400 ex VAT, delivered ready to use.",
     startingPrice: 154400,
     sizeLabel: "2.5 – 3.9 m",
     setupTime: "Delivered ready to use",
@@ -561,7 +573,7 @@ export const products: Product[] = [
       "Stainless-steel sink with pull-out faucet — plumbing and electrical embedded",
       "Corrosion-resistant galvanised steel frame with aluminium-alloy shell, waterproof throughout",
       "Recessed warm/white lighting and an adjustable LED ambient strip for evening entertaining",
-      "Add-ons from gas braai grills to bar fridges and kamado grills — quoted on your quotation",
+      "Add-ons from gas grills and an induction stove to a bar fridge, extractor fan and starry-sky ceiling",
     ],
     useCases: ["Patio & braai area", "Entertainment area", "Lodge or guest farm", "Pool deck", "Developer amenity", "Garden bar"],
     variants: [
@@ -570,9 +582,22 @@ export const products: Product[] = [
       { id: "ok-3-5", name: "3.5 m Outdoor Kitchen", size: "3.5 m", price: 183700, description: "3.5 × 0.8 × 2.4 m, approx 700 kg." },
       { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 196800, description: "3.9 × 0.8 × 2.4 m — the largest, for serious entertaining." },
     ],
-    // No configurator: outdoor kitchens have no scene or floor plan, so options
-    // must stay empty (a single option would fall back to the wrong cutaway).
-    options: [],
+    // Extras from the supplier options list, marked up 30% and rounded up to the
+    // nearest R100. No cutaway scene — the configurator shows the Photos panel.
+    // Gas Grill Double and Kettle Grill are offered on the 3.5 m and 3.9 m units only.
+    options: [
+      { id: "gas-grill-single", label: "Single gas grill", description: "Built-in single-burner gas grill for everyday braais. Choose one cooking method.", price: 9300, category: "modules", visual: "none", exclusiveGroup: "cooking", provisional: false },
+      { id: "gas-grill-double", label: "Double gas grill", description: "Built-in double-burner gas grill for serious entertaining. Choose one cooking method.", price: 14100, category: "modules", visual: "none", availableVariantIds: ["ok-3-5", "ok-3-9"], exclusiveGroup: "cooking", provisional: false },
+      { id: "induction-stove", label: "Induction flat-top stove", description: "Built-in induction flat-top stove for precise, flameless cooking. Choose one cooking method.", price: 4500, category: "modules", visual: "none", exclusiveGroup: "cooking", provisional: false },
+      { id: "kettle-grill", label: "Kettle grill", description: "Built-in kettle grill for charcoal cooking and smoking. Choose one cooking method.", price: 8200, category: "modules", visual: "none", availableVariantIds: ["ok-3-5", "ok-3-9"], exclusiveGroup: "cooking", provisional: false },
+      { id: "extractor-fan", label: "Extractor fan", description: "Overhead extractor fan to clear smoke and steam.", price: 3400, category: "modules", visual: "none", provisional: false },
+      { id: "bar-fridge", label: "Bar fridge", description: "Small under-counter refrigerator for drinks and ingredients.", price: 3300, category: "modules", visual: "none", provisional: false },
+      { id: "stainless-countertop", label: "Stainless-steel countertop", description: "Upgrades the quartz stone counter to a stainless-steel worktop.", price: 7800, category: "interior", visual: "none", provisional: false },
+      { id: "extra-cabinets", label: "Extra cabinet module (1 m)", description: "A 1-metre run of extra cabinetry at R3 100/m. Need more? We'll quote the length you want.", price: 3100, category: "interior", visual: "none", provisional: false },
+      { id: "aluminium-shelf", label: "Aluminium shelf", description: "Wall-mounted aluminium shelf for extra storage.", price: 500, category: "interior", visual: "none", provisional: false },
+      { id: "outdoor-speaker", label: "Outdoor speaker", description: "Weatherproof outdoor speaker to set the mood.", price: 1900, category: "comfort", visual: "none", provisional: false },
+      { id: "starry-sky-ceiling", label: "Starry-sky ceiling", description: "LED starry-sky ceiling panel for the underside of the roof.", price: 4700, category: "comfort", visual: "none", provisional: false },
+    ],
     faqs: [
       {
         q: "What's included in an outdoor kitchen?",
@@ -584,7 +609,7 @@ export const products: Product[] = [
       },
       {
         q: "What add-ons can I get?",
-        a: "A gas BBQ grill (single or dual burner), induction cooktop, bar fridge, range hood, outdoor audio, ceramic kamado grill, wall cabinet, illuminated 'starry sky' roof, stainless-steel countertop upgrade, rolling shutter door and storage rack — each quoted on your quotation. Appliance options meet international certification standards (CE).",
+        a: "A single gas grill, a double gas grill (on the 3.5 m and 3.9 m units), an induction flat-top stove, a kettle grill (on the 3.5 m and 3.9 m units), an extractor fan, a bar fridge, a stainless-steel countertop upgrade, extra cabinet modules by the metre, an aluminium shelf, an outdoor speaker and an illuminated 'starry-sky' ceiling — each quoted on your quotation.",
       },
       {
         q: "How much does delivery and installation cost?",
@@ -706,6 +731,7 @@ export const products: Product[] = [
       { q: "Do I assemble the garage myself?", a: "Yes — the kit is delivered flat-packed with the frame, sheeting, fixings and instructions to bolt together on a level slab. Our turnkey team can prepare the slab and assemble it for you if you prefer." },
       { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit. We can quote the groundwork separately." },
       { q: "What sizes are available?", a: "Three: 6.1 × 4 m (24.4 m²), 6.1 × 6.1 m (37.2 m²) and 6.1 × 9.15 m (55.8 m²), all 3.6 m to the wall." },
+      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes — every Tiny Homes SA product carries a 10-year guarantee. Finance and lay-bye options are also available, subject to credit approval." },
     ],
     seoKeywords: ["DIY garage kit South Africa", "steel garage kit price", "flat pack garage", "prefab garage South Africa", "double garage kit"],
   },
@@ -717,14 +743,22 @@ export function getProduct(slug: string): Product | undefined {
 
 export const productSlugs = products.map((p) => p.slug);
 
+/** Whether an option is offered for a given variant (options with no availableVariantIds are offered on all). */
+export function isOptionAvailable(opt: CustomOption, variantId?: string): boolean {
+  if (!opt.availableVariantIds) return true;
+  return variantId != null && opt.availableVariantIds.includes(variantId);
+}
+
 /** Visual layers implied by the active options (dependents count only when their requirement is met). */
 export function activeVisuals(
   product: Product,
   selected: Partial<Record<string, boolean>>,
+  variantId?: string,
 ): Partial<Record<VisualKey, boolean>> {
   const visuals: Partial<Record<VisualKey, boolean>> = {};
   for (const opt of product.options) {
-    const active = selected[opt.id] && (!opt.requires || selected[opt.requires]);
+    const active =
+      isOptionAvailable(opt, variantId) && selected[opt.id] && (!opt.requires || selected[opt.requires]);
     if (active && opt.visual !== "none") visuals[opt.visual] = true;
   }
   return visuals;
@@ -742,7 +776,8 @@ export function configuredPrice(product: Product, selected: Partial<Record<strin
   const base = variant ? variant.price : product.startingPrice;
   const areaM2 = variant?.areaM2;
   return product.options.reduce((total, opt) => {
-    const active = selected[opt.id] && (!opt.requires || selected[opt.requires]);
+    const active =
+      isOptionAvailable(opt, variantId) && selected[opt.id] && (!opt.requires || selected[opt.requires]);
     return active ? total + optionPrice(opt, areaM2) : total;
   }, base);
 }

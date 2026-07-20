@@ -90,7 +90,8 @@ export function Hero() {
           className="animate-rise-in mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl"
           style={rise(0.48)}
         >
-          High-end prefab tiny homes from {formatZAR(lowestStartingPrice)} ex VAT — designed
+          High-end prefab tiny homes from{" "}
+          <span className="nums-tabular">{formatZAR(lowestStartingPrice)}</span> ex VAT — designed
           for affordable, sustainable living and delivered anywhere in South Africa in around
           90 days.
         </p>

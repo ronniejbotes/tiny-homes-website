@@ -34,6 +34,7 @@
 
   /* Shadows tuned warm, not gray */
   --shadow-soft: 0 2px 8px rgba(28, 27, 23, 0.06), 0 8px 24px rgba(28, 27, 23, 0.07);
+  --shadow-hover: 0 6px 16px rgba(28, 27, 23, 0.09), 0 20px 48px rgba(28, 27, 23, 0.14);
   --shadow-lifted: 0 4px 12px rgba(28, 27, 23, 0.08), 0 16px 40px rgba(28, 27, 23, 0.12);
 }
 
@@ -76,6 +77,15 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.02;
   font-variation-settings: "SOFT" 40, "WONK" 0;
+  /* Fraunces is an optical-size variable font — let large display headings pick
+     up the finer, higher-contrast optical cut for a more refined editorial feel. */
+  font-optical-sizing: auto;
+}
+
+/* Prices and figures: tabular (monospaced) numerals so they never jitter as
+   values animate or change, and align in columns — a small mark of polish. */
+.nums-tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 .text-eyebrow {

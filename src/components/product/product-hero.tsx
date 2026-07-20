@@ -76,7 +76,10 @@ export function ProductHero({
               ) : (
                 <>
                   <p className="text-display text-3xl text-ink sm:text-4xl">
-                    From {formatZAR(product.startingPrice)}
+                    From{" "}
+                    <span className="nums-tabular">
+                      {formatZAR(product.startingPrice)}
+                    </span>
                   </p>
                   <p className="text-sm text-stone">ex VAT</p>
                 </>
