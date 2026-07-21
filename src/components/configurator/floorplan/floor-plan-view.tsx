@@ -405,6 +405,36 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
             </PlanLabel>
           </g>
         )}
+        {door.side === "right" && (
+          <g>
+            <line
+              x1={X(interior.w + wall) + 16}
+              y1={Y(door.offset + door.width / 2)}
+              x2={X(interior.w + wall) + 7}
+              y2={Y(door.offset + door.width / 2)}
+              stroke={STONE}
+              strokeWidth={1.5}
+            />
+            <polygon
+              points={`${X(interior.w + wall) + 2},${Y(door.offset + door.width / 2)} ${X(interior.w + wall) + 8},${Y(door.offset + door.width / 2) - 4} ${X(interior.w + wall) + 8},${Y(door.offset + door.width / 2) + 4}`}
+              fill={STONE}
+            />
+            <text
+              x={X(interior.w + wall) + 27}
+              y={Y(door.offset + door.width / 2)}
+              fill={STONE}
+              fontSize={9}
+              textAnchor="middle"
+              stroke={CREAM}
+              strokeWidth={3}
+              paintOrder="stroke"
+              strokeLinejoin="round"
+              transform={`rotate(-90 ${X(interior.w + wall) + 27} ${Y(door.offset + door.width / 2)})`}
+            >
+              Entrance
+            </text>
+          </g>
+        )}
 
         {/* dimension lines: overall external size on two sides */}
         <g stroke={STONE} strokeWidth={1}>

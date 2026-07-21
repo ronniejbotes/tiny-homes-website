@@ -2,12 +2,20 @@
   "products": {
     "folding-homes": [
       {
-        "src": "/images/products/folding-homes/exterior-snow-timber.jpg",
-        "width": 2400,
-        "height": 1018,
-        "alt": "Timber-clad X-Fold folding home with a black steel frame on a paved plinth in late-afternoon light.",
+        "src": "/images/products/folding-homes/exterior-colour-options.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Four X-Fold units in wood-grain brown, cream white, light grey and charcoal finishes at golden hour.",
         "kind": "exterior",
         "hero": true
+      },
+      {
+        "src": "/images/products/folding-homes/exterior-timber-door.jpg",
+        "width": 2000,
+        "height": 857,
+        "alt": "Timber-clad X-Fold folding home with a steel door and window, on a lawn at golden hour.",
+        "kind": "exterior",
+        "hero": false
       },
       {
         "src": "/images/products/folding-homes/exterior-woodland-1.jpg",
@@ -34,18 +42,10 @@
         "hero": false
       },
       {
-        "src": "/images/products/folding-homes/exterior-colour-options.jpg",
-        "width": 1024,
-        "height": 1024,
-        "alt": "Four X-Fold units in wood-grain brown, cream white, light grey and charcoal finishes at golden hour.",
-        "kind": "detail",
-        "hero": false
-      },
-      {
-        "src": "/images/products/folding-homes/site-installations-collage.png",
-        "width": 1376,
-        "height": 768,
-        "alt": "Aerial view of a mine workforce housing camp with about fifty white X-Fold units in neat rows.",
+        "src": "/images/products/folding-homes/site-installations-aerial.jpg",
+        "width": 2000,
+        "height": 1116,
+        "alt": "Aerial view of white X-Fold folding homes in neat rows on a South African site.",
         "kind": "exterior",
         "hero": false
       },
@@ -100,35 +100,67 @@
     ],
     "expandable-homes": [
       {
-        "src": "/images/products/expandable-homes/exterior-deployed-lawn.jpg",
-        "width": 2400,
-        "height": 1018,
-        "alt": "Fully deployed white Expandable Home with glass double-door entry in a South African mountain forest clearing at dusk.",
+        "src": "/images/products/expandable-homes/brochure-hero.jpg",
+        "width": 2000,
+        "height": 1201,
+        "alt": "Wood-grain Expandable Home with central glass entrance on a timber deck at sunset.",
         "kind": "exterior",
         "hero": true
       },
       {
-        "src": "/images/products/expandable-homes/exterior-deploying-wing.png",
-        "width": 1237,
+        "src": "/images/products/expandable-homes/scenic-bushveld.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "White Expandable Home on a deck in golden bushveld with acacia trees at sunset.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/scenic-winelands.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "White Expandable Home among Cape Winelands vineyards with mountains at late afternoon.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/scenic-coastal.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "White Expandable Home in coastal dunes at sunset with the sea behind.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/brochure-exterior-3.jpg",
+        "width": 970,
+        "height": 856,
+        "alt": "Dark wood-grain Expandable Home expanded on grass under a blue sky.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/brochure-exterior-4.jpg",
+        "width": 970,
+        "height": 870,
+        "alt": "Wood-grain Expandable Home with black trim and glass double doors.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/brochure-exterior-5.jpg",
+        "width": 970,
+        "height": 868,
+        "alt": "Grey Expandable Home raised on stilts with a railed deck in a forest.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/brochure-exterior-6.jpg",
+        "width": 970,
         "height": 864,
-        "alt": "Grey Expandable Home with its roof wing folding open mid-deployment beside the glass entrance door and stairs.",
+        "alt": "Expandable Home on a large timber deck with stairs and mountain views.",
         "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/expandable-homes/exterior-front-stairs.png",
-        "width": 1328,
-        "height": 784,
-        "alt": "Symmetrical front view of an Expandable Home with both wings folded out and an entrance staircase.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/expandable-homes/interior-living-room.png",
-        "width": 1600,
-        "height": 1073,
-        "alt": "Living room of an Expandable Home with a tan sofa, glass doors opening onto a mountain forest clearing.",
-        "kind": "interior",
         "hero": false
       },
       {
@@ -140,11 +172,11 @@
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/exterior-side-1.png",
-        "width": 1024,
-        "height": 1024,
-        "alt": "White Expandable Home with both wings extended and glass sliding doors open, in a mountain forest clearing at sunset.",
-        "kind": "exterior",
+        "src": "/images/products/expandable-homes/brochure-interior-1.jpg",
+        "width": 970,
+        "height": 868,
+        "alt": "Open-plan living room and kitchen inside an Expandable Home.",
+        "kind": "interior",
         "hero": false
       },
       {
@@ -156,11 +188,11 @@
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/spc-flooring-options.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Expandable Home living area with warm oak SPC stone-composite flooring and sample planks from pale oak to charcoal.",
-        "kind": "detail",
+        "src": "/images/products/expandable-homes/brochure-interior-2.jpg",
+        "width": 2000,
+        "height": 1411,
+        "alt": "Expandable Home bedroom with a large mountain-view window and upholstered headboard.",
+        "kind": "interior",
         "hero": false
       },
       {
@@ -172,42 +204,34 @@
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/interior-bathroom-pod.jpg",
-        "width": 1325,
-        "height": 800,
-        "alt": "Factory-fitted bathroom pod with corner shower enclosure, toilet and wall-mounted basin in an expandable home",
-        "kind": "interior",
+        "src": "/images/products/expandable-homes/scenic-forest.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Wood-grain Expandable Home glowing at dawn in a misty indigenous forest.",
+        "kind": "exterior",
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/floor-plan-1.png",
-        "width": 1600,
-        "height": 481,
-        "alt": "Floor plans of three Expandable Home layouts: open-plan living/dining, and two one-bedroom options.",
+        "src": "/images/products/expandable-homes/scenic-valley.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Grey Expandable Home with deck and fire pit overlooking a river valley at dusk.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/expandable-homes/brochure-dollhouse.jpg",
+        "width": 1360,
+        "height": 1166,
+        "alt": "Cutaway view of a two-bedroom Expandable Home with kitchen, bathroom and living area.",
         "kind": "diagram",
         "hero": false
       },
       {
-        "src": "/images/products/expandable-homes/floor-plan-2.png",
-        "width": 1600,
-        "height": 481,
-        "alt": "Floor plan sheet showing three layouts of a two-bedroom Expandable Home with open-plan living and corner shower bathroom.",
-        "kind": "diagram",
-        "hero": false
-      },
-      {
-        "src": "/images/products/expandable-homes/floor-plan-3.png",
-        "width": 1600,
-        "height": 1400,
-        "alt": "Floor plan of a four-bedroom Expandable Home with single beds, a central corridor and shared bathroom.",
-        "kind": "diagram",
-        "hero": false
-      },
-      {
-        "src": "/images/products/expandable-homes/tech-specs-table.jpg",
-        "width": 1600,
-        "height": 295,
-        "alt": "Specification table listing four Expandable Home models with dimensions and floor areas from 27.5 to 72 square metres.",
+        "src": "/images/products/expandable-homes/catalog-sizes.png",
+        "width": 1241,
+        "height": 1755,
+        "alt": "Expandable Home sizes: 20ft and 40ft transport and expanded dimensions from the catalogue.",
         "kind": "diagram",
         "hero": false
       }
@@ -230,10 +254,10 @@
         "hero": false
       },
       {
-        "src": "/images/products/nature-cabins/exterior-white-cabin-deck.jpg",
-        "width": 1600,
-        "height": 1200,
-        "alt": "White gable cabin with a full-height glass front and railed timber deck overlooking a misty golden grassland valley at sunrise.",
+        "src": "/images/products/nature-cabins/exterior-timber-cabin-deck.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Timber Nature Cabin with glass gable and railed deck over a misty South African valley.",
         "kind": "exterior",
         "hero": false
       },
@@ -353,9 +377,9 @@
       },
       {
         "src": "/images/products/the-dome/exterior-garden-1.jpg",
-        "width": 1600,
-        "height": 1521,
-        "alt": "The Dome glamping pod with a transparent arched-glass front and a warmly lit bed, on a timber deck at dusk.",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Transparent Dome glamping pod with warmly lit bed on a timber deck among fynbos at dusk.",
         "kind": "exterior",
         "hero": false
       },
@@ -386,10 +410,10 @@
     ],
     "apple-cabins": [
       {
-        "src": "/images/products/apple-cabins/exterior-forest-deck.jpg",
-        "width": 2400,
-        "height": 1340,
-        "alt": "Long glass-walled Apple Cabin with a white shell and sage curtains, on a timber deck at a pine-forest edge.",
+        "src": "/images/products/apple-cabins/hero-pod-fynbos.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "White Apple Cabin pod with glass front on a timber deck among fynbos at sunset.",
         "kind": "exterior",
         "hero": true
       },
@@ -398,14 +422,6 @@
         "width": 1600,
         "height": 1600,
         "alt": "White Apple Cabin office pod with a dark timber-slat end wall and full-height glass sliding doors.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/apple-cabins/exterior-double-storey.png",
-        "width": 1600,
-        "height": 1421,
-        "alt": "Double-storey Apple Cabin of two stacked white capsule pods with a railed rooftop terrace and umbrella.",
         "kind": "exterior",
         "hero": false
       },
@@ -419,9 +435,9 @@
       },
       {
         "src": "/images/products/apple-cabins/interior-bathroom.jpg",
-        "width": 1600,
-        "height": 2133,
-        "alt": "Compact fitted bathroom inside an Apple Cabin with marble-look panels, an LED-lit mirror and glass-screened shower.",
+        "width": 1500,
+        "height": 2000,
+        "alt": "Compact luxury bathroom inside an Apple Cabin with LED mirror and glass rain shower.",
         "kind": "interior",
         "hero": false
       },
@@ -434,11 +450,11 @@
         "hero": false
       },
       {
-        "src": "/images/products/apple-cabins/interior-office-nook.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Work-from-home desk nook inside an Apple Cabin, facing its full-height glass wall and garden.",
-        "kind": "interior",
+        "src": "/images/products/apple-cabins/exterior-terrace-dusk.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Apple Cabin pod glowing on a lantern-lit stone terrace above a valley at dusk.",
+        "kind": "exterior",
         "hero": false
       },
       {
@@ -458,10 +474,10 @@
         "hero": false
       },
       {
-        "src": "/images/products/apple-cabins/interior-reading-corner.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Reading corner inside an Apple Cabin, armchair and bookshelf beside the glass wall and garden.",
+        "src": "/images/products/apple-cabins/interior-pod-length.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Warm Apple Cabin interior with bed and walnut kitchenette along the glass wall.",
         "kind": "interior",
         "hero": false
       }
@@ -575,74 +591,42 @@
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-braai-dusk.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Stainless-steel Outdoor Kitchen at dusk with its green kamado grill open and glowing, food sizzling on the grate.",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Outdoor Kitchen island with a kettle braai glowing at dusk on a South African patio.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-patio-pool.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Stainless-steel Outdoor Kitchen with green kamado grill and drinks fridge on a stone patio beside a swimming pool at dusk.",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Outdoor Kitchen with lift-up LED canopy and gas grill beside a swimming pool at blue hour.",
         "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/outdoor-kitchens/kitchen-kamado-detail.jpg",
-        "width": 1024,
-        "height": 1036,
-        "alt": "Stainless-steel outdoor kitchen with built-in green kamado grill, sink and glass-door drinks fridge on a paved patio at dusk under festoon lights",
-        "kind": "detail",
         "hero": false
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-counter-prep.jpg",
-        "width": 1024,
-        "height": 1024,
-        "alt": "Close-up of a stainless-steel Outdoor Kitchen counter with raw steaks on a wooden board, fresh vegetables and herbs.",
-        "kind": "detail",
-        "hero": false
-      },
-      {
-        "src": "/images/products/outdoor-kitchens/kitchen-pergola-lights.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Stainless-steel Outdoor Kitchen with green kamado grill and drinks fridge under a wooden pergola with festoon lights at blue hour.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/outdoor-kitchens/kitchen-morning-coffee.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Stovetop espresso maker and two steaming cups on the counter of an Outdoor Kitchen with a green kamado grill at sunrise.",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Steaks and vegetables on the Outdoor Kitchen's quartz counter, gas braai ready behind.",
         "kind": "detail",
         "hero": false
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-storage-detail.jpg",
-        "width": 1024,
-        "height": 1024,
-        "alt": "Stainless-steel Outdoor Kitchen with its cabinet doors open, revealing stacked plates, glassware and a green kamado grill.",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Outdoor Kitchen storage open, plates and glasses stacked under the LED canopy at dusk.",
         "kind": "detail",
         "hero": false
       },
       {
-        "src": "/images/products/outdoor-kitchens/kitchen-garden-entertaining.jpg",
-        "width": 1376,
-        "height": 768,
-        "alt": "Stainless-steel Outdoor Kitchen with a green kamado grill and drinks fridge on a paved garden patio at dusk under festoon lights.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/outdoor-kitchens/kitchen-sunset-profile.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Stainless-steel Outdoor Kitchen with its canopy open, green kamado grill smoking, on a paved patio under a dramatic sunset sky.",
-        "kind": "exterior",
+        "src": "/images/products/outdoor-kitchens/kitchen-morning-coffee.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Espresso pot and cups on the Outdoor Kitchen's quartz counter at sunrise in a South African garden.",
+        "kind": "detail",
         "hero": false
       }
     ],
@@ -727,7 +711,108 @@
         "kind": "exterior",
         "hero": false
       }
+    ],
+    "garages": [
+      {
+        "src": "/images/products/garages/hero-single-garage.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Galvanised-steel single DIY garage kit with white roller door in a South African backyard.",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
+        "src": "/images/products/garages/exterior-double-garage.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Double DIY garage kit with two white roller doors beside a suburban South African driveway.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/garages/exterior-triple-workshop.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Triple steel garage workshop kit with three roller doors on a South African smallholding.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/garages/kit-flat-packed-pallet.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Flat-pack steel garage kit components stacked on a pallet, ready for DIY assembly.",
+        "kind": "detail",
+        "hero": false
+      },
+      {
+        "src": "/images/products/garages/garage-in-use-workbench.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Steel garage kit in use with a bakkie and workbench, roller door open at evening.",
+        "kind": "exterior",
+        "hero": false
+      }
     ]
+  },
+  "layoutPlans": {
+    "apple-cabins": {
+      "apple-5-8": [
+        { "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png", "width": 1600, "height": 899, "label": "5.8m â€” Studio + bathroom" }
+      ],
+      "apple-9": [
+        { "src": "/images/products/apple-cabins/plans/apple-9-v2.png", "width": 1600, "height": 686, "label": "9m â€” Studio + kitchenette" }
+      ],
+      "apple-11-8": [
+        { "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png", "width": 1600, "height": 686, "label": "11.8m â€” One bedroom" }
+      ],
+      "default": [
+        { "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png", "width": 1600, "height": 899, "label": "5.8m â€” Studio + bathroom" },
+        { "src": "/images/products/apple-cabins/plans/apple-9-v2.png", "width": 1600, "height": 686, "label": "9m â€” Studio + kitchenette" },
+        { "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png", "width": 1600, "height": 686, "label": "11.8m â€” One bedroom" }
+      ]
+    },
+    "expandable-homes": {
+      "default": [
+        { "src": "/images/products/expandable-homes/plans/20ft-open-plan.png", "width": 944, "height": 882, "label": "Open plan" },
+        { "src": "/images/products/expandable-homes/plans/20ft-1-bed-a.png", "width": 946, "height": 886, "label": "1 Bed A" },
+        { "src": "/images/products/expandable-homes/plans/20ft-1-bed-b.png", "width": 948, "height": 884, "label": "1 Bed B" },
+        { "src": "/images/products/expandable-homes/plans/20ft-2-bed-a.png", "width": 946, "height": 886, "label": "2 Bed A" },
+        { "src": "/images/products/expandable-homes/plans/20ft-2-bed-b.png", "width": 944, "height": 882, "label": "2 Bed B" },
+        { "src": "/images/products/expandable-homes/plans/20ft-3-bed-a.png", "width": 944, "height": 884, "label": "3 Bed A" },
+        { "src": "/images/products/expandable-homes/plans/20ft-3-bed-b.png", "width": 948, "height": 884, "label": "3 Bed B" },
+        { "src": "/images/products/expandable-homes/plans/20ft-4-bed.png", "width": 946, "height": 888, "label": "4 Bedroom" }
+      ],
+      "b40": [
+        { "src": "/images/products/expandable-homes/plans/40ft-2-bed.png", "width": 1640, "height": 876, "label": "2 Bed" },
+        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry.png", "width": 1626, "height": 868, "label": "2 Bed + Laundry" },
+        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-wardrobe.png", "width": 1642, "height": 874, "label": "2 Bed + Walk-in Wardrobe" },
+        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry-wardrobe.png", "width": 1626, "height": 868, "label": "2 Bed + Laundry + Wardrobe" },
+        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-office.png", "width": 1640, "height": 874, "label": "2 Bed + Office" },
+        { "src": "/images/products/expandable-homes/plans/40ft-3-bed.png", "width": 1624, "height": 868, "label": "3 Bed" },
+        { "src": "/images/products/expandable-homes/plans/40ft-4-bed.png", "width": 1642, "height": 876, "label": "4 Bedroom" }
+      ]
+    }
+  },
+  "configurator": {
+    "folding-homes": {
+      "empty": {
+        "src": "/images/products/folding-homes/interior-shell-empty-v2.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Bare empty X-Fold interior shell, steel door and window in the end wall."
+      },
+      "furnished": {
+        "src": "/images/products/folding-homes/interior-shell-furnished-v2.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Furnished X-Fold interior with a bed, desk, rug and lamp in the same shell."
+      },
+      "video": {
+        "furnish": "/videos/configurator/xfold-furnish.mp4",
+        "unfurnish": "/videos/configurator/xfold-unfurnish.mp4"
+      }
+    }
   },
   "gallery": [
     {
@@ -742,7 +827,7 @@
       "src": "/images/gallery/our-process.jpg",
       "width": 1600,
       "height": 715,
-      "alt": "Five-step process infographic — discuss, design, quote, build and delivery — around a timber-clad tiny home render.",
+      "alt": "Five-step process infographic â€” discuss, design, quote, build and delivery â€” around a timber-clad tiny home render.",
       "kind": "diagram",
       "hero": false
     },

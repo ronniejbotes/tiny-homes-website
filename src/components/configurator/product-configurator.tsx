@@ -181,6 +181,153 @@ interface ManifestImage {
 const manifestProductImages = manifest.products as Record<string, ManifestImage[]>;
 const manifestGalleryImages = manifest.gallery as ManifestImage[];
 
+/* Real interior photo pair (empty shell ↔ furnished) — products that have one
+   show photography in the first tab instead of the illustrated cutaway. An
+   optional video pair plays a 1 s "poof" transition between the two states. */
+interface InteriorPhoto {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+interface InteriorPair {
+  empty: InteriorPhoto;
+  furnished: InteriorPhoto;
+  video?: { furnish: string; unfurnish: string };
+}
+
+const manifestConfigurator = manifest.configurator as Record<string, InteriorPair | undefined>;
+
+/* Catalogue floor-plan renders (per product, per size family) — shown in the
+   Floor plan tab instead of the illustrated SVG when the product has them. */
+interface CatalogPlan {
+  src: string;
+  width: number;
+  height: number;
+  label: string;
+}
+
+const manifestLayoutPlans = manifest.layoutPlans as Record<
+  string,
+  Record<string, CatalogPlan[]> | undefined
+>;
+
+function CatalogPlansView({
+  plans,
+  sizeLabel,
+}: {
+  plans: CatalogPlan[];
+  sizeLabel: string;
+}) {
+  return (
+    <div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {plans.map((plan) => (
+          <figure key={plan.src} className="overflow-hidden rounded-2xl border border-border bg-cream">
+            <Image
+              src={plan.src}
+              alt={`${sizeLabel} ${plan.label} floor plan`}
+              width={plan.width}
+              height={plan.height}
+              sizes="(min-width: 1024px) 20vw, 45vw"
+              className="h-auto w-full"
+            />
+            <figcaption className="px-3 py-2 text-xs font-medium text-ink">{plan.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-stone">
+        Every layout includes the bathroom with shower, toilet and vanity. Window and door placement
+        can be customised on your quote.
+      </p>
+    </div>
+  );
+}
+
+const INTERIOR_SIZES = "(min-width: 1024px) 55vw, 90vw";
+
+function InteriorPhotoView({ pair, furnished }: { pair: InteriorPair; furnished: boolean }) {
+  const reduce = useReducedMotion();
+  const furnishRef = useRef<HTMLVideoElement | null>(null);
+  const unfurnishRef = useRef<HTMLVideoElement | null>(null);
+  const [activeClip, setActiveClip] = useState<"furnish" | "unfurnish" | null>(null);
+  const prevFurnished = useRef(furnished);
+
+  useEffect(() => {
+    if (prevFurnished.current === furnished) return;
+    prevFurnished.current = furnished;
+    if (!pair.video || reduce) return;
+    const clip = furnished ? "furnish" : "unfurnish";
+    const target = furnished ? furnishRef.current : unfurnishRef.current;
+    const other = furnished ? unfurnishRef.current : furnishRef.current;
+    other?.pause();
+    if (!target) return;
+    target.currentTime = 0;
+    const played = target.play();
+    setActiveClip(clip);
+    // Autoplay refusal (rare for muted video) → fall back to the still swap.
+    played?.catch(() => setActiveClip(null));
+  }, [furnished, pair.video, reduce]);
+
+  // 4:3 matches the video frames and the furnished still, so the clip's first
+  // and last frames line up with the stills it plays between.
+  return (
+    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
+      <Image
+        src={pair.empty.src}
+        alt={pair.empty.alt}
+        fill
+        sizes={INTERIOR_SIZES}
+        className="object-cover"
+        aria-hidden={furnished || undefined}
+      />
+      <Image
+        src={pair.furnished.src}
+        alt={pair.furnished.alt}
+        fill
+        sizes={INTERIOR_SIZES}
+        className={cn(
+          "object-cover",
+          activeClip === null && "transition-opacity duration-300 ease-[var(--ease-smooth)]",
+          furnished ? "opacity-100" : "opacity-0",
+        )}
+        aria-hidden={!furnished || undefined}
+      />
+      {pair.video && !reduce && (
+        <>
+          <video
+            ref={furnishRef}
+            src={pair.video.furnish}
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            onEnded={() => setActiveClip((c) => (c === "furnish" ? null : c))}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover",
+              activeClip === "furnish" ? "opacity-100" : "pointer-events-none opacity-0",
+            )}
+          />
+          <video
+            ref={unfurnishRef}
+            src={pair.video.unfurnish}
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            onEnded={() => setActiveClip((c) => (c === "unfurnish" ? null : c))}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover",
+              activeClip === "unfurnish" ? "opacity-100" : "pointer-events-none opacity-0",
+            )}
+          />
+        </>
+      )}
+    </div>
+  );
+}
+
 /** Lookup of every manifest image by src — option photos may live anywhere. */
 const imageBySrc = new Map<string, ManifestImage>();
 for (const list of [...Object.values(manifestProductImages), manifestGalleryImages]) {
@@ -280,6 +427,8 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // scene (the six homes). Products without one — e.g. outdoor kitchens — show
   // just the Photos panel, so they never fall back to a home's cutaway.
   const hasScene = product.slug in scenes;
+  const interiorPair = manifestConfigurator[product.slug];
+  const layoutPlans = manifestLayoutPlans[product.slug];
   const [selected, setSelected] = useState<Partial<Record<string, boolean>>>(NO_OPTIONS);
   const [furnished, setFurnished] = useState(false);
   const [variantId, setVariantId] = useState<string | undefined>(product.variants?.[0]?.id);
@@ -438,14 +587,15 @@ export function ProductConfigurator({ product }: { product: Product }) {
                     )}
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />
-                    {tab.label}
+                    {tab.id === "cutaway" && interiorPair ? "Interior" : tab.label}
                   </button>
                 );
               })}
             </div>
 
-            {/* Furnish control affects Cutaway and Floor plan; hidden on Photos */}
-            {view !== "photos" && (
+            {/* Furnish control affects Cutaway and the drawn Floor plan; hidden on
+                Photos and on catalogue floor-plan renders (fixed imagery). */}
+            {view !== "photos" && !(view === "floorplan" && layoutPlans) && (
               <div
                 className="inline-flex rounded-full border border-border bg-cream p-1"
                 role="group"
@@ -495,22 +645,36 @@ export function ProductConfigurator({ product }: { product: Product }) {
               transition={{ duration: reduce ? 0 : 0.2 }}
             >
               <div className="overflow-hidden rounded-3xl border border-border bg-parchment p-4 sm:p-6">
-                {view === "cutaway" && (
-                  <SceneSlot
-                    slug={product.slug}
-                    visuals={activeVisuals(product, selected, variantId)}
-                    furnished={furnished}
-                    variantId={variantId}
-                  />
-                )}
-                {view === "floorplan" && (
-                  <FloorPlanView
-                    product={product}
-                    selected={selected}
-                    furnished={furnished}
-                    variantId={variantId}
-                  />
-                )}
+                {view === "cutaway" &&
+                  (interiorPair ? (
+                    <InteriorPhotoView pair={interiorPair} furnished={furnished} />
+                  ) : (
+                    <SceneSlot
+                      slug={product.slug}
+                      visuals={activeVisuals(product, selected, variantId)}
+                      furnished={furnished}
+                      variantId={variantId}
+                    />
+                  ))}
+                {view === "floorplan" &&
+                  (layoutPlans ? (
+                    <CatalogPlansView
+                      plans={
+                        (variantId ? layoutPlans[variantId] : undefined) ??
+                        layoutPlans["default"] ??
+                        Object.values(layoutPlans)[0] ??
+                        []
+                      }
+                      sizeLabel={activeVariant?.name ?? product.shortName}
+                    />
+                  ) : (
+                    <FloorPlanView
+                      product={product}
+                      selected={selected}
+                      furnished={furnished}
+                      variantId={variantId}
+                    />
+                  ))}
                 {view === "photos" && (
                   <PhotosPanel product={product} activeOptions={activeOptions} />
                 )}

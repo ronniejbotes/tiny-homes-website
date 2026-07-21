@@ -208,14 +208,14 @@ export const products: Product[] = [
     sizeLabel: "18 – 74 m²",
     bedrooms: "2 – 4 bedrooms",
     setupTime: "Expands within hours",
-    dims: { length: 11.9, width: 6.3, height: 2.48 },
+    dims: { length: 12, width: 6.3, height: 2.5 },
     specs: [
       { label: "Sizes", value: "18 m², 37 m² or 74 m²" },
       { label: "Deployment", value: "Arrives as one module, expands on site — move-in ready within hours on a prepared site" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
       { label: "Walls", value: "75 mm EPS insulated panels — standard (polyurethane upgrade available)" },
-      { label: "Flooring", value: "Vinyl flooring — standard (waterproof SPC laminate upgrade available)" },
-      { label: "Windows & doors", value: "Double-glazed (double-pane) glass windows and a door — standard" },
+      { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor — standard (waterproof SPC laminate upgrade available)" },
+      { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door — standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
       { label: "Utilities", value: "6m and 12m: plumbing & electrical factory-installed. 18 m²: budget shell, no bathroom or kitchen" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
@@ -231,8 +231,8 @@ export const products: Product[] = [
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
       { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 200000, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard. No bathroom or kitchen." },
-      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 330000, description: "5.9 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
-      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 600000, description: "11.8 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
+      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 330000, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
+      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 600000, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
       { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane — around 40% better insulation. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },

@@ -29,3 +29,8 @@ export function getGalleryImages(slug: string): ProductImage[] {
     (image) => image !== hero && image.kind !== "diagram" && image.kind !== "icon",
   );
 }
+
+/** Diagram images (floor plans, layout cutaways, size sheets) shown at native aspect. */
+export function getDiagramImages(slug: string): ProductImage[] {
+  return getProductImages(slug).filter((image) => image.kind === "diagram");
+}

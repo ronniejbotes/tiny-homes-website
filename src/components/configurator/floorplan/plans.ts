@@ -171,11 +171,12 @@ const FOLDING_PLAN: ProductPlan = {
   wall: WALL_M,
   shape: "rect",
   floorAreaM2: 15,
-  door: { side: "bottom", offset: 1.4, width: 0.9, hinge: "start" },
+  // Entrance in the upper half of the right end wall, window below it in the
+  // same wall; the second spec window is centred in the opposite end wall.
+  door: { side: "right", offset: 0.2, width: 0.9, hinge: "start" },
   windows: [
-    { side: "top", offset: 0.35, length: 0.8 },
-    { side: "top", offset: 4.3, length: 0.9 },
-    { side: "bottom", offset: 2.6, length: 0.9 },
+    { side: "right", offset: 1.3, length: 0.8 },
+    { side: "left", offset: 0.69, length: 0.9 },
   ],
   zones: [
     {
@@ -192,7 +193,7 @@ const FOLDING_PLAN: ProductPlan = {
       areaM2: 0.5,
       standardVariantIds: ["x-fold-bk"],
     },
-    airconZone(r(5.32, 1.15, 5.58, 1.55)),
+    airconZone(r(0.02, 1.6, 0.28, 2.0)),
   ],
   fixtures: [
     { kind: "shower", zone: "wet-room", cx: 0.4, cy: 0.4 },
@@ -202,14 +203,14 @@ const FOLDING_PLAN: ProductPlan = {
     { kind: "sink", zone: "kitchen", cx: 1.95, cy: 0.25 },
   ],
   furniture: [
-    { id: "bed", label: "Single bed", rect: r(3.7, 0.05, 5.6, 1.0) },
-    { id: "sofa", label: "Sofa", rect: r(2.4, 1.35, 4.2, 2.2) },
-    { id: "coffee-table", label: "Table", rect: r(2.6, 0.72, 3.5, 1.22) },
-    { id: "tv", label: "TV unit", rect: r(4.3, 1.8, 5.5, 2.2) },
+    { id: "bed", label: "Single bed", rect: r(3.8, 1.28, 5.5, 2.23) },
+    { id: "sofa", label: "Sofa", rect: r(1.6, 1.35, 3.4, 2.2) },
+    { id: "coffee-table", label: "Table", rect: r(2.0, 0.75, 2.9, 1.25) },
+    { id: "tv", label: "TV unit", rect: r(2.55, 0.05, 3.6, 0.45) },
   ],
-  // ~5 m² along the entrance side; the door (offset 1.4–2.3, inward swing) opens onto it.
+  // 5 m² outside the right end; the door (right wall, offset 0.2–1.1, inward swing) opens onto it.
   deck: {
-    rect: r(0.3, 2.38, 3.63, 3.88),
+    rect: r(5.7, -0.1, 7.7, 2.4),
     label: "Timber deck",
     standard: false,
   },
@@ -371,10 +372,10 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
   // The sub-R330k units (6m Compact, Slim 6m, 6m Open Plan) were dropped from
   // the catalogue per the owner — their plans went with them.
 
-  /** 6m Expandable Home — 6.3 × 5.9 m expanded (drawn portrait), wings both sides of a central core. */
+  /** 6m Expandable Home — 5.8 × 6.3 m expanded (drawn portrait, catalog 20ft), wings both sides of a central core. */
   b20: {
-    exterior: { w: 5.9, d: 6.3 },
-    interior: { w: 5.7, d: 6.1 },
+    exterior: { w: 5.8, d: 6.3 },
+    interior: { w: 5.6, d: 6.1 },
     wall: WALL_M,
     shape: "rect",
     floorAreaM2: 37,
@@ -409,19 +410,19 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       standard: false,
     },
     seams: [
-      { x1: 0, y1: 1.83, x2: 5.7, y2: 1.83 },
-      { x1: 0, y1: 4.27, x2: 5.7, y2: 4.27 },
+      { x1: 0, y1: 1.83, x2: 5.6, y2: 1.83 },
+      { x1: 0, y1: 4.27, x2: 5.6, y2: 4.27 },
     ],
   },
 
-  /** 12m Expandable Home — 11.9 × 6.3 m expanded, wings both sides. */
+  /** 12m Expandable Home — 12 × 6.3 m expanded (catalog 40ft): bathroom left, kitchen right, bedrooms in the corners. */
   b40: {
-    exterior: { w: 11.9, d: 6.3 },
-    interior: { w: 11.7, d: 6.1 },
+    exterior: { w: 12, d: 6.3 },
+    interior: { w: 11.8, d: 6.1 },
     wall: WALL_M,
     shape: "rect",
     floorAreaM2: 74,
-    door: { side: "bottom", offset: 5.25, width: 0.9, hinge: "start" },
+    door: { side: "bottom", offset: 5.35, width: 0.9, hinge: "start" },
     windows: [
       { side: "top", offset: 3.6, length: 1.2 },
       { side: "top", offset: 7.0, length: 1.2 },
@@ -430,14 +431,14 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       { side: "right", offset: 2.4, length: 1.2 },
     ],
     zones: [
-      wetRoomZone(r(9.75, 0, 11.4, 1.7), true), // fully kitted variant — bathroom included
-      kitchenZone(r(0.1, 0, 2.4, 0.65), true), // fully kitted variant — kitchen included
-      cupboardZone(r(0.1, 0, 2.4, 0.35)),
+      wetRoomZone(r(0.1, 0, 1.75, 1.7), true), // fully kitted variant — bathroom on the left (catalog)
+      kitchenZone(r(9.4, 0, 11.7, 0.65), true), // fully kitted variant — kitchen on the right (catalog)
+      cupboardZone(r(9.4, 0, 11.7, 0.35)),
       airconZone(r(2.9, 0.05, 3.15, 0.3)),
     ],
     fixtures: [
-      ...wetFixtures([10.2, 0.45], [10.2, 1.3], [11.05, 0.85]),
-      ...kitchenFixtures([0.7, 0.35], [1.8, 0.35]),
+      ...wetFixtures([0.55, 0.45], [0.55, 1.3], [1.4, 0.85]),
+      ...kitchenFixtures([10.0, 0.35], [11.1, 0.35]),
     ],
     furniture: [
       { id: "bed", label: "Double bed", rect: r(9.5, 3.5, 10.9, 5.4) },
@@ -454,8 +455,8 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       standard: false,
     },
     seams: [
-      { x1: 0, y1: 1.79, x2: 11.7, y2: 1.79 },
-      { x1: 0, y1: 4.23, x2: 11.7, y2: 4.23 },
+      { x1: 0, y1: 1.79, x2: 11.8, y2: 1.79 },
+      { x1: 0, y1: 4.23, x2: 11.8, y2: 4.23 },
     ],
   },
 };
