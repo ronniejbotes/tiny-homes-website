@@ -67,7 +67,7 @@ const shots = [
     sizes: "(min-width: 640px) 320px, 288px",
   },
   {
-    image: photoNamed("expandable-homes", "interior-living-room"),
+    image: photoNamed("expandable-homes", "interior-living-dining"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },

@@ -67,7 +67,7 @@ function findImage<T extends { src: string }>(list: T[], filename: string): T {
 
 // Warm apple-cabin exterior rather than the white showroom unit — the factory
 // image below is virtually the same white box, so leading with it doubled up.
-const heroImage = findImage(images.products["apple-cabins"], "exterior-forest-deck.jpg");
+const heroImage = findImage(images.products["apple-cabins"], "hero-pod-fynbos.jpg");
 const factoryImage = findImage(images.gallery, "tiny-homes-gallery-1.jpg");
 const bathroomImage = findImage(images.products["apple-cabins"], "interior-bathroom.jpg");
 const bandImage = findImage(images.products["nature-cabins"], "exterior-timber-render.jpg");
