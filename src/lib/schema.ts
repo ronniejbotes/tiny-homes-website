@@ -51,7 +51,7 @@ export function organizationSchema(): SchemaObject {
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
-    sameAs: [site.social.facebook, site.social.instagram],
+    sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: { "@type": "Country", name: site.address.country },
   };
 }

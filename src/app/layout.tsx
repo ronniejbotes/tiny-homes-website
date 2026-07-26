@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -10,6 +11,12 @@ import images from "@/data/images.json";
 
 /** Default social share image — the nature cabins hero, our strongest exterior shot. */
 const defaultOgImage = images.products["nature-cabins"].find((img) => img.hero);
+
+/**
+ * Inherited from the old WordPress site so the GA4 property keeps its full
+ * history across the migration — do not mint a new property.
+ */
+const gaMeasurementId = "G-5R1KHZE03G";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -71,6 +78,11 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/** Mobile browser chrome — same forest token as manifest.ts theme_color. */
+export const viewport: Viewport = {
+  themeColor: "#1e3a2b",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -92,6 +104,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
+        <GoogleAnalytics gaId={gaMeasurementId} />
       </body>
     </html>
   );

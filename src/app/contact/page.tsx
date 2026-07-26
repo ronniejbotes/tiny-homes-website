@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactCards } from "@/components/contact/contact-cards";
 import { LeadForm } from "@/components/contact/lead-form";
-import { JsonLd, organizationSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 

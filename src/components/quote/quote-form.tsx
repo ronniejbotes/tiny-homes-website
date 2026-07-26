@@ -14,7 +14,7 @@ import {
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonAnchor } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { TextField, inputClasses, labelClasses } from "./fields";
 import { ProductPicker, VariantPicker } from "./product-picker";
@@ -362,6 +362,9 @@ function QuoteFormInner() {
   const [productError, setProductError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  // Set when the WhatsApp window could not be opened, so we offer recovery
+  // routes instead of a success message the request never earned.
+  const [blocked, setBlocked] = useState(false);
 
   const pickerRef = useRef<HTMLDivElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -545,6 +548,8 @@ function QuoteFormInner() {
     return out.join("\n");
   };
 
+  const whatsappHref = () => `${site.whatsapp}?text=${encodeURIComponent(composeMessage())}`;
+
   const mailtoHref = () => {
     const label =
       lines.length === 1
@@ -586,8 +591,23 @@ function QuoteFormInner() {
     }
 
     // Open synchronously inside the submit handler so popup blockers allow it.
-    const text = composeMessage();
-    window.open(`${site.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    // The "noopener" feature is deliberately NOT passed: per spec it forces
+    // window.open to return null, which would make the guard below unable to
+    // tell success from failure — we sever the opener by hand instead.
+    const popup = window.open(whatsappHref(), "_blank");
+    if (!popup) {
+      // Popup blocker, an in-app browser (Facebook/Instagram webviews) or no
+      // WhatsApp handler. Claiming success here loses the lead silently.
+      setBlocked(true);
+      return;
+    }
+    try {
+      popup.opener = null;
+    } catch {
+      // Cross-origin restriction on the handle — harmless, wa.me is trusted.
+    }
+
+    setBlocked(false);
     setSending(true);
     window.setTimeout(() => {
       setSending(false);
@@ -818,17 +838,48 @@ function QuoteFormInner() {
               "Send quote request via WhatsApp"
             )}
           </Button>
-          <p className="mt-3 text-sm leading-relaxed text-stone">
-            This opens WhatsApp with your quote request pre-filled — nothing is stored on our site.
-            Prefer email?{" "}
-            <a
-              href={mailtoHref()}
-              className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+          {blocked ? (
+            <div
+              role="alert"
+              aria-live="polite"
+              className="mt-4 rounded-2xl border border-clay/40 bg-parchment/60 p-5"
             >
-              Write to {site.email}
-            </a>
-            .
-          </p>
+              <p className="text-eyebrow text-clay-dark">WhatsApp didn&apos;t open</p>
+              <p className="mt-2 text-sm leading-relaxed text-stone">
+                Your browser blocked the new window — this often happens inside the Facebook or
+                Instagram in-app browser. Your quote request hasn&apos;t reached us yet, so please
+                use one of these instead. Your units and details are already filled in.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <ButtonAnchor
+                  href={whatsappHref()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="accent"
+                >
+                  Open WhatsApp
+                </ButtonAnchor>
+                <ButtonAnchor href={mailtoHref()} variant="outline">
+                  Email your request
+                </ButtonAnchor>
+                <ButtonAnchor href={`tel:${site.phone.replace(/\s/g, "")}`} variant="outline">
+                  Call {site.phoneDisplay}
+                </ButtonAnchor>
+              </div>
+            </div>
+          ) : (
+            <p className="mt-3 text-sm leading-relaxed text-stone">
+              This opens WhatsApp with your quote request pre-filled — nothing is stored on our
+              site. Prefer email?{" "}
+              <a
+                href={mailtoHref()}
+                className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+              >
+                Write to {site.email}
+              </a>
+              .
+            </p>
+          )}
         </div>
       </form>
 

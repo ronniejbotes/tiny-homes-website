@@ -2,11 +2,16 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { productSlugs } from "@/data/products";
 
-/** Date of the last content/pricing pass. Bump this when the site content changes. */
-const SITE_UPDATED = new Date("2026-07-16");
+/**
+ * Content ships with the code, so "last deployed" is the truthful lastmod. This route uses no
+ * request-time APIs, so Next prerenders it and freezes this value at `next build` — which the
+ * Hostinger Node app runs on every deploy. Read at module scope rather than inside the handler
+ * so all URLs share one timestamp and it can never churn per request if the route is re-rendered.
+ */
+const LAST_DEPLOYED = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = SITE_UPDATED;
+  const lastModified = LAST_DEPLOYED;
 
   return [
     {
@@ -41,6 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${site.url}/terms`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${site.url}/privacy`,
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,

@@ -4,11 +4,13 @@ export const site = {
   tagline: "Innovative Instant Housing Solutions",
   description:
     "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, domes, apple cabins and glamping capsules — plus outdoor kitchens, DIY garages and safari tents — delivered nationwide from Centurion, Gauteng.",
-  url: "https://www.tinyhomesa.com",
+  /** Apex is canonical — www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
+  url: "https://tinyhomesa.com",
   phone: "+27 83 660 3743",
   phoneDisplay: "083 660 3743",
   whatsapp: "https://wa.me/27836603743",
-  email: "sales@tinyhomesa.com",
+  /** admin@ is the only mailbox confirmed to exist; swap to sales@ once that one is provisioned. */
+  email: "admin@tinyhomesa.com",
   address: {
     streetAddress: "187 Gouws Ave",
     locality: "Raslouw AH",
@@ -25,6 +27,7 @@ export const site = {
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61587151281004",
     instagram: "https://www.instagram.com/tinyhomes.sa/",
+    tiktok: "https://www.tiktok.com/@tiny.homesa",
   },
   leadTimeDays: 90,
   deliveryNote:
