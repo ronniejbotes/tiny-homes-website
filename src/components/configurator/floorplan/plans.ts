@@ -59,8 +59,6 @@ export interface PlanFurniture {
   id: string;
   label: string;
   rect: PlanRect;
-  /** Circular footprint (round bed) — rect is the bounding square. */
-  round?: boolean;
 }
 
 export interface PlanDoor {
@@ -99,7 +97,6 @@ export interface ProductPlan {
   /** Internal clear dimensions, metres. */
   interior: { w: number; d: number };
   wall: number;
-  shape: "rect" | "stadium";
   /** Marketed floor area used by the space summary. */
   floorAreaM2: number;
   door: PlanDoor;
@@ -169,7 +166,6 @@ const FOLDING_PLAN: ProductPlan = {
   exterior: { w: 5.8, d: 2.48 },
   interior: { w: 5.6, d: 2.28 },
   wall: WALL_M,
-  shape: "rect",
   floorAreaM2: 15,
   // Entrance in the upper half of the right end wall, window below it in the
   // same wall; the second spec window is centred in the opposite end wall.
@@ -221,7 +217,6 @@ const NATURE_PLAN: ProductPlan = {
   exterior: { w: 6.3, d: 3.2 },
   interior: { w: 6.1, d: 3.0 },
   wall: WALL_M,
-  shape: "rect",
   floorAreaM2: 26,
   door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
   windows: [
@@ -263,7 +258,6 @@ const APPLE_PLAN: ProductPlan = {
   exterior: { w: 11.5, d: 3.2 },
   interior: { w: 11.3, d: 3.0 },
   wall: WALL_M,
-  shape: "rect",
   floorAreaM2: 26.5,
   door: { side: "bottom", offset: 3.6, width: 0.9, hinge: "start" },
   windows: [
@@ -302,7 +296,6 @@ const CAPSULE_PLAN: ProductPlan = {
   exterior: { w: 11.5, d: 3.2 },
   interior: { w: 11.3, d: 3.0 },
   wall: WALL_M,
-  shape: "rect",
   floorAreaM2: 38,
   door: { side: "bottom", offset: 5.2, width: 0.9, hinge: "start" },
   windows: [
@@ -349,7 +342,6 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     exterior: { w: 5.8, d: 6.3 },
     interior: { w: 5.6, d: 6.1 },
     wall: WALL_M,
-    shape: "rect",
     floorAreaM2: 37,
     door: { side: "bottom", offset: 2.3, width: 0.9, hinge: "start" },
     windows: [
@@ -392,7 +384,6 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     exterior: { w: 12, d: 6.3 },
     interior: { w: 11.8, d: 6.1 },
     wall: WALL_M,
-    shape: "rect",
     floorAreaM2: 74,
     door: { side: "bottom", offset: 5.35, width: 0.9, hinge: "start" },
     windows: [
@@ -484,10 +475,6 @@ export function allPlans(): { key: string; plan: ProductPlan }[] {
 
 /** Footprint of one furniture item, m². */
 export function furnitureItemAreaM2(item: PlanFurniture): number {
-  if (item.round) {
-    const radius = item.rect.w / 2;
-    return Math.PI * radius * radius;
-  }
   return item.rect.w * item.rect.h;
 }
 

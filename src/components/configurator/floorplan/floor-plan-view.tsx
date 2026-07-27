@@ -94,9 +94,9 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
     transition: reduceMotion ? { duration: 0 } : { duration: 0.3, ease: "easeOut" as const },
   };
 
-  const stadium = plan.shape === "stadium";
-  const outerRx = stadium ? S(exterior.d / 2) : 3;
-  const innerRx = stadium ? S(interior.d / 2) : 0;
+  /* Every shell is rectangular: a small radius softens the outer wall, square inside. */
+  const outerRx = 3;
+  const innerRx = 0;
 
   /* ---------- door geometry (opening at offset..offset+width along the wall) ---------- */
   const door = plan.door;
@@ -289,49 +289,28 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
         <AnimatePresence initial={false}>
           {furnished && (
             <motion.g key="furniture" {...fade}>
-              {plan.furniture.map((item) =>
-                item.round ? (
-                  <g key={item.id}>
-                    <circle
-                      cx={X(item.rect.x + item.rect.w / 2)}
-                      cy={Y(item.rect.y + item.rect.h / 2)}
-                      r={S(item.rect.w / 2)}
-                      fill={SAND}
-                      stroke={STONE}
-                      strokeWidth={1.2}
-                    />
-                    <PlanLabel
-                      x={X(item.rect.x + item.rect.w / 2)}
-                      y={Y(item.rect.y + item.rect.h / 2) + 3}
-                      fill={INK}
-                      size={9}
-                    >
-                      {item.label}
-                    </PlanLabel>
-                  </g>
-                ) : (
-                  <g key={item.id}>
-                    <rect
-                      x={X(item.rect.x)}
-                      y={Y(item.rect.y)}
-                      width={S(item.rect.w)}
-                      height={S(item.rect.h)}
-                      rx={3}
-                      fill={SAND}
-                      stroke={STONE}
-                      strokeWidth={1.2}
-                    />
-                    <PlanLabel
-                      x={X(item.rect.x + item.rect.w / 2)}
-                      y={Y(item.rect.y + item.rect.h / 2) + 3}
-                      fill={INK}
-                      size={S(item.rect.w) > 64 ? 9 : 8}
-                    >
-                      {item.label}
-                    </PlanLabel>
-                  </g>
-                ),
-              )}
+              {plan.furniture.map((item) => (
+                <g key={item.id}>
+                  <rect
+                    x={X(item.rect.x)}
+                    y={Y(item.rect.y)}
+                    width={S(item.rect.w)}
+                    height={S(item.rect.h)}
+                    rx={3}
+                    fill={SAND}
+                    stroke={STONE}
+                    strokeWidth={1.2}
+                  />
+                  <PlanLabel
+                    x={X(item.rect.x + item.rect.w / 2)}
+                    y={Y(item.rect.y + item.rect.h / 2) + 3}
+                    fill={INK}
+                    size={S(item.rect.w) > 64 ? 9 : 8}
+                  >
+                    {item.label}
+                  </PlanLabel>
+                </g>
+              ))}
             </motion.g>
           )}
         </AnimatePresence>

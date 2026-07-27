@@ -36,7 +36,12 @@ function photoNamed(slug: string, filenameContains: string): ManifestImage {
 /* Curated photo strip; fixed widths/heights so the marquee never shifts layout.
    Each entry carries a sizes string matching its rendered card width. Every
    image is a real product photo — looked up by filename/hero flag, not by
-   array index, so the manifest can be reordered without breaking this row. */
+   array index, so the manifest can be reordered without breaking this row.
+
+   One shot per product line, all eight, so the strip is a complete tour of the
+   range. Card widths deliberately alternate large/medium/small: a uniform row
+   reads as a contact sheet rather than a gallery, and the varied rhythm is also
+   what keeps the marquee wide enough to loop seamlessly on ultra-wide screens. */
 const shots = [
   {
     image: heroPhoto("folding-homes"),
@@ -44,24 +49,34 @@ const shots = [
     sizes: "(min-width: 640px) 416px, 352px",
   },
   {
-    image: photoNamed("apple-cabins", "interior-bathroom"),
-    width: "w-52 sm:w-60",
-    sizes: "(min-width: 640px) 240px, 208px",
+    image: heroPhoto("apple-cabins"),
+    width: "w-72 sm:w-80",
+    sizes: "(min-width: 640px) 320px, 288px",
   },
   {
-    image: heroPhoto("apple-cabins"),
+    image: heroPhoto("safari-tents"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },
   {
-    image: photoNamed("nature-cabins", "exterior-two-cabins"),
-    width: "w-72 sm:w-80",
-    sizes: "(min-width: 640px) 320px, 288px",
+    image: heroPhoto("garages"),
+    width: "w-52 sm:w-60",
+    sizes: "(min-width: 640px) 240px, 208px",
   },
   {
     /* The hero, not exterior-balcony-deck — that shot carries a baked-in
        watermark and a legible third-party badge on the pod itself. */
     image: heroPhoto("glamping-capsules"),
+    width: "w-72 sm:w-80",
+    sizes: "(min-width: 640px) 320px, 288px",
+  },
+  {
+    image: photoNamed("outdoor-kitchens", "kitchen-patio-pool"),
+    width: "w-72 sm:w-80",
+    sizes: "(min-width: 640px) 320px, 288px",
+  },
+  {
+    image: photoNamed("nature-cabins", "exterior-two-cabins"),
     width: "w-72 sm:w-80",
     sizes: "(min-width: 640px) 320px, 288px",
   },
