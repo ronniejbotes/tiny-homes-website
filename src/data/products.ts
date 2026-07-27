@@ -114,8 +114,8 @@ export interface Product {
 const extra = (o: Omit<CustomOption, "provisional">): CustomOption => ({ ...o, provisional: true });
 
 const foldingExtras: CustomOption[] = [
-  extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Upgrades the standard panel exterior to a decorative metal carved board finish, in a wide choice of colours and textures.", price: 10000, category: "structure", visual: "none" }),
-  extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium — R2 000 per window, two windows per unit.", price: 4000, category: "structure", visual: "glazing" }),
+  extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Upgrades the standard panel exterior to a decorative metal carved board finish, in a wide choice of colours and textures.", price: 9900, category: "structure", visual: "none" }),
+  extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium — R1 950 per window, two windows per unit.", price: 3900, category: "structure", visual: "glazing" }),
 ];
 
 export const products: Product[] = [
@@ -125,10 +125,10 @@ export const products: Product[] = [
     shortName: "X-Fold",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, at R55 000 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
+      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R55 000 ex VAT and backed by our 10-year guarantee.",
-    startingPrice: 55000,
+      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R54 900 ex VAT and backed by our 10-year guarantee.",
+    startingPrice: 54900,
     sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
     dims: { length: 5.8, width: 2.48, height: 2.56 },
@@ -201,10 +201,10 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     tagline: "Smart living — fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R200 000 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R199 900 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and, on the larger sizes, factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R200 000 ex VAT, step up to the fully fitted 6m Expandable Home at R330 000 — two bedrooms, bathroom and stainless-steel kitchen included — or go all the way to the 74 m² 12m Expandable Home from R600 000 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall, and let our turnkey team handle the groundwork and connections.",
-    startingPrice: 200000,
+      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and, on the larger sizes, factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, step up to the fully fitted 6m Expandable Home at R329 900 — two bedrooms, bathroom and stainless-steel kitchen included — or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall, and let our turnkey team handle the groundwork and connections.",
+    startingPrice: 199900,
     sizeLabel: "18 – 74 m²",
     bedrooms: "2 – 4 bedrooms",
     setupTime: "Expands within hours",
@@ -230,19 +230,19 @@ export const products: Product[] = [
     ],
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
-      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 200000, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard. No bathroom or kitchen." },
-      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 330000, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
-      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 600000, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
+      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard. No bathroom or kitchen." },
+      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
+      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
       { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane — around 40% better insulation. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
       { id: "spc-flooring", label: "Waterproof SPC laminate flooring", description: "Upgrades the standard vinyl to waterproof SPC stone-composite laminate. Priced per m² of floor area.", price: 0, pricePerM2: 185, category: "interior", visual: "floors", provisional: false },
-      { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 15000, category: "structure", visual: "glazing", provisional: false },
+      { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 14900, category: "structure", visual: "glazing", provisional: false },
     ],
     faqs: [
       {
         q: "What sizes and prices are available?",
-        a: "Three sizes: the compact 18 m² from R200 000 ex VAT (a budget shell, no bathroom or kitchen), the 37 m² 6m Expandable Home at R330 000 and the 74 m² 12m Expandable Home at R600 000. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen, with layouts up to four bedrooms on the 12m.",
+        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (a budget shell, no bathroom or kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen, with layouts up to four bedrooms on the 12m.",
       },
       {
         q: "How long does installation take?",
@@ -254,7 +254,7 @@ export const products: Product[] = [
       },
       {
         q: "What upgrades can I add to an expandable home?",
-        a: "Three upgrades are available on every size: polyurethane wall insulation for around 40% better thermal performance (R300 per m²), waterproof SPC laminate flooring (R185 per m²), and a full glass front wall (R15 000). The per-m² upgrades scale with the size you choose.",
+        a: "Three upgrades are available on every size: polyurethane wall insulation for around 40% better thermal performance (R300 per m²), waterproof SPC laminate flooring (R185 per m²), and a full glass front wall (R14 900). The per-m² upgrades scale with the size you choose.",
       },
       {
         q: "How much does delivery cost?",
@@ -280,10 +280,10 @@ export const products: Product[] = [
     shortName: "Nature Cabin",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
-      "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites — the warm look of timber with the strength of steel, fully specced from R799 000 ex VAT.",
+      "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites — the warm look of timber with the strength of steel, fully specced from R798 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in — effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. It arrives fully specced as standard: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, and a kitchen with a stone countertop, wash basin and induction cooker. The stylish gateway into premium capsule accommodation — eco-tourism ventures, Airbnb listings, nature retreats and private guest houses — it's delivered in modular format and assembled by our team in under 3 days, with the groundwork completed beforehand. R799 000 ex VAT.",
-    startingPrice: 799000,
+      "Nature cabins are built for places worth waking up in — effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. It arrives fully specced as standard: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, and a kitchen with a stone countertop, wash basin and induction cooker. The stylish gateway into premium capsule accommodation — eco-tourism ventures, Airbnb listings, nature retreats and private guest houses — it's delivered in modular format and assembled by our team in under 3 days, with the groundwork completed beforehand. R798 900 ex VAT.",
+    startingPrice: 798900,
     sizeLabel: "26 m² + terrace",
     setupTime: "Under 3 days",
     dims: { length: 8.1, width: 3.2, height: 3.4 },
@@ -322,7 +322,7 @@ export const products: Product[] = [
       },
       {
         q: "What's included as standard?",
-        a: "Everything: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, and a 1.5 × 3.2 m viewing terrace — all in the R799 000 ex VAT price.",
+        a: "Everything: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, and a 1.5 × 3.2 m viewing terrace — all in the R798 900 ex VAT price.",
       },
       {
         q: "How long does installation take?",
@@ -343,78 +343,15 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: "the-dome",
-    name: "The Dome",
-    shortName: "Dome",
-    tagline: "Step in, look up, see everything — crystal clear comfort.",
-    summary:
-      "A beautifully curved, panoramic living space for upscale glamping, boutique dining and unforgettable stays — 24.6 m² of transparent architecture from R180 000 ex VAT.",
-    description:
-      "The Dome is a beautifully curved, light-filled structure that dissolves the line between inside and out — crystal clear comfort under the open sky. Its polycarbonate dome panels, manufactured in Germany with an anti-UV coating, sit on an internal steel lining with silicone-sealed joints and a robust wind-proof kit as standard. Arched aluminium doors and windows with physical locks, a thick colour-customisable blackout curtain on its own track, and a full LED lighting system with power converter, Bluetooth controller and amplifier complete the picture — ideal for upscale glamping resorts, boutique outdoor dining, spa pods and VIP retreats, or a private sanctuary at home. Professional installation takes just 2 days, and other sizes are available on request.",
-    startingPrice: 180000,
-    sizeLabel: "24.6 m²",
-    setupTime: "2 days",
-    dims: { length: 7, width: 4, height: 2.8 },
-    specs: [
-      { label: "Internal space", value: "24.6 m²" },
-      { label: "Size", value: "4 m diameter × 7 m length × 2.8 m height — other sizes on request" },
-      { label: "Panels", value: "PC dome panels with anti-UV coating, manufactured in Germany" },
-      { label: "Structure", value: "Internal steel lining, silicone-sealed joints" },
-      { label: "Wind-proofing", value: "Robust wind-proof kit with prefabricated connectors" },
-      { label: "Doors & windows", value: "Arched aluminium with physical locks and connectors" },
-      { label: "Lighting & sound", value: "Full LED system with power converter, Bluetooth controller & amplifier" },
-      { label: "Curtains", value: "Thick blackout curtain on a curtain track — colour customisable" },
-    ],
-    features: [
-      "Panoramic dome panels with anti-UV coating, made in Germany",
-      "Blackout curtain system for privacy and sleep",
-      "Full LED lighting with Bluetooth audio built in",
-      "Arched aluminium doors and windows with physical locks",
-      "Robust wind-proof kit with prefabricated connectors as standard",
-      "Professional installation in 2 days",
-    ],
-    useCases: ["Upscale glamping", "Boutique outdoor dining", "Spa or lounge pod", "VIP retreat", "Private studio", "Airbnb experience"],
-    options: [],
-    faqs: [
-      {
-        q: "Does The Dome get hot in the South African sun?",
-        a: "The polycarbonate panels carry an anti-UV coating and the blackout curtain system lets you control light and heat throughout the day.",
-      },
-      {
-        q: "How long does The Dome take to install?",
-        a: "Professional installation takes 2 days on a prepared site with pre-connected water, electricity and groundwork — our turnkey team can arrange the site works for you.",
-      },
-      {
-        q: "Can The Dome have a bathroom or a separate bedroom?",
-        a: "The Dome can be fitted with add-ons such as an integrated bathroom, an internal partition to create a private bedroom, automated curtains and smart entry — tell us what you need and we'll quote it for your Dome.",
-      },
-      {
-        q: "What is The Dome used for?",
-        a: "Most owners run it as upscale glamping or boutique hospitality — guest accommodation, outdoor dining, lounges, spas and standout Airbnb listings. Others keep it as a private home sanctuary or studio.",
-      },
-      {
-        q: "Is there a guarantee, and can I finance The Dome?",
-        a: "Yes — every product we sell carries a 10-year guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
-      },
-    ],
-    seoKeywords: [
-      "glamping dome South Africa",
-      "geodesic dome price",
-      "transparent dome accommodation",
-      "stargazing dome",
-      "transparent dome accommodation South Africa",
-    ],
-  },
-  {
     slug: "apple-cabins",
     name: "Apple Cabins",
     shortName: "Apple Cabin",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
-      "Big living in a small package — a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R450 000 ex VAT.",
+      "Big living in a small package — a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
     description:
-      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes — luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchenette included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R450 000 ex VAT, the 20 m² Apple Cabin 9m at R550 000 or the 26.5 m² Apple Cabin 11.8m at R650 000, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed — ready for occupation within hours.",
-    startingPrice: 450000,
+      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes — luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchenette included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R449 900 ex VAT, the 20 m² Apple Cabin 9m at R549 900 or the 26.5 m² Apple Cabin 11.8m at R649 900, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed — ready for occupation within hours.",
+    startingPrice: 449900,
     sizeLabel: "13 – 26.5 m²",
     setupTime: "Ready within hours",
     dims: { length: 11.8, width: 2.25, height: 2.63 },
@@ -439,9 +376,9 @@ export const products: Product[] = [
     ],
     useCases: ["Eco-resort unit", "Airbnb getaway", "Backyard guest suite", "Scenic escape", "Stylish rental", "Vineyard suite"],
     variants: [
-      { id: "apple-5-8", name: "Apple Cabin 5.8m", size: "13 m²", price: 450000, description: "5.8 × 2.25 × 2.63 m — luxurious bathroom fittings included." },
-      { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 550000, description: "9 × 2.25 × 2.63 m — luxurious bathroom fittings and a kitchenette included." },
-      { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 650000, description: "11.8 × 2.25 × 2.63 m — the largest Apple cabin, with bathroom and kitchenette included." },
+      { id: "apple-5-8", name: "Apple Cabin 5.8m", size: "13 m²", price: 449900, description: "5.8 × 2.25 × 2.63 m — luxurious bathroom fittings included." },
+      { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 549900, description: "9 × 2.25 × 2.63 m — luxurious bathroom fittings and a kitchenette included." },
+      { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 649900, description: "11.8 × 2.25 × 2.63 m — the largest Apple cabin, with bathroom and kitchenette included." },
     ],
     options: [],
     faqs: [
@@ -476,10 +413,10 @@ export const products: Product[] = [
     shortName: "Glamping Capsule",
     tagline: "Luxury in the heart of nature — the art of glamping, perfected.",
     summary:
-      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R690 000 ex VAT.",
+      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R689 900 ex VAT.",
     description:
       "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom, which is standard on every size (the 11.5 m capsule also adds a luxurious kitchen), each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system and intelligent front-door access all come standard, with an optional balcony that can be removed to extend the indoor space. Available in various designs and sizes, each capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy.",
-    startingPrice: 690000,
+    startingPrice: 689900,
     sizeLabel: "18.6 – 38 m²",
     bedrooms: "2 rooms + central bathroom",
     setupTime: "Delivered fully built",
@@ -503,9 +440,9 @@ export const products: Product[] = [
     ],
     useCases: ["Luxury lodge suite", "Vineyard accommodation", "Beach retreat", "Bush getaway", "Premium Airbnb", "Honeymoon suite"],
     variants: [
-      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 690000, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, the entry to the capsule range." },
-      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 850000, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
-      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 950000, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
+      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 689900, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, the entry to the capsule range." },
+      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 849900, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
+      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 949900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
     ],
     options: [
       { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule — one price for any size.", price: 14900, category: "comfort", visual: "heating", provisional: false },
@@ -697,10 +634,10 @@ export const products: Product[] = [
     shortName: "Garage",
     tagline: "Flat-pack steel garages you bolt together yourself.",
     summary:
-      "Galvanised-steel DIY garage kits in three sizes — single, double and triple — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R50 000 ex VAT.",
+      "Galvanised-steel DIY garage kits in three sizes — single, double and triple — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R49 900 ex VAT.",
     description:
-      "DIY garage kits are the fast, affordable way to add secure, weatherproof storage — a garage, workshop or store-room you build yourself. Each kit is delivered flat-packed with a galvanised-steel frame, wall and roof sheeting, fixings and instructions, sized to bolt together on a level slab over a weekend. Choose from three sizes: the 6.1 × 4 m single garage (24.4 m²) from R50 000 ex VAT, the 6.1 × 6.1 m double (37.2 m²) at R85 000, or the 6.1 × 9.15 m triple/workshop (55.8 m²) at R105 000 — all 3.6 m to the wall. Delivered nationwide, with slab and assembly available from our turnkey team.",
-    startingPrice: 50000,
+      "DIY garage kits are the fast, affordable way to add secure, weatherproof storage — a garage, workshop or store-room you build yourself. Each kit is delivered flat-packed with a galvanised-steel frame, wall and roof sheeting, fixings and instructions, sized to bolt together on a level slab over a weekend. Choose from three sizes: the 6.1 × 4 m single garage (24.4 m²) from R49 900 ex VAT, the 6.1 × 6.1 m double (37.2 m²) at R84 900, or the 6.1 × 9.15 m triple/workshop (55.8 m²) at R104 900 — all 3.6 m to the wall. Delivered nationwide, with slab and assembly available from our turnkey team.",
+    startingPrice: 49900,
     sizeLabel: "24.4 – 55.8 m²",
     setupTime: "Self-assembly kit",
     dims: { length: 9.15, width: 6.1, height: 3.6 },
@@ -722,9 +659,9 @@ export const products: Product[] = [
     ],
     useCases: ["Garage", "Workshop", "Storeroom", "Farm store", "Carport enclosure", "Site store"],
     variants: [
-      { id: "garage-6x4", name: "Single Garage Kit (6.1 × 4 m)", size: "24.4 m²", price: 50000, description: "6.1 × 4 × 3.6 m single garage kit, approx 590 kg — flat-packed for self-assembly." },
-      { id: "garage-6x6", name: "Double Garage Kit (6.1 × 6.1 m)", size: "37.2 m²", price: 85000, description: "6.1 × 6.1 × 3.6 m double garage kit — flat-packed for self-assembly." },
-      { id: "garage-6x9", name: "Triple / Workshop Kit (6.1 × 9.15 m)", size: "55.8 m²", price: 105000, description: "6.1 × 9.15 × 3.6 m triple garage or workshop kit — flat-packed for self-assembly." },
+      { id: "garage-6x4", name: "Single Garage Kit (6.1 × 4 m)", size: "24.4 m²", price: 49900, description: "6.1 × 4 × 3.6 m single garage kit, approx 590 kg — flat-packed for self-assembly." },
+      { id: "garage-6x6", name: "Double Garage Kit (6.1 × 6.1 m)", size: "37.2 m²", price: 84900, description: "6.1 × 6.1 × 3.6 m double garage kit — flat-packed for self-assembly." },
+      { id: "garage-6x9", name: "Triple / Workshop Kit (6.1 × 9.15 m)", size: "55.8 m²", price: 104900, description: "6.1 × 9.15 × 3.6 m triple garage or workshop kit — flat-packed for self-assembly." },
     ],
     options: [],
     faqs: [

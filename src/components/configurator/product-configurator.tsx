@@ -424,7 +424,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
   const reduce = useReducedMotion();
   const uid = useId();
   // Cutaway/floor-plan tabs only make sense for products with a real cutaway
-  // scene (the six homes). Products without one — e.g. outdoor kitchens — show
+  // scene (the five homes). Products without one — e.g. outdoor kitchens — show
   // just the Photos panel, so they never fall back to a home's cutaway.
   const hasScene = product.slug in scenes;
   const interiorPair = manifestConfigurator[product.slug];

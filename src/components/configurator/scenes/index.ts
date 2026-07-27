@@ -3,7 +3,6 @@ import type { SceneProps } from "./types";
 import { FoldingHomesScene } from "./folding-homes-scene";
 import { ExpandableHomesScene } from "./expandable-homes-scene";
 import { NatureCabinsScene } from "./nature-cabins-scene";
-import { TheDomeScene } from "./the-dome-scene";
 import { AppleCabinsScene } from "./apple-cabins-scene";
 import { GlampingCapsulesScene } from "./glamping-capsules-scene";
 
@@ -14,7 +13,6 @@ export const scenes: Record<string, ComponentType<SceneProps>> = {
   "folding-homes": FoldingHomesScene,
   "expandable-homes": ExpandableHomesScene,
   "nature-cabins": NatureCabinsScene,
-  "the-dome": TheDomeScene,
   "apple-cabins": AppleCabinsScene,
   "glamping-capsules": GlampingCapsulesScene,
 };

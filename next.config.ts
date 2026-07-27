@@ -18,9 +18,17 @@ const nextConfig: NextConfig = {
       // Verified live + indexed on the old WordPress site; all would 404 at cutover.
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },
-      { source: "/thedome", destination: "/the-dome", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/terms-and-conditions-tiny-homes-sa", destination: "/terms", permanent: true },
+
+      // The Dome is discontinued and its page is gone, so both the old
+      // WordPress URL (/thedome, indexed) and the current one (/the-dome, also
+      // indexed) would 404. The dome was a glamping product and glamping
+      // capsules are the closest remaining line, so sending both there keeps
+      // the inbound link equity and lands visitors on something relevant
+      // instead of a dead end.
+      { source: "/thedome", destination: "/glamping-capsules", permanent: true },
+      { source: "/the-dome", destination: "/glamping-capsules", permanent: true },
 
       // Rank Math's sitemap URLs. /sitemap_index.xml is the one currently
       // submitted in Search Console, so it must keep resolving after cutover.

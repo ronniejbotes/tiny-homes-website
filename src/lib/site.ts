@@ -3,7 +3,7 @@ export const site = {
   legalName: "Tiny Homes (Pty) Ltd",
   tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, domes, apple cabins and glamping capsules — plus outdoor kitchens, DIY garages and safari tents — delivered nationwide from Centurion, Gauteng.",
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules — plus outdoor kitchens, DIY garages and safari tents — delivered nationwide from Centurion, Gauteng.",
   /** Apex is canonical — www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
   url: "https://tinyhomesa.com",
   phone: "+27 83 660 3743",
@@ -43,7 +43,6 @@ export const nav = {
     { slug: "folding-homes", label: "X-Folds" },
     { slug: "expandable-homes", label: "Expandable Homes" },
     { slug: "nature-cabins", label: "Nature Cabins" },
-    { slug: "the-dome", label: "The Dome" },
     { slug: "apple-cabins", label: "Apple Cabins" },
     { slug: "glamping-capsules", label: "Glamping Capsules" },
     { slug: "outdoor-kitchens", label: "Outdoor Kitchens" },

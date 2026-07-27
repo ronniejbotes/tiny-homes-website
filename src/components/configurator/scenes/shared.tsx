@@ -359,7 +359,7 @@ export function InsulationBand({ x1, y1, x2, y2 }: { x1: number; y1: number; x2:
   );
 }
 
-/** Curved variant of the insulation band for domes and capsules. */
+/** Curved variant of the insulation band for shells with a rounded profile. */
 export function InsulationPath({ d }: { d: string }) {
   return (
     <g fill="none" aria-hidden="true">
@@ -538,29 +538,6 @@ export function Bed({ x, floor, w = 78 }: { x: number; floor: number; w?: number
       {/* pillows */}
       <rect x={x + 9} y={floor - h - 9} width={20} height={10} rx={4} fill="var(--color-cream)" stroke={INK} strokeWidth={1.4} strokeOpacity={0.6} />
       <rect x={x + 13} y={floor - h - 15} width={18} height={9} rx={4} fill="var(--color-parchment)" stroke={INK} strokeWidth={1.4} strokeOpacity={0.6} />
-    </g>
-  );
-}
-
-/** Round bed for The Dome. Footprint: cx-58 .. cx+58. */
-export function RoundBed({ cx, floor }: { cx: number; floor: number }) {
-  return (
-    <g aria-hidden="true">
-      <GroundShadow cx={cx} y={floor + 1} rx={56} />
-      <path d={`M ${cx - 52} ${floor - 14} a 52 34 0 0 1 104 0`} fill="none" stroke="var(--color-clay)" strokeWidth={4} strokeOpacity={0.85} strokeLinecap="round" />
-      <path d={`M ${cx - 40} ${floor - 16} q 40 -34 80 0`} fill="var(--color-sage)" opacity={0.55} />
-      <ellipse cx={cx} cy={floor - 12} rx={56} ry={12} fill="var(--color-sand)" stroke={INK} strokeWidth={SW} strokeOpacity={0.85} />
-      <ellipse cx={cx} cy={floor - 12} rx={56} ry={12} fill="url(#th-fabric)" />
-      <path
-        d={`M ${cx - 30} ${floor - 10} q 30 6 60 0`}
-        fill="none"
-        stroke="var(--color-clay)"
-        strokeWidth={1.2}
-        strokeOpacity={0.35}
-        strokeLinecap="round"
-      />
-      <rect x={cx - 34} y={floor - 30} width={20} height={9} rx={4} fill="var(--color-cream)" stroke={INK} strokeWidth={1.4} strokeOpacity={0.6} />
-      <rect x={cx + 12} y={floor - 30} width={20} height={9} rx={4} fill="var(--color-cream)" stroke={INK} strokeWidth={1.4} strokeOpacity={0.6} />
     </g>
   );
 }
@@ -827,25 +804,7 @@ export function FloorPlant({ x, floor, scale = 1 }: { x: number; floor: number; 
   );
 }
 
-/** Pendant light hanging from a ceiling point (used in The Dome). */
-export function Pendant({ x, top, drop = 52 }: { x: number; top: number; drop?: number }) {
-  return (
-    <g aria-hidden="true">
-      <line x1={x} y1={top} x2={x} y2={top + drop} stroke={INK} strokeWidth={1.6} strokeOpacity={0.8} />
-      {/* shade: narrow at cord, wide at mouth */}
-      <path
-        d={`M ${x - 3} ${top + drop} h 6 l 5 12 h -16 z`}
-        fill="var(--color-clay)"
-        opacity={0.9}
-      />
-      <path d={`M ${x - 3} ${top + drop} h 2.4 l -2 12 h -3.4 z`} fill="var(--color-clay-light)" opacity={0.6} />
-      {/* warm glow */}
-      <ellipse cx={x} cy={top + drop + 18} rx={22} ry={12} fill="url(#th-glow)" opacity={0.6} />
-    </g>
-  );
-}
-
-/** Pendant lamp with cord, 2-tone shade and warm glow (alias-grade upgrade). */
+/** Pendant lamp with cord, 2-tone shade and warm glow. */
 export function PendantLamp({ x, top, drop = 52 }: { x: number; top: number; drop?: number }) {
   return (
     <g aria-hidden="true">

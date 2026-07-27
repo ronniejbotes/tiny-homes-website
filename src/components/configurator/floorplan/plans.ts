@@ -89,7 +89,7 @@ export interface PlanSeam {
 export interface PlanDeck {
   rect: PlanRect;
   label: string;
-  /** Standard decks (nature cabin deck, dome terrace) are always drawn. */
+  /** Standard decks (e.g. the nature cabin's timber deck) are always drawn. */
   standard: boolean;
 }
 
@@ -250,34 +250,6 @@ const NATURE_PLAN: ProductPlan = {
     label: "Deck — standard",
     standard: true,
   },
-};
-
-/** The Dome — Ø4 m stretched to 7 m (stadium) + 1.8 m terrace. Interior stadium 6.8 × 3.8, end radius 1.9. */
-const DOME_PLAN: ProductPlan = {
-  exterior: { w: 7, d: 4 },
-  interior: { w: 6.8, d: 3.8 },
-  wall: WALL_M,
-  shape: "stadium",
-  floorAreaM2: 24.6,
-  door: { side: "bottom", offset: 3.05, width: 0.9, hinge: "start" },
-  windows: [],
-  zones: [
-    wetRoomZone(r(1.2, 0.2, 2.75, 1.9)),
-    kitchenZone(r(3.2, 0.15, 5.5, 0.8)),
-    cupboardZone(r(3.2, 0.15, 5.5, 0.5)),
-    airconZone(r(2.85, 0.2, 3.1, 0.45)),
-  ],
-  fixtures: [
-    ...wetFixtures([1.65, 0.65], [1.65, 1.5], [2.4, 1.0]),
-    ...kitchenFixtures([3.75, 0.48], [4.9, 0.48]),
-  ],
-  furniture: [
-    { id: "bed", label: "Round bed", rect: r(4.6, 0.95, 6.5, 2.85), round: true },
-    { id: "sofa", label: "Sofa", rect: r(1.25, 2.8, 3.05, 3.65) },
-    { id: "coffee-table", label: "Table", rect: r(1.8, 2.15, 2.7, 2.65) },
-    { id: "tv", label: "TV unit", rect: r(4.2, 3.25, 5.4, 3.65) },
-  ],
-  // No deck: the dome ships without an outdoor terrace in the documented spec.
 };
 
 /**
@@ -467,7 +439,6 @@ export const DEFAULT_EXPANDABLE_VARIANT = "b20";
 const PLANS: Record<string, ProductPlan> = {
   "folding-homes": FOLDING_PLAN,
   "nature-cabins": NATURE_PLAN,
-  "the-dome": DOME_PLAN,
   "apple-cabins": APPLE_PLAN,
   "glamping-capsules": CAPSULE_PLAN,
 };

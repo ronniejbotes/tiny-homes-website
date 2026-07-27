@@ -10,7 +10,7 @@ const steps = [
   {
     number: "01",
     title: "Choose & customise",
-    body: "Pick from six home styles — plus outdoor kitchens and safari tents — then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
+    body: "Pick from five home styles — plus outdoor kitchens and safari tents — then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
   },
   {
     number: "02",
@@ -25,7 +25,7 @@ const steps = [
   {
     number: "04",
     title: "Move in",
-    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins, domes and capsules. Move in — or hand the keys to your first paying guests.",
+    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins and capsules. Move in — or hand the keys to your first paying guests.",
   },
 ];
 

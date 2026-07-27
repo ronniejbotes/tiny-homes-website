@@ -55,7 +55,7 @@ export function HomesShowcase() {
       <Container>
         <SectionHeading
           eyebrow="Our range"
-          title="Nine ways to build it better"
+          title="Eight ways to build it better"
           intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 

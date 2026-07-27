@@ -33,7 +33,7 @@ const values = [
   {
     icon: Shield,
     title: "Engineered for South African conditions",
-    body: "Fireproof insulated panels, anti-UV dome panels and weather-resistant steel shells designed for South Africa's climate — from coastal humidity to inland heat and cold.",
+    body: "Fireproof insulated panels and weather-resistant steel shells designed for South Africa's climate — from coastal humidity to inland heat and cold.",
   },
 ];
 

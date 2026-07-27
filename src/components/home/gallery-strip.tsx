@@ -48,7 +48,6 @@ const shots = [
     width: "w-52 sm:w-60",
     sizes: "(min-width: 640px) 240px, 208px",
   },
-  { image: heroPhoto("the-dome"), width: "w-72 sm:w-80", sizes: "(min-width: 640px) 320px, 288px" },
   {
     image: heroPhoto("apple-cabins"),
     width: "w-[22rem] sm:w-[26rem]",

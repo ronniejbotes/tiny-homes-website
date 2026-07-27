@@ -17,7 +17,7 @@ const heroImage =
     img.src.endsWith("exterior-night-pool.jpg"),
   ) ?? manifest.products["glamping-capsules"][0];
 /* Price-on-request products carry a 0 sentinel — exclude them from the range.
-   Garages are a DIY steel-kit line, not a home — keep their R50 000 entry price
+   Garages are a DIY steel-kit line, not a home — keep their R49 900 entry price
    out of the "tiny homes from …" headline so it stays the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products
