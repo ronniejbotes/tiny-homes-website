@@ -124,6 +124,42 @@ into xneelo breaks — exactly when you might need it to pull a WordPress backup
 
 ---
 
+## ⚠️ SECOND INCIDENT — 2026-07-26 ~22:00, Hostinger email setup rewrote the zone
+
+Creating the Hostinger mailboxes silently rewrote the mail records. This was **not** a
+manual change by the owner. Observed at 22:16:
+
+| Record | Before | After |
+|---|---|---|
+| `MX @` | `10 mail.tinyhomesa.com` (xneelo) | `5 mx1.hostinger.com` + `10 mx2.hostinger.com` |
+| `TXT @` SPF | `v=spf1 mx a include:spf.host-h.net ?all` | `v=spf1 include:_spf.mail.hostinger.com ~all` |
+| `TXT @` google-site-verification × 2 | present | **DELETED** |
+
+Consequence: inbound mail moved to Hostinger without an explicit decision, and for a
+period both MX sets were being served — different public resolvers returned different
+answers, so mail split unpredictably between the two hosts.
+
+### Google Search Console verification — restore these two TXT records
+
+Both were dropped. Captured here before they were lost:
+
+```
+google-site-verification=bphUYZJV8eW2_fmxPFJxLwk3s7Vmj4mrUgrV6nJg9eE
+google-site-verification=idTj4ClG2ABK6SIso3w9ux9zDYTQnnhhgtyzJsrVXQA
+```
+
+Add as two separate `TXT` records on `@`, TTL 3600. Without them the Search Console
+property loses verification — which matters specifically at website cutover, when the new
+`sitemap.xml` has to be submitted.
+
+### Lesson
+
+Hostinger's email provisioning edits the DNS zone as a side effect. **After any action in
+the Emails section of hPanel, re-check the full zone** — not just the record you meant to
+touch.
+
+---
+
 ## Known gaps to fix later (not urgent today)
 
 - **SPF ends in `?all`** (neutral) — effectively no protection. Tighten to `~all` after
