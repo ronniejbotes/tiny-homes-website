@@ -640,14 +640,6 @@
         "hero": false
       },
       {
-        "src": "/images/products/garages/exterior-triple-workshop.jpg",
-        "width": 2000,
-        "height": 1333,
-        "alt": "Triple steel garage workshop kit with three roller doors on a South African smallholding.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
         "src": "/images/products/garages/kit-flat-packed-pallet.jpg",
         "width": 2000,
         "height": 1500,
@@ -668,39 +660,144 @@
   "layoutPlans": {
     "apple-cabins": {
       "apple-5-8": [
-        { "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png", "width": 1600, "height": 899, "label": "5.8m â€” Studio + bathroom" }
+        {
+          "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png",
+          "width": 1600,
+          "height": 899,
+          "label": "5.8m â€” Studio + bathroom"
+        }
       ],
       "apple-9": [
-        { "src": "/images/products/apple-cabins/plans/apple-9-v2.png", "width": 1600, "height": 686, "label": "9m â€” Studio + kitchenette" }
+        {
+          "src": "/images/products/apple-cabins/plans/apple-9-v2.png",
+          "width": 1600,
+          "height": 686,
+          "label": "9m â€” Studio + kitchenette"
+        }
       ],
       "apple-11-8": [
-        { "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png", "width": 1600, "height": 686, "label": "11.8m â€” One bedroom" }
+        {
+          "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png",
+          "width": 1600,
+          "height": 686,
+          "label": "11.8m â€” One bedroom"
+        }
       ],
       "default": [
-        { "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png", "width": 1600, "height": 899, "label": "5.8m â€” Studio + bathroom" },
-        { "src": "/images/products/apple-cabins/plans/apple-9-v2.png", "width": 1600, "height": 686, "label": "9m â€” Studio + kitchenette" },
-        { "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png", "width": 1600, "height": 686, "label": "11.8m â€” One bedroom" }
+        {
+          "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png",
+          "width": 1600,
+          "height": 899,
+          "label": "5.8m â€” Studio + bathroom"
+        },
+        {
+          "src": "/images/products/apple-cabins/plans/apple-9-v2.png",
+          "width": 1600,
+          "height": 686,
+          "label": "9m â€” Studio + kitchenette"
+        },
+        {
+          "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png",
+          "width": 1600,
+          "height": 686,
+          "label": "11.8m â€” One bedroom"
+        }
       ]
     },
     "expandable-homes": {
       "default": [
-        { "src": "/images/products/expandable-homes/plans/20ft-open-plan.png", "width": 944, "height": 882, "label": "Open plan" },
-        { "src": "/images/products/expandable-homes/plans/20ft-1-bed-a.png", "width": 946, "height": 886, "label": "1 Bed A" },
-        { "src": "/images/products/expandable-homes/plans/20ft-1-bed-b.png", "width": 948, "height": 884, "label": "1 Bed B" },
-        { "src": "/images/products/expandable-homes/plans/20ft-2-bed-a.png", "width": 946, "height": 886, "label": "2 Bed A" },
-        { "src": "/images/products/expandable-homes/plans/20ft-2-bed-b.png", "width": 944, "height": 882, "label": "2 Bed B" },
-        { "src": "/images/products/expandable-homes/plans/20ft-3-bed-a.png", "width": 944, "height": 884, "label": "3 Bed A" },
-        { "src": "/images/products/expandable-homes/plans/20ft-3-bed-b.png", "width": 948, "height": 884, "label": "3 Bed B" },
-        { "src": "/images/products/expandable-homes/plans/20ft-4-bed.png", "width": 946, "height": 888, "label": "4 Bedroom" }
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-open-plan.png",
+          "width": 944,
+          "height": 882,
+          "label": "Open plan"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-1-bed-a.png",
+          "width": 946,
+          "height": 886,
+          "label": "1 Bed A"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-1-bed-b.png",
+          "width": 948,
+          "height": 884,
+          "label": "1 Bed B"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-2-bed-a.png",
+          "width": 946,
+          "height": 886,
+          "label": "2 Bed A"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-2-bed-b.png",
+          "width": 944,
+          "height": 882,
+          "label": "2 Bed B"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-3-bed-a.png",
+          "width": 944,
+          "height": 884,
+          "label": "3 Bed A"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-3-bed-b.png",
+          "width": 948,
+          "height": 884,
+          "label": "3 Bed B"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/20ft-4-bed.png",
+          "width": 946,
+          "height": 888,
+          "label": "4 Bedroom"
+        }
       ],
       "b40": [
-        { "src": "/images/products/expandable-homes/plans/40ft-2-bed.png", "width": 1640, "height": 876, "label": "2 Bed" },
-        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry.png", "width": 1626, "height": 868, "label": "2 Bed + Laundry" },
-        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-wardrobe.png", "width": 1642, "height": 874, "label": "2 Bed + Walk-in Wardrobe" },
-        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry-wardrobe.png", "width": 1626, "height": 868, "label": "2 Bed + Laundry + Wardrobe" },
-        { "src": "/images/products/expandable-homes/plans/40ft-2-bed-office.png", "width": 1640, "height": 874, "label": "2 Bed + Office" },
-        { "src": "/images/products/expandable-homes/plans/40ft-3-bed.png", "width": 1624, "height": 868, "label": "3 Bed" },
-        { "src": "/images/products/expandable-homes/plans/40ft-4-bed.png", "width": 1642, "height": 876, "label": "4 Bedroom" }
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-2-bed.png",
+          "width": 1640,
+          "height": 876,
+          "label": "2 Bed"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry.png",
+          "width": 1626,
+          "height": 868,
+          "label": "2 Bed + Laundry"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-2-bed-wardrobe.png",
+          "width": 1642,
+          "height": 874,
+          "label": "2 Bed + Walk-in Wardrobe"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry-wardrobe.png",
+          "width": 1626,
+          "height": 868,
+          "label": "2 Bed + Laundry + Wardrobe"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-2-bed-office.png",
+          "width": 1640,
+          "height": 874,
+          "label": "2 Bed + Office"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-3-bed.png",
+          "width": 1624,
+          "height": 868,
+          "label": "3 Bed"
+        },
+        {
+          "src": "/images/products/expandable-homes/plans/40ft-4-bed.png",
+          "width": 1642,
+          "height": 876,
+          "label": "4 Bedroom"
+        }
       ]
     }
   },
