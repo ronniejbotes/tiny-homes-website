@@ -474,6 +474,84 @@ Source: [How to install Lifetime SSL at Hostinger](https://www.hostinger.com/sup
 2. `git push` to branch `main`.
 3. Hostinger detects the push, pulls, reinstalls, rebuilds, restarts. Nothing to click.
 4. Watch **Deployments** in hPanel to confirm the build went green.
+5. **Purge the CDN cache** — hPanel → **Websites → Dashboard → Performance → CDN → Purge cache**. See §16; skipping this is what took the site down in July 2026.
+6. Run `npm run smoke` to confirm the deploy is actually reaching visitors.
+
+---
+
+## 16. ⚠️ The CDN cache will serve a dead site if you let it
+
+**Read this before you next deploy.** This is the failure that took tinyhomesa.com
+down for roughly 18 hours on 27–28 July 2026, and it will happen again on every
+deploy unless step 5 above is followed.
+
+### What happened
+
+Nothing was wrong with the code, and the Hostinger build went green. The site
+still rendered as a blank cream page below the navbar, and `/garages` showed the
+"The site didn't load" error page.
+
+Next.js sends `Cache-Control: s-maxage=31536000` — **one year** — on every fully
+static prerendered page. That is Next's documented default
+(`node_modules/next/dist/docs/01-app/02-guides/cdn-caching.md`), and it is written
+on the assumption that the CDN gets purged whenever you deploy. Vercel does that
+automatically. **Hostinger's `hcdn` does not.**
+
+So the edge pinned a copy of the HTML for a year. The next deploy rebuilt
+`/_next/static/chunks/*` under new content hashes and deleted the old files — but
+the edge carried on serving the *old* HTML, which still asked for the deleted
+chunks. They 404'd. React never hydrated. And because every section is
+server-rendered inside `<Reveal>` at `opacity: 0` waiting for JavaScript to
+animate it into view, "JavaScript never ran" looks to a visitor like "the page is
+empty".
+
+Measured on the live site at the time:
+
+| Page | Edge copy | Origin copy |
+|---|---|---|
+| `/` | **3 of 17** static assets 404 (cache age 63,205s) | 0 of 17 broken |
+| `/garages` | **2 of 17** static assets 404 | 0 of 17 broken |
+
+Same URL, same second — the only difference was whether the request hit the edge
+cache or went through to the origin.
+
+### What has been fixed in code
+
+`next.config.ts` now sets `Cache-Control: public, max-age=0, must-revalidate` on
+HTML documents, so the edge has to revalidate instead of trusting a year-old copy.
+Next still sends an `ETag`, so revalidation is a cheap `304`, not a re-render.
+
+Static assets are deliberately **not** touched: `/_next/static/*` keeps
+`public, max-age=31536000, immutable`, `/_next/image` keeps its own 4-hour cache,
+and `/images/*`, `/videos/*` and `/models/*` are untouched. The 132 MB of media
+must stay edge-cacheable — see §12 and the 20 MB/s I/O ceiling.
+
+### ⚠️ The code fix does not clean up what is already cached
+
+Entries the edge stored **before** that fix were saved under the old one-year TTL.
+The CDN has no reason to re-ask the origin for them, so deploying the fix does not
+evict them. **After the first deploy carrying this fix, purge the CDN cache by
+hand.** From then on the header does the work and routine deploys are safe — but
+purging after each deploy remains the belt-and-braces habit, and it is one click.
+
+If you cannot find a purge button, disabling the CDN and re-enabling it has the
+same effect.
+
+### How to know it worked
+
+```
+npm run smoke
+```
+
+`scripts/smoke.mjs` reads `sitemap.xml`, then for every route checks that the page
+returns 200 and that **every `/_next/static` asset it references also returns
+200** — fetching each page both through the CDN and past it, and reporting when
+the two disagree. That comparison is the specific thing an uptime monitor cannot
+see: the HTML kept returning `200 OK` for the whole outage. It was the files the
+HTML pointed at that were missing.
+
+Run it after every deploy. It exits non-zero on failure, so it can be wired into a
+cron or an uptime check later.
 
 ---
 
