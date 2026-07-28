@@ -10,6 +10,7 @@ import {
   productSchema,
 } from "@/lib/schema";
 import { getDiagramImages, getGalleryImages, getHeroImage } from "@/components/product/product-images";
+import manifest from "@/data/images.json";
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { LayoutDiagrams } from "@/components/product/layout-diagrams";
@@ -141,8 +142,13 @@ export default async function ProductPage({ params }: { params: Params }) {
       <LayoutDiagrams productName={product.name} images={diagrams} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
-      {/* No options, no configurator — kitchens and safari tents are quoted, not configured. */}
-      {product.options.length > 0 && <ConfiguratorSection product={product} />}
+      {/* Configurator renders when there is something to configure or show:
+          priced options, or a real empty-shell/furnished interior photo pair
+          (manifest.configurator). Kitchens and safari tents have neither —
+          they are quoted, not configured. */}
+      {(product.options.length > 0 || product.slug in manifest.configurator) && (
+        <ConfiguratorSection product={product} />
+      )}
       <FeatureGrid product={product} />
       <UseCaseChips product={product} />
       <ProductFaq product={product} />

@@ -1,13 +1,15 @@
 import type { Product } from "@/data/products";
+import manifest from "@/data/images.json";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ProductConfigurator } from "@/components/configurator/product-configurator";
 
 export function ConfiguratorSection({ product }: { product: Product }) {
-  // Products without options (outdoor kitchens, safari tents) are quoted, not
-  // configured — never render an empty configurator.
-  if (product.options.length === 0) return null;
+  // Render when there is something to configure or show: priced options, or a
+  // real empty-shell/furnished interior pair (manifest.configurator). Products
+  // with neither (outdoor kitchens, safari tents) are quoted, not configured.
+  if (product.options.length === 0 && !(product.slug in manifest.configurator)) return null;
 
   return (
     <section

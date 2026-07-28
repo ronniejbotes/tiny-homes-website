@@ -837,6 +837,24 @@
         "furnish": "/videos/configurator/expandable-furnish.mp4",
         "unfurnish": "/videos/configurator/expandable-unfurnish.mp4"
       }
+    },
+    "nature-cabins": {
+      "empty": {
+        "src": "/images/products/nature-cabins/interior-shell-empty.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Bare empty Nature Cabin interior shell with timber walls, glazed gable end and the wood stove on its slate hearth."
+      },
+      "furnished": {
+        "src": "/images/products/nature-cabins/interior-fireplace-lounge.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Furnished Nature Cabin lounge with a green sofa, armchair and coffee table around the wood stove in the same shell."
+      },
+      "video": {
+        "furnish": "/videos/configurator/nature-furnish.mp4",
+        "unfurnish": "/videos/configurator/nature-unfurnish.mp4"
+      }
     }
   },
   "gallery": [
