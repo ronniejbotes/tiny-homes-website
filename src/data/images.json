@@ -855,6 +855,24 @@
         "furnish": "/videos/configurator/nature-furnish.mp4",
         "unfurnish": "/videos/configurator/nature-unfurnish.mp4"
       }
+    },
+    "apple-cabins": {
+      "empty": {
+        "src": "/images/products/apple-cabins/interior-shell-empty.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Bare empty Apple Cabin capsule shell with curved white walls, rounded windows and the built-in walnut kitchenette."
+      },
+      "furnished": {
+        "src": "/images/products/apple-cabins/interior-pod-length.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Furnished Apple Cabin interior with a made-up double bed beside the walnut kitchenette in the same capsule shell."
+      },
+      "video": {
+        "furnish": "/videos/configurator/apple-furnish.mp4",
+        "unfurnish": "/videos/configurator/apple-unfurnish.mp4"
+      }
     }
   },
   "gallery": [
