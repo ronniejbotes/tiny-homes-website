@@ -819,6 +819,24 @@
         "furnish": "/videos/configurator/xfold-furnish.mp4",
         "unfurnish": "/videos/configurator/xfold-unfurnish.mp4"
       }
+    },
+    "expandable-homes": {
+      "empty": {
+        "src": "/images/products/expandable-homes/interior-shell-empty.jpg",
+        "width": 1195,
+        "height": 896,
+        "alt": "Bare empty Expandable Home interior shell with wood-look flooring and the fitted bathroom pod."
+      },
+      "furnished": {
+        "src": "/images/products/expandable-homes/interior-lounge.jpg",
+        "width": 1195,
+        "height": 896,
+        "alt": "Furnished Expandable Home lounge with a grey sofa, dining nook and kitchenette in the same shell."
+      },
+      "video": {
+        "furnish": "/videos/configurator/expandable-furnish.mp4",
+        "unfurnish": "/videos/configurator/expandable-unfurnish.mp4"
+      }
     }
   },
   "gallery": [
