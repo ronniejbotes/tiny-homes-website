@@ -423,16 +423,28 @@ const NO_OPTIONS: Partial<Record<string, boolean>> = {};
 export function ProductConfigurator({ product }: { product: Product }) {
   const reduce = useReducedMotion();
   const uid = useId();
-  // Cutaway/floor-plan tabs only make sense for products with a real cutaway
-  // scene (the five homes). Products without one — e.g. outdoor kitchens — show
-  // just the Photos panel, so they never fall back to a home's cutaway.
+  // The first tab needs something to draw: either a real cutaway scene (the
+  // five homes) or a photographed empty-shell/furnished pair. Products with
+  // neither — e.g. outdoor kitchens — show just the Photos panel, so they never
+  // fall back to a home's cutaway. The drawn floor plan is scene-only, so
+  // photo-pair products (safari tents, garages) skip that tab.
   const hasScene = product.slug in scenes;
   const interiorPair = manifestConfigurator[product.slug];
   const layoutPlans = manifestLayoutPlans[product.slug];
+  const hasVisual = hasScene || Boolean(interiorPair);
+  const tabs = useMemo(
+    () =>
+      VIEW_TABS.filter(
+        (tab) =>
+          (tab.id !== "cutaway" || hasVisual) &&
+          (tab.id !== "floorplan" || hasScene || Boolean(layoutPlans)),
+      ),
+    [hasVisual, hasScene, layoutPlans],
+  );
   const [selected, setSelected] = useState<Partial<Record<string, boolean>>>(NO_OPTIONS);
   const [furnished, setFurnished] = useState(false);
   const [variantId, setVariantId] = useState<string | undefined>(product.variants?.[0]?.id);
-  const [view, setView] = useState<ViewId>(hasScene ? "cutaway" : "photos");
+  const [view, setView] = useState<ViewId>(hasVisual ? "cutaway" : "photos");
   const [announcement, setAnnouncement] = useState("");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -499,16 +511,16 @@ export function ProductConfigurator({ product }: { product: Product }) {
   const onTabKeyDown = useCallback(
     (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
       let next: number | null = null;
-      if (event.key === "ArrowRight") next = (index + 1) % VIEW_TABS.length;
-      else if (event.key === "ArrowLeft") next = (index - 1 + VIEW_TABS.length) % VIEW_TABS.length;
+      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
       else if (event.key === "Home") next = 0;
-      else if (event.key === "End") next = VIEW_TABS.length - 1;
+      else if (event.key === "End") next = tabs.length - 1;
       if (next === null) return;
       event.preventDefault();
-      pickView(VIEW_TABS[next].id);
+      pickView(tabs[next].id);
       tabRefs.current[next]?.focus();
     },
-    [pickView],
+    [pickView, tabs],
   );
 
   const reset = useCallback(() => {
@@ -557,14 +569,14 @@ export function ProductConfigurator({ product }: { product: Product }) {
         {/* ------------------------------------------------ Scene column */}
         <div className="lg:sticky lg:top-24 lg:self-start">
           {/* View tabs + furnish segmented control */}
-          {hasScene && (
+          {hasVisual && (
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <div
               role="tablist"
               aria-label="Visualiser view"
               className="inline-flex rounded-full border border-border bg-cream p-1"
             >
-              {VIEW_TABS.map((tab, index) => {
+              {tabs.map((tab, index) => {
                 const active = view === tab.id;
                 const Icon = tab.icon;
                 return (

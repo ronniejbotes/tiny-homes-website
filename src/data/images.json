@@ -502,16 +502,16 @@
       {
         "src": "/images/products/outdoor-kitchens/kitchen-braai-dusk.jpg",
         "width": 2000,
-        "height": 1333,
-        "alt": "Outdoor Kitchen island with a kettle braai glowing at dusk on a South African patio.",
+        "height": 1500,
+        "alt": "Outdoor Kitchen with its LED canopy raised and the built-in gas braai lit, on a South African patio at dusk.",
         "kind": "exterior",
         "hero": false
       },
       {
         "src": "/images/products/outdoor-kitchens/kitchen-patio-pool.jpg",
         "width": 2000,
-        "height": 1333,
-        "alt": "Outdoor Kitchen with lift-up LED canopy and gas grill beside a swimming pool at blue hour.",
+        "height": 1500,
+        "alt": "Outdoor Kitchen with lift-up LED canopy beside a swimming pool at blue hour, its lights reflecting in the water.",
         "kind": "exterior",
         "hero": false
       },
@@ -519,7 +519,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-counter-prep.jpg",
         "width": 2000,
         "height": 1500,
-        "alt": "Steaks and vegetables on the Outdoor Kitchen's quartz counter, gas braai ready behind.",
+        "alt": "Steaks and vegetable skewers on the Outdoor Kitchen quartz counter, the built-in gas braai preheating behind.",
         "kind": "detail",
         "hero": false
       },
@@ -527,7 +527,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-storage-detail.jpg",
         "width": 2000,
         "height": 1500,
-        "alt": "Outdoor Kitchen storage open, plates and glasses stacked under the LED canopy at dusk.",
+        "alt": "Outdoor Kitchen cabinets and drawer open, plates, glassware and linen stacked inside under the LED canopy at dusk.",
         "kind": "detail",
         "hero": false
       },
@@ -535,7 +535,7 @@
         "src": "/images/products/outdoor-kitchens/kitchen-morning-coffee.jpg",
         "width": 2000,
         "height": 1500,
-        "alt": "Espresso pot and cups on the Outdoor Kitchen's quartz counter at sunrise in a South African garden.",
+        "alt": "Espresso pot and cups on the Outdoor Kitchen quartz counter at sunrise in a South African garden.",
         "kind": "detail",
         "hero": false
       }
@@ -872,6 +872,60 @@
       "video": {
         "furnish": "/videos/configurator/apple-furnish.mp4",
         "unfurnish": "/videos/configurator/apple-unfurnish.mp4"
+      }
+    },
+    "glamping-capsules": {
+      "empty": {
+        "src": "/images/products/glamping-capsules/interior-shell-empty.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Bare empty Glamping Capsule interior with panoramic floor-to-ceiling glass, pale timber floor and the bushveld beyond."
+      },
+      "furnished": {
+        "src": "/images/products/glamping-capsules/interior-shell-furnished.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Furnished Glamping Capsule with a queen bed, bedside lamp, rug and leather armchair in the same capsule shell."
+      },
+      "video": {
+        "furnish": "/videos/configurator/capsule-furnish.mp4",
+        "unfurnish": "/videos/configurator/capsule-unfurnish.mp4"
+      }
+    },
+    "safari-tents": {
+      "empty": {
+        "src": "/images/products/safari-tents/interior-shell-empty.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Bare empty Safari Tent interior with canvas walls, timber poles and an empty deck floor opening to the savanna."
+      },
+      "furnished": {
+        "src": "/images/products/safari-tents/interior-shell-furnished.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Furnished Safari Tent lounge with leather butterfly chairs, a brass side table, kilim rug and basket ottoman on the same deck."
+      },
+      "video": {
+        "furnish": "/videos/configurator/safari-furnish.mp4",
+        "unfurnish": "/videos/configurator/safari-unfurnish.mp4"
+      }
+    },
+    "garages": {
+      "empty": {
+        "src": "/images/products/garages/interior-shell-empty.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "Bare empty DIY Garage with the roller door open, plain walls and a clean concrete floor."
+      },
+      "furnished": {
+        "src": "/images/products/garages/interior-shell-furnished.jpg",
+        "width": 1200,
+        "height": 896,
+        "alt": "The same DIY Garage in use, with a bakkie parked inside beside a workbench, tool rail and wall shelf."
+      },
+      "video": {
+        "furnish": "/videos/configurator/garage-furnish.mp4",
+        "unfurnish": "/videos/configurator/garage-unfurnish.mp4"
       }
     }
   },
