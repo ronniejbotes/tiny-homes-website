@@ -8,6 +8,46 @@ const nextConfig: NextConfig = {
     // browser — matches the Accept header per-request.
     formats: ["image/avif", "image/webp"],
   },
+  async headers() {
+    // Why this exists: Next.js sends `Cache-Control: s-maxage=31536000` on every
+    // fully-static prerendered page (documented in
+    // node_modules/next/dist/docs/01-app/02-guides/cdn-caching.md). That default
+    // assumes the CDN is tied to the deployment and gets purged on every deploy —
+    // true on Vercel, NOT true of Hostinger's `hcdn` edge.
+    //
+    // The failure it caused: hcdn cached the HTML for a year. Each redeploy
+    // rebuilds `/_next/static/chunks/*` under fresh content hashes and deletes the
+    // old files, but the edge kept serving the OLD HTML, which still pointed at
+    // those deleted chunks. They 404'd, React never hydrated, and because every
+    // section is server-rendered inside <Reveal> at opacity:0 waiting for JS to
+    // animate it in, the whole site rendered as a blank cream page — and the
+    // product pages tripped error.tsx ("The site didn't load").
+    //
+    // The fix: HTML must be revalidated rather than trusted for a year. Next still
+    // sends an ETag, so revalidation is a cheap 304, not a re-render.
+    //
+    // Scope: only single-segment paths, which is every route this site has (`/`,
+    // `/about`, `/contact`, `/privacy`, `/quote`, `/terms`, and the eight
+    // `/[product]` pages) plus small root files like /sitemap.xml and /robots.txt,
+    // which should not be frozen for a year either. Deliberately NOT matched:
+    // `/_next/static/*` (content-hashed and immutable — Next refuses to let it be
+    // overridden anyway), `/_next/image` (the optimiser's own cache), and the
+    // 132 MB of `/images/*`, `/videos/*` and `/models/*` under public/, all of
+    // which are nested deeper than one segment and keep their long-lived caching.
+    // That matters: §12 of docs/DEPLOY-HOSTINGER.md notes the account-wide 20 MB/s
+    // I/O ceiling, so the media must stay cacheable at the edge. HTML is ~100 KB
+    // and is not what saturates that budget.
+    const revalidateHtml = [
+      {
+        key: "Cache-Control",
+        value: "public, max-age=0, must-revalidate",
+      },
+    ];
+    return [
+      { source: "/", headers: revalidateHtml },
+      { source: "/:path", headers: revalidateHtml },
+    ];
+  },
   async redirects() {
     // Preserve SEO equity from the old WordPress site's URLs. Every one of
     // these is indexed WITH a trailing slash (e.g. /about-us/), but sources are
