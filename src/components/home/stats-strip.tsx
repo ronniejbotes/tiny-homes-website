@@ -65,14 +65,17 @@ function CountUp({ stat }: { stat: Stat }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
-  const [value, setValue] = useState(0);
+  // null means "the count-up has not started", which is the case on the server,
+  // before hydration, under reduced motion, and until the strip scrolls into
+  // view. Starting at 0 instead meant the server-rendered HTML read "From R 0" —
+  // a false price that stayed on screen for as long as JavaScript failed to run.
+  const [value, setValue] = useState<number | null>(null);
 
+  // Reduced motion needs no state update at all — leaving `value` null already
+  // renders the final figure. Setting it here instead would queue a second
+  // render just to land on a number we knew at render time.
   useEffect(() => {
-    if (reduce) {
-      setValue(stat.to);
-      return;
-    }
-    if (!inView) return;
+    if (reduce || !inView) return;
     const controls = animate(0, stat.to, {
       duration: 1.1,
       ease: EASE,
@@ -81,7 +84,7 @@ function CountUp({ stat }: { stat: Stat }) {
     return () => controls.stop();
   }, [inView, reduce, stat.to]);
 
-  const rounded = Math.round(value);
+  const rounded = Math.round(value ?? stat.to);
   const shown = stat.format ? stat.format(rounded) : String(rounded);
 
   return (
