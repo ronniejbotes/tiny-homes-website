@@ -7,15 +7,15 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
-import manifest from "@/data/images.json";
 
-/* Highest-resolution photo in the library (2048px) — a full-bleed hero upscales
-   anything smaller into visible blur. Selected by filename so manifest
-   reordering can't silently swap it. */
-const heroImage =
-  manifest.products["glamping-capsules"].find((img) =>
-    img.src.endsWith("exterior-night-pool.jpg"),
-  ) ?? manifest.products["glamping-capsules"][0];
+/* Hand-supplied brand hero (2560px) rather than a manifest product photo — a
+   full-bleed hero upscales anything smaller into visible blur, and this frame is
+   art-directed for the slot. Lives in /brand, not /products, so it stays out of
+   the Apple Cabin product gallery. */
+const heroImage = {
+  src: "/images/brand/hero-apple-cabin.jpg",
+  alt: "Apple Cabin with full-height glazing glowing at dusk on a timber deck, beside a plunge pool and sunken firepit lounge above a mountain lake.",
+};
 /* Price-on-request products carry a 0 sentinel — exclude them from the range.
    Garages are a DIY steel-kit line, not a home — keep their R49 900 entry price
    out of the "tiny homes from …" headline so it stays the cheapest actual home. */
