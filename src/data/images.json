@@ -664,26 +664,26 @@
     ],
     "garages": [
       {
+        "src": "/images/products/garages/exterior-double-closed-roller-door.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Charcoal double garage kit with closed roller door and IBR side cladding beside a South African home.",
+        "kind": "exterior",
+        "hero": true
+      },
+      {
         "src": "/images/products/garages/hero-single-garage.jpg",
         "width": 2000,
         "height": 1500,
         "alt": "Galvanised-steel single DIY garage kit with white roller door in a South African backyard.",
         "kind": "exterior",
-        "hero": true
+        "hero": false
       },
       {
         "src": "/images/products/garages/exterior-double-open-cars.jpg",
         "width": 2000,
         "height": 1341,
         "alt": "Charcoal steel double garage kit with its roller door open and two vehicles parked inside at golden hour.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/garages/exterior-double-closed-roller-door.jpg",
-        "width": 2000,
-        "height": 1341,
-        "alt": "Charcoal double garage kit with closed roller door and IBR side cladding beside a South African home.",
         "kind": "exterior",
         "hero": false
       },
