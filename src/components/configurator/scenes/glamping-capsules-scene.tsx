@@ -46,7 +46,9 @@ import {
  * the capsule ceiling is glass, so the living-corner light stands on the floor.
  */
 export function GlampingCapsulesScene({ visuals, furnished }: SceneProps) {
-  const kitchenOn = Boolean(visuals["kitchen"]);
+  // The kitchen ships as standard on every capsule size, so it is always drawn —
+  // there is no kitchen option left to switch it on.
+  const kitchenOn = true;
   const floor = 392;
   return (
     <svg

@@ -73,7 +73,7 @@ const bathroomImage = findImage(images.products["apple-cabins"], "interior-bathr
 const bandImage = findImage(images.products["nature-cabins"], "exterior-timber-render.jpg");
 
 // True range across every variant, not just each product's headline starting
-// price — the flagship glamping capsule's top variant is R949 900.
+// price — the flagship glamping capsule's top variant is R1 070 900.
 // Price-on-request products carry a 0 sentinel and are excluded from the range.
 // Garages are a DIY steel-kit line, not a home — excluded so the "from the
 // R… X-Fold folding home" copy keeps naming the cheapest actual home.
@@ -138,7 +138,7 @@ const stats = [
   { value: String(products.length), label: "product lines, one range" },
   { value: formatZAR(minPrice), label: "entry price, ex VAT" },
   { value: "±90 days", label: "from deposit to move-in" },
-  { value: "10-year", label: "guarantee on every home" },
+  { value: "1-year", label: "limited guarantee on every home" },
   { value: "Nationwide", label: "delivery from Centurion" },
 ];
 

@@ -305,8 +305,7 @@ const CAPSULE_PLAN: ProductPlan = {
   ],
   zones: [
     wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included in every size
-    // Kitchen ships with the 11.5 m capsule; the 5.85 m and 9.5 m add it via the kitchen-unit option.
-    { ...kitchenZone(r(1.0, 0, 3.3, 0.65), true), standardVariantIds: ["capsule-11-5"] },
+    kitchenZone(r(1.0, 0, 3.3, 0.65), true), // kitchen included on every capsule size
     cupboardZone(r(1.0, 0, 3.3, 0.35)),
     airconZone(r(8.3, 0.05, 8.55, 0.3)),
   ],

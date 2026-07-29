@@ -9,7 +9,7 @@ import { Container } from "@/components/ui/container";
 import { EASE, Stagger, StaggerItem } from "@/components/ui/reveal";
 
 /* Price-on-request products carry a 0 sentinel — exclude them from the range.
-   Garages are a DIY steel-kit line, not a home — their R49 900 entry price stays
+   Garages are a DIY steel-kit line, not a home — their R139 900 entry price stays
    out of the homes starting-price stat. */
 const lowestPrice = Math.min(
   ...products
@@ -51,10 +51,10 @@ const stats: Stat[] = [
     label: "From deposit to move-in",
   },
   {
-    to: 10,
+    to: 1,
     suffix: "-year guarantee",
-    full: "10-year guarantee",
-    label: "On every home we build",
+    full: "1-year limited guarantee",
+    label: "Limited guarantee on every home",
   },
 ];
 

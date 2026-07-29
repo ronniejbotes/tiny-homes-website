@@ -127,7 +127,7 @@ export const products: Product[] = [
     summary:
       "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R54 900 ex VAT and backed by our 10-year guarantee.",
+      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
     startingPrice: 54900,
     sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
@@ -178,7 +178,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes — every Tiny Homes SA product carries a 10-year guarantee, and we provide full after-sales support.",
+        a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee, and we provide full after-sales support.",
       },
       {
         q: "Can I finance an X-Fold?",
@@ -201,12 +201,12 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     tagline: "Smart living — fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and opens out on site into up to 74 m² of bedrooms, bathroom and kitchen — move-in ready within hours, from R199 900 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space — bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and, on the larger sizes, factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, step up to the fully fitted 6m Expandable Home at R329 900 — two bedrooms, bathroom and stainless-steel kitchen included — or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall, and let our turnkey team handle the groundwork and connections.",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT — an open-plan space with a bathroom and a small basic kitchen — step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and stainless-steel kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
     sizeLabel: "18 – 74 m²",
-    bedrooms: "2 – 4 bedrooms",
+    bedrooms: "Open plan – 4 bedrooms",
     setupTime: "Expands within hours",
     dims: { length: 12, width: 6.3, height: 2.5 },
     specs: [
@@ -217,20 +217,20 @@ export const products: Product[] = [
       { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor — standard (waterproof SPC laminate upgrade available)" },
       { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door — standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
-      { label: "Utilities", value: "6m and 12m: plumbing & electrical factory-installed. 18 m²: budget shell, no bathroom or kitchen" },
+      { label: "Utilities", value: "Plumbing and electrical factory-installed on every size" },
+      { label: "Bathroom & kitchen", value: "Included on every size — the 18 m² has a bathroom and small basic kitchen; the 6m and 12m add a full stainless-steel kitchen" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
       "Full home delivered as one compact module — expands within hours",
-      "Stainless-steel kitchen and complete bathroom in the 6m and 12m models",
+      "Bathroom and kitchen included on every size — full stainless-steel kitchen in the 6m and 12m models",
       "107 exterior colours and finishes — brick, timber-grain, plain or textured",
       "Window and door placement of your choice",
       "Layouts from open-plan to four bedrooms",
-      "Lifespan of up to 20–25 years, with optional overhead cabinets, balcony and pitched roof",
     ],
     useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
     variants: [
-      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard. No bathroom or kitchen." },
+      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
       { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
       { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
@@ -242,15 +242,15 @@ export const products: Product[] = [
     faqs: [
       {
         q: "What sizes and prices are available?",
-        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (a budget shell, no bathroom or kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen, with layouts up to four bedrooms on the 12m.",
+        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (open plan, with a bathroom and a small basic kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a full stainless-steel kitchen, with layouts up to four bedrooms on the 12m.",
       },
       {
         q: "How long does installation take?",
-        a: "The 6m and 12m homes arrive as one module and expand on site within hours — on a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect. Our turnkey team can handle the groundwork, connections and handover for you.",
+        a: "The 6m and 12m homes arrive as one module and expand on site within hours — on a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect.",
       },
       {
         q: "What's included as standard?",
-        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, and double-glazed glass windows and a door. The 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower, a stainless-steel kitchen and factory-installed plumbing and electrics; the compact 18 m² is a budget shell without a bathroom or kitchen.",
+        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, double-glazed glass windows and a door, a bathroom and factory-installed plumbing and electrics. The compact 18 m² is open plan with a bathroom and a small basic kitchen; the 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower and a full stainless-steel kitchen.",
       },
       {
         q: "What upgrades can I add to an expandable home?",
@@ -330,7 +330,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee, and can I finance a nature cabin?",
-        a: "Yes — every home we sell carries a 10-year guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes — every home we sell carries a 1-year limited guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -396,7 +396,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes — every Tiny Homes SA product carries a 10-year guarantee, and finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee, and finance and lay-bye options are available, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -413,10 +413,10 @@ export const products: Product[] = [
     shortName: "Glamping Capsule",
     tagline: "Luxury in the heart of nature — the art of glamping, perfected.",
     summary:
-      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with premium bathroom fittings, HVAC and geyser as standard — the flagship of the range, from R689 900 ex VAT.",
+      "Glamping dreams delivered: a two-room capsule wrapped in 270° oversized floor-to-ceiling double glazing, with a kitchen, premium bathroom fittings, Midea air conditioning and a storage geyser standard on every size — the flagship of the range, from R810 900 ex VAT.",
     description:
-      "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom, which is standard on every size (the 11.5 m capsule also adds a luxurious kitchen), each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system and intelligent front-door access all come standard, with an optional balcony that can be removed to extend the indoor space. Available in various designs and sizes, each capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy.",
-    startingPrice: 689900,
+      "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Nothing is left on the options list: every capsule ships with a kitchen, a central bathroom with premium fittings, Midea air conditioning, a 40–60 L storage electric water heater, multi-layer thermal insulation, complete plumbing and electrical, interior and exterior lighting and intelligent front-door access — plus an optional balcony that can be removed to extend the indoor space. Available in various designs and sizes, each capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy.",
+    startingPrice: 810900,
     sizeLabel: "18.6 – 38 m²",
     bedrooms: "2 rooms + central bathroom",
     setupTime: "Delivered fully built",
@@ -425,35 +425,37 @@ export const products: Product[] = [
       { label: "Sizes", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 38 m² (11.5 m)" },
       { label: "External size", value: "Up to 11.5 m × 3.2 m × 3.2 m" },
       { label: "Glazing", value: "270° oversized floor-to-ceiling double-glazed windows in each room" },
-      { label: "Layout", value: "Two rooms separated by a central bathroom (standard on every size) — kitchen included in the 11.5 m" },
+      { label: "Layout", value: "Two rooms separated by a central bathroom — standard on every size" },
       { label: "Sleeps", value: "2 (5.85 m and 9.5 m) or 2–4 (11.5 m)" },
-      { label: "Standard", value: "Central bathroom, multi-layer insulation, HVAC & geyser, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
+      { label: "Kitchen", value: "Included on every size — cabinet run, stone countertop, sink and stove" },
+      { label: "Air conditioning", value: "Midea air conditioning — included as standard" },
+      { label: "Hot water", value: "40–60 L storage electric water heater — included as standard" },
+      { label: "Standard", value: "Central bathroom, kitchen, Midea air conditioning, storage geyser, multi-layer insulation, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
       { label: "Assembly", value: "Arrives fully built — delivered and placed on site with no on-site construction, ready for immediate occupancy" },
     ],
     features: [
       "270° oversized double-glazed panoramic windows in each room",
-      "Central bathroom standard on every size — luxurious kitchen in the 11.5 m capsule",
-      "HVAC and geyser system included as standard",
+      "Central bathroom and kitchen standard on every size",
+      "Midea air conditioning and a 40–60 L storage electric water heater included as standard",
       "Multi-layer thermal insulation and intelligent front-door access",
       "Optional balcony — removable to extend the indoor space",
       "Arrives fully built — no on-site construction",
     ],
     useCases: ["Luxury lodge suite", "Vineyard accommodation", "Beach retreat", "Bush getaway", "Premium Airbnb", "Honeymoon suite"],
     variants: [
-      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 689900, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, the entry to the capsule range." },
-      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 849900, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings." },
-      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 949900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — luxurious kitchen and bathroom fittings included." },
+      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 810900, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, with kitchen, Midea air conditioning and storage geyser included. The entry to the capsule range." },
+      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 970900, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings, kitchen, Midea air conditioning and storage geyser included." },
+      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 1070900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — the largest capsule, with luxurious kitchen and bathroom fittings, Midea air conditioning and storage geyser included." },
     ],
     options: [
       { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule — one price for any size.", price: 14900, category: "comfort", visual: "heating", provisional: false },
       { id: "smart-curtains", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing, run from the capsule's central control system.", price: 23900, category: "comfort", visual: "curtains", provisional: false },
-      { id: "kitchen", label: "Kitchen", description: "A full kitchen — 2 m cabinet run, stone countertop, sink and a 900 mm double stove with an 80 L oven. Available on the 5.85 m and 9.5 m capsules; the 11.5 m already includes a kitchen.", price: 39900, category: "modules", visual: "kitchen", footprintM2: 1.5, footprintVariantIds: ["capsule-5-85", "capsule-8-5"], availableVariantIds: ["capsule-5-85", "capsule-8-5"], provisional: false },
       { id: "hd-projector", label: "HD projector and screen", description: "HD projector and screen for cinema nights inside the capsule.", price: 19900, category: "comfort", visual: "none", provisional: false },
     ],
     faqs: [
       {
         q: "What comes standard in a Glamping Capsule?",
-        a: "Every size includes a central bathroom, multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, an HVAC and geyser system, intelligent front-door access and double-glazed windows. The 11.5 m capsule adds a luxurious kitchen.",
+        a: "Everything is included, on every size: a kitchen, a central bathroom with premium fittings, Midea air conditioning, a 40–60 L storage electric water heater, multi-layer thermal insulation, complete plumbing and electrical, interior and exterior lighting, intelligent front-door access and double-glazed windows.",
       },
       {
         q: "How is a Glamping Capsule delivered and installed?",
@@ -461,11 +463,11 @@ export const products: Product[] = [
       },
       {
         q: "Can I customise my capsule?",
-        a: "Yes — add under-floor heating (R14 900), smart double-track curtains (R23 900), a full kitchen on the 5.85 m or 9.5 m capsule (R39 900 — the 11.5 m already includes one), or an HD projector and screen (R19 900).",
+        a: "Yes — the kitchen, air conditioning and geyser are already standard, so the extras are the comfort ones: under-floor heating (R14 900), smart double-track curtains (R23 900) and an HD projector and screen (R19 900).",
       },
       {
         q: "Can I finance a Glamping Capsule?",
-        a: "Yes — finance and lay-bye options are available, subject to credit approval, and every Tiny Homes SA product carries a 10-year guarantee.",
+        a: "Yes — finance and lay-bye options are available, subject to credit approval, and every Tiny Homes SA product carries a 1-year limited guarantee.",
       },
     ],
     seoKeywords: [
@@ -634,10 +636,10 @@ export const products: Product[] = [
     shortName: "Garage",
     tagline: "Flat-pack steel garages you bolt together yourself.",
     summary:
-      "Galvanised-steel DIY garage kits in two sizes — single and double — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R49 900 ex VAT.",
+      "Galvanised-steel DIY garage kits in two sizes — single and double — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R139 900 ex VAT.",
     description:
-      "DIY garage kits are the fast, affordable way to add secure, weatherproof parking or workshop space — a garage you bolt together yourself, no welding or cutting needed. The portal frames arrive pre-assembled and simply fold open on site, so two people have the single kit up in an afternoon and the double in about a day. Each kit is clad in Chromadek colour-coated 0.47 mm IBR sheeting on the walls and roof, and includes manual roller doors — one on the single, two on the double — a steel side door, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual; you anchor it all to your own level concrete slab. Both kits stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6. Choose the 6 × 3 m single garage (18 m²) from R49 900 ex VAT or the 6 × 6 m double (36 m²) at R84 900, and add the optional gable roof upgrade — priced per size on your quotation. Delivered nationwide, with slab and assembly available from our turnkey team.",
-    startingPrice: 49900,
+      "DIY garage kits are the fast, affordable way to add secure, weatherproof parking or workshop space — a garage you bolt together yourself, no welding or cutting needed. The portal frames arrive pre-assembled and simply fold open on site, so two people have the single kit up in an afternoon and the double in about a day. Each kit is clad in Chromadek colour-coated 0.47 mm IBR sheeting on the walls and roof, and includes manual roller doors — one on the single, two on the double — a steel side door, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual; you anchor it all to your own level concrete slab. Both kits stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6. Choose the 6 × 3 m single garage (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900, and add the optional gable roof upgrade — priced per size on your quotation. Delivered nationwide, with slab and assembly available from our turnkey team.",
+    startingPrice: 139900,
     sizeLabel: "18 – 36 m²",
     setupTime: "Self-assembly kit",
     dims: { length: 6, width: 6, height: 3 }, // height is the mono-pitch high side
@@ -666,8 +668,8 @@ export const products: Product[] = [
     ],
     useCases: ["Garage", "Workshop", "Storeroom", "Farm store", "Carport enclosure", "Site store"],
     variants: [
-      { id: "garage-6x3", name: "Single Garage Kit (6 × 3 m)", size: "18 m²", price: 49900, description: "6 × 3 m with a 3.0 m high side. One manual roller door plus a steel side door — flat-packed for self-assembly." },
-      { id: "garage-6x6", name: "Double Garage Kit (6 × 6 m)", size: "36 m²", price: 84900, description: "6 × 6 m with a 3.0 m high side. Two manual roller doors plus a steel side door — flat-packed for self-assembly." },
+      { id: "garage-6x3", name: "Single Garage Kit (6 × 3 m)", size: "18 m²", price: 139900, description: "6 × 3 m with a 3.0 m high side. One manual roller door plus a steel side door — flat-packed for self-assembly." },
+      { id: "garage-6x6", name: "Double Garage Kit (6 × 6 m)", size: "36 m²", price: 278900, description: "6 × 6 m with a 3.0 m high side. Two manual roller doors plus a steel side door — flat-packed for self-assembly." },
     ],
     // Gable upgrade pricing is pending supplier quotes and will differ per kit
     // size — one option per variant, listed at 0 ("priced on quotation") until
@@ -683,7 +685,7 @@ export const products: Product[] = [
       { q: "What sizes are available?", a: "Two: the 6 × 3 m single (18 m²) with one roller door, and the 6 × 6 m double (36 m²) with two. Both stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6." },
       { q: "Can I have a pitched roof instead of the mono-pitch?", a: "Yes — the optional gable roof upgrade replaces the standard mono-pitch with a pitched apex roof, adding apex frames, ridge capping and a second gutter and downpipe run. Pricing is per kit size and confirmed on your quotation." },
       { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit — the garage anchors to it with the anchors supplied. We can quote the groundwork separately." },
-      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes — every Tiny Homes SA product carries a 10-year guarantee. Finance and lay-bye options are also available, subject to credit approval." },
+      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee. Finance and lay-bye options are also available, subject to credit approval." },
     ],
     seoKeywords: ["DIY garage kit South Africa", "steel garage kit price", "flat pack garage", "prefab garage South Africa", "double garage kit"],
   },

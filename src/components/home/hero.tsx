@@ -17,7 +17,7 @@ const heroImage = {
   alt: "Apple Cabin with full-height glazing glowing at dusk on a timber deck, beside a plunge pool and sunken firepit lounge above a mountain lake.",
 };
 /* Price-on-request products carry a 0 sentinel — exclude them from the range.
-   Garages are a DIY steel-kit line, not a home — keep their R49 900 entry price
+   Garages are a DIY steel-kit line, not a home — keep their R139 900 entry price
    out of the "tiny homes from …" headline so it stays the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products

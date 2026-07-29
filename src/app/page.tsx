@@ -36,7 +36,7 @@ const lowestStartingPrice = Math.min(
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT with a 10-year guarantee — X-Folds, cabins and glamping capsules, delivered nationwide.";
+  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee — X-Folds, cabins and glamping capsules, delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {

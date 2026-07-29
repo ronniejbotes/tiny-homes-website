@@ -500,6 +500,46 @@
         "hero": true
       },
       {
+        "src": "/images/products/outdoor-kitchens/party-braai-dusk.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Friends gathered around an Outdoor Kitchen at a South African garden braai party at dusk.",
+        "kind": "lifestyle",
+        "hero": false
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/poolside-party-golden-hour.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Poolside party beside an Outdoor Kitchen with its lift-up canopy raised and gas grill in use.",
+        "kind": "lifestyle",
+        "hero": false
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/patio-watching-the-game.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Friends watching the rugby on a patio with an Outdoor Kitchen lit behind them at dusk.",
+        "kind": "lifestyle",
+        "hero": false
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/fire-pit-evening.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Evening fire pit gathering with an Outdoor Kitchen and kettle grill glowing in a bushveld garden.",
+        "kind": "lifestyle",
+        "hero": false
+      },
+      {
+        "src": "/images/products/outdoor-kitchens/hot-tub-mountain-dusk.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Couple in a hot tub beside a lit Outdoor Kitchen on a timber deck in the Cape mountains.",
+        "kind": "lifestyle",
+        "hero": false
+      },
+      {
         "src": "/images/products/outdoor-kitchens/kitchen-braai-dusk.jpg",
         "width": 2000,
         "height": 1500,
@@ -630,6 +670,22 @@
         "alt": "Galvanised-steel single DIY garage kit with white roller door in a South African backyard.",
         "kind": "exterior",
         "hero": true
+      },
+      {
+        "src": "/images/products/garages/exterior-double-open-cars.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Charcoal steel double garage kit with its roller door open and two vehicles parked inside at golden hour.",
+        "kind": "exterior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/garages/exterior-double-closed-roller-door.jpg",
+        "width": 2000,
+        "height": 1341,
+        "alt": "Charcoal double garage kit with closed roller door and IBR side cladding beside a South African home.",
+        "kind": "exterior",
+        "hero": false
       },
       {
         "src": "/images/products/garages/exterior-double-garage.jpg",
