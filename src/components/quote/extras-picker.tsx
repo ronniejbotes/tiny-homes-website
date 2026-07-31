@@ -1,4 +1,10 @@
-import type { CustomOption, OptionCategory, Product } from "@/data/products";
+import {
+  isOptionAvailable,
+  optionPrice,
+  type CustomOption,
+  type OptionCategory,
+  type Product,
+} from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
@@ -13,17 +19,22 @@ const CATEGORY_LABELS: Record<OptionCategory, string> = {
 
 function ExtraToggle({
   option,
+  areaM2,
   checked,
   disabled,
   helper,
   onToggle,
 }: {
   option: CustomOption;
+  areaM2?: number;
   checked: boolean;
   disabled: boolean;
   helper?: string;
   onToggle: () => void;
 }) {
+  // Per-m² extras resolve to a real amount once a size is chosen — only the
+  // genuinely unpriced ones fall back to "priced on quotation".
+  const price = optionPrice(option, areaM2);
   return (
     <button
       type="button"
@@ -43,13 +54,18 @@ function ExtraToggle({
         <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="font-medium text-ink">{option.label}</span>
           <span className="text-sm font-medium text-clay-dark">
-            {option.price > 0 ? (
-              <span className="nums-tabular">{`+${formatZAR(option.price)}`}</span>
+            {price > 0 ? (
+              <span className="nums-tabular">{`+${formatZAR(price)}`}</span>
             ) : (
               "priced on quotation"
             )}
+            {option.pricePerM2 != null && (
+              <span className="ml-1 font-normal text-stone nums-tabular">
+                (R{option.pricePerM2}/m²)
+              </span>
+            )}
           </span>
-          {option.provisional && option.price > 0 && (
+          {option.provisional && price > 0 && (
             <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
               provisional
             </span>
@@ -79,18 +95,25 @@ function ExtraToggle({
 
 export function ExtrasPicker({
   product,
+  variantId,
   selected,
   onToggle,
 }: {
   product: Product;
+  variantId?: string;
   selected: Partial<Record<string, boolean>>;
   onToggle: (option: CustomOption) => void;
 }) {
   if (product.options.length === 0) return null;
 
+  const areaM2 = product.variants?.find((v) => v.id === variantId)?.areaM2;
+  // Only show extras offered on the chosen size — configuredPrice() ignores the
+  // rest, so listing them would price them at zero.
+  const available = product.options.filter((o) => isOptionAvailable(o, variantId));
+
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
-    options: product.options.filter((o) => o.category === category),
+    options: available.filter((o) => o.category === category),
   })).filter((g) => g.options.length > 0);
 
   return (
@@ -107,6 +130,7 @@ export function ExtrasPicker({
                 <ExtraToggle
                   key={option.id}
                   option={option}
+                  areaM2={areaM2}
                   checked={Boolean(selected[option.id]) && requirementMet}
                   disabled={!requirementMet}
                   helper={

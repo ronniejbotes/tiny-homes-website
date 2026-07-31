@@ -6,6 +6,8 @@ import { Check, Loader2, Minus, Plus, Trash2 } from "lucide-react";
 import {
   configuredPrice,
   getProduct,
+  isOptionAvailable,
+  optionPrice,
   products,
   type CustomOption,
   type Product,
@@ -63,6 +65,10 @@ export interface QuoteLine {
   variant: ProductVariant | undefined;
   activeOptions: CustomOption[];
   quantity: number;
+  /** Variant (or product starting) price for one unit, before extras. */
+  basePrice: number;
+  /** Floor area of the chosen variant, m² — resolves per-m² extra pricing. */
+  areaM2: number | undefined;
   /** Base (variant or startingPrice) + selected extras, for a single unit. */
   unitPrice: number;
   /** unitPrice × quantity. */
@@ -388,8 +394,13 @@ function QuoteFormInner() {
     const p = getProduct(item.slug);
     if (!p) return null;
     const v = p.variants?.find((x) => x.id === item.variantId);
+    // Mirror configuredPrice()'s filter exactly — an extra that isn't offered on
+    // the chosen size costs nothing, so it must not be listed either.
     const activeOptions = p.options.filter(
-      (o) => item.selected[o.id] && (!o.requires || item.selected[o.requires]),
+      (o) =>
+        isOptionAvailable(o, item.variantId) &&
+        item.selected[o.id] &&
+        (!o.requires || item.selected[o.requires]),
     );
     const unitPrice = configuredPrice(p, item.selected, item.variantId);
     return {
@@ -398,6 +409,8 @@ function QuoteFormInner() {
       variant: v,
       activeOptions,
       quantity: item.quantity,
+      basePrice: v ? v.price : p.startingPrice,
+      areaM2: v?.areaM2,
       unitPrice,
       lineTotal: unitPrice * item.quantity,
     };
@@ -512,12 +525,17 @@ function QuoteFormInner() {
     lines.forEach((l, idx) => {
       const title = l.variant ? l.variant.name : l.product.name;
       const size = l.variant ? ` (${l.variant.size})` : "";
-      out.push(`${idx + 1}. ${l.quantity} × ${title}${size}`);
+      // Each line carries its own money so the rep can read the build-up:
+      // base price on the unit, effective price on every extra.
+      const base = l.product.priceOnRequest ? "" : ` (${formatZAR(l.basePrice)})`;
+      out.push(`${idx + 1}. ${l.quantity} × ${title}${size}${base}`);
       if (l.activeOptions.length > 0) {
         out.push("   Extras:");
         for (const o of l.activeOptions) {
+          const price = optionPrice(o, l.areaM2);
+          const rate = o.pricePerM2 != null ? ` · R${o.pricePerM2}/m²` : "";
           out.push(
-            `   - ${o.label}${o.price > 0 ? ` (+${formatZAR(o.price)})` : " (priced on quotation)"}`,
+            `   - ${o.label}${price > 0 ? ` (+${formatZAR(price)}${rate})` : " (priced on quotation)"}`,
           );
         }
       }
@@ -696,7 +714,12 @@ function QuoteFormInner() {
                 Every extra is provisional and confirmed line by line on your formal quotation.
                 Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.
               </p>
-              <ExtrasPicker product={product} selected={selected} onToggle={toggleOption} />
+              <ExtrasPicker
+                product={product}
+                variantId={variantId}
+                selected={selected}
+                onToggle={toggleOption}
+              />
             </div>
           )}
 
