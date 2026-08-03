@@ -37,7 +37,7 @@ const lowestStartingPrice = Math.min(
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee: X-Folds, cabins and glamping capsules. Built in Centurion, Gauteng and delivered to all nine SA provinces, with southern Africa quoted on request.";
+  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee: X-Folds, cabins and glamping capsules. Built in Centurion, Gauteng and delivered to all nine SA provinces, and across the border into southern Africa.";
 
 export const metadata: Metadata = {
   title: {

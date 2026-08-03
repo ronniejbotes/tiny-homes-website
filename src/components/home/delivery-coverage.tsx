@@ -12,9 +12,10 @@ import { site } from "@/lib/site";
  * until now the site only ever said "nationwide". The provinces carry the
  * local-intent searches, which are where the buyers are.
  *
- * The cross-border block is worded as a quotation, not a service. We truck out
- * of Centurion, so a run into Gaborone or Windhoek is genuinely on the table,
- * but it is priced per project and the copy must not promise otherwise.
+ * Cross-border is real work we take, confirmed by the owner, so the copy states
+ * it plainly rather than hedging. What it does not do is imply a fixed rate:
+ * every run is priced per project, because transport and customs vary by
+ * destination. South Africa stays the primary market and leads the section.
  */
 export function DeliveryCoverage() {
   return (
@@ -52,8 +53,8 @@ export function DeliveryCoverage() {
           <Reveal delay={0.08} className="rounded-3xl border border-border bg-forest p-6 text-cream sm:p-8">
             <h3 className="font-display text-xl text-cream">Across southern Africa</h3>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/75">
-              Cross-border deliveries are quoted per project, including transport and the customs
-              paperwork. Tell us where the site is and we will price the run.
+              We deliver across the border too. Each run is quoted per project, including the
+              transport and the customs paperwork, so tell us where the site is and we will price it.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2.5">
               {site.deliveryRegions.countries.map((country) => (

@@ -50,7 +50,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Which areas do you deliver to?",
-    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is built in Centurion, Gauteng and trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We also quote cross-border deliveries into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}, priced per project including transport and customs paperwork.`,
+    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is built in Centurion, Gauteng and trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We deliver across the border too, into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}. Cross-border runs are priced per project, including the transport and the customs paperwork.`,
   },
   {
     q: "Is there a guarantee on Tiny Homes SA products?",
