@@ -67,6 +67,8 @@ export interface QuoteRequestBody {
   units: QuoteUnit[];
   /** Coastal exposure of the delivery address, as the browser classified it. */
   coastal?: string;
+  /** The customer's answer to "is the site within 30 km of the sea?". */
+  nearSea?: boolean | null;
   /** Honeypot — a real person never fills this in. */
   company?: string;
 }

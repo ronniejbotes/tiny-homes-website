@@ -98,29 +98,91 @@ function normalise(value: string): string {
     .trim();
 }
 
+/** Spaces and hyphens removed as well, so "Capetown" matches "Cape Town" and
+    "Kenton on Sea" matches "Kenton-on-Sea". Real customers type both. */
+function compact(value: string): string {
+  return normalise(value).replace(/[\s-]/g, "");
+}
+
+/** The town list, indexed by its compact form, built once. */
+const COASTAL_TOWNS_COMPACT = new Set([...COASTAL_TOWNS].map(compact));
+
+/**
+ * Place-name fragments that mean the sea in South African addresses. Only ever
+ * consulted inside a coastal province, which is what makes them safe: "Bayswater"
+ * in Bloemfontein or "Beachwood" in Gauteng can never reach this test.
+ *
+ * This is the layer that catches the long tail — there are thousands of coastal
+ * suburbs and no list will ever hold them all, but a great many of them say so
+ * in their name.
+ */
+const SEA_WORDS = [
+  "beach", "strand", "bay", "baai", "on sea", "onsea", "lagoon", "harbour",
+  "harbor", "marina", "seaside", "sea point", "surf", "pier", "waterfront",
+  "kus", "rivermouth", "river mouth", "mond", "eiland", "island",
+];
+
+function namedForTheSea(value: string): boolean {
+  const n = normalise(value);
+  if (!n) return false;
+  return SEA_WORDS.some((word) => n.includes(word));
+}
+
 /**
  * Classify a delivery address. Both the town and the suburb are checked —
  * customers often put the metro in "city" and the actual seaside suburb in
  * "suburb" ("Cape Town" / "Kommetjie"), and either one is enough.
  */
 export function coastalRisk(address: AddressValues): CoastalRisk {
-  const city = normalise(address.city);
-  const suburb = normalise(address.suburb);
+  const inCoastalProvince = COASTAL_PROVINCES.has(normalise(address.province));
 
-  if (COASTAL_TOWNS.has(city) || COASTAL_TOWNS.has(suburb)) return "coastal";
+  // A landlocked province cannot be coastal, whatever the town is called.
+  if (!inCoastalProvince) return "inland";
 
-  const province = normalise(address.province).replace(/\s/g, "-");
-  // "kwazulu-natal" survives normalise; the others become "western-cape" etc.
-  const provinceKey = province.replace(/-/g, " ");
-  if (
-    COASTAL_PROVINCES.has(provinceKey) ||
-    COASTAL_PROVINCES.has(normalise(address.province))
-  ) {
-    return "possibly-coastal";
+  for (const field of [address.city, address.suburb]) {
+    if (COASTAL_TOWNS.has(normalise(field))) return "coastal";
+    if (COASTAL_TOWNS_COMPACT.has(compact(field))) return "coastal";
+    if (namedForTheSea(field)) return "coastal";
   }
 
-  return "inland";
+  // Right province, unfamiliar town. Not a guess we should act on alone —
+  // the form asks the customer outright instead. See effectiveCoastalRisk().
+  return "possibly-coastal";
 }
+
+/**
+ * The classification that actually drives the quote, once the customer has
+ * answered "is the site within 30 km of the sea?".
+ *
+ * Detection alone is not good enough to add a mandatory charge: no list of town
+ * names is ever complete, and the first real address tested here — "Lagoon
+ * Beach, Capetown" — slipped through two of the three tiers above. The answer
+ * to a direct question does not have that problem, so where the address is
+ * merely suspicious the customer's own answer decides, and detection only
+ * chooses what the question starts on.
+ */
+export function effectiveCoastalRisk(
+  detected: CoastalRisk,
+  nearSea: boolean | null,
+): CoastalRisk {
+  if (detected === "coastal") return "coastal";
+  if (detected === "inland") return "inland";
+  if (nearSea === true) return "coastal";
+  if (nearSea === false) return "inland";
+  return "possibly-coastal";
+}
+
+/** Whether the form must put the near-the-sea question to the customer. */
+export function needsCoastalAnswer(detected: CoastalRisk): boolean {
+  return detected === "possibly-coastal";
+}
+
+export const COASTAL_QUESTION = "Is the site within about 30 km of the sea?";
+
+export const COASTAL_QUESTION_HELP =
+  "Salt air corrodes standard steel cladding, so units going to the coast need the " +
+  "corrosion-resistant exterior. We can't tell from the address alone, so please tell us — " +
+  "getting this wrong means a unit that rusts within about five years.";
 
 /**
  * Product slug → the option id that must be fitted on a coastal site.

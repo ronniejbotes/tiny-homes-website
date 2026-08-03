@@ -25,7 +25,7 @@ import {
   quoteEmailText,
   type QuoteEmailInput,
 } from "@/lib/quote-email";
-import { coastalRisk, type CoastalRisk } from "@/lib/coastal";
+import { coastalRisk, effectiveCoastalRisk, type CoastalRisk } from "@/lib/coastal";
 import {
   makeQuoteReference,
   resolveQuoteLine,
@@ -172,10 +172,13 @@ export async function POST(request: Request) {
       ? body.reference
       : makeQuoteReference();
 
-  // Re-derived server-side rather than trusted from the payload: a client that
-  // omits or downgrades this flag must not be able to silence a rust warning.
-  // The browser still sends its own for comparison; they should always agree.
-  const coastal: CoastalRisk = coastalRisk(address);
+  // Detection is re-derived server-side rather than trusted from the payload: a
+  // client that omits or downgrades it must not be able to silence a rust
+  // warning. The customer's own yes/no is the one thing that cannot be derived
+  // here, so it is read from the body — but it can only ever be consulted when
+  // detection was itself unsure, never to override a confirmed coastal town.
+  const nearSea = typeof body.nearSea === "boolean" ? body.nearSea : null;
+  const coastal: CoastalRisk = effectiveCoastalRisk(coastalRisk(address), nearSea);
 
   const input: QuoteEmailInput = {
     reference,

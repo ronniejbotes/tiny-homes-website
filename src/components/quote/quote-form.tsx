@@ -22,10 +22,14 @@ import {
   type QuoteUnit,
 } from "@/lib/quote";
 import {
+  COASTAL_QUESTION,
+  COASTAL_QUESTION_HELP,
   coastalBody,
   coastalHeadline,
   coastalOptionFor,
   coastalRisk,
+  effectiveCoastalRisk,
+  needsCoastalAnswer,
   type CoastalRisk,
 } from "@/lib/coastal";
 import { Button } from "@/components/ui/button";
@@ -250,6 +254,87 @@ function QuantityStepper({
 /* ----------------------------------------------------- coastal notice */
 
 /**
+ * The near-the-sea question, asked whenever the province has a coastline but
+ * the town is not one we recognise.
+ *
+ * It exists because detection cannot be trusted to add a mandatory charge on
+ * its own — no list of town names is complete, and "Lagoon Beach, Capetown"
+ * slipped straight through the first version of it. A customer answering about
+ * their own site is the one reliable input available, so the quote asks rather
+ * than guesses, and refuses to proceed until it has an answer.
+ */
+function CoastalQuestion({
+  value,
+  error,
+  onChange,
+}: {
+  value: boolean | null;
+  error?: string | null;
+  onChange: (next: boolean) => void;
+}) {
+  const choice = (label: string, selected: boolean, onSelect: () => void) => (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={selected}
+      onClick={onSelect}
+      className={cn(
+        "flex-1 rounded-xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30",
+        selected
+          ? "border-forest bg-forest text-cream"
+          : "border-border bg-cream text-ink hover:border-stone/60",
+      )}
+    >
+      {label}
+    </button>
+  );
+
+  return (
+    <div
+      id="quote-near-sea"
+      tabIndex={-1}
+      className={cn(
+        "mt-6 scroll-mt-24 rounded-2xl border p-5 focus:outline-none",
+        error ? "border-clay-dark bg-clay/5" : "border-clay/40 bg-parchment/60",
+      )}
+    >
+      <div className="flex items-start gap-4">
+        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-clay/40 bg-cream text-clay-dark">
+          <Waves className="h-4.5 w-4.5" aria-hidden="true" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p
+            id="quote-near-sea-label"
+            className="font-display text-base text-ink"
+          >
+            {COASTAL_QUESTION}
+            <span className="text-clay-dark" aria-hidden="true">
+              {" "}
+              *
+            </span>
+          </p>
+          <p className="mt-1.5 text-sm leading-relaxed text-stone">{COASTAL_QUESTION_HELP}</p>
+          <div
+            role="radiogroup"
+            aria-labelledby="quote-near-sea-label"
+            aria-describedby={error ? "quote-near-sea-error" : undefined}
+            className="mt-4 flex flex-wrap gap-3"
+          >
+            {choice("Yes — near the sea", value === true, () => onChange(true))}
+            {choice("No — inland", value === false, () => onChange(false))}
+          </div>
+          {error && (
+            <p id="quote-near-sea-error" role="alert" className="mt-2 text-sm text-clay-dark">
+              {error}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Salt-air warning, shown the moment the address identifies a coastal site.
  * Deliberately loud: it can change both the specification and the price, and a
  * customer who first learns of it on the formal quotation will feel upsold.
@@ -409,6 +494,9 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const [notes, setNotes] = useState("");
   // Honeypot. Left empty by every human; form bots fill every field they find.
   const [company, setCompany] = useState("");
+  // The customer's own answer to the near-the-sea question. null = not asked yet.
+  const [nearSea, setNearSea] = useState<boolean | null>(null);
+  const [nearSeaError, setNearSeaError] = useState<string | null>(null);
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string | null>>>({});
   const [productError, setProductError] = useState<string | null>(null);
@@ -428,7 +516,9 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   // so the requirement is derived here rather than stored on the line — it
   // re-evaluates the moment the address changes, including backwards if the
   // customer corrects a town.
-  const coastal: CoastalRisk = coastalRisk(address);
+  const detectedCoastal: CoastalRisk = coastalRisk(address);
+  const askNearSea = needsCoastalAnswer(detectedCoastal);
+  const coastal: CoastalRisk = effectiveCoastalRisk(detectedCoastal, nearSea);
   const requiredOptionFor = (slug: string): string | undefined =>
     coastal === "coastal" ? coastalOptionFor(slug) : undefined;
 
@@ -644,6 +734,16 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
       return;
     }
 
+    // Never issue a quote for a coastal province without knowing whether the
+    // site is exposed — that is the whole point of asking.
+    if (askNearSea && nearSea === null) {
+      setNearSeaError("Please let us know whether the site is near the sea.");
+      const el = document.getElementById("quote-near-sea");
+      el?.scrollIntoView({ block: "center" });
+      el?.focus();
+      return;
+    }
+
     // Minted here, not on the server, so the customer's document always carries
     // a reference — even if the request below never lands.
     const reference = makeQuoteReference();
@@ -664,6 +764,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
           notes,
           company,
           coastal,
+          nearSea,
           units: items.map(toUnit),
         }),
       });
@@ -889,7 +990,19 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
               onChange={handleAddressChange}
               onBlur={handleAddressBlur}
             />
-            <CoastalNotice risk={coastal} />
+            {askNearSea ? (
+              <CoastalQuestion
+                value={nearSea}
+                error={nearSeaError}
+                onChange={(next) => {
+                  setNearSea(next);
+                  setNearSeaError(null);
+                }}
+              />
+            ) : (
+              <CoastalNotice risk={coastal} />
+            )}
+            {askNearSea && nearSea === true && <CoastalNotice risk="coastal" />}
           </Step>
 
           {/* Step 4 — notes */}
