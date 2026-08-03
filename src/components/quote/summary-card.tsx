@@ -3,7 +3,7 @@ import { Warehouse } from "lucide-react";
 import type { Product } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { getHeroImage } from "@/components/product/product-images";
-import type { QuoteLine } from "./quote-form";
+import { VAT_RATE, quoteTotals, type QuoteLine } from "@/lib/quote";
 
 /** A single configured unit as it appears on the estimate. */
 function LineRow({ line }: { line: QuoteLine }) {
@@ -35,11 +35,7 @@ function LineRow({ line }: { line: QuoteLine }) {
 }
 
 export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
-  const pricedLines = lines.filter((l) => !l.product.priceOnRequest);
-  const hasPricedTotal = pricedLines.length > 0;
-  const someOnRequest = lines.some((l) => l.product.priceOnRequest);
-  const grandTotal = pricedLines.reduce((sum, l) => sum + l.lineTotal, 0);
-  const totalUnits = lines.reduce((sum, l) => sum + l.quantity, 0);
+  const { hasPricedTotal, someOnRequest, subtotal, vat, total, totalUnits } = quoteTotals(lines);
 
   return (
     <div className="rounded-3xl border border-border bg-parchment/70 p-6 sm:p-7">
@@ -66,12 +62,26 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
           <div className="mt-5 border-t border-border pt-5">
             {hasPricedTotal ? (
               <>
-                <p className="text-sm font-medium text-stone">Estimated total</p>
+                <dl className="space-y-1.5">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-sm text-stone">Subtotal (excl. VAT)</dt>
+                    <dd className="text-sm text-ink tabular-nums nums-tabular">
+                      {formatZAR(subtotal)}
+                    </dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-sm text-stone">VAT @ {VAT_RATE * 100}%</dt>
+                    <dd className="text-sm text-ink tabular-nums nums-tabular">
+                      {formatZAR(vat)}
+                    </dd>
+                  </div>
+                </dl>
+                <p className="mt-4 text-sm font-medium text-stone">Estimated total</p>
                 <p className="mt-1 flex items-baseline gap-2">
                   <span className="text-display text-3xl text-ink sm:text-4xl tabular-nums nums-tabular">
-                    {formatZAR(grandTotal)}
+                    {formatZAR(total)}
                   </span>
-                  <span className="text-sm font-medium text-stone">ex VAT</span>
+                  <span className="text-sm font-medium text-stone">incl VAT</span>
                 </p>
                 {someOnRequest && (
                   <p className="mt-2 text-sm leading-relaxed text-stone">
@@ -93,8 +103,9 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-stone">
-            Delivery is quoted from your address — based on your location and site accessibility. We
-            deliver nationwide.
+            Delivery and transport are <span className="font-medium text-ink">not</span>
+            {" included — "}
+            they&apos;re quoted separately from your address, at cost, with no markup from us.
           </p>
           {hasPricedTotal && (
             <p className="mt-2 text-xs leading-relaxed text-stone">

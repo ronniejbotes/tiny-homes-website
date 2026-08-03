@@ -212,3 +212,56 @@ body {
     radial-gradient(120% 90% at 15% 90%, rgba(28, 27, 23, 0.55), transparent 60%),
     linear-gradient(to top, rgba(28, 27, 23, 0.72) 0%, rgba(28, 27, 23, 0.3) 42%, rgba(28, 27, 23, 0.12) 100%);
 }
+
+/* ---------------------------------------------------------------- printing
+   The instant quote on /quote is meant to be printed or saved as a PDF — it is
+   the customer's copy of the quotation. Everything that isn't the document
+   itself is site chrome and must not appear on the page: the sticky nav, the
+   footer, the floating WhatsApp button, and the action buttons under the quote
+   (which carry `print:hidden` at the call site).
+
+   The Reveal wrapper is the other thing that has to be neutralised. Sections
+   are server-rendered at opacity:0 and animated in by framer-motion; anything
+   below the fold at print time would otherwise print blank. Forcing the
+   printed page to full opacity with no transform is what makes the whole
+   document come out. */
+@media print {
+  /* Direct children of <body> only — the quote document has its own <header>
+     (letterhead) and <footer> (terms), which must survive. */
+  body > header,
+  body > footer,
+  .print-hide {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  /* Section padding is sized for a scrolling viewport; on paper it just burns
+     the top of page one. */
+  main > section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Undo entrance animation state so nothing prints invisible or shifted. */
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Keep a line item and its price build-up on one page. */
+  li,
+  article > div,
+  article > header,
+  article > footer {
+    break-inside: avoid;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

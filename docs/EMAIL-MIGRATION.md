@@ -679,9 +679,22 @@ Consequences to hold in mind:
 4. **Test the real path after cutover**, not just an SMTP test: open
    `https://tinyhomesa.com/quote` on a phone, complete the form, tap send, and confirm the
    message lands in the Hostinger mailbox. That exercises exactly what a customer does.
-5. If the site is ever upgraded from `mailto:` to a server-side form handler, that handler
-   will need SMTP credentials and its sending IP must be added to SPF (§3). Not today's
-   problem, but it is the thing that will break SPF next.
+5. ~~If the site is ever upgraded from `mailto:` to a server-side form handler, that handler
+   will need SMTP credentials and its sending IP must be added to SPF (§3).~~
+   **Done, August 2026.** `/api/quote` now sends two emails per instant quote — the
+   customer's copy of the quotation and the shipping-quote request to the office. **No SPF
+   change was needed**, and this is worth understanding rather than rediscovering: the
+   handler does not send mail *itself*: it authenticates to `smtp.hostinger.com:465` as
+   `admin@tinyhomesa.com` and relays. The message therefore leaves from Hostinger's
+   outbound relays, which the live record `v=spf1 include:_spf.mail.hostinger.com ~all`
+   already authorises — the app server's own IP never appears in the SMTP conversation and
+   so never needs authorising. The trap to avoid is switching to a third-party sender
+   (SendGrid, Resend, Mailgun) or a local `sendmail`: either one *would* introduce a new
+   sending IP, and §3's 10-lookup SPF ceiling becomes live again.
+
+   Credentials live in `SMTP_USER` / `SMTP_PASS` (see `.env.example` and
+   `docs/DEPLOY-HOSTINGER.md` §6), and the mailbox's **100 sends per 24 hours** is now a
+   real operational limit at two sends per quote — roughly 50 quotes a day.
 
 ---
 

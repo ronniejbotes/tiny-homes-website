@@ -1,42 +1,38 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
-import { Check, Loader2, Minus, Plus, Trash2 } from "lucide-react";
-import {
-  configuredPrice,
-  getProduct,
-  isOptionAvailable,
-  optionPrice,
-  products,
-  type CustomOption,
-  type Product,
-  type ProductVariant,
-} from "@/data/products";
+import { Loader2, Minus, Plus, Trash2 } from "lucide-react";
+import { getProduct, optionPrice, products, type CustomOption } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { Button, ButtonAnchor } from "@/components/ui/button";
+import {
+  QUANTITY_MAX,
+  QUANTITY_MIN,
+  lineTitle,
+  makeQuoteReference,
+  quoteTotals,
+  resolveQuoteLine,
+  type AddressField,
+  type AddressValues,
+  type ContactField,
+  type ContactValues,
+  type QuoteLine,
+  type QuoteUnit,
+} from "@/lib/quote";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { TextField, inputClasses, labelClasses } from "./fields";
 import { ProductPicker, VariantPicker } from "./product-picker";
 import { ExtrasPicker } from "./extras-picker";
 import { AddressFields } from "./address-fields";
 import { SummaryCard } from "./summary-card";
+import { QuoteDocument } from "./quote-document";
 
 /* ------------------------------------------------------------ types */
 
-export type ContactField = "name" | "email" | "phone";
-export type AddressField = "street" | "suburb" | "city" | "province" | "postal";
 export type FieldName = ContactField | AddressField;
-
-export interface AddressValues {
-  street: string;
-  suburb: string;
-  city: string;
-  province: string;
-  postal: string;
-}
 
 const EMPTY_ADDRESS: AddressValues = {
   street: "",
@@ -58,25 +54,19 @@ interface LineItem {
   quantity: number;
 }
 
-/** A line resolved against the catalogue for pricing, summary and messages. */
-export interface QuoteLine {
-  id: string;
-  product: Product;
-  variant: ProductVariant | undefined;
-  activeOptions: CustomOption[];
-  quantity: number;
-  /** Variant (or product starting) price for one unit, before extras. */
-  basePrice: number;
-  /** Floor area of the chosen variant, m² — resolves per-m² extra pricing. */
-  areaM2: number | undefined;
-  /** Base (variant or startingPrice) + selected extras, for a single unit. */
-  unitPrice: number;
-  /** unitPrice × quantity. */
-  lineTotal: number;
+/** The issued quote — set once, then rendered in place of the form. */
+interface IssuedQuote {
+  reference: string;
+  date: Date;
+  contact: ContactValues;
+  address: AddressValues;
+  notes: string;
+  lines: QuoteLine[];
+  /** Whether the shipping-quote request actually reached the office. */
+  delivered: boolean;
+  /** Whether the customer's own copy of the quotation reached their inbox. */
+  copySent: boolean;
 }
-
-const QUANTITY_MIN = 1;
-const QUANTITY_MAX = 10;
 
 /* ------------------------------------------------------- deep links */
 
@@ -115,10 +105,12 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 function validate(field: FieldName, value: string): string | null {
   const t = value.trim();
   switch (field) {
-    case "name":
-      return t ? null : "Please enter your name so we know who we're talking to.";
+    case "firstName":
+      return t ? null : "Please enter your first name so we know who we're talking to.";
+    case "surname":
+      return t ? null : "Please enter your surname — it goes on your quotation.";
     case "email":
-      if (!t) return "Please enter your email address so we can reply to you.";
+      if (!t) return "Please enter your email address so we can send your shipping quote.";
       return EMAIL_RE.test(t)
         ? null
         : "That email doesn't look complete — check for a missing @ or domain, e.g. name@example.com.";
@@ -143,10 +135,10 @@ function validate(field: FieldName, value: string): string | null {
   }
 }
 
+const CONTACT_FIELDS: ContactField[] = ["firstName", "surname", "email", "phone"];
+
 const FOCUS_ORDER: FieldName[] = [
-  "name",
-  "email",
-  "phone",
+  ...CONTACT_FIELDS,
   "street",
   "suburb",
   "city",
@@ -156,7 +148,8 @@ const FOCUS_ORDER: FieldName[] = [
 
 /** DOM ids for each field — used to focus the first invalid field on submit. */
 const FIELD_IDS: Record<FieldName, string> = {
-  name: "quote-name",
+  firstName: "quote-first-name",
+  surname: "quote-surname",
   email: "quote-email",
   phone: "quote-phone",
   street: "quote-street",
@@ -331,7 +324,7 @@ function UnitsList({
 
 /* -------------------------------------------------------- inner form */
 
-function QuoteFormInner() {
+function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const searchParams = useSearchParams();
   const deep = useMemo(() => parseDeepLink(searchParams), [searchParams]);
 
@@ -358,29 +351,23 @@ function QuoteFormInner() {
   // editor is a blank draft until a product is picked (which creates the item).
   const [editingId, setEditingId] = useState<string | null>(deep.slug ? "unit-0" : null);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [contact, setContact] = useState<ContactValues>({
+    firstName: "",
+    surname: "",
+    email: "",
+    phone: "",
+  });
   const [address, setAddress] = useState<AddressValues>(EMPTY_ADDRESS);
   const [notes, setNotes] = useState("");
+  // Honeypot. Left empty by every human; form bots fill every field they find.
+  const [company, setCompany] = useState("");
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string | null>>>({});
   const [productError, setProductError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  // Set when the WhatsApp window could not be opened, so we offer recovery
-  // routes instead of a success message the request never earned.
-  const [blocked, setBlocked] = useState(false);
+  const [quote, setQuote] = useState<IssuedQuote | null>(null);
 
   const pickerRef = useRef<HTMLDivElement>(null);
-  const successHeadingRef = useRef<HTMLHeadingElement>(null);
-
-  // Focus the success heading when it appears so screen readers announce the
-  // confirmation — a live region mounted together with its content is often
-  // skipped by AT.
-  useEffect(() => {
-    if (sent) successHeadingRef.current?.focus();
-  }, [sent]);
 
   /* -------- editor state (derived from the item being edited) */
   const editingItem = items.find((i) => i.id === editingId);
@@ -389,42 +376,19 @@ function QuoteFormInner() {
   const variantId = editingItem?.variantId;
   const selected = editingItem?.selected ?? {};
 
-  /** Resolve a raw line item against the catalogue for pricing/summary/message. */
-  const resolveLine = (item: LineItem): QuoteLine | null => {
-    const p = getProduct(item.slug);
-    if (!p) return null;
-    const v = p.variants?.find((x) => x.id === item.variantId);
-    // Mirror configuredPrice()'s filter exactly — an extra that isn't offered on
-    // the chosen size costs nothing, so it must not be listed either.
-    const activeOptions = p.options.filter(
-      (o) =>
-        isOptionAvailable(o, item.variantId) &&
-        item.selected[o.id] &&
-        (!o.requires || item.selected[o.requires]),
-    );
-    const unitPrice = configuredPrice(p, item.selected, item.variantId);
-    return {
-      id: item.id,
-      product: p,
-      variant: v,
-      activeOptions,
-      quantity: item.quantity,
-      basePrice: v ? v.price : p.startingPrice,
-      areaM2: v?.areaM2,
-      unitPrice,
-      lineTotal: unitPrice * item.quantity,
-    };
-  };
+  /** The wire form of a line item — configuration only, never prices. */
+  const toUnit = (item: LineItem): QuoteUnit => ({
+    slug: item.slug,
+    variantId: item.variantId,
+    optionIds: Object.keys(item.selected).filter((id) => item.selected[id]),
+    quantity: item.quantity,
+  });
 
   const lines: QuoteLine[] = items
-    .map(resolveLine)
+    .map((item) => resolveQuoteLine(toUnit(item), item.id))
     .filter((l): l is QuoteLine => l !== null);
 
-  const pricedLines = lines.filter((l) => !l.product.priceOnRequest);
-  const hasPricedTotal = pricedLines.length > 0;
-  const someOnRequest = lines.some((l) => l.product.priceOnRequest);
-  const grandTotal = pricedLines.reduce((sum, l) => sum + l.lineTotal, 0);
-  const totalUnits = lines.reduce((sum, l) => sum + l.quantity, 0);
+  const totals = quoteTotals(lines);
 
   /* -------- editor handlers (operate on the editing item) */
   const scrollToPicker = () => {
@@ -503,11 +467,11 @@ function QuoteFormInner() {
     scrollToPicker();
   };
 
-  const contactValue = (field: ContactField) =>
-    field === "name" ? name : field === "email" ? email : phone;
-
+  const handleContactChange = (field: ContactField, value: string) => {
+    setContact((prev) => ({ ...prev, [field]: value }));
+  };
   const handleContactBlur = (field: ContactField) => {
-    setErrors((prev) => ({ ...prev, [field]: validate(field, contactValue(field)) }));
+    setErrors((prev) => ({ ...prev, [field]: validate(field, contact[field]) }));
   };
 
   const handleAddressChange = (field: AddressField, value: string) => {
@@ -517,18 +481,22 @@ function QuoteFormInner() {
     setErrors((prev) => ({ ...prev, [field]: validate(field, address[field]) }));
   };
 
-  /* -------- message composition */
-  const composeMessage = () => {
-    const out: string[] = ["New quote request via tinyhomesa.com", ""];
+  /* -------- message composition (WhatsApp / email fallback routes) */
+  const composeMessage = (reference?: string) => {
+    const out: string[] = [
+      reference
+        ? `Shipping quote request — quote ${reference} (tinyhomesa.com)`
+        : "New quote request via tinyhomesa.com",
+      "",
+    ];
 
-    out.push(`Units (${totalUnits} total):`);
+    out.push(`Units (${totals.totalUnits} total):`);
     lines.forEach((l, idx) => {
-      const title = l.variant ? l.variant.name : l.product.name;
       const size = l.variant ? ` (${l.variant.size})` : "";
       // Each line carries its own money so the rep can read the build-up:
       // base price on the unit, effective price on every extra.
       const base = l.product.priceOnRequest ? "" : ` (${formatZAR(l.basePrice)})`;
-      out.push(`${idx + 1}. ${l.quantity} × ${title}${size}${base}`);
+      out.push(`${idx + 1}. ${l.quantity} × ${lineTitle(l)}${size}${base}`);
       if (l.activeOptions.length > 0) {
         out.push("   Extras:");
         for (const o of l.activeOptions) {
@@ -546,41 +514,47 @@ function QuoteFormInner() {
       );
     });
 
-    if (hasPricedTotal) {
-      out.push("", `Estimated total (ex VAT): ${formatZAR(grandTotal)}`);
-      if (someOnRequest) out.push("(plus units priced after consultation)");
+    if (totals.hasPricedTotal) {
+      out.push("", `Subtotal (ex VAT): ${formatZAR(totals.subtotal)}`);
+      out.push(`VAT @ 15%: ${formatZAR(totals.vat)}`);
+      out.push(`Total (incl VAT): ${formatZAR(totals.total)}`);
+      if (totals.someOnRequest) out.push("(plus units priced after consultation)");
     } else {
       out.push("", "Estimated total: priced after consultation");
     }
 
-    out.push("", `Name: ${name.trim()}`);
-    out.push(`Email: ${email.trim()}`);
-    out.push(`Phone: ${phone.trim()}`);
+    out.push("", `Name: ${contact.firstName.trim()}`);
+    out.push(`Surname: ${contact.surname.trim()}`);
+    out.push(`Email: ${contact.email.trim()}`);
+    out.push(`Phone: ${contact.phone.trim()}`);
 
-    out.push("", "Delivery address:");
+    out.push("", "Shipping location:");
     out.push(address.street.trim());
     out.push(`${address.suburb.trim()}, ${address.city.trim()}`);
     out.push(`${address.province}, ${address.postal.trim()}`);
 
     if (notes.trim()) out.push("", `Notes: ${notes.trim()}`);
+    out.push("", "Please send me a quote for delivery and transport.");
     return out.join("\n");
   };
 
-  const whatsappHref = () => `${site.whatsapp}?text=${encodeURIComponent(composeMessage())}`;
+  const whatsappHref = (reference?: string) =>
+    `${site.whatsapp}?text=${encodeURIComponent(composeMessage(reference))}`;
 
-  const mailtoHref = () => {
-    const label =
-      lines.length === 1
-        ? (lines[0].variant?.name ?? lines[0].product.name)
-        : `${totalUnits} units`;
-    const subject = `Quote request — ${lines.length > 0 ? label : "Tiny Homes SA"}`;
+  const mailtoHref = (reference?: string) => {
+    const label = lines.length === 1 ? lineTitle(lines[0]) : `${totals.totalUnits} units`;
+    const subject = reference
+      ? `Shipping quote request — ${reference}`
+      : `Quote request — ${lines.length > 0 ? label : "Tiny Homes SA"}`;
     return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      composeMessage(),
+      composeMessage(reference),
     )}`;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  /* -------- submit */
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (sending) return;
 
     if (lines.length === 0) {
       setProductError("Please add at least one unit to your quote before sending your request.");
@@ -595,9 +569,9 @@ function QuoteFormInner() {
     for (const field of FOCUS_ORDER) {
       nextErrors[field] = validate(
         field,
-        field === "name" || field === "email" || field === "phone"
-          ? contactValue(field)
-          : address[field],
+        CONTACT_FIELDS.includes(field as ContactField)
+          ? contact[field as ContactField]
+          : address[field as AddressField],
       );
     }
     setErrors(nextErrors);
@@ -608,67 +582,75 @@ function QuoteFormInner() {
       return;
     }
 
-    // Open synchronously inside the submit handler so popup blockers allow it.
-    // The "noopener" feature is deliberately NOT passed: per spec it forces
-    // window.open to return null, which would make the guard below unable to
-    // tell success from failure — we sever the opener by hand instead.
-    const popup = window.open(whatsappHref(), "_blank");
-    if (!popup) {
-      // Popup blocker, an in-app browser (Facebook/Instagram webviews) or no
-      // WhatsApp handler. Claiming success here loses the lead silently.
-      setBlocked(true);
-      return;
-    }
+    // Minted here, not on the server, so the customer's document always carries
+    // a reference — even if the request below never lands.
+    const reference = makeQuoteReference();
+    const date = new Date();
+    setSending(true);
+
+    let issuedReference = reference;
+    let delivered = false;
+    let copySent = false;
     try {
-      popup.opener = null;
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reference,
+          contact,
+          address,
+          notes,
+          company,
+          units: items.map(toUnit),
+        }),
+      });
+      if (response.ok) {
+        const data = (await response.json()) as {
+          reference?: string;
+          delivered?: boolean;
+          copySent?: boolean;
+        };
+        delivered = data.delivered === true;
+        copySent = data.copySent === true;
+        if (typeof data.reference === "string") issuedReference = data.reference;
+      }
     } catch {
-      // Cross-origin restriction on the handle — harmless, wa.me is trusted.
+      // Offline, or the server is down. The quote itself is computed here in
+      // the browser, so it still renders — both flags stay false and the
+      // document offers WhatsApp and email as the route to a shipping quote.
     }
 
-    setBlocked(false);
-    setSending(true);
-    window.setTimeout(() => {
-      setSending(false);
-      setSent(true);
-    }, 700);
+    setSending(false);
+    setQuote({
+      reference: issuedReference,
+      date,
+      contact,
+      address,
+      notes,
+      lines,
+      delivered,
+      copySent,
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  /* -------- success state */
-  if (sent) {
+  /* -------- issued quote replaces the form (and the page's standfirst) */
+  if (quote) {
     return (
-      <div className="rounded-3xl border border-border bg-parchment/60 p-8 sm:p-10">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-forest text-cream">
-          <Check className="h-6 w-6" aria-hidden="true" />
-        </span>
-        <h3
-          ref={successHeadingRef}
-          tabIndex={-1}
-          className="text-display mt-6 text-2xl text-ink focus:outline-none sm:text-3xl"
-        >
-          Your quote request is on its way
-        </h3>
-        <p className="mt-4 leading-relaxed text-stone">
-          WhatsApp should have opened in a new tab with your units and delivery address pre-filled —
-          just press send there and we&apos;ll come back with a formal quotation, including delivery
-          to your site.
-        </p>
-        <p className="mt-4 leading-relaxed text-stone">
-          Didn&apos;t open, or prefer email?{" "}
-          <a
-            href={mailtoHref()}
-            className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
-          >
-            Send the same request by email
-          </a>{" "}
-          or call us on{" "}
-          <a
-            href={`tel:${site.phone.replace(/\s/g, "")}`}
-            className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
-          >
-            {site.phoneDisplay}
-          </a>
-          .
-        </p>
+      <div className="mt-14 sm:mt-16">
+        <QuoteDocument
+          reference={quote.reference}
+          date={quote.date}
+          contact={quote.contact}
+          address={quote.address}
+          notes={quote.notes}
+          lines={quote.lines}
+          delivered={quote.delivered}
+          copySent={quote.copySent}
+          whatsappHref={whatsappHref(quote.reference)}
+          mailtoHref={mailtoHref(quote.reference)}
+          onStartOver={() => setQuote(null)}
+        />
       </div>
     );
   }
@@ -678,239 +660,236 @@ function QuoteFormInner() {
   const editorHeading = editingItem ? "Configure this unit" : "Add a unit";
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-      <form onSubmit={handleSubmit} noValidate className="space-y-14">
-        {/* Step 1 — choose your homes */}
-        <Step
-          n={1}
-          title="Choose your homes"
-          description="Configure a unit, then add it to your order. Need more than one? Add another unit, or bump the quantity on any line — mix and match as many homes as you like."
-        >
-          <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
-          <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
-            <ProductPicker products={products} selectedSlug={slug} onSelect={handleSelectProduct} />
-            {productError && (
-              <p role="alert" className="mt-3 text-sm text-clay-dark">
-                {productError}
-              </p>
-            )}
-          </div>
-
-          {product?.variants && product.variants.length > 0 && (
-            <div className="mt-8">
-              <p className="text-eyebrow mb-3 text-clay-dark">Choose your size</p>
-              <VariantPicker
-                product={product}
-                variantId={variantId}
-                onSelect={handleSelectVariant}
-              />
-            </div>
-          )}
-
-          {product && product.options.length > 0 && (
-            <div className="mt-8">
-              <p className="text-eyebrow mb-3 text-clay-dark">Add extras</p>
-              <p className="mb-4 text-sm leading-relaxed text-stone">
-                Every extra is provisional and confirmed line by line on your formal quotation.
-                Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.
-              </p>
-              <ExtrasPicker
-                product={product}
-                variantId={variantId}
-                selected={selected}
-                onToggle={toggleOption}
-              />
-            </div>
-          )}
-
-          {product?.priceOnRequest && (
-            <p className="mt-8 rounded-2xl border border-border bg-parchment/60 p-5 text-sm leading-relaxed text-stone">
-              Safari tents are configured to your site and brief, so there&apos;s no fixed price or
-              options list here — add it to your units and we&apos;ll arrange a consultation and an
-              itemised quotation.
-            </p>
-          )}
-
-          {/* Your units — the running order */}
-          {lines.length > 0 && (
-            <div className="mt-10 border-t border-border pt-8">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-display text-xl text-ink">Your units</h3>
-                <span className="text-sm text-stone">
-                  {totalUnits} {totalUnits === 1 ? "unit" : "units"}
-                </span>
-              </div>
-              <p className="mb-4 mt-1 text-sm leading-relaxed text-stone">
-                Adjust the quantity, edit a configuration or remove a unit at any time.
-              </p>
-              <UnitsList
-                lines={lines}
-                editingId={editingId}
-                onEdit={handleEdit}
-                onRemove={handleRemove}
-                onQuantity={handleQuantity}
-              />
-              <button
-                type="button"
-                onClick={handleAddAnother}
-                className={cn(
-                  "mt-4 inline-flex items-center gap-2 rounded-xl border border-dashed border-clay/50 px-4 py-3 text-sm font-medium text-clay-dark transition-colors hover:border-clay hover:bg-parchment/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30",
-                  editingId === null && "border-forest/50 bg-parchment/60 text-forest",
-                )}
-              >
-                <Plus className="h-4 w-4" aria-hidden="true" />
-                Add another unit
-              </button>
-            </div>
-          )}
-        </Step>
-
-        {/* Step 2 — your details */}
-        <Step n={2} title="Your details" delay={0.05}>
-          <div className="space-y-5">
-            <TextField
-              id="quote-name"
-              label="Full name"
-              value={name}
-              onValueChange={setName}
-              onBlur={() => handleContactBlur("name")}
-              error={errors.name}
-              required
-              autoComplete="name"
-              placeholder="Thandi Nkosi"
-            />
-            <div className="grid gap-5 sm:grid-cols-2">
-              <TextField
-                id="quote-email"
-                label="Email"
-                type="email"
-                value={email}
-                onValueChange={setEmail}
-                onBlur={() => handleContactBlur("email")}
-                error={errors.email}
-                required
-                autoComplete="email"
-                placeholder="you@example.com"
-              />
-              <TextField
-                id="quote-phone"
-                label="Phone"
-                type="tel"
-                value={phone}
-                onValueChange={setPhone}
-                onBlur={() => handleContactBlur("phone")}
-                error={errors.phone}
-                required
-                autoComplete="tel"
-                inputMode="tel"
-                placeholder="083 660 3743"
-              />
-            </div>
-          </div>
-        </Step>
-
-        {/* Step 3 — delivery address */}
-        <Step
-          n={3}
-          title="Delivery address"
-          description="Where should the homes go? We use this to calculate an accurate delivery and shipping quote to the site."
-          delay={0.05}
-        >
-          <AddressFields
-            values={address}
-            errors={errors}
-            onChange={handleAddressChange}
-            onBlur={handleAddressBlur}
-          />
-        </Step>
-
-        {/* Step 4 — notes */}
-        <Step n={4} title="Anything else?" delay={0.05}>
-          <label htmlFor="quote-notes" className={labelClasses}>
-            Notes <span className="font-normal text-stone">(optional)</span>
-          </label>
-          <textarea
-            id="quote-notes"
-            name="quote-notes"
-            rows={4}
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder="Tell us about your site, access, timeline or any questions — e.g. slab already poured, delivery needed before December."
-            className={cn(inputClasses, "h-auto min-h-28 resize-y py-3.5")}
-          />
-        </Step>
-
-        {/* Mobile summary — keeps the estimate in view above the submit button */}
-        <div className="lg:hidden">{summary}</div>
-
-        {/* Submit */}
-        <div className="pt-1">
-          <Button
-            type="submit"
-            variant="accent"
-            size="lg"
-            disabled={sending}
-            className={cn("w-full sm:w-auto", sending && "cursor-wait opacity-80")}
+    <>
+      {intro}
+      <div className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
+        <form onSubmit={handleSubmit} noValidate className="space-y-14">
+          {/* Step 1 — choose your homes */}
+          <Step
+            n={1}
+            title="Choose your homes"
+            description="Configure a unit, then add it to your order. Need more than one? Add another unit, or bump the quantity on any line — mix and match as many homes as you like."
           >
-            {sending ? (
-              <>
-                <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
-                Opening WhatsApp…
-              </>
-            ) : (
-              "Send quote request via WhatsApp"
+            <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
+            <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
+              <ProductPicker
+                products={products}
+                selectedSlug={slug}
+                onSelect={handleSelectProduct}
+              />
+              {productError && (
+                <p role="alert" className="mt-3 text-sm text-clay-dark">
+                  {productError}
+                </p>
+              )}
+            </div>
+
+            {product?.variants && product.variants.length > 0 && (
+              <div className="mt-8">
+                <p className="text-eyebrow mb-3 text-clay-dark">Choose your size</p>
+                <VariantPicker
+                  product={product}
+                  variantId={variantId}
+                  onSelect={handleSelectVariant}
+                />
+              </div>
             )}
-          </Button>
-          {blocked ? (
-            <div
-              role="alert"
-              aria-live="polite"
-              className="mt-4 rounded-2xl border border-clay/40 bg-parchment/60 p-5"
-            >
-              <p className="text-eyebrow text-clay-dark">WhatsApp didn&apos;t open</p>
-              <p className="mt-2 text-sm leading-relaxed text-stone">
-                Your browser blocked the new window — this often happens inside the Facebook or
-                Instagram in-app browser. Your quote request hasn&apos;t reached us yet, so please
-                use one of these instead. Your units and details are already filled in.
+
+            {product && product.options.length > 0 && (
+              <div className="mt-8">
+                <p className="text-eyebrow mb-3 text-clay-dark">Add extras</p>
+                <p className="mb-4 text-sm leading-relaxed text-stone">
+                  Every extra is provisional and confirmed line by line on your formal quotation.
+                  Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.
+                </p>
+                <ExtrasPicker
+                  product={product}
+                  variantId={variantId}
+                  selected={selected}
+                  onToggle={toggleOption}
+                />
+              </div>
+            )}
+
+            {product?.priceOnRequest && (
+              <p className="mt-8 rounded-2xl border border-border bg-parchment/60 p-5 text-sm leading-relaxed text-stone">
+                Safari tents are configured to your site and brief, so there&apos;s no fixed price
+                or options list here — add it to your units and we&apos;ll arrange a consultation
+                and an itemised quotation.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <ButtonAnchor
-                  href={whatsappHref()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="accent"
+            )}
+
+            {/* Your units — the running order */}
+            {lines.length > 0 && (
+              <div className="mt-10 border-t border-border pt-8">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="text-display text-xl text-ink">Your units</h3>
+                  <span className="text-sm text-stone">
+                    {totals.totalUnits} {totals.totalUnits === 1 ? "unit" : "units"}
+                  </span>
+                </div>
+                <p className="mb-4 mt-1 text-sm leading-relaxed text-stone">
+                  Adjust the quantity, edit a configuration or remove a unit at any time.
+                </p>
+                <UnitsList
+                  lines={lines}
+                  editingId={editingId}
+                  onEdit={handleEdit}
+                  onRemove={handleRemove}
+                  onQuantity={handleQuantity}
+                />
+                <button
+                  type="button"
+                  onClick={handleAddAnother}
+                  className={cn(
+                    "mt-4 inline-flex items-center gap-2 rounded-xl border border-dashed border-clay/50 px-4 py-3 text-sm font-medium text-clay-dark transition-colors hover:border-clay hover:bg-parchment/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30",
+                    editingId === null && "border-forest/50 bg-parchment/60 text-forest",
+                  )}
                 >
-                  Open WhatsApp
-                </ButtonAnchor>
-                <ButtonAnchor href={mailtoHref()} variant="outline">
-                  Email your request
-                </ButtonAnchor>
-                <ButtonAnchor href={`tel:${site.phone.replace(/\s/g, "")}`} variant="outline">
-                  Call {site.phoneDisplay}
-                </ButtonAnchor>
+                  <Plus className="h-4 w-4" aria-hidden="true" />
+                  Add another unit
+                </button>
+              </div>
+            )}
+          </Step>
+
+          {/* Step 2 — your details */}
+          <Step n={2} title="Your details" delay={0.05}>
+            <div className="space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <TextField
+                  id={FIELD_IDS.firstName}
+                  label="First name"
+                  value={contact.firstName}
+                  onValueChange={(v) => handleContactChange("firstName", v)}
+                  onBlur={() => handleContactBlur("firstName")}
+                  error={errors.firstName}
+                  required
+                  autoComplete="given-name"
+                  placeholder="Thandi"
+                />
+                <TextField
+                  id={FIELD_IDS.surname}
+                  label="Surname"
+                  value={contact.surname}
+                  onValueChange={(v) => handleContactChange("surname", v)}
+                  onBlur={() => handleContactBlur("surname")}
+                  error={errors.surname}
+                  required
+                  autoComplete="family-name"
+                  placeholder="Nkosi"
+                />
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <TextField
+                  id={FIELD_IDS.email}
+                  label="Email"
+                  type="email"
+                  value={contact.email}
+                  onValueChange={(v) => handleContactChange("email", v)}
+                  onBlur={() => handleContactBlur("email")}
+                  error={errors.email}
+                  required
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                />
+                <TextField
+                  id={FIELD_IDS.phone}
+                  label="Phone"
+                  type="tel"
+                  value={contact.phone}
+                  onValueChange={(v) => handleContactChange("phone", v)}
+                  onBlur={() => handleContactBlur("phone")}
+                  error={errors.phone}
+                  required
+                  autoComplete="tel"
+                  inputMode="tel"
+                  placeholder="083 660 3743"
+                />
               </div>
             </div>
-          ) : (
-            <p className="mt-3 text-sm leading-relaxed text-stone">
-              This opens WhatsApp with your quote request pre-filled — nothing is stored on our
-              site. Prefer email?{" "}
-              <a
-                href={mailtoHref()}
-                className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
-              >
-                Write to {site.email}
-              </a>
-              .
-            </p>
-          )}
-        </div>
-      </form>
+          </Step>
 
-      {/* Desktop sticky summary */}
-      <aside className="hidden lg:block" aria-label="Your estimate">
-        <div className="lg:sticky lg:top-24">{summary}</div>
-      </aside>
-    </div>
+          {/* Step 3 — delivery address */}
+          <Step
+            n={3}
+            title="Delivery address"
+            description="Where should the homes go? We use this to price your delivery and transport quote, which follows separately by email."
+            delay={0.05}
+          >
+            <AddressFields
+              values={address}
+              errors={errors}
+              onChange={handleAddressChange}
+              onBlur={handleAddressBlur}
+            />
+          </Step>
+
+          {/* Step 4 — notes */}
+          <Step n={4} title="Anything else?" delay={0.05}>
+            <label htmlFor="quote-notes" className={labelClasses}>
+              Notes <span className="font-normal text-stone">(optional)</span>
+            </label>
+            <textarea
+              id="quote-notes"
+              name="quote-notes"
+              rows={4}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Tell us about your site, access, timeline or any questions — e.g. slab already poured, delivery needed before December."
+              className={cn(inputClasses, "h-auto min-h-28 resize-y py-3.5")}
+            />
+          </Step>
+
+          {/* Honeypot — off-screen rather than display:none, which some bots skip. */}
+          <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+            <label htmlFor="quote-company">Company (leave blank)</label>
+            <input
+              id="quote-company"
+              name="company"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+            />
+          </div>
+
+          {/* Mobile summary — keeps the estimate in view above the submit button */}
+          <div className="lg:hidden">{summary}</div>
+
+          {/* Submit */}
+          <div className="pt-1">
+            <Button
+              type="submit"
+              variant="accent"
+              size="lg"
+              disabled={sending}
+              className={cn("w-full sm:w-auto", sending && "cursor-wait opacity-80")}
+            >
+              {sending ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+                  Preparing your quote…
+                </>
+              ) : (
+                "Get my instant quote"
+              )}
+            </Button>
+            <p className="mt-3 text-sm leading-relaxed text-stone">
+              Your quote appears on screen straight away and lands in your inbox moments later,
+              covering your units, extras and VAT. Delivery and transport are quoted separately —
+              we&apos;ll email that through once we&apos;ve priced the route to your site.
+            </p>
+          </div>
+        </form>
+
+        {/* Desktop sticky summary */}
+        <aside className="hidden lg:block" aria-label="Your estimate">
+          <div className="lg:sticky lg:top-24">{summary}</div>
+        </aside>
+      </div>
+    </>
   );
 }
 
@@ -918,7 +897,10 @@ function QuoteFormInner() {
 
 function QuoteFormFallback() {
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16" aria-hidden="true">
+    <div
+      className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16"
+      aria-hidden="true"
+    >
       <div className="space-y-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 4 }).map((_, i) => (
@@ -937,13 +919,17 @@ function QuoteFormFallback() {
 }
 
 /**
- * Instant-quote form. useSearchParams() requires a Suspense boundary in the
- * App Router, so the inner form is wrapped here.
+ * Instant-quote form.
+ *
+ * `intro` is the page's standfirst, handed in so it can be dropped once a quote
+ * has been issued — it is server-rendered by the page, not by this component.
+ * useSearchParams() requires a Suspense boundary in the App Router, so the
+ * inner form is wrapped here.
  */
-export function QuoteForm() {
+export function QuoteForm({ intro }: { intro?: React.ReactNode }) {
   return (
     <Suspense fallback={<QuoteFormFallback />}>
-      <QuoteFormInner />
+      <QuoteFormInner intro={intro} />
     </Suspense>
   );
 }

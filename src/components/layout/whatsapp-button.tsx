@@ -12,7 +12,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Tiny Homes SA on WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex h-20 w-20 items-center justify-center rounded-full bg-whatsapp shadow-[var(--shadow-lifted)] transition-transform duration-200 hover:scale-105 active:scale-95"
+      className="print-hide group fixed bottom-5 right-5 z-40 flex h-20 w-20 items-center justify-center rounded-full bg-whatsapp shadow-[var(--shadow-lifted)] transition-transform duration-200 hover:scale-105 active:scale-95"
     >
       {/* Spinning circular text + dotted ring */}
       <svg

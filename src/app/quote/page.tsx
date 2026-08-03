@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const pageDescription =
-  "Build your prefab tiny home, pick your size and extras for an instant estimate, then send it for a formal quote with delivery anywhere in South Africa.";
+  "Build your prefab tiny home, pick your size and extras, and get a full quote including VAT on screen and by email straight away. Delivery and transport are quoted separately, at cost.";
 
 export const metadata: Metadata = {
   title: "Get an Instant Quote Now",
@@ -56,22 +56,38 @@ export default function QuotePage() {
 
       <section className="pb-20 pt-28 sm:pb-28 sm:pt-36" aria-labelledby="quote-heading">
         <Container>
-          <Reveal className="max-w-3xl">
+          {/* Hidden on paper: when the issued quote is printed, the document's
+              own letterhead is the header — a page title above it reads like a
+              screenshot of a website, not a quotation. */}
+          <Reveal className="max-w-3xl print:hidden">
             <p className="text-eyebrow mb-4 text-clay">Instant quote</p>
             <h1 id="quote-heading" className="text-display text-5xl text-ink sm:text-6xl lg:text-7xl">
               Get an instant quote now
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-stone">
-              Choose your home, size and extras to see an estimated price straight away, then send us
-              your details and delivery address. We&apos;ll come back with a formal quotation —
-              including delivery to your site — typically within 90 days of deposit. All prices
-              exclude VAT.
-            </p>
           </Reveal>
 
-          <div className="mt-14 sm:mt-16">
-            <QuoteForm />
-          </div>
+          {/* The standfirst is handed to the form rather than rendered here, so
+              it can step aside once a quote has been issued — "choose your home,
+              size and extras" reads as a stale instruction above a finished
+              quotation. It is still server-rendered: passing JSX as a prop to a
+              client component keeps it in the initial HTML. */}
+          <QuoteForm
+            intro={
+              <Reveal className="max-w-3xl">
+                <p className="mt-6 text-lg leading-relaxed text-stone">
+                  Choose your home, size and extras, then add your details — your quote appears on
+                  screen straight away, with VAT included and every extra itemised, and a copy
+                  lands in your inbox moments later.
+                </p>
+                <p className="mt-4 text-lg leading-relaxed text-stone">
+                  Delivery and transport aren&apos;t part of that figure: they depend on your site,
+                  so we price them separately and email that quote through to you. We pass shipping
+                  on at cost with no markup, so you&apos;re welcome to arrange your own transport
+                  too.
+                </p>
+              </Reveal>
+            }
+          />
         </Container>
       </section>
     </>

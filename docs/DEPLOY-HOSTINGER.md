@@ -18,7 +18,7 @@
 | **Start command** | `npm run start -- -p $PORT` |
 | **Deployment method** | **GitHub integration**, branch `main` |
 | **Does `package.json` need changing?** | **No.** See §3.4 |
-| **Environment variables needed** | **None.** See §6 |
+| **Environment variables needed** | **`SMTP_USER`, `SMTP_PASS`, `SMTP_HOST`** — quote email. See §6 |
 | **Biggest risk** | The build running out of memory on the server (§5) and the 63 MB of video files (§12) |
 | **Total hands-on time** | ~45 minutes, plus a 24-hour DNS wait |
 
@@ -180,7 +180,21 @@ It is 1.3 GB locally (it contains development caches as well as the production o
 
 ## 6. Environment variables
 
-**This site needs none.** Deploy with the environment variables section empty, apart from the `NODE_OPTIONS` line from §5.
+**This site needs three, all for quote email** (added August 2026 — this section previously read "none", which was true before `/api/quote` existed):
+
+```
+SMTP_USER=admin@tinyhomesa.com
+SMTP_PASS=<the admin@tinyhomesa.com mailbox password>
+SMTP_HOST=smtp.hostinger.com
+```
+
+`SMTP_HOST` and `SMTP_PORT` both have working defaults in `src/lib/mailer.ts` (`smtp.hostinger.com` / `465`), so strictly only `SMTP_USER` and `SMTP_PASS` are required — but setting the host explicitly makes the configuration legible to the next person.
+
+Two optional ones exist and are almost never needed: `QUOTE_NOTIFY_EMAIL` (where shipping-quote requests land, defaults to `admin@tinyhomesa.com`) and `SMTP_FROM` (defaults to `"Tiny Homes SA website" <SMTP_USER>`). See `.env.example`.
+
+**What happens if you skip them:** nothing crashes and the build still succeeds. Visitors still get their quote on screen, but no email is sent — neither their copy of the quotation nor the shipping-quote request to the office. The page tells them so and offers WhatsApp instead, so leads are not lost silently, but every quote then needs manual follow-up. Check the runtime log (§10) for `[quote] SMTP not configured`.
+
+> ⚠️ **Two emails go out per quote request** (customer copy + office notification) against the mailbox's **100 sends per 24 hours** — roughly 50 quotes a day. See `docs/EMAIL-MIGRATION.md` for the plan limits.
 
 - **`MESHY_API_KEY`** exists in your local `.env.local` file but **is not referenced anywhere in the source code** — it is dead. Do not copy it to Hostinger. (It is also excluded from git by `.gitignore`, so it was never going to reach the server anyway.)
 - **Google Analytics** (`G-5R1KHZE03G`) is hard-coded in `src/app/layout.tsx`, not read from an environment variable. Nothing to configure.

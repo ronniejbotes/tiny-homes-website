@@ -7,7 +7,7 @@ import {
   inputClasses,
   labelClasses,
 } from "./fields";
-import type { AddressField, AddressValues } from "./quote-form";
+import type { AddressField, AddressValues } from "@/lib/quote";
 
 /** The nine South African provinces, in the official order. */
 export const PROVINCES = [
@@ -128,8 +128,8 @@ export function AddressFields({
       </div>
 
       <p className="text-sm leading-relaxed text-stone">
-        We use your delivery address to calculate an accurate delivery and shipping quote to the
-        site — nationwide.
+        We use this address to price your delivery and transport quote, which follows separately by
+        email — we deliver nationwide, at cost, with no markup on shipping.
       </p>
     </div>
   );
