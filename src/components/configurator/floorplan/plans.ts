@@ -247,86 +247,10 @@ const NATURE_PLAN: ProductPlan = {
   },
 };
 
-/**
- * Apple cabin — representative shell (geometry exact for the largest size).
- * The catalogue variants run 5.8/9/11.8 m at 2.25 m wide; the drawn footprint
- * stays a single representative rectangle and getPlan() rebases floorAreaM2 to
- * the selected variant's size. Bathroom is central; kitchen ships on the 9 m
- * and 11.8 m cabins.
- */
-const APPLE_PLAN: ProductPlan = {
-  exterior: { w: 11.5, d: 3.2 },
-  interior: { w: 11.3, d: 3.0 },
-  wall: WALL_M,
-  floorAreaM2: 26.5,
-  door: { side: "bottom", offset: 3.6, width: 0.9, hinge: "start" },
-  windows: [
-    { side: "bottom", offset: 0.6, length: 2.4 },
-    { side: "bottom", offset: 6.8, length: 3.6 },
-    { side: "top", offset: 9.5, length: 1.2 },
-  ],
-  zones: [
-    wetRoomZone(r(4.95, 0, 6.35, 2.0), true), // bathroom included in all three sizes (1.4 × 2.0 = 2.8)
-    // Kitchen ships with the 9 m and 11.8 m cabins; the 5.8 m adds it via the kitchen-unit option.
-    { ...kitchenZone(r(0.8, 0, 3.1, 0.65), true), standardVariantIds: ["apple-9", "apple-11-8"] },
-    cupboardZone(r(0.8, 0, 3.1, 0.35)),
-    airconZone(r(8.55, 0.05, 8.8, 0.3)),
-  ],
-  fixtures: [
-    ...wetFixtures([5.35, 0.45], [5.35, 1.5], [6.0, 1.0]),
-    ...kitchenFixtures([1.4, 0.35], [2.5, 0.35]),
-  ],
-  furniture: [
-    { id: "bed", label: "Double bed", rect: r(9.6, 0.5, 11.0, 2.4) },
-    { id: "sofa", label: "Sofa", rect: r(0.35, 1.9, 2.15, 2.75) },
-    { id: "coffee-table", label: "Table", rect: r(2.35, 1.6, 3.25, 2.1) },
-    { id: "tv", label: "TV unit", rect: r(7.0, 0.05, 8.2, 0.45) },
-    { id: "wardrobe", label: "Wardrobe", rect: r(6.55, 2.3, 7.75, 2.9) },
-  ],
-  // Optional balcony along the glass wall, outside the shell; clear of the door (3.6–4.5) and its inward swing.
-  deck: {
-    rect: r(6.7, 3.1, 11.2, 4.3),
-    label: "Balcony",
-    standard: false,
-  },
-};
-
-/** Glamping capsule — 11.5 × 3.2 m external; two rooms, central bathroom, kitchen; optional balcony. */
-const CAPSULE_PLAN: ProductPlan = {
-  exterior: { w: 11.5, d: 3.2 },
-  interior: { w: 11.3, d: 3.0 },
-  wall: WALL_M,
-  floorAreaM2: 38,
-  door: { side: "bottom", offset: 5.2, width: 0.9, hinge: "start" },
-  windows: [
-    { side: "bottom", offset: 0.8, length: 3.4 },
-    { side: "bottom", offset: 6.6, length: 3.8 },
-    { side: "right", offset: 0.8, length: 1.4 },
-  ],
-  zones: [
-    wetRoomZone(r(5.0, 0, 6.4, 2.0), true), // central bathroom included in every size
-    kitchenZone(r(1.0, 0, 3.3, 0.65), true), // kitchen included on every capsule size
-    cupboardZone(r(1.0, 0, 3.3, 0.35)),
-    airconZone(r(8.3, 0.05, 8.55, 0.3)),
-  ],
-  fixtures: [
-    ...wetFixtures([5.4, 0.45], [5.4, 1.55], [6.05, 1.0]),
-    ...kitchenFixtures([1.6, 0.35], [2.7, 0.35]),
-  ],
-  furniture: [
-    { id: "bed", label: "Queen bed", rect: r(9.7, 0.4, 11.1, 2.3) },
-    { id: "sofa", label: "Sofa", rect: r(0.5, 2.1, 2.3, 2.95) },
-    { id: "coffee-table", label: "Table", rect: r(2.6, 1.6, 3.5, 2.1) },
-    { id: "dining-table", label: "Dining", rect: r(3.9, 0.6, 4.8, 1.5) },
-    { id: "tv", label: "TV unit", rect: r(8.0, 2.5, 9.2, 2.9) },
-    { id: "wardrobe", label: "Wardrobe", rect: r(6.6, 0.05, 7.8, 0.65) },
-  ],
-  deck: {
-    rect: r(2.5, 3.1, 8.8, 4.9),
-    label: "Balcony",
-    standard: false,
-  },
-};
+/* Apple cabins and glamping capsules have no drawn plan: both ship catalogue
+   plan sheets under manifest.layoutPlans, which the configurator renders in
+   place of FloorPlanView. Their old representative rectangles were removed
+   when those sheets were drawn from the manufacturer's CAD. */
 
 /* ------------------------------------------------------------------ */
 /* Expandable homes — per-variant geometry (external dims in metres)   */
@@ -429,8 +353,6 @@ export const DEFAULT_EXPANDABLE_VARIANT = "b20";
 const PLANS: Record<string, ProductPlan> = {
   "folding-homes": FOLDING_PLAN,
   "nature-cabins": NATURE_PLAN,
-  "apple-cabins": APPLE_PLAN,
-  "glamping-capsules": CAPSULE_PLAN,
 };
 
 /**

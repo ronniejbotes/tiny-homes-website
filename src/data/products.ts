@@ -417,12 +417,12 @@ export const products: Product[] = [
     description:
       "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Two spacious rooms, front and back, sit either side of a central bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Nothing is left on the options list: every capsule ships with a kitchen, a central bathroom with premium fittings, Midea air conditioning, a 40–60 L storage electric water heater, multi-layer thermal insulation, complete plumbing and electrical, interior and exterior lighting and intelligent front-door access — plus an optional balcony that can be removed to extend the indoor space. Available in various designs and sizes, each capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy.",
     startingPrice: 810900,
-    sizeLabel: "18.6 – 38 m²",
+    sizeLabel: "18.6 – 37 m²",
     bedrooms: "2 rooms + central bathroom",
     setupTime: "Delivered fully built",
     dims: { length: 11.5, width: 3.2, height: 3.2 },
     specs: [
-      { label: "Sizes", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 38 m² (11.5 m)" },
+      { label: "Sizes", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 37 m² (11.5 m)" },
       { label: "External size", value: "Up to 11.5 m × 3.2 m × 3.2 m" },
       { label: "Glazing", value: "270° oversized floor-to-ceiling double-glazed windows in each room" },
       { label: "Layout", value: "Two rooms separated by a central bathroom — standard on every size" },
@@ -445,7 +445,7 @@ export const products: Product[] = [
     variants: [
       { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 810900, description: "5.85 × 3.15 × 3.2 m — two panoramic rooms around a central bathroom, with kitchen, Midea air conditioning and storage geyser included. The entry to the capsule range." },
       { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 970900, description: "9.5 × 3.25 × 3.2 m, sleeps 2 — two panoramic rooms around a central bathroom with luxurious fittings, kitchen, Midea air conditioning and storage geyser included." },
-      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "38 m²", price: 1070900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — the largest capsule, with luxurious kitchen and bathroom fittings, Midea air conditioning and storage geyser included." },
+      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "37 m²", price: 1070900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — the largest capsule, with luxurious kitchen and bathroom fittings, Midea air conditioning and storage geyser included." },
     ],
     options: [
       { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule — one price for any size.", price: 14900, category: "comfort", visual: "heating", provisional: false },

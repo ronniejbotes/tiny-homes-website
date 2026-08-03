@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-160 -720 10280 4880" width="2056" height="976" role="img" aria-labelledby="tc95">
+  <title id="tc95">Glamping Capsule 9.5 m floor plan — 30.4 m². Two bedrooms with double beds and bedside tables at either end, separated by a central bathroom with shower, toilet, washbasin and a utility cupboard. External 9500 × 3250 mm.</title>
+  <style>
+    .bg{fill:#faf6ef}
+    .wall{fill:none;stroke:#1c1b17;stroke-width:16}
+    .wallf{fill:#faf6ef;stroke:#1c1b17;stroke-width:14}
+    .fx{fill:none;stroke:#3f3a32;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}
+    .fine{fill:none;stroke:#67635a;stroke-width:8;stroke-linecap:round}
+    .swing{fill:none;stroke:#67635a;stroke-width:7}
+    .glass{fill:none;stroke:#1c1b17;stroke-width:9}
+    .dim{fill:none;stroke:#67635a;stroke-width:9}
+    .ext{fill:none;stroke:#67635a;stroke-width:7}
+    text{font-family:Inter,'Helvetica Neue',Arial,sans-serif}
+    .lbl{font-size:200px;font-weight:700;fill:#1c1b17;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:70;stroke-linejoin:round}
+    .sub{font-size:165px;font-weight:600;fill:#67635a;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:65;stroke-linejoin:round}
+    .dimtxt{font-size:200px;fill:#67635a;text-anchor:middle}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#67635a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="-160" y="-720" width="10280" height="4880"/>
+
+  <!-- shell -->
+  <rect class="wall" x="0" y="0" width="9500" height="3250" rx="520"/>
+  <rect class="wall" x="75" y="75" width="9350" height="3100" rx="445"/>
+
+  <!-- 270° glazing to each bedroom -->
+  <path class="glass" d="M0 700 L0 2550 M37 700 L37 2550 M75 700 L75 2550 M0 700 L75 700 M0 2550 L75 2550"/>
+  <path class="glass" d="M9500 700 L9500 2550 M9463 700 L9463 2550 M9425 700 L9425 2550 M9425 700 L9500 700 M9425 2550 L9500 2550"/>
+  <path class="glass" d="M700 0 L3550 0 M700 37 L3550 37 M700 75 L3550 75 M700 0 L700 75 M3550 0 L3550 75"/>
+  <path class="glass" d="M700 3250 L3550 3250 M700 3213 L3550 3213 M700 3175 L3550 3175 M700 3175 L700 3250 M3550 3175 L3550 3250"/>
+  <path class="glass" d="M5950 0 L8800 0 M5950 37 L8800 37 M5950 75 L8800 75 M5950 0 L5950 75 M8800 0 L8800 75"/>
+  <path class="glass" d="M5950 3250 L8800 3250 M5950 3213 L8800 3213 M5950 3175 L8800 3175 M5950 3175 L5950 3250 M8800 3175 L8800 3250"/>
+
+  <!-- partitions with sliding doors to each bedroom -->
+  <rect class="wallf" x="3550" y="75" width="70" height="1875"/>
+  <rect class="wallf" x="3550" y="2900" width="70" height="275"/>
+  <path class="fine" d="M3640 1970 L3640 2880"/>
+  <path class="fx" d="M3675 1990 L3675 2860"/>
+
+  <rect class="wallf" x="5880" y="75" width="70" height="1875"/>
+  <rect class="wallf" x="5880" y="2900" width="70" height="275"/>
+  <path class="fine" d="M5860 1970 L5860 2880"/>
+  <path class="fx" d="M5825 1990 L5825 2860"/>
+
+  <!-- utility cupboard -->
+  <rect class="fx" x="3700" y="75" width="860" height="565"/>
+  <text class="sub" x="4130" y="440">utility</text>
+
+  <!-- shower -->
+  <rect class="fx" x="5070" y="80" width="160" height="130" rx="20"/>
+  <path class="fine" d="M5150 210 L5150 480"/>
+  <circle class="fx" cx="5150" cy="620" r="140"/>
+  <circle class="fine" cx="5150" cy="620" r="55"/>
+  <path class="fine" d="M5150 480 L5150 760 M5010 620 L5290 620 M5051 521 L5249 719 M5249 521 L5051 719"/>
+
+  <!-- toilet -->
+  <rect class="fx" x="3700" y="900" width="180" height="430" rx="25"/>
+  <rect class="fine" x="3880" y="1065" width="60" height="120"/>
+  <ellipse class="fx" cx="4190" cy="1115" rx="270" ry="210"/>
+  <ellipse class="fine" cx="4190" cy="1115" rx="170" ry="135"/>
+
+  <!-- vanity shelf + washbasin -->
+  <rect class="fx" x="3960" y="1420" width="940" height="120"/>
+  <path class="fx" d="M3880 1640 L4060 1640 A330 330 0 0 1 4060 2200 L3880 2200 Z"/>
+  <path class="fine" d="M3945 1705 L4060 1705 A245 245 0 0 1 4060 2135 L3945 2135"/>
+  <circle class="fine" cx="4090" cy="1920" r="38"/>
+  <circle class="fine" cx="3925" cy="1765" r="28"/>
+  <circle class="fine" cx="3925" cy="1920" r="28"/>
+  <circle class="fine" cx="3925" cy="2075" r="28"/>
+  <text class="sub" x="4680" y="1985">Washbasin</text>
+
+  <!-- cupboard -->
+  <rect class="fx" x="5200" y="1620" width="420" height="720"/>
+  <path class="fine" d="M5200 1620 L5620 2340 M5620 1620 L5200 2340"/>
+
+  <text class="lbl" x="4980" y="890">bathroom</text>
+
+  <!-- entrance -->
+  <path class="fx" d="M3980 3250 L3980 4070"/>
+  <path class="swing" d="M3980 4070 A820 820 0 0 0 4800 3250"/>
+  <path class="fine" d="M3980 3175 L3980 3250 M4800 3175 L4800 3250"/>
+
+  <!-- bedroom 1 -->
+  <rect class="fx" x="1300" y="200" width="1800" height="2000" rx="40"/>
+  <rect class="fine" x="1360" y="250" width="810" height="350" rx="50"/>
+  <rect class="fine" x="2230" y="250" width="810" height="350" rx="50"/>
+  <path class="fine" d="M1300 1080 C1700 830 2250 700 2680 685 L3100 685"/>
+  <rect class="fx" x="880" y="150" width="380" height="380" rx="20"/>
+  <circle class="fine" cx="1070" cy="340" r="140"/>
+  <path class="fine" d="M930 340 L1210 340 M1070 200 L1070 480"/>
+  <rect class="fx" x="3140" y="150" width="380" height="380" rx="20"/>
+  <circle class="fine" cx="3330" cy="340" r="140"/>
+  <path class="fine" d="M3190 340 L3470 340 M3330 200 L3330 480"/>
+  <text class="lbl" x="2100" y="2740">bedroom 1</text>
+
+  <!-- bedroom 2 -->
+  <rect class="fx" x="6400" y="200" width="1800" height="2000" rx="40"/>
+  <rect class="fine" x="6460" y="250" width="810" height="350" rx="50"/>
+  <rect class="fine" x="7330" y="250" width="810" height="350" rx="50"/>
+  <path class="fine" d="M8200 1080 C7800 830 7250 700 6820 685 L6400 685"/>
+  <rect class="fx" x="5980" y="150" width="380" height="380" rx="20"/>
+  <circle class="fine" cx="6170" cy="340" r="140"/>
+  <path class="fine" d="M6030 340 L6310 340 M6170 200 L6170 480"/>
+  <rect class="fx" x="8240" y="150" width="380" height="380" rx="20"/>
+  <circle class="fine" cx="8430" cy="340" r="140"/>
+  <path class="fine" d="M8290 340 L8570 340 M8430 200 L8430 480"/>
+  <text class="lbl" x="7400" y="2740">bedroom 2</text>
+
+  <!-- dimensions -->
+  <path class="ext" d="M0 -40 L0 -560 M9500 -40 L9500 -560"/>
+  <path class="dim" d="M0 -420 L9500 -420" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="4750" y="-500">9500</text>
+
+  <path class="ext" d="M9540 0 L9920 0 M9540 3250 L9920 3250"/>
+  <path class="dim" d="M9830 0 L9830 3250" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="10000" y="1625" dominant-baseline="central" transform="rotate(-90 10000 1625)">3250</text>
+</svg>

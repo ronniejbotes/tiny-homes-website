@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-160 -720 9800 3760" width="1960" height="752" role="img" aria-labelledby="t9">
+  <title id="t9">Apple Cabin 9 m floor plan — 20 m². Two bedrooms with 1500 × 2000 beds and wardrobes at either end, central bathroom with shower, basin and toilet, and a kitchen counter. External 9000 × 2250 mm.</title>
+  <style>
+    .bg{fill:#faf6ef}
+    .wall{fill:none;stroke:#1c1b17;stroke-width:16}
+    .wallf{fill:#faf6ef;stroke:#1c1b17;stroke-width:14}
+    .fx{fill:none;stroke:#3f3a32;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}
+    .fine{fill:none;stroke:#67635a;stroke-width:8;stroke-linecap:round}
+    .swing{fill:none;stroke:#67635a;stroke-width:7}
+    .glass{fill:none;stroke:#1c1b17;stroke-width:9}
+    .dim{fill:none;stroke:#67635a;stroke-width:9}
+    .ext{fill:none;stroke:#67635a;stroke-width:7}
+    text{font-family:Inter,'Helvetica Neue',Arial,sans-serif}
+    .lbl{font-size:190px;font-weight:700;fill:#1c1b17;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:55;stroke-linejoin:round}
+    .num{font-size:175px;fill:#67635a;text-anchor:middle;letter-spacing:5px;paint-order:stroke;stroke:#faf6ef;stroke-width:55;stroke-linejoin:round}
+    .dimtxt{font-size:190px;fill:#67635a;text-anchor:middle}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#67635a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="-160" y="-720" width="9800" height="3760"/>
+
+  <!-- shell -->
+  <rect class="wall" x="0" y="0" width="9000" height="2250"/>
+  <rect class="wall" x="75" y="75" width="8850" height="2100"/>
+
+  <!-- end-wall windows -->
+  <path class="glass" d="M0 400 L0 1600 M37 400 L37 1600 M75 400 L75 1600 M0 400 L75 400 M0 1600 L75 1600"/>
+  <path class="glass" d="M9000 400 L9000 1600 M8963 400 L8963 1600 M8925 400 L8925 1600 M8925 400 L9000 400 M8925 1600 L9000 1600"/>
+
+  <!-- partitions with bedroom doors -->
+  <rect class="wallf" x="2760" y="75" width="70" height="1255"/>
+  <rect class="wallf" x="2760" y="2070" width="70" height="105"/>
+  <path class="fx" d="M2795 2070 L2075 2070"/>
+  <path class="swing" d="M2075 2070 A720 720 0 0 0 2795 1350"/>
+
+  <rect class="wallf" x="6170" y="75" width="70" height="1255"/>
+  <rect class="wallf" x="6170" y="2070" width="70" height="105"/>
+  <path class="fx" d="M6205 2070 L6925 2070"/>
+  <path class="swing" d="M6925 2070 A720 720 0 0 1 6205 1350"/>
+
+  <!-- bathroom enclosure -->
+  <rect class="wallf" x="2830" y="1120" width="60" height="70"/>
+  <rect class="wallf" x="3630" y="1120" width="1620" height="70"/>
+  <path class="fx" d="M2890 1155 L2890 1895"/>
+  <path class="swing" d="M2890 1895 A740 740 0 0 0 3630 1155"/>
+
+  <!-- shower -->
+  <rect class="fx" x="2890" y="115" width="670" height="965"/>
+  <rect class="fine" x="2945" y="170" width="560" height="855"/>
+  <circle class="fine" cx="3225" cy="600" r="45"/>
+  <path class="fine" d="M2890 300 L3000 300"/>
+  <circle class="fine" cx="3040" cy="300" r="55"/>
+
+  <!-- basin -->
+  <path class="fine" d="M3980 80 L3980 140"/>
+  <circle class="fine" cx="3980" cy="150" r="45"/>
+  <circle class="fx" cx="3980" cy="380" r="195"/>
+  <circle class="fine" cx="3980" cy="380" r="115"/>
+
+  <!-- toilet -->
+  <rect class="fx" x="4460" y="80" width="600" height="170" rx="25"/>
+  <rect class="fine" x="4700" y="250" width="120" height="55"/>
+  <ellipse class="fx" cx="4760" cy="500" rx="265" ry="235"/>
+  <ellipse class="fine" cx="4760" cy="500" rx="165" ry="145"/>
+
+  <text class="lbl" x="4190" y="950">bathroom</text>
+
+  <!-- kitchen -->
+  <rect class="fx" x="5310" y="75" width="855" height="605"/>
+  <rect class="fine" x="5400" y="150" width="670" height="400" rx="30"/>
+  <rect class="fine" x="5470" y="215" width="530" height="270" rx="25"/>
+  <circle class="fine" cx="5735" cy="120" r="50"/>
+  <circle class="fine" cx="5590" cy="120" r="30"/>
+  <circle class="fine" cx="5880" cy="120" r="30"/>
+  <text class="lbl" x="5735" y="930">kitchen</text>
+
+  <!-- wardrobes -->
+  <rect class="fx" x="2210" y="75" width="550" height="1355"/>
+  <path class="fine" d="M2690 130 L2690 1375"/>
+  <path class="fine" d="M2660 130 L2280 234 L2660 338 L2280 441 L2660 545 L2280 649 L2660 753 L2280 857 L2660 960 L2280 1064 L2660 1168 L2280 1272 L2660 1375"/>
+
+  <rect class="fx" x="6240" y="75" width="550" height="1355"/>
+  <path class="fine" d="M6310 130 L6310 1375"/>
+  <path class="fine" d="M6340 130 L6720 234 L6340 338 L6720 441 L6340 545 L6720 649 L6340 753 L6720 857 L6340 960 L6720 1064 L6340 1168 L6720 1272 L6340 1375"/>
+
+  <!-- beds -->
+  <rect class="fx" x="205" y="110" width="1500" height="2000" rx="45"/>
+  <rect class="fine" x="270" y="170" width="655" height="375" rx="55"/>
+  <rect class="fine" x="985" y="170" width="655" height="375" rx="55"/>
+  <path class="fine" d="M205 830 C615 700 1035 595 1375 580 L1705 580"/>
+  <text class="num" x="955" y="1180">1500 × 2000</text>
+  <text class="lbl" x="955" y="1560">bedroom 1</text>
+
+  <rect class="fx" x="7295" y="110" width="1500" height="2000" rx="45"/>
+  <rect class="fine" x="7360" y="170" width="655" height="375" rx="55"/>
+  <rect class="fine" x="8075" y="170" width="655" height="375" rx="55"/>
+  <path class="fine" d="M8795 830 C8385 700 7965 595 7625 580 L7295 580"/>
+  <text class="num" x="8045" y="1180">1500 × 2000</text>
+  <text class="lbl" x="8045" y="1560">bedroom 2</text>
+
+  <!-- glazed wall + entrance -->
+  <path class="glass" d="M75 2140 L3990 2140 M75 2195 L3990 2195 M75 2250 L3990 2250 M75 2140 L75 2250 M3990 2140 L3990 2250"/>
+  <path class="glass" d="M4690 2140 L8925 2140 M4690 2195 L8925 2195 M4690 2250 L8925 2250 M4690 2140 L4690 2250 M8925 2140 L8925 2250"/>
+  <path class="fx" d="M3990 2250 L3990 2950"/>
+  <path class="swing" d="M3990 2950 A700 700 0 0 0 4690 2250"/>
+
+  <!-- dimensions -->
+  <path class="ext" d="M0 -40 L0 -560 M9000 -40 L9000 -560"/>
+  <path class="dim" d="M0 -420 L9000 -420" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="4500" y="-500">9000</text>
+
+  <path class="ext" d="M9040 0 L9420 0 M9040 2250 L9420 2250"/>
+  <path class="dim" d="M9330 0 L9330 2250" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="9500" y="1125" dominant-baseline="central" transform="rotate(-90 9500 1125)">2250</text>
+</svg>

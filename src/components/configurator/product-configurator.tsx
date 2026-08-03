@@ -220,9 +220,14 @@ function CatalogPlansView({
   plans: CatalogPlan[];
   sizeLabel: string;
 }) {
+  // A variant with one plan sheet (apple cabins, glamping capsules) gets the
+  // full panel width — these are long, thin drawings whose room labels and
+  // dimensions are unreadable at a third of it. Multi-plan sets (expandable
+  // homes) stay in the browsable grid.
+  const single = plans.length === 1;
   return (
     <div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div className={cn("grid gap-3", single ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-3")}>
         {plans.map((plan) => (
           <figure key={plan.src} className="overflow-hidden rounded-2xl border border-border bg-cream">
             <Image
@@ -230,7 +235,7 @@ function CatalogPlansView({
               alt={`${sizeLabel} ${plan.label} floor plan`}
               width={plan.width}
               height={plan.height}
-              sizes="(min-width: 1024px) 20vw, 45vw"
+              sizes={single ? "(min-width: 1024px) 55vw, 90vw" : "(min-width: 1024px) 20vw, 45vw"}
               className="h-auto w-full"
             />
             <figcaption className="px-3 py-2 text-xs font-medium text-ink">{plan.label}</figcaption>

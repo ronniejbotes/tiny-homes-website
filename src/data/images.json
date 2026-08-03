@@ -717,46 +717,92 @@
     "apple-cabins": {
       "apple-5-8": [
         {
-          "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png",
-          "width": 1600,
-          "height": 899,
-          "label": "5.8m â€” Studio + bathroom"
+          "src": "/images/products/apple-cabins/plans/apple-5-8.svg",
+          "width": 1322,
+          "height": 628,
+          "label": "5.8 m — 13 m² · bathroom, living, bedroom"
         }
       ],
       "apple-9": [
         {
-          "src": "/images/products/apple-cabins/plans/apple-9-v2.png",
-          "width": 1600,
-          "height": 686,
-          "label": "9m â€” Studio + kitchenette"
+          "src": "/images/products/apple-cabins/plans/apple-9.svg",
+          "width": 1960,
+          "height": 752,
+          "label": "9 m — 20 m² · 2 bedrooms, bathroom, kitchen"
         }
       ],
       "apple-11-8": [
         {
-          "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png",
-          "width": 1600,
-          "height": 686,
-          "label": "11.8m â€” One bedroom"
+          "src": "/images/products/apple-cabins/plans/apple-11-8.svg",
+          "width": 2520,
+          "height": 768,
+          "label": "11.8 m — 26.5 m² · 2 bedrooms, bathroom, kitchen, living"
         }
       ],
       "default": [
         {
-          "src": "/images/products/apple-cabins/plans/apple-5-8-v2.png",
-          "width": 1600,
-          "height": 899,
-          "label": "5.8m â€” Studio + bathroom"
+          "src": "/images/products/apple-cabins/plans/apple-5-8.svg",
+          "width": 1322,
+          "height": 628,
+          "label": "5.8 m — 13 m² · bathroom, living, bedroom"
         },
         {
-          "src": "/images/products/apple-cabins/plans/apple-9-v2.png",
-          "width": 1600,
-          "height": 686,
-          "label": "9m â€” Studio + kitchenette"
+          "src": "/images/products/apple-cabins/plans/apple-9.svg",
+          "width": 1960,
+          "height": 752,
+          "label": "9 m — 20 m² · 2 bedrooms, bathroom, kitchen"
         },
         {
-          "src": "/images/products/apple-cabins/plans/apple-11-8-v2.png",
-          "width": 1600,
-          "height": 686,
-          "label": "11.8m â€” One bedroom"
+          "src": "/images/products/apple-cabins/plans/apple-11-8.svg",
+          "width": 2520,
+          "height": 768,
+          "label": "11.8 m — 26.5 m² · 2 bedrooms, bathroom, kitchen, living"
+        }
+      ]
+    },
+    "glamping-capsules": {
+      "capsule-5-85": [
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-5-8.svg",
+          "width": 1316,
+          "height": 968,
+          "label": "5.8 m — 18.6 m² · bedroom + bathroom"
+        }
+      ],
+      "capsule-8-5": [
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-9-5.svg",
+          "width": 2056,
+          "height": 976,
+          "label": "9.5 m — 30.4 m² · 2 bedrooms + central bathroom"
+        }
+      ],
+      "capsule-11-5": [
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-11-5.svg",
+          "width": 2456,
+          "height": 824,
+          "label": "11.5 m — 37 m² · 2 bedrooms, bathroom, balcony"
+        }
+      ],
+      "default": [
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-5-8.svg",
+          "width": 1316,
+          "height": 968,
+          "label": "5.8 m — 18.6 m² · bedroom + bathroom"
+        },
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-9-5.svg",
+          "width": 2056,
+          "height": 976,
+          "label": "9.5 m — 30.4 m² · 2 bedrooms + central bathroom"
+        },
+        {
+          "src": "/images/products/glamping-capsules/plans/capsule-11-5.svg",
+          "width": 2456,
+          "height": 824,
+          "label": "11.5 m — 37 m² · 2 bedrooms, bathroom, balcony"
         }
       ]
     },
