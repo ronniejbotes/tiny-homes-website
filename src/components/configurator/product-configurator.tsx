@@ -243,8 +243,8 @@ function CatalogPlansView({
         ))}
       </div>
       <p className="mt-3 text-sm leading-relaxed text-stone">
-        Every layout includes the bathroom with shower, toilet and vanity. Window and door placement
-        can be customised on your quote.
+        Every layout includes a fitted bathroom — toilet, vanity and a shower or tub as drawn.
+        Window and door placement can be customised on your quote.
       </p>
     </div>
   );

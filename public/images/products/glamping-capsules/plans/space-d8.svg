@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-160 -720 9780 4170" width="1956" height="834" role="img" aria-labelledby="tsd8">
+  <title id="tsd8">Space D8 floor plan — 30 m². Two bedrooms with double beds at either end, separated by a bathroom with a tub, vanity, toilet and washbasin, and a seating nook with two armchairs and a table at one end. No balcony. External 9000 × 3300 mm.</title>
+  <style>
+    .bg{fill:#faf6ef}
+    .wall{fill:none;stroke:#1c1b17;stroke-width:16}
+    .wallf{fill:#faf6ef;stroke:#1c1b17;stroke-width:14}
+    .fx{fill:none;stroke:#3f3a32;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}
+    .fine{fill:none;stroke:#67635a;stroke-width:8;stroke-linecap:round}
+    .swing{fill:none;stroke:#67635a;stroke-width:7}
+    .glass{fill:none;stroke:#1c1b17;stroke-width:9}
+    .dim{fill:none;stroke:#67635a;stroke-width:9}
+    .ext{fill:none;stroke:#67635a;stroke-width:7}
+    text{font-family:Inter,'Helvetica Neue',Arial,sans-serif}
+    .lbl{font-size:200px;font-weight:700;fill:#1c1b17;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:70;stroke-linejoin:round}
+    .sub{font-size:165px;font-weight:600;fill:#67635a;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:65;stroke-linejoin:round}
+    .dimtxt{font-size:200px;fill:#67635a;text-anchor:middle}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#67635a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="-160" y="-720" width="9780" height="4170"/>
+
+  <!-- shell -->
+  <rect class="wall" x="0" y="0" width="9000" height="3300" rx="530"/>
+  <rect class="wall" x="75" y="75" width="8850" height="3150" rx="455"/>
+
+  <!-- 270° glazing to each bedroom and the seating nook -->
+  <path class="glass" d="M0 700 L0 2600 M37 700 L37 2600 M75 700 L75 2600 M0 700 L75 700 M0 2600 L75 2600"/>
+  <path class="glass" d="M9000 700 L9000 2600 M8963 700 L8963 2600 M8925 700 L8925 2600 M8925 700 L9000 700 M8925 2600 L9000 2600"/>
+  <path class="glass" d="M700 0 L2800 0 M700 37 L2800 37 M700 75 L2800 75 M700 0 L700 75 M2800 0 L2800 75"/>
+  <path class="glass" d="M700 3300 L2800 3300 M700 3263 L2800 3263 M700 3225 L2800 3225 M700 3225 L700 3300 M2800 3225 L2800 3300"/>
+  <path class="glass" d="M5200 0 L8300 0 M5200 37 L8300 37 M5200 75 L8300 75 M5200 0 L5200 75 M8300 0 L8300 75"/>
+  <path class="glass" d="M5200 3300 L8300 3300 M5200 3263 L8300 3263 M5200 3225 L8300 3225 M5200 3225 L5200 3300 M8300 3225 L8300 3300"/>
+
+  <!-- partitions around the wet block -->
+  <rect class="wallf" x="2800" y="75" width="70" height="3150"/>
+  <rect class="wallf" x="5130" y="75" width="70" height="3150"/>
+  <rect class="wallf" x="3760" y="75" width="60" height="2300"/>
+
+  <!-- bedroom 1: double bed against the long wall -->
+  <rect class="fx" x="500" y="150" width="1800" height="2000" rx="40"/>
+  <rect class="fine" x="560" y="200" width="810" height="350" rx="50"/>
+  <rect class="fine" x="1430" y="200" width="810" height="350" rx="50"/>
+  <path class="fine" d="M500 1030 C900 780 1450 650 1880 635 L2300 635"/>
+  <text class="lbl" x="1400" y="2830">bedroom 1</text>
+
+  <!-- bathroom: tub with vanity below -->
+  <rect class="fx" x="2950" y="300" width="740" height="1620" rx="150"/>
+  <rect class="fine" x="3020" y="370" width="600" height="1480" rx="120"/>
+  <circle class="fine" cx="3320" cy="1690" r="45"/>
+  <rect class="fx" x="2950" y="2150" width="740" height="480" rx="20"/>
+  <path class="fine" d="M2950 2390 L3690 2390"/>
+
+  <!-- toilet and washbasin compartment -->
+  <rect class="fx" x="4290" y="180" width="420" height="170" rx="25"/>
+  <rect class="fine" x="4430" y="120" width="110" height="60"/>
+  <ellipse class="fx" cx="4500" cy="620" rx="195" ry="245"/>
+  <ellipse class="fine" cx="4500" cy="620" rx="125" ry="160"/>
+  <rect class="fx" x="4250" y="1300" width="500" height="640" rx="60"/>
+  <ellipse class="fine" cx="4500" cy="1650" rx="160" ry="200"/>
+  <circle class="fine" cx="4500" cy="1390" r="45"/>
+  <text class="lbl" x="3960" y="2980">bathroom</text>
+
+  <!-- entry door into the wet block -->
+  <path class="fx" d="M4880 3225 L4880 2445"/>
+  <path class="swing" d="M4880 2445 A780 780 0 0 0 4100 3225"/>
+  <path class="fine" d="M4100 3225 L4100 3300 M4880 3225 L4880 3300"/>
+
+  <!-- bedroom 2: double bed with a bedside table each side -->
+  <rect class="fx" x="5765" y="150" width="1800" height="2000" rx="40"/>
+  <rect class="fine" x="5825" y="200" width="810" height="350" rx="50"/>
+  <rect class="fine" x="6695" y="200" width="810" height="350" rx="50"/>
+  <path class="fine" d="M5765 1030 C6165 780 6715 650 7145 635 L7565 635"/>
+  <rect class="fx" x="5290" y="170" width="410" height="410" rx="15"/>
+  <circle class="fine" cx="5495" cy="375" r="110"/>
+  <rect class="fx" x="7630" y="170" width="410" height="410" rx="15"/>
+  <circle class="fine" cx="7835" cy="375" r="110"/>
+  <text class="lbl" x="6665" y="2830">bedroom 2</text>
+
+  <!-- seating nook: two armchairs around a low table -->
+  <path class="fx" d="M8180 620 L8600 620 A190 190 0 0 1 8790 810 L8790 1080 A190 190 0 0 1 8600 1270 L8180 1270"/>
+  <path class="fine" d="M8255 690 L8565 690 A125 125 0 0 1 8690 815 L8690 1075 A125 125 0 0 1 8565 1200 L8255 1200"/>
+  <path class="fx" d="M8180 2030 L8600 2030 A190 190 0 0 1 8790 2220 L8790 2490 A190 190 0 0 1 8600 2680 L8180 2680"/>
+  <path class="fine" d="M8255 2100 L8565 2100 A125 125 0 0 1 8690 2225 L8690 2485 A125 125 0 0 1 8565 2610 L8255 2610"/>
+  <circle class="fx" cx="8450" cy="1650" r="290"/>
+  <circle class="fine" cx="8450" cy="1650" r="185"/>
+  <text class="sub" x="8450" y="3030">seating</text>
+
+  <!-- dimensions -->
+  <path class="ext" d="M0 -40 L0 -560 M9000 -40 L9000 -560"/>
+  <path class="dim" d="M0 -420 L9000 -420" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="4500" y="-500">9000</text>
+
+  <path class="ext" d="M9040 0 L9420 0 M9040 3300 L9420 3300"/>
+  <path class="dim" d="M9330 0 L9330 3300" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="9500" y="1650" dominant-baseline="central" transform="rotate(-90 9500 1650)">3300</text>
+</svg>

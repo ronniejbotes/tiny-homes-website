@@ -785,6 +785,30 @@
           "label": "11.5 m — 37 m² · 2 bedrooms, bathroom, balcony"
         }
       ],
+      "space-d5": [
+        {
+          "src": "/images/products/glamping-capsules/plans/space-d5.svg",
+          "width": 1856,
+          "height": 834,
+          "label": "Space D5, 8.5 m — 30.4 m² · bedroom, lounge, bathroom, balcony"
+        }
+      ],
+      "space-d8": [
+        {
+          "src": "/images/products/glamping-capsules/plans/space-d8.svg",
+          "width": 1956,
+          "height": 834,
+          "label": "Space D8, 9.0 m — 30 m² · 2 bedrooms, bathroom with tub, seating nook"
+        }
+      ],
+      "space-d7": [
+        {
+          "src": "/images/products/glamping-capsules/plans/space-d7.svg",
+          "width": 2456,
+          "height": 834,
+          "label": "Space D7, 11.5 m — 38 m² · bedroom, lounge, bathroom, balcony"
+        }
+      ],
       "default": [
         {
           "src": "/images/products/glamping-capsules/plans/capsule-5-8.svg",

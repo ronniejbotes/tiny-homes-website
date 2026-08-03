@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-160 -720 12280 4170" width="2456" height="834" role="img" aria-labelledby="tsd7">
+  <title id="tsd7">Space D7 floor plan — 38 m². Lounge area with a sofa, rug and two armchairs at one end, then a bathroom with a shower, vanity, toilet and washbasin, a bedroom with a double bed and armchair, and a glazed balcony with two chairs and a table at the far end. External 11500 × 3300 mm.</title>
+  <style>
+    .bg{fill:#faf6ef}
+    .wall{fill:none;stroke:#1c1b17;stroke-width:16}
+    .wallf{fill:#faf6ef;stroke:#1c1b17;stroke-width:14}
+    .fx{fill:none;stroke:#3f3a32;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}
+    .fine{fill:none;stroke:#67635a;stroke-width:8;stroke-linecap:round}
+    .swing{fill:none;stroke:#67635a;stroke-width:7}
+    .glass{fill:none;stroke:#1c1b17;stroke-width:9}
+    .dim{fill:none;stroke:#67635a;stroke-width:9}
+    .ext{fill:none;stroke:#67635a;stroke-width:7}
+    text{font-family:Inter,'Helvetica Neue',Arial,sans-serif}
+    .lbl{font-size:265px;font-weight:700;fill:#1c1b17;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:80;stroke-linejoin:round}
+    .sub{font-size:215px;font-weight:600;fill:#67635a;text-anchor:middle;paint-order:stroke;stroke:#faf6ef;stroke-width:70;stroke-linejoin:round}
+    .dimtxt{font-size:230px;fill:#67635a;text-anchor:middle}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#67635a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="-160" y="-720" width="12280" height="4170"/>
+
+  <!-- shell -->
+  <rect class="wall" x="0" y="0" width="11500" height="3300" rx="530"/>
+  <rect class="wall" x="75" y="75" width="11350" height="3150" rx="455"/>
+
+  <!-- 270° glazing to the lounge, bedroom and balcony -->
+  <path class="glass" d="M0 700 L0 2600 M37 700 L37 2600 M75 700 L75 2600 M0 700 L75 700 M0 2600 L75 2600"/>
+  <path class="glass" d="M11500 700 L11500 2600 M11463 700 L11463 2600 M11425 700 L11425 2600 M11425 700 L11500 700 M11425 2600 L11500 2600"/>
+  <path class="glass" d="M700 0 L2950 0 M700 37 L2950 37 M700 75 L2950 75 M700 0 L700 75 M2950 0 L2950 75"/>
+  <path class="glass" d="M700 3300 L2950 3300 M700 3263 L2950 3263 M700 3225 L2950 3225 M700 3225 L700 3300 M2950 3225 L2950 3300"/>
+  <path class="glass" d="M5420 0 L10800 0 M5420 37 L10800 37 M5420 75 L10800 75 M5420 0 L5420 75 M10800 0 L10800 75"/>
+  <path class="glass" d="M6300 3300 L10800 3300 M6300 3263 L10800 3263 M6300 3225 L10800 3225 M6300 3225 L6300 3300 M10800 3225 L10800 3300"/>
+
+  <!-- partitions: lounge, wet block, bedroom, balcony -->
+  <rect class="wallf" x="3000" y="75" width="70" height="3150"/>
+  <rect class="wallf" x="4080" y="75" width="60" height="2250"/>
+  <rect class="wallf" x="5280" y="75" width="70" height="3150"/>
+  <rect class="wallf" x="9430" y="75" width="70" height="1500"/>
+  <rect class="wallf" x="9430" y="2950" width="70" height="275"/>
+
+  <!-- lounge: sofa against the end wall, rug and two armchairs -->
+  <rect class="fx" x="230" y="900" width="420" height="1600" rx="30"/>
+  <path class="fine" d="M470 900 L470 2500"/>
+  <ellipse class="fx" cx="1550" cy="1700" rx="820" ry="740"/>
+  <ellipse class="fine" cx="1550" cy="1700" rx="330" ry="450"/>
+  <path class="fx" d="M1930 640 L2360 640 A200 200 0 0 1 2560 840 L2560 1110 A200 200 0 0 1 2360 1310 L1930 1310"/>
+  <path class="fine" d="M2005 715 L2325 715 A135 135 0 0 1 2460 850 L2460 1100 A135 135 0 0 1 2325 1235 L2005 1235"/>
+  <path class="fx" d="M1930 2170 L2360 2170 A200 200 0 0 1 2560 2370 L2560 2640 A200 200 0 0 1 2360 2840 L1930 2840"/>
+  <path class="fine" d="M2005 2245 L2325 2245 A135 135 0 0 1 2460 2380 L2460 2630 A135 135 0 0 1 2325 2765 L2005 2765"/>
+  <text class="lbl" x="1550" y="3060">lounge</text>
+
+  <!-- bathroom: shower tray with a vanity above and cupboard below -->
+  <rect class="fx" x="3170" y="180" width="800" height="420" rx="20"/>
+  <path class="fine" d="M3170 420 L3970 420"/>
+  <rect class="fx" x="3170" y="700" width="800" height="1500" rx="20"/>
+  <circle class="fine" cx="3570" cy="1450" r="55"/>
+  <path class="fine" d="M3430 790 L3710 790"/>
+  <rect class="fx" x="3170" y="2320" width="800" height="620" rx="15"/>
+  <path class="fine" d="M3170 2320 L3970 2940 M3970 2320 L3170 2940"/>
+
+  <!-- toilet and washbasin compartment -->
+  <rect class="fx" x="4340" y="180" width="420" height="170" rx="25"/>
+  <rect class="fine" x="4480" y="120" width="110" height="60"/>
+  <ellipse class="fx" cx="4550" cy="620" rx="195" ry="245"/>
+  <ellipse class="fine" cx="4550" cy="620" rx="125" ry="160"/>
+  <rect class="fx" x="4300" y="1400" width="500" height="640" rx="60"/>
+  <ellipse class="fine" cx="4550" cy="1750" rx="160" ry="200"/>
+  <circle class="fine" cx="4550" cy="1490" r="45"/>
+  <text class="sub" x="4640" y="2300">bathroom</text>
+
+  <!-- entry door into the wet block -->
+  <path class="fx" d="M5060 3225 L5060 2445"/>
+  <path class="swing" d="M5060 2445 A780 780 0 0 0 4280 3225"/>
+  <path class="fine" d="M4280 3225 L4280 3300 M5060 3225 L5060 3300"/>
+
+  <!-- bedroom: double bed with an armchair at the glazed end -->
+  <rect class="fx" x="5560" y="400" width="2100" height="1900" rx="40"/>
+  <rect class="fine" x="5620" y="450" width="950" height="380" rx="50"/>
+  <rect class="fine" x="6650" y="450" width="950" height="380" rx="50"/>
+  <path class="fine" d="M5560 1350 C6020 1090 6650 950 7140 935 L7660 935"/>
+  <path class="fx" d="M8000 900 L8320 900 A230 230 0 0 1 8320 1360 L8000 1360 A230 230 0 0 1 8000 900 Z"/>
+  <text class="lbl" x="7150" y="2920">bedroom</text>
+
+  <!-- balcony: two chairs and a low table -->
+  <path class="fx" d="M9700 560 L10130 560 A200 200 0 0 1 10330 760 L10330 1030 A200 200 0 0 1 10130 1230 L9700 1230"/>
+  <path class="fine" d="M9775 635 L10095 635 A135 135 0 0 1 10230 770 L10230 1020 A135 135 0 0 1 10095 1155 L9775 1155"/>
+  <path class="fx" d="M9700 2070 L10130 2070 A200 200 0 0 1 10330 2270 L10330 2540 A200 200 0 0 1 10130 2740 L9700 2740"/>
+  <path class="fine" d="M9775 2145 L10095 2145 A135 135 0 0 1 10230 2280 L10230 2530 A135 135 0 0 1 10095 2665 L9775 2665"/>
+  <circle class="fx" cx="10015" cy="1650" r="290"/>
+  <circle class="fine" cx="10015" cy="1650" r="185"/>
+  <text class="lbl" x="10680" y="3060">balcony</text>
+
+  <!-- sliding door to the balcony -->
+  <path class="fine" d="M9590 1620 L9590 2900"/>
+  <path class="fx" d="M9625 1640 L9625 2880"/>
+
+  <!-- dimensions -->
+  <path class="ext" d="M0 -40 L0 -560 M11500 -40 L11500 -560"/>
+  <path class="dim" d="M0 -420 L11500 -420" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="5750" y="-500">11500</text>
+
+  <path class="ext" d="M11540 0 L11920 0 M11540 3300 L11920 3300"/>
+  <path class="dim" d="M11830 0 L11830 3300" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dimtxt" x="12000" y="1650" dominant-baseline="central" transform="rotate(-90 12000 1650)">3300</text>
+</svg>
