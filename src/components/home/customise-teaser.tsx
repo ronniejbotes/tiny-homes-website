@@ -1,16 +1,24 @@
-import { ArrowRight, Plus, Sparkles } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 
-/* Chip labels mirror the standard customisation options in products.ts. */
-const optionChips = [
-  "Wet room unit",
-  "Kitchen unit",
-  "Premium insulation",
-  "Upgraded flooring",
-  "Timber wall cladding",
-  "Overhead cupboards",
+/*
+ * What the configurator actually does, as a plain list.
+ *
+ * This was a cloud of pill-shaped chips carrying "+" icons, one of them in
+ * solid clay: visually identical to the real buttons in the column beside
+ * them, but rendered as inert spans. Everything about them invited a click
+ * that did nothing. They also described a fixed set of extras rather than the
+ * configurator itself, which has moved well past that.
+ *
+ * Ticks, not plus signs: a tick states a capability, a plus offers an action.
+ */
+const capabilities = [
+  "Interior, floor plan and photo views",
+  "See the space empty or fully furnished",
+  "Add extras and watch the price update live",
+  "Send your exact spec straight through to a quote",
 ];
 
 export function CustomiseTeaser() {
@@ -25,7 +33,7 @@ export function CustomiseTeaser() {
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-cream/75">
               Every home in the range can be customised online. Choose your finishes,
-              add a wet room or fitted kitchen, see the space furnished — and watch the
+              add a wet room or fitted kitchen, see the space furnished, and watch the
               price update live as you build your spec.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
@@ -43,21 +51,15 @@ export function CustomiseTeaser() {
             <Reveal delay={0.1} className="mx-auto max-w-md lg:max-w-none">
               <HouseCutaway className="w-full text-sage" />
             </Reveal>
-            <Stagger className="mt-8 flex flex-wrap justify-center gap-3">
-              {optionChips.map((chip) => (
-                <StaggerItem key={chip}>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/20 px-4 py-2 text-sm text-cream/85">
-                    <Plus className="h-3.5 w-3.5 text-sage" aria-hidden="true" />
-                    {chip}
+            <Stagger as="ul" className="mx-auto mt-8 grid max-w-md gap-3">
+              {capabilities.map((capability) => (
+                <StaggerItem as="li" key={capability} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-4.5 w-4.5 shrink-0 text-sage" aria-hidden="true" />
+                  <span className="text-[0.9375rem] leading-relaxed text-cream/80">
+                    {capability}
                   </span>
                 </StaggerItem>
               ))}
-              <StaggerItem>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-clay px-4 py-2 text-sm font-medium text-cream">
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                  Live price as you build
-                </span>
-              </StaggerItem>
             </Stagger>
           </div>
         </div>

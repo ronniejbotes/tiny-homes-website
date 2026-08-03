@@ -20,7 +20,7 @@ export const DURATION = {
    framer-motion disables the transform (x/y) animation for prefers-reduced-motion
    visitors while the opacity fade still completes, so revealed content always
    reaches its visible state. Deriving this manually from useReducedMotion()
-   left Stagger grids permanently invisible — the hook resolves only after the
+   left Stagger grids permanently invisible, the hook resolves only after the
    hidden `initial` state has been committed, and `initial` is mount-only. */
 
 /**
@@ -77,19 +77,25 @@ const staggerChild: Variants = {
 
 /** Parent that staggers its <StaggerItem> children into view.
  *  `amount` (new, optional) tunes how much must be visible before the run
- *  begins; it defaults to the previous 0.15. */
+ *  begins; it defaults to the previous 0.15. `as` (new, optional) lets a
+ *  staggered group render as a real list, the way Reveal already allows,
+ *  it defaults to "div", so every existing caller is unaffected. */
 export function Stagger({
   children,
   className,
   amount = 0.15,
+  as: Tag = "div",
 }: {
   children: React.ReactNode;
   className?: string;
   amount?: number;
+  as?: "div" | "ul" | "ol";
 }) {
+  const MotionTag = motion[Tag];
+
   return (
     <MotionConfig reducedMotion="user">
-      <motion.div
+      <MotionTag
         className={className}
         variants={staggerParent}
         initial="hidden"
@@ -97,13 +103,13 @@ export function Stagger({
         viewport={{ once: true, amount }}
       >
         {children}
-      </motion.div>
+      </MotionTag>
     </MotionConfig>
   );
 }
 
 /** A staggered child. With no extra props it fades up exactly as before.
- *  Pass `x` (and/or a custom `y`) for a subtle directional drift — used to
+ *  Pass `x` (and/or a custom `y`) for a subtle directional drift, used to
  *  give the showcase grid an alternating left/right entrance. The parent's
  *  reducedMotion="user" still strips the transform for reduced-motion users. */
 export function StaggerItem({
@@ -111,12 +117,15 @@ export function StaggerItem({
   className,
   x = 0,
   y = 24,
+  as: Tag = "div",
 }: {
   children: React.ReactNode;
   className?: string;
   x?: number;
   y?: number;
+  as?: "div" | "li";
 }) {
+  const MotionTag = motion[Tag];
   const custom = x !== 0 || y !== 24;
   const variants: Variants | undefined = custom
     ? {
@@ -131,8 +140,8 @@ export function StaggerItem({
     : undefined;
 
   return (
-    <motion.div className={cn(className)} variants={variants ?? staggerChild}>
+    <MotionTag className={cn(className)} variants={variants ?? staggerChild}>
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }
