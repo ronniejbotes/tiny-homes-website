@@ -2,7 +2,7 @@
 
 import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
-import { Loader2, Minus, Plus, Trash2 } from "lucide-react";
+import { Loader2, Minus, Plus, Trash2, Waves } from "lucide-react";
 import { getProduct, optionPrice, products, type CustomOption } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -21,6 +21,13 @@ import {
   type QuoteLine,
   type QuoteUnit,
 } from "@/lib/quote";
+import {
+  coastalBody,
+  coastalHeadline,
+  coastalOptionFor,
+  coastalRisk,
+  type CoastalRisk,
+} from "@/lib/coastal";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { TextField, inputClasses, labelClasses } from "./fields";
@@ -66,6 +73,8 @@ interface IssuedQuote {
   delivered: boolean;
   /** Whether the customer's own copy of the quotation reached their inbox. */
   copySent: boolean;
+  /** Coastal exposure of the delivery address, at the moment of issue. */
+  coastal: CoastalRisk;
 }
 
 /* ------------------------------------------------------- deep links */
@@ -238,6 +247,45 @@ function QuantityStepper({
   );
 }
 
+/* ----------------------------------------------------- coastal notice */
+
+/**
+ * Salt-air warning, shown the moment the address identifies a coastal site.
+ * Deliberately loud: it can change both the specification and the price, and a
+ * customer who first learns of it on the formal quotation will feel upsold.
+ */
+function CoastalNotice({ risk }: { risk: CoastalRisk }) {
+  const headline = coastalHeadline(risk);
+  const body = coastalBody(risk);
+  if (!headline || !body) return null;
+
+  const required = risk === "coastal";
+  return (
+    <div
+      role="status"
+      className={cn(
+        "mt-6 flex items-start gap-4 rounded-2xl border p-5",
+        required ? "border-clay/50 bg-clay/5" : "border-border bg-parchment/60",
+      )}
+    >
+      <span
+        className={cn(
+          "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border",
+          required ? "border-clay/50 bg-cream text-clay-dark" : "border-border bg-cream text-stone",
+        )}
+      >
+        <Waves className="h-4.5 w-4.5" aria-hidden="true" />
+      </span>
+      <div className="min-w-0">
+        <p className={cn("font-display text-base", required ? "text-clay-dark" : "text-ink")}>
+          {headline}
+        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-stone">{body}</p>
+      </div>
+    </div>
+  );
+}
+
 /* -------------------------------------------------------- units list */
 
 function UnitsList({
@@ -376,13 +424,27 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const variantId = editingItem?.variantId;
   const selected = editingItem?.selected ?? {};
 
-  /** The wire form of a line item — configuration only, never prices. */
-  const toUnit = (item: LineItem): QuoteUnit => ({
-    slug: item.slug,
-    variantId: item.variantId,
-    optionIds: Object.keys(item.selected).filter((id) => item.selected[id]),
-    quantity: item.quantity,
-  });
+  // Salt air is a property of the delivery address, not of the configuration,
+  // so the requirement is derived here rather than stored on the line — it
+  // re-evaluates the moment the address changes, including backwards if the
+  // customer corrects a town.
+  const coastal: CoastalRisk = coastalRisk(address);
+  const requiredOptionFor = (slug: string): string | undefined =>
+    coastal === "coastal" ? coastalOptionFor(slug) : undefined;
+
+  /** The wire form of a line item — configuration only, never prices. The
+      coastal option is merged in here so it reaches pricing, the summary, the
+      quotation and the server by exactly the same path as a chosen extra. */
+  const toUnit = (item: LineItem): QuoteUnit => {
+    const chosen = Object.keys(item.selected).filter((id) => item.selected[id]);
+    const required = requiredOptionFor(item.slug);
+    return {
+      slug: item.slug,
+      variantId: item.variantId,
+      optionIds: required && !chosen.includes(required) ? [...chosen, required] : chosen,
+      quantity: item.quantity,
+    };
+  };
 
   const lines: QuoteLine[] = items
     .map((item) => resolveQuoteLine(toUnit(item), item.id))
@@ -601,6 +663,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
           address,
           notes,
           company,
+          coastal,
           units: items.map(toUnit),
         }),
       });
@@ -630,6 +693,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
       lines,
       delivered,
       copySent,
+      coastal,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -647,6 +711,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
           lines={quote.lines}
           delivered={quote.delivered}
           copySent={quote.copySent}
+          coastal={quote.coastal}
           whatsappHref={whatsappHref(quote.reference)}
           mailtoHref={mailtoHref(quote.reference)}
           onStartOver={() => setQuote(null)}
@@ -706,6 +771,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
                   product={product}
                   variantId={variantId}
                   selected={selected}
+                  lockedId={requiredOptionFor(product.slug)}
                   onToggle={toggleOption}
                 />
               </div>
@@ -823,6 +889,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
               onChange={handleAddressChange}
               onBlur={handleAddressBlur}
             />
+            <CoastalNotice risk={coastal} />
           </Step>
 
           {/* Step 4 — notes */}

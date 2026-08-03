@@ -25,6 +25,7 @@ import {
   quoteEmailText,
   type QuoteEmailInput,
 } from "@/lib/quote-email";
+import { coastalRisk, type CoastalRisk } from "@/lib/coastal";
 import {
   makeQuoteReference,
   resolveQuoteLine,
@@ -171,6 +172,11 @@ export async function POST(request: Request) {
       ? body.reference
       : makeQuoteReference();
 
+  // Re-derived server-side rather than trusted from the payload: a client that
+  // omits or downgrades this flag must not be able to silence a rust warning.
+  // The browser still sends its own for comparison; they should always agree.
+  const coastal: CoastalRisk = coastalRisk(address);
+
   const input: QuoteEmailInput = {
     reference,
     contact,
@@ -178,6 +184,7 @@ export async function POST(request: Request) {
     notes: str(body.notes, 2000),
     lines,
     date: new Date(),
+    coastal,
   };
 
   if (!isMailConfigured()) {
@@ -271,6 +278,7 @@ export async function GET() {
     notes: "Slab already poured. Access via a gravel farm road.",
     lines,
     date: new Date(),
+    coastal: "coastal",
   };
 
   return new NextResponse(customerQuoteHtml(input), {

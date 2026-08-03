@@ -17,6 +17,7 @@
 import { site } from "@/lib/site";
 import { formatZAR } from "@/lib/format";
 import { optionPrice } from "@/data/products";
+import { coastalBody, coastalHeadline, type CoastalRisk } from "@/lib/coastal";
 import {
   QUOTE_VALID_DAYS,
   VAT_RATE,
@@ -36,6 +37,8 @@ export interface QuoteEmailInput {
   notes?: string;
   lines: QuoteLine[];
   date: Date;
+  /** Coastal exposure of the delivery address. */
+  coastal: CoastalRisk;
 }
 
 const esc = (value: string) =>
@@ -90,6 +93,15 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   out.push("DELIVERY QUOTE REQUEST");
   out.push(`Quote ${reference} · generated ${formatQuoteDate(date)} on tinyhomesa.com`);
   out.push("");
+  if (input.coastal === "coastal") {
+    out.push("*** COASTAL SITE — CORROSION SPECIFICATION REQUIRED ***");
+    out.push("Confirm the corrosion-resistant exterior on every unit before quoting.");
+    out.push("");
+  } else if (input.coastal === "possibly-coastal") {
+    out.push("!! CHECK COASTAL EXPOSURE — address is in a coastal province.");
+    out.push("If the site is within ~30 km of the sea, the corrosion spec is required.");
+    out.push("");
+  }
   out.push(
     "The customer already has their instant product quote (units, extras, VAT and shipping",
   );
@@ -204,6 +216,20 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
     <h1 style="margin:0;font-size:24px;line-height:1.25;color:#1c1b17">${esc(fullName(contact))} — ${esc(address.city.trim() || address.province.trim())}</h1>
     <p style="margin:8px 0 0;font-size:14px;color:#67635a">Quote ${esc(reference)} · generated ${esc(formatQuoteDate(date))} on tinyhomesa.com</p>
 
+    ${
+      input.coastal === "coastal"
+        ? `<div style="margin:20px 0;padding:14px 16px;background:#b4552d;border-radius:12px;font-size:15px;line-height:1.6;color:#ffffff">
+             <strong>COASTAL SITE — corrosion specification required.</strong><br>
+             Confirm the corrosion-resistant exterior on every unit before quoting. Standard
+             cladding is not warranted against salt-air corrosion.
+           </div>`
+        : input.coastal === "possibly-coastal"
+          ? `<div style="margin:20px 0;padding:14px 16px;background:#f4eee2;border:1px solid #b4552d;border-radius:12px;font-size:14px;line-height:1.6;color:#1c1b17">
+               <strong>Check coastal exposure.</strong> The address is in a coastal province. If the
+               site is within roughly 30 km of the sea, the corrosion specification is required.
+             </div>`
+          : ""
+    }
     <div style="margin:20px 0;padding:14px 16px;background:#e9dfce;border-radius:12px;font-size:14px;line-height:1.6;color:#1c1b17">
       The customer already has their instant product quote — units, extras, VAT and shipping
       into South Africa. They are waiting on a <strong>quote for road delivery to their
@@ -312,6 +338,13 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   }
   out.push("");
 
+  const coastalNote = coastalBody(input.coastal);
+  if (coastalNote) {
+    out.push((coastalHeadline(input.coastal) as string).toUpperCase());
+    out.push(coastalNote);
+    out.push("");
+  }
+
   out.push("DELIVERY TO YOUR SITE IS NOT INCLUDED");
   out.push("The total above covers your units, the extras you selected and VAT, and");
   out.push("shipping into South Africa is already in that price. What it doesn't cover");
@@ -338,6 +371,8 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   out.push("  · Prices include shipping into South Africa. Road delivery to your site,");
   out.push("    offloading, craneage, foundations and site services are excluded and");
   out.push("    quoted separately.");
+  out.push("  · Units delivered to coastal sites require the corrosion-resistant exterior");
+  out.push("    specification. Standard cladding is not warranted against salt-air corrosion.");
   out.push(`  · Typical lead time is ${site.leadTimeDays} days from deposit. ${site.guarantee}.`);
   out.push(`    ${site.finance}.`);
   out.push("  · This is an automated estimate generated on tinyhomesa.com and is not a tax invoice.");
@@ -491,7 +526,29 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
           ${totalsHtml}
         </td></tr>
 
-        <!-- Shipping -->
+        <!-- Coastal specification -->
+        ${
+          coastalHeadline(input.coastal)
+            ? `<tr><td style="padding:26px 28px 0">
+                <table role="presentation" width="100%" style="border-collapse:collapse;background:${
+                  input.coastal === "coastal" ? "#f7ece6" : "#f4eee2"
+                };border:1px solid ${
+                  input.coastal === "coastal" ? "#b4552d" : "#ddd3c1"
+                };border-radius:12px">
+                  <tr><td style="padding:18px 20px">
+                    <p style="margin:0;font-size:16px;font-weight:700;color:${
+                      input.coastal === "coastal" ? "#9a4522" : "#1c1b17"
+                    }">${esc(coastalHeadline(input.coastal) as string)}</p>
+                    <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#67635a">${esc(
+                      coastalBody(input.coastal) as string,
+                    )}</p>
+                  </td></tr>
+                </table>
+              </td></tr>`
+            : ""
+        }
+
+        <!-- Delivery -->
         <tr><td style="padding:26px 28px 0">
           <table role="presentation" width="100%" style="border-collapse:collapse;background:#f4eee2;border-radius:12px">
             <tr><td style="padding:18px 20px">
@@ -523,6 +580,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             <li>All prices are in South African Rand. VAT is charged at ${VAT_RATE * 100}% on the subtotal shown.</li>
             <li>Optional extras carry provisional pricing and are confirmed line by line on your formal quotation. Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.</li>
             <li>Prices include shipping into South Africa. Road delivery to your site, offloading, craneage, foundations and site services are excluded and quoted separately.</li>
+            <li>Units delivered to coastal sites require the corrosion-resistant exterior specification. Standard cladding is not warranted against salt-air corrosion.</li>
             <li>Typical lead time is ${site.leadTimeDays} days from deposit. ${esc(site.guarantee)}. ${esc(site.finance)}.</li>
             <li>This is an automated estimate generated on tinyhomesa.com and is not a tax invoice.</li>
           </ul>

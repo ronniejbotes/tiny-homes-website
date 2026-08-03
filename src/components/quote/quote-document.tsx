@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Check, Mail, MessageCircle, Phone, RotateCcw, Truck } from "lucide-react";
+import { Check, Mail, MessageCircle, Phone, RotateCcw, Truck, Waves } from "lucide-react";
 import { optionPrice } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -17,6 +17,7 @@ import {
   type ContactValues,
   type QuoteLine,
 } from "@/lib/quote";
+import { coastalBody, coastalHeadline, type CoastalRisk } from "@/lib/coastal";
 import { ButtonAnchor } from "@/components/ui/button";
 
 export interface QuoteDocumentProps {
@@ -30,6 +31,8 @@ export interface QuoteDocumentProps {
   delivered: boolean;
   /** Whether the customer's own copy of this quotation reached their inbox. */
   copySent: boolean;
+  /** Coastal exposure of the delivery address. */
+  coastal: CoastalRisk;
   /** Fallback routes, used when the notification could not be delivered. */
   whatsappHref: string;
   mailtoHref: string;
@@ -130,6 +133,7 @@ export function QuoteDocument({
   lines,
   delivered,
   copySent,
+  coastal,
   whatsappHref,
   mailtoHref,
   onStartOver,
@@ -325,7 +329,39 @@ export function QuoteDocument({
           </div>
         </div>
 
-        {/* Shipping — the deliberate gap in this quote, spelled out */}
+        {/* Coastal specification — a spec requirement, not an upsell */}
+        {coastalHeadline(coastal) && (
+          <div
+            className={cn(
+              "border-t p-6 sm:p-8",
+              coastal === "coastal" ? "border-clay/40 bg-clay/5" : "border-border bg-cream",
+            )}
+          >
+            <div className="flex items-start gap-4">
+              <span
+                className={cn(
+                  "mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border bg-cream",
+                  coastal === "coastal" ? "border-clay/50 text-clay-dark" : "border-border text-stone",
+                )}
+              >
+                <Waves className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div className="min-w-0">
+                <h3
+                  className={cn(
+                    "font-display text-lg",
+                    coastal === "coastal" ? "text-clay-dark" : "text-ink",
+                  )}
+                >
+                  {coastalHeadline(coastal)}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{coastalBody(coastal)}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Delivery — the deliberate gap in this quote, spelled out */}
         <div className="border-t border-border bg-parchment/50 p-6 sm:p-8">
           <div className="flex items-start gap-4">
             <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-clay/40 bg-cream text-clay-dark">
@@ -386,6 +422,10 @@ export function QuoteDocument({
             <li>
               Prices include shipping into South Africa. Road delivery to your site, offloading,
               craneage, foundations and site services are excluded and quoted separately.
+            </li>
+            <li>
+              Units delivered to coastal sites require the corrosion-resistant exterior
+              specification. Standard cladding is not warranted against salt-air corrosion.
             </li>
             <li>
               Typical lead time is {site.leadTimeDays} days from deposit. {site.guarantee}.{" "}

@@ -22,6 +22,7 @@ function ExtraToggle({
   areaM2,
   checked,
   disabled,
+  locked,
   helper,
   onToggle,
 }: {
@@ -29,6 +30,8 @@ function ExtraToggle({
   areaM2?: number;
   checked: boolean;
   disabled: boolean;
+  /** Forced on and not removable — the coastal corrosion specification. */
+  locked?: boolean;
   helper?: string;
   onToggle: () => void;
 }) {
@@ -42,12 +45,14 @@ function ExtraToggle({
       aria-checked={checked}
       // aria-disabled (not native disabled) keeps the row focusable so keyboard
       // users can read the "add the … first" helper; guard the click handler.
-      aria-disabled={disabled || undefined}
-      onClick={disabled ? undefined : onToggle}
+      aria-disabled={disabled || locked || undefined}
+      onClick={disabled || locked ? undefined : onToggle}
       className={cn(
         "group flex w-full items-start gap-4 rounded-2xl border px-4 py-4 text-left transition-colors duration-200",
         checked ? "border-forest/40 bg-parchment" : "border-border bg-cream hover:border-stone/50",
         disabled && "cursor-not-allowed opacity-50 hover:border-border",
+        // Locked reads as settled, not broken: full contrast, just not clickable.
+        locked && "cursor-not-allowed border-forest/40 bg-parchment",
       )}
     >
       <span className="flex-1">
@@ -65,6 +70,11 @@ function ExtraToggle({
               </span>
             )}
           </span>
+          {locked && (
+            <span className="rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-forest">
+              required
+            </span>
+          )}
           {option.provisional && price > 0 && (
             <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
               provisional
@@ -97,11 +107,14 @@ export function ExtrasPicker({
   product,
   variantId,
   selected,
+  lockedId,
   onToggle,
 }: {
   product: Product;
   variantId?: string;
   selected: Partial<Record<string, boolean>>;
+  /** Option that the delivery address makes mandatory — shown on and locked. */
+  lockedId?: string;
   onToggle: (option: CustomOption) => void;
 }) {
   if (product.options.length === 0) return null;
@@ -126,20 +139,25 @@ export function ExtrasPicker({
           <div className="grid gap-2">
             {group.options.map((option) => {
               const requirementMet = !option.requires || Boolean(selected[option.requires]);
+              const locked = option.id === lockedId;
               return (
                 <ExtraToggle
                   key={option.id}
                   option={option}
                   areaM2={areaM2}
-                  checked={Boolean(selected[option.id]) && requirementMet}
-                  disabled={!requirementMet}
+                  checked={locked || (Boolean(selected[option.id]) && requirementMet)}
+                  disabled={!requirementMet && !locked}
+                  locked={locked}
                   helper={
-                    !requirementMet
-                      ? `Add the ${
-                          product.options.find((o) => o.id === option.requires)?.label.toLowerCase() ??
-                          "required option"
-                        } first`
-                      : undefined
+                    locked
+                      ? "Included automatically — your delivery address is a coastal site"
+                      : !requirementMet
+                        ? `Add the ${
+                            product.options
+                              .find((o) => o.id === option.requires)
+                              ?.label.toLowerCase() ?? "required option"
+                          } first`
+                        : undefined
                   }
                   onToggle={() => onToggle(option)}
                 />

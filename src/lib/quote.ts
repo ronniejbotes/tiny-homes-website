@@ -65,6 +65,8 @@ export interface QuoteRequestBody {
   address: AddressValues;
   notes?: string;
   units: QuoteUnit[];
+  /** Coastal exposure of the delivery address, as the browser classified it. */
+  coastal?: string;
   /** Honeypot — a real person never fills this in. */
   company?: string;
 }
