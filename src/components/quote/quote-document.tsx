@@ -184,7 +184,7 @@ export function QuoteDocument({
           {delivered ? (
             <>
               We&apos;ve also sent your details to our team, who will come back to you by email
-              with a separate quotation for delivery and transport to your site.
+              with a separate quotation for delivery to your site.
             </>
           ) : (
             <>
@@ -193,7 +193,7 @@ export function QuoteDocument({
                 we couldn&apos;t reach our team automatically
               </strong>
               , so please send us your request using one of the buttons below and we&apos;ll get
-              your shipping quote moving.
+              your delivery quote moving.
             </>
           )}
         </p>
@@ -333,21 +333,22 @@ export function QuoteDocument({
             </span>
             <div className="min-w-0">
               <h3 className="font-display text-lg text-ink">
-                Delivery and transport are not included
+                Delivery to your site is not included
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-stone">
-                The total above covers your units, the extras you selected and VAT — nothing
-                else. Transport is priced per site, so{" "}
+                The total above covers your units, the extras you selected and VAT{" — "}
+                and shipping into South Africa is already in that price. What it doesn&apos;t
+                cover is the national leg: getting your unit here by road. That depends on where
+                you are, so{" "}
                 <strong className="font-medium text-ink">
-                  we&apos;ll come back to you with a separate quote covering delivery and transport
+                  we&apos;ll come back to you with a separate quote for delivery
                 </strong>{" "}
                 to {address.city || "your site"}, along with anything else the site needs.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-stone">
-                You&apos;re also more than welcome to shop around and get your own transport
-                quotes.{" "}
+                You&apos;re also more than welcome to shop around and arrange your own truck.{" "}
                 <strong className="font-medium text-ink">
-                  We don&apos;t add any markup to shipping
+                  We don&apos;t add any markup to delivery
                 </strong>{" "}
                 — whatever the transporter charges us is what we pass on to you — so use whichever
                 option suits you best.
@@ -383,8 +384,8 @@ export function QuoteDocument({
               site.
             </li>
             <li>
-              Delivery, transport, offloading, craneage, foundations and site services are excluded
-              and quoted separately.
+              Prices include shipping into South Africa. Road delivery to your site, offloading,
+              craneage, foundations and site services are excluded and quoted separately.
             </li>
             <li>
               Typical lead time is {site.leadTimeDays} days from deposit. {site.guarantee}.{" "}

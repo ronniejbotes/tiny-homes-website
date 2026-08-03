@@ -110,7 +110,7 @@ function validate(field: FieldName, value: string): string | null {
     case "surname":
       return t ? null : "Please enter your surname — it goes on your quotation.";
     case "email":
-      if (!t) return "Please enter your email address so we can send your shipping quote.";
+      if (!t) return "Please enter your email address so we can send your quote and delivery quote.";
       return EMAIL_RE.test(t)
         ? null
         : "That email doesn't look complete — check for a missing @ or domain, e.g. name@example.com.";
@@ -528,13 +528,13 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
     out.push(`Email: ${contact.email.trim()}`);
     out.push(`Phone: ${contact.phone.trim()}`);
 
-    out.push("", "Shipping location:");
+    out.push("", "Delivery address:");
     out.push(address.street.trim());
     out.push(`${address.suburb.trim()}, ${address.city.trim()}`);
     out.push(`${address.province}, ${address.postal.trim()}`);
 
     if (notes.trim()) out.push("", `Notes: ${notes.trim()}`);
-    out.push("", "Please send me a quote for delivery and transport.");
+    out.push("", "Please send me a quote for road delivery to my site.");
     return out.join("\n");
   };
 
@@ -617,7 +617,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
     } catch {
       // Offline, or the server is down. The quote itself is computed here in
       // the browser, so it still renders — both flags stay false and the
-      // document offers WhatsApp and email as the route to a shipping quote.
+      // document offers WhatsApp and email as the route to a delivery quote.
     }
 
     setSending(false);
@@ -814,7 +814,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
           <Step
             n={3}
             title="Delivery address"
-            description="Where should the homes go? We use this to price your delivery and transport quote, which follows separately by email."
+            description="Where should the homes go? We use this to price your delivery quote, which follows separately by email."
             delay={0.05}
           >
             <AddressFields
@@ -878,8 +878,9 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             </Button>
             <p className="mt-3 text-sm leading-relaxed text-stone">
               Your quote appears on screen straight away and lands in your inbox moments later,
-              covering your units, extras and VAT. Delivery and transport are quoted separately —
-              we&apos;ll email that through once we&apos;ve priced the route to your site.
+              covering your units, extras and VAT, including shipping into South Africa. Road
+              delivery to your site is quoted separately — we&apos;ll email that through once
+              we&apos;ve priced the route.
             </p>
           </div>
         </form>

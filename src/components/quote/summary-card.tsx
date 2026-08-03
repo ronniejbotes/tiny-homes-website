@@ -103,9 +103,10 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-stone">
-            Delivery and transport are <span className="font-medium text-ink">not</span>
-            {" included — "}
-            they&apos;re quoted separately from your address, at cost, with no markup from us.
+            Shipping into South Africa is included. Road delivery to your site is
+            <span className="font-medium text-ink"> not</span>
+            {" — "}
+            that&apos;s quoted separately from your address, at cost, with no markup from us.
           </p>
           {hasPricedTotal && (
             <p className="mt-2 text-xs leading-relaxed text-stone">

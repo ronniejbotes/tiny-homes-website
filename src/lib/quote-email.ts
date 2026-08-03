@@ -4,12 +4,12 @@
  *  1. The customer's copy of the quotation — the quote lives in their inbox
  *     rather than as a file they download, so the figures stay attached to the
  *     business that issued them.
- *  2. The shipping-quote notification to the office. The instant quote covers
- *     the units, their extras and VAT — deliberately not transport, which is
- *     priced per site and passed through at cost. This email is the hand-off
- *     that turns that gap into an action: everything needed to price a load is
- *     in the first screenful (who, where, what), and Reply-To is the customer,
- *     so answering the mail answers the customer.
+ *  2. The delivery-quote notification to the office. The instant quote covers
+ *     the units, their extras, VAT and shipping into South Africa — deliberately
+ *     not the national road leg, which is priced per site and passed through at
+ *     cost. This email is the hand-off that turns that gap into an action:
+ *     everything needed to price a load is in the first screenful (who, where,
+ *     what), and Reply-To is the customer, so answering the mail answers them.
  *
  * Server-only.
  */
@@ -45,8 +45,8 @@ const esc = (value: string) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-/** Single-line shipping destination, the way a transporter would read it. */
-export function formatShippingLocation(address: AddressValues): string {
+/** Single-line destination, the way a transporter would read it. */
+export function formatDeliveryLocation(address: AddressValues): string {
   return [
     address.street.trim(),
     address.suburb.trim(),
@@ -77,7 +77,7 @@ function transportDims(line: QuoteLine): string | null {
 
 export function quoteEmailSubject(input: QuoteEmailInput): string {
   const where = input.address.city.trim() || input.address.province.trim() || "site";
-  return `Shipping quote request — ${fullName(input.contact)} — ${where} — ${input.reference}`;
+  return `Delivery quote request — ${fullName(input.contact)} — ${where} — ${input.reference}`;
 }
 
 /* ------------------------------------------------------------------- text */
@@ -87,13 +87,13 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   const totals = quoteTotals(lines);
   const out: string[] = [];
 
-  out.push("SHIPPING QUOTE REQUEST");
+  out.push("DELIVERY QUOTE REQUEST");
   out.push(`Quote ${reference} · generated ${formatQuoteDate(date)} on tinyhomesa.com`);
   out.push("");
   out.push(
-    "The customer has already received their instant product quote (units, extras and VAT).",
+    "The customer already has their instant product quote (units, extras, VAT and shipping",
   );
-  out.push("They are waiting on a separate quote for delivery and transport.");
+  out.push("into South Africa). They are waiting on a quote for ROAD DELIVERY to their site.");
   out.push("");
 
   out.push("CUSTOMER");
@@ -103,14 +103,14 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   out.push(`  Email:    ${contact.email.trim()}`);
   out.push("");
 
-  out.push("SHIPPING LOCATION");
+  out.push("DELIVERY ADDRESS");
   out.push(`  ${address.street.trim()}`);
   out.push(`  ${address.suburb.trim()}`);
   out.push(`  ${address.city.trim()}`);
   out.push(`  ${address.province.trim()}, ${address.postal.trim()}`);
   out.push("");
 
-  out.push(`PRODUCT TO BE SHIPPED (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})`);
+  out.push(`PRODUCT TO BE DELIVERED (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})`);
   lines.forEach((line, i) => {
     const size = line.variant ? ` — ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${line.quantity} × ${lineTitle(line)}${size}`);
@@ -122,7 +122,7 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   });
   out.push("");
 
-  out.push("PRODUCT QUOTE ISSUED (excludes shipping)");
+  out.push("PRODUCT QUOTE ISSUED (excludes road delivery)");
   if (totals.hasPricedTotal) {
     out.push(`  Subtotal ex VAT:  ${formatZAR(totals.subtotal)}`);
     out.push(`  VAT @ 15%:        ${formatZAR(totals.vat)}`);
@@ -141,7 +141,7 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   }
 
   out.push("");
-  out.push(`Reply to this email to send ${contact.firstName.trim()} their shipping quote.`);
+  out.push(`Reply to this email to send ${contact.firstName.trim()} their delivery quote.`);
   return out.join("\n");
 }
 
@@ -200,13 +200,14 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
 <body style="margin:0;padding:24px;background:#f4eee2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
   <div style="max-width:640px;margin:0 auto;background:#faf6ef;border:1px solid #ddd3c1;border-radius:16px;padding:28px">
 
-    <p style="margin:0 0 4px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Shipping quote request</p>
+    <p style="margin:0 0 4px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Delivery quote request</p>
     <h1 style="margin:0;font-size:24px;line-height:1.25;color:#1c1b17">${esc(fullName(contact))} — ${esc(address.city.trim() || address.province.trim())}</h1>
     <p style="margin:8px 0 0;font-size:14px;color:#67635a">Quote ${esc(reference)} · generated ${esc(formatQuoteDate(date))} on tinyhomesa.com</p>
 
     <div style="margin:20px 0;padding:14px 16px;background:#e9dfce;border-radius:12px;font-size:14px;line-height:1.6;color:#1c1b17">
-      The customer already has their instant product quote (units, extras and VAT).
-      They are waiting on a <strong>separate quote for delivery and transport</strong>.
+      The customer already has their instant product quote — units, extras, VAT and shipping
+      into South Africa. They are waiting on a <strong>quote for road delivery to their
+      site</strong>.
     </div>
 
     <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Customer</h2>
@@ -217,7 +218,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
       <tr><td style="${KEY}">Email</td><td style="${CELL}"><a href="mailto:${esc(contact.email.trim())}" style="color:#9a4522;font-weight:600">${esc(contact.email.trim())}</a></td></tr>
     </table>
 
-    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Shipping location</h2>
+    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Delivery address</h2>
     <p style="margin:0;font-size:16px;line-height:1.6;color:#1c1b17">
       ${esc(address.street.trim())}<br>
       ${esc(address.suburb.trim())}<br>
@@ -227,19 +228,19 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
     <p style="margin:10px 0 0;font-size:14px">
       <a href="https://www.google.com/maps/dir/${encodeURIComponent(
         `${site.address.streetAddress}, ${site.address.city}`,
-      )}/${encodeURIComponent(formatShippingLocation(address))}" style="color:#9a4522">Route from the yard →</a>
+      )}/${encodeURIComponent(formatDeliveryLocation(address))}" style="color:#9a4522">Route from the yard →</a>
     </p>
 
-    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Product to be shipped (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})</h2>
+    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Product to be delivered (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})</h2>
     <ul style="margin:0;padding-left:18px">${unitsHtml}</ul>
 
-    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Product quote issued (excludes shipping)</h2>
+    <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Product quote issued (excludes road delivery)</h2>
     ${totalsHtml}
 
     ${notesHtml}
 
     <p style="margin:28px 0 0;padding-top:20px;border-top:1px solid #ddd3c1;font-size:14px;line-height:1.6;color:#67635a">
-      Reply to this email to send ${esc(contact.firstName.trim())} their shipping quote —
+      Reply to this email to send ${esc(contact.firstName.trim())} their delivery quote —
       it goes straight to their inbox.
     </p>
   </div>
@@ -311,14 +312,16 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   }
   out.push("");
 
-  out.push("DELIVERY AND TRANSPORT ARE NOT INCLUDED");
-  out.push("The total above covers your units, the extras you selected and VAT —");
-  out.push("nothing else. Transport is priced per site, so we'll come back to you");
-  out.push(`with a separate quote covering delivery and transport to ${address.city.trim() || "your site"}.`);
+  out.push("DELIVERY TO YOUR SITE IS NOT INCLUDED");
+  out.push("The total above covers your units, the extras you selected and VAT, and");
+  out.push("shipping into South Africa is already in that price. What it doesn't cover");
+  out.push("is the national leg: getting your unit here by road. That depends on where");
+  out.push(`you are, so we'll come back to you with a separate quote for delivery to`);
+  out.push(`${address.city.trim() || "your site"}.`);
   out.push("");
-  out.push("You're also more than welcome to shop around and get your own transport");
-  out.push("quotes. We don't add any markup to shipping — whatever the transporter");
-  out.push("charges us is what we pass on to you — so use whichever option suits you.");
+  out.push("You're also more than welcome to shop around and arrange your own truck.");
+  out.push("We don't add any markup to delivery — whatever the transporter charges us");
+  out.push("is what we pass on to you — so use whichever option suits you.");
 
   if (notes?.trim()) {
     out.push("");
@@ -332,8 +335,9 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   out.push(`  · All prices in South African Rand. VAT charged at ${VAT_RATE * 100}% on the subtotal.`);
   out.push("  · Optional extras carry provisional pricing, confirmed line by line on your");
   out.push("    formal quotation. Items shown as \"priced on quotation\" are quoted per site.");
-  out.push("  · Delivery, transport, offloading, craneage, foundations and site services are");
-  out.push("    excluded and quoted separately.");
+  out.push("  · Prices include shipping into South Africa. Road delivery to your site,");
+  out.push("    offloading, craneage, foundations and site services are excluded and");
+  out.push("    quoted separately.");
   out.push(`  · Typical lead time is ${site.leadTimeDays} days from deposit. ${site.guarantee}.`);
   out.push(`    ${site.finance}.`);
   out.push("  · This is an automated estimate generated on tinyhomesa.com and is not a tax invoice.");
@@ -491,16 +495,18 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         <tr><td style="padding:26px 28px 0">
           <table role="presentation" width="100%" style="border-collapse:collapse;background:#f4eee2;border-radius:12px">
             <tr><td style="padding:18px 20px">
-              <p style="margin:0;font-size:16px;font-weight:700;color:#1c1b17">Delivery and transport are not included</p>
+              <p style="margin:0;font-size:16px;font-weight:700;color:#1c1b17">Delivery to your site is not included</p>
               <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#67635a">
-                The total above covers your units, the extras you selected and VAT — nothing else.
-                Transport is priced per site, so <strong style="color:#1c1b17">we&rsquo;ll come back to you with a
-                separate quote covering delivery and transport</strong> to ${esc(address.city.trim() || "your site")},
-                along with anything else the site needs.
+                The total above covers your units, the extras you selected and VAT — and shipping into
+                South Africa is already in that price. What it doesn&rsquo;t cover is the national leg:
+                getting your unit here by road. That depends on where you are, so
+                <strong style="color:#1c1b17">we&rsquo;ll come back to you with a separate quote for
+                delivery</strong> to ${esc(address.city.trim() || "your site")}, along with anything else
+                the site needs.
               </p>
               <p style="margin:12px 0 0;font-size:14px;line-height:1.65;color:#67635a">
-                You&rsquo;re also more than welcome to shop around and get your own transport quotes.
-                <strong style="color:#1c1b17">We don&rsquo;t add any markup to shipping</strong> — whatever the
+                You&rsquo;re also more than welcome to shop around and arrange your own truck.
+                <strong style="color:#1c1b17">We don&rsquo;t add any markup to delivery</strong> — whatever the
                 transporter charges us is what we pass on to you — so use whichever option suits you best.
               </p>
             </td></tr>
@@ -516,7 +522,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             <li>This quotation is valid for ${QUOTE_VALID_DAYS} days from the issue date and is subject to stock availability.</li>
             <li>All prices are in South African Rand. VAT is charged at ${VAT_RATE * 100}% on the subtotal shown.</li>
             <li>Optional extras carry provisional pricing and are confirmed line by line on your formal quotation. Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.</li>
-            <li>Delivery, transport, offloading, craneage, foundations and site services are excluded and quoted separately.</li>
+            <li>Prices include shipping into South Africa. Road delivery to your site, offloading, craneage, foundations and site services are excluded and quoted separately.</li>
             <li>Typical lead time is ${site.leadTimeDays} days from deposit. ${esc(site.guarantee)}. ${esc(site.finance)}.</li>
             <li>This is an automated estimate generated on tinyhomesa.com and is not a tax invoice.</li>
           </ul>

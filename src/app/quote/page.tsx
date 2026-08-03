@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const pageDescription =
-  "Build your prefab tiny home, pick your size and extras, and get a full quote including VAT on screen and by email straight away. Delivery and transport are quoted separately, at cost.";
+  "Build your prefab tiny home, pick your size and extras, and get a full quote including VAT on screen and by email straight away. Road delivery to your site is quoted separately, at cost.";
 
 export const metadata: Metadata = {
   title: "Get an Instant Quote Now",
@@ -80,10 +80,10 @@ export default function QuotePage() {
                   lands in your inbox moments later.
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-stone">
-                  Delivery and transport aren&apos;t part of that figure: they depend on your site,
-                  so we price them separately and email that quote through to you. We pass shipping
-                  on at cost with no markup, so you&apos;re welcome to arrange your own transport
-                  too.
+                  That price already includes shipping into South Africa. What it doesn&apos;t
+                  include is road delivery to your site, because that depends on where you are — so
+                  we price it separately and email that quote through to you. We pass it on at cost
+                  with no markup, so you&apos;re welcome to arrange your own truck too.
                 </p>
               </Reveal>
             }
