@@ -8,7 +8,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 
-/* Hand-supplied brand hero (2560px) rather than a manifest product photo — a
+/* Hand-supplied brand hero (2560px) rather than a manifest product photo, a
    full-bleed hero upscales anything smaller into visible blur, and this frame is
    art-directed for the slot. Lives in /brand, not /products, so it stays out of
    the Apple Cabin product gallery. */
@@ -16,8 +16,8 @@ const heroImage = {
   src: "/images/brand/hero-apple-cabin.jpg",
   alt: "Apple Cabin with full-height glazing glowing at dusk on a timber deck, beside a plunge pool and sunken firepit lounge above a mountain lake.",
 };
-/* Price-on-request products carry a 0 sentinel — exclude them from the range.
-   Garages are a DIY steel-kit line, not a home — keep their R139 900 entry price
+/* Price-on-request products carry a 0 sentinel, exclude them from the range.
+   Garages are a DIY steel-kit line, not a home; keep their R139 900 entry price
    out of the "tiny homes from …" headline so it stays the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products
@@ -76,14 +76,19 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-40 sm:px-8 sm:pb-32 lg:px-12">
         <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.12)}>
-          Innovative instant housing · South Africa
+          Prefab &amp; modular housing · South Africa
         </p>
-        <h1 className="text-display mt-5 max-w-4xl text-[3.25rem] leading-[0.95] text-cream sm:text-7xl lg:text-8xl">
+        {/* Fluid rather than stepped: the longest line ("Modular tiny homes")
+            runs ~8.7em, so a fixed ramp overflowed the viewport on phones and
+            again in the 640–700px band just after the sm step. clamp() tracks
+            the container instead of the breakpoints, and tops out at the 6rem
+            the lg step used to set. */}
+        <h1 className="text-display mt-5 max-w-4xl text-[clamp(1.75rem,9.2vw,6rem)] leading-[0.95] text-cream">
           <span className="animate-rise-in block" style={rise(0.24)}>
-            Live large.
+            Modular tiny homes
           </span>
           <span className="animate-rise-in block" style={rise(0.36)}>
-            Build tiny.
+            for South Africa
           </span>
         </h1>
         <p
@@ -91,7 +96,7 @@ export function Hero() {
           style={rise(0.48)}
         >
           High-end prefab tiny homes from{" "}
-          <span className="nums-tabular">{formatZAR(lowestStartingPrice)}</span> ex VAT — designed
+          <span className="nums-tabular">{formatZAR(lowestStartingPrice)}</span> ex VAT, designed
           for affordable, sustainable living and delivered anywhere in South Africa in around
           90 days.
         </p>

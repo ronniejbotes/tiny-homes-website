@@ -89,7 +89,7 @@ function OptionToggle({
   checked: boolean;
   disabled: boolean;
   helper?: string;
-  /** Selected variant's floor area — drives per-m² option pricing. */
+  /** Selected variant's floor area: drives per-m² option pricing. */
   areaM2?: number;
   onToggle: () => void;
 }) {
@@ -154,7 +154,7 @@ function OptionToggle({
 }
 
 /* ------------------------------------------------------------------ */
-/* View tabs — Cutaway · Floor plan · Photos (SPEC-VISUALIZER-V2 §2)   */
+/* View tabs: Cutaway · Floor plan · Photos (SPEC-VISUALIZER-V2 §2)   */
 /* ------------------------------------------------------------------ */
 
 const VIEW_TABS = [
@@ -166,7 +166,7 @@ const VIEW_TABS = [
 type ViewId = (typeof VIEW_TABS)[number]["id"];
 
 /* ------------------------------------------------------------------ */
-/* Photos panel — real imagery from the manifest                       */
+/* Photos panel: real imagery from the manifest                       */
 /* ------------------------------------------------------------------ */
 
 interface ManifestImage {
@@ -181,7 +181,7 @@ interface ManifestImage {
 const manifestProductImages = manifest.products as Record<string, ManifestImage[]>;
 const manifestGalleryImages = manifest.gallery as ManifestImage[];
 
-/* Real interior photo pair (empty shell ↔ furnished) — products that have one
+/* Real interior photo pair (empty shell ↔ furnished), products that have one
    show photography in the first tab instead of the illustrated cutaway. An
    optional video pair plays a 1 s "poof" transition between the two states. */
 interface InteriorPhoto {
@@ -199,7 +199,7 @@ interface InteriorPair {
 
 const manifestConfigurator = manifest.configurator as Record<string, InteriorPair | undefined>;
 
-/* Catalogue floor-plan renders (per product, per size family) — shown in the
+/* Catalogue floor-plan renders (per product, per size family), shown in the
    Floor plan tab instead of the illustrated SVG when the product has them. */
 interface CatalogPlan {
   src: string;
@@ -221,7 +221,7 @@ function CatalogPlansView({
   sizeLabel: string;
 }) {
   // A variant with one plan sheet (apple cabins, glamping capsules) gets the
-  // full panel width — these are long, thin drawings whose room labels and
+  // full panel width; these are long, thin drawings whose room labels and
   // dimensions are unreadable at a third of it. Multi-plan sets (expandable
   // homes) stay in the browsable grid.
   const single = plans.length === 1;
@@ -243,7 +243,7 @@ function CatalogPlansView({
         ))}
       </div>
       <p className="mt-3 text-sm leading-relaxed text-stone">
-        Every layout includes a fitted bathroom — toilet, vanity and a shower or tub as drawn.
+        Every layout includes a fitted bathroom: toilet, vanity and a shower or tub as drawn.
         Window and door placement can be customised on your quote.
       </p>
     </div>
@@ -333,7 +333,7 @@ function InteriorPhotoView({ pair, furnished }: { pair: InteriorPair; furnished:
   );
 }
 
-/** Lookup of every manifest image by src — option photos may live anywhere. */
+/** Lookup of every manifest image by src, option photos may live anywhere. */
 const imageBySrc = new Map<string, ManifestImage>();
 for (const list of [...Object.values(manifestProductImages), manifestGalleryImages]) {
   for (const img of list) {
@@ -379,7 +379,7 @@ function PhotosPanel({
                     />
                   </div>
                   <figcaption className="px-3 py-2 text-xs leading-relaxed text-stone">
-                    {option.label} — example; finishes confirmed on your quote
+                    {option.label}: example; finishes confirmed on your quote
                   </figcaption>
                 </figure>
               );
@@ -402,7 +402,7 @@ function PhotosPanel({
         </div>
       ) : (
         <p className="py-8 text-center text-sm leading-relaxed text-stone">
-          Photos of this unit are on their way — the cutaway and floor plan views show your full
+          Photos of this unit are on their way; the cutaway and floor plan views show your full
           configuration in the meantime.
         </p>
       )}
@@ -430,7 +430,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
   const uid = useId();
   // The first tab needs something to draw: either a real cutaway scene (the
   // five homes) or a photographed empty-shell/furnished pair. Products with
-  // neither — e.g. outdoor kitchens — show just the Photos panel, so they never
+  // neither (e.g. outdoor kitchens) show just the Photos panel, so they never
   // fall back to a home's cutaway. The drawn floor plan is scene-only, so
   // photo-pair products (safari tents, garages) skip that tab.
   const hasScene = product.slug in scenes;
@@ -539,13 +539,17 @@ export function ProductConfigurator({ product }: { product: Product }) {
     );
   }, [product]);
 
-  /* Selected chips (effective — offered on this variant, dependents only count when prerequisite met) */
+  /* Selected chips (effective, offered on this variant, dependents only count when prerequisite met) */
   const activeOptions = product.options.filter(
     (o) => isOptionAvailable(o, variantId) && selected[o.id] && (!o.requires || selected[o.requires]),
   );
 
+  // Hand the configuration to the quote page rather than the contact form: the
+  // quote form parses these same three params into its first line item, so the
+  // customer arrives with their size and extras already picked and only has
+  // their details and delivery address left to fill in.
   const selectedIds = activeOptions.map((o) => o.id);
-  const contactHref = `/contact?${new URLSearchParams({
+  const quoteHref = `/quote?${new URLSearchParams({
     product: product.slug,
     ...(variantId ? { variant: variantId } : {}),
     ...(selectedIds.length ? { options: selectedIds.join(",") } : {}),
@@ -647,7 +651,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
           </div>
           )}
 
-          {/* View panels — crossfade; state lives in the parent so only the
+          {/* View panels: crossfade; state lives in the parent so only the
               active panel needs to stay mounted */}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -718,7 +722,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               ))}
             </AnimatePresence>
             {chips.length === 0 && (
-              <span className="text-xs text-stone">Base configuration — add options to see them appear.</span>
+              <span className="text-xs text-stone">Base configuration: add options to see them appear.</span>
             )}
           </div>
         </div>
@@ -805,7 +809,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               Optional extras carry provisional pricing and will be confirmed on your final quote.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <ButtonLink href={contactHref} variant="accent">
+              <ButtonLink href={quoteHref} variant="accent">
                 Request this configuration
               </ButtonLink>
               <Button variant="ghost" onClick={reset}>
@@ -821,7 +825,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Scene slot — resolves the product's cutaway scene                   */
+/* Scene slot: resolves the product's cutaway scene                   */
 /* ------------------------------------------------------------------ */
 
 function SceneSlot({
@@ -835,7 +839,7 @@ function SceneSlot({
   furnished: boolean;
   variantId?: string;
 }) {
-  // Component map lookup — falls back to the folding scene for unknown slugs.
+  // Component map lookup: falls back to the folding scene for unknown slugs.
   const Scene = scenes[slug] ?? FoldingHomesScene;
   return <Scene visuals={visuals} furnished={furnished} variantId={variantId} />;
 }

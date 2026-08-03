@@ -41,14 +41,14 @@ type Params = Promise<{ product: string }>;
  */
 const MAX_DESCRIPTION = 155;
 
-// Stripped from the end of a truncated summary — otherwise the cut can land
+// Stripped from the end of a truncated summary, otherwise the cut can land
 // right after one of these and leave it dangling before the ellipsis.
 const TRAILING_STOPWORD = /\s+(of|with|in|the|a|an|and|to|for|on)$/i;
 
 function metaDescription(product: Product): string {
-  // Price-on-request products carry a 0 sentinel — never lead with "from R 0".
+  // Price-on-request products carry a 0 sentinel; never lead with "from R 0".
   const lead = product.priceOnRequest
-    ? `${product.shortName} — price on request. `
+    ? `${product.shortName}: price on request. `
     : `${product.shortName} from ${formatZAR(product.startingPrice)} ex VAT. `;
   const budget = MAX_DESCRIPTION - lead.length;
   const summary = product.summary;
@@ -75,9 +75,14 @@ export async function generateMetadata({
   if (!product) return {};
 
   const hero = getHeroImage(slug);
-  const title = product.priceOnRequest
-    ? `${product.name} — Price on Request`
-    : `${product.name} from ${formatZAR(product.startingPrice)}`;
+  // A use-case-led title where the product defines one, "Prefab Granny Flats
+  // & Homes from R199 900" is searched for; "Expandable Homes from R199 900"
+  // is not. Products without one keep the generated brand-and-price form.
+  const title =
+    product.seoTitle ??
+    (product.priceOnRequest
+      ? `${product.name}: Price on Request`
+      : `${product.name} from ${formatZAR(product.startingPrice)}`);
   const description = metaDescription(product);
 
   return {
@@ -121,7 +126,7 @@ export default async function ProductPage({ params }: { params: Params }) {
 
   const hero = getHeroImage(slug);
   const gallery = getGalleryImages(slug);
-  // Native-aspect plan sheets — expandable only until the other products'
+  // Native-aspect plan sheets: expandable only until the other products'
   // diagram imagery has been vetted for this treatment.
   const diagrams = slug === "expandable-homes" ? getDiagramImages(slug) : [];
 
@@ -144,7 +149,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       <VariantCards product={product} />
       {/* Configurator renders when there is something to configure or show:
           priced options, or a real empty-shell/furnished interior photo pair
-          (manifest.configurator). Kitchens and safari tents have neither —
+          (manifest.configurator). Kitchens and safari tents have neither;
           they are quoted, not configured. */}
       {(product.options.length > 0 || product.slug in manifest.configurator) && (
         <ConfiguratorSection product={product} />

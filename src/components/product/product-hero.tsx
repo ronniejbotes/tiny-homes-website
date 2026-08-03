@@ -43,8 +43,11 @@ export function ProductHero({
               </ol>
             </nav>
 
+            {/* h1 over name: the catalogue names are ours, not the market's.
+                "X-Folds" has no search demand behind it; "X-Fold folding
+                homes" keeps the brand and adds the noun people type. */}
             <h1 className="text-display text-5xl text-ink sm:text-6xl lg:text-7xl">
-              {product.name}
+              {product.h1 ?? product.name}
             </h1>
             <p className="mt-4 font-display text-xl text-clay sm:text-2xl">
               {product.tagline}
@@ -87,7 +90,7 @@ export function ProductHero({
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {/* No options means no #configure section to anchor to — lead with the quote instead. */}
+              {/* No options means no #configure section to anchor to, so lead with the quote instead. */}
               {product.options.length > 0 ? (
                 <>
                   <ButtonLink href="#configure" variant="accent" size="lg">
@@ -123,7 +126,7 @@ export function ProductHero({
           {/* LCP image: rendered statically (no Reveal) so the preloaded
               hero can paint before hydration. Entrance animation stays on
               the text column only. The image itself gets the same CSS-only
-              ken-burns settle as the landing hero (globals.css) — a gentle
+              ken-burns settle as the landing hero (globals.css): a gentle
               scale-only zoom that starts after paint, so LCP timing is
               unaffected, and is fully removed for prefers-reduced-motion. */}
           {image && (

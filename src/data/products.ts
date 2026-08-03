@@ -34,7 +34,7 @@ export interface CustomOption {
   description: string;
   price: number; // ZAR ex VAT
   /**
-   * Per-m² pricing — when set, the effective price is pricePerM2 × the selected
+   * Per-m² pricing, when set, the effective price is pricePerM2 × the selected
    * variant's areaM2, so the upgrade scales with the chosen size. `price` is
    * ignored while this is set (use 0). See optionPrice().
    */
@@ -47,7 +47,7 @@ export interface CustomOption {
   provisional: boolean;
   /** Manifest path of a real photo showing this option, when one exists. */
   photo?: string;
-  /** Floor area the option consumes, m² — used by the floor plan space math. */
+  /** Floor area the option consumes, m², used by the floor plan space math. */
   footprintM2?: number;
   /**
    * Variants on which footprintM2 applies (the option genuinely adds the module
@@ -57,7 +57,7 @@ export interface CustomOption {
   footprintVariantIds?: string[];
   /** Variants this option is offered on. Omit to offer it on every variant. */
   availableVariantIds?: string[];
-  /** Options sharing an exclusiveGroup are mutually exclusive — only one can be on. */
+  /** Options sharing an exclusiveGroup are mutually exclusive, only one can be on. */
   exclusiveGroup?: string;
 }
 
@@ -66,7 +66,7 @@ export interface ProductVariant {
   name: string;
   size: string;
   price: number; // ZAR ex VAT
-  /** Numeric floor area in m² — drives per-m² option pricing (see optionPrice). */
+  /** Numeric floor area in m², drives per-m² option pricing (see optionPrice). */
   areaM2?: number;
   description: string;
 }
@@ -76,10 +76,39 @@ export interface ProductFaq {
   a: string;
 }
 
+/**
+ * One thing the product is actually bought for, written as a search term
+ * rather than a brand word.
+ *
+ * The catalogue names ("X-Fold", "Apple Cabin") are ours, not the market's,
+ * nobody types them into Google. People search for the job: a site office, a
+ * granny flat, staff accommodation, a wendy house. Each entry pairs that term
+ * with a paragraph explaining how this product does that job, which is what
+ * gives a search engine something to rank and a reader something to weigh.
+ */
+export interface UseCase {
+  /** The search term itself: becomes the card's heading. */
+  title: string;
+  /** How this product serves that job. Must stay true to the spec above. */
+  body: string;
+}
+
 export interface Product {
   slug: string;
   name: string;
   shortName: string;
+  /**
+   * Page heading. The catalogue name plus the generic noun people search for
+   * ("X-Fold folding homes", not "X-Folds"), so the H1 carries a term with
+   * demand behind it. Falls back to `name`.
+   */
+  h1?: string;
+  /**
+   * Title tag, led by the use case rather than the brand name. Falls back to
+   * the generated "<name> from <price>". Kept short, the root layout appends
+   * " | Tiny Homes SA" (16 chars) to whatever this is.
+   */
+  seoTitle?: string;
   tagline: string;
   /** One-paragraph summary used on cards and meta descriptions. */
   summary: string;
@@ -87,7 +116,7 @@ export interface Product {
   description: string;
   startingPrice: number; // ZAR ex VAT
   /**
-   * No public price — quoted per project after a consultation. When true,
+   * No public price: quoted per project after a consultation. When true,
    * startingPrice is a 0 sentinel that must NEVER render; every price
    * derivation and "From R…" card must skip or special-case this product.
    */
@@ -98,7 +127,7 @@ export interface Product {
   dims: { length: number; width: number; height: number }; // metres, external
   specs: { label: string; value: string }[];
   features: string[];
-  useCases: string[];
+  useCases: UseCase[];
   variants?: ProductVariant[];
   options: CustomOption[];
   faqs: ProductFaq[];
@@ -106,7 +135,7 @@ export interface Product {
 }
 
 /* --------------------------------------------------------------------------
- * Optional extras. All remain provisional — every extra is confirmed line by
+ * Optional extras. All remain provisional, every extra is confirmed line by
  * line on the formal quotation. Doc-sourced extras with no published price
  * are listed at 0 and quoted per site.
  * ------------------------------------------------------------------------ */
@@ -115,7 +144,7 @@ const extra = (o: Omit<CustomOption, "provisional">): CustomOption => ({ ...o, p
 
 const foldingExtras: CustomOption[] = [
   extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Replaces the standard panel exterior with metal carved board, in a wide choice of colours and textures. It also resists salt-air corrosion, so it is required on coastal sites.", price: 9900, category: "structure", visual: "none" }),
-  extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium — R1 950 per window, two windows per unit.", price: 3900, category: "structure", visual: "glazing" }),
+  extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium, at R1 950 per window, two windows per unit.", price: 3900, category: "structure", visual: "glazing" }),
 ];
 
 export const products: Product[] = [
@@ -123,11 +152,13 @@ export const products: Product[] = [
     slug: "folding-homes",
     name: "X-Folds",
     shortName: "X-Fold",
+    h1: "X-Fold folding homes",
+    seoTitle: "Folding Homes from R54 900 | Site Office",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes — the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
+      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes — two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing — if you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa — all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
+      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes: two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa, all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
     startingPrice: 54900,
     sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
@@ -136,29 +167,58 @@ export const products: Product[] = [
       { label: "Floor area", value: "15 m²" },
       { label: "External size", value: "5.8 m × 2.48 m × 2.56 m" },
       { label: "Structure", value: "Steel frame with upgraded floor beams for added support" },
-      { label: "Insulation", value: "EPS-insulated panels — warmer in winter, cooler in summer" },
+      { label: "Insulation", value: "EPS-insulated panels: warmer in winter, cooler in summer" },
       { label: "Doors & windows", value: "1 steel door, 2 PVC windows (aluminium-frame upgrade available)" },
-      { label: "Electrical", value: "2 plug points, a light fitting and a small DB board — electricity included" },
-      { label: "Plumbing", value: "None — add a bathroom or wet room with a local installer" },
+      { label: "Electrical", value: "2 plug points, a light fitting and a small DB board, electricity included" },
+      { label: "Plumbing", value: "None. Add a bathroom or wet room with a local installer" },
       { label: "Finish", value: "White frame with grey walls, or wood-grain walls with white or black frame; metal carved board exterior available, and required on coastal sites" },
       { label: "Stackable", value: "Up to two units high" },
-      { label: "Setup", value: "Unfolds in minutes — 2 workers, 4 steps" },
+      { label: "Setup", value: "Unfolds in minutes: 2 workers, 4 steps" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
       "Upgraded floor beams for added structural support",
-      "EPS insulation — warmer in winter, cooler in summer",
+      "EPS insulation: warmer in winter, cooler in summer",
       "Wired for electricity: two plug points, a light fitting and a small DB board",
-      "No plumbing — add a bathroom or wet room with a local installer",
+      "No plumbing. Add a bathroom or wet room with a local installer",
       "Stackable up to two units high",
-      "Relocatable — fold it back down and move it",
+      "Relocatable: fold it back down and move it",
     ],
-    useCases: ["Garden room", "Home office", "Guest suite", "Rental unit", "Site office", "Worker housing", "Emergency housing"],
+    useCases: [
+      {
+        title: "Site office",
+        body: "Two workers unfold an X-Fold into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands instead of a fortnight later. Two plug points, a light fitting and a small DB board arrive already wired. When the job finishes, fold it back down and send it to the next site.",
+      },
+      {
+        title: "Staff accommodation and living quarters",
+        body: "A 15 m² insulated room for on-site staff, farm workers or construction and mining crews. EPS panels keep it warmer in winter and cooler in summer, and units stack two high where ground space is tight. It ships wired but without plumbing, so ablutions are either a shared block or a local plumber's fit-out.",
+      },
+      {
+        title: "Wendy house alternative",
+        body: "A steel-framed, EPS-insulated alternative to a timber or nutec wendy house, at a price that overlaps the premium nutec end of that market. The difference is what arrives: a finished, insulated, wired room that unfolds in minutes rather than a kit built up on site, and one you can fold down and take with you if you move.",
+      },
+      {
+        title: "Garden room and home office",
+        body: "A separate 15 m² room at the bottom of the garden, far enough from the house to take calls in. It needs a level slab or precast plinths and no council-scale building work, and the electrics are already in: two plugs, a light and a small DB board ready to connect.",
+      },
+      {
+        title: "Guest room or rental unit",
+        body: "An insulated spare room for guests, a lodger or a backyard rental. It arrives finished inside, and adding a shower and toilet through a local installer turns it into a self-contained let. The X-Fold itself carries electrics only.",
+      },
+      {
+        title: "Emergency and rapid-deployment housing",
+        body: "Where shelter is needed in days rather than months, X-Folds ship flat, stack on a truck and unfold in four steps with two people and no specialist crew. Stackable two high, relocatable, and priced at R54 900 ex VAT per unit for volume deployment.",
+      },
+      {
+        title: "Secure storeroom",
+        body: "A lockable, weatherproof, insulated 15 m² store for tools, stock or equipment on a farm, yard or site. The steel frame and steel door take daily use, and the whole unit folds down and moves when the operation does.",
+      },
+    ],
     options: [...foldingExtras],
     faqs: [
       {
         q: "How long does it take to set up an X-Fold?",
-        a: "Minutes, not days. A crane or forklift offloads the unit, then two workers unfold and secure it in four simple steps — walls, windows, door and electrics arrive already installed.",
+        a: "Minutes, not days. A crane or forklift offloads the unit, then two workers unfold and secure it in four simple steps: walls, windows, door and electrics arrive already installed.",
       },
       {
         q: "What foundation does an X-Fold need?",
@@ -166,44 +226,49 @@ export const products: Product[] = [
       },
       {
         q: "Can X-Folds be moved after installation?",
-        a: "Yes. Fold the unit back down, load it and redeploy it somewhere new — that's the whole point of the design.",
+        a: "Yes. Fold the unit back down, load it and redeploy it somewhere new. That's the whole point of the design.",
       },
       {
         q: "What comes standard on an X-Fold?",
-        a: "Upgraded floor beams for added support, EPS insulation to keep it comfortable year-round, and a basic electrical setup — two plug points, a light fitting and a small DB board. It arrives wired for electricity but without plumbing. A metal carved board exterior finish and aluminium window frames are available upgrades — and near the coast the metal carved board is required, because standard panels corrode in salt air.",
+        a: "Upgraded floor beams for added support, EPS insulation to keep it comfortable year-round, and a basic electrical setup: two plug points, a light fitting and a small DB board. It arrives wired for electricity but without plumbing. A metal carved board exterior finish and aluminium window frames are available upgrades, and near the coast the metal carved board is required, because standard panels corrode in salt air.",
       },
       {
         q: "Does the X-Fold come with a bathroom or kitchen?",
-        a: "No — the X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, we recommend arranging a local installer to fit one on site.",
+        a: "No. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, we recommend arranging a local installer to fit one on site.",
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee, and we provide full after-sales support.",
+        a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee, and we provide full after-sales support.",
       },
       {
         q: "Can I finance an X-Fold?",
-        a: "Yes — finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record.",
+        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record.",
       },
     ],
     seoKeywords: [
       "folding home South Africa",
       "flat pack home South Africa",
-      "folding home price",
+      "site office for sale South Africa",
+      "staff accommodation units South Africa",
+      "living quarters prefab",
+      "wendy house alternative",
+      "park home South Africa",
+      "garden office South Africa",
       "foldable container home",
-      "X-Fold tiny home",
       "affordable tiny home South Africa",
-      "tiny home finance",
     ],
   },
   {
     slug: "expandable-homes",
     name: "Expandable Homes",
     shortName: "Expandable Home",
-    tagline: "Smart living — fast, flexible and future-ready.",
+    h1: "Expandable prefab homes",
+    seoTitle: "Prefab Granny Flats & Homes from R199 900",
+    tagline: "Smart living, fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space — bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
+      "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground — your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT — an open-plan space with a bathroom and a small basic kitchen — step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and stainless-steel kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and stainless-steel kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
     sizeLabel: "18 – 74 m²",
     bedrooms: "Open plan – 4 bedrooms",
@@ -211,31 +276,64 @@ export const products: Product[] = [
     dims: { length: 12, width: 6.3, height: 2.5 },
     specs: [
       { label: "Sizes", value: "18 m², 37 m² or 74 m²" },
-      { label: "Deployment", value: "Arrives as one module, expands on site — move-in ready within hours on a prepared site" },
+      { label: "Deployment", value: "Arrives as one module, expands on site, move-in ready within hours on a prepared site" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
-      { label: "Walls", value: "75 mm EPS insulated panels — standard (polyurethane metal carved board upgrade available, required on coastal sites)" },
-      { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor — standard (waterproof SPC laminate upgrade available)" },
-      { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door — standard" },
+      { label: "Walls", value: "75 mm EPS insulated panels, standard (polyurethane metal carved board upgrade available, required on coastal sites)" },
+      { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor, standard (waterproof SPC laminate upgrade available)" },
+      { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door, standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
       { label: "Utilities", value: "Plumbing and electrical factory-installed on every size" },
-      { label: "Bathroom & kitchen", value: "Included on every size — the 18 m² has a bathroom and small basic kitchen; the 6m and 12m add a full stainless-steel kitchen" },
+      { label: "Bathroom & kitchen", value: "Included on every size: the 18 m² has a bathroom and small basic kitchen; the 6m and 12m add a full stainless-steel kitchen" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
-      "Full home delivered as one compact module — expands within hours",
-      "Bathroom and kitchen included on every size — full stainless-steel kitchen in the 6m and 12m models",
-      "107 exterior colours and finishes — brick, timber-grain, plain or textured",
+      "Full home delivered as one compact module, expanding within hours",
+      "Bathroom and kitchen included on every size, with a full stainless-steel kitchen in the 6m and 12m models",
+      "107 exterior colours and finishes: brick, timber-grain, plain or textured",
       "Window and door placement of your choice",
       "Layouts from open-plan to four bedrooms",
     ],
-    useCases: ["Family home", "Granny flat", "Farm cottage", "Student accommodation", "Developer projects", "Office", "Clinic or community centre", "Guest lodge"],
+    useCases: [
+      {
+        title: "Granny flat",
+        body: "Building a granny flat conventionally in Gauteng runs roughly R11 000 to R15 000 per m², which puts a 50 m² unit somewhere between R550 000 and R750 000 before it is furnished. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
+      },
+      {
+        title: "Family home",
+        body: "A complete house delivered as one module: up to 74 m², layouts to four bedrooms, a fully fitted bathroom with a separate shower, a stainless-steel kitchen, and plumbing and electrics installed in the factory. On a prepared slab you can move in the same day it arrives.",
+      },
+      {
+        title: "Farm cottage and farmworker housing",
+        body: "Insulated, double-glazed housing that reaches remote farms as a single load and opens out within hours, with no local build crew to organise. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a full kitchen for R329 900.",
+      },
+      {
+        title: "Staff accommodation and living quarters",
+        body: "Self-contained units for mine, lodge, security or estate staff, each with its own bathroom and kitchen, so there is no shared ablution block to build. 75 mm EPS insulated walls come standard, upgradeable to polyurethane for roughly 40% better thermal performance on hot or cold sites.",
+      },
+      {
+        title: "Student accommodation",
+        body: "Repeatable, self-contained rooms for private student housing, delivered as modules and expanded on site so a block goes up in a fraction of a conventional programme. Layouts run from open-plan to four bedrooms, and 107 exterior finishes let a scheme match what is already there.",
+      },
+      {
+        title: "Site office and project office",
+        body: "A 37 m² or 74 m² office that expands within hours and arrives with plumbing, electrics, double glazing and a bathroom, closer to a permanent office than a site cabin. Office layouts are available alongside the residential ones, and a full glass front wall can be added for a reception frontage.",
+      },
+      {
+        title: "Clinic, classroom or community centre",
+        body: "A serviced, insulated building for a rural clinic, classroom or community hall, on the ground within hours of arrival. Bathroom plumbing is factory-installed, window and door placement is yours to choose, and layouts adapt to consulting rooms or an open hall.",
+      },
+      {
+        title: "Developer and rental projects",
+        body: "Predictable unit costs and a fixed factory build make expandable homes straightforward to repeat across a rental or resort scheme. Order in volume, take delivery in phases, and finish each unit identically, from R199 900 ex VAT per unit, delivered nationwide.",
+      },
+    ],
     variants: [
-      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable — an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
+      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable: an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
       { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
       { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
-      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board — around 40% better insulation. The metal carved board also resists salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
+      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board, for around 40% better insulation. The metal carved board also resists salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
       { id: "spc-flooring", label: "Waterproof SPC laminate flooring", description: "Upgrades the standard vinyl to waterproof SPC stone-composite laminate. Priced per m² of floor area.", price: 0, pricePerM2: 185, category: "interior", visual: "floors", provisional: false },
       { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 14900, category: "structure", visual: "glazing", provisional: false },
     ],
@@ -246,7 +344,7 @@ export const products: Product[] = [
       },
       {
         q: "How long does installation take?",
-        a: "The 6m and 12m homes arrive as one module and expand on site within hours — on a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect.",
+        a: "The 6m and 12m homes arrive as one module and expand on site within hours. On a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect.",
       },
       {
         q: "What's included as standard?",
@@ -258,19 +356,23 @@ export const products: Product[] = [
       },
       {
         q: "How much does delivery cost?",
-        a: "Delivery is quoted separately based on distance and site accessibility — we deliver nationwide and can arrange the full turnkey installation.",
+        a: "Delivery is quoted separately based on distance and site accessibility. We deliver nationwide and can arrange the full turnkey installation.",
       },
       {
         q: "Can I finance an expandable home?",
-        a: "Yes — finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
+        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
     ],
     seoKeywords: [
+      "prefab granny flat South Africa",
+      "granny flat cost South Africa",
       "expandable home South Africa",
       "expandable container home 3 bedroom",
-      "expandable container house price",
-      "prefab granny flat",
+      "farm cottage prefab",
+      "staff accommodation units for sale",
+      "student accommodation modular units",
       "prefab home Gauteng",
+      "modular classroom clinic South Africa",
       "2 bedroom expandable container home",
     ],
   },
@@ -278,11 +380,13 @@ export const products: Product[] = [
     slug: "nature-cabins",
     name: "Nature Cabins",
     shortName: "Nature Cabin",
+    h1: "Nature cabins",
+    seoTitle: "Airbnb & Guest Cabins from R810 900",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
-      "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites — the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
+      "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in — effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation — eco-tourism ventures, Airbnb listings, nature retreats and private guest houses — it's delivered in modular format and assembled by our team in under 3 days, with the groundwork completed beforehand. R810 900 ex VAT.",
+      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it's delivered in modular format and assembled by our team in under 3 days, with the groundwork completed beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
     sizeLabel: "26 m² + terrace",
     setupTime: "Under 3 days",
@@ -291,13 +395,13 @@ export const products: Product[] = [
       { label: "Floor area", value: "26 m² plus 1.5 × 3.2 m viewing terrace" },
       { label: "External size", value: "8.1 m × 3.2 m × 3.4 m" },
       { label: "Structure", value: "Steel frame with timber-look exterior" },
-      { label: "Walls", value: "Polyurethane-insulated — standard" },
-      { label: "Windows & doors", value: "Double-glazed glass with aluminium frames — standard" },
-      { label: "Flooring", value: "18 mm cement-fibre board with waterproof SPC laminate — standard" },
-      { label: "Kitchen", value: "Stone countertop, wash basin and induction cooker — included" },
-      { label: "Bathroom", value: "Fully fitted bathroom — included" },
-      { label: "Air conditioning", value: "Midea air conditioning — included as standard" },
-      { label: "Hot water", value: "40–60 L storage electric water heater — included as standard" },
+      { label: "Walls", value: "Polyurethane-insulated, standard" },
+      { label: "Windows & doors", value: "Double-glazed glass with aluminium frames, standard" },
+      { label: "Flooring", value: "18 mm cement-fibre board with waterproof SPC laminate, standard" },
+      { label: "Kitchen", value: "Stone countertop, wash basin and induction cooker, included" },
+      { label: "Bathroom", value: "Fully fitted bathroom, included" },
+      { label: "Air conditioning", value: "Midea air conditioning, included as standard" },
+      { label: "Hot water", value: "40–60 L storage electric water heater, included as standard" },
       { label: "Terrace", value: "1.5 m × 3.2 m viewing terrace" },
       { label: "Installation", value: "Delivered in modular format, assembled by our team in under 3 days" },
       { label: "Site", value: "Groundwork (water, electricity, sewerage, foundation) completed beforehand" },
@@ -306,26 +410,51 @@ export const products: Product[] = [
       "Warm timber look with steel durability",
       "Polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames",
       "18 mm cement-fibre floor with waterproof SPC laminate",
-      "Kitchen included — stone countertop, wash basin and induction cooker",
+      "Kitchen included: stone countertop, wash basin and induction cooker",
       "Fully fitted bathroom included",
       "Midea air conditioning and a 40–60 L storage electric water heater included as standard",
       "1.5 × 3.2 m viewing terrace",
       "Assembled by our team in under 3 days",
     ],
-    useCases: ["Guest farm unit", "Airbnb cabin", "Bush retreat", "Coastal getaway", "Backyard studio", "Lodge accommodation"],
+    useCases: [
+      {
+        title: "Airbnb and self-catering unit",
+        body: "A guest unit that arrives able to earn from the first booking: fitted bathroom, kitchen with a stone countertop and induction cooker, air conditioning and a 40–60 L geyser all included as standard, with nothing left on an options list to budget for later.",
+      },
+      {
+        title: "Guest farm and farm cottage",
+        body: "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace, delivered in modular format and assembled by our team in under 3 days once the groundwork is in. Timber looks with a steel structure behind it, which is what makes it viable on working land rather than just pretty.",
+      },
+      {
+        title: "Bush retreat",
+        body: "Polyurethane-insulated walls and double-glazed aluminium-framed glazing hold their temperature through bushveld heat and cold nights, with Midea air conditioning included. It sits lightly enough to drop into a site without a conventional build programme.",
+      },
+      {
+        title: "Coastal getaway",
+        body: "A steel-framed cabin finished for exposure, with double-glazed glass and a waterproof SPC laminate floor over an 18 mm cement-fibre board. The terrace is oriented for the view, and coastal sites are specified for salt air on quotation.",
+      },
+      {
+        title: "Lodge accommodation",
+        body: "Repeatable guest suites for an existing lodge, each self-contained with its own bathroom and kitchen so the main building carries less. Assembly in under 3 days per unit keeps disruption to trading guests short.",
+      },
+      {
+        title: "Backyard studio",
+        body: "A fully serviced 26 m² studio at the end of the garden, with bathroom, kitchen, air conditioning and hot water included, for a home office, a teenager, or a long-stay guest who needs their own front door.",
+      },
+    ],
     options: [],
     faqs: [
       {
         q: "Where can a nature cabin be installed?",
-        a: "Nature cabins suit beach, bush and mountain sites. Water, electricity, sewerage and the foundation are completed before delivery — our turnkey team can arrange the groundwork for you, and delivery is quoted separately based on your location.",
+        a: "Nature cabins suit beach, bush and mountain sites. Water, electricity, sewerage and the foundation are completed before delivery. Our turnkey team can arrange the groundwork for you, and delivery is quoted separately based on your location.",
       },
       {
         q: "Are nature cabins good for Airbnb and guest farms?",
-        a: "Yes — the 26 m² layout plus viewing terrace is designed for hospitality use, with a fitted kitchen (stone countertop, wash basin and induction cooker), a fully fitted bathroom, Midea air conditioning, a 40–60 L storage electric water heater, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard, making it easy to run as guest accommodation.",
+        a: "Yes. The 26 m² layout plus viewing terrace is designed for hospitality use, with a fitted kitchen (stone countertop, wash basin and induction cooker), a fully fitted bathroom, Midea air conditioning, a 40–60 L storage electric water heater, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard, making it easy to run as guest accommodation.",
       },
       {
         q: "What's included as standard?",
-        a: "Everything: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning, a 40–60 L storage electric water heater and a 1.5 × 3.2 m viewing terrace — all in the R810 900 ex VAT price.",
+        a: "Everything: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning, a 40–60 L storage electric water heater and a 1.5 × 3.2 m viewing terrace, all in the R810 900 ex VAT price.",
       },
       {
         q: "How long does installation take?",
@@ -333,7 +462,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee, and can I finance a nature cabin?",
-        a: "Yes — every home we sell carries a 1-year limited guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes. Every home we sell carries a 1-year limited guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -349,25 +478,27 @@ export const products: Product[] = [
     slug: "apple-cabins",
     name: "Apple Cabins",
     shortName: "Apple Cabin",
+    h1: "Apple cabins",
+    seoTitle: "Glamping & Resort Pods from R449 900",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
-      "Big living in a small package — a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
+      "Big living in a small package: a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
     description:
-      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes — luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchenette included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R449 900 ex VAT, the 20 m² Apple Cabin 9m at R549 900 or the 26.5 m² Apple Cabin 11.8m at R649 900, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed — ready for occupation within hours.",
+      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes. Luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchenette included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing: plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R449 900 ex VAT, the 20 m² Apple Cabin 9m at R549 900 or the 26.5 m² Apple Cabin 11.8m at R649 900, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed, ready for occupation within hours.",
     startingPrice: 449900,
     sizeLabel: "13 – 26.5 m²",
     setupTime: "Ready within hours",
     dims: { length: 11.8, width: 2.25, height: 2.63 },
     specs: [
-      { label: "Sizes", value: "13 m² (5.8 m), 20 m² (9 m) or 26.5 m² (11.8 m) — various sizes and designs available" },
+      { label: "Sizes", value: "13 m² (5.8 m), 20 m² (9 m) or 26.5 m² (11.8 m), with various sizes and designs available" },
       { label: "External size", value: "Up to 11.8 m × 2.25 m × 2.63 m" },
       { label: "Glazing", value: "Floor-to-ceiling panoramic glass with double-glazed windows" },
       { label: "Bathroom", value: "Luxurious bathroom fittings included in all three sizes" },
       { label: "Kitchenette", value: "Included in the 9 m and 11.8 m cabins" },
       { label: "Interior", value: "Premium finishes with curtain tracks included" },
-      { label: "Services", value: "Integrated lighting and plumbing — plug in and you're ready" },
+      { label: "Services", value: "Integrated lighting and plumbing: plug in and you're ready" },
       { label: "Build", value: "Insulated, low-maintenance construction with smart-lock entry" },
-      { label: "Installation", value: "Arrives fully assembled — professionally installed, ready within hours" },
+      { label: "Installation", value: "Arrives fully assembled and professionally installed, ready within hours" },
     ],
     features: [
       "Floor-to-ceiling panoramic glass",
@@ -375,31 +506,56 @@ export const products: Product[] = [
       "Kitchenette included in the 9 m and 11.8 m cabins",
       "Double-glazed windows and an insulated, low-maintenance build",
       "Smart-lock entry and premium interior finishes",
-      "Arrives fully assembled — ready for occupation within hours",
+      "Arrives fully assembled, ready for occupation within hours",
     ],
-    useCases: ["Eco-resort unit", "Airbnb getaway", "Backyard guest suite", "Scenic escape", "Stylish rental", "Vineyard suite"],
+    useCases: [
+      {
+        title: "Eco-resort unit",
+        body: "Curved floor-to-ceiling panoramic glass is the reason guests book a pod rather than a room, and it is what an Apple Cabin leads with. Each arrives fully assembled and is professionally installed, ready for occupation within hours, so a resort adds keys without a building site.",
+      },
+      {
+        title: "Glamping pod",
+        body: "A hard-shell, insulated alternative to canvas that trades in all year and locks: double glazing, smart-lock entry, integrated lighting and plumbing, and luxurious bathroom fittings in all three sizes. From 13 m² at R449 900 ex VAT up to 26.5 m² at R649 900.",
+      },
+      {
+        title: "Airbnb and short-stay rental",
+        body: "A listing that photographs unlike anything else on the platform, with the bathroom fittings included on every size and a kitchenette on the 9 m and 11.8 m cabins. Plug it in and it is ready to let.",
+      },
+      {
+        title: "Vineyard and wine estate suite",
+        body: "Angular architecture and panoramic glazing aimed straight at the view across the vines, on a footprint from 2.25 m wide that fits between established plantings. Premium interior finishes and curtain tracks come as standard.",
+      },
+      {
+        title: "Backyard guest suite",
+        body: "A self-contained guest suite with its own bathroom and smart-lock entry, delivered fully assembled so the garden is disrupted for hours rather than months. The 5.8 m cabin fits 13 m² into a compact plot.",
+      },
+      {
+        title: "Scenic escape and off-site retreat",
+        body: "An insulated, low-maintenance shell built to sit somewhere remote and beautiful without constant upkeep. Double-glazed and comfortable year-round, and installed professionally on arrival.",
+      },
+    ],
     variants: [
-      { id: "apple-5-8", name: "Apple Cabin 5.8m", size: "13 m²", price: 449900, description: "5.8 × 2.25 × 2.63 m — luxurious bathroom fittings included." },
-      { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 549900, description: "9 × 2.25 × 2.63 m — luxurious bathroom fittings and a kitchenette included." },
-      { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 649900, description: "11.8 × 2.25 × 2.63 m — the largest Apple cabin, with bathroom and kitchenette included." },
+      { id: "apple-5-8", name: "Apple Cabin 5.8m", size: "13 m²", price: 449900, description: "5.8 × 2.25 × 2.63 m, with luxurious bathroom fittings included." },
+      { id: "apple-9", name: "Apple Cabin 9m", size: "20 m²", price: 549900, description: "9 × 2.25 × 2.63 m, with luxurious bathroom fittings and a kitchenette included." },
+      { id: "apple-11-8", name: "Apple Cabin 11.8m", size: "26.5 m²", price: 649900, description: "11.8 × 2.25 × 2.63 m, the largest Apple cabin, with bathroom and kitchenette included." },
     ],
     options: [],
     faqs: [
       {
         q: "What is included in an Apple Cabin?",
-        a: "Luxurious bathroom fittings in all three sizes, a kitchenette in the 9 m and 11.8 m cabins, double-glazed windows, premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing — plug in and you're ready.",
+        a: "Luxurious bathroom fittings in all three sizes, a kitchenette in the 9 m and 11.8 m cabins, double-glazed windows, premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing: plug in and you're ready.",
       },
       {
         q: "How are Apple Cabins delivered and installed?",
-        a: "The cabin arrives fully assembled and is professionally installed on a prepared site — ready for occupation within hours. Delivery is quoted separately based on your location and site accessibility.",
+        a: "The cabin arrives fully assembled and is professionally installed on a prepared site, ready for occupation within hours. Delivery is quoted separately based on your location and site accessibility.",
       },
       {
         q: "Can Apple Cabins run off-grid?",
-        a: "They can be paired with solar and battery systems, quoted for your site — along with gas geysers and rainwater tanks for remote locations.",
+        a: "They can be paired with solar and battery systems, quoted for your site, along with gas geysers and rainwater tanks for remote locations.",
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee, and finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee, and finance and lay-bye options are available, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -414,11 +570,13 @@ export const products: Product[] = [
     slug: "glamping-capsules",
     name: "Glamping Capsules",
     shortName: "Glamping Capsule",
-    tagline: "Luxury in the heart of nature — the art of glamping, perfected.",
+    h1: "Glamping capsules",
+    seoTitle: "Glamping Pods & Capsules from R689 900",
+    tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
     summary:
-      "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model — a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
+      "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
     description:
-      "Glamping Capsules are the flagship of the Tiny Homes SA range — scenic, serene luxury delivered to beaches, bush settings and vineyards. Rooms sit either side of the bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard, with the kitchen and air conditioning offered as extras so you only pay for what you need. Choose the core range — 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900 — or step up to the Space range, a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts: both ranges build other sizes and layouts to order, and there are far more options than we can list — tell us what you need and we'll check. Each capsule arrives fully built and is delivered to your site, so there's no on-site construction and it's ready for immediate occupancy.",
+      "Glamping Capsules are the flagship of the Tiny Homes SA range: scenic, serene luxury delivered to beaches, bush settings and vineyards. Rooms sit either side of the bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard, with the kitchen and air conditioning offered as extras so you only pay for what you need. Choose the core range: 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900, or step up to the Space range, a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts: both ranges build other sizes and layouts to order, and there are far more options than we can list, so tell us what you need and we'll check. Each capsule arrives fully built and is delivered to your site, so there's no on-site construction and it's ready for immediate occupancy.",
     startingPrice: 689900,
     sizeLabel: "18.6 – 38 m²",
     bedrooms: "1 – 2 rooms + bathroom",
@@ -426,50 +584,75 @@ export const products: Product[] = [
     dims: { length: 11.5, width: 3.3, height: 3.3 },
     specs: [
       { label: "Core range", value: "18.6 m² (5.85 m), 30.4 m² (9.5 m) or 37 m² (11.5 m, with balcony)" },
-      { label: "Space range", value: "30.4 m² (8.5 m Space D5), 30 m² (9.0 m Space D8) or 38 m² (11.5 m Space D7) — a more premium build with a wider options list" },
+      { label: "Space range", value: "30.4 m² (8.5 m Space D5), 30 m² (9.0 m Space D8) or 38 m² (11.5 m Space D7), a more premium build with a wider options list" },
       { label: "External size", value: "Up to 11.5 m × 3.3 m × 3.3 m" },
       { label: "Glazing", value: "270° oversized floor-to-ceiling double-glazed windows in each room" },
       { label: "Layout", value: "One or two rooms with a bathroom; a balcony on the 11.5 m core capsule and on the Space D5 and D7" },
       { label: "Sleeps", value: "2 – 4 depending on the model" },
-      { label: "Kitchen", value: "Optional on every model — basic cabinetry with a sink and stone top in the core range, or a full kitchen with a 900 mm double stove and 80 L oven in the Space range" },
+      { label: "Kitchen", value: "Optional on every model: basic cabinetry with a sink and stone top in the core range, or a full kitchen with a 900 mm double stove and 80 L oven in the Space range" },
       { label: "Air conditioning", value: "Optional on every model" },
       { label: "Standard", value: "Bathroom with premium fittings, geyser, multi-layer insulation, plumbing & electrical, interior & exterior lighting, intelligent front-door access" },
-      { label: "Models shown", value: "A sample of the most popular layouts — other sizes and layouts are built to order" },
-      { label: "Assembly", value: "Arrives fully built — delivered and placed on site with no on-site construction, ready for immediate occupancy" },
+      { label: "Models shown", value: "A sample of the most popular layouts; other sizes and layouts are built to order" },
+      { label: "Assembly", value: "Arrives fully built, delivered and placed on site with no on-site construction, ready for immediate occupancy" },
     ],
     features: [
       "270° oversized double-glazed panoramic windows in each room",
-      "Two ranges — the core capsules, and the more premium Space range",
+      "Two ranges: the core capsules, and the more premium Space range",
       "Bathroom with premium fittings and a geyser standard on every model",
       "Multi-layer thermal insulation and intelligent front-door access",
-      "Optional balcony — removable to extend the indoor space",
-      "Arrives fully built — no on-site construction",
+      "Optional balcony, removable to extend the indoor space",
+      "Arrives fully built, with no on-site construction",
     ],
-    useCases: ["Luxury lodge suite", "Vineyard accommodation", "Beach retreat", "Bush getaway", "Premium Airbnb", "Honeymoon suite"],
+    useCases: [
+      {
+        title: "Luxury lodge suite",
+        body: "Rooms sit either side of the bathroom, each wrapped in 270-degree floor-to-ceiling double glazing and roomy enough for a queen bed and a lounge area. Capsules arrive fully built, so a lodge adds suites without closing to guests for a construction programme.",
+      },
+      {
+        title: "Glamping pod business",
+        body: "The premium end of the glamping market, where the unit itself is the reason for the booking and the nightly rate. Premium bathroom fittings, a geyser, complete plumbing and electrics and intelligent front-door access are standard; kitchen and air conditioning are extras, so you only pay for what the site needs.",
+      },
+      {
+        title: "Vineyard and wine estate accommodation",
+        body: "Panoramic glazing turned toward the vines, from an 18.6 m² capsule at R689 900 ex VAT up to a 37 m² model with a balcony at R949 900. The Space range adds a wider options list where an estate wants the specification pushed further.",
+      },
+      {
+        title: "Beach and coastal retreat",
+        body: "Multi-layer thermal insulation and oversized double glazing hold a comfortable interior against coastal glare and wind. Coastal exposure is specified on quotation, because salt air changes what the exterior has to be.",
+      },
+      {
+        title: "Bush getaway",
+        body: "Delivered fully built and ready for immediate occupancy, which matters most where a site is hours from the nearest contractor. The 11.5 m capsule sleeps 2–4 across two bedrooms with a central bathroom and a balcony.",
+      },
+      {
+        title: "Honeymoon suite",
+        body: "A single freestanding suite with 270° glazing, a premium bathroom and a balcony on the larger models: private, and separate from the main guest block. Other sizes and layouts are built to order.",
+      },
+    ],
     variants: [
-      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 689900, description: "5.85 × 3.15 × 3.2 m — one bedroom and a bathroom wrapped in panoramic glazing. The entry to the capsule range." },
-      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 849900, description: "9.5 × 3.25 × 3.2 m — two bedrooms either side of a central bathroom with luxurious fittings." },
-      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "37 m²", price: 949900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4 — two bedrooms, a central bathroom and a balcony. The largest of the core range." },
-      { id: "space-d5", name: "Space D5 (8.5 m)", size: "30.4 m²", price: 849900, description: "8.5 × 3.3 × 3.3 m — one bedroom, a lounge area and a balcony, in the more premium Space build with its wider options list." },
-      { id: "space-d8", name: "Space D8 (9.0 m)", size: "30 m²", price: 998900, description: "9.0 × 3.3 × 3.3 m — two bedrooms and a bathroom with a tub, no balcony. The two-bedroom Space capsule." },
-      { id: "space-d7", name: "Space D7 (11.5 m)", size: "38 m²", price: 1099900, description: "11.5 × 3.3 × 3.3 m — the largest capsule: a bedroom, lounge area and balcony in the premium Space build. A two-bedroom layout is available on request." },
+      { id: "capsule-5-85", name: "Glamping Capsule 5.85m", size: "18.6 m²", price: 689900, description: "5.85 × 3.15 × 3.2 m, with one bedroom and a bathroom wrapped in panoramic glazing. The entry to the capsule range." },
+      { id: "capsule-8-5", name: "Glamping Capsule 9.5m", size: "30.4 m²", price: 849900, description: "9.5 × 3.25 × 3.2 m, with two bedrooms either side of a central bathroom with luxurious fittings." },
+      { id: "capsule-11-5", name: "Glamping Capsule 11.5m", size: "37 m²", price: 949900, description: "11.5 × 3.25 × 3.2 m, sleeps 2–4, with two bedrooms, a central bathroom and a balcony. The largest of the core range." },
+      { id: "space-d5", name: "Space D5 (8.5 m)", size: "30.4 m²", price: 849900, description: "8.5 × 3.3 × 3.3 m, with one bedroom, a lounge area and a balcony, in the more premium Space build with its wider options list." },
+      { id: "space-d8", name: "Space D8 (9.0 m)", size: "30 m²", price: 998900, description: "9.0 × 3.3 × 3.3 m, with two bedrooms and a bathroom with a tub, no balcony. The two-bedroom Space capsule." },
+      { id: "space-d7", name: "Space D7 (11.5 m)", size: "38 m²", price: 1099900, description: "11.5 × 3.3 × 3.3 m, the largest capsule: a bedroom, lounge area and balcony in the premium Space build. A two-bedroom layout is available on request." },
     ],
     options: [
-      /* Core range — the supplier's shorter options list. The kitchen here is the
+      /* Core range: the supplier's shorter options list. The kitchen here is the
          same basic cabinetry we fit in the expandable homes: no appliances. */
       { id: "capsule-aircon", label: "Central air conditioning", description: "Central air conditioning fitted through the capsule.", price: 19900, category: "comfort", visual: "aircon", availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
-      { id: "capsule-kitchen", label: "Kitchen (per metre)", description: "A 1-metre run of the same kitchen we fit in our expandable homes — basic cabinetry with a sink, no appliances — at R4 900/m. Add as many metres as the space allows; the length is confirmed on your quotation.", price: 4900, category: "modules", visual: "kitchen", footprintM2: 0.75, availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
-      { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule — one price for any size.", price: 12900, category: "comfort", visual: "heating", availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
+      { id: "capsule-kitchen", label: "Kitchen (per metre)", description: "A 1-metre run of the same kitchen we fit in our expandable homes: basic cabinetry with a sink, no appliances, at R4 900/m. Add as many metres as the space allows; the length is confirmed on your quotation.", price: 4900, category: "modules", visual: "kitchen", footprintM2: 0.75, availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
+      { id: "underfloor-heating", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule, at one price for any size.", price: 12900, category: "comfort", visual: "heating", availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
       { id: "smart-curtains", label: "Motorised curtains", description: "Motorised curtains across the 270° glazing.", price: 16900, category: "comfort", visual: "curtains", availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
       { id: "capsule-skylight", label: "Skylight with roller shade", description: "Roof skylight with a roller shade for star-gazing and daylight.", price: 8900, category: "structure", visual: "glazing", availableVariantIds: ["capsule-5-85", "capsule-8-5", "capsule-11-5"], provisional: false },
-      /* Space range — a much longer list than we publish. The size-banded extras
+      /* Space range: a much longer list than we publish. The size-banded extras
          are split in two so only the price for the selected model is offered:
          the 8.5 m and 9.0 m take the small/medium price, the 11.5 m the large. */
       { id: "space-kitchen", label: "Full kitchen", description: "A 2 m cabinet run with a stone countertop, a sink and a 900 mm double stove with an 80 L oven.", price: 37900, category: "modules", visual: "kitchen", footprintM2: 1.5, availableVariantIds: ["space-d5", "space-d8", "space-d7"], provisional: false },
       { id: "space-floor-heating-sm", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule.", price: 14900, category: "comfort", visual: "heating", availableVariantIds: ["space-d5", "space-d8"], provisional: false },
       { id: "space-floor-heating-l", label: "Under-floor heating", description: "Electric under-floor heating throughout the capsule.", price: 17900, category: "comfort", visual: "heating", availableVariantIds: ["space-d7"], provisional: false },
-      { id: "space-curtains-sm", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing — blackout and gauze layers included, run from the capsule's control system.", price: 23900, category: "comfort", visual: "curtains", availableVariantIds: ["space-d5", "space-d8"], provisional: false },
-      { id: "space-curtains-l", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing — blackout and gauze layers included, run from the capsule's control system.", price: 32900, category: "comfort", visual: "curtains", availableVariantIds: ["space-d7"], provisional: false },
+      { id: "space-curtains-sm", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing, with blackout and gauze layers included, run from the capsule's control system.", price: 23900, category: "comfort", visual: "curtains", availableVariantIds: ["space-d5", "space-d8"], provisional: false },
+      { id: "space-curtains-l", label: "Smart double-track curtains", description: "Motorised double-track curtains across the 270° glazing, with blackout and gauze layers included, run from the capsule's control system.", price: 32900, category: "comfort", visual: "curtains", availableVariantIds: ["space-d7"], provisional: false },
       { id: "space-insulation-sm", label: "Upgraded 100 mm polyurethane insulation", description: "Doubles the standard 50 mm polyurethane insulation to 100 mm for hotter and colder sites.", price: 15900, category: "structure", visual: "insulation", availableVariantIds: ["space-d5", "space-d8"], provisional: false },
       { id: "space-insulation-l", label: "Upgraded 100 mm polyurethane insulation", description: "Doubles the standard 50 mm polyurethane insulation to 100 mm for hotter and colder sites.", price: 20900, category: "structure", visual: "insulation", availableVariantIds: ["space-d7"], provisional: false },
       { id: "space-skylight", label: "Skylight with electric sunshade", description: "Roof skylight with a remote-controlled electric sunshade.", price: 12900, category: "structure", visual: "glazing", availableVariantIds: ["space-d5", "space-d8", "space-d7"], provisional: false },
@@ -483,15 +666,15 @@ export const products: Product[] = [
       },
       {
         q: "What's the difference between the core capsules and the Space range?",
-        a: "Same idea, two builds. The core range is the more affordable option with a shorter options list, and its kitchen extra is the same basic cabinetry and sink we fit in our expandable homes — no appliances. The Space range is a more premium build with a much wider choice of extras, including a full kitchen with a 900 mm double stove and 80 L oven, an enclosed balcony and upgraded 100 mm insulation.",
+        a: "Same idea, two builds. The core range is the more affordable option with a shorter options list, and its kitchen extra is the same basic cabinetry and sink we fit in our expandable homes, with no appliances. The Space range is a more premium build with a much wider choice of extras, including a full kitchen with a 900 mm double stove and 80 L oven, an enclosed balcony and upgraded 100 mm insulation.",
       },
       {
         q: "Are these the only models and options?",
-        a: "No — the six models here are a sample of the most popular layouts, and the extras we list are a selection. Both ranges build other sizes and layouts to order (the 11.5 m Space capsule can be done as a two-bedroom, for example) and there are far more options than we can sensibly list. Tell us what you're after and we'll check it with the factory.",
+        a: "No. The six models here are a sample of the most popular layouts, and the extras we list are a selection. Both ranges build other sizes and layouts to order (the 11.5 m Space capsule can be done as a two-bedroom, for example) and there are far more options than we can sensibly list. Tell us what you're after and we'll check it with the factory.",
       },
       {
         q: "How is a Glamping Capsule delivered and installed?",
-        a: "The capsule arrives fully built and is delivered to your site — there's no on-site construction, so it's ready for immediate occupancy. We assist with site preparation — groundwork, electrical and plumbing are completed before delivery — and delivery is quoted separately based on your location.",
+        a: "The capsule arrives fully built and is delivered to your site, so there's no on-site construction, so it's ready for immediate occupancy. We assist with site preparation: groundwork, electrical and plumbing are completed before delivery, and delivery is quoted separately based on your location.",
       },
       {
         q: "Can I customise my capsule?",
@@ -499,7 +682,7 @@ export const products: Product[] = [
       },
       {
         q: "Can I finance a Glamping Capsule?",
-        a: "Yes — finance and lay-bye options are available, subject to credit approval, and every Tiny Homes SA product carries a 1-year limited guarantee.",
+        a: "Yes. Finance and lay-bye options are available, subject to credit approval, and every Tiny Homes SA product carries a 1-year limited guarantee.",
       },
     ],
     seoKeywords: [
@@ -515,47 +698,74 @@ export const products: Product[] = [
     slug: "outdoor-kitchens",
     name: "Outdoor Kitchens",
     shortName: "Outdoor Kitchen",
-    tagline: "Braai, cook, host — then close the roof on the weather.",
+    h1: "Outdoor kitchens",
+    seoTitle: "Braai & Patio Kitchens from R154 400",
+    tagline: "Braai, cook, host, then close the roof on the weather.",
     summary:
-      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink — four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
+      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink, in four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
     description:
-      "South Africans entertain outside — the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths — 2.5, 2.9, 3.5 or 3.9 m — and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours in the configurator with add-ons — a gas grill, induction stove or kettle grill, an extractor fan, bar fridge, stainless-steel countertop, outdoor speaker or an illuminated 'starry sky' ceiling. From R154 400 ex VAT, delivered ready to use.",
+      "South Africans entertain outside, and the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths, 2.5, 2.9, 3.5 or 3.9 m, and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours in the configurator with add-ons: a gas grill, induction stove or kettle grill, an extractor fan, bar fridge, stainless-steel countertop, outdoor speaker or an illuminated 'starry sky' ceiling. From R154 400 ex VAT, delivered ready to use.",
     startingPrice: 154400,
     sizeLabel: "2.5 – 3.9 m",
     setupTime: "Delivered ready to use",
     dims: { length: 2.5, width: 0.8, height: 2.4 },
     specs: [
-      { label: "Sizes", value: "Four lengths — 2.5 m, 2.9 m, 3.5 m or 3.9 m (all 0.8 m deep × 2.4 m high)" },
+      { label: "Sizes", value: "Four lengths: 2.5 m, 2.9 m, 3.5 m or 3.9 m (all 0.8 m deep × 2.4 m high)" },
       { label: "Weight", value: "500 – 750 kg, depending on length" },
       { label: "Roof", value: "Remote-controlled motorised lift-up roof" },
       { label: "Structure", value: "Corrosion-resistant galvanised steel frame with aluminium-alloy shell and panels" },
       { label: "Weatherproofing", value: "Comprehensive outdoor waterproof design" },
       { label: "Countertop", value: "Quartz stone with water-barrier edge; sink cover doubles as extra workspace" },
       { label: "Sink", value: "Stainless-steel sink with pull-out faucet" },
-      { label: "Interior panels", value: "Aluminium honeycomb — high-temperature resistant, easy to clean" },
+      { label: "Interior panels", value: "Aluminium honeycomb: high-temperature resistant, easy to clean" },
       { label: "Electrical", value: "Embedded plumbing & electrical; outdoor distribution box with leakage protection" },
       { label: "Lighting", value: "Recessed warm/white lighting plus adjustable LED ambient strip" },
       { label: "Switches & sockets", value: "Rust-resistant aluminium" },
       { label: "Base", value: "Cement-board base" },
-      { label: "Colours", value: "Wide range of custom colours — white, navy, grey, charcoal, green and more" },
+      { label: "Colours", value: "Wide range of custom colours: white, navy, grey, charcoal, green and more" },
     ],
     features: [
-      "Remote-controlled motorised lift-up roof — open for the braai, closed against the weather",
+      "Remote-controlled motorised lift-up roof: open for the braai, closed against the weather",
       "Quartz stone countertop with water-barrier edge and a sink cover for extra workspace",
-      "Stainless-steel sink with pull-out faucet — plumbing and electrical embedded",
+      "Stainless-steel sink with pull-out faucet, with plumbing and electrical embedded",
       "Corrosion-resistant galvanised steel frame with aluminium-alloy shell, waterproof throughout",
       "Recessed warm/white lighting and an adjustable LED ambient strip for evening entertaining",
       "Add-ons from gas grills and an induction stove to a bar fridge, extractor fan and starry-sky ceiling",
     ],
-    useCases: ["Patio & braai area", "Entertainment area", "Lodge or guest farm", "Pool deck", "Developer amenity", "Garden bar"],
+    useCases: [
+      {
+        title: "Braai area",
+        body: "A built-in braai area without the bricklaying: the unit arrives complete with a quartz stone countertop, a stainless-steel sink with a pull-out faucet and embedded plumbing and electrics. Add a gas grill, kettle grill or induction stove in the configurator depending on how you cook.",
+      },
+      {
+        title: "Patio entertainment area",
+        body: "Press the remote and the motorised roof lifts to open a full entertainment kitchen; close it and the weather stays out. Recessed warm or white lighting and an adjustable LED ambient strip carry the evening on, and the sink cover doubles as extra workspace.",
+      },
+      {
+        title: "Pool deck and bar",
+        body: "A galvanised steel frame, aluminium-alloy shell and comprehensive waterproofing are built to stand beside a pool year-round, with rust-resistant aluminium switches and sockets. A bar fridge and outdoor speaker are available as add-ons.",
+      },
+      {
+        title: "Lodge and guest farm",
+        body: "A self-contained outdoor kitchen for a guest boma or communal braai area, delivered ready to use rather than built on site. Four lengths from 2.5 m to 3.9 m, and a colour range from white and navy to grey, charcoal and green to match existing buildings.",
+      },
+      {
+        title: "Developer amenity",
+        body: "A repeatable, fixed-price communal braai facility for an estate or apartment scheme, at 500 to 750 kg depending on length, delivered complete on a cement-board base with an outdoor distribution box and leakage protection.",
+      },
+      {
+        title: "Garden bar",
+        body: "The compact 2.5 m unit fits a courtyard or small garden and closes down to a clean weatherproof box when it is not in use. Aluminium honeycomb interior panels shrug off heat and wipe clean after the braai.",
+      },
+    ],
     variants: [
-      { id: "ok-2-5", name: "2.5 m Outdoor Kitchen", size: "2.5 m", price: 154400, description: "2.5 × 0.8 × 2.4 m, approx 500 kg — the compact entertainer." },
+      { id: "ok-2-5", name: "2.5 m Outdoor Kitchen", size: "2.5 m", price: 154400, description: "2.5 × 0.8 × 2.4 m, approx 500 kg, the compact entertainer." },
       { id: "ok-2-9", name: "2.9 m Outdoor Kitchen", size: "2.9 m", price: 164500, description: "2.9 × 0.8 × 2.4 m, approx 600 kg." },
       { id: "ok-3-5", name: "3.5 m Outdoor Kitchen", size: "3.5 m", price: 183700, description: "3.5 × 0.8 × 2.4 m, approx 700 kg." },
-      { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 196800, description: "3.9 × 0.8 × 2.4 m — the largest, for serious entertaining." },
+      { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 196800, description: "3.9 × 0.8 × 2.4 m, the largest, for serious entertaining." },
     ],
     // Extras from the supplier options list, marked up 30% and rounded up to the
-    // nearest R100. No cutaway scene — the configurator shows the Photos panel.
+    // nearest R100. No cutaway scene, the configurator shows the Photos panel.
     // Gas Grill Double and Kettle Grill are offered on the 3.5 m and 3.9 m units only.
     options: [
       { id: "gas-grill-single", label: "Single gas grill", description: "Built-in single-burner gas grill for everyday braais. Choose one cooking method.", price: 9300, category: "modules", visual: "none", exclusiveGroup: "cooking", provisional: false },
@@ -573,23 +783,23 @@ export const products: Product[] = [
     faqs: [
       {
         q: "What's included in an outdoor kitchen?",
-        a: "Every unit comes standard with the remote-controlled motorised lift-up roof, quartz stone countertop with water-barrier edge and sink cover, stainless-steel sink with pull-out faucet, aluminium honeycomb interior panels, recessed warm/white lighting with an adjustable LED ambient strip, rust-resistant aluminium switches and sockets, embedded plumbing and electrical, an outdoor distribution box with leakage protection and a cement-board base — all in a corrosion-resistant galvanised steel frame with an aluminium-alloy shell.",
+        a: "Every unit comes standard with the remote-controlled motorised lift-up roof, quartz stone countertop with water-barrier edge and sink cover, stainless-steel sink with pull-out faucet, aluminium honeycomb interior panels, recessed warm/white lighting with an adjustable LED ambient strip, rust-resistant aluminium switches and sockets, embedded plumbing and electrical, an outdoor distribution box with leakage protection and a cement-board base, all in a corrosion-resistant galvanised steel frame with an aluminium-alloy shell.",
       },
       {
         q: "What sizes are available?",
-        a: "Four lengths: 2.5 m, 2.9 m, 3.5 m and 3.9 m — all 0.8 m deep and 2.4 m high, weighing between 500 and 750 kg. A wide range of custom colours is available, from white and navy to grey, charcoal and green.",
+        a: "Four lengths: 2.5 m, 2.9 m, 3.5 m and 3.9 m, all 0.8 m deep and 2.4 m high, weighing between 500 and 750 kg. A wide range of custom colours is available, from white and navy to grey, charcoal and green.",
       },
       {
         q: "What add-ons can I get?",
-        a: "A single gas grill, a double gas grill (on the 3.5 m and 3.9 m units), an induction flat-top stove, a kettle grill (on the 3.5 m and 3.9 m units), an extractor fan, a bar fridge, a stainless-steel countertop upgrade, extra cabinet modules by the metre, an aluminium shelf, an outdoor speaker and an illuminated 'starry-sky' ceiling — each quoted on your quotation.",
+        a: "A single gas grill, a double gas grill (on the 3.5 m and 3.9 m units), an induction flat-top stove, a kettle grill (on the 3.5 m and 3.9 m units), an extractor fan, a bar fridge, a stainless-steel countertop upgrade, extra cabinet modules by the metre, an aluminium shelf, an outdoor speaker and an illuminated 'starry-sky' ceiling, each quoted on your quotation.",
       },
       {
         q: "How much does delivery and installation cost?",
-        a: "Delivery and installation are quoted separately based on your location and site accessibility — we deliver nationwide. The unit arrives ready to use once connected.",
+        a: "Delivery and installation are quoted separately based on your location and site accessibility. We deliver nationwide, and the unit arrives ready to use once connected.",
       },
       {
         q: "Can I finance an outdoor kitchen?",
-        a: "Yes — finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
+        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
     ],
     seoKeywords: [
@@ -604,34 +814,61 @@ export const products: Product[] = [
     slug: "safari-tents",
     name: "Safari Tents",
     shortName: "Safari Tent",
+    h1: "Luxury safari tents",
+    seoTitle: "Safari & Glamping Tents for Lodges",
     tagline: "Luxury under canvas, engineered for Africa.",
     summary:
-      "Luxury canvas tented suites for game lodges and glamping resorts — Meru-style and curved stretch-tension canvas roofs over timber structures, with raised decks and en-suite layouts available. Every tent is configured to your site and brief, priced on request after a consultation.",
+      "Luxury canvas tented suites for game lodges and glamping resorts: Meru-style and curved stretch-tension canvas roofs over timber structures, with raised decks and en-suite layouts available. Every tent is configured to your site and brief, priced on request after a consultation.",
     description:
-      "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites in partnership with Bushtec, one of Africa's leading safari-tent manufacturers — Tiny Homes SA is an authorised reseller. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions — sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues — all backed by our after-sales support.",
-    startingPrice: 0, // sentinel — priceOnRequest, must never render
+      "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites in partnership with Bushtec, one of Africa's leading safari-tent manufacturers, and Tiny Homes SA is an authorised reseller. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions: sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues, all backed by our after-sales support.",
+    startingPrice: 0, // sentinel: priceOnRequest, must never render
     priceOnRequest: true,
     sizeLabel: "Custom sizes",
     setupTime: "Quoted per project",
-    dims: { length: 0, width: 0, height: 0 }, // no doc-sourced dimensions — never rendered (no configurator/floor plan)
+    dims: { length: 0, width: 0, height: 0 }, // no doc-sourced dimensions, never rendered (no configurator/floor plan)
     specs: [
       { label: "Roof styles", value: "Meru-style canvas or curved stretch-tension canvas" },
       { label: "Structure", value: "Canvas over timber structures, with raised decks available" },
-      { label: "Layouts", value: "En-suite layouts available — configured to your brief" },
+      { label: "Layouts", value: "En-suite layouts available, configured to your brief" },
       { label: "Built for", value: "Engineered for African conditions" },
       { label: "Supply", value: "Supplied and installed by Tiny Homes SA with our manufacturing partner" },
-      { label: "Pricing", value: "On request — itemised quotation after a consultation" },
+      { label: "Pricing", value: "On request: itemised quotation after a consultation" },
       { label: "Lead time", value: "Quoted per project" },
     ],
     features: [
       "Meru-style and curved stretch-tension canvas roof designs",
       "Timber structures with raised decks for views and airflow",
       "En-suite layouts available for full lodge-suite comfort",
-      "Engineered for African conditions — sun, wind and rain",
+      "Engineered for African conditions: sun, wind and rain",
       "Configured to your site, brief and guest experience",
       "Backed by our full after-sales support",
     ],
-    useCases: ["Game lodge suites", "Glamping resorts", "Private reserves", "Bush camps", "Boutique hotels", "Event venues"],
+    useCases: [
+      {
+        title: "Game lodge suites",
+        body: "Canvas tented suites that put guests inside the landscape without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed in partnership with Bushtec, one of Africa's leading safari-tent manufacturers.",
+      },
+      {
+        title: "Glamping resort",
+        body: "A full tented resort configured as one brief rather than bought unit by unit: layouts, decks and guest flow are set with you at consultation, then quoted itemised. Engineered for African sun, wind and rain.",
+      },
+      {
+        title: "Private reserve",
+        body: "Low-impact guest accommodation for a reserve where a permanent build is unwanted or not permitted. Canvas over timber sits lightly on the ground and can be specified around the trees and views already there.",
+      },
+      {
+        title: "Bush camp",
+        body: "Tented camps built for real conditions rather than a season, with raised decks where the ground demands it and en-suite layouts where guests expect them. Configured per site, because no two camps share a footprint.",
+      },
+      {
+        title: "Boutique hotel",
+        body: "Tented suites as a distinct offering alongside existing rooms, specified to match the standard of the house. Every tent is configured to your brief and backed by our after-sales support.",
+      },
+      {
+        title: "Event venue",
+        body: "Permanent or semi-permanent canvas structures for weddings, functions and hospitality, engineered to stand up to weather rather than hired in for a weekend. Sizes and layouts are quoted per project after a consultation.",
+      },
+    ],
     options: [],
     faqs: [
       {
@@ -640,19 +877,19 @@ export const products: Product[] = [
       },
       {
         q: "What configurations are available?",
-        a: "Meru-style canvas and curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Each suite is configured to your brief — from a single honeymoon suite to a full camp.",
+        a: "Meru-style canvas and curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Each suite is configured to your brief, from a single honeymoon suite to a full camp.",
       },
       {
         q: "Where do safari tents work best?",
-        a: "Game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues — anywhere you want guests immersed in the landscape with lodge-level comfort.",
+        a: "Game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues: anywhere you want guests immersed in the landscape with lodge-level comfort.",
       },
       {
         q: "What is the lead time?",
-        a: "Lead time is quoted per project — it depends on the configuration, the number of units and your site. We confirm the programme with your quotation.",
+        a: "Lead time is quoted per project, because it depends on the configuration, the number of units and your site. We confirm the programme with your quotation.",
       },
       {
         q: "What support do I get after installation?",
-        a: "Full after-sales support from our team — we stay involved long after handover.",
+        a: "Full after-sales support from our team. We stay involved long after handover.",
       },
     ],
     seoKeywords: [
@@ -667,11 +904,13 @@ export const products: Product[] = [
     slug: "garages",
     name: "DIY Garages",
     shortName: "Garage",
+    h1: "DIY garage kits",
+    seoTitle: "Steel Garage & Workshop Kits from R139 900",
     tagline: "Flat-pack steel garages you bolt together yourself.",
     summary:
-      "Galvanised-steel DIY garage kits in two sizes — single and double — delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R139 900 ex VAT.",
+      "Galvanised-steel DIY garage kits in two sizes, single and double, delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R139 900 ex VAT.",
     description:
-      "DIY garage kits are the fast, affordable way to add secure, weatherproof parking or workshop space — a garage you bolt together yourself, no welding or cutting needed. The portal frames arrive pre-assembled and simply fold open on site, so two people have the single kit up in an afternoon and the double in about a day. Each kit is clad in Chromadek colour-coated 0.47 mm IBR sheeting on the walls and roof, and includes manual roller doors — one on the single, two on the double — a steel side door, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual; you anchor it all to your own level concrete slab. Both kits stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6. Choose the 6 × 3 m single garage (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900, and add the optional gable roof upgrade — priced per size on your quotation. Delivered nationwide, with slab and assembly available from our turnkey team.",
+      "DIY garage kits are the fast, affordable way to add secure, weatherproof parking or workshop space: a garage you bolt together yourself, no welding or cutting needed. The portal frames arrive pre-assembled and simply fold open on site, so two people have the single kit up in an afternoon and the double in about a day. Each kit is clad in Chromadek colour-coated 0.47 mm IBR sheeting on the walls and roof, and includes manual roller doors, one on the single and two on the double, plus a steel side door, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual; you anchor it all to your own level concrete slab. Both kits stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6. Choose the 6 × 3 m single garage (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900, and add the optional gable roof upgrade, priced per size on your quotation. Delivered nationwide, with slab and assembly available from our turnkey team.",
     startingPrice: 139900,
     sizeLabel: "18 – 36 m²",
     setupTime: "Self-assembly kit",
@@ -679,46 +918,71 @@ export const products: Product[] = [
     specs: [
       { label: "Sizes", value: "6 × 3 m single (18 m²) or 6 × 6 m double (36 m²)" },
       { label: "Height", value: "3.0 m at the high side; the mono-pitch roof falls to ±2.74 m (6 × 3) or ±2.48 m (6 × 6)" },
-      { label: "Roof", value: "Mono-pitch (lean-to) — sloping across the 3 m width on the single, front to back on the double; optional gable upgrade" },
-      { label: "Frame", value: "Galvanised lipped-channel steel — portal frames arrive pre-assembled and fold open; bolts together, no welding" },
-      { label: "Assembly", value: "Two people, about a day — the single kit in an afternoon" },
+      { label: "Roof", value: "Mono-pitch (lean-to), sloping across the 3 m width on the single, front to back on the double; optional gable upgrade" },
+      { label: "Frame", value: "Galvanised lipped-channel steel; portal frames arrive pre-assembled and fold open; bolts together, no welding" },
+      { label: "Assembly", value: "Two people, about a day; the single kit in an afternoon" },
       { label: "Cladding", value: "Chromadek colour-coated 0.47 mm IBR sheeting on walls and roof" },
-      { label: "Roller doors", value: "Manual roller doors (2440 × 2135 mm) — one on the single, two on the double" },
-      { label: "Side door", value: "813 × 2032 mm steel combination door, pre-hung — on every kit" },
+      { label: "Roller doors", value: "Manual roller doors (2440 × 2135 mm): one on the single, two on the double" },
+      { label: "Side door", value: "813 × 2032 mm steel combination door, pre-hung, on every kit" },
       { label: "Rain drainage", value: "Gutter and downpipe included" },
       { label: "Fixings", value: "All flashings, anchors, bolts and tek screws included" },
       { label: "Instructions", value: "Illustrated step-by-step manual with numbered parts" },
       { label: "Delivery", value: "Flat-packed for self-assembly" },
-      { label: "Foundation", value: "Anchored to a level concrete slab — by you or our turnkey team" },
+      { label: "Foundation", value: "Anchored to a level concrete slab, by you or our turnkey team" },
     ],
     features: [
-      "Frames arrive pre-assembled — fold open, bolt, done",
-      "Up in a day with two people — no welding, no cutting on site",
+      "Frames arrive pre-assembled: fold open, bolt, done",
+      "Up in a day with two people, with no welding or cutting on site",
       "Chromadek colour-coated 0.47 mm IBR sheeting on walls and roof",
       "Manual roller doors and a steel side door on every kit",
       "Gutter, downpipe and all flashings included for rain drainage",
-      "Delivered nationwide — turnkey slab and assembly available on request",
+      "Delivered nationwide, with turnkey slab and assembly available on request",
     ],
-    useCases: ["Garage", "Workshop", "Storeroom", "Farm store", "Carport enclosure", "Site store"],
+    useCases: [
+      {
+        title: "Single and double garage",
+        body: "Secure, weatherproof parking you bolt together yourself: the 6 × 3 m single (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900. Manual roller doors, a pre-hung steel side door, gutter and downpipe, flashings and all fixings are in the kit; you supply the level slab.",
+      },
+      {
+        title: "Workshop",
+        body: "A 3.0 m high side gives clearance for a hoist bay, a bench along the wall or a project car on stands. The galvanised lipped-channel frame bolts together with no welding or cutting, and the Chromadek IBR cladding keeps weather off the tools.",
+      },
+      {
+        title: "Storeroom",
+        body: "A lockable 18 m² or 36 m² store that goes up in an afternoon to a day with two people, following an illustrated manual with numbered parts. Rain drainage is included, so stock stays dry without extra gutter work.",
+      },
+      {
+        title: "Farm store and implement shed",
+        body: "Weatherproof storage for feed, tools or equipment on a working farm, delivered flat-packed anywhere in South Africa. The portal frames arrive pre-assembled and fold open on site, so no farm workshop is needed to put it up.",
+      },
+      {
+        title: "Carport enclosure",
+        body: "Turn open parking into a closed, lockable structure. The mono-pitch roof falls to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6, and an optional gable roof upgrade is priced per size on your quotation.",
+      },
+      {
+        title: "Site store",
+        body: "Secure on-site storage for plant and materials, bolted to a slab and taken down again when the contract ends. Two people, about a day, and no specialist trades on the critical path.",
+      },
+    ],
     variants: [
-      { id: "garage-6x3", name: "Single Garage Kit (6 × 3 m)", size: "18 m²", price: 139900, description: "6 × 3 m with a 3.0 m high side. One manual roller door plus a steel side door — flat-packed for self-assembly." },
-      { id: "garage-6x6", name: "Double Garage Kit (6 × 6 m)", size: "36 m²", price: 278900, description: "6 × 6 m with a 3.0 m high side. Two manual roller doors plus a steel side door — flat-packed for self-assembly." },
+      { id: "garage-6x3", name: "Single Garage Kit (6 × 3 m)", size: "18 m²", price: 139900, description: "6 × 3 m with a 3.0 m high side. One manual roller door plus a steel side door, flat-packed for self-assembly." },
+      { id: "garage-6x6", name: "Double Garage Kit (6 × 6 m)", size: "36 m²", price: 278900, description: "6 × 6 m with a 3.0 m high side. Two manual roller doors plus a steel side door, flat-packed for self-assembly." },
     ],
     // Gable upgrade pricing is pending supplier quotes and will differ per kit
-    // size — one option per variant, listed at 0 ("priced on quotation") until
-    // the figures are confirmed. No cutaway scene — the configurator shows the
+    // size; one option per variant, listed at 0 ("priced on quotation") until
+    // the figures are confirmed. No cutaway scene, the configurator shows the
     // Photos panel.
     options: [
-      { id: "gable-roof-6x3", label: "Gable roof upgrade (6 × 3 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof — apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x3"], exclusiveGroup: "roof" },
-      { id: "gable-roof-6x6", label: "Gable roof upgrade (6 × 6 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof — apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x6"], exclusiveGroup: "roof" },
+      { id: "gable-roof-6x3", label: "Gable roof upgrade (6 × 3 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof: apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x3"], exclusiveGroup: "roof" },
+      { id: "gable-roof-6x6", label: "Gable roof upgrade (6 × 6 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof: apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x6"], exclusiveGroup: "roof" },
     ],
     faqs: [
-      { q: "What's included in the kit?", a: "Everything you need above the slab: pre-assembled fold-open portal frames in galvanised lipped-channel steel (pre-cut and pre-drilled — no welding), Chromadek colour-coated 0.47 mm IBR sheeting for the walls and roof, one manual roller door (2440 × 2135 mm) on the 6 × 3 m kit or two on the 6 × 6 m, a 813 × 2032 mm steel side door pre-hung in its frame, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual with numbered parts. You supply the level concrete slab it anchors to." },
-      { q: "Do I assemble the garage myself?", a: "Yes — and it's quick. The portal frames arrive pre-assembled and fold open on site, so there's no welding, cutting or drilling; you bolt everything together following the illustrated manual. Two people put the single kit up in an afternoon and the double in about a day. Our turnkey team can prepare the slab and assemble it for you if you prefer." },
+      { q: "What's included in the kit?", a: "Everything you need above the slab: pre-assembled fold-open portal frames in galvanised lipped-channel steel (pre-cut and pre-drilled, no welding), Chromadek colour-coated 0.47 mm IBR sheeting for the walls and roof, one manual roller door (2440 × 2135 mm) on the 6 × 3 m kit or two on the 6 × 6 m, a 813 × 2032 mm steel side door pre-hung in its frame, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual with numbered parts. You supply the level concrete slab it anchors to." },
+      { q: "Do I assemble the garage myself?", a: "Yes, and it's quick. The portal frames arrive pre-assembled and fold open on site, so there's no welding, cutting or drilling; you bolt everything together following the illustrated manual. Two people put the single kit up in an afternoon and the double in about a day. Our turnkey team can prepare the slab and assemble it for you if you prefer." },
       { q: "What sizes are available?", a: "Two: the 6 × 3 m single (18 m²) with one roller door, and the 6 × 6 m double (36 m²) with two. Both stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6." },
-      { q: "Can I have a pitched roof instead of the mono-pitch?", a: "Yes — the optional gable roof upgrade replaces the standard mono-pitch with a pitched apex roof, adding apex frames, ridge capping and a second gutter and downpipe run. Pricing is per kit size and confirmed on your quotation." },
-      { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit — the garage anchors to it with the anchors supplied. We can quote the groundwork separately." },
-      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes — every Tiny Homes SA product carries a 1-year limited guarantee. Finance and lay-bye options are also available, subject to credit approval." },
+      { q: "Can I have a pitched roof instead of the mono-pitch?", a: "Yes. The optional gable roof upgrade replaces the standard mono-pitch with a pitched apex roof, adding apex frames, ridge capping and a second gutter and downpipe run. Pricing is per kit size and confirmed on your quotation." },
+      { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit; the garage anchors to it with the anchors supplied. We can quote the groundwork separately." },
+      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee. Finance and lay-bye options are also available, subject to credit approval." },
     ],
     seoKeywords: ["DIY garage kit South Africa", "steel garage kit price", "flat pack garage", "prefab garage South Africa", "double garage kit"],
   },
@@ -751,7 +1015,7 @@ export function activeVisuals(
   return visuals;
 }
 
-/** Effective price of an option — per-m² options scale with the selected variant's floor area. */
+/** Effective price of an option, per-m² options scale with the selected variant's floor area. */
 export function optionPrice(opt: CustomOption, areaM2?: number): number {
   if (opt.pricePerM2 != null && areaM2 != null) return Math.round(opt.pricePerM2 * areaM2);
   return opt.price;
