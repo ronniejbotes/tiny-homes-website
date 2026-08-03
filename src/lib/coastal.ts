@@ -125,14 +125,20 @@ export function coastalRisk(address: AddressValues): CoastalRisk {
 /**
  * Product slug → the option id that must be fitted on a coastal site.
  *
- * Only X-Folds currently has a corrosion-resistant exterior in the catalogue
- * (`metal-carved-board`). The other lines have no equivalent option to select,
- * so for those the quote raises the requirement in words and the office prices
- * it on the formal quotation. Adding a product here is all that is needed to
- * automate it once the option exists with a price.
+ * Both entries are the same physical product — metal carved board panels — sold
+ * under a different name and a different pricing model on each line, which is
+ * why this map exists rather than a single shared option id:
+ *
+ *   X-Folds           `metal-carved-board`   R9 900 flat
+ *   Expandable Homes  `pu-wall-insulation`   R300/m² of floor area
+ *
+ * Those two lines are the only ones that offer the panel. The remaining
+ * products have nothing equivalent to select, so for those the quote raises the
+ * requirement in words and the office specifies it on the formal quotation.
  */
 export const COASTAL_REQUIRED_OPTION: Record<string, string> = {
   "folding-homes": "metal-carved-board",
+  "expandable-homes": "pu-wall-insulation",
 };
 
 export function coastalOptionFor(slug: string): string | undefined {
@@ -155,9 +161,9 @@ export const COASTAL_HEADLINE = "Coastal site — corrosion protection required"
 export const COASTAL_BODY =
   "Salt air corrodes standard steel cladding quickly: an unprotected unit near the sea can be " +
   "visibly rusting within about five years. On coastal sites the corrosion-resistant exterior is " +
-  "part of the specification, not an optional extra. Where the upgrade exists for the unit you " +
-  "chose we've added it to this quote automatically; for any other unit we'll confirm the " +
-  "upgrade and its cost on your formal quotation.";
+  "part of the specification, not an optional extra. On the units that take metal carved board " +
+  "panels we've added them to this quote automatically; for any other unit we'll confirm the " +
+  "right coastal specification on your formal quotation.";
 
 export const MAYBE_COASTAL_HEADLINE = "Is your site near the sea?";
 

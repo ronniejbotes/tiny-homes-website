@@ -114,7 +114,7 @@ export interface Product {
 const extra = (o: Omit<CustomOption, "provisional">): CustomOption => ({ ...o, provisional: true });
 
 const foldingExtras: CustomOption[] = [
-  extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Upgrades the standard panel exterior to a decorative metal carved board finish, in a wide choice of colours and textures.", price: 9900, category: "structure", visual: "none" }),
+  extra({ id: "metal-carved-board", label: "Metal carved board exterior", description: "Upgrades the standard panel exterior to metal carved board, in a wide choice of colours and textures — and it is what protects the shell against salt-air corrosion, so it is required on coastal sites.", price: 9900, category: "structure", visual: "none" }),
   extra({ id: "aluminium-window-frames", label: "Aluminium window frames", description: "Upgrades both standard PVC window frames to aluminium — R1 950 per window, two windows per unit.", price: 3900, category: "structure", visual: "glazing" }),
 ];
 
@@ -235,7 +235,7 @@ export const products: Product[] = [
       { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
-      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane — around 40% better insulation. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
+      { id: "pu-wall-insulation", label: "Metal carved board panels (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board — around 40% better insulation, and the finish that protects against salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
       { id: "spc-flooring", label: "Waterproof SPC laminate flooring", description: "Upgrades the standard vinyl to waterproof SPC stone-composite laminate. Priced per m² of floor area.", price: 0, pricePerM2: 185, category: "interior", visual: "floors", provisional: false },
       { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 14900, category: "structure", visual: "glazing", provisional: false },
     ],
