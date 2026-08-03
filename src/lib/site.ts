@@ -3,7 +3,7 @@ export const site = {
   legalName: "Tiny Homes (Pty) Ltd",
   tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens, DIY garages and safari tents, delivered nationwide from Centurion, Gauteng.",
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens, DIY garages and safari tents, delivered nationwide from Centurion, Gauteng, with cross-border delivery into Botswana, Namibia, Zimbabwe and the rest of southern Africa quoted on request.",
   /** Apex is canonical: www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
   url: "https://tinyhomesa.com",
   phone: "+27 83 660 3743",
@@ -20,14 +20,43 @@ export const site = {
     countryCode: "ZA",
   },
   geo: {
-    // Raslouw, Centurion
-    latitude: -25.8546,
-    longitude: 28.1064,
+    // Showroom pin, owner-supplied: 25°50'49.3"S 28°06'22.6"E.
+    // Feeds both the LocalBusiness schema and the map embed on /contact, so the
+    // coordinates Google is told about and the ones a visitor navigates to are
+    // the same point.
+    latitude: -25.847028,
+    longitude: 28.106278,
   },
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61587151281004",
     instagram: "https://www.instagram.com/tinyhomes.sa/",
     tiktok: "https://www.tiktok.com/@tiny.homesa",
+  },
+  /**
+   * Where we deliver, for both the copy and the LocalBusiness areaServed.
+   *
+   * Provinces are the local-search half: "tiny homes Gauteng" and "prefab
+   * homes Western Cape" are searched far more than the national term, and a
+   * page that never names a province cannot rank for one.
+   *
+   * The cross-border list is deliberately worded as quoted on request rather
+   * than a delivery promise. Units leave the factory on a truck from
+   * Centurion, so a Gaborone or Windhoek run is a real prospect, but it is a
+   * per-project quotation and the copy must not imply a standing service.
+   */
+  deliveryRegions: {
+    provinces: [
+      "Gauteng",
+      "Western Cape",
+      "KwaZulu-Natal",
+      "Eastern Cape",
+      "Free State",
+      "Mpumalanga",
+      "Limpopo",
+      "North West",
+      "Northern Cape",
+    ],
+    countries: ["Botswana", "Namibia", "Zimbabwe", "Mozambique", "Eswatini", "Lesotho"],
   },
   leadTimeDays: 90,
   deliveryNote:

@@ -73,12 +73,15 @@ export function Footer() {
 
           <nav aria-label="Our homes">
             <p className="text-eyebrow text-sage">Our Tiny Solutions</p>
-            <ul className="mt-5 space-y-3">
+            {/* min-h-11 (44px) on the anchor itself, not the row: these were
+                20px-tall targets, which is a miss on a phone. The list gap
+                shrinks to compensate so the block keeps its height. */}
+            <ul className="mt-3 space-y-0">
               {nav.products.map((p) => (
                 <li key={p.slug}>
                   <Link
                     href={`/${p.slug}`}
-                    className="text-cream/80 transition-colors hover:text-cream"
+                    className="inline-flex min-h-11 items-center text-cream/80 transition-colors hover:text-cream"
                   >
                     {p.label}
                   </Link>
@@ -93,18 +96,18 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="flex items-start gap-3 text-cream/80 transition-colors hover:text-cream"
+                  className="flex min-h-11 items-center gap-3 text-cream/80 transition-colors hover:text-cream"
                 >
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sage" />
+                  <Phone className="h-5 w-5 shrink-0 text-sage" />
                   {site.phoneDisplay}
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex items-start gap-3 text-cream/80 transition-colors hover:text-cream"
+                  className="flex min-h-11 items-center gap-3 text-cream/80 transition-colors hover:text-cream"
                 >
-                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sage" />
+                  <Mail className="h-5 w-5 shrink-0 text-sage" />
                   {site.email}
                 </a>
               </li>
@@ -130,19 +133,19 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. All prices exclude VAT.
           </p>
           <p>
-            <Link href="/about" className="transition-colors hover:text-cream">
+            <Link href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               About
             </Link>
             <span className="mx-3">·</span>
-            <Link href="/contact" className="transition-colors hover:text-cream">
+            <Link href="/contact" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Contact
             </Link>
             <span className="mx-3">·</span>
-            <Link href="/privacy" className="transition-colors hover:text-cream">
+            <Link href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Privacy Policy
             </Link>
             <span className="mx-3">·</span>
-            <Link href="/terms" className="transition-colors hover:text-cream">
+            <Link href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Terms
             </Link>
           </p>

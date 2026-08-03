@@ -21,11 +21,11 @@ export function ProductCta({ product }: { product: Product }) {
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <ButtonLink
-              href={`/contact?product=${product.slug}`}
+              href={product.priceOnRequest ? "/contact" : `/quote?product=${product.slug}`}
               variant="accent"
               size="lg"
             >
-              Request a call
+              {product.priceOnRequest ? "Request a call" : "Get an instant quote"}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </ButtonLink>
             <ButtonAnchor

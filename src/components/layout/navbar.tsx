@@ -89,6 +89,10 @@ export function Navbar() {
             alt=""
             width={385}
             height={400}
+            // The mark renders at 36px tall (~35px wide). Without `sizes`, Next
+            // assumes a full-width image and picks a 192px candidate, which is
+            // ~5x the pixels needed even at DPR 2, on every page load.
+            sizes="36px"
             className="h-9 w-auto"
             priority
           />

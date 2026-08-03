@@ -158,7 +158,7 @@ function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
           onClick={() => setDesiredPlaying((v) => !v)}
           aria-pressed={!desiredPlaying}
           aria-label={isPlaying ? `Pause video: ${clip.label}` : `Play video: ${clip.label}`}
-          className="absolute bottom-4 right-4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-ink/50 text-cream backdrop-blur-sm transition-colors hover:bg-ink/70"
+          className="absolute bottom-4 right-4 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-ink/50 text-cream backdrop-blur-sm transition-colors hover:bg-ink/70"
         >
           {isPlaying ? (
             <Pause className="h-4 w-4" aria-hidden="true" />

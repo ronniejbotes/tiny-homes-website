@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const privacyDescription =
-  "How Tiny Homes SA collects, uses and protects your personal information under POPIA: what our enquiry and quote forms collect, who it's shared with, how long we keep it and your rights.";
+  "How Tiny Homes SA collects, uses and protects your personal information under POPIA: what our quote form collects, who it's shared with, how long we keep it and your rights.";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -126,12 +126,13 @@ export default function PrivacyPage() {
               every website receives.
             </p>
             <p>
-              <strong className="font-semibold text-ink">Our enquiry form</strong> (on the{" "}
+              The{" "}
               <Link href="/contact" className={linkClasses}>
                 contact page
-              </Link>
-              ) asks for your full name and email address, and optionally your phone number, which
-              home interests you and a message.
+              </Link>{" "}
+              no longer carries an enquiry form. It lists our phone number, WhatsApp, email address
+              and showroom, and points you to the quote form below, so nothing on that page collects
+              anything from you.
             </p>
             <p>
               <strong className="font-semibold text-ink">Our quote form</strong> (on the{" "}
@@ -292,7 +293,7 @@ export default function PrivacyPage() {
               We rely on your consent when you choose to use WhatsApp or email, and on the fact
               that these providers are bound by data-protection laws and contractual transfer terms
               that give protection substantially similar to POPIA. If you would prefer your
-              information not to leave South Africa, phone us instead of using the forms.
+              information not to leave South Africa, phone us instead of using the quote form.
             </p>
           </Clause>
 
@@ -318,6 +319,17 @@ export default function PrivacyPage() {
                 Analytics opt-out browser add-on
               </a>
               . Blocking analytics does not affect how this site works.
+            </p>
+            <p>
+              The{" "}
+              <Link href="/contact" className={linkClasses}>
+                contact page
+              </Link>{" "}
+              embeds a <strong className="font-semibold text-ink">Google Map</strong> showing where
+              our showroom is. Loading it tells Google your IP address and lets it set its own
+              cookies, exactly as visiting Google Maps directly would. It is loaded lazily, so
+              nothing reaches Google unless you scroll down to it, and you can reach us perfectly
+              well without it: the street address is written out above the map in plain text.
             </p>
             <p>
               Everything else on the site is served from our own domain. The videos are our own

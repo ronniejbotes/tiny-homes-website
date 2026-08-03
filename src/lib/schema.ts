@@ -52,8 +52,29 @@ export function organizationSchema(): SchemaObject {
       longitude: site.geo.longitude,
     },
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
-    areaServed: { "@type": "Country", name: site.address.country },
+    areaServed: areaServed(),
   };
+}
+
+/**
+ * Where the business serves, as structured data.
+ *
+ * South Africa first, then each province by name, then the neighbouring
+ * countries we will quote a cross-border run into. Naming the provinces
+ * individually is the point: a single "Country: South Africa" node tells a
+ * search engine nothing about Gauteng or the Western Cape, which is where the
+ * searches with buying intent actually happen.
+ */
+function areaServed(): SchemaObject[] {
+  return [
+    { "@type": "Country", name: site.address.country },
+    ...site.deliveryRegions.provinces.map((name) => ({
+      "@type": "AdministrativeArea",
+      name,
+      containedInPlace: { "@type": "Country", name: site.address.country },
+    })),
+    ...site.deliveryRegions.countries.map((name) => ({ "@type": "Country", name })),
+  ];
 }
 
 /** WebPage / AboutPage / ContactPage node linked back to the organization. */
@@ -107,7 +128,9 @@ export function productSchema(product: Product): SchemaObject {
     .map((img) => `${site.url}${img.src}`);
   const url = `${site.url}/${product.slug}`;
   const seller = { "@id": ORG_ID };
-  const areaServed = { "@type": "Country", name: site.address.country };
+  // Offers carry the same province-and-neighbour list as the business node, so
+  // a product page is eligible for a regional query, not only a national one.
+  const offerArea = areaServed();
 
   if (product.priceOnRequest) {
     return {
@@ -140,7 +163,7 @@ export function productSchema(product: Product): SchemaObject {
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller,
-        areaServed,
+        areaServed: offerArea,
         offers: product.variants.map((variant) => ({
           "@type": "Offer",
           url,
@@ -166,7 +189,7 @@ export function productSchema(product: Product): SchemaObject {
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller,
-        areaServed,
+        areaServed: offerArea,
       };
 
   return {

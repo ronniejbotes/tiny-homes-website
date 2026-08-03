@@ -97,18 +97,14 @@ export function ProductHero({
                     Customise yours
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </ButtonLink>
-                  <ButtonLink
-                    href={`/contact?product=${product.slug}`}
-                    variant="outline"
-                    size="lg"
-                  >
+                  <ButtonLink href="/contact" variant="outline" size="lg">
                     Request a call
                   </ButtonLink>
                 </>
               ) : (
                 <>
                   <ButtonLink
-                    href={`/contact?product=${product.slug}`}
+                    href={product.priceOnRequest ? "/contact" : `/quote?product=${product.slug}`}
                     variant="accent"
                     size="lg"
                   >

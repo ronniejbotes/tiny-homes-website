@@ -49,6 +49,10 @@ export const homeFaqs: HomeFaq[] = [
     a: `${site.finance}. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
   },
   {
+    q: "Which areas do you deliver to?",
+    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is built in Centurion, Gauteng and trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We also quote cross-border deliveries into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}, priced per project including transport and customs paperwork.`,
+  },
+  {
     q: "Is there a guarantee on Tiny Homes SA products?",
     a: `Yes. We offer a ${site.guarantee}, and we provide full after-sales support.`,
   },

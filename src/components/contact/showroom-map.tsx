@@ -1,0 +1,76 @@
+import { ExternalLink, MapPin } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
+import { site } from "@/lib/site";
+
+const { latitude, longitude } = site.geo;
+const pin = `${latitude},${longitude}`;
+
+/* The keyless embed endpoint. Google's documented iframe API needs a billing
+   key; this older `output=embed` form does not, and renders the same map. */
+const embedSrc = `https://www.google.com/maps?q=${pin}&z=16&hl=en&output=embed`;
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${pin}`;
+
+/**
+ * Where the showroom actually is.
+ *
+ * Loaded lazily and given a fixed aspect box: the iframe pulls roughly half a
+ * megabyte of Google's own JavaScript, which has no business competing with
+ * the page for bandwidth before a visitor has scrolled to it. Reserving the
+ * box also keeps it from shifting layout when it does arrive.
+ */
+export function ShowroomMap() {
+  return (
+    <section aria-labelledby="showroom-heading" className="pb-20 sm:pb-28">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+        <Reveal>
+          <p className="text-eyebrow mb-4 text-clay">Showroom</p>
+          <h2 id="showroom-heading" className="text-display text-3xl text-ink sm:text-4xl">
+            Come and walk through one
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
+            Photographs only go so far. Our units are on site in Centurion, so you can stand
+            inside one, check the finishes and get a feel for the space before you commit.
+            Give us a call before you drive out and we will make sure someone is free to show
+            you around.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.08} className="mt-8">
+          <div className="overflow-hidden rounded-3xl border border-border bg-parchment">
+            <div className="flex flex-wrap items-start justify-between gap-4 p-5 sm:p-6">
+              <p className="flex items-start gap-3 text-ink">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay" aria-hidden="true" />
+                <span>
+                  <span className="block font-medium">{site.address.streetAddress}</span>
+                  <span className="block text-sm text-stone">
+                    {site.address.locality}, {site.address.city}, {site.address.region}
+                  </span>
+                </span>
+              </p>
+              <a
+                href={directionsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-cream px-4 text-sm font-medium text-ink transition-colors hover:border-clay/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
+              >
+                Get directions
+                <ExternalLink className="h-4 w-4 text-clay" aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="relative aspect-[16/10] w-full border-t border-border sm:aspect-[21/9]">
+              <iframe
+                src={embedSrc}
+                title={`Map showing the ${site.name} showroom at ${site.address.streetAddress}, ${site.address.city}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full border-0"
+              />
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
