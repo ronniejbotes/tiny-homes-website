@@ -50,11 +50,22 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
   const visuals = activeVisuals(product, selected);
   const { wall, interior, exterior } = plan;
 
-  /* ---------- scale: fit plan (plus deck) into the viewBox ---------- */
-  const xMin = Math.min(-wall, plan.deck ? plan.deck.rect.x : -wall);
-  const xMax = Math.max(interior.w + wall, plan.deck ? plan.deck.rect.x + plan.deck.rect.w : 0);
-  const yMin = -wall;
-  const yMax = Math.max(interior.d + wall, plan.deck ? plan.deck.rect.y + plan.deck.rect.h : 0);
+  /* ---------- scale: fit plan (plus deck, plus any outward door swing) into the viewBox ---------- */
+  // An outward leaf reaches `width` beyond its wall; without this the arc would
+  // be cropped on a plan whose deck does not already cover that side.
+  const out = plan.door.swing === "out" ? plan.door.width : 0;
+  const xMin = Math.min(-wall, plan.deck ? plan.deck.rect.x : -wall, plan.door.side === "left" ? -out : 0);
+  const xMax = Math.max(
+    interior.w + wall,
+    plan.deck ? plan.deck.rect.x + plan.deck.rect.w : 0,
+    plan.door.side === "right" ? interior.w + out : 0,
+  );
+  const yMin = Math.min(-wall, plan.door.side === "top" ? -out : 0);
+  const yMax = Math.max(
+    interior.d + wall,
+    plan.deck ? plan.deck.rect.y + plan.deck.rect.h : 0,
+    plan.door.side === "bottom" ? interior.d + out : 0,
+  );
   const boundsW = xMax - xMin;
   const boundsH = yMax - yMin;
   const s = Math.min((VB_W - PAD.left - PAD.right) / boundsW, (VB_H - PAD.top - PAD.bottom) / boundsH);
@@ -81,6 +92,10 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
   if (visuals.heating) activeParts.push("underfloor heating");
   const deckShown = plan.deck && (plan.deck.standard || visuals.deck);
   if (deckShown && plan.deck) activeParts.push(plan.deck.label.split(" — ")[0].toLowerCase());
+  // A terrace off an end wall is deeper than it is wide; run its label up the
+  // strip so it neither overflows the shell nor collides with the entrance
+  // marker sitting mid-height on that same wall.
+  const deckTall = !!plan.deck && plan.deck.rect.h > plan.deck.rect.w;
   const ariaLabel =
     `Floor plan of ${title}` +
     (activeParts.length > 0 ? ` with ${activeParts.join(", ")}` : "") +
@@ -129,6 +144,9 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
         ax = door.hinge === "start" ? 1 : -1; ay = 0;
         break;
     }
+    // nx/ny point into the interior; an outward-swinging leaf mirrors them, and
+    // the sweep flag follows from the flipped cross product on its own.
+    if (door.swing === "out") { nx = -nx; ny = -ny; }
     const leafEnd = { x: hx + nx * w, y: hy + ny * w };
     const arcEnd = { x: hx + ax * w, y: hy + ay * w };
     const sweep = nx * ay - ny * ax > 0 ? 1 : 0;
@@ -186,8 +204,9 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
                 rx={3}
               />
               <PlanLabel
-                x={X(plan.deck.rect.x + plan.deck.rect.w * 0.25)}
+                x={X(plan.deck.rect.x + plan.deck.rect.w * (deckTall ? 0.5 : 0.25))}
                 y={Y(plan.deck.rect.y + plan.deck.rect.h / 2) + 3}
+                rotate={deckTall ? -90 : undefined}
                 fill={FOREST}
                 size={10}
               >
@@ -474,18 +493,22 @@ function PlanLabel({
   y,
   fill,
   size,
+  rotate,
   children,
 }: {
   x: number;
   y: number;
   fill: string;
   size: number;
+  /** Degrees about (x, y) — used to run a label up a narrow strip. */
+  rotate?: number;
   children: string;
 }) {
   return (
     <text
       x={x}
       y={y}
+      transform={rotate ? `rotate(${rotate} ${x} ${y})` : undefined}
       fill={fill}
       fontSize={size}
       textAnchor="middle"

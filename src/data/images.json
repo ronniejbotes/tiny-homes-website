@@ -511,7 +511,7 @@
         "src": "/images/products/outdoor-kitchens/poolside-party-golden-hour.jpg",
         "width": 2000,
         "height": 1341,
-        "alt": "Poolside party beside an Outdoor Kitchen with its lift-up canopy raised and gas grill in use.",
+        "alt": "Poolside party beside an Outdoor Kitchen with its lift-up LED canopy raised and the gas braai in use.",
         "kind": "lifestyle",
         "hero": false
       },
@@ -696,11 +696,11 @@
         "hero": false
       },
       {
-        "src": "/images/products/garages/kit-flat-packed-pallet.jpg",
-        "width": 2000,
-        "height": 1500,
-        "alt": "Flat-pack steel garage kit components stacked on a pallet, ready for DIY assembly.",
-        "kind": "detail",
+        "src": "/images/products/garages/exterior-single-open-bakkie.jpg",
+        "width": 1376,
+        "height": 768,
+        "alt": "Charcoal 6 × 3 m DIY garage kit with its roller door open on the narrow front wall, a bakkie inside, pre-hung steel side door and downpipe on the mono-pitch side.",
+        "kind": "exterior",
         "hero": false
       },
       {

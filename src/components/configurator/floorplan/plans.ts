@@ -68,6 +68,8 @@ export interface PlanDoor {
   width: number;
   /** Which end of the opening carries the hinge. */
   hinge: "start" | "end";
+  /** Which way the leaf swings. Defaults to "in" (into the interior). */
+  swing?: "in" | "out";
 }
 
 export interface PlanWindow {
@@ -169,7 +171,9 @@ const FOLDING_PLAN: ProductPlan = {
   floorAreaM2: 15,
   // Entrance in the upper half of the right end wall, window below it in the
   // same wall; the second spec window is centred in the opposite end wall.
-  door: { side: "right", offset: 0.2, width: 0.9, hinge: "start" },
+  // The leaf swings out onto the deck — there is no room to lose inside a 15 m²
+  // shell, and the X-Fold ships with an outward-opening entrance door.
+  door: { side: "right", offset: 0.2, width: 0.9, hinge: "start", swing: "out" },
   windows: [
     { side: "right", offset: 1.3, length: 0.8 },
     { side: "left", offset: 0.69, length: 0.9 },
@@ -204,7 +208,7 @@ const FOLDING_PLAN: ProductPlan = {
     { id: "coffee-table", label: "Table", rect: r(2.0, 0.75, 2.9, 1.25) },
     { id: "tv", label: "TV unit", rect: r(2.55, 0.05, 3.6, 0.45) },
   ],
-  // 5 m² outside the right end; the door (right wall, offset 0.2–1.1, inward swing) opens onto it.
+  // 5 m² outside the right end; the door (right wall, offset 0.2–1.1) swings out onto it.
   deck: {
     rect: r(5.7, -0.1, 7.7, 2.4),
     label: "Timber deck",
@@ -212,37 +216,47 @@ const FOLDING_PLAN: ProductPlan = {
   },
 };
 
-/** Nature cabin — 8.1 × 3.2 m external + 1.5 × 3.2 m viewing terrace. (Unused: nature has no configurator.) */
+/**
+ * Nature cabin — 6.6 × 3.2 m cabin plus the 1.5 × 3.2 m viewing terrace off the
+ * entrance gable, which is the 8.1 × 3.2 m external size on the spec sheet
+ * (and 26 m² of footprint across both).
+ *
+ * The entrance is the glazed gable end, not a long wall: every product render
+ * shows the double doors and the terrace on the short side, with a single
+ * window down the long elevation. The interior is laid out around that —
+ * bathroom and kitchen at the back, bed in the middle, lounge by the doors.
+ */
 const NATURE_PLAN: ProductPlan = {
-  exterior: { w: 6.3, d: 3.2 },
-  interior: { w: 6.1, d: 3.0 },
+  exterior: { w: 6.6, d: 3.2 },
+  interior: { w: 6.4, d: 3.0 },
   wall: WALL_M,
   floorAreaM2: 26,
-  door: { side: "bottom", offset: 2.6, width: 0.9, hinge: "start" },
+  door: { side: "right", offset: 1.05, width: 0.9, hinge: "start" },
   windows: [
-    { side: "top", offset: 2.2, length: 1.0 },
-    { side: "right", offset: 0.6, length: 1.0 },
-    { side: "bottom", offset: 4.0, length: 1.2 },
+    { side: "right", offset: 2.2, length: 0.65 }, // gable glazing beside the doors
+    { side: "bottom", offset: 2.7, length: 1.4 }, // the long elevation's single window
+    { side: "left", offset: 1.0, length: 1.0 }, // back gable, over the bath
   ],
   zones: [
-    wetRoomZone(r(0.05, 0.05, 1.7, 1.75), true), // fully equipped bathroom included as standard
-    kitchenZone(r(1.95, 0.05, 4.25, 0.7)),
-    cupboardZone(r(1.95, 0.05, 4.25, 0.4)),
-    airconZone(r(5.6, 2.3, 5.85, 2.6)),
+    wetRoomZone(r(0.05, 0.05, 1.75, 1.85), true), // fully equipped bathroom included as standard
+    kitchenZone(r(0.05, 2.25, 2.35, 2.95), true), // stone counter, basin and induction cooker — included
+    cupboardZone(r(0.05, 2.25, 2.35, 2.55)),
+    airconZone(r(2.05, 0.05, 2.35, 0.3)),
   ],
   fixtures: [
-    ...wetFixtures([0.5, 0.5], [0.5, 1.4], [1.3, 0.9]),
-    ...kitchenFixtures([2.5, 0.37], [3.7, 0.37]),
+    ...wetFixtures([0.5, 0.5], [0.5, 1.45], [1.35, 0.95]),
+    ...kitchenFixtures([0.75, 2.6], [1.85, 2.6]),
   ],
   furniture: [
-    { id: "bed", label: "Double bed", rect: r(4.55, 0.1, 5.95, 2.0) },
-    { id: "sofa", label: "Sofa", rect: r(0.25, 2.1, 2.05, 2.95) },
-    { id: "coffee-table", label: "Table", rect: r(2.15, 1.5, 3.05, 2.0) },
-    { id: "tv", label: "TV unit", rect: r(3.7, 2.55, 4.9, 2.95) },
+    { id: "bed", label: "Double bed", rect: r(2.6, 0.05, 4.0, 1.95) },
+    { id: "sofa", label: "Sofa", rect: r(4.5, 2.05, 6.1, 2.9) },
+    { id: "coffee-table", label: "Table", rect: r(4.5, 1.15, 5.3, 1.75) },
+    { id: "tv", label: "TV unit", rect: r(4.7, 0.05, 5.9, 0.45) },
   ],
+  // Off the entrance gable, clear of the inward swing (right wall, 1.05–1.95).
   deck: {
-    rect: r(-0.1, 3.1, 6.2, 4.9),
-    label: "Deck — standard",
+    rect: r(6.5, -0.1, 8.0, 3.1),
+    label: "Viewing terrace — standard",
     standard: true,
   },
 };
