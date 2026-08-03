@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const termsDescription =
-  "Tiny Homes SA terms and conditions — pricing, delivery and site access, site preparation responsibilities and what's included with every unit.";
+  "Tiny Homes SA terms and conditions: pricing, delivery and site access, site preparation responsibilities and what's included with every unit.";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -59,7 +59,7 @@ export default function TermsPage() {
         <p className="text-eyebrow text-clay">The fine print, kept fair</p>
         <h1 className="text-display mt-4 text-4xl text-ink sm:text-5xl">Terms &amp; Conditions</h1>
         <p className="mt-6 text-lg leading-relaxed text-stone">
-          The practical terms that apply to every Tiny Homes SA order — what we do, what we ask
+          The practical terms that apply to every Tiny Homes SA order: what we do, what we ask
           you to have ready, and how delivery works. If anything here is unclear,{" "}
           <Link
             href="/contact"
@@ -73,21 +73,21 @@ export default function TermsPage() {
         <div className="mt-14 space-y-12">
           <Term n={1} title="Pricing">
             <p>
-              All prices exclude VAT and are quoted as delivered in Durban — transport to your
+              All prices exclude VAT and are quoted as delivered in Durban; transport to your
               site is quoted separately based on location and accessibility. Prices are for the
               product only and exclude earthworks and the provision of services, which are quoted
               separately. Prices can change without notice. E&amp;OE.
             </p>
           </Term>
 
-          <Term n={2} title="Site preparation — your responsibility">
+          <Term n={2} title="Site preparation: your responsibility">
             <p>
               Preparing the site ahead of delivery is the customer&apos;s responsibility. Before
               your unit arrives, you need to make sure that:
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                the ground is level and suitable for the unit — a level concrete slab or properly
+                the ground is level and suitable for the unit: a level concrete slab or properly
                 levelled precast plinths, sized to the home;
               </li>
               <li>
@@ -99,15 +99,15 @@ export default function TermsPage() {
             <p>
               Tiny Homes SA does not carry out groundwork, plumbing or electrical supply work as
               part of a standard delivery. If you&apos;d rather not manage this yourself, our
-              turnkey team can quote separately for site preparation — but unless a turnkey
+              turnkey team can quote separately for site preparation, but unless a turnkey
               installation has been agreed in writing, site readiness is entirely up to you.
             </p>
           </Term>
 
           <Term n={3} title="Delivery, access & offloading">
             <p>
-              We deliver nationwide. It is the customer&apos;s responsibility to confirm — before
-              ordering — that the delivery vehicle and offloading equipment can physically reach
+              We deliver nationwide. It is the customer&apos;s responsibility to confirm, before
+              ordering, that the delivery vehicle and offloading equipment can physically reach
               the desired position on your property.
             </p>
             <p>
@@ -139,7 +139,7 @@ export default function TermsPage() {
           <Term n={5} title="Questions">
             <p>
               Unsure whether your site is ready, or whether a truck can reach your spot? Send us
-              photos before you order — call{" "}
+              photos before you order. Call{" "}
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
                 className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"

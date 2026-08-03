@@ -19,14 +19,14 @@ import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
-/* Same manifest image the visible hero uses (hero.tsx) — the 2048px night-pool shot. */
+/* Same manifest image the visible hero uses (hero.tsx), the 2048px night-pool shot. */
 const heroImage =
   images.products["glamping-capsules"].find((img) =>
     img.src.endsWith("exterior-night-pool.jpg"),
   ) ?? images.products["glamping-capsules"][0];
 
-/* Safari tents carry a price-on-request 0 sentinel — never let it win the range.
-   Garages are a DIY steel-kit line, not a home — excluded so the "From …" CTA
+/* Safari tents carry a price-on-request 0 sentinel; never let it win the range.
+   Garages are a DIY steel-kit line, not a home, excluded so the "From …" CTA
    under "Your tiny home starts here" names the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products
@@ -36,7 +36,7 @@ const lowestStartingPrice = Math.min(
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee — X-Folds, cabins and glamping capsules, delivered nationwide.";
+  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee: X-Folds, cabins and glamping capsules, delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {
@@ -92,7 +92,7 @@ const itemListJsonLd = {
       name: p.name,
       description: p.summary,
       url: `${site.url}/${p.slug}`,
-      // Price-on-request products publish no offer — a R0 offer would be a false price claim.
+      // Price-on-request products publish no offer, a R0 offer would be a false price claim.
       ...(p.priceOnRequest
         ? {}
         : {
@@ -134,7 +134,7 @@ export default function HomePage() {
             id="faq-heading"
             eyebrow="Questions, answered"
             title="Frequently asked questions"
-            intro="The practical details — delivery, timelines, foundations and pricing — answered straight."
+            intro="The practical details: delivery, timelines, foundations and pricing, answered straight."
           />
           <Reveal className="mt-10 lg:mt-14" delay={0.1}>
             <Accordion items={[...homeFaqs]} />
@@ -155,7 +155,7 @@ export default function HomePage() {
               Your tiny home starts here.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-cream/75">
-              Tell us where you want to live smaller — we&apos;ll handle the design, the build
+              Tell us where you want to live smaller, and we&apos;ll handle the design, the build
               and the delivery, anywhere in South Africa.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

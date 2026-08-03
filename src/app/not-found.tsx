@@ -8,7 +8,7 @@ import { nav, site } from "@/lib/site";
 /**
  * Metadata is read from the root `not-found` module: the app loader mounts it as
  * the `page` of the `/_not-found` route, and metadata is collected from `page`
- * modules. `robots` is overridden because the root layout declares index:true —
+ * modules. `robots` is overridden because the root layout declares index:true,
  * without this a 404 would still advertise "index, follow" alongside the
  * `noindex` Next injects for 404 responses. follow:true is deliberate: we want
  * crawlers to keep walking the links below and rediscover the new URLs.
@@ -37,20 +37,20 @@ const otherLinks = [
 ] as const;
 
 const whatsappHref = `${site.whatsapp}?text=${encodeURIComponent(
-  "Hi Tiny Homes SA! I followed a link that no longer works — can you help me find what I'm looking for?",
+  "Hi Tiny Homes SA! I followed a link that no longer works. Can you help me find what I'm looking for?",
 )}`;
 
 export default function NotFound() {
   return (
     <div className="pb-20 pt-28 sm:pb-28 sm:pt-36">
       <Container className="max-w-3xl">
-        <p className="text-eyebrow text-clay">Error 404 — page not found</p>
+        <p className="text-eyebrow text-clay">Error 404: page not found</p>
         <h1 className="text-display mt-4 text-4xl text-ink sm:text-5xl">
           This page has moved home
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-stone">
           We&apos;ve just relaunched the Tiny Homes SA website, so a handful of older links
-          no longer point where they used to. Nothing has gone missing — every home, price
+          no longer point where they used to. Nothing has gone missing: every home, price
           and spec is still here, just at a tidier address. Pick your home below, or let us
           take you straight to it.
         </p>
@@ -134,8 +134,8 @@ export default function NotFound() {
               className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
             >
               message us on WhatsApp
-            </a>{" "}
-            — tell us what you were looking at and we&apos;ll send you the new link.
+            </a>
+            . Tell us what you were looking at and we&apos;ll send you the new link.
           </p>
         </section>
       </Container>

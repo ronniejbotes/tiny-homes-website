@@ -1,7 +1,7 @@
 /**
  * General-purpose POPIA privacy policy describing how this site actually
  * behaves today (mailto/WhatsApp hand-off, GA4, self-hosted media). It is not
- * legal advice — have a legal professional review it before relying on it, and
+ * legal advice; have a legal professional review it before relying on it, and
  * update it whenever the data practices described here change.
  */
 import type { Metadata } from "next";
@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const privacyDescription =
-  "How Tiny Homes SA collects, uses and protects your personal information under POPIA — what our enquiry and quote forms collect, who it's shared with, how long we keep it and your rights.";
+  "How Tiny Homes SA collects, uses and protects your personal information under POPIA: what our enquiry and quote forms collect, who it's shared with, how long we keep it and your rights.";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
           This policy explains what personal information Tiny Homes SA collects, why we need it,
           who it reaches and what you can ask us to do with it. The short version: this website
           keeps no database of visitors. Everything you type into a form stays in your browser
-          until you press send, and then it travels to us by WhatsApp or email — the same way a
+          until you press send, and then it travels to us by WhatsApp or email, the same way a
           message from your phone would.
         </p>
         <p className="mt-4 text-sm text-stone">Last updated: 26 July 2026</p>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
               Tiny Homes SA is the trading name of {site.legalName}. For the purposes of the
               Protection of Personal Information Act 4 of 2013 (POPIA), we are the{" "}
               <strong className="font-semibold text-ink">responsible party</strong> for the personal
-              information described in this policy — we decide why and how it is processed.
+              information described in this policy: we decide why and how it is processed.
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
             </ul>
             <p>
               Under POPIA the head of a private body is automatically its Information Officer.
-              Anything raised under this policy — a request, a correction, a complaint — should be
+              Anything raised under this policy, whether a request, a correction or a complaint, should be
               emailed to the address above and marked for the attention of the Information Officer.
             </p>
           </Clause>
@@ -139,13 +139,13 @@ export default function PrivacyPage() {
                 quote page
               </Link>
               ) asks for your full name, email address and phone number, and the delivery address
-              for your unit — street, suburb, city, province and postal code. We need the address
+              for your unit: street, suburb, city, province and postal code. We need the address
               to price transport and to check that a truck can reach the spot. It also carries the
               units, sizes, extras and quantities you configured, and any notes you add.
             </p>
             <p>
-              <strong className="font-semibold text-ink">If you contact us directly</strong> — by
-              phone, WhatsApp, email or social media — we receive whatever you send us in that
+              <strong className="font-semibold text-ink">If you contact us directly</strong>, by
+              phone, WhatsApp, email or social media, we receive whatever you send us in that
               message, including your phone number or WhatsApp profile name.
             </p>
             <p>
@@ -157,11 +157,11 @@ export default function PrivacyPage() {
               We do not ask for ID numbers, banking details or any of POPIA&apos;s special personal
               information on this website, and we do not knowingly collect information from
               children. If you apply for finance or lay-bye, that application is handled by the
-              finance provider under its own terms — it does not run through this site.
+              finance provider under its own terms; it does not run through this site.
             </p>
           </Clause>
 
-          <Clause n={3} title="How your information reaches us — nothing is stored on this website">
+          <Clause n={3} title="How your information reaches us: nothing is stored on this website">
             <p>
               This is worth spelling out, because it is unusual. Neither form posts anything to a
               server or database that we control. There is no account, no login, and no saved
@@ -171,7 +171,8 @@ export default function PrivacyPage() {
               <li>
                 When you press send, your browser opens WhatsApp with the message already written
                 out, addressed to our business number. Nothing is delivered until{" "}
-                <em>you</em> press send inside WhatsApp — and at that point the message travels
+                <em>you</em>{" "}
+                press send inside WhatsApp, and at that point the message travels
                 through WhatsApp&apos;s servers, like any other WhatsApp message.
               </li>
               <li>
@@ -180,7 +181,7 @@ export default function PrivacyPage() {
               </li>
               <li>
                 Until you send it, what you have typed exists only in your browser tab. Close the
-                tab and it is gone — we never see it.
+                tab and it is gone; we never see it.
               </li>
             </ul>
             <p>
@@ -220,7 +221,7 @@ export default function PrivacyPage() {
             <p>
               You are under no legal obligation to give us anything. Practically, though, we cannot
               reply without a name and a way to reach you, and we cannot quote delivery without an
-              address — so leaving those out simply means we will have to come back and ask. Fields
+              address, so leaving those out simply means we will have to come back and ask. Fields
               marked optional are genuinely optional.
             </p>
             <p>
@@ -239,30 +240,30 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                <strong className="font-semibold text-ink">Meta Platforms (WhatsApp)</strong> —
+                <strong className="font-semibold text-ink">Meta Platforms (WhatsApp)</strong>:
                 carries and stores any enquiry you send us over WhatsApp, under its own privacy
                 terms;
               </li>
               <li>
-                <strong className="font-semibold text-ink">email providers</strong> — yours and
+                <strong className="font-semibold text-ink">email providers</strong>: yours and
                 ours, which transmit and store emailed enquiries;
               </li>
               <li>
-                <strong className="font-semibold text-ink">Google</strong> — usage statistics
+                <strong className="font-semibold text-ink">Google</strong>: usage statistics
                 only, as described in section 8;
               </li>
               <li>
-                <strong className="font-semibold text-ink">our hosting provider</strong> — which
+                <strong className="font-semibold text-ink">our hosting provider</strong>: which
                 serves the site and keeps standard server logs;
               </li>
               <li>
                 <strong className="font-semibold text-ink">
                   transport, crane and installation contractors
                 </strong>{" "}
-                — your delivery address and a contact number, and only once you have ordered;
+                who receive your delivery address and a contact number, and only once you have ordered;
               </li>
               <li>
-                <strong className="font-semibold text-ink">finance providers</strong> — only if you
+                <strong className="font-semibold text-ink">finance providers</strong>: only if you
                 ask us to refer you, and only with what you agree to share;
               </li>
               <li>
@@ -298,7 +299,7 @@ export default function PrivacyPage() {
           <Clause n={8} title="Cookies, analytics and content loaded from elsewhere">
             <p>
               We use <strong className="font-semibold text-ink">Google Analytics 4</strong> to
-              understand how the site is used — how many people visit, which homes they look at,
+              understand how the site is used: how many people visit, which homes they look at,
               roughly where they are and which pages need work. It sets cookies in your browser and
               sends Google your IP address (which Google shortens before storing), your device and
               browser details, and the pages you view. We look at it in aggregate; we do not use it
@@ -320,7 +321,7 @@ export default function PrivacyPage() {
             </p>
             <p>
               Everything else on the site is served from our own domain. The videos are our own
-              files played by your browser — there is no YouTube or Vimeo player, so watching one
+              files played by your browser; there is no YouTube or Vimeo player, so watching one
               does not hand you over to a third party. The interactive 3D viewer runs entirely in
               your browser using assets hosted here, and our fonts are bundled into the site at
               build time rather than fetched from Google as you browse.
@@ -328,7 +329,7 @@ export default function PrivacyPage() {
             <p>
               Apart from analytics, this site sets no cookies of its own: no advertising pixels, no
               cross-site tracking, no profiling. The floating WhatsApp button and the social links
-              in the footer are ordinary links — they only pass your details to those services once
+              in the footer are ordinary links; they only pass your details to those services once
               you click them.
             </p>
           </Clause>
@@ -336,13 +337,13 @@ export default function PrivacyPage() {
           <Clause n={9} title="How long we keep your information">
             <p>
               We keep enquiries and quote requests in WhatsApp and email for as long as we are
-              dealing with you and for a reasonable period afterwards, in case you come back to us
-              — generally no more than three years after our last contact, unless you ask us to
+              dealing with you and for a reasonable period afterwards, in case you come back to us,
+              generally no more than three years after our last contact, unless you ask us to
               delete it sooner or the law requires us to keep it longer.
             </p>
             <p>
               If you buy a unit, we keep the order, delivery and invoice records for as long as
-              South African tax and company law requires — currently five years from the end of the
+              South African tax and company law requires: currently five years from the end of the
               relevant tax period. Analytics data is retained by Google for the period configured
               on our property (a maximum of 14 months at event level), and server logs are kept by
               our host for short operational periods. When information is no longer needed, we
@@ -362,7 +363,7 @@ export default function PrivacyPage() {
               No method of transmitting or storing information is completely secure, and we cannot
               guarantee absolute security. If a compromise affecting your personal information does
               occur, section 22 of POPIA requires us to notify you and the Information Regulator as
-              soon as reasonably possible — and we will.
+              soon as reasonably possible, and we will.
             </p>
           </Clause>
 
@@ -370,27 +371,27 @@ export default function PrivacyPage() {
             <p>As a data subject you have the right to:</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                <strong className="font-semibold text-ink">access</strong> — ask whether we hold
+                <strong className="font-semibold text-ink">access</strong>: ask whether we hold
                 personal information about you and be given a record of it (section 23; we may
                 charge the prescribed fee for a copy);
               </li>
               <li>
-                <strong className="font-semibold text-ink">correction or deletion</strong> — ask us
+                <strong className="font-semibold text-ink">correction or deletion</strong>: ask us
                 to correct or delete information that is inaccurate, irrelevant, excessive, out of
                 date, incomplete, misleading or unlawfully obtained, and to destroy a record we are
                 no longer authorised to keep (section 24);
               </li>
               <li>
-                <strong className="font-semibold text-ink">object</strong> — object, on reasonable
+                <strong className="font-semibold text-ink">object</strong>: object, on reasonable
                 grounds, to us processing your information (section 11(3));
               </li>
               <li>
-                <strong className="font-semibold text-ink">withdraw consent</strong> — at any time,
+                <strong className="font-semibold text-ink">withdraw consent</strong>: at any time,
                 without affecting processing that was lawful before you withdrew it (section
                 11(2)(b));
               </li>
               <li>
-                <strong className="font-semibold text-ink">refuse direct marketing</strong> — and to
+                <strong className="font-semibold text-ink">refuse direct marketing</strong>: and to
                 opt out of any electronic marketing we send (section 69).
               </li>
             </ul>
@@ -411,7 +412,7 @@ export default function PrivacyPage() {
             <p>
               One practical limit worth knowing: a message you sent us on WhatsApp also exists in
               your own chat history and in Meta&apos;s systems. Deleting our copy does not delete
-              theirs — for that you would need to use WhatsApp&apos;s own tools and Meta&apos;s
+              theirs. For that you would need to use WhatsApp&apos;s own tools and Meta&apos;s
               privacy terms.
             </p>
           </Clause>
@@ -419,7 +420,7 @@ export default function PrivacyPage() {
           <Clause n={12} title="Complaining to the Information Regulator">
             <p>
               If you are unhappy with how we have handled your personal information, please tell us
-              first — we would far rather fix it. You are also entitled, at any time, to lodge a
+              first; we would far rather fix it. You are also entitled, at any time, to lodge a
               complaint with the Information Regulator (South Africa):
             </p>
             <ul className="list-disc space-y-2 pl-5">
@@ -465,7 +466,7 @@ export default function PrivacyPage() {
 
           <Clause n={13} title="Changes to this policy">
             <p>
-              We will update this policy whenever our practices change — for example if we add a
+              We will update this policy whenever our practices change, for example if we add a
               form that stores submissions, or start using a new service. The date at the top of
               the page always reflects the current version, and we will flag anything material
               here rather than changing it quietly.
@@ -483,7 +484,7 @@ export default function PrivacyPage() {
               <Link href="/contact" className={linkClasses}>
                 get in touch
               </Link>
-              — a real person reads it.
+              . A real person reads it.
             </p>
           </Clause>
         </div>

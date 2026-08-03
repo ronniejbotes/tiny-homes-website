@@ -1,12 +1,12 @@
 /**
  * Floor-plan geometry for every product (and expandable variant), in METRES.
  *
- * Coordinate space: "interior metres" — origin at the top-left corner of the
+ * Coordinate space: "interior metres", origin at the top-left corner of the
  * INTERIOR floor. The shell wall (WALL_M thick) sits between -WALL_M..0 and
  * interior..interior+WALL_M. Decks/terraces extend beyond the shell using the
  * same coordinate space. The view applies the px-per-metre transform.
  *
- * Data only — no JSX in this file.
+ * Data only: no JSX in this file.
  */
 
 import type { Product, VisualKey } from "@/data/products";
@@ -30,7 +30,7 @@ export interface PlanZone {
   rect: PlanRect;
   /** Floor area shown on the label (matches the option's footprintM2 where one exists). */
   areaM2?: number;
-  /** Dashed outline — overhead items that consume no floor area (cupboards). */
+  /** Dashed outline: overhead items that consume no floor area (cupboards). */
   dashed?: boolean;
   /**
    * Room ships with the home (e.g. included bathroom/kitchen): always drawn
@@ -159,10 +159,10 @@ function kitchenFixtures(sink: [number, number], hob: [number, number]): PlanFix
 /* ------------------------------------------------------------------ */
 
 /**
- * Folding home — 5.8 × 2.48 m external (X-Fold), interior ≈ 5.6 × 2.28 m.
+ * Folding home: 5.8 × 2.48 m external (X-Fold), interior ≈ 5.6 × 2.28 m.
  * The bathroom and kitchen are factory-fitted on the X-Fold BK and Flat Pack
  * variants (no configurator option adds them); the base X-Fold has neither.
- * Geometry is drawn once — the 18 m² Flat Pack shares this representative plan.
+ * Geometry is drawn once: the 18 m² Flat Pack shares this representative plan.
  */
 const FOLDING_PLAN: ProductPlan = {
   exterior: { w: 5.8, d: 2.48 },
@@ -171,7 +171,7 @@ const FOLDING_PLAN: ProductPlan = {
   floorAreaM2: 15,
   // Entrance in the upper half of the right end wall, window below it in the
   // same wall; the second spec window is centred in the opposite end wall.
-  // The leaf swings out onto the deck — there is no room to lose inside a 15 m²
+  // The leaf swings out onto the deck; there is no room to lose inside a 15 m²
   // shell, and the X-Fold ships with an outward-opening entrance door.
   door: { side: "right", offset: 0.2, width: 0.9, hinge: "start", swing: "out" },
   windows: [
@@ -199,7 +199,7 @@ const FOLDING_PLAN: ProductPlan = {
     { kind: "shower", zone: "wet-room", cx: 0.4, cy: 0.4 },
     { kind: "wc", zone: "wet-room", cx: 0.3, cy: 1.1 },
     { kind: "basin", zone: "wet-room", cx: 0.88, cy: 1.0 },
-    // The 1 m kitchen unit only fits a sink glyph — the hob sits on the counter.
+    // The 1 m kitchen unit only fits a sink glyph; the hob sits on the counter.
     { kind: "sink", zone: "kitchen", cx: 1.95, cy: 0.25 },
   ],
   furniture: [
@@ -217,13 +217,13 @@ const FOLDING_PLAN: ProductPlan = {
 };
 
 /**
- * Nature cabin — 6.6 × 3.2 m cabin plus the 1.5 × 3.2 m viewing terrace off the
+ * Nature cabin: 6.6 × 3.2 m cabin plus the 1.5 × 3.2 m viewing terrace off the
  * entrance gable, which is the 8.1 × 3.2 m external size on the spec sheet
  * (and 26 m² of footprint across both).
  *
  * The entrance is the glazed gable end, not a long wall: every product render
  * shows the double doors and the terrace on the short side, with a single
- * window down the long elevation. The interior is laid out around that —
+ * window down the long elevation. The interior is laid out around that,
  * bathroom and kitchen at the back, bed in the middle, lounge by the doors.
  */
 const NATURE_PLAN: ProductPlan = {
@@ -239,7 +239,7 @@ const NATURE_PLAN: ProductPlan = {
   ],
   zones: [
     wetRoomZone(r(0.05, 0.05, 1.75, 1.85), true), // fully equipped bathroom included as standard
-    kitchenZone(r(0.05, 2.25, 2.35, 2.95), true), // stone counter, basin and induction cooker — included
+    kitchenZone(r(0.05, 2.25, 2.35, 2.95), true), // stone counter, basin and induction cooker, included
     cupboardZone(r(0.05, 2.25, 2.35, 2.55)),
     airconZone(r(2.05, 0.05, 2.35, 0.3)),
   ],
@@ -256,7 +256,7 @@ const NATURE_PLAN: ProductPlan = {
   // Off the entrance gable, clear of the inward swing (right wall, 1.05–1.95).
   deck: {
     rect: r(6.5, -0.1, 8.0, 3.1),
-    label: "Viewing terrace — standard",
+    label: "Viewing terrace, standard",
     standard: true,
   },
 };
@@ -267,14 +267,14 @@ const NATURE_PLAN: ProductPlan = {
    when those sheets were drawn from the manufacturer's CAD. */
 
 /* ------------------------------------------------------------------ */
-/* Expandable homes — per-variant geometry (external dims in metres)   */
+/* Expandable homes: per-variant geometry (external dims in metres)   */
 /* ------------------------------------------------------------------ */
 
 const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
   // The sub-R330k units (6m Compact, Slim 6m, 6m Open Plan) were dropped from
-  // the catalogue per the owner — their plans went with them.
+  // the catalogue per the owner; their plans went with them.
 
-  /** 6m Expandable Home — 5.8 × 6.3 m expanded (drawn portrait, catalog 20ft), wings both sides of a central core. */
+  /** 6m Expandable Home: 5.8 × 6.3 m expanded (drawn portrait, catalog 20ft), wings both sides of a central core. */
   b20: {
     exterior: { w: 5.8, d: 6.3 },
     interior: { w: 5.6, d: 6.1 },
@@ -287,8 +287,8 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       { side: "left", offset: 4.6, length: 1.0 },
     ],
     zones: [
-      wetRoomZone(r(3.85, 0, 5.5, 1.7), true), // fully kitted variant — bathroom included
-      kitchenZone(r(0.05, 0, 2.35, 0.65), true), // fully kitted variant — kitchen included
+      wetRoomZone(r(3.85, 0, 5.5, 1.7), true), // fully kitted variant: bathroom included
+      kitchenZone(r(0.05, 0, 2.35, 0.65), true), // fully kitted variant: kitchen included
       cupboardZone(r(0.05, 0, 2.35, 0.35)),
       airconZone(r(2.6, 0.05, 2.85, 0.3)),
     ],
@@ -316,7 +316,7 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
     ],
   },
 
-  /** 12m Expandable Home — 12 × 6.3 m expanded (catalog 40ft): bathroom left, kitchen right, bedrooms in the corners. */
+  /** 12m Expandable Home: 12 × 6.3 m expanded (catalog 40ft): bathroom left, kitchen right, bedrooms in the corners. */
   b40: {
     exterior: { w: 12, d: 6.3 },
     interior: { w: 11.8, d: 6.1 },
@@ -331,8 +331,8 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
       { side: "right", offset: 2.4, length: 1.2 },
     ],
     zones: [
-      wetRoomZone(r(0.1, 0, 1.75, 1.7), true), // fully kitted variant — bathroom on the left (catalog)
-      kitchenZone(r(9.4, 0, 11.7, 0.65), true), // fully kitted variant — kitchen on the right (catalog)
+      wetRoomZone(r(0.1, 0, 1.75, 1.7), true), // fully kitted variant: bathroom on the left (catalog)
+      kitchenZone(r(9.4, 0, 11.7, 0.65), true), // fully kitted variant: kitchen on the right (catalog)
       cupboardZone(r(9.4, 0, 11.7, 0.35)),
       airconZone(r(2.9, 0.05, 3.15, 0.3)),
     ],
@@ -361,7 +361,7 @@ const EXPANDABLE_PLANS: Record<string, ProductPlan> = {
   },
 };
 
-/** Fallback expandable variant — the catalogue's first (and configurator default). */
+/** Fallback expandable variant: the catalogue's first (and configurator default). */
 export const DEFAULT_EXPANDABLE_VARIANT = "b20";
 
 const PLANS: Record<string, ProductPlan> = {
@@ -373,7 +373,7 @@ const PLANS: Record<string, ProductPlan> = {
  * Bake the selected variant into a plan: the marketed floor area tracks the
  * variant's catalogue size, and rooms flagged standardVariantIds are drawn
  * as standard only on the variants that ship with them. Geometry itself is
- * shared — representative of the range, exact for the largest size.
+ * shared: representative of the range, exact for the largest size.
  */
 function resolveForVariant(plan: ProductPlan, product: Product, variantId?: string): ProductPlan {
   const variant = product.variants?.find((v) => v.id === variantId);

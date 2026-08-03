@@ -16,7 +16,7 @@ export function ProductCta({ product }: { product: Product }) {
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-cream/75">
             Tell us about your site and we&apos;ll call you back with honest
-            advice, a delivery estimate and a formal quotation — no pressure,
+            advice, a delivery estimate and a formal quotation, with no pressure,
             no obligation.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
@@ -38,7 +38,7 @@ export function ProductCta({ product }: { product: Product }) {
             </ButtonAnchor>
           </div>
           <p className="mt-7 text-sm text-cream/75">
-            {/* The ±90-day claim is documented for the homes range only — the
+            {/* The ±90-day claim is documented for the homes range only;
                 kitchens and safari tents are quoted per order/project. */}
             {product.slug === "safari-tents"
               ? "Lead time quoted per project · Supplied and installed nationwide across South Africa"

@@ -25,14 +25,14 @@ function heroImageFor(slug: string): ManifestImage | undefined {
   return images?.find((img) => img.hero) ?? images?.[0];
 }
 
-/* Per-product framing tweaks for the 4:3 crop — the safari tent's sail-like
+/* Per-product framing tweaks for the 4:3 crop, the safari tent's sail-like
    roofline (its signature silhouette) sits high in the hero, so bias the crop
    upward instead of using the default centre crop. */
 const cropPosition: Record<string, string> = {
   "safari-tents": "object-[50%_35%]",
 };
 
-/* Alternating wide/narrow rows on lg for an editorial, asymmetric rhythm —
+/* Alternating wide/narrow rows on lg for an editorial, asymmetric rhythm,
    cycled with modulo so the grid stays balanced however many products exist. */
 const spanClasses = [
   "lg:col-span-7",
@@ -56,7 +56,7 @@ export function HomesShowcase() {
         <SectionHeading
           eyebrow="Our range"
           title="Eight ways to build it better"
-          intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass — plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
+          intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass, plus outdoor kitchens for entertaining, DIY garages and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 
         <Stagger className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-y-16">

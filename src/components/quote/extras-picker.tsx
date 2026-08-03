@@ -30,12 +30,12 @@ function ExtraToggle({
   areaM2?: number;
   checked: boolean;
   disabled: boolean;
-  /** Forced on and not removable — the coastal corrosion specification. */
+  /** Forced on and not removable, the coastal corrosion specification. */
   locked?: boolean;
   helper?: string;
   onToggle: () => void;
 }) {
-  // Per-m² extras resolve to a real amount once a size is chosen — only the
+  // Per-m² extras resolve to a real amount once a size is chosen, only the
   // genuinely unpriced ones fall back to "priced on quotation".
   const price = optionPrice(option, areaM2);
   return (
@@ -113,14 +113,14 @@ export function ExtrasPicker({
   product: Product;
   variantId?: string;
   selected: Partial<Record<string, boolean>>;
-  /** Option that the delivery address makes mandatory — shown on and locked. */
+  /** Option that the delivery address makes mandatory, shown on and locked. */
   lockedId?: string;
   onToggle: (option: CustomOption) => void;
 }) {
   if (product.options.length === 0) return null;
 
   const areaM2 = product.variants?.find((v) => v.id === variantId)?.areaM2;
-  // Only show extras offered on the chosen size — configuredPrice() ignores the
+  // Only show extras offered on the chosen size, configuredPrice() ignores the
   // rest, so listing them would price them at zero.
   const available = product.options.filter((o) => isOptionAvailable(o, variantId));
 
@@ -150,7 +150,7 @@ export function ExtrasPicker({
                   locked={locked}
                   helper={
                     locked
-                      ? "Included automatically — your delivery address is a coastal site"
+                      ? "Included automatically: your delivery address is a coastal site"
                       : !requirementMet
                         ? `Add the ${
                             product.options

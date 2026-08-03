@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/cn";
 
-/* Shared form primitives for the quote page — mirrors the input styling,
+/* Shared form primitives for the quote page, mirrors the input styling,
    required-mark and error conventions used by the contact lead form. */
 
 export const inputClasses =

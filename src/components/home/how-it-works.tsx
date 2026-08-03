@@ -10,7 +10,7 @@ const steps = [
   {
     number: "01",
     title: "Choose & customise",
-    body: "Pick from five home styles — plus outdoor kitchens and safari tents — then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
+    body: "Pick from five home styles, plus outdoor kitchens and safari tents, then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
   },
   {
     number: "02",
@@ -20,12 +20,12 @@ const steps = [
   {
     number: "03",
     title: "We deliver nationwide",
-    body: "Your home travels anywhere in South Africa from Centurion, Gauteng — delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
+    body: "Your home travels anywhere in South Africa from Centurion, Gauteng; delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
   },
   {
     number: "04",
     title: "Move in",
-    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins and capsules. Move in — or hand the keys to your first paying guests.",
+    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins and capsules. Move in, or hand the keys to your first paying guests.",
   },
 ];
 

@@ -2,7 +2,7 @@
  * JSON-LD schema helpers for Tiny Homes SA.
  *
  * Every helper returns a plain object ready for serialisation. Render with
- * the <JsonLd data={...} /> component exported below (server-safe, no JSX —
+ * the <JsonLd data={...} /> component exported below (server-safe, no JSX,
  * this file stays .ts so it uses createElement).
  */
 
@@ -18,9 +18,9 @@ const ORG_ID = `${site.url}/#organization`;
 
 /** Organization + LocalBusiness node for the whole site. */
 export function organizationSchema(): SchemaObject {
-  // Range across every variant, not just base prices — the 11.5 m capsule tops
+  // Range across every variant, not just base prices, the 11.5 m capsule tops
   // out at R1 070 900. Price-on-request products carry a 0 sentinel and are excluded.
-  // Garages are a DIY steel-kit line, not a home — excluded so the advertised
+  // Garages are a DIY steel-kit line, not a home, excluded so the advertised
   // homes price range matches the site-wide "homes from R54 900" copy.
   const prices = products
     .filter((p) => !p.priceOnRequest && p.slug !== "garages")
@@ -87,21 +87,21 @@ export function breadcrumbSchema(items: { name: string; path: string }[]): Schem
   };
 }
 
-/** ISO date this catalogue's prices are valid until — bump when the price list is reissued. */
+/** ISO date this catalogue's prices are valid until, bump when the price list is reissued. */
 const PRICE_VALID_UNTIL = "2026-12-31";
 
 /**
- * schema.org Product node — the single JSON-LD builder for every product page.
+ * schema.org Product node: the single JSON-LD builder for every product page.
  * Uses an AggregateOffer spanning the variant range (with a nested per-variant
  * Offer carrying its own sku) when the product has size variants, otherwise a
  * single ex-VAT Offer. All prices are ZAR, VAT-exclusive per PriceSpecification.
- * Price-on-request products emit the Product node WITHOUT offers — their 0
+ * Price-on-request products emit the Product node WITHOUT offers; their 0
  * sentinel price must never reach structured data.
  */
 export function productSchema(product: Product): SchemaObject {
   const productImages =
     (images.products as Record<string, { src: string; kind?: string }[]>)[product.slug] ?? [];
-  // Photos only — diagrams/spec sheets in Product structured data hurt image rich results.
+  // Photos only: diagrams/spec sheets in Product structured data hurt image rich results.
   const image = productImages
     .filter((img) => img.kind !== "diagram")
     .map((img) => `${site.url}${img.src}`);
@@ -113,7 +113,7 @@ export function productSchema(product: Product): SchemaObject {
     return {
       "@context": "https://schema.org",
       "@type": "Product",
-      name: `${product.name} — ${site.name}`,
+      name: `${product.name} | ${site.name}`,
       description: product.summary,
       image,
       brand: { "@type": "Brand", name: site.name },
@@ -172,7 +172,7 @@ export function productSchema(product: Product): SchemaObject {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${product.name} — ${site.name}`,
+    name: `${product.name} | ${site.name}`,
     description: product.summary,
     image,
     brand: { "@type": "Brand", name: site.name },

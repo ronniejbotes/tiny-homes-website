@@ -13,11 +13,11 @@ type Clip = {
   poster: string;
   width: number;
   height: number;
-  /** Generic description for screen readers — not tied to a specific product page. */
+  /** Generic description for screen readers, not tied to a specific product page. */
   label: string;
 };
 
-/* Ambient b-roll, not tied to any single product — a rolling look at real
+/* Ambient b-roll, not tied to any single product, a rolling look at real
    builds in the field. Every clip is a real Tiny Homes SA video. */
 const clips: Clip[] = [
   {
@@ -91,7 +91,7 @@ const clips: Clip[] = [
 function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
-  /** The visitor's intent — separate from whether it's actually in view. */
+  /** The visitor's intent: separate from whether it's actually in view. */
   const [desiredPlaying, setDesiredPlaying] = useState(true);
   /** Mirrors the <video> element's real play/pause events, so the button
       never shows a state the video isn't actually in (e.g. "Pause" on a
@@ -114,14 +114,14 @@ function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
     if (!el) return;
     if (!reduce && inView && desiredPlaying) {
       el.play().catch(() => {
-        /* Autoplay can be blocked before user interaction — poster stays visible. */
+        /* Autoplay can be blocked before user interaction, poster stays visible. */
       });
     } else {
       el.pause();
     }
   }, [reduce, inView, desiredPlaying]);
 
-  /* Landscape clips get a reduced height — at the portrait tiles' height a
+  /* Landscape clips get a reduced height, at the portrait tiles' height a
      2.35:1 clip would span nearly the full container and render its 640px
      source at a ~3x upscale. */
   const landscape = clip.width > clip.height;
@@ -211,7 +211,7 @@ export function VideoCarousel() {
             id="video-carousel-heading"
             eyebrow="See them for real"
             title="Our homes, in motion"
-            intro="A rolling look at real builds — set-up, finishes and the spaces themselves, straight from site."
+            intro="A rolling look at real builds: set-up, finishes and the spaces themselves, straight from site."
             className="max-w-2xl"
           />
           <div className="mb-1 hidden gap-3 sm:flex">
@@ -239,7 +239,7 @@ export function VideoCarousel() {
         <div
           ref={trackRef}
           role="region"
-          aria-label="Video gallery — scroll to browse"
+          aria-label="Video gallery, scroll to browse"
           tabIndex={0}
           className={cn(
             "mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 lg:mt-14 sm:gap-6",

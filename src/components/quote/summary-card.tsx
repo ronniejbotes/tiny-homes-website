@@ -85,7 +85,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
                 </p>
                 {someOnRequest && (
                   <p className="mt-2 text-sm leading-relaxed text-stone">
-                    Plus any units priced after consultation — quoted separately.
+                    Plus any units priced after consultation, quoted separately.
                   </p>
                 )}
               </>
@@ -96,7 +96,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-stone">
                   Every unit here is configured to your site and brief, so there&apos;s no fixed
-                  price — we send an itemised quotation after a short consultation.
+                  price. We send an itemised quotation after a short consultation.
                 </p>
               </>
             )}
@@ -105,12 +105,12 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
           <p className="mt-5 text-sm leading-relaxed text-stone">
             Shipping into South Africa is included. Road delivery to your site is
             <span className="font-medium text-ink"> not</span>
-            {" — "}
-            that&apos;s quoted separately from your address, at cost, with no markup from us.
+            {". "}
+            That&apos;s quoted separately from your address, at cost, with no markup from us.
           </p>
           {hasPricedTotal && (
             <p className="mt-2 text-xs leading-relaxed text-stone">
-              This is an estimate — optional extras carry provisional pricing, and your final figure
+              This is an estimate: optional extras carry provisional pricing, and your final figure
               is confirmed line by line on your formal quotation.
             </p>
           )}

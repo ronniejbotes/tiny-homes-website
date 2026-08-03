@@ -71,13 +71,13 @@ function validateField(field: FieldName, value: string): string | null {
     case "email":
       if (!trimmed) return "Please enter your email address so we can reply to you.";
       if (!EMAIL_RE.test(trimmed))
-        return "That email doesn't look complete — check for a missing @ or domain, e.g. name@example.com.";
+        return "That email doesn't look complete. Check for a missing @ or domain, e.g. name@example.com.";
       return null;
     case "phone": {
       if (!trimmed) return null; // optional
       const digits = trimmed.replace(/[^\d+]/g, "");
       if (digits.replace(/\D/g, "").length < 9)
-        return "That number looks too short — include the full code, e.g. 083 660 3743.";
+        return "That number looks too short. Include the full code, e.g. 083 660 3743.";
       return null;
     }
   }
@@ -186,7 +186,7 @@ function LeadFormInner() {
   const whatsappHref = () => `${site.whatsapp}?text=${encodeURIComponent(composeMessage())}`;
 
   const mailtoHref = () => {
-    const subject = `Website enquiry — ${products.find((p) => p.slug === product)?.name ?? "Tiny Homes SA"}`;
+    const subject = `Website enquiry: ${products.find((p) => p.slug === product)?.name ?? "Tiny Homes SA"}`;
     return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(composeMessage())}`;
   };
 
@@ -206,7 +206,7 @@ function LeadFormInner() {
     // Must open synchronously inside the click/submit handler so popup
     // blockers allow it. The "noopener" feature is deliberately NOT passed:
     // per spec it forces window.open to return null, which would make the
-    // guard below unable to tell success from failure — we sever the opener
+    // guard below unable to tell success from failure; we sever the opener
     // by hand instead.
     const popup = window.open(whatsappHref(), "_blank");
     if (!popup) {
@@ -218,7 +218,7 @@ function LeadFormInner() {
     try {
       popup.opener = null;
     } catch {
-      // Cross-origin restriction on the handle — harmless, wa.me is trusted.
+      // Cross-origin restriction on the handle, harmless, wa.me is trusted.
     }
 
     setBlocked(false);
@@ -242,7 +242,7 @@ function LeadFormInner() {
           Your message is on its way
         </h3>
         <p className="mt-4 leading-relaxed text-stone">
-          WhatsApp should have opened in a new tab with your enquiry pre-filled — just press send
+          WhatsApp should have opened in a new tab with your enquiry pre-filled; just press send
           there and we&apos;ll get back to you as soon as possible.
         </p>
         <p className="mt-4 leading-relaxed text-stone">
@@ -402,7 +402,7 @@ function LeadFormInner() {
           rows={5}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="Tell us about your site, timeline or any questions — e.g. where the home is going and when you'd like it delivered."
+          placeholder="Tell us about your site, timeline or any questions, e.g. where the home is going and when you'd like it delivered."
           className={cn(inputClasses, "h-auto min-h-32 resize-y py-3.5")}
         />
       </div>
@@ -432,7 +432,7 @@ function LeadFormInner() {
           >
             <p className="text-eyebrow text-clay-dark">WhatsApp didn&apos;t open</p>
             <p className="mt-2 text-sm leading-relaxed text-stone">
-              Your browser blocked the new window — this often happens inside the Facebook or
+              Your browser blocked the new window; this often happens inside the Facebook or
               Instagram in-app browser. Your enquiry hasn&apos;t reached us yet, so please use one
               of these instead. Your details are already filled in.
             </p>
@@ -455,7 +455,7 @@ function LeadFormInner() {
           </div>
         ) : (
           <p className="mt-3 text-sm leading-relaxed text-stone">
-            This form opens WhatsApp with your enquiry pre-filled — nothing is stored on our site.
+            This form opens WhatsApp with your enquiry pre-filled; nothing is stored on our site.
             Prefer email?{" "}
             <a
               href={mailtoHref()}

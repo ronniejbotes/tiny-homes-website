@@ -4,7 +4,7 @@ import type { VisualKey } from "@/data/products";
 export interface SceneProps {
   /**
    * Visual layers to draw. A key is true when ANY active option carries that
-   * visual — scenes never see raw option ids.
+   * visual: scenes never see raw option ids.
    */
   visuals: Partial<Record<VisualKey, boolean>>;
   furnished: boolean;

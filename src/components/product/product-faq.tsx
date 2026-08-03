@@ -16,7 +16,7 @@ export function ProductFaq({ product }: { product: Product }) {
         <SectionHeading
           eyebrow="FAQ"
           title="Questions, answered"
-          intro={`What buyers ask us most about the ${product.shortName.toLowerCase()} — from setup and foundations to running it day to day.`}
+          intro={`What buyers ask us most about the ${product.shortName.toLowerCase()}, from setup and foundations to running it day to day.`}
         />
         <Reveal delay={0.08} className="mt-12">
           <Accordion items={product.faqs} />

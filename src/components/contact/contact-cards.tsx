@@ -69,7 +69,7 @@ export function ContactCards() {
         icon={<WhatsAppIcon className="h-5 w-5" />}
         label="WhatsApp"
         value="Chat with our team"
-        detail="The fastest way to reach us — send photos of your site and get answers quickly."
+        detail="The fastest way to reach us: send photos of your site and get answers quickly."
         href={site.whatsapp}
         external
         delay={0.08}
@@ -86,12 +86,12 @@ export function ContactCards() {
         icon={<MapPin className="h-5 w-5" aria-hidden="true" />}
         label="Our base"
         value={`${site.address.streetAddress}, ${site.address.locality}`}
-        detail={`${site.address.city}, ${site.address.region} — we deliver nationwide.`}
+        detail={`${site.address.city}, ${site.address.region}. We deliver nationwide.`}
         delay={0.24}
       />
       <Reveal delay={0.3}>
         <p className="px-1 pt-1 text-sm text-stone">
-          Call or WhatsApp us — the fastest way to reach the team.
+          Call or WhatsApp us: the fastest way to reach the team.
         </p>
       </Reveal>
     </div>

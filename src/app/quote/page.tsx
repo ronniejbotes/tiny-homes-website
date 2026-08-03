@@ -57,7 +57,7 @@ export default function QuotePage() {
       <section className="pb-20 pt-28 sm:pb-28 sm:pt-36" aria-labelledby="quote-heading">
         <Container>
           {/* Hidden on paper: when the issued quote is printed, the document's
-              own letterhead is the header — a page title above it reads like a
+              own letterhead is the header; a page title above it reads like a
               screenshot of a website, not a quotation. */}
           <Reveal className="max-w-3xl print:hidden">
             <p className="text-eyebrow mb-4 text-clay">Instant quote</p>
@@ -67,7 +67,7 @@ export default function QuotePage() {
           </Reveal>
 
           {/* The standfirst is handed to the form rather than rendered here, so
-              it can step aside once a quote has been issued — "choose your home,
+              it can step aside once a quote has been issued, because "choose your home,
               size and extras" reads as a stale instruction above a finished
               quotation. It is still server-rendered: passing JSX as a prop to a
               client component keeps it in the initial HTML. */}
@@ -75,13 +75,13 @@ export default function QuotePage() {
             intro={
               <Reveal className="max-w-3xl">
                 <p className="mt-6 text-lg leading-relaxed text-stone">
-                  Choose your home, size and extras, then add your details — your quote appears on
+                  Choose your home, size and extras, then add your details, and your quote appears on
                   screen straight away, with VAT included and every extra itemised, and a copy
                   lands in your inbox moments later.
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-stone">
                   That price already includes shipping into South Africa. What it doesn&apos;t
-                  include is road delivery to your site, because that depends on where you are — so
+                  include is road delivery to your site, because that depends on where you are, so
                   we price it separately and email that quote through to you. We pass it on at cost
                   with no markup, so you&apos;re welcome to arrange your own truck too.
                 </p>

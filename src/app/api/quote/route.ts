@@ -1,17 +1,17 @@
 /**
- * POST /api/quote — issues an instant quote. Two emails go out per request:
+ * POST /api/quote: issues an instant quote. Two emails go out per request:
  * the customer's copy of the quotation, and the office's shipping-quote request
  * for that customer.
  *
  * Contract with the browser: the customer's quote is computed and rendered
  * client-side, so it appears the instant they submit and never depends on this
  * route succeeding. What this route owns is the *delivery*. It therefore answers
- * 200 with `delivered`/`copySent` flags rather than failing the request — the
+ * 200 with `delivered`/`copySent` flags rather than failing the request, the
  * form turns a false into a visible fallback ("send it to us on WhatsApp
  * instead") so a lead is never lost silently.
  *
  * Mailbox budget: two sends per quote against Hostinger's 100-per-24-hours cap
- * (see lib/mailer.ts) — roughly 50 quotes a day before sends start bouncing.
+ * (see lib/mailer.ts): roughly 50 quotes a day before sends start bouncing.
  */
 
 import { NextResponse } from "next/server";
@@ -36,7 +36,7 @@ import {
   type QuoteRequestBody,
 } from "@/lib/quote";
 
-// nodemailer needs a real TCP socket — this must not run on the Edge runtime.
+// nodemailer needs a real TCP socket; this must not run on the Edge runtime.
 export const runtime = "nodejs";
 
 /* ------------------------------------------------------------ rate limiting */
@@ -76,7 +76,7 @@ function clientIp(request: Request): string {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** Trim, collapse whitespace and cap length — payloads are never trusted. */
+/** Trim, collapse whitespace and cap length, payloads are never trusted. */
 function str(value: unknown, max = 200): string {
   if (typeof value !== "string") return "";
   return value.replace(/\s+/g, " ").trim().slice(0, max);
@@ -165,7 +165,7 @@ export async function POST(request: Request) {
   }
 
   // The reference is minted in the browser so the customer's document has one
-  // even if this call never lands — but it is only honoured if it looks like
+  // even if this call never lands, but it is only honoured if it looks like
   // ours, so it can't be used to inject text into the subject line.
   const reference =
     typeof body.reference === "string" && QUOTE_REFERENCE_RE.test(body.reference)
@@ -175,7 +175,7 @@ export async function POST(request: Request) {
   // Detection is re-derived server-side rather than trusted from the payload: a
   // client that omits or downgrades it must not be able to silence a rust
   // warning. The customer's own yes/no is the one thing that cannot be derived
-  // here, so it is read from the body — but it can only ever be consulted when
+  // here, so it is read from the body, but it can only ever be consulted when
   // detection was itself unsure, never to override a confirmed coastal town.
   const nearSea = typeof body.nearSea === "boolean" ? body.nearSea : null;
   const coastal: CoastalRisk = effectiveCoastalRisk(coastalRisk(address), nearSea);
@@ -195,7 +195,7 @@ export async function POST(request: Request) {
     // out so the flow is testable end-to-end, and tell the browser plainly that
     // nothing was actually sent.
     console.warn(
-      `[quote] SMTP not configured — no email sent. Would have sent to ${contact.email} and ${notifyAddress()}:\n\n` +
+      `[quote] SMTP not configured: no email sent. Would have sent to ${contact.email} and ${notifyAddress()}:\n\n` +
         `Subject: ${quoteEmailSubject(input)}\n\n${quoteEmailText(input)}\n`,
     );
     return NextResponse.json({
@@ -242,7 +242,7 @@ export async function POST(request: Request) {
 /* ------------------------------------------------------------------ preview */
 
 /**
- * GET /api/quote — renders the customer's quotation email against sample data,
+ * GET /api/quote: renders the customer's quotation email against sample data,
  * so the template can be proof-read in a browser without sending anything.
  *
  * Development only: in production this 404s, exactly as if the handler did not

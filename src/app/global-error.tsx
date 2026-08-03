@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 /* global-error replaces the root layout, so neither globals.css nor the
    next/font CSS variables set on <html> are guaranteed to be applied when this
-   renders. Every style here is therefore inline and self-contained — the one
+   renders. Every style here is therefore inline and self-contained, the one
    page that must never itself fail to render. Values mirror the @theme palette
    in globals.css (cream / ink / stone / clay / border). */
 const palette = {
@@ -103,7 +103,7 @@ const secondaryButton: React.CSSProperties = {
 
 /**
  * Last-resort boundary for errors thrown by the root layout itself (navbar,
- * footer, fonts) — error.tsx cannot catch those, and without this the visitor
+ * footer, fonts): error.tsx cannot catch those, and without this the visitor
  * gets Next's unbranded fallback with no way to reach us. Metadata exports are
  * not supported here (it's a Client Component), so the tab title is set with
  * React's <title>, per the Next 16 error.js docs.
@@ -130,7 +130,7 @@ export default function GlobalError({
             <h1 style={styles.heading}>The site didn&apos;t load</h1>
             <p style={styles.copy}>
               A problem on our side stopped this page from loading. It&apos;s almost always
-              temporary — please try again. If it keeps happening, call us on{" "}
+              temporary. Please try again. If it keeps happening, call us on{" "}
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
                 style={{ color: palette.clayDark, fontWeight: 500 }}

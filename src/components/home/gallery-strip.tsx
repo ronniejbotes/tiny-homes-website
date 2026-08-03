@@ -24,7 +24,7 @@ function heroPhoto(slug: string): ManifestImage {
   return images.find((img) => img.hero) ?? images[0];
 }
 
-/** Look up a real photo by a filename fragment — explicit and immune to
+/** Look up a real photo by a filename fragment, explicit and immune to
     reordering, unlike indexing into the manifest array by position. */
 function photoNamed(slug: string, filenameContains: string): ManifestImage {
   const images = productImages[slug];
@@ -35,7 +35,7 @@ function photoNamed(slug: string, filenameContains: string): ManifestImage {
 
 /* Curated photo strip; fixed widths/heights so the marquee never shifts layout.
    Each entry carries a sizes string matching its rendered card width. Every
-   image is a real product photo — looked up by filename/hero flag, not by
+   image is a real product photo, looked up by filename/hero flag, not by
    array index, so the manifest can be reordered without breaking this row.
 
    One shot per product line, all eight, so the strip is a complete tour of the
@@ -64,7 +64,7 @@ const shots = [
     sizes: "(min-width: 640px) 240px, 208px",
   },
   {
-    /* The hero, not exterior-balcony-deck — that shot carries a baked-in
+    /* The hero, not exterior-balcony-deck; that shot carries a baked-in
        watermark and a legible third-party badge on the pod itself. */
     image: heroPhoto("glamping-capsules"),
     width: "w-72 sm:w-80",

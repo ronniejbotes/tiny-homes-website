@@ -53,11 +53,11 @@ const EMPTY_ADDRESS: AddressValues = {
   postal: "",
 };
 
-/** One configured unit in the order — the editable line-item model. */
+/** One configured unit in the order: the editable line-item model. */
 interface LineItem {
   /** Stable local id, used for React keys and to target edits/removals. */
   id: string;
-  /** Product slug — always set (items are only created once a product is chosen). */
+  /** Product slug, always set (items are only created once a product is chosen). */
   slug: string;
   variantId: string | undefined;
   selected: Partial<Record<string, boolean>>;
@@ -65,7 +65,7 @@ interface LineItem {
   quantity: number;
 }
 
-/** The issued quote — set once, then rendered in place of the form. */
+/** The issued quote: set once, then rendered in place of the form. */
 interface IssuedQuote {
   reference: string;
   date: Date;
@@ -121,17 +121,17 @@ function validate(field: FieldName, value: string): string | null {
     case "firstName":
       return t ? null : "Please enter your first name so we know who we're talking to.";
     case "surname":
-      return t ? null : "Please enter your surname — it goes on your quotation.";
+      return t ? null : "Please enter your surname, as it goes on your quotation.";
     case "email":
       if (!t) return "Please enter your email address so we can send your quote and delivery quote.";
       return EMAIL_RE.test(t)
         ? null
-        : "That email doesn't look complete — check for a missing @ or domain, e.g. name@example.com.";
+        : "That email doesn't look complete. Check for a missing @ or domain, e.g. name@example.com.";
     case "phone": {
-      if (!t) return "Please add a phone number — we need one to coordinate delivery.";
+      if (!t) return "Please add a phone number, as we need one to coordinate delivery.";
       const digits = t.replace(/\D/g, "");
       return digits.length < 9
-        ? "That number looks too short — include the full code, e.g. 083 660 3743."
+        ? "That number looks too short. Include the full code, e.g. 083 660 3743."
         : null;
     }
     case "street":
@@ -159,7 +159,7 @@ const FOCUS_ORDER: FieldName[] = [
   "postal",
 ];
 
-/** DOM ids for each field — used to focus the first invalid field on submit. */
+/** DOM ids for each field, used to focus the first invalid field on submit. */
 const FIELD_IDS: Record<FieldName, string> = {
   firstName: "quote-first-name",
   surname: "quote-surname",
@@ -258,7 +258,7 @@ function QuantityStepper({
  * the town is not one we recognise.
  *
  * It exists because detection cannot be trusted to add a mandatory charge on
- * its own — no list of town names is complete, and "Lagoon Beach, Capetown"
+ * its own: no list of town names is complete, and "Lagoon Beach, Capetown"
  * slipped straight through the first version of it. A customer answering about
  * their own site is the one reliable input available, so the quote asks rather
  * than guesses, and refuses to proceed until it has an answer.
@@ -320,8 +320,8 @@ function CoastalQuestion({
             aria-describedby={error ? "quote-near-sea-error" : undefined}
             className="mt-4 flex flex-wrap gap-3"
           >
-            {choice("Yes — near the sea", value === true, () => onChange(true))}
-            {choice("No — inland", value === false, () => onChange(false))}
+            {choice("Yes, near the sea", value === true, () => onChange(true))}
+            {choice("No, inland", value === false, () => onChange(false))}
           </div>
           {error && (
             <p id="quote-near-sea-error" role="alert" className="mt-2 text-sm text-clay-dark">
@@ -480,7 +480,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
         ]
       : [],
   );
-  // Which line the editor is bound to. `null` means "adding a new unit" — the
+  // Which line the editor is bound to. `null` means "adding a new unit": the
   // editor is a blank draft until a product is picked (which creates the item).
   const [editingId, setEditingId] = useState<string | null>(deep.slug ? "unit-0" : null);
 
@@ -513,7 +513,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const selected = editingItem?.selected ?? {};
 
   // Salt air is a property of the delivery address, not of the configuration,
-  // so the requirement is derived here rather than stored on the line — it
+  // so the requirement is derived here rather than stored on the line, so it
   // re-evaluates the moment the address changes, including backwards if the
   // customer corrects a town.
   const detectedCoastal: CoastalRisk = coastalRisk(address);
@@ -522,7 +522,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const requiredOptionFor = (slug: string): string | undefined =>
     coastal === "coastal" ? coastalOptionFor(slug) : undefined;
 
-  /** The wire form of a line item — configuration only, never prices. The
+  /** The wire form of a line item: configuration only, never prices. The
       coastal option is merged in here so it reaches pricing, the summary, the
       quotation and the server by exactly the same path as a chosen extra. */
   const toUnit = (item: LineItem): QuoteUnit => {
@@ -561,7 +561,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
         ),
       );
     } else {
-      // Adding a new unit — create the item and switch the editor to it.
+      // Adding a new unit: create the item and switch the editor to it.
       const id = makeId();
       setItems((prev) => [
         ...prev,
@@ -637,7 +637,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const composeMessage = (reference?: string) => {
     const out: string[] = [
       reference
-        ? `Shipping quote request — quote ${reference} (tinyhomesa.com)`
+        ? `Shipping quote request: quote ${reference} (tinyhomesa.com)`
         : "New quote request via tinyhomesa.com",
       "",
     ];
@@ -696,8 +696,8 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const mailtoHref = (reference?: string) => {
     const label = lines.length === 1 ? lineTitle(lines[0]) : `${totals.totalUnits} units`;
     const subject = reference
-      ? `Shipping quote request — ${reference}`
-      : `Quote request — ${lines.length > 0 ? label : "Tiny Homes SA"}`;
+      ? `Shipping quote request: ${reference}`
+      : `Quote request: ${lines.length > 0 ? label : "Tiny Homes SA"}`;
     return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
       composeMessage(reference),
     )}`;
@@ -712,7 +712,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
       setProductError("Please add at least one unit to your quote before sending your request.");
       pickerRef.current?.scrollIntoView({ block: "center" });
       // Move keyboard focus into the picker so the error is actionable, not
-      // just audible — mirrors the focus-first-error behaviour of the fields.
+      // just audible; mirrors the focus-first-error behaviour of the fields.
       pickerRef.current?.focus();
       return;
     }
@@ -735,7 +735,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
     }
 
     // Never issue a quote for a coastal province without knowing whether the
-    // site is exposed — that is the whole point of asking.
+    // site is exposed: that is the whole point of asking.
     if (askNearSea && nearSea === null) {
       setNearSeaError("Please let us know whether the site is near the sea.");
       const el = document.getElementById("quote-near-sea");
@@ -745,7 +745,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
     }
 
     // Minted here, not on the server, so the customer's document always carries
-    // a reference — even if the request below never lands.
+    // a reference, even if the request below never lands.
     const reference = makeQuoteReference();
     const date = new Date();
     setSending(true);
@@ -780,7 +780,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
       }
     } catch {
       // Offline, or the server is down. The quote itself is computed here in
-      // the browser, so it still renders — both flags stay false and the
+      // the browser, so it still renders; both flags stay false and the
       // document offers WhatsApp and email as the route to a delivery quote.
     }
 
@@ -830,11 +830,11 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
       {intro}
       <div className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
         <form onSubmit={handleSubmit} noValidate className="space-y-14">
-          {/* Step 1 — choose your homes */}
+          {/* Step 1: choose your homes */}
           <Step
             n={1}
             title="Choose your homes"
-            description="Configure a unit, then add it to your order. Need more than one? Add another unit, or bump the quantity on any line — mix and match as many homes as you like."
+            description="Configure a unit, then add it to your order. Need more than one? Add another unit, or bump the quantity on any line, and mix and match as many homes as you like."
           >
             <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
             <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
@@ -881,12 +881,12 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             {product?.priceOnRequest && (
               <p className="mt-8 rounded-2xl border border-border bg-parchment/60 p-5 text-sm leading-relaxed text-stone">
                 Safari tents are configured to your site and brief, so there&apos;s no fixed price
-                or options list here — add it to your units and we&apos;ll arrange a consultation
+                or options list here. Add it to your units and we&apos;ll arrange a consultation
                 and an itemised quotation.
               </p>
             )}
 
-            {/* Your units — the running order */}
+            {/* Your units: the running order */}
             {lines.length > 0 && (
               <div className="mt-10 border-t border-border pt-8">
                 <div className="flex items-baseline justify-between gap-3">
@@ -920,7 +920,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             )}
           </Step>
 
-          {/* Step 2 — your details */}
+          {/* Step 2: your details */}
           <Step n={2} title="Your details" delay={0.05}>
             <div className="space-y-5">
               <div className="grid gap-5 sm:grid-cols-2">
@@ -977,7 +977,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             </div>
           </Step>
 
-          {/* Step 3 — delivery address */}
+          {/* Step 3: delivery address */}
           <Step
             n={3}
             title="Delivery address"
@@ -1005,7 +1005,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             {askNearSea && nearSea === true && <CoastalNotice risk="coastal" />}
           </Step>
 
-          {/* Step 4 — notes */}
+          {/* Step 4: notes */}
           <Step n={4} title="Anything else?" delay={0.05}>
             <label htmlFor="quote-notes" className={labelClasses}>
               Notes <span className="font-normal text-stone">(optional)</span>
@@ -1016,12 +1016,12 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
               rows={4}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Tell us about your site, access, timeline or any questions — e.g. slab already poured, delivery needed before December."
+              placeholder="Tell us about your site, access, timeline or any questions, e.g. slab already poured, delivery needed before December."
               className={cn(inputClasses, "h-auto min-h-28 resize-y py-3.5")}
             />
           </Step>
 
-          {/* Honeypot — off-screen rather than display:none, which some bots skip. */}
+          {/* Honeypot: off-screen rather than display:none, which some bots skip. */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
             <label htmlFor="quote-company">Company (leave blank)</label>
             <input
@@ -1035,7 +1035,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             />
           </div>
 
-          {/* Mobile summary — keeps the estimate in view above the submit button */}
+          {/* Mobile summary: keeps the estimate in view above the submit button */}
           <div className="lg:hidden">{summary}</div>
 
           {/* Submit */}
@@ -1059,7 +1059,7 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
             <p className="mt-3 text-sm leading-relaxed text-stone">
               Your quote appears on screen straight away and lands in your inbox moments later,
               covering your units, extras and VAT, including shipping into South Africa. Road
-              delivery to your site is quoted separately — we&apos;ll email that through once
+              delivery to your site is quoted separately, and we&apos;ll email that through once
               we&apos;ve priced the route.
             </p>
           </div>
@@ -1103,7 +1103,7 @@ function QuoteFormFallback() {
  * Instant-quote form.
  *
  * `intro` is the page's standfirst, handed in so it can be dropped once a quote
- * has been issued — it is server-rendered by the page, not by this component.
+ * has been issued; it is server-rendered by the page, not by this component.
  * useSearchParams() requires a Suspense boundary in the App Router, so the
  * inner form is wrapped here.
  */

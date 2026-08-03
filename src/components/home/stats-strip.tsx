@@ -8,8 +8,8 @@ import { site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { EASE, Stagger, StaggerItem } from "@/components/ui/reveal";
 
-/* Price-on-request products carry a 0 sentinel — exclude them from the range.
-   Garages are a DIY steel-kit line, not a home — their R139 900 entry price stays
+/* Price-on-request products carry a 0 sentinel, exclude them from the range.
+   Garages are a DIY steel-kit line, not a home; their R139 900 entry price stays
    out of the homes starting-price stat. */
 const lowestPrice = Math.min(
   ...products
@@ -67,11 +67,11 @@ function CountUp({ stat }: { stat: Stat }) {
   const reduce = useReducedMotion();
   // null means "the count-up has not started", which is the case on the server,
   // before hydration, under reduced motion, and until the strip scrolls into
-  // view. Starting at 0 instead meant the server-rendered HTML read "From R 0" —
+  // view. Starting at 0 instead meant the server-rendered HTML read "From R 0",
   // a false price that stayed on screen for as long as JavaScript failed to run.
   const [value, setValue] = useState<number | null>(null);
 
-  // Reduced motion needs no state update at all — leaving `value` null already
+  // Reduced motion needs no state update at all, leaving `value` null already
   // renders the final figure. Setting it here instead would queue a second
   // render just to land on a number we knew at render time.
   useEffect(() => {

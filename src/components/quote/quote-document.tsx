@@ -71,7 +71,7 @@ function AmountRow({
 
 function LineBlock({ line, index }: { line: QuoteLine; index: number }) {
   const onRequest = line.product.priceOnRequest;
-  const size = line.variant ? ` — ${line.variant.size}` : "";
+  const size = line.variant ? `, ${line.variant.size}` : "";
 
   return (
     <li className="border-t border-border py-5 first:border-t-0 first:pt-0">
@@ -91,7 +91,7 @@ function LineBlock({ line, index }: { line: QuoteLine; index: number }) {
 
       {onRequest ? (
         <p className="mt-2 text-sm leading-relaxed text-stone">
-          Configured to your site and brief — we&apos;ll price this line after a short
+          Configured to your site and brief; we&apos;ll price this line after a short
           consultation and add it to your formal quotation.
         </p>
       ) : (
@@ -113,7 +113,7 @@ function LineBlock({ line, index }: { line: QuoteLine; index: number }) {
             <AmountRow label="Unit price ex VAT" amount={formatZAR(line.unitPrice)} />
           )}
           <AmountRow
-            label={`Quantity — ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}`}
+            label={`Quantity: ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}`}
             amount={formatZAR(line.lineTotal)}
           />
         </div>
@@ -142,7 +142,7 @@ export function QuoteDocument({
   const expires = addDays(date, QUOTE_VALID_DAYS);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  // Move focus to the confirmation so screen readers announce it — a live
+  // Move focus to the confirmation so screen readers announce it; a live
   // region that mounts together with its content is often skipped by AT.
   useEffect(() => {
     headingRef.current?.focus();
@@ -169,8 +169,8 @@ export function QuoteDocument({
             <>
               It&apos;s ready to read below, and your copy is on its way to{" "}
               <strong className="font-medium text-ink">{contact.email}</strong>
-              {" — "}
-              it should land within a minute or two. Have a look in your spam folder if it
+              {". "}
+              It should land within a minute or two. Have a look in your spam folder if it
               doesn&apos;t appear.
             </>
           ) : (
@@ -179,8 +179,8 @@ export function QuoteDocument({
               <strong className="font-medium text-ink">
                 We couldn&apos;t email your copy to {contact.email}
               </strong>
-              {" — "}
-              please check the address, or get in touch and we&apos;ll send it across.
+              {". "}
+              Please check the address, or get in touch and we&apos;ll send it across.
             </>
           )}
         </p>
@@ -222,7 +222,7 @@ export function QuoteDocument({
 
       {/* ------------------------------------------------------- the quote
           On screen only. The quotation is issued by email, not as a file, so
-          the document is withheld from print — a browser Print/Save-as-PDF
+          the document is withheld from print, because a browser Print/Save-as-PDF
           gets the note below instead. This is a deterrent, not a lock: any
           web page can still be screenshotted or copied. */}
       <article
@@ -329,7 +329,7 @@ export function QuoteDocument({
           </div>
         </div>
 
-        {/* Coastal specification — a spec requirement, not an upsell */}
+        {/* Coastal specification: a spec requirement, not an upsell */}
         {coastalHeadline(coastal) && (
           <div
             className={cn(
@@ -361,7 +361,7 @@ export function QuoteDocument({
           </div>
         )}
 
-        {/* Delivery — the deliberate gap in this quote, spelled out */}
+        {/* Delivery: the deliberate gap in this quote, spelled out */}
         <div className="border-t border-border bg-parchment/50 p-6 sm:p-8">
           <div className="flex items-start gap-4">
             <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-clay/40 bg-cream text-clay-dark">
@@ -372,7 +372,7 @@ export function QuoteDocument({
                 Delivery to your site is not included
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-stone">
-                The total above covers your units, the extras you selected and VAT{" — "}
+                The total above covers your units, the extras you selected and VAT,{" "}
                 and shipping into South Africa is already in that price. What it doesn&apos;t
                 cover is the national leg: getting your unit here by road. That depends on where
                 you are, so{" "}
@@ -385,8 +385,8 @@ export function QuoteDocument({
                 You&apos;re also more than welcome to shop around and arrange your own truck.{" "}
                 <strong className="font-medium text-ink">
                   We don&apos;t add any markup to delivery
-                </strong>{" "}
-                — whatever the transporter charges us is what we pass on to you — so use whichever
+                </strong>
+                . Whatever the transporter charges us is what we pass on to you, so use whichever
                 option suits you best.
               </p>
             </div>
@@ -454,15 +454,15 @@ export function QuoteDocument({
                 <>
                   Your quotation has been emailed to{" "}
                   <strong className="font-medium text-ink">{contact.email}</strong>
-                  {" — "}
-                  that email is your copy to keep and refer back to. Quotes aren&apos;t available
+                  {". "}
+                  That email is your copy to keep and refer back to. Quotes aren&apos;t available
                   as downloads.
                 </>
               ) : (
                 <>
                   Your quotation is issued by email rather than as a download. We couldn&apos;t
                   reach <strong className="font-medium text-ink">{contact.email}</strong> this
-                  time — message or call us and we&apos;ll send your copy straight through.
+                  time. Message or call us and we&apos;ll send your copy straight through.
                 </>
               )}
             </p>
@@ -501,8 +501,8 @@ export function QuoteDocument({
 
         <p className="mt-6 text-sm leading-relaxed text-stone">
           Quote {reference}
-          {" — "}
-          keep this reference handy and we&apos;ll pick up exactly where you left off.
+          {". "}
+          Keep this reference handy and we&apos;ll pick up exactly where you left off.
         </p>
       </div>
     </div>

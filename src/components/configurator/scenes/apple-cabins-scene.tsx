@@ -32,9 +32,9 @@ import {
 } from "./shared";
 
 /**
- * Apple cabin — elongated angular pod with a long glazed side and mullions.
+ * Apple cabin: elongated angular pod with a long glazed side and mullions.
  * Interior: x 190–640, floor y 400. Kitchen + living left, central wet room,
- * bedroom right — the two-room layout with the bathroom in the middle.
+ * bedroom right: the two-room layout with the bathroom in the middle.
  *
  * Zoning (worst case, all options + furnished):
  *   kitchen 196–296 (counter 193–299) · sofa 300–362 · wet room 372–460 ·

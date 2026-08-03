@@ -4,7 +4,7 @@ import images from "@/data/images.json";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Tiny Homes SA — Prefab Tiny Homes South Africa",
+    name: "Tiny Homes SA | Prefab Tiny Homes South Africa",
     short_name: "Tiny Homes SA",
     description: site.description,
     start_url: "/",

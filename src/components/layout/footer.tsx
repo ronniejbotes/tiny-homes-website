@@ -37,7 +37,7 @@ export function Footer() {
               Tiny Homes <span className="text-sage">SA</span>
             </p>
             <p className="mt-4 leading-relaxed text-cream/70">
-              High-end prefab tiny homes for an affordable, sustainable way of living —
+              High-end prefab tiny homes for an affordable, sustainable way of living,
               designed, built and delivered across South Africa from Centurion, Gauteng.
             </p>
             <div className="mt-6 flex gap-3">
@@ -149,7 +149,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 max-w-4xl text-xs leading-relaxed text-cream/45">
-          All prices exclude VAT and are quoted as delivered in Durban — transport to your site
+          All prices exclude VAT and are quoted as delivered in Durban; transport to your site
           is quoted separately. Prices are for the product only and exclude earthworks or the
           provision of services, which are quoted separately. Site preparation and access are the
           customer&apos;s responsibility. Prices can change without notice.{" "}

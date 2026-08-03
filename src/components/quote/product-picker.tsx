@@ -51,7 +51,7 @@ function ProductCard({
             className="object-cover transition-transform duration-500 ease-[var(--ease-smooth)] group-hover:scale-[1.03]"
           />
         ) : (
-          // Garages carry no photography — a deliberate, on-brand placeholder.
+          // Garages carry no photography: a deliberate, on-brand placeholder.
           <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-parchment text-stone">
             <Warehouse className="h-8 w-8" aria-hidden="true" />
             <span className="text-eyebrow text-stone/80">DIY steel kit</span>

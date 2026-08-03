@@ -2,7 +2,7 @@
  * SMTP transport for transactional site mail (currently the shipping-quote
  * notification).
  *
- * Server-only — never import this from a "use client" module.
+ * Server-only; never import this from a "use client" module.
  *
  * Why SMTP and not a mail API: the business already owns
  * admin@tinyhomesa.com on Hostinger's Business Email plan, which the site is
@@ -12,7 +12,7 @@
  *
  * The one limit that matters: Hostinger's plan caps a mailbox at **100 sends
  * per 24 hours**. One notification per quote request is comfortably inside
- * that today, but it is the ceiling to watch if quote volume grows — the fix
+ * that today, but it is the ceiling to watch if quote volume grows, the fix
  * is a dedicated sending mailbox or a relay, not a code change here.
  */
 
@@ -52,7 +52,7 @@ function getTransporter(): Transporter {
     host: process.env.SMTP_HOST || DEFAULT_HOST,
     port,
     // 465 is implicit TLS; 587 upgrades via STARTTLS. Plain-text ports are
-    // never used — EMAIL-MIGRATION.md §4 is explicit about that.
+    // never used: EMAIL-MIGRATION.md §4 is explicit about that.
     secure: port === 465,
     auth: {
       user: process.env.SMTP_USER as string,
@@ -60,7 +60,7 @@ function getTransporter(): Transporter {
     },
     pool: true,
     maxConnections: 1,
-    // A hung SMTP dialogue must not hold the request open — the customer's
+    // A hung SMTP dialogue must not hold the request open, the customer's
     // quote does not depend on this send completing.
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
@@ -70,7 +70,7 @@ function getTransporter(): Transporter {
 }
 
 /**
- * Send a message. Throws on failure — callers decide whether that is fatal.
+ * Send a message. Throws on failure, callers decide whether that is fatal.
  *
  * `from` must stay the authenticated mailbox: putting the customer's address
  * there would fail SPF/DKIM and land the notification in spam. The customer

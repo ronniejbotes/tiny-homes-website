@@ -4,7 +4,7 @@ import { productSlugs } from "@/data/products";
 
 /**
  * Content ships with the code, so "last deployed" is the truthful lastmod. This route uses no
- * request-time APIs, so Next prerenders it and freezes this value at `next build` — which the
+ * request-time APIs, so Next prerenders it and freezes this value at `next build`, which the
  * Hostinger Node app runs on every deploy. Read at module scope rather than inside the handler
  * so all URLs share one timestamp and it can never churn per request if the route is re-rendered.
  */

@@ -15,7 +15,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const whatsappHref = `${site.whatsapp}?text=${encodeURIComponent(
-  "Hi Tiny Homes SA! The website showed an error — can you help me?",
+  "Hi Tiny Homes SA! The website showed an error. Can you help me?",
 )}`;
 
 /**
@@ -23,7 +23,7 @@ const whatsappHref = `${site.whatsapp}?text=${encodeURIComponent(
  * alongside the older `reset`: retry refreshes the router *and* clears the
  * boundary, so the failed server segment is actually re-fetched, whereas `reset`
  * only re-renders the same broken payload. The `unstable_` prefix is the API's
- * real name in 16.2.x — rename here when it stabilises.
+ * real name in 16.2.x; rename here when it stabilises.
  */
 export default function ErrorBoundary({
   error,
@@ -52,7 +52,7 @@ export default function ErrorBoundary({
           This page didn&apos;t load
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-stone">
-          A hiccup on our side stopped this page from loading — it&apos;s almost always
+          A hiccup on our side stopped this page from loading; it&apos;s almost always
           temporary. Try again, and if it keeps happening, call or WhatsApp us and
           we&apos;ll answer anything you wanted to know here.
         </p>
@@ -85,7 +85,7 @@ export default function ErrorBoundary({
           </ButtonAnchor>
         </div>
 
-        {/* The digest is the only handle support has on a production error —
+        {/* The digest is the only handle support has on a production error;
             server messages are stripped before they reach the browser. */}
         {error.digest && (
           <p className="mt-10 border-t border-border pt-6 text-sm text-stone">

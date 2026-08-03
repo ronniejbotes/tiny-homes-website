@@ -32,7 +32,7 @@ import {
 } from "./shared";
 
 /**
- * Folding home — compact rectangular cabin with fold-seam hints.
+ * Folding home: compact rectangular cabin with fold-seam hints.
  * Interior: x 248–572, floor y 400. Kitchen left (x 260–348), living centre
  * (x 351–486), wet room right (x 486–572). Two windows: main (296–346) and
  * a smaller one in the wet zone (496–540) so glazing reads on both.
@@ -48,7 +48,7 @@ import {
  *   right: deck 580–652 (ground) | shrub 666+
  */
 export function FoldingHomesScene({ visuals, furnished, variantId }: SceneProps) {
-  // The bathroom and kitchen are factory-fitted on the X-Fold BK variant —
+  // The bathroom and kitchen are factory-fitted on the X-Fold BK variant,
   // they are part of the unit, not configurator options.
   const fitted = variantId === "x-fold-bk";
   return (

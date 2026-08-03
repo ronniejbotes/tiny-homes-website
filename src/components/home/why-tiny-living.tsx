@@ -8,7 +8,7 @@ const values = [
   {
     icon: Sun,
     title: "Off-grid & solar ready",
-    body: "Solar power, battery banks, gas geysers and rainwater tanks can be paired with selected models — sized and quoted for your site, and designed to keep running through load-shedding and far beyond the grid.",
+    body: "Solar power, battery banks, gas geysers and rainwater tanks can be paired with selected models, sized and quoted for your site, and designed to keep running through load-shedding and far beyond the grid.",
   },
   {
     icon: Timer,
@@ -18,12 +18,12 @@ const values = [
   {
     icon: Truck,
     title: "A relocatable asset",
-    body: "Steel-framed and crane-ready. If life moves, your home moves with it — fold it back down or lift it whole onto a truck and redeploy it.",
+    body: "Steel-framed and crane-ready. If life moves, your home moves with it: fold it back down or lift it whole onto a truck and redeploy it.",
   },
   {
     icon: BadgeCheck,
     title: "Backed for the long haul",
-    body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation — and ${site.finance.toLowerCase()}.`,
+    body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation, and ${site.finance.toLowerCase()}.`,
   },
   {
     icon: Leaf,
@@ -33,7 +33,7 @@ const values = [
   {
     icon: Shield,
     title: "Engineered for South African conditions",
-    body: "Fireproof insulated panels and weather-resistant steel shells designed for South Africa's climate — from coastal humidity to inland heat and cold.",
+    body: "Fireproof insulated panels and weather-resistant steel shells designed for South Africa's climate, from coastal humidity to inland heat and cold.",
   },
 ];
 
@@ -44,7 +44,7 @@ export function WhyTinyLiving() {
         <SectionHeading
           eyebrow="Why tiny living"
           title="Small footprint, serious upside"
-          intro="Tiny homes aren't a compromise — they're a faster, smarter way to put a high-quality roof over your head, your guests or your business."
+          intro="Tiny homes aren't a compromise; they're a faster, smarter way to put a high-quality roof over your head, your guests or your business."
         />
 
         <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">

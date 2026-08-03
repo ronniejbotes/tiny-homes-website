@@ -30,7 +30,7 @@ import {
 } from "./shared";
 
 /**
- * Glamping capsule — rounded capsule ends, wraparound glass, curved roof,
+ * Glamping capsule: rounded capsule ends, wraparound glass, curved roof,
  * raised on piers. Interior floor y 392, x 210–588. Kitchen + living left,
  * wet room centre, bedroom right.
  *
@@ -42,11 +42,11 @@ import {
  *   curtain drapes 494–516 and 562–586 (y240–292, above the headboard).
  *   Outside: solar on the flat shell top 330–470 · balcony deck 616–696.
  *
- * Local primitive: FloorLamp — shared.tsx has pendant/table lamps only and
+ * Local primitive: FloorLamp, shared.tsx has pendant/table lamps only and
  * the capsule ceiling is glass, so the living-corner light stands on the floor.
  */
 export function GlampingCapsulesScene({ visuals, furnished }: SceneProps) {
-  // The kitchen is an optional extra on every capsule — the core range fits it by
+  // The kitchen is an optional extra on every capsule, the core range fits it by
   // the metre, the Space range as a full kitchen module. Both draw the same layer.
   const kitchenOn = Boolean(visuals["kitchen"]);
   const floor = 392;
@@ -120,7 +120,7 @@ export function GlampingCapsulesScene({ visuals, furnished }: SceneProps) {
       </Layer>
 
       {/* Aircon: indoor unit high above the wet room, outdoor unit at ground
-          left — the right side is reserved for the balcony deck */}
+          left; the right side is reserved for the balcony deck */}
       <Layer id="aircon" show={Boolean(visuals["aircon"])}>
         <AirconSplit x={422} y={234} withOutdoor outdoorX={108} outdoorY={404} />
       </Layer>

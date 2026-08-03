@@ -1,11 +1,11 @@
 /**
  * Composes the two emails an instant quote sends:
  *
- *  1. The customer's copy of the quotation — the quote lives in their inbox
+ *  1. The customer's copy of the quotation; the quote lives in their inbox
  *     rather than as a file they download, so the figures stay attached to the
  *     business that issued them.
  *  2. The delivery-quote notification to the office. The instant quote covers
- *     the units, their extras, VAT and shipping into South Africa — deliberately
+ *     the units, their extras, VAT and shipping into South Africa, deliberately
  *     not the national road leg, which is priced per site and passed through at
  *     cost. This email is the hand-off that turns that gap into an action:
  *     everything needed to price a load is in the first screenful (who, where,
@@ -66,7 +66,7 @@ export function fullName(contact: ContactValues): string {
 }
 
 /**
- * External dimensions, for sizing the load — but only where they are actually
+ * External dimensions, for sizing the load, but only where they are actually
  * true of the unit quoted. `Product.dims` is a single set per product, so on a
  * multi-variant line (an 18 m² expandable and a 74 m² one share one `dims`) it
  * would describe the wrong unit. Better a gap the office fills in than a
@@ -80,7 +80,7 @@ function transportDims(line: QuoteLine): string | null {
 
 export function quoteEmailSubject(input: QuoteEmailInput): string {
   const where = input.address.city.trim() || input.address.province.trim() || "site";
-  return `Delivery quote request — ${fullName(input.contact)} — ${where} — ${input.reference}`;
+  return `Delivery quote request: ${fullName(input.contact)} | ${where} | ${input.reference}`;
 }
 
 /* ------------------------------------------------------------------- text */
@@ -94,11 +94,11 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   out.push(`Quote ${reference} · generated ${formatQuoteDate(date)} on tinyhomesa.com`);
   out.push("");
   if (input.coastal === "coastal") {
-    out.push("*** COASTAL SITE — CORROSION SPECIFICATION REQUIRED ***");
+    out.push("*** COASTAL SITE: CORROSION SPECIFICATION REQUIRED ***");
     out.push("Confirm the corrosion-resistant exterior on every unit before quoting.");
     out.push("");
   } else if (input.coastal === "possibly-coastal") {
-    out.push("!! CHECK COASTAL EXPOSURE — address is in a coastal province.");
+    out.push("!! CHECK COASTAL EXPOSURE: address is in a coastal province.");
     out.push("If the site is within ~30 km of the sea, the corrosion spec is required.");
     out.push("");
   }
@@ -124,7 +124,7 @@ export function quoteEmailText(input: QuoteEmailInput): string {
 
   out.push(`PRODUCT TO BE DELIVERED (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})`);
   lines.forEach((line, i) => {
-    const size = line.variant ? ` — ${line.variant.size}` : "";
+    const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${line.quantity} × ${lineTitle(line)}${size}`);
     const d = transportDims(line);
     if (d) out.push(`     Transport size (each): ${d}`);
@@ -143,7 +143,7 @@ export function quoteEmailText(input: QuoteEmailInput): string {
       out.push("  (plus units priced after consultation)");
     }
   } else {
-    out.push("  Priced after consultation — no fixed total issued.");
+    out.push("  Priced after consultation: no fixed total issued.");
   }
 
   if (notes?.trim()) {
@@ -172,7 +172,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
 
   const unitsHtml = lines
     .map((line) => {
-      const size = line.variant ? ` — ${esc(line.variant.size)}` : "";
+      const size = line.variant ? `, ${esc(line.variant.size)}` : "";
       const d = transportDims(line);
       const dims = d
         ? `<div style="font-size:13px;color:#67635a;margin-top:2px">Transport size (each): ${esc(d)}</div>`
@@ -200,7 +200,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
         ${row("Total", `${formatZAR(totals.total)} incl VAT`)}
       </table>
       ${totals.someOnRequest ? `<p style="margin:8px 0 0;font-size:13px;color:#67635a">Plus units priced after consultation.</p>` : ""}`
-    : `<p style="margin:0;font-size:15px;color:#1c1b17">Priced after consultation — no fixed total issued.</p>`;
+    : `<p style="margin:0;font-size:15px;color:#1c1b17">Priced after consultation: no fixed total issued.</p>`;
 
   const notesHtml = notes?.trim()
     ? `<h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Customer notes</h2>
@@ -213,13 +213,13 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
   <div style="max-width:640px;margin:0 auto;background:#faf6ef;border:1px solid #ddd3c1;border-radius:16px;padding:28px">
 
     <p style="margin:0 0 4px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Delivery quote request</p>
-    <h1 style="margin:0;font-size:24px;line-height:1.25;color:#1c1b17">${esc(fullName(contact))} — ${esc(address.city.trim() || address.province.trim())}</h1>
+    <h1 style="margin:0;font-size:24px;line-height:1.25;color:#1c1b17">${esc(fullName(contact))}, ${esc(address.city.trim() || address.province.trim())}</h1>
     <p style="margin:8px 0 0;font-size:14px;color:#67635a">Quote ${esc(reference)} · generated ${esc(formatQuoteDate(date))} on tinyhomesa.com</p>
 
     ${
       input.coastal === "coastal"
         ? `<div style="margin:20px 0;padding:14px 16px;background:#b4552d;border-radius:12px;font-size:15px;line-height:1.6;color:#ffffff">
-             <strong>COASTAL SITE — corrosion specification required.</strong><br>
+             <strong>COASTAL SITE: corrosion specification required.</strong><br>
              Confirm the corrosion-resistant exterior on every unit before quoting. Standard
              cladding is not warranted against salt-air corrosion.
            </div>`
@@ -231,7 +231,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
           : ""
     }
     <div style="margin:20px 0;padding:14px 16px;background:#e9dfce;border-radius:12px;font-size:14px;line-height:1.6;color:#1c1b17">
-      The customer already has their instant product quote — units, extras, VAT and shipping
+      The customer already has their instant product quote: units, extras, VAT and shipping
       into South Africa. They are waiting on a <strong>quote for road delivery to their
       site</strong>.
     </div>
@@ -266,7 +266,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
     ${notesHtml}
 
     <p style="margin:28px 0 0;padding-top:20px;border-top:1px solid #ddd3c1;font-size:14px;line-height:1.6;color:#67635a">
-      Reply to this email to send ${esc(contact.firstName.trim())} their delivery quote —
+      Reply to this email to send ${esc(contact.firstName.trim())} their delivery quote,
       it goes straight to their inbox.
     </p>
   </div>
@@ -277,7 +277,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
 /* ------------------------------------------------- the customer's quotation */
 
 export function customerQuoteSubject(input: QuoteEmailInput): string {
-  return `Your Tiny Homes SA quotation — ${input.reference}`;
+  return `Your Tiny Homes SA quotation: ${input.reference}`;
 }
 
 /** Plain-text alternative. Never the primary read, but it is what plain-text
@@ -287,7 +287,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   const totals = quoteTotals(lines);
   const out: string[] = [];
 
-  out.push(`TINY HOMES SA — QUOTATION ${reference}`);
+  out.push(`TINY HOMES SA QUOTATION ${reference}`);
   out.push(`Issued ${formatQuoteDate(date)} · valid until ${formatQuoteDate(addDays(date, QUOTE_VALID_DAYS))}`);
   out.push("");
   out.push(`Hi ${contact.firstName.trim()},`);
@@ -308,7 +308,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
 
   out.push("YOUR UNITS");
   lines.forEach((line, i) => {
-    const size = line.variant ? ` — ${line.variant.size}` : "";
+    const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${lineTitle(line)}${size}`);
     if (line.product.priceOnRequest) {
       out.push("     Priced after consultation");
@@ -323,7 +323,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
       out.push(`     Unit price ex VAT         ${formatZAR(line.unitPrice)}`);
     }
     out.push(
-      `     Quantity — ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}   ${formatZAR(line.lineTotal)}`,
+      `     Quantity: ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}   ${formatZAR(line.lineTotal)}`,
     );
   });
   out.push("");
@@ -353,8 +353,8 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   out.push(`${address.city.trim() || "your site"}.`);
   out.push("");
   out.push("You're also more than welcome to shop around and arrange your own truck.");
-  out.push("We don't add any markup to delivery — whatever the transporter charges us");
-  out.push("is what we pass on to you — so use whichever option suits you.");
+  out.push("We don't add any markup to delivery. Whatever the transporter charges us");
+  out.push("is what we pass on to you, so use whichever option suits you.");
 
   if (notes?.trim()) {
     out.push("");
@@ -401,7 +401,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
 
   const linesHtml = lines
     .map((line, index) => {
-      const size = line.variant ? ` <span style="font-weight:400;color:#67635a">— ${esc(line.variant.size)}</span>` : "";
+      const size = line.variant ? ` <span style="font-weight:400;color:#67635a">(${esc(line.variant.size)})</span>` : "";
       const head = `<tr>
         <td style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17">${index + 1}. ${esc(lineTitle(line))}${size}</td>
         <td align="right" style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17;white-space:nowrap">${
@@ -412,7 +412,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
       </tr>`;
 
       if (line.product.priceOnRequest) {
-        return `${head}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief — we&rsquo;ll price this line after a short consultation.</td></tr>`;
+        return `${head}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief; we&rsquo;ll price this line after a short consultation.</td></tr>`;
       }
 
       const extras = line.activeOptions
@@ -430,7 +430,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         ${moneyRow("Base unit", esc(formatZAR(line.basePrice)))}
         ${extras}
         ${line.activeOptions.length > 0 ? moneyRow("Unit price ex VAT", esc(formatZAR(line.unitPrice)), { strong: true }) : ""}
-        ${moneyRow(`Quantity — ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}`, esc(formatZAR(line.lineTotal)), { strong: true })}
+        ${moneyRow(`Quantity: ${line.quantity} ${line.quantity === 1 ? "unit" : "units"}`, esc(formatZAR(line.lineTotal)), { strong: true })}
         <tr><td colspan="2" style="padding:6px 0 0;border-bottom:1px solid #ddd3c1;font-size:0;line-height:0">&nbsp;</td></tr>`;
     })
     .join("");
@@ -487,7 +487,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         <tr><td style="padding:26px 28px 0">
           <p style="margin:0;font-size:16px;line-height:1.6;color:#1c1b17">Hi ${esc(contact.firstName.trim())},</p>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.65;color:#67635a">
-            Thank you for building a quote with us — here it is in full. Keep this email as your copy;
+            Thank you for building a quote with us; here it is in full. Keep this email as your copy;
             there&rsquo;s nothing to download.
           </p>
         </td></tr>
@@ -554,7 +554,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             <tr><td style="padding:18px 20px">
               <p style="margin:0;font-size:16px;font-weight:700;color:#1c1b17">Delivery to your site is not included</p>
               <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#67635a">
-                The total above covers your units, the extras you selected and VAT — and shipping into
+                The total above covers your units, the extras you selected and VAT, and shipping into
                 South Africa is already in that price. What it doesn&rsquo;t cover is the national leg:
                 getting your unit here by road. That depends on where you are, so
                 <strong style="color:#1c1b17">we&rsquo;ll come back to you with a separate quote for
@@ -563,8 +563,8 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
               </p>
               <p style="margin:12px 0 0;font-size:14px;line-height:1.65;color:#67635a">
                 You&rsquo;re also more than welcome to shop around and arrange your own truck.
-                <strong style="color:#1c1b17">We don&rsquo;t add any markup to delivery</strong> — whatever the
-                transporter charges us is what we pass on to you — so use whichever option suits you best.
+                <strong style="color:#1c1b17">We don&rsquo;t add any markup to delivery</strong>. Whatever the
+                transporter charges us is what we pass on to you, so use whichever option suits you best.
               </p>
             </td></tr>
           </table>

@@ -128,7 +128,7 @@ export function AddressFields({
       </div>
 
       <p className="text-sm leading-relaxed text-stone">
-        We use this address to price your delivery quote, which follows separately by email — we
+        We use this address to price your delivery quote, which follows separately by email. We
         deliver nationwide, at cost, with no markup.
       </p>
     </div>

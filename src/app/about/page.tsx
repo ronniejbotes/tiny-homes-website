@@ -28,7 +28,7 @@ const aboutOgDescription =
 export const metadata: Metadata = {
   title: { absolute: "About Tiny Homes SA | Prefab Home Builder in Centurion" },
   description:
-    "Tiny Homes SA builds prefab tiny homes in Centurion, delivered nationwide — steel-built homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA builds prefab tiny homes in Centurion, delivered nationwide: steel-built homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * Looks up an image by filename rather than a raw manifest index — indices
+ * Looks up an image by filename rather than a raw manifest index, because indices
  * drift silently whenever images.json is reordered (that's how a line icon
  * ended up standing in for a bathroom photo here previously).
  */
@@ -65,7 +65,7 @@ function findImage<T extends { src: string }>(list: T[], filename: string): T {
   return found;
 }
 
-// Warm apple-cabin exterior rather than the white showroom unit — the factory
+// Warm apple-cabin exterior rather than the white showroom unit; the factory
 // image below is virtually the same white box, so leading with it doubled up.
 const heroImage = findImage(images.products["apple-cabins"], "hero-pod-fynbos.jpg");
 const factoryImage = findImage(images.gallery, "tiny-homes-gallery-1.jpg");
@@ -73,9 +73,9 @@ const bathroomImage = findImage(images.products["apple-cabins"], "interior-bathr
 const bandImage = findImage(images.products["nature-cabins"], "exterior-timber-render.jpg");
 
 // True range across every variant, not just each product's headline starting
-// price — the flagship glamping capsule's top variant is R1 070 900.
+// price: the flagship glamping capsule's top variant is R1 070 900.
 // Price-on-request products carry a 0 sentinel and are excluded from the range.
-// Garages are a DIY steel-kit line, not a home — excluded so the "from the
+// Garages are a DIY steel-kit line, not a home; excluded so the "from the
 // R… X-Fold folding home" copy keeps naming the cheapest actual home.
 const allPrices = products
   .filter((p) => !p.priceOnRequest && p.slug !== "garages")
@@ -87,12 +87,12 @@ const values = [
   {
     icon: Shield,
     title: "Quality in steel",
-    body: "Every home in the range is built around a steel structure with insulated, fireproof wall panels — factory-precision construction made for South African conditions.",
+    body: "Every home in the range is built around a steel structure with insulated, fireproof wall panels: factory-precision construction made for South African conditions.",
   },
   {
     icon: Check,
     title: "Honest pricing",
-    body: `Every price we publish is ex VAT, from the ${formatZAR(minPrice)} X-Fold to the ${formatZAR(maxPrice)} glamping capsule — and delivery is quoted upfront.`,
+    body: `Every price we publish is ex VAT, from the ${formatZAR(minPrice)} X-Fold to the ${formatZAR(maxPrice)} glamping capsule, and delivery is quoted upfront.`,
   },
   {
     icon: Timer,
@@ -102,7 +102,7 @@ const values = [
   {
     icon: Leaf,
     title: "Sustainability that works",
-    body: "Solar, battery, gas geysers and rainwater tanks can be paired with most homes, quoted for your site — built to keep running through load-shedding.",
+    body: "Solar, battery, gas geysers and rainwater tanks can be paired with most homes, quoted for your site, built to keep running through load-shedding.",
   },
   {
     icon: ShieldCheck,
@@ -114,11 +114,11 @@ const values = [
 const processSteps = [
   {
     title: "Discuss",
-    body: "We talk through your site, your budget and what the home needs to do — garden office, guest suite, lodge accommodation or full-time living.",
+    body: "We talk through your site, your budget and what the home needs to do: garden office, guest suite, lodge accommodation or full-time living.",
   },
   {
     title: "Design",
-    body: "Pick your model and layout, then configure finishes and modules — flooring, insulation, wet room, kitchen — to suit how you'll live in it.",
+    body: "Pick your model and layout, then configure finishes and modules: flooring, insulation, wet room and kitchen, to suit how you'll live in it.",
   },
   {
     title: "Quote",
@@ -126,11 +126,11 @@ const processSteps = [
   },
   {
     title: "Build",
-    body: "Your home is built under factory conditions in steel and insulated panelling — precise, weather-independent and quality-checked before it ships.",
+    body: "Your home is built under factory conditions in steel and insulated panelling: precise, weather-independent and quality-checked before it ships.",
   },
   {
     title: "Deliver & install",
-    body: "We truck the finished home anywhere in South Africa and set it up on site — from minutes for an X-Fold to professional assembly for cabins and capsules.",
+    body: "We truck the finished home anywhere in South Africa and set it up on site, from minutes for an X-Fold to professional assembly for cabins and capsules.",
   },
 ];
 
@@ -150,7 +150,7 @@ export default function AboutPage() {
           webPageSchema("AboutPage", {
             name: "About Tiny Homes SA",
             description:
-              "The story and process behind Tiny Homes SA — high-end prefab tiny homes built in Centurion and delivered across South Africa.",
+              "The story and process behind Tiny Homes SA: high-end prefab tiny homes built in Centurion and delivered across South Africa.",
             path: "/about",
           }),
           breadcrumbSchema([
@@ -178,9 +178,9 @@ export default function AboutPage() {
                   affordable.
                 </p>
                 <p>
-                  We supply high-end prefab tiny homes from our base in Raslouw, Centurion —
+                  We supply high-end prefab tiny homes from our base in Raslouw, Centurion,
                   X-Folds, expandable homes, nature cabins, apple cabins and glamping
-                  capsules, plus outdoor kitchens and safari tents — delivered anywhere
+                  capsules, plus outdoor kitchens and safari tents, delivered anywhere
                   in South Africa.
                 </p>
                 <p>
@@ -192,8 +192,8 @@ export default function AboutPage() {
                 </p>
                 <p>
                   The range spans five home designs, from the {formatZAR(minPrice)} X-Fold
-                  to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule —
-                  every price published ex VAT — alongside outdoor entertainment kitchens and
+                  to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule,
+                  every price published ex VAT, alongside outdoor entertainment kitchens and
                   luxury safari tents quoted to your site and brief. {site.finance}.
                 </p>
               </div>
@@ -216,7 +216,7 @@ export default function AboutPage() {
           {/* Facts strip */}
           <Stagger className="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-y border-border py-10 sm:grid-cols-3 lg:grid-cols-5">
             {stats.map((stat) => (
-              /* Five stats over two mobile columns orphans the last one — let
+              /* Five stats over two mobile columns orphans the last one, so let
                  it span the final row instead of sitting beside empty space. */
               <StaggerItem key={stat.label} className="last:col-span-2 sm:last:col-span-1">
                 <p className="text-display text-3xl text-forest sm:text-4xl">{stat.value}</p>
@@ -242,7 +242,7 @@ export default function AboutPage() {
             </blockquote>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/75">
               We use precision factory building to make high-end, sustainable living
-              attainable for more South Africans — on farms, in gardens, at lodges and
+              attainable for more South Africans: on farms, in gardens, at lodges and
               everywhere in between.
             </p>
           </Reveal>
@@ -279,7 +279,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="The process"
             title="Deposit to move-in, in about 90 days"
-            intro="The same five steps sit behind every build — from the first conversation to handover day."
+            intro="The same five steps sit behind every build, from the first conversation to handover day."
             align="center"
           />
           <ol className="relative mx-auto mt-16 max-w-2xl list-none">
@@ -347,7 +347,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-display text-xl">Based in Raslouw, Centurion</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
-                    Built in Gauteng, at the centre of the national road network — well placed
+                    Built in Gauteng, at the centre of the national road network, well placed
                     to reach any province.
                   </p>
                 </div>
@@ -357,7 +357,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-display text-xl">Delivery, quoted for your site</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
-                    Coast, bushveld or mountains — if a truck and crane can reach it, we can
+                    Coast, bushveld or mountains: if a truck and crane can reach it, we can
                     put a home on it. Your delivery cost is confirmed with your formal quote,
                     based on distance and site accessibility.
                   </p>
@@ -368,8 +368,8 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-display text-xl">Full turnkey installation</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
-                    We can arrange the groundwork while your home is being built — plinths,
-                    electrical, water and sewerage connections — then erect the home, connect
+                    We can arrange the groundwork while your home is being built: plinths,
+                    electrical, water and sewerage connections, then erect the home, connect
                     services and hand over the same day, move-in ready. Use your own
                     contractors, or let our site manager guide the process on ours.
                   </p>
@@ -382,7 +382,7 @@ export default function AboutPage() {
                   <p className="mt-1.5 leading-relaxed text-cream/70">
                     {site.finance}. You&rsquo;ll need a valid SA ID or passport, your latest
                     three months&rsquo; bank statements or proof of income and a good credit
-                    record — a deposit may be required depending on the unit.
+                    record; a deposit may be required depending on the unit.
                   </p>
                 </div>
               </StaggerItem>
@@ -414,7 +414,7 @@ export default function AboutPage() {
             align="center"
             eyebrow="Next step"
             title="Ready to plan your build?"
-            intro="Tell us about your site and budget — we'll get back to you with a quote."
+            intro="Tell us about your site and budget, and we'll get back to you with a quote."
           />
           <Reveal delay={0.1} className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <ButtonLink href="/contact" variant="accent" size="lg">

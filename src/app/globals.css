@@ -77,13 +77,13 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.02;
   font-variation-settings: "SOFT" 40, "WONK" 0;
-  /* Fraunces is an optical-size variable font — let large display headings pick
+  /* Fraunces is an optical-size variable font, let large display headings pick
      up the finer, higher-contrast optical cut for a more refined editorial feel. */
   font-optical-sizing: auto;
 }
 
 /* Prices and figures: tabular (monospaced) numerals so they never jitter as
-   values animate or change, and align in columns — a small mark of polish. */
+   values animate or change, and align in columns, a small mark of polish. */
 .nums-tabular {
   font-variant-numeric: tabular-nums;
 }
@@ -102,7 +102,7 @@ body {
   border-radius: 2px;
 }
 
-/* Clay reads at only 2.5:1 on forest — swap to cream on dark surfaces (WCAG 1.4.11) */
+/* Clay reads at only 2.5:1 on forest; swap to cream on dark surfaces (WCAG 1.4.11) */
 .bg-forest :focus-visible,
 .bg-forest:focus-visible {
   outline-color: var(--color-cream);
@@ -183,7 +183,7 @@ body {
   }
 }
 
-/* Slow ambient "ken-burns" settle on the hero image — a gentle zoom-out on load
+/* Slow ambient "ken-burns" settle on the hero image, a gentle zoom-out on load
    that reads as depth without ever moving layout. Layered under the framer-motion
    scroll parallax (which lives on a separate wrapper element, so the two
    transforms never fight). Motion-gated: reduced-motion visitors get a static
@@ -214,7 +214,7 @@ body {
 }
 
 /* ---------------------------------------------------------------- printing
-   The instant quote on /quote is meant to be printed or saved as a PDF — it is
+   The instant quote on /quote is meant to be printed or saved as a PDF; it is
    the customer's copy of the quotation. Everything that isn't the document
    itself is site chrome and must not appear on the page: the sticky nav, the
    footer, the floating WhatsApp button, and the action buttons under the quote
@@ -226,7 +226,7 @@ body {
    printed page to full opacity with no transform is what makes the whole
    document come out. */
 @media print {
-  /* Direct children of <body> only — the quote document has its own <header>
+  /* Direct children of <body> only; the quote document has its own <header>
      (letterhead) and <footer> (terms), which must survive. */
   body > header,
   body > footer,

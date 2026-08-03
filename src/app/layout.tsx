@@ -9,12 +9,12 @@ import { OrgJsonLd } from "@/components/seo/org-jsonld";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
-/** Default social share image — the nature cabins hero, our strongest exterior shot. */
+/** Default social share image: the nature cabins hero, our strongest exterior shot. */
 const defaultOgImage = images.products["nature-cabins"].find((img) => img.hero);
 
 /**
  * Inherited from the old WordPress site so the GA4 property keeps its full
- * history across the migration — do not mint a new property.
+ * history across the migration; do not mint a new property.
  */
 const gaMeasurementId = "G-5R1KHZE03G";
 
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-/** Mobile browser chrome — same forest token as manifest.ts theme_color. */
+/** Mobile browser chrome: same forest token as manifest.ts theme_color. */
 export const viewport: Viewport = {
   themeColor: "#1e3a2b",
 };

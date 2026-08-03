@@ -3,7 +3,7 @@
  *
  * Why this exists: salt air eats standard steel cladding. A unit delivered near
  * the sea without the corrosion-resistant exterior is visibly rusting within
- * about five years — a warranty problem and a reputation problem that surfaces
+ * about five years: a warranty problem and a reputation problem that surfaces
  * long after the sale. So the corrosion upgrade is not an upsell at the coast,
  * it is part of the specification, and the quote has to say so before the
  * customer commits rather than after.
@@ -14,7 +14,7 @@
  * flagging, and never towards silence.
  *
  * Detection is name-based rather than a postal-code or lat/long lookup. Postal
- * codes would imply a precision this has no data to back — SA codes are not
+ * codes would imply a precision this has no data to back, SA codes are not
  * ordered by distance from the sea, and a wrong range would fail silently in
  * exactly the direction that hurts. A named town the office would recognise is
  * honest about what it knows, and the province tier catches the rest.
@@ -23,11 +23,11 @@
 import type { AddressValues } from "@/lib/quote";
 
 export type CoastalRisk =
-  /** A named coastal town — treat the corrosion specification as required. */
+  /** A named coastal town; treat the corrosion specification as required. */
   | "coastal"
   /** A province with coastline, but an unrecognised town. Advisory only. */
   | "possibly-coastal"
-  /** Landlocked province — no coastal exposure. */
+  /** Landlocked province: no coastal exposure. */
   | "inland";
 
 /** The four provinces with a coastline. The other five cannot be coastal. */
@@ -40,27 +40,27 @@ const COASTAL_PROVINCES = new Set([
 
 /**
  * Towns and suburbs on or within a few kilometres of the sea, where salt
- * exposure is a given. Not exhaustive — it does not need to be, because the
+ * exposure is a given. Not exhaustive; it does not need to be, because the
  * province tier below catches anything missing and still raises the flag.
  */
 const COASTAL_TOWNS = new Set([
-  // Western Cape — Cape Peninsula and False Bay
+  // Western Cape: Cape Peninsula and False Bay
   "cape town", "sea point", "green point", "mouille point", "bantry bay", "clifton",
   "camps bay", "bakoven", "llandudno", "hout bay", "noordhoek", "kommetjie", "scarborough",
   "simons town", "glencairn", "fish hoek", "kalk bay", "st james", "muizenberg",
   "strandfontein", "mitchells plain", "khayelitsha", "macassar", "gordons bay", "strand",
   "somerset west", "milnerton", "table view", "bloubergstrand", "blouberg", "big bay",
   "sunset beach", "melkbosstrand", "atlantis", "paarden eiland", "woodstock",
-  // Western Cape — West Coast
+  // Western Cape: West Coast
   "yzerfontein", "darling", "langebaan", "saldanha", "vredenburg", "paternoster",
   "st helena bay", "velddrif", "laaiplek", "port owen", "elands bay", "lamberts bay",
   "doringbaai", "strandfontein wc", "vredendal",
-  // Western Cape — Overberg
+  // Western Cape: Overberg
   "kleinmond", "betty's bay", "bettys bay", "pringle bay", "rooi els", "hermanus",
   "onrus", "vermont", "sandbaai", "stanford", "gansbaai", "de kelders", "pearly beach",
   "struisbaai", "l'agulhas", "agulhas", "bredasdorp", "arniston", "waenhuiskrans",
   "witsand", "infanta",
-  // Western Cape — Garden Route
+  // Western Cape: Garden Route
   "still bay", "stilbaai", "jongensfontein", "gouritsmond", "mossel bay", "hartenbos",
   "klein brak river", "groot brak river", "glentana", "george", "victoria bay",
   "wilderness", "sedgefield", "knysna", "brenton on sea", "buffalo bay", "plettenberg bay",
@@ -73,12 +73,12 @@ const COASTAL_TOWNS = new Set([
   "east london", "gonubie", "beacon bay", "nahoon", "kidds beach", "cintsa", "chintsa",
   "haga haga", "morgan bay", "kei mouth", "mazeppa bay", "coffee bay", "hole in the wall",
   "port st johns", "mbotyi",
-  // KwaZulu-Natal — South Coast
+  // KwaZulu-Natal: South Coast
   "port edward", "southbroom", "marina beach", "ramsgate", "margate", "uvongo",
   "shelly beach", "st michaels on sea", "port shepstone", "hibberdene", "umzumbe",
   "pennington", "scottburgh", "umkomaas", "amanzimtoti", "warner beach", "kingsburgh",
   "isipingo", "illovo beach",
-  // KwaZulu-Natal — Durban and North Coast
+  // KwaZulu-Natal: Durban and North Coast
   "durban", "bluff", "umbilo", "glenwood", "morningside", "umgeni", "durban north",
   "umhlanga", "umhlanga rocks", "la lucia", "umdloti", "tongaat", "ballito", "salt rock",
   "sheffield beach", "shakas rock", "zinkwazi", "blythedale", "mtunzini", "richards bay",
@@ -112,7 +112,7 @@ const COASTAL_TOWNS_COMPACT = new Set([...COASTAL_TOWNS].map(compact));
  * consulted inside a coastal province, which is what makes them safe: "Bayswater"
  * in Bloemfontein or "Beachwood" in Gauteng can never reach this test.
  *
- * This is the layer that catches the long tail — there are thousands of coastal
+ * This is the layer that catches the long tail; there are thousands of coastal
  * suburbs and no list will ever hold them all, but a great many of them say so
  * in their name.
  */
@@ -129,7 +129,7 @@ function namedForTheSea(value: string): boolean {
 }
 
 /**
- * Classify a delivery address. Both the town and the suburb are checked —
+ * Classify a delivery address. Both the town and the suburb are checked,
  * customers often put the metro in "city" and the actual seaside suburb in
  * "suburb" ("Cape Town" / "Kommetjie"), and either one is enough.
  */
@@ -145,7 +145,7 @@ export function coastalRisk(address: AddressValues): CoastalRisk {
     if (namedForTheSea(field)) return "coastal";
   }
 
-  // Right province, unfamiliar town. Not a guess we should act on alone —
+  // Right province, unfamiliar town. Not a guess we should act on alone,
   // the form asks the customer outright instead. See effectiveCoastalRisk().
   return "possibly-coastal";
 }
@@ -155,8 +155,8 @@ export function coastalRisk(address: AddressValues): CoastalRisk {
  * answered "is the site within 30 km of the sea?".
  *
  * Detection alone is not good enough to add a mandatory charge: no list of town
- * names is ever complete, and the first real address tested here — "Lagoon
- * Beach, Capetown" — slipped through two of the three tiers above. The answer
+ * names is ever complete, and the first real address tested here, "Lagoon
+ * Beach, Capetown": slipped through two of the three tiers above. The answer
  * to a direct question does not have that problem, so where the address is
  * merely suspicious the customer's own answer decides, and detection only
  * chooses what the question starts on.
@@ -181,13 +181,13 @@ export const COASTAL_QUESTION = "Is the site within about 30 km of the sea?";
 
 export const COASTAL_QUESTION_HELP =
   "Salt air corrodes standard steel cladding, so units going to the coast need the " +
-  "corrosion-resistant exterior. We can't tell from the address alone, so please tell us — " +
+  "corrosion-resistant exterior. We can't tell from the address alone, so please tell us. " +
   "getting this wrong means a unit that rusts within about five years.";
 
 /**
  * Product slug → the option id that must be fitted on a coastal site.
  *
- * Both entries are the same physical product — metal carved board panels — sold
+ * Both entries are the same physical product (metal carved board panels) sold
  * under a different name and a different pricing model on each line, which is
  * why this map exists rather than a single shared option id:
  *
@@ -215,10 +215,10 @@ export function isCoastal(risk: CoastalRisk): boolean {
 /* ------------------------------------------------------------------- copy
    Kept here, in one place, because this warning appears on screen, on the
    quotation, in the customer's email and in the office email. Four copies of a
-   safety message that drift apart are worse than none — the customer starts
+   safety message that drift apart are worse than none, the customer starts
    noticing which version they were shown. */
 
-export const COASTAL_HEADLINE = "Coastal site — corrosion protection required";
+export const COASTAL_HEADLINE = "Coastal site: corrosion protection required";
 
 export const COASTAL_BODY =
   "Salt air corrodes standard steel cladding quickly: an unprotected unit near the sea can be " +
@@ -231,7 +231,7 @@ export const MAYBE_COASTAL_HEADLINE = "Is your site near the sea?";
 
 export const MAYBE_COASTAL_BODY =
   "Your delivery address is in a coastal province. If the site is within roughly 30 km of the " +
-  "sea, the corrosion-resistant exterior is required rather than optional — salt air can rust an " +
+  "sea, the corrosion-resistant exterior is required rather than optional, because salt air can rust an " +
   "unprotected unit within about five years. We'll confirm this with you when we quote your " +
   "delivery, so please mention it if you know the site is exposed.";
 

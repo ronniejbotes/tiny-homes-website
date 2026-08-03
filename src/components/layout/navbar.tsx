@@ -83,7 +83,7 @@ export function Navbar() {
         aria-label="Main"
         className="mx-auto flex h-16 sm:h-20 w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12"
       >
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Tiny Homes SA — home">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Tiny Homes SA, home">
           <Image
             src="/images/brand/logo-mark.png"
             alt=""

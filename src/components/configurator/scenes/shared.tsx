@@ -79,7 +79,7 @@ export function LayerGroup({
 }
 
 /* ------------------------------------------------------------------ */
-/* Shared defs — gradients, patterns, soft-shadow filter               */
+/* Shared defs: gradients, patterns, soft-shadow filter               */
 /* ------------------------------------------------------------------ */
 
 /**
@@ -245,12 +245,12 @@ export function Shrub({ x }: { x: number }) {
 /* Floors & walls                                                      */
 /* ------------------------------------------------------------------ */
 
-/** Plain stone-tint slab — the OFF state of the floor. Always rendered. */
+/** Plain stone-tint slab: the OFF state of the floor. Always rendered. */
 export function BaseFloor({ x, w, floor }: { x: number; w: number; floor: number }) {
   return <rect x={x} y={floor} width={w} height={8} rx={2} fill="var(--color-stone)" opacity={0.3} />;
 }
 
-/** Warm plank boards — the upgraded-floors ON state, overlays the slab. */
+/** Warm plank boards: the upgraded-floors ON state, overlays the slab. */
 export function PlankFloor({ x, w, floor }: { x: number; w: number; floor: number }) {
   const pw = 30;
   const n = Math.floor(w / pw);
@@ -294,7 +294,7 @@ export function PlankFloor({ x, w, floor }: { x: number; w: number; floor: numbe
   );
 }
 
-/** Vertical timber slat wall treatment — upgraded-walls ON state (background tint). */
+/** Vertical timber slat wall treatment, upgraded-walls ON state (background tint). */
 export function SlatWalls({
   x,
   w,
@@ -835,7 +835,7 @@ export function TableLamp({ x, floor }: { x: number; floor: number }) {
   );
 }
 
-/** Rug ellipse lying on the floor — 2-tone border reads as a woven edge. */
+/** Rug ellipse lying on the floor, 2-tone border reads as a woven edge. */
 export function Rug({ cx, floor, rx = 34 }: { cx: number; floor: number; rx?: number }) {
   return (
     <g aria-hidden="true">

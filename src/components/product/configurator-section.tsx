@@ -21,7 +21,7 @@ export function ConfiguratorSection({ product }: { product: Product }) {
         <SectionHeading
           eyebrow="Configurator"
           title="Make it yours"
-          intro="Choose your finishes and modules and watch the total update as you go. Extras pricing is provisional and will be confirmed line by line on your formal quotation — every price shown excludes VAT."
+          intro="Choose your finishes and modules and watch the total update as you go. Extras pricing is provisional and will be confirmed line by line on your formal quotation. Every price shown excludes VAT."
         />
         <Reveal delay={0.08} className="mt-12">
           <ProductConfigurator product={product} />

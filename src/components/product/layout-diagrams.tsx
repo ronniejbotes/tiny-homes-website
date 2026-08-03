@@ -5,7 +5,7 @@ import { Stagger, StaggerItem } from "@/components/ui/reveal";
 import type { ProductImage } from "./product-images";
 
 /**
- * Layouts & floor plans — diagram-kind images rendered at their native aspect
+ * Layouts & floor plans: diagram-kind images rendered at their native aspect
  * ratio (unlike the cropping photo gallery), so plan sheets and cutaway
  * renders stay readable.
  */
@@ -23,7 +23,7 @@ export function LayoutDiagrams({
         <SectionHeading
           eyebrow="Layouts"
           title="Floor plans and sizes"
-          intro="Every layout in the range — pick the one that fits how you'll live, and we'll build to it."
+          intro="Every layout in the range. Pick the one that fits how you'll live, and we'll build to it."
         />
         <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {images.map((image) => (

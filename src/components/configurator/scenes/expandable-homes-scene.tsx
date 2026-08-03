@@ -88,7 +88,7 @@ interface VariantGeom {
   threeBed: { partitions: [number, number]; bed2: XW } | null;
 }
 
-/** B40 (12m Expandable Home) — full-width shell with wings. */
+/** B40 (12m Expandable Home): full-width shell with wings. */
 const B40: VariantGeom = {
   ix: 158,
   iw: 484,
@@ -118,7 +118,7 @@ const B40: VariantGeom = {
 
 const GEOM: Record<string, VariantGeom> = {
   // The sub-R330k units (6m Compact, Slim 6m, 6m Open Plan) were dropped from
-  // the catalogue per the owner — their geometry went with them.
+  // the catalogue per the owner; their geometry went with them.
 
   /* Medium shell: centre module + two modest slid-out wings. */
   b20: {
@@ -178,7 +178,7 @@ function Slide({ x, y = 0, children }: { x: number; y?: number; children: React.
 /* ------------------------------------------------------------------ */
 
 /**
- * Expandable home — the shell resizes per variant: the Slim 6m is a compact
+ * Expandable home: the shell resizes per variant: the Slim 6m is a compact
  * studio module, the 6m adds modest wings, and the 12m is the full-width
  * three-bedroom silhouette. All option layers reposition from the variant
  * geometry; a dimension line under the house shows the variant's floor area.
@@ -191,7 +191,7 @@ function Slide({ x, y = 0, children }: { x: number; y?: number; children: React.
  */
 export function ExpandableHomesScene({ visuals, furnished, variantId }: SceneProps) {
   const reduce = useReducedMotion();
-  // Same fallback as the floor plan (plans.ts) — the catalogue's first variant.
+  // Same fallback as the floor plan (plans.ts), the catalogue's first variant.
   const g = GEOM[variantId ?? DEFAULT_EXPANDABLE_VARIANT] ?? GEOM[DEFAULT_EXPANDABLE_VARIANT];
   const sizeLabel = variantId ? SIZE_LABELS[variantId] : undefined;
   const t: Transition = reduce ? { duration: 0 } : { duration: 0.35, ease: EASE };
@@ -209,7 +209,7 @@ export function ExpandableHomesScene({ visuals, furnished, variantId }: ScenePro
     >
       <title>Cutaway illustration of an expandable home showing your selected options</title>
       <defs>
-        {/* Interior mask — floor and wall finishes are clipped to this so
+        {/* Interior mask: floor and wall finishes are clipped to this so
             they track the shell while it resizes. */}
         <clipPath id="exp-interior-clip">
           <motion.rect

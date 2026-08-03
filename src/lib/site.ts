@@ -3,8 +3,8 @@ export const site = {
   legalName: "Tiny Homes (Pty) Ltd",
   tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules — plus outdoor kitchens, DIY garages and safari tents — delivered nationwide from Centurion, Gauteng.",
-  /** Apex is canonical — www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens, DIY garages and safari tents, delivered nationwide from Centurion, Gauteng.",
+  /** Apex is canonical: www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
   url: "https://tinyhomesa.com",
   phone: "+27 83 660 3743",
   phoneDisplay: "083 660 3743",
@@ -31,11 +31,11 @@ export const site = {
   },
   leadTimeDays: 90,
   deliveryNote:
-    "Delivery is quoted separately based on your location and site accessibility — we deliver nationwide.",
+    "Delivery is quoted separately based on your location and site accessibility. We deliver nationwide.",
   /** 1-year limited guarantee, owner-confirmed 2026-07-29 (supersedes the sales
-   *  deck's 10-year claim) — quote verbatim across features/about/FAQ. */
+   *  deck's 10-year claim): quote verbatim across features/about/FAQ. */
   guarantee: "1-year limited guarantee on all our products",
-  /** Finance/lay-bye line, official price list — always pair with "subject to credit approval". */
+  /** Finance/lay-bye line, official price list; always pair with "subject to credit approval". */
   finance: "Finance & lay-bye options available, subject to credit approval",
 } as const;
 

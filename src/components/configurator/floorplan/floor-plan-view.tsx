@@ -5,7 +5,7 @@
  *
  * Draws the shell with wall thickness, door swing, windows, active module
  * zones (with top-down fixtures), furniture footprints when furnished, decks
- * and dimension lines — all from the metric geometry in ./plans.ts.
+ * and dimension lines: all from the metric geometry in ./plans.ts.
  */
 
 import { useId } from "react";
@@ -91,7 +91,7 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
     .map((z) => z.label.toLowerCase().replace("ac", "air conditioning"));
   if (visuals.heating) activeParts.push("underfloor heating");
   const deckShown = plan.deck && (plan.deck.standard || visuals.deck);
-  if (deckShown && plan.deck) activeParts.push(plan.deck.label.split(" — ")[0].toLowerCase());
+  if (deckShown && plan.deck) activeParts.push(plan.deck.label.split(",")[0].toLowerCase());
   // A terrace off an end wall is deeper than it is wide; run its label up the
   // strip so it neither overflows the shell nor collides with the entrance
   // marker sitting mid-height on that same wall.
@@ -249,7 +249,7 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
           />
         ))}
 
-        {/* underfloor heating — full-floor hatch at 8% */}
+        {/* underfloor heating: full-floor hatch at 8% */}
         <AnimatePresence initial={false}>
           {visuals.heating && (
             <motion.g key="heating" {...fade}>
@@ -334,7 +334,7 @@ export function FloorPlanView({ product, selected, furnished, variantId }: Floor
           )}
         </AnimatePresence>
 
-        {/* windows — sand strips in the wall band */}
+        {/* windows: sand strips in the wall band */}
         {plan.windows.map((win, i) => {
           const horizontal = win.side === "top" || win.side === "bottom";
           const wx = horizontal ? win.offset : win.side === "left" ? -wall : interior.w;
@@ -500,7 +500,7 @@ function PlanLabel({
   y: number;
   fill: string;
   size: number;
-  /** Degrees about (x, y) — used to run a label up a narrow strip. */
+  /** Degrees about (x, y): used to run a label up a narrow strip. */
   rotate?: number;
   children: string;
 }) {

@@ -31,7 +31,7 @@ import {
 } from "./shared";
 
 /**
- * Nature cabin — pitched roof, timber-clad gable with a small gable window,
+ * Nature cabin: pitched roof, timber-clad gable with a small gable window,
  * front deck with railing (standard, not gated on a visual).
  * Interior: x 258–562, floor y 400, ceiling y 248. Wet room left (258–346),
  * kitchen centre (352–440), living/sleeping right (443–562).
@@ -41,7 +41,7 @@ import {
  *   wall:  aircon 274–318 (y250–280, above wet top y282) |
  *          pendant 347–367 (y264–278) | window 368–412 (y268–305) |
  *          frames 444–508 (y252–273) | tv 448–492 (y278–328) |
- *          shelving 512–556 (y252–322) — bed headboard top y340
+ *          shelving 512–556 (y252–322): bed headboard top y340
  *   gable: window 376–424 (y170–203), curtains hug it; solar on the right
  *          roof slope from x440 (clear of the gable face)
  *   deck:  boards 570–648, plant 587–613 sits between posts 584/614
