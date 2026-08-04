@@ -90,9 +90,14 @@ function Row({ hidden = false }: { hidden?: boolean }) {
           key={image.src}
           className={cn("relative h-64 shrink-0 overflow-hidden rounded-3xl bg-sand sm:h-80", width)}
         >
+          {/* The duplicated marquee row carries the same alt text as the first.
+              It is inside an aria-hidden subtree, so assistive tech skips it
+              either way and nothing is announced twice, but leaving the alt
+              empty made a third of the page's images look untagged to crawlers
+              and cost them their place in image search. */}
           <Image
             src={image.src}
-            alt={hidden ? "" : image.alt}
+            alt={image.alt}
             fill
             sizes={sizes}
             className="object-cover"

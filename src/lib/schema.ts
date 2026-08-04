@@ -15,9 +15,58 @@ import images from "@/data/images.json";
 export type SchemaObject = Record<string, unknown>;
 
 const ORG_ID = `${site.url}/#organization`;
+const LOCAL_ID = `${site.url}/#localbusiness`;
 
-/** Organization + LocalBusiness node for the whole site. */
+/** Postal address, shared by the Organization and LocalBusiness nodes. */
+function postalAddress(): SchemaObject {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: `${site.address.streetAddress}, ${site.address.locality}`,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.countryCode,
+  };
+}
+
+/**
+ * Identity node for the whole site.
+ *
+ * Organization and LocalBusiness are emitted as two separate nodes rather than
+ * one node typed `["Organization", "LocalBusiness"]`. Both forms are valid
+ * schema.org, but an array-valued `@type` is invisible to the many audit and
+ * rich-result parsers that match `@type` as a plain string, so the site read as
+ * having no identity markup at all. Two single-typed nodes, cross-linked by
+ * `@id`, are understood by everything.
+ */
 export function organizationSchema(): SchemaObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: site.name,
+    legalName: site.legalName,
+    slogan: site.tagline,
+    description: site.description,
+    url: site.url,
+    logo: `${site.url}${images.brand.logo}`,
+    image: `${site.url}${images.brand.logo}`,
+    telephone: site.phone,
+    email: site.email,
+    address: postalAddress(),
+    sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: site.phone,
+      email: site.email,
+      areaServed: site.address.countryCode,
+      availableLanguage: ["en"],
+    },
+  };
+}
+
+/** The Centurion showroom as a physical business, for local search. */
+export function localBusinessSchema(): SchemaObject {
   // Range across every variant, not just base prices, the 11.5 m capsule tops
   // out at R1 070 900. Price-on-request products carry a 0 sentinel and are excluded.
   // Garages are a DIY steel-kit line, not a home, excluded so the advertised
@@ -27,25 +76,18 @@ export function organizationSchema(): SchemaObject {
     .flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice]));
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
-    "@id": ORG_ID,
+    "@type": "LocalBusiness",
+    "@id": LOCAL_ID,
     name: site.name,
-    legalName: site.legalName,
-    slogan: "Innovative Instant Housing Solutions",
     description: site.description,
     url: site.url,
-    logo: `${site.url}${images.brand.logo}`,
     image: `${site.url}${images.brand.logo}`,
+    logo: `${site.url}${images.brand.logo}`,
     telephone: site.phone,
     email: site.email,
     priceRange: `${formatZAR(Math.min(...prices))} – ${formatZAR(Math.max(...prices))} ex VAT`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: `${site.address.streetAddress}, ${site.address.locality}`,
-      addressLocality: site.address.city,
-      addressRegion: site.address.region,
-      addressCountry: site.address.countryCode,
-    },
+    currenciesAccepted: "ZAR",
+    address: postalAddress(),
     geo: {
       "@type": "GeoCoordinates",
       latitude: site.geo.latitude,
@@ -53,6 +95,7 @@ export function organizationSchema(): SchemaObject {
     },
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
+    parentOrganization: { "@id": ORG_ID },
   };
 }
 

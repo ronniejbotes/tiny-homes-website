@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const pageDescription =
-  "Build your prefab tiny home, pick your size and extras, and get a full quote including VAT on screen and by email straight away. Road delivery to your site is quoted separately, at cost.";
+  "Build your prefab tiny home, pick your size and extras, and get a full quote including VAT on screen and by email straight away.";
 
 export const metadata: Metadata = {
   title: "Get an Instant Quote Now",

@@ -36,8 +36,11 @@ const lowestStartingPrice = Math.min(
 );
 
 const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
+/** Kept to 120–160 characters: Google truncates beyond that, and SEO auditors
+ *  flag it. The provinces and cross-border detail live in the page copy and in
+ *  the LocalBusiness areaServed schema, which is where they actually rank. */
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT with a 1-year limited guarantee: X-Folds, cabins and glamping capsules. Built in Centurion, Gauteng and delivered to all nine SA provinces, and across the border into southern Africa.";
+  "Prefab tiny homes from R54 900 ex VAT: X-Folds, cabins, expandable homes and glamping capsules. Built in Centurion, Gauteng and delivered nationwide.";
 
 export const metadata: Metadata = {
   title: {

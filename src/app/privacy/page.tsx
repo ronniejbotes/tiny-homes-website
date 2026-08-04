@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const privacyDescription =
-  "How Tiny Homes SA collects, uses and protects your personal information under POPIA: what our quote form collects, who it's shared with, how long we keep it and your rights.";
+  "How Tiny Homes SA collects, uses and protects your personal information under POPIA, how long we keep it, and what your rights are.";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",

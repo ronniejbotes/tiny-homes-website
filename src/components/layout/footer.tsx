@@ -111,10 +111,18 @@ export function Footer() {
                   {site.email}
                 </a>
               </li>
+              {/* Full street address, not just the suburb: Google matches the
+                  site to the Business Profile on a complete, visible NAP, and
+                  an address without a street line does not register as one. */}
               <li className="flex items-start gap-3 text-cream/80">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" />
-                {site.address.locality}, {site.address.city},<br />
-                {site.address.country}
+                <address className="not-italic">
+                  {site.address.streetAddress}, {site.address.locality}
+                  <br />
+                  {site.address.city}, {site.address.region}
+                  <br />
+                  {site.address.country}
+                </address>
               </li>
             </ul>
             <div className="mt-6 space-y-3">

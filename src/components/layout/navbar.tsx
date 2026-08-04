@@ -86,7 +86,9 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2.5" aria-label="Tiny Homes SA, home">
           <Image
             src="/images/brand/logo-mark.png"
-            alt=""
+            // The wrapping link carries aria-label, so this alt is never
+            // announced; it exists for image search and for a failed load.
+            alt="Tiny Homes SA"
             width={385}
             height={400}
             // The mark renders at 36px tall (~35px wide). Without `sizes`, Next
@@ -94,7 +96,11 @@ export function Navbar() {
             // ~5x the pixels needed even at DPR 2, on every page load.
             sizes="36px"
             className="h-9 w-auto"
-            priority
+            // Next 16 deprecated `priority` in favour of `preload`, but a
+            // preload <link> here would compete with the hero's, and the hero
+            // is the LCP element. Eager loading gets the mark painted without
+            // taking bandwidth from the image the score is measured on.
+            loading="eager"
           />
           <span className="font-display text-xl font-semibold tracking-tight text-ink">
             Tiny Homes <span className="text-clay">SA</span>
