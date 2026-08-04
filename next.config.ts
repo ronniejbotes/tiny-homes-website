@@ -75,6 +75,13 @@ const nextConfig: NextConfig = {
       { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
       { source: "/page-sitemap.xml", destination: "/sitemap.xml", permanent: true },
 
+      // DIY garages are withdrawn from sale (owner decision 2026-08-04): the
+      // design needs an engineer's sign-off before we can carry public and
+      // property liability under the CPA. Deliberately NOT permanent, because
+      // the line is expected back once that is in place and a 308 would
+      // consolidate /garages into the homepage in Google's index.
+      { source: "/garages", destination: "/", permanent: false },
+
       // Speculative — these paths were never live on the old site (they 404 there
       // today). Kept purely as defensive aliases for stale off-site links.
       { source: "/about-tiny-homes-sa", destination: "/about", permanent: true },

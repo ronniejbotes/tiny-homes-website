@@ -59,11 +59,6 @@ const shots = [
     sizes: "(min-width: 640px) 416px, 352px",
   },
   {
-    image: heroPhoto("garages"),
-    width: "w-52 sm:w-60",
-    sizes: "(min-width: 640px) 240px, 208px",
-  },
-  {
     /* The hero, not exterior-balcony-deck; that shot carries a baked-in
        watermark and a legible third-party badge on the pod itself. */
     image: heroPhoto("glamping-capsules"),

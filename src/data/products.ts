@@ -386,10 +386,13 @@ export const products: Product[] = [
     summary:
       "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it's delivered in modular format and assembled by our team in under 3 days, with the groundwork completed beforehand. R810 900 ex VAT.",
+      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
     sizeLabel: "26 m² + terrace",
-    setupTime: "Under 3 days",
+    /** Owner-confirmed 2026-08-04: units are now imported fully built, so there
+     *  is no on-site assembly programme. The old "under 3 days" figure is
+     *  superseded and must not reappear in copy, FAQs or brochures. */
+    setupTime: "Delivered fully built",
     dims: { length: 8.1, width: 3.2, height: 3.4 },
     specs: [
       { label: "Floor area", value: "26 m² plus 1.5 × 3.2 m viewing terrace" },
@@ -403,8 +406,9 @@ export const products: Product[] = [
       { label: "Air conditioning", value: "Midea air conditioning, included as standard" },
       { label: "Hot water", value: "40–60 L storage electric water heater, included as standard" },
       { label: "Terrace", value: "1.5 m × 3.2 m viewing terrace" },
-      { label: "Installation", value: "Delivered in modular format, assembled by our team in under 3 days" },
-      { label: "Site", value: "Groundwork (water, electricity, sewerage, foundation) completed beforehand" },
+      { label: "Installation", value: "Arrives as a fully built unit; only the final connections to services are needed on site" },
+      { label: "Site", value: "Groundwork (water, electricity, sewerage, foundation) and the final connections are arranged by the client" },
+      { label: "Site access", value: "Delivered by oversized cargo truck. Sites reachable only by 4x4 cannot be serviced" },
     ],
     features: [
       "Warm timber look with steel durability",
@@ -414,7 +418,7 @@ export const products: Product[] = [
       "Fully fitted bathroom included",
       "Midea air conditioning and a 40–60 L storage electric water heater included as standard",
       "1.5 × 3.2 m viewing terrace",
-      "Assembled by our team in under 3 days",
+      "Arrives fully built: only the final connections to services remain",
     ],
     useCases: [
       {
@@ -423,7 +427,7 @@ export const products: Product[] = [
       },
       {
         title: "Guest farm and farm cottage",
-        body: "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace, delivered in modular format and assembled by our team in under 3 days once the groundwork is in. Timber looks with a steel structure behind it, which is what makes it viable on working land rather than just pretty.",
+        body: "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace, delivered as a fully built unit that needs only its final connections once the groundwork is in. Timber looks with a steel structure behind it, which is what makes it viable on working land rather than just pretty.",
       },
       {
         title: "Bush retreat",
@@ -435,7 +439,7 @@ export const products: Product[] = [
       },
       {
         title: "Lodge accommodation",
-        body: "Repeatable guest suites for an existing lodge, each self-contained with its own bathroom and kitchen so the main building carries less. Assembly in under 3 days per unit keeps disruption to trading guests short.",
+        body: "Repeatable guest suites for an existing lodge, each self-contained with its own bathroom and kitchen so the main building carries less. Because every unit arrives fully built, disruption to trading guests stays short.",
       },
       {
         title: "Backyard studio",
@@ -446,7 +450,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "Where can a nature cabin be installed?",
-        a: "Nature cabins suit beach, bush and mountain sites. Water, electricity, sewerage and the foundation are completed before delivery. Our turnkey team can arrange the groundwork for you, and delivery is quoted separately based on your location.",
+        a: "Nature cabins suit beach, bush and mountain sites. Water, electricity, sewerage and the foundation are the client's responsibility and must be completed before delivery, along with the final connections once the cabin is placed. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and it is quoted separately based on your location.",
       },
       {
         q: "Are nature cabins good for Airbnb and guest farms?",
@@ -458,7 +462,7 @@ export const products: Product[] = [
       },
       {
         q: "How long does installation take?",
-        a: "The cabin arrives in modular format and our team assembles it in under 3 days on a prepared site.",
+        a: "There is no on-site assembly programme. The cabin arrives as a fully built unit, so once it is placed on a prepared site only the final connections to water, electricity and sewerage remain, and those are arranged by the client.",
       },
       {
         q: "Is there a guarantee, and can I finance a nature cabin?",
@@ -820,7 +824,7 @@ export const products: Product[] = [
     summary:
       "Luxury canvas tented suites for game lodges and glamping resorts: Meru-style and curved stretch-tension canvas roofs over timber structures, with raised decks and en-suite layouts available. Every tent is configured to your site and brief, priced on request after a consultation.",
     description:
-      "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites in partnership with Bushtec, one of Africa's leading safari-tent manufacturers, and Tiny Homes SA is an authorised reseller. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions: sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues, all backed by our after-sales support.",
+      "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites built by one of Africa's leading safari-tent manufacturers. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions: sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues, all backed by our after-sales support.",
     startingPrice: 0, // sentinel: priceOnRequest, must never render
     priceOnRequest: true,
     sizeLabel: "Custom sizes",
@@ -846,7 +850,7 @@ export const products: Product[] = [
     useCases: [
       {
         title: "Game lodge suites",
-        body: "Canvas tented suites that put guests inside the landscape without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed in partnership with Bushtec, one of Africa's leading safari-tent manufacturers.",
+        body: "Canvas tented suites that put guests inside the landscape without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed by Tiny Homes SA, built by one of Africa's leading safari-tent manufacturers.",
       },
       {
         title: "Glamping resort",
@@ -897,94 +901,8 @@ export const products: Product[] = [
       "luxury glamping tents",
       "canvas safari tent suites",
       "lodge tents South Africa",
-      "Bushtec safari tents",
+      "luxury safari tents South Africa",
     ],
-  },
-  {
-    slug: "garages",
-    name: "DIY Garages",
-    shortName: "Garage",
-    h1: "DIY garage kits",
-    seoTitle: "Steel Garage & Workshop Kits from R139 900",
-    tagline: "Flat-pack steel garages you bolt together yourself.",
-    summary:
-      "Galvanised-steel DIY garage kits in two sizes, single and double, delivered flat-packed with everything you need to assemble a weatherproof garage or workshop yourself, from R139 900 ex VAT.",
-    description:
-      "DIY garage kits are the fast, affordable way to add secure, weatherproof parking or workshop space: a garage you bolt together yourself, no welding or cutting needed. The portal frames arrive pre-assembled and simply fold open on site, so two people have the single kit up in an afternoon and the double in about a day. Each kit is clad in Chromadek colour-coated 0.47 mm IBR sheeting on the walls and roof, and includes manual roller doors, one on the single and two on the double, plus a steel side door, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual; you anchor it all to your own level concrete slab. Both kits stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6. Choose the 6 × 3 m single garage (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900, and add the optional gable roof upgrade, priced per size on your quotation. Delivered nationwide, with slab and assembly available from our turnkey team.",
-    startingPrice: 139900,
-    sizeLabel: "18 – 36 m²",
-    setupTime: "Self-assembly kit",
-    dims: { length: 6, width: 6, height: 3 }, // height is the mono-pitch high side
-    specs: [
-      { label: "Sizes", value: "6 × 3 m single (18 m²) or 6 × 6 m double (36 m²)" },
-      { label: "Height", value: "3.0 m at the high side; the mono-pitch roof falls to ±2.74 m (6 × 3) or ±2.48 m (6 × 6)" },
-      { label: "Roof", value: "Mono-pitch (lean-to), sloping across the 3 m width on the single, front to back on the double; optional gable upgrade" },
-      { label: "Frame", value: "Galvanised lipped-channel steel; portal frames arrive pre-assembled and fold open; bolts together, no welding" },
-      { label: "Assembly", value: "Two people, about a day; the single kit in an afternoon" },
-      { label: "Cladding", value: "Chromadek colour-coated 0.47 mm IBR sheeting on walls and roof" },
-      { label: "Roller doors", value: "Manual roller doors (2440 × 2135 mm): one on the single, two on the double" },
-      { label: "Side door", value: "813 × 2032 mm steel combination door, pre-hung, on every kit" },
-      { label: "Rain drainage", value: "Gutter and downpipe included" },
-      { label: "Fixings", value: "All flashings, anchors, bolts and tek screws included" },
-      { label: "Instructions", value: "Illustrated step-by-step manual with numbered parts" },
-      { label: "Delivery", value: "Flat-packed for self-assembly" },
-      { label: "Foundation", value: "Anchored to a level concrete slab, by you or our turnkey team" },
-    ],
-    features: [
-      "Frames arrive pre-assembled: fold open, bolt, done",
-      "Up in a day with two people, with no welding or cutting on site",
-      "Chromadek colour-coated 0.47 mm IBR sheeting on walls and roof",
-      "Manual roller doors and a steel side door on every kit",
-      "Gutter, downpipe and all flashings included for rain drainage",
-      "Delivered nationwide, with turnkey slab and assembly available on request",
-    ],
-    useCases: [
-      {
-        title: "Single and double garage",
-        body: "Secure, weatherproof parking you bolt together yourself: the 6 × 3 m single (18 m²) from R139 900 ex VAT or the 6 × 6 m double (36 m²) at R278 900. Manual roller doors, a pre-hung steel side door, gutter and downpipe, flashings and all fixings are in the kit; you supply the level slab.",
-      },
-      {
-        title: "Workshop",
-        body: "A 3.0 m high side gives clearance for a hoist bay, a bench along the wall or a project car on stands. The galvanised lipped-channel frame bolts together with no welding or cutting, and the Chromadek IBR cladding keeps weather off the tools.",
-      },
-      {
-        title: "Storeroom",
-        body: "A lockable 18 m² or 36 m² store that goes up in an afternoon to a day with two people, following an illustrated manual with numbered parts. Rain drainage is included, so stock stays dry without extra gutter work.",
-      },
-      {
-        title: "Farm store and implement shed",
-        body: "Weatherproof storage for feed, tools or equipment on a working farm, delivered flat-packed anywhere in South Africa. The portal frames arrive pre-assembled and fold open on site, so no farm workshop is needed to put it up.",
-      },
-      {
-        title: "Carport enclosure",
-        body: "Turn open parking into a closed, lockable structure. The mono-pitch roof falls to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6, and an optional gable roof upgrade is priced per size on your quotation.",
-      },
-      {
-        title: "Site store",
-        body: "Secure on-site storage for plant and materials, bolted to a slab and taken down again when the contract ends. Two people, about a day, and no specialist trades on the critical path.",
-      },
-    ],
-    variants: [
-      { id: "garage-6x3", name: "Single Garage Kit (6 × 3 m)", size: "18 m²", price: 139900, description: "6 × 3 m with a 3.0 m high side. One manual roller door plus a steel side door, flat-packed for self-assembly." },
-      { id: "garage-6x6", name: "Double Garage Kit (6 × 6 m)", size: "36 m²", price: 278900, description: "6 × 6 m with a 3.0 m high side. Two manual roller doors plus a steel side door, flat-packed for self-assembly." },
-    ],
-    // Gable upgrade pricing is pending supplier quotes and will differ per kit
-    // size; one option per variant, listed at 0 ("priced on quotation") until
-    // the figures are confirmed. No cutaway scene, the configurator shows the
-    // Photos panel.
-    options: [
-      { id: "gable-roof-6x3", label: "Gable roof upgrade (6 × 3 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof: apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x3"], exclusiveGroup: "roof" },
-      { id: "gable-roof-6x6", label: "Gable roof upgrade (6 × 6 m kit)", description: "Replaces the standard mono-pitch with a pitched apex roof: apex frames, ridge capping and a second gutter and downpipe run. Priced per kit size on your quotation.", price: 0, category: "structure", visual: "none", provisional: true, availableVariantIds: ["garage-6x6"], exclusiveGroup: "roof" },
-    ],
-    faqs: [
-      { q: "What's included in the kit?", a: "Everything you need above the slab: pre-assembled fold-open portal frames in galvanised lipped-channel steel (pre-cut and pre-drilled, no welding), Chromadek colour-coated 0.47 mm IBR sheeting for the walls and roof, one manual roller door (2440 × 2135 mm) on the 6 × 3 m kit or two on the 6 × 6 m, a 813 × 2032 mm steel side door pre-hung in its frame, a gutter and downpipe for rain drainage, all flashings, anchors, bolts and tek screws, and an illustrated instruction manual with numbered parts. You supply the level concrete slab it anchors to." },
-      { q: "Do I assemble the garage myself?", a: "Yes, and it's quick. The portal frames arrive pre-assembled and fold open on site, so there's no welding, cutting or drilling; you bolt everything together following the illustrated manual. Two people put the single kit up in an afternoon and the double in about a day. Our turnkey team can prepare the slab and assemble it for you if you prefer." },
-      { q: "What sizes are available?", a: "Two: the 6 × 3 m single (18 m²) with one roller door, and the 6 × 6 m double (36 m²) with two. Both stand 3.0 m at the high side, with a mono-pitch roof falling to about 2.74 m on the 6 × 3 and 2.48 m on the 6 × 6." },
-      { q: "Can I have a pitched roof instead of the mono-pitch?", a: "Yes. The optional gable roof upgrade replaces the standard mono-pitch with a pitched apex roof, adding apex frames, ridge capping and a second gutter and downpipe run. Pricing is per kit size and confirmed on your quotation." },
-      { q: "What foundation does a garage kit need?", a: "A level concrete slab sized to the kit; the garage anchors to it with the anchors supplied. We can quote the groundwork separately." },
-      { q: "Is there a guarantee, and can I finance a garage kit?", a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee. Finance and lay-bye options are also available, subject to credit approval." },
-    ],
-    seoKeywords: ["DIY garage kit South Africa", "steel garage kit price", "flat pack garage", "prefab garage South Africa", "double garage kit"],
   },
 ];
 
