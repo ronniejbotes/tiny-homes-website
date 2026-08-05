@@ -80,14 +80,24 @@ ICLOUD_APPLE_ID=the.owner@icloud.com
 ICLOUD_APP_PASSWORD=abcd-efgh-ijkl-mnop
 ```
 
-Optionally pick which calendar to use, by its name in Apple Calendar:
+Then pick the calendar — **do not skip this**:
 
 ```
-ICLOUD_CALENDAR_NAME=Work
+ICLOUD_CALENDAR_URL=https://caldav.icloud.com/366952776/calendars/073492f…/
 ```
 
-Left unset, the site uses the account's **first event calendar**, which is usually
-"Home". Set it explicitly if viewings should live somewhere else.
+Run `npm run check-calendar` to list every calendar on the account with its URL and how
+many entries it holds over the next four weeks. Pick the one that looks like the real
+diary.
+
+**Select by URL, not name.** This account carries two calendars both called "Work" — one
+with a single entry, one with the actual week. A name match takes whichever iCloud
+returns first, and picking wrong does not fail loudly: an empty calendar reads as "every
+slot is free", and the site cheerfully books over everything. `ICLOUD_CALENDAR_NAME` is
+still honoured when no URL is set, but it is the weaker option.
+
+Left unset entirely, the site uses the account's **first** event calendar, which on this
+account is the empty one.
 
 Restart the app. The slot grid should fill in on the next page load.
 

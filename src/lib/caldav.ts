@@ -73,17 +73,45 @@ async function connect(): Promise<Connection> {
     (c) => !c.components || c.components.includes("VEVENT"),
   );
 
-  const wanted = process.env.ICLOUD_CALENDAR_NAME?.trim();
-  const calendar = wanted
-    ? eventCalendars.find((c) => calendarName(c).toLowerCase() === wanted.toLowerCase())
-    : eventCalendars[0];
+  /*
+   * URL first, then name.
+   *
+   * Names are not unique — a real account can carry two calendars both called
+   * "Work", one holding the owner's actual week and one holding almost
+   * nothing. Matching on a name there picks whichever iCloud happens to return
+   * first, and getting it wrong does not fail loudly: it reads an empty diary
+   * and cheerfully offers every slot as free. The collection URL is stable and
+   * unambiguous, so it wins whenever it is set.
+   */
+  const wantedUrl = process.env.ICLOUD_CALENDAR_URL?.trim();
+  const wantedName = process.env.ICLOUD_CALENDAR_NAME?.trim();
+
+  const calendar = wantedUrl
+    ? eventCalendars.find((c) => c.url.replace(/\/$/, "") === wantedUrl.replace(/\/$/, ""))
+    : wantedName
+      ? eventCalendars.find((c) => calendarName(c).toLowerCase() === wantedName.toLowerCase())
+      : eventCalendars[0];
 
   if (!calendar) {
-    const available = eventCalendars.map(calendarName).filter(Boolean).join(", ");
+    const available = eventCalendars.map((c) => `${calendarName(c)} (${c.url})`).join(", ");
     throw new Error(
-      wanted
-        ? `iCloud calendar "${wanted}" not found. Available: ${available || "none"}`
-        : "The iCloud account exposes no event calendars.",
+      wantedUrl
+        ? `No iCloud calendar at ${wantedUrl}. Available: ${available || "none"}`
+        : wantedName
+          ? `iCloud calendar "${wantedName}" not found. Available: ${available || "none"}`
+          : "The iCloud account exposes no event calendars.",
+    );
+  }
+
+  // Ambiguity is worth a line in the log even when the right one was picked:
+  // it is the thing that will confuse whoever debugs this in six months.
+  if (
+    !wantedUrl &&
+    eventCalendars.filter((c) => calendarName(c).toLowerCase() === calendarName(calendar).toLowerCase())
+      .length > 1
+  ) {
+    console.warn(
+      `[caldav] more than one calendar is called "${calendarName(calendar)}"; using ${calendar.url}. Set ICLOUD_CALENDAR_URL to remove the guesswork.`,
     );
   }
 
