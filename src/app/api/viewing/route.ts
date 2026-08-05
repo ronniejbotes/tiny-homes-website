@@ -136,56 +136,7 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!isCalendarConfigured()) {
-    console.error("[viewing] booking attempted with no iCloud credentials configured.");
-    return NextResponse.json(
-      {
-        error:
-          "We cannot confirm bookings online at the moment. Please call or WhatsApp us and we will set a time.",
-      },
-      { status: 503 },
-    );
-  }
-
   const booking: ViewingBooking = { ...details, day, minutes, reference: makeViewingReference() };
-
-  /* -------------------------------------------------- last look at the diary */
-
-  // Re-checked against iCloud rather than trusted from the grid the visitor was
-  // shown, which may be minutes old. Querying only this slot's own window keeps
-  // it cheap and, because it is a different cache key from the grid read, it is
-  // always a fresh answer.
-  //
-  // Two people submitting the same slot within the same second could still both
-  // pass this check: it is a read followed by a write, not one atomic
-  // operation. At a few viewings a week that is a phone call, not a system, and
-  // the alternative is a locking scheme this business does not need.
-  const slotStart = sastToInstant(day, minutes);
-  const slotEnd = sastToInstant(day, minutes + VIEWING_MINUTES);
-
-  try {
-    const busy = await fetchBusyIntervals(slotStart, slotEnd);
-    if (!freeSlotsFor(day, busy).includes(minutes)) {
-      return NextResponse.json(
-        {
-          error: "Sorry — that slot was taken while you were filling this in. Please pick another.",
-          taken: true,
-        },
-        { status: 409 },
-      );
-    }
-  } catch (error) {
-    console.error("[viewing] could not re-check the diary before booking:", error);
-    return NextResponse.json(
-      {
-        error:
-          "We could not reach our calendar to confirm that time. Please call or WhatsApp us and we will book you in.",
-      },
-      { status: 503 },
-    );
-  }
-
-  /* ------------------------------------------------------ write it in */
 
   const uid = `viewing-${booking.reference.toLowerCase()}@tinyhomesa.com`;
   const summary = `Showroom viewing — ${viewingFullName(booking)}`;
@@ -194,20 +145,78 @@ export async function POST(request: Request) {
   const location = showroomAddress();
   const description = eventDescription(booking);
 
-  try {
-    await createCalendarEvent(
-      uid,
-      // No METHOD: a calendar object stored on a CalDAV server must not carry one.
-      viewingIcs({ uid, day, minutes, summary, description, location, organiser, attendee }),
-    );
-  } catch (error) {
-    console.error("[viewing] iCloud rejected the booking:", error);
-    return NextResponse.json(
-      {
-        error:
-          "We could not write that booking into our calendar. Please call or WhatsApp us so we can confirm your time properly.",
-      },
-      { status: 503 },
+  /*
+   * With no calendar connected the booking still goes through — it is just a
+   * request rather than a confirmation, and every message says so.
+   *
+   * Turning the visitor away here would be the worse failure. Nothing is
+   * syncing, so there is no diary to clash with; the office works from the
+   * email, exactly as it does for a phone call, and the invitation attached to
+   * it drops the slot into the owner's calendar with one tap. Connecting
+   * iCloud upgrades this path to a real availability check and an automatic
+   * write, with no code change.
+   */
+  const confirmed = isCalendarConfigured();
+
+  if (confirmed) {
+    /* ------------------------------------------- last look at the diary */
+
+    // Re-checked against iCloud rather than trusted from the grid the visitor
+    // was shown, which may be minutes old. Querying only this slot's own window
+    // keeps it cheap and, because it is a different cache key from the grid
+    // read, it is always a fresh answer.
+    //
+    // Two people submitting the same slot within the same second could still
+    // both pass this check: it is a read followed by a write, not one atomic
+    // operation. At a few viewings a week that is a phone call, not a system,
+    // and the alternative is a locking scheme this business does not need.
+    const slotStart = sastToInstant(day, minutes);
+    const slotEnd = sastToInstant(day, minutes + VIEWING_MINUTES);
+
+    try {
+      const busy = await fetchBusyIntervals(slotStart, slotEnd);
+      if (!freeSlotsFor(day, busy).includes(minutes)) {
+        return NextResponse.json(
+          {
+            error:
+              "Sorry — that slot was taken while you were filling this in. Please pick another.",
+            taken: true,
+          },
+          { status: 409 },
+        );
+      }
+    } catch (error) {
+      console.error("[viewing] could not re-check the diary before booking:", error);
+      return NextResponse.json(
+        {
+          error:
+            "We could not reach our calendar to confirm that time. Please call or WhatsApp us and we will book you in.",
+        },
+        { status: 503 },
+      );
+    }
+
+    /* ---------------------------------------------------- write it in */
+
+    try {
+      await createCalendarEvent(
+        uid,
+        // No METHOD: a calendar object stored on a CalDAV server must not carry one.
+        viewingIcs({ uid, day, minutes, summary, description, location, organiser, attendee }),
+      );
+    } catch (error) {
+      console.error("[viewing] iCloud rejected the booking:", error);
+      return NextResponse.json(
+        {
+          error:
+            "We could not write that booking into our calendar. Please call or WhatsApp us so we can confirm your time properly.",
+        },
+        { status: 503 },
+      );
+    }
+  } else {
+    console.warn(
+      `[viewing] no calendar connected: ${booking.reference} taken as a request, email only.`,
     );
   }
 
@@ -231,12 +240,26 @@ export async function POST(request: Request) {
   const calendar = { filename: "viewing.ics", content: invite, method: "REQUEST" as const };
 
   if (!isMailConfigured()) {
-    console.warn(
-      `[viewing] SMTP not configured: booking ${booking.reference} is in the calendar but no email was sent.`,
+    console.error(
+      `[viewing] SMTP not configured: ${booking.reference} was ${
+        confirmed ? "written to the calendar" : "taken"
+      } but nobody was told.`,
     );
+    // With no calendar AND no mail there is nothing left holding the booking,
+    // so this is a failure rather than something to show a tick for.
+    if (!confirmed) {
+      return NextResponse.json(
+        {
+          error:
+            "We could not record that booking. Please call or WhatsApp us and we will set a time.",
+        },
+        { status: 503 },
+      );
+    }
     return NextResponse.json({
       reference: booking.reference,
-      confirmed: true,
+      booked: true,
+      confirmed,
       copySent: false,
       ics: invite,
     });
@@ -245,17 +268,17 @@ export async function POST(request: Request) {
   const [copy, notification] = await Promise.allSettled([
     sendMail({
       to: booking.email,
-      subject: customerViewingSubject(booking),
-      text: customerViewingText(booking),
-      html: customerViewingHtml(booking),
+      subject: customerViewingSubject(booking, confirmed),
+      text: customerViewingText(booking, confirmed),
+      html: customerViewingHtml(booking, confirmed),
       calendar,
     }),
     sendMail({
       to: notifyAddress(),
       replyTo: booking.email,
-      subject: officeViewingSubject(booking),
-      text: officeViewingText(booking),
-      html: officeViewingHtml(booking),
+      subject: officeViewingSubject(booking, confirmed),
+      text: officeViewingText(booking, confirmed),
+      html: officeViewingHtml(booking, confirmed),
       calendar,
     }),
   ]);
@@ -267,9 +290,23 @@ export async function POST(request: Request) {
     console.error("[viewing] office notification failed to send:", notification.reason);
   }
 
+  // Without a calendar the office email IS the booking. If it did not send,
+  // nothing anywhere records that this person is coming, so say so rather than
+  // show them a tick.
+  if (!confirmed && notification.status === "rejected") {
+    return NextResponse.json(
+      {
+        error:
+          "We could not get that booking through to the office. Please call or WhatsApp us and we will set a time.",
+      },
+      { status: 503 },
+    );
+  }
+
   return NextResponse.json({
     reference: booking.reference,
-    confirmed: true,
+    booked: true,
+    confirmed,
     copySent: copy.status === "fulfilled",
     // Handed back so the confirmation screen's "Add to my calendar" button
     // offers the identical event, rather than a second one rebuilt in the

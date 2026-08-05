@@ -3,8 +3,18 @@
 **Goal: `/book-a-viewing` shows the half-hour slots that are genuinely free in the
 owner's Apple Calendar, and writes each confirmed viewing straight back into it.**
 
-Until the two credentials in §2 are set, the page does not guess. It tells visitors the
-diary is unreachable and points them at the phone. That is deliberate — see §6.
+**The page works with or without that connection**, and says which it is:
+
+| | Slots shown | On submit | Wording used |
+|---|---|---|---|
+| **Calendar connected** (§2) | Real gaps in the diary | Written into Apple Calendar | "Confirmed" |
+| **No calendar** | The published timetable | Emailed to the office with the invite attached | "Requested — we'll confirm" |
+
+So the page never sits dead, and it never claims a slot is confirmed when nobody has
+looked at the diary. Connecting iCloud upgrades it with no code change.
+
+The one case that does *not* degrade is a calendar that is connected but unreachable —
+see §6.
 
 ---
 
@@ -145,18 +155,28 @@ The failure modes are deliberate. Nothing here ever offers a slot it has not ver
 
 | Symptom | What the visitor sees | Cause |
 |---|---|---|
-| No `ICLOUD_*` variables set | "Let's book you in by phone" + phone and WhatsApp | Not configured |
-| iCloud unreachable or password revoked | The same phone fallback | `[viewing] could not read the iCloud diary` in the logs |
+| No `ICLOUD_*` variables set | The full timetable, "we'll confirm by phone or WhatsApp" | Not connected — bookings arrive as emails |
+| iCloud unreachable or password revoked | "Let's book you in by phone" + phone and WhatsApp | `[viewing] could not read the iCloud diary` in the logs |
 | Every slot taken for four weeks | "We're fully booked for the next few weeks" | Genuinely full |
 | Booking fails at the last step | "Please call or WhatsApp us so we can confirm your time properly" | The CalDAV write failed; **no email is sent and nothing is confirmed** |
 | Slot taken mid-form | "That slot was taken while you were filling this in" | Someone else booked it; the grid refreshes |
+| No calendar *and* no SMTP | "We could not record that booking" | Nothing would hold the booking, so it fails rather than fake a tick |
 
-The one thing the site will never do is show a confirmation for a viewing that is not in
-the calendar. The write to iCloud *is* the booking; the emails are just the receipt.
+Two rules the site keeps in every one of those cases:
 
-**In local development with no credentials**, the slot grid is filled in unchecked so the
-page can be worked on, and the server logs a warning saying so. That fallback is disabled
-in production.
+1. **It never shows a confirmation for a viewing nothing is holding.** With a calendar
+   connected, the write to iCloud *is* the booking. Without one, the office email is —
+   and if that email fails to send, the visitor is told it failed.
+2. **It never guesses at a diary it is supposed to be able to read.** "Not connected"
+   degrades to the published timetable. "Connected but unreachable" does not, because
+   that is how someone gets booked into a slot the owner is already out on a job for.
+
+**Why the row above says "not connected" is safe to degrade:** nothing is syncing, so
+there is no diary to clash with. The office is working from the emails exactly as it
+would for a phone call, and the invitation attached drops the slot into the owner's
+calendar with one tap. The office email in that mode carries a red panel saying **"This
+is NOT in your calendar"**, and the subject line starts `ACTION:`, so it cannot be
+mistaken for a confirmed booking.
 
 ### Revoking access
 

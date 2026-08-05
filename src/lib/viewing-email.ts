@@ -67,17 +67,27 @@ export function eventDescription(booking: ViewingBooking): string {
 
 /* ------------------------------------------------------ visitor's copy */
 
-export function customerViewingSubject(booking: ViewingBooking): string {
-  return `Your showroom viewing is confirmed — ${formatDayLong(booking.day)}, ${formatSlot(
-    booking.minutes,
-  )}`;
+/**
+ * `confirmed` is the difference between a slot checked against the owner's
+ * diary and written into it, and one taken on the published timetable while no
+ * calendar is connected. The second is a request, and every line of these
+ * messages has to say so — telling someone their viewing is confirmed when
+ * nobody has looked at the diary is how a person drives to Centurion for
+ * nothing.
+ */
+export function customerViewingSubject(booking: ViewingBooking, confirmed = true): string {
+  return `${confirmed ? "Your showroom viewing is confirmed" : "Your viewing request"} — ${formatDayLong(
+    booking.day,
+  )}, ${formatSlot(booking.minutes)}`;
 }
 
-export function customerViewingText(booking: ViewingBooking): string {
+export function customerViewingText(booking: ViewingBooking, confirmed = true): string {
   return [
     `Hi ${booking.firstName.trim()},`,
     ``,
-    `Your viewing at the ${site.name} showroom is confirmed.`,
+    confirmed
+      ? `Your viewing at the ${site.name} showroom is confirmed.`
+      : `Thanks — we have your viewing request for the ${site.name} showroom.\nWe will call or WhatsApp you shortly to confirm the time.`,
     ``,
     `WHEN   ${formatSlotLong(booking.day, booking.minutes)}`,
     `WHERE  ${showroomAddress()}`,
@@ -90,8 +100,9 @@ export function customerViewingText(booking: ViewingBooking): string {
     `A calendar invitation is attached to this email — open it to add the`,
     `viewing to your phone's calendar.`,
     ``,
-    `Something come up? Call or WhatsApp ${site.phoneDisplay} and we will move it.`,
-    `No charge, no awkwardness, we would just rather know than stand around waiting.`,
+    confirmed
+      ? `Something come up? Call or WhatsApp ${site.phoneDisplay} and we will move it.\nNo charge, no awkwardness, we would just rather know than stand around waiting.`
+      : `Need to change it, or want it sooner? Call or WhatsApp ${site.phoneDisplay}.`,
     ``,
     `See you then,`,
     `${site.name}`,
@@ -103,7 +114,7 @@ export function customerViewingText(booking: ViewingBooking): string {
 const PANEL =
   "background:#f4eee2;border:1px solid #ddd3c1;border-radius:12px;padding:18px 20px";
 
-export function customerViewingHtml(booking: ViewingBooking): string {
+export function customerViewingHtml(booking: ViewingBooking, confirmed = true): string {
   const notesHtml = booking.notes.trim()
     ? `<tr><td style="padding:18px 0 0"><p style="margin:0 0 4px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">Your notes</p>
        <p style="margin:0;font-size:14px;line-height:1.6;color:#67635a;white-space:pre-wrap">${esc(booking.notes.trim())}</p></td></tr>`
@@ -121,7 +132,7 @@ export function customerViewingHtml(booking: ViewingBooking): string {
           <table role="presentation" width="100%" style="border-collapse:collapse">
             <tr>
               <td style="font-size:21px;font-weight:700;color:#1c1b17;line-height:1.2">${esc(site.name)}</td>
-              <td align="right" style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">Viewing confirmed</td>
+              <td align="right" style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">${confirmed ? "Viewing confirmed" : "Viewing requested"}</td>
             </tr>
           </table>
         </td></tr>
@@ -129,8 +140,11 @@ export function customerViewingHtml(booking: ViewingBooking): string {
         <tr><td style="padding:28px">
           <p style="margin:0 0 6px;font-size:16px;color:#1c1b17">Hi ${esc(booking.firstName.trim())},</p>
           <p style="margin:0 0 22px;font-size:16px;line-height:1.6;color:#67635a">
-            You&rsquo;re booked in. Here are the details — and there&rsquo;s a calendar
-            invitation attached, so you can drop it straight into your phone.
+            ${
+              confirmed
+                ? "You&rsquo;re booked in. Here are the details — and there&rsquo;s a calendar invitation attached, so you can drop it straight into your phone."
+                : "Thanks — we have your request. We&rsquo;ll call or WhatsApp you shortly to confirm this time. Here are the details, with a calendar invitation attached so you can pencil it in."
+            }
           </p>
 
           <table role="presentation" width="100%" style="border-collapse:collapse">
@@ -190,15 +204,17 @@ export function customerViewingHtml(booking: ViewingBooking): string {
 
 /* --------------------------------------------------------- office copy */
 
-export function officeViewingSubject(booking: ViewingBooking): string {
-  return `Viewing booked: ${viewingFullName(booking)} — ${formatDayLong(booking.day)}, ${formatSlot(
-    booking.minutes,
-  )}`;
+export function officeViewingSubject(booking: ViewingBooking, confirmed = true): string {
+  return `${confirmed ? "Viewing booked" : "ACTION: viewing requested"}: ${viewingFullName(
+    booking,
+  )} — ${formatDayLong(booking.day)}, ${formatSlot(booking.minutes)}`;
 }
 
-export function officeViewingText(booking: ViewingBooking): string {
+export function officeViewingText(booking: ViewingBooking, confirmed = true): string {
   return [
-    `A showroom viewing has been booked on the website and written into the calendar.`,
+    confirmed
+      ? `A showroom viewing has been booked on the website and written into the calendar.`
+      : `A showroom viewing has been REQUESTED on the website.\n\n*** No calendar is connected, so this is NOT in your diary and the customer\n*** has been told you will confirm. Open the attached invitation to add it,\n*** then call or WhatsApp them back.`,
     ``,
     `WHEN   ${formatSlotLong(booking.day, booking.minutes)}`,
     ``,
@@ -215,7 +231,7 @@ export function officeViewingText(booking: ViewingBooking): string {
   ].join("\n");
 }
 
-export function officeViewingHtml(booking: ViewingBooking): string {
+export function officeViewingHtml(booking: ViewingBooking, confirmed = true): string {
   const row = (label: string, value: string) =>
     `<tr>
       <td style="padding:7px 0;font-size:15px;line-height:1.5;color:#67635a;width:120px;vertical-align:top">${esc(label)}</td>
@@ -236,9 +252,27 @@ export function officeViewingHtml(booking: ViewingBooking): string {
       <table role="presentation" width="640" style="width:100%;max-width:640px;border-collapse:collapse;background:#faf6ef;border:1px solid #ddd3c1;border-radius:16px">
 
         <tr><td style="padding:26px 28px 20px;background:#f4eee2;border-bottom:1px solid #ddd3c1;border-radius:16px 16px 0 0">
-          <p style="margin:0 0 4px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">Showroom viewing booked</p>
+          <p style="margin:0 0 4px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">${confirmed ? "Showroom viewing booked" : "Showroom viewing requested"}</p>
           <p style="margin:0;font-size:21px;font-weight:700;color:#1c1b17;line-height:1.25">${esc(formatDayLong(booking.day))}, ${esc(slotWindow(booking))}</p>
         </td></tr>
+
+        ${
+          confirmed
+            ? ""
+            : `<tr><td style="padding:18px 28px 0">
+          <table role="presentation" width="100%" style="border-collapse:collapse">
+            <tr><td style="background:#fdf2ec;border:1px solid #b4552d;border-radius:12px;padding:16px 18px">
+              <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#9a4522">This is NOT in your calendar</p>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:#67635a">
+                No calendar is connected to the website, so this slot was offered from
+                your standard hours rather than your real availability. The customer has
+                been told you will confirm. Open the attached invitation to add it to
+                your diary, then call them back.
+              </p>
+            </td></tr>
+          </table>
+        </td></tr>`
+        }
 
         <tr><td style="padding:24px 28px 28px">
           <table role="presentation" width="100%" style="border-collapse:collapse">
@@ -251,8 +285,11 @@ export function officeViewingHtml(booking: ViewingBooking): string {
           </table>
           ${notesHtml}
           <p style="margin:24px 0 0;font-size:14px;line-height:1.6;color:#67635a">
-            It is already in the calendar — the invitation attached is just a copy.
-            Reply to this email to reach them directly.
+            ${
+              confirmed
+                ? "It is already in the calendar — the invitation attached is just a copy. Reply to this email to reach them directly."
+                : "Reply to this email to reach them directly."
+            }
           </p>
         </td></tr>
 

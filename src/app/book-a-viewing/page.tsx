@@ -101,9 +101,13 @@ export default function BookAViewingPage() {
               {VIEWING_MINUTES}-minute slot below, drive out, and decide once you&apos;ve stood
               inside one.
             </p>
+            {/* Deliberately does not promise instant confirmation. Whether a
+                slot is confirmed on the spot or comes back to the visitor
+                depends on the diary being connected, and only the booker below
+                knows that — so it makes that promise, and this does not. */}
             <p className="mt-4 text-lg leading-relaxed text-stone">
-              Viewings are free, there&apos;s no obligation, and the slot is confirmed the moment
-              you book it — the times you see below are the ones genuinely open in our diary.
+              Viewings are free and there&apos;s no obligation. Pick the time that suits you and
+              we&apos;ll have someone ready to show you around.
             </p>
           </Reveal>
 

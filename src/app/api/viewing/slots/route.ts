@@ -33,7 +33,15 @@ export interface SlotsResponse {
   /** Day key → the minutes-past-midnight each open slot starts at. */
   days: Record<string, number[]>;
   available: boolean;
-  reason?: "not-configured" | "calendar-unreachable" | "fully-booked";
+  /**
+   * Whether these slots were checked against the owner's diary.
+   *
+   * False means no calendar is connected, so what is on offer is the standard
+   * timetable rather than real availability, and a booking is a request the
+   * office confirms rather than a promise. The page says so, in those words.
+   */
+  verified: boolean;
+  reason?: "calendar-unreachable" | "fully-booked";
   /** Echoed so the page can describe the rules without hard-coding them. */
   rules: {
     hours: string;
@@ -64,27 +72,33 @@ export async function GET() {
   const days = bookableDays(now);
 
   if (days.length === 0) {
-    return respond({ days: {}, available: false, reason: "fully-booked", rules });
+    return respond({ days: {}, available: false, verified: false, reason: "fully-booked", rules });
   }
 
   const from = sastToInstant(days[0], 0);
   const to = sastToInstant(days[days.length - 1], 24 * 60);
 
+  /*
+   * No calendar connected: offer the standard timetable, flagged unverified.
+   *
+   * The distinction that matters is between "we were never told about a diary"
+   * and "we were, and cannot reach it". This is the first. There is nothing to
+   * double-book against, because nothing is syncing — the office is working
+   * from the emails either way — so offering the published hours and calling
+   * the result a request is both honest and useful. Refusing to show anything
+   * would only cost the business enquiries it would otherwise have got.
+   *
+   * The second case is handled below, and does NOT degrade: once a diary is
+   * connected, guessing at it is how someone gets booked into a slot the owner
+   * is already out on a delivery for.
+   */
   if (!isCalendarConfigured()) {
-    // Local development without iCloud credentials: hand back the full grid so
-    // the picker and the booking flow can be worked on, and say plainly that
-    // nothing was checked. In production this is a misconfiguration, and the
-    // page falls back to "phone us" rather than promising a slot blind.
-    if (process.env.NODE_ENV !== "production") {
-      console.warn(
-        "[viewing] iCloud not configured: offering every slot unchecked (development only).",
-      );
-      const unchecked: Record<string, number[]> = {};
-      for (const day of days) unchecked[day] = slotStarts();
-      return respond({ days: unchecked, available: true, rules });
-    }
-    console.error("[viewing] ICLOUD_APPLE_ID / ICLOUD_APP_PASSWORD are unset.");
-    return respond({ days: {}, available: false, reason: "not-configured", rules });
+    console.warn(
+      "[viewing] ICLOUD_APPLE_ID / ICLOUD_APP_PASSWORD are unset: offering the standard timetable, bookings will be requests rather than confirmations.",
+    );
+    const unchecked: Record<string, number[]> = {};
+    for (const day of days) unchecked[day] = slotStarts();
+    return respond({ days: unchecked, available: true, verified: false, rules });
   }
 
   try {
@@ -93,11 +107,18 @@ export async function GET() {
     return respond({
       days: grid,
       available: Object.keys(grid).length > 0,
+      verified: true,
       ...(Object.keys(grid).length === 0 ? { reason: "fully-booked" as const } : {}),
       rules,
     });
   } catch (error) {
     console.error("[viewing] could not read the iCloud diary:", error);
-    return respond({ days: {}, available: false, reason: "calendar-unreachable", rules });
+    return respond({
+      days: {},
+      available: false,
+      verified: true,
+      reason: "calendar-unreachable",
+      rules,
+    });
   }
 }

@@ -63,6 +63,6 @@ export const homeFaqs: HomeFaq[] = [
      a search box and quoted back by an AI assistant. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes, and we would rather you did. Our homes are on site at ${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}, and you can book a free 30-minute viewing on the website for any weekday between ${formatSlot(OPEN_MINUTES)} and ${formatSlot(CLOSE_MINUTES)}. You will see the slots genuinely open in our diary and your booking is confirmed on the spot. There is no deposit to view and no obligation to buy.`,
+    a: `Yes, and we would rather you did. Our homes are on site at ${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}, and you can book a free 30-minute viewing on the website for any weekday between ${formatSlot(OPEN_MINUTES)} and ${formatSlot(CLOSE_MINUTES)}. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy.`,
   },
 ];

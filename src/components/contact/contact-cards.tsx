@@ -101,7 +101,7 @@ export function ContactCards() {
         icon={<CalendarCheck className="h-5 w-5" aria-hidden="true" />}
         label="Book a viewing"
         value="See one in person"
-        detail="Pick a 30-minute slot at the Centurion showroom. Confirmed on the spot, free, no obligation."
+        detail="Pick a 30-minute slot at the Centurion showroom. Free, and no obligation to buy."
         href="/book-a-viewing"
         delay={0.28}
       />

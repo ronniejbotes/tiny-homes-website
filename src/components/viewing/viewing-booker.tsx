@@ -31,7 +31,9 @@ import {
 interface SlotsResponse {
   days: Record<string, number[]>;
   available: boolean;
-  reason?: "not-configured" | "calendar-unreachable" | "fully-booked";
+  /** False when no diary is connected: these are published hours, not real gaps. */
+  verified: boolean;
+  reason?: "calendar-unreachable" | "fully-booked";
 }
 
 interface Confirmation {
@@ -42,6 +44,8 @@ interface Confirmation {
   /** The invitation as sent, so the button below hands back the same event. */
   ics: string;
   copySent: boolean;
+  /** A firm booking, versus a request the office still has to come back on. */
+  confirmed: boolean;
 }
 
 type FieldName = "firstName" | "surname" | "email" | "phone";
@@ -151,7 +155,9 @@ export function ViewingBooker() {
         const data = (await response.json()) as SlotsResponse;
         if (!cancelled) setSlots(data);
       } catch {
-        if (!cancelled) setSlots({ days: {}, available: false, reason: "calendar-unreachable" });
+        if (!cancelled) {
+          setSlots({ days: {}, available: false, verified: true, reason: "calendar-unreachable" });
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -223,6 +229,7 @@ export function ViewingBooker() {
       });
       const data = (await response.json()) as {
         reference?: string;
+        booked?: boolean;
         confirmed?: boolean;
         copySent?: boolean;
         ics?: string;
@@ -230,7 +237,7 @@ export function ViewingBooker() {
         taken?: boolean;
       };
 
-      if (response.ok && data.confirmed && data.reference) {
+      if (response.ok && data.booked && data.reference) {
         setConfirmation({
           reference: data.reference,
           day,
@@ -238,6 +245,7 @@ export function ViewingBooker() {
           email: values.email.trim(),
           ics: data.ics ?? "",
           copySent: data.copySent === true,
+          confirmed: data.confirmed === true,
         });
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
@@ -269,15 +277,18 @@ export function ViewingBooker() {
           <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
         </span>
         <h2 className="text-display mt-5 text-3xl text-ink sm:text-4xl">
-          You&apos;re booked in.
+          {confirmation.confirmed ? "You're booked in." : "Got it — we'll confirm shortly."}
         </h2>
         <p className="mt-3 text-lg leading-relaxed text-stone">
-          We&apos;ll see you at the showroom. Your slot is held in our diary — this is a
-          confirmation, not a request.
+          {confirmation.confirmed
+            ? "We'll see you at the showroom. Your slot is held in our diary — this is a confirmation, not a request."
+            : "Your request is with us. We'll call or WhatsApp you to confirm this time, usually the same working day."}
         </p>
 
         <div className="mt-7 rounded-2xl border border-border bg-cream p-5 sm:p-6">
-          <p className="text-eyebrow text-clay">Your viewing</p>
+          <p className="text-eyebrow text-clay">
+            {confirmation.confirmed ? "Your viewing" : "Your requested time"}
+          </p>
           <p className="text-display mt-2 text-2xl text-ink sm:text-3xl">
             {formatDayLong(confirmation.day)}
           </p>
@@ -300,8 +311,8 @@ export function ViewingBooker() {
         <p className="mt-6 text-[0.9375rem] leading-relaxed text-stone">
           {confirmation.copySent ? (
             <>
-              A confirmation is on its way to{" "}
-              <span className="font-medium text-ink">{confirmation.email}</span> with a calendar
+              {confirmation.confirmed ? "A confirmation" : "A copy of your request"} is on its way
+              to <span className="font-medium text-ink">{confirmation.email}</span> with a calendar
               invitation attached.
             </>
           ) : (
@@ -420,8 +431,10 @@ export function ViewingBooker() {
       <fieldset className="min-w-0">
         <legend className="text-display text-2xl text-ink sm:text-3xl">Pick a day</legend>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-stone">
-          {HOURS_LABEL}. These are the days we still have open — everything else is already
-          taken.
+          {HOURS_LABEL}.{" "}
+          {slots.verified
+            ? "These are the days we still have open — everything else is already taken."
+            : "Pick a time that suits you and we'll confirm it with you."}
         </p>
 
         <div className="-mx-1 mt-5 flex snap-x gap-2.5 overflow-x-auto px-1 pb-2 sm:flex-wrap sm:overflow-visible">
@@ -442,9 +455,14 @@ export function ViewingBooker() {
                 )}
               >
                 <span className="text-[0.9375rem] font-medium">{formatDayShort(option)}</span>
-                <span className={cn("text-xs", selected ? "text-cream/75" : "text-stone")}>
-                  {slots.days[option].length} {slots.days[option].length === 1 ? "slot" : "slots"}
-                </span>
+                {/* The count is only meaningful when it came from the diary.
+                    Unverified, every day would read "15 slots", which looks
+                    like a claim about availability rather than a timetable. */}
+                {slots.verified && (
+                  <span className={cn("text-xs", selected ? "text-cream/75" : "text-stone")}>
+                    {slots.days[option].length} {slots.days[option].length === 1 ? "slot" : "slots"}
+                  </span>
+                )}
               </button>
             );
           })}
@@ -498,7 +516,9 @@ export function ViewingBooker() {
               <span className="font-medium text-ink">
                 {formatDayLong(day)} at {formatSlot(minutes)}
               </span>
-              . Confirmed the moment you send this.
+              {slots.verified
+                ? ". Confirmed the moment you send this."
+                : ". We'll come back to you to confirm it."}
             </>
           ) : (
             "Pick a time above, then tell us who to expect."
@@ -654,14 +674,16 @@ export function ViewingBooker() {
               </>
             ) : (
               <>
-                Confirm my viewing
+                {slots.verified ? "Confirm my viewing" : "Request this viewing"}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </>
             )}
           </Button>
           <p className="flex items-center gap-2 text-sm text-stone">
             <Clock className="h-4 w-4 text-clay" aria-hidden="true" />
-            Confirmed instantly, not &ldquo;we&apos;ll get back to you&rdquo;
+            {slots.verified
+              ? "Confirmed instantly, not “we’ll get back to you”"
+              : "We’ll confirm by phone or WhatsApp, usually same day"}
           </p>
         </div>
 
