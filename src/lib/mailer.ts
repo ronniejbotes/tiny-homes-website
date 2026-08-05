@@ -1,6 +1,6 @@
 /**
- * SMTP transport for transactional site mail (currently the shipping-quote
- * notification).
+ * SMTP transport for transactional site mail: instant-quote copies and
+ * showroom-viewing confirmations.
  *
  * Server-only; never import this from a "use client" module.
  *
@@ -11,9 +11,11 @@
  * §"Client configuration" for the host/port table.
  *
  * The one limit that matters: Hostinger's plan caps a mailbox at **100 sends
- * per 24 hours**. One notification per quote request is comfortably inside
- * that today, but it is the ceiling to watch if quote volume grows, the fix
- * is a dedicated sending mailbox or a relay, not a code change here.
+ * per 24 hours**. Both flows cost two sends apiece (the customer's copy and
+ * the office's), so the ceiling is roughly 50 quotes and viewings a day
+ * combined. It is comfortably clear today, but it is the number to watch as
+ * volume grows; the fix is a dedicated sending mailbox or a relay, not a code
+ * change here.
  */
 
 import nodemailer, { type Transporter } from "nodemailer";
@@ -28,6 +30,22 @@ export interface MailMessage {
   html: string;
   /** Set to the customer's address so a reply in the mail client reaches them. */
   replyTo?: string;
+  /**
+   * A calendar invitation to travel with the message.
+   *
+   * Sent two ways at once, because mail clients disagree about which they
+   * honour. As a `text/calendar; method=REQUEST` alternative part it is what
+   * makes Apple Mail show its "Add to Calendar" banner and Gmail show RSVP
+   * buttons; as a plain `.ics` attachment it stays openable in the clients
+   * that ignore the alternative part, and on a phone a tap hands it straight
+   * to Apple Calendar. Nodemailer's `icalEvent` does the first, `attachments`
+   * the second.
+   */
+  calendar?: {
+    filename: string;
+    content: string;
+    method: "REQUEST" | "PUBLISH" | "CANCEL";
+  };
 }
 
 /** Credentials are only present in the deployed environment / .env.local. */
@@ -89,5 +107,21 @@ export async function sendMail(message: MailMessage): Promise<void> {
     subject: message.subject,
     text: message.text,
     html: message.html,
+    ...(message.calendar
+      ? {
+          icalEvent: {
+            filename: message.calendar.filename,
+            method: message.calendar.method,
+            content: message.calendar.content,
+          },
+          attachments: [
+            {
+              filename: message.calendar.filename,
+              content: message.calendar.content,
+              contentType: "text/calendar; charset=utf-8",
+            },
+          ],
+        }
+      : {}),
   });
 }

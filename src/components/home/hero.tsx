@@ -2,6 +2,7 @@
 
 import { useRef, type CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
@@ -112,6 +113,20 @@ export function Hero() {
             Explore our homes
           </ButtonLink>
         </div>
+        {/* A link rather than a third button: the viewing CTA belongs above the
+            fold, but not competing with the two decisions already there. */}
+        <p
+          className="animate-rise-in mt-6 text-[0.9375rem] text-cream/75"
+          style={rise(0.72)}
+        >
+          Rather see one first?{" "}
+          <Link
+            href="/book-a-viewing"
+            className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+          >
+            Book a viewing at our Centurion showroom
+          </Link>
+        </p>
       </div>
 
       {/* Scroll cue */}

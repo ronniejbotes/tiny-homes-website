@@ -1,6 +1,7 @@
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
+import { CLOSE_MINUTES, OPEN_MINUTES, formatSlot } from "@/lib/viewing";
 
 /**
  * Homepage FAQ content. Rendered by the accordion AND serialised into
@@ -55,5 +56,13 @@ export const homeFaqs: HomeFaq[] = [
   {
     q: "Is there a guarantee on Tiny Homes SA products?",
     a: `Yes. We offer a ${site.guarantee}, and we provide full after-sales support.`,
+  },
+  /* The "is this legitimate?" question, asked the way people actually ask it.
+     It earns its place in the FAQ twice over: it is a real objection to a
+     large purchase made online, and it is the phrasing that gets typed into
+     a search box and quoted back by an AI assistant. */
+  {
+    q: "Can I see a tiny home in person before I buy?",
+    a: `Yes, and we would rather you did. Our homes are on site at ${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}, and you can book a free 30-minute viewing on the website for any weekday between ${formatSlot(OPEN_MINUTES)} and ${formatSlot(CLOSE_MINUTES)}. You will see the slots genuinely open in our diary and your booking is confirmed on the spot. There is no deposit to view and no obligation to buy.`,
   },
 ];

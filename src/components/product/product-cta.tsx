@@ -28,6 +28,9 @@ export function ProductCta({ product }: { product: Product }) {
               {product.priceOnRequest ? "Request a call" : "Get an instant quote"}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </ButtonLink>
+            <ButtonLink href="/book-a-viewing" variant="outline-dark" size="lg">
+              Book a viewing
+            </ButtonLink>
             <ButtonAnchor
               href={`tel:${site.phone.replace(/\s/g, "")}`}
               variant="outline-dark"

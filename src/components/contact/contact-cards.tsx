@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
+import { CalendarCheck, Phone, Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/lib/site";
 
@@ -36,19 +37,26 @@ function ContactCard({ icon, label, value, detail, href, external, delay = 0 }: 
 
   const cardClasses =
     "flex items-start gap-4 rounded-2xl border border-border bg-parchment/60 p-5 sm:p-6";
+  const linkClasses = `${cardClasses} transition-colors duration-200 hover:border-clay/50 hover:bg-parchment`;
 
   return (
     <Reveal delay={delay}>
-      {href ? (
+      {!href ? (
+        <div className={cardClasses}>{body}</div>
+      ) : href.startsWith("/") ? (
+        // Internal route: Link, so it prefetches and navigates client-side
+        // rather than reloading the whole document.
+        <Link href={href} className={linkClasses}>
+          {body}
+        </Link>
+      ) : (
         <a
           href={href}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className={`${cardClasses} transition-colors duration-200 hover:border-clay/50 hover:bg-parchment`}
+          className={linkClasses}
         >
           {body}
         </a>
-      ) : (
-        <div className={cardClasses}>{body}</div>
       )}
     </Reveal>
   );
@@ -88,6 +96,14 @@ export function ContactCards() {
         value={`${site.address.streetAddress}, ${site.address.locality}`}
         detail={`${site.address.city}, ${site.address.region}. We deliver nationwide.`}
         delay={0.24}
+      />
+      <ContactCard
+        icon={<CalendarCheck className="h-5 w-5" aria-hidden="true" />}
+        label="Book a viewing"
+        value="See one in person"
+        detail="Pick a 30-minute slot at the Centurion showroom. Confirmed on the spot, free, no obligation."
+        href="/book-a-viewing"
+        delay={0.28}
       />
       <Reveal delay={0.3}>
         <p className="px-1 pt-1 text-sm text-stone">

@@ -125,10 +125,16 @@ export function Footer() {
                 </address>
               </li>
             </ul>
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/book-a-viewing"
+                className="inline-flex h-11 items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:bg-clay-dark"
+              >
+                Book a Viewing
+              </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-11 items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:bg-clay-dark"
+                className="inline-flex h-11 items-center rounded-full border border-cream/30 px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:border-cream/70 hover:bg-cream/10"
               >
                 Request a Call
               </Link>
@@ -141,6 +147,10 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. All prices exclude VAT.
           </p>
           <p>
+            <Link href="/book-a-viewing" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+              Book a Viewing
+            </Link>
+            <span className="mx-3">·</span>
             <Link href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               About
             </Link>

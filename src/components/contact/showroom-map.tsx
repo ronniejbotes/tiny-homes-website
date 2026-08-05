@@ -1,5 +1,6 @@
-import { ExternalLink, MapPin } from "lucide-react";
+import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
+import { ButtonLink } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
 const { latitude, longitude } = site.geo;
@@ -18,7 +19,11 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${pin
  * the page for bandwidth before a visitor has scrolled to it. Reserving the
  * box also keeps it from shifting layout when it does arrive.
  */
-export function ShowroomMap() {
+/**
+ * @param showBooking Suppressed on /book-a-viewing itself, where a button
+ *   pointing at the page you are already on is just noise.
+ */
+export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = {}) {
   return (
     <section aria-labelledby="showroom-heading" className="pb-20 sm:pb-28">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -30,9 +35,18 @@ export function ShowroomMap() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
             Photographs only go so far. Our units are on site in Centurion, so you can stand
             inside one, check the finishes and get a feel for the space before you commit.
-            Give us a call before you drive out and we will make sure someone is free to show
-            you around.
+            {showBooking
+              ? " Book a slot and we'll have someone free to show you around."
+              : " Pick a time above and we'll have someone free to show you around."}
           </p>
+          {showBooking && (
+            <div className="mt-6">
+              <ButtonLink href="/book-a-viewing" variant="accent" size="lg">
+                Book a viewing
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ButtonLink>
+            </div>
+          )}
         </Reveal>
 
         <Reveal delay={0.08} className="mt-8">

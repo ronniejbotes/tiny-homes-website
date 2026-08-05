@@ -16,6 +16,7 @@
 
 import { NextResponse } from "next/server";
 import { isMailConfigured, notifyAddress, sendMail } from "@/lib/mailer";
+import { clientIp, EMAIL_RE, rateLimited, str } from "@/lib/rate-limit";
 import {
   customerQuoteHtml,
   customerQuoteSubject,
@@ -44,43 +45,7 @@ export const runtime = "nodejs";
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 8;
 
-/**
- * Per-IP throttle. In-memory is the right size for this: the site runs as a
- * single Node process on Hostinger, and the only thing being protected is a
- * mailbox with a 100-sends-per-day ceiling. It resets on deploy, which is fine.
- */
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  recent.push(now);
-  hits.set(ip, recent);
-
-  // Opportunistic sweep so the map cannot grow without bound.
-  if (hits.size > 500) {
-    for (const [key, times] of hits) {
-      if (times.every((t) => now - t >= WINDOW_MS)) hits.delete(key);
-    }
-  }
-  return recent.length > MAX_PER_WINDOW;
-}
-
-function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0].trim();
-  return request.headers.get("x-real-ip")?.trim() || "unknown";
-}
-
 /* ----------------------------------------------------------------- parsing */
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-/** Trim, collapse whitespace and cap length, payloads are never trusted. */
-function str(value: unknown, max = 200): string {
-  if (typeof value !== "string") return "";
-  return value.replace(/\s+/g, " ").trim().slice(0, max);
-}
 
 function parseContact(raw: unknown): ContactValues | null {
   const c = raw as Partial<ContactValues> | undefined;
@@ -133,7 +98,7 @@ function parseLines(raw: unknown): QuoteLine[] {
 /* ------------------------------------------------------------------ handler */
 
 export async function POST(request: Request) {
-  if (rateLimited(clientIp(request))) {
+  if (rateLimited("quote", clientIp(request), { windowMs: WINDOW_MS, max: MAX_PER_WINDOW })) {
     return NextResponse.json(
       { error: "Too many quote requests from this connection. Please try again shortly." },
       { status: 429 },

@@ -9,6 +9,7 @@ import { DeliveryCoverage } from "@/components/home/delivery-coverage";
 import { WhyTinyLiving } from "@/components/home/why-tiny-living";
 import { GalleryStrip } from "@/components/home/gallery-strip";
 import { VideoCarousel } from "@/components/home/video-carousel";
+import { ShowroomInvite } from "@/components/home/showroom-invite";
 import { homeFaqs } from "@/components/home/home-faqs";
 import { Accordion } from "@/components/ui/accordion";
 import { Container } from "@/components/ui/container";
@@ -132,6 +133,7 @@ export default function HomePage() {
       <DeliveryCoverage />
       <GalleryStrip />
       <VideoCarousel />
+      <ShowroomInvite />
 
       <section aria-labelledby="faq-heading" className="py-24 sm:py-32">
         <Container>
@@ -167,8 +169,12 @@ export default function HomePage() {
               <ButtonLink href="/quote" variant="accent" size="lg">
                 Get an instant quote
               </ButtonLink>
-              <ButtonLink href="/contact" variant="outline-dark" size="lg">
-                Request a call
+              {/* Was "Request a call". A booked viewing is a firm commitment
+                  from someone who has already decided to come and look, and the
+                  phone number sitting next to it covers anyone who just wants
+                  to talk — so this slot is worth more spent on the showroom. */}
+              <ButtonLink href="/book-a-viewing" variant="outline-dark" size="lg">
+                Book a viewing
               </ButtonLink>
               <ButtonAnchor
                 href={`tel:${site.phone.replace(/\s/g, "")}`}

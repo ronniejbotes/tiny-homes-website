@@ -249,6 +249,13 @@ export function Navbar() {
                 >
                   Get a quote
                 </Link>
+                <Link
+                  href="/book-a-viewing"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex h-13 items-center justify-center rounded-full bg-forest px-8 text-base font-medium text-cream"
+                >
+                  Book a viewing
+                </Link>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
                   onClick={() => setMobileOpen(false)}

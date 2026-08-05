@@ -79,6 +79,7 @@ export const nav = {
     { slug: "safari-tents", label: "Safari Tents" },
   ],
   pages: [
+    { href: "/book-a-viewing", label: "Book a viewing" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ],

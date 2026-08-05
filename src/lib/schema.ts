@@ -10,6 +10,7 @@ import { createElement } from "react";
 import { site } from "@/lib/site";
 import { products, type Product, type ProductFaq } from "@/data/products";
 import { formatZAR } from "@/lib/format";
+import { CLOSE_MINUTES, OPEN_MINUTES, formatSlot } from "@/lib/viewing";
 import images from "@/data/images.json";
 
 export type SchemaObject = Record<string, unknown>;
@@ -95,6 +96,21 @@ export function localBusinessSchema(): SchemaObject {
     },
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
+    // When a person can actually walk in, which is what a local pack result
+    // shows as "Open · Closes 15:30". Derived from the same constants the
+    // booking slots are generated from, so the two can never disagree.
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "https://schema.org/Monday",
+        "https://schema.org/Tuesday",
+        "https://schema.org/Wednesday",
+        "https://schema.org/Thursday",
+        "https://schema.org/Friday",
+      ],
+      opens: formatSlot(OPEN_MINUTES),
+      closes: formatSlot(CLOSE_MINUTES),
+    },
     parentOrganization: { "@id": ORG_ID },
   };
 }
