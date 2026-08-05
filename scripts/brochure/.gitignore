@@ -1,0 +1,4 @@
+# Generated: rebuild with dump.mjs + gen.py + range.py
+data.json
+out/
+img/*/
