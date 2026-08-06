@@ -32,6 +32,14 @@ export interface CalendarEventInput {
   summary: string;
   description: string;
   location: string;
+  /**
+   * The exact pin. LOCATION is free text, so a client that wants to draw a map
+   * has to geocode it — and "187 Gouws Ave, Raslouw AH" geocodes to the street,
+   * not to the gate. GEO (RFC 5545 §3.8.1.6) hands the client the coordinates
+   * instead, which is what makes tapping the event in a phone calendar open
+   * the right point.
+   */
+  geo?: { latitude: number; longitude: number };
   organiser: CalendarPerson;
   attendee: CalendarPerson;
   url?: string;
@@ -89,6 +97,36 @@ function fold(line: string): string {
   return out.map((part, index) => (index === 0 ? part : ` ${part}`)).join("\r\n");
 }
 
+/**
+ * A quoted parameter value. Commas, semicolons and colons are all legal inside
+ * the quotes; a double quote is the one character that cannot be escaped at
+ * all (RFC 5545 §3.1), so it is dropped rather than allowed to break the file.
+ */
+function quotedParam(value: string): string {
+  return `"${value.replace(/"/g, "")}"`;
+}
+
+/**
+ * The pin, twice.
+ *
+ * GEO is the standard property, and the one anything RFC-compliant reads.
+ * X-APPLE-STRUCTURED-LOCATION is the one that does the work in practice:
+ * Apple Calendar ignores a bare GEO, and this is what turns the event into a
+ * map thumbnail with a Directions button on an iPhone. Every other client
+ * ignores an X- property, so it costs nothing to carry both.
+ */
+function geoLines(
+  geo: { latitude: number; longitude: number },
+  title: string,
+  address: string,
+): string[] {
+  return [
+    `GEO:${geo.latitude};${geo.longitude}`,
+    `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=${quotedParam(address)};` +
+      `X-APPLE-RADIUS=72;X-TITLE=${quotedParam(title)}:geo:${geo.latitude},${geo.longitude}`,
+  ];
+}
+
 /** A CAL-ADDRESS with its display name, shared by ORGANIZER and ATTENDEE. */
 function person(property: string, params: string, who: CalendarPerson): string {
   return `${property};CN=${escapeText(who.name)}${params}:mailto:${who.email}`;
@@ -121,6 +159,7 @@ export function viewingIcs(input: CalendarEventInput): string {
     `SUMMARY:${escapeText(input.summary)}`,
     `DESCRIPTION:${escapeText(input.description)}`,
     `LOCATION:${escapeText(input.location)}`,
+    ...(input.geo ? geoLines(input.geo, input.summary, input.location) : []),
     ...(input.url ? [`URL:${input.url}`] : []),
     person("ORGANIZER", "", input.organiser),
     person(

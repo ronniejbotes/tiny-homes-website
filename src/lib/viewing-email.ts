@@ -13,7 +13,7 @@
  * Server-only.
  */
 
-import { site } from "@/lib/site";
+import { site, showroomDirectionsUrl } from "@/lib/site";
 import { getProduct } from "@/data/products";
 import { formatDayLong, formatSlot, formatSlotLong, VIEWING_MINUTES, type ViewingBooking } from "@/lib/viewing";
 
@@ -39,7 +39,7 @@ export function showroomAddress(): string {
 }
 
 export function directionsUrl(): string {
-  return `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}`;
+  return showroomDirectionsUrl;
 }
 
 /** The window, as a person reads it: "08:30 – 09:00". */
@@ -49,10 +49,21 @@ export function slotWindow(booking: ViewingBooking): string {
 
 /* ------------------------------------------------- the calendar description */
 
-/** What the owner sees inside the event itself, where the detail is useful. */
+/**
+ * What the owner sees inside the event itself, where the detail is useful.
+ *
+ * The same object is attached to the visitor's copy, which is why the address
+ * and map link are in here too: a calendar client that does nothing with GEO
+ * still shows the description, and a link a visitor can tap on the morning of
+ * the viewing is the whole point of the exercise.
+ */
 export function eventDescription(booking: ViewingBooking): string {
   return [
     `Showroom viewing booked from tinyhomesa.com`,
+    ``,
+    `Where: ${showroomAddress()}`,
+    `Map: ${site.mapsLink}`,
+    `Directions: ${directionsUrl()}`,
     ``,
     `Name: ${viewingFullName(booking)}`,
     `Phone: ${booking.phone}`,
@@ -91,6 +102,7 @@ export function customerViewingText(booking: ViewingBooking, confirmed = true): 
     ``,
     `WHEN   ${formatSlotLong(booking.day, booking.minutes)}`,
     `WHERE  ${showroomAddress()}`,
+    `MAP    ${site.mapsLink}`,
     `DIRECTIONS  ${directionsUrl()}`,
     ``,
     `Coming to see: ${viewingInterest(booking)}`,
@@ -158,6 +170,12 @@ export function customerViewingHtml(booking: ViewingBooking, confirmed = true): 
               <p style="margin:0 0 4px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#b4552d">Where</p>
               <p style="margin:0 0 10px;font-size:16px;line-height:1.55;color:#1c1b17">${esc(showroomAddress())}</p>
               <a href="${esc(directionsUrl())}" style="display:inline-block;background:#b4552d;color:#faf6ef;text-decoration:none;font-size:15px;font-weight:600;padding:11px 22px;border-radius:999px">Get directions</a>
+              <!-- The short pin link as text as well as the button: it survives
+                   being forwarded or pasted into WhatsApp, which is how half of
+                   these get shared with whoever is doing the driving. -->
+              <p style="margin:12px 0 0;font-size:13px;line-height:1.6;color:#67635a">
+                Or open the pin: <a href="${esc(site.mapsLink)}" style="color:#8f4224;text-decoration:none">${esc(site.mapsLink.replace("https://", ""))}</a>
+              </p>
             </td></tr></table></td></tr>
 
             <tr><td style="padding:18px 0 0">

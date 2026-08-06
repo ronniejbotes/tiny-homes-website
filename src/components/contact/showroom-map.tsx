@@ -1,15 +1,7 @@
 import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { site } from "@/lib/site";
-
-const { latitude, longitude } = site.geo;
-const pin = `${latitude},${longitude}`;
-
-/* The keyless embed endpoint. Google's documented iframe API needs a billing
-   key; this older `output=embed` form does not, and renders the same map. */
-const embedSrc = `https://www.google.com/maps?q=${pin}&z=16&hl=en&output=embed`;
-const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${pin}`;
+import { site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
 
 /**
  * Where the showroom actually is.
@@ -59,10 +51,20 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
                   <span className="block text-sm text-stone">
                     {site.address.locality}, {site.address.city}, {site.address.region}
                   </span>
+                  {/* The pin itself, as a link someone can save or send on to
+                      whoever is doing the driving. */}
+                  <a
+                    href={site.mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-block text-sm font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+                  >
+                    Open the pin in Google Maps
+                  </a>
                 </span>
               </p>
               <a
-                href={directionsHref}
+                href={showroomDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-cream px-4 text-sm font-medium text-ink transition-colors hover:border-clay/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
@@ -74,7 +76,7 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
 
             <div className="relative aspect-[16/10] w-full border-t border-border sm:aspect-[21/9]">
               <iframe
-                src={embedSrc}
+                src={showroomMapEmbedUrl}
                 title={`Map showing the ${site.name} showroom at ${site.address.streetAddress}, ${site.address.city}`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -14,7 +14,7 @@ import {
 import { Button, ButtonAnchor } from "@/components/ui/button";
 import { TextField, inputClasses, labelClasses } from "@/components/quote/fields";
 import { products } from "@/data/products";
-import { site } from "@/lib/site";
+import { site, showroomDirectionsUrl } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import {
   HOURS_LABEL,
@@ -111,7 +111,6 @@ function googleCalendarUrl(confirmation: Confirmation): string {
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
-const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}`;
 const telHref = `tel:${site.phone.replace(/\s/g, "")}`;
 
 /* ------------------------------------------------------------- the booker */
@@ -340,7 +339,7 @@ export function ViewingBooker() {
             Google Calendar
           </ButtonAnchor>
           <ButtonAnchor
-            href={directionsHref}
+            href={showroomDirectionsUrl}
             target="_blank"
             rel="noopener noreferrer"
             variant="outline"

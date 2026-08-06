@@ -20,13 +20,22 @@ export const site = {
     countryCode: "ZA",
   },
   geo: {
-    // Showroom pin, owner-supplied: 25°50'49.3"S 28°06'22.6"E.
-    // Feeds both the LocalBusiness schema and the map embed on /contact, so the
-    // coordinates Google is told about and the ones a visitor navigates to are
-    // the same point.
-    latitude: -25.847028,
-    longitude: 28.106278,
+    // Showroom pin, owner-supplied 2026-08-06: 25°50'49.6"S 28°06'21.6"E.
+    // Feeds the LocalBusiness schema, the map on /contact, the directions link
+    // in the viewing confirmation and the GEO on the calendar invitation, so
+    // the coordinates Google is told about and the ones a visitor navigates to
+    // are the same point.
+    latitude: -25.847111,
+    longitude: 28.106,
   },
+  /**
+   * The owner's own Google Maps pin, short form.
+   *
+   * Kept alongside the coordinates rather than instead of them: this one is
+   * short enough to paste into WhatsApp or read down a phone, while the
+   * lat/long drives everything a machine reads.
+   */
+  mapsLink: "https://maps.app.goo.gl/bwxLfQVs4CZxpNuG9",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61587151281004",
     instagram: "https://www.instagram.com/tinyhomes.sa/",
@@ -67,6 +76,24 @@ export const site = {
   /** Finance/lay-bye line, official price list; always pair with "subject to credit approval". */
   finance: "Finance & lay-bye options available, subject to credit approval",
 } as const;
+
+/* ------------------------------------------------------------ the showroom */
+
+/** `-25.847111,28.106` — the pin, in the form every Google Maps URL wants. */
+export const showroomPin = `${site.geo.latitude},${site.geo.longitude}`;
+
+/**
+ * The three ways we point someone at the showroom, derived once so the map on
+ * /contact, the button on the confirmation screen and the link in the
+ * confirmation email can never drift apart.
+ *
+ * `showroomDirectionsUrl` opens turn-by-turn navigation from wherever the
+ * visitor is standing; `site.mapsLink` just shows them the pin. The embed uses
+ * the keyless `output=embed` endpoint — Google's documented iframe API needs a
+ * billing key, and this older form renders the same map without one.
+ */
+export const showroomDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${showroomPin}`;
+export const showroomMapEmbedUrl = `https://www.google.com/maps?q=${showroomPin}&z=16&hl=en&output=embed`;
 
 export const nav = {
   products: [

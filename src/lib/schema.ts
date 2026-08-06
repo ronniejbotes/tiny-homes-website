@@ -94,6 +94,9 @@ export function localBusinessSchema(): SchemaObject {
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
+    // The owner's own Google Maps pin. Schema.org's hasMap is the field Google
+    // reads to tie this business to a place it already knows about.
+    hasMap: site.mapsLink,
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
     // When a person can actually walk in, which is what a local pack result

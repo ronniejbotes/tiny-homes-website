@@ -202,7 +202,17 @@ export async function POST(request: Request) {
       await createCalendarEvent(
         uid,
         // No METHOD: a calendar object stored on a CalDAV server must not carry one.
-        viewingIcs({ uid, day, minutes, summary, description, location, organiser, attendee }),
+        viewingIcs({
+          uid,
+          day,
+          minutes,
+          summary,
+          description,
+          location,
+          geo: site.geo,
+          organiser,
+          attendee,
+        }),
       );
     } catch (error) {
       console.error("[viewing] iCloud rejected the booking:", error);
@@ -231,6 +241,7 @@ export async function POST(request: Request) {
     summary,
     description,
     location,
+    geo: site.geo,
     organiser,
     attendee,
     url: `${site.url}/book-a-viewing`,
