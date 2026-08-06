@@ -93,8 +93,11 @@ export function ContactCards() {
       <ContactCard
         icon={<MapPin className="h-5 w-5" aria-hidden="true" />}
         label="Our base"
-        value={`${site.address.streetAddress}, ${site.address.locality}`}
-        detail={`${site.address.city}, ${site.address.region}. We deliver nationwide.`}
+        // Suburb and street number deliberately left off: a visitor only needs
+        // to know we are in Centurion. The exact address belongs on the
+        // showroom map, where someone who is actually coming out will look.
+        value={`${site.address.city}, ${site.address.region}`}
+        detail="Every home leaves from here, and we deliver nationwide."
         delay={0.24}
       />
       <ContactCard
