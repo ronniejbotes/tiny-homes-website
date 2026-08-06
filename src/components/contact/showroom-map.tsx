@@ -47,9 +47,12 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
               <p className="flex items-start gap-3 text-ink">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay" aria-hidden="true" />
                 <span>
-                  <span className="block font-medium">{site.address.streetAddress}</span>
+                  {/* Named, not addressed: site.address is the head office, and
+                      the pin below is the showroom. Until the two are split in
+                      site.ts, this card names the place it actually shows. */}
+                  <span className="block font-medium">Tiny Homes Showroom</span>
                   <span className="block text-sm text-stone">
-                    {site.address.locality}, {site.address.city}, {site.address.region}
+                    Sunderland Ridge, {site.address.city}, {site.address.region}
                   </span>
                   {/* The pin itself, as a link someone can save or send on to
                       whoever is doing the driving. */}
@@ -77,7 +80,7 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
             <div className="relative aspect-[16/10] w-full border-t border-border sm:aspect-[21/9]">
               <iframe
                 src={showroomMapEmbedUrl}
-                title={`Map showing the ${site.name} showroom at ${site.address.streetAddress}, ${site.address.city}`}
+                title={`Map showing the ${site.name} showroom in Sunderland Ridge, ${site.address.city}`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
