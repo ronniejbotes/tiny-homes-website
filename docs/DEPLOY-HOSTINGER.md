@@ -363,8 +363,56 @@ Until you have that answer in writing, set up an uptime monitor (UptimeRobot's f
 
 Straight from Hostinger's own troubleshooting documentation plus reported real-world Next.js-on-shared-hosting behaviour.
 
+### ⛔ 11.0 Next.js is pinned to 16.2.10 — do NOT let `npm audit fix` raise it
+
+**Hostinger's build container ships a glibc older than 2.29, and Next 16.3.0's
+prebuilt Rust binary requires 2.29 or newer.** Next 16.2.10's does not. This is a
+property of Hostinger's image, not of this project, and no setting in hPanel
+changes it.
+
+What it looks like when it goes wrong — verbatim from the failed build of
+`c52e208` on 2026-08-07:
+
+```
+▲ Next.js 16.3.0 (Turbopack)
+  Using cached swc package @next/swc-wasm-nodejs...
+⚠ Attempted to load @next/swc-linux-x64-gnu, but an error occurred:
+  /lib64/libm.so.6: version `GLIBC_2.29' not found
+⚠ Attempted to load @next/swc-linux-x64-musl, but it was not installed
+⨯ Failed to load next.config.ts
+Error: Cannot find module '…/6a7570537f909.next.config'  ERR_MODULE_NOT_FOUND
+```
+
+Read that chain carefully, because the last line is a decoy. The native compiler
+cannot load, so Next falls back to its WebAssembly build; the WASM path is what
+transpiles `next.config.ts`, and it emits a `next.config.compiled.js` importing a
+temp module it never actually writes. **The missing module is a symptom. The
+glibc line is the cause.** Renaming the config to `.mjs` would silence that one
+error and the build would simply fail further along, because Turbopack is the
+same native binary.
+
+**Why this was expensive.** `97456f0` took the 16.3.0 bump from an `npm audit
+fix`. Every deploy from that commit onward failed — and a failed build leaves the
+*previous* release serving, silently. Production sat four days stale on
+`d8947dc` with a clean `git status` and no notification. Never treat "pushed" as
+"shipped" — verify from outside with a value the commit actually changed, e.g.
+`curl -s https://tinyhomesa.com/llms.txt | wc -l` against `wc -l < public/llms.txt`.
+
+**The security trade-off, stated honestly.** 16.2.10 carries nine Next
+advisories that 16.3.0 fixes. Checked against this codebase on 2026-08-09, most
+do not reach it: there are **no Server Actions** (`grep -rn '"use server"' src/`
+→ nothing), no `middleware.ts`/`proxy.ts`, no custom server, no `rewrites()`, no
+edge runtime, and `dangerouslyAllowSVG` is unset. That rules out seven of the
+nine. Note also that production has been running 16.2.10 *the entire time* — the
+pin was never what was deployed, so holding it here lowers nothing.
+
+**To actually get onto a patched Next**, ask Hostinger support to update the
+Node build image to a base with glibc ≥ 2.29, quoting the block above. Retry the
+bump only after they confirm, and only with a deploy you watch to completion.
+
 | Symptom | Cause | Fix |
 |---|---|---|
+| **`GLIBC_2.29' not found` → `Failed to load next.config.ts`** | Next raised above 16.2.10 | §11.0 — pin `next` and `eslint-config-next` back to exactly `16.2.10` |
 | **"Failed to build the application"** | Node version in hPanel does not match what the project needs | Set it to 24.x (§3.4) |
 | | Missing environment variable needed at build time | Not applicable here — this site needs none (§6) |
 | | `node_modules` was included in a ZIP upload | Delete it from the ZIP and re-upload |
