@@ -24,8 +24,8 @@ import { HOURS_LABEL } from "@/lib/viewing";
 const proofs = [
   {
     icon: MapPin,
-    label: "A real address, not a PO box",
-    value: `${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}`,
+    label: "A real showroom, not a PO box",
+    value: `${site.showroom.name}, ${site.showroom.city}, ${site.showroom.region}`,
   },
   {
     icon: Building2,

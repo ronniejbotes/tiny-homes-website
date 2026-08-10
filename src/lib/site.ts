@@ -17,6 +17,19 @@ export const site = {
   whatsapp: "https://wa.me/27836603743",
   /** admin@ is the only mailbox confirmed to exist; swap to sales@ once that one is provisioned. */
   email: "admin@tinyhomesa.com",
+  /**
+   * REGISTERED HEAD OFFICE. Not the place visitors come to.
+   *
+   * Owner, 2026-08-10: "that is our registered address for our head office,
+   * not the site — people do not want to come see our offices, they want to
+   * view the showroom." Use this only for the legal entity: the privacy page,
+   * the quotation letterhead and the company details in the footer.
+   *
+   * Anything a visitor navigates to must use `showroom` below. Until
+   * 2026-08-10 this address was rendered on the book-a-viewing page, in the
+   * confirmation email and as the calendar invitation's location, so people
+   * who booked a viewing were sent to the office.
+   */
   address: {
     streetAddress: "187 Gouws Ave",
     locality: "Raslouw AH",
@@ -24,6 +37,24 @@ export const site = {
     region: "Gauteng",
     country: "South Africa",
     countryCode: "ZA",
+  },
+  /**
+   * THE SHOWROOM — where viewings happen and where every visitor goes.
+   *
+   * Deliberately carries no street address. The owner confirmed one does not
+   * exist ("there is no street address for the showroom"), and the pin is the
+   * authoritative location: `geo` below, plus `mapsLink`.
+   *
+   * The suburb is omitted on purpose. The contact page asserted "Sunderland
+   * Ridge", but reverse-geocoding the pin on 2026-08-10 returned Rudolf
+   * Street, Raslouw — a different suburb. One of the two is wrong and nobody
+   * has confirmed which, so naming neither beats naming the wrong one.
+   * Fill in `locality` once the owner confirms it.
+   */
+  showroom: {
+    name: "Tiny Homes Showroom",
+    city: "Centurion",
+    region: "Gauteng",
   },
   geo: {
     // Showroom pin, owner-supplied 2026-08-06: 25°50'49.6"S 28°06'21.6"E.
@@ -87,6 +118,17 @@ export const site = {
 
 /** `-25.847111,28.106` — the pin, in the form every Google Maps URL wants. */
 export const showroomPin = `${site.geo.latitude},${site.geo.longitude}`;
+
+/**
+ * How the showroom is named anywhere a visitor reads it: on the page, in the
+ * confirmation email, and as the calendar invitation's LOCATION.
+ *
+ * A name and a town rather than a street address, because the showroom has no
+ * street address to give. The pin does the navigating — every surface that
+ * uses this string sits next to `site.mapsLink` or `showroomDirectionsUrl`,
+ * and the calendar invitation carries the coordinates in its GEO field.
+ */
+export const showroomLocation = `${site.showroom.name}, ${site.showroom.city}, ${site.showroom.region}`;
 
 /**
  * The three ways we point someone at the showroom, derived once so the map on

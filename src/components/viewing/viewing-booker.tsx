@@ -14,7 +14,7 @@ import {
 import { Button, ButtonAnchor } from "@/components/ui/button";
 import { TextField, inputClasses, labelClasses } from "@/components/quote/fields";
 import { products } from "@/data/products";
-import { site, showroomDirectionsUrl } from "@/lib/site";
+import { site, showroomDirectionsUrl, showroomLocation } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import {
   HOURS_LABEL,
@@ -105,7 +105,7 @@ function googleCalendarUrl(confirmation: Confirmation): string {
       confirmation.day,
       confirmation.minutes + VIEWING_MINUTES,
     )}`,
-    location: `${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}`,
+    location: showroomLocation,
     details: `Your viewing at the ${site.name} showroom.\n\nReference: ${confirmation.reference}\nQuestions? Call ${site.phoneDisplay}.`,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -297,9 +297,9 @@ export function ViewingBooker() {
           <p className="mt-4 flex items-start gap-2.5 text-[0.9375rem] leading-relaxed text-stone">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
             <span>
-              {site.address.streetAddress}, {site.address.locality}
+              {site.showroom.name}
               <br />
-              {site.address.city}, {site.address.region}
+              {site.showroom.city}, {site.showroom.region}
             </span>
           </p>
           <p className="mt-4 text-sm text-stone">

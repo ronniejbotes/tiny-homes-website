@@ -47,12 +47,14 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
               <p className="flex items-start gap-3 text-ink">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay" aria-hidden="true" />
                 <span>
-                  {/* Named, not addressed: site.address is the head office, and
-                      the pin below is the showroom. Until the two are split in
-                      site.ts, this card names the place it actually shows. */}
-                  <span className="block font-medium">Tiny Homes Showroom</span>
+                  {/* Named, not addressed: the showroom has no street address,
+                      so the pin below is the authoritative location.
+                      "Sunderland Ridge" used to be asserted here, but
+                      reverse-geocoding the pin returns Raslouw — a different
+                      suburb. Neither is named until the owner confirms which. */}
+                  <span className="block font-medium">{site.showroom.name}</span>
                   <span className="block text-sm text-stone">
-                    Sunderland Ridge, {site.address.city}, {site.address.region}
+                    {site.showroom.city}, {site.showroom.region}
                   </span>
                   {/* The pin itself, as a link someone can save or send on to
                       whoever is doing the driving. */}
@@ -80,7 +82,7 @@ export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = 
             <div className="relative aspect-[16/10] w-full border-t border-border sm:aspect-[21/9]">
               <iframe
                 src={showroomMapEmbedUrl}
-                title={`Map showing the ${site.name} showroom in Sunderland Ridge, ${site.address.city}`}
+                title={`Map showing the ${site.name} showroom in ${site.showroom.city}, ${site.showroom.region}`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
