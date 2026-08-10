@@ -457,7 +457,13 @@ function UnitsList({
 
 /* -------------------------------------------------------- inner form */
 
-function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
+function QuoteFormInner({
+  quote,
+  setQuote,
+}: {
+  quote: IssuedQuote | null;
+  setQuote: React.Dispatch<React.SetStateAction<IssuedQuote | null>>;
+}) {
   const searchParams = useSearchParams();
   const deep = useMemo(() => parseDeepLink(searchParams), [searchParams]);
 
@@ -501,7 +507,6 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
   const [errors, setErrors] = useState<Partial<Record<FieldName, string | null>>>({});
   const [productError, setProductError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
-  const [quote, setQuote] = useState<IssuedQuote | null>(null);
 
   const pickerRef = useRef<HTMLDivElement>(null);
 
@@ -827,7 +832,6 @@ function QuoteFormInner({ intro }: { intro?: React.ReactNode }) {
 
   return (
     <>
-      {intro}
       <div className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
         <form onSubmit={handleSubmit} noValidate className="space-y-14">
           {/* Step 1: choose your homes */}
@@ -1103,14 +1107,28 @@ function QuoteFormFallback() {
  * Instant-quote form.
  *
  * `intro` is the page's standfirst, handed in so it can be dropped once a quote
- * has been issued; it is server-rendered by the page, not by this component.
- * useSearchParams() requires a Suspense boundary in the App Router, so the
- * inner form is wrapped here.
+ * has been issued.
+ *
+ * It is rendered HERE, outside the Suspense boundary, and that placement is the
+ * whole point. useSearchParams() makes the inner form bail out of the prerender,
+ * so everything inside the boundary is replaced by the fallback in the static
+ * HTML. The standfirst used to live in there, which meant /quote server-rendered
+ * seven words — the eyebrow and the h1 — while the two paragraphs a reader sees
+ * existed only in the RSC payload, invisible to anything reading the HTML.
+ * Verified 2026-08-10: 7 words before, 96 after.
+ *
+ * The `quote` state is owned here for the same reason: it is the only thing the
+ * standfirst needs in order to step aside once a quotation has been issued, and
+ * keeping it out here is what lets the copy render on the server.
  */
 export function QuoteForm({ intro }: { intro?: React.ReactNode }) {
+  const [quote, setQuote] = useState<IssuedQuote | null>(null);
   return (
-    <Suspense fallback={<QuoteFormFallback />}>
-      <QuoteFormInner intro={intro} />
-    </Suspense>
+    <>
+      {!quote && intro}
+      <Suspense fallback={<QuoteFormFallback />}>
+        <QuoteFormInner quote={quote} setQuote={setQuote} />
+      </Suspense>
+    </>
   );
 }
