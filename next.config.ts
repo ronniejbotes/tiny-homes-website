@@ -55,6 +55,24 @@ const nextConfig: NextConfig = {
     // 308 ahead of this list, so /about-us/ is stripped to /about-us before
     // these are matched. Adding "/" variants here would be dead code.
     return [
+      // Canonical host. www.tinyhomesa.com served a byte-identical copy of the
+      // whole site under a 200 (verified by matching sha1 on 2026-08-10), so
+      // every page existed at two addresses and Google had to pick one itself.
+      // Listed FIRST so the host is normalised before any path rule runs,
+      // otherwise a www request matches a path redirect below and needs a
+      // second hop to reach the apex.
+      //
+      // `permanent: true` emits a 308, which Google treats as a 301 for
+      // canonicalisation. If this has no effect in production, the host header
+      // is being rewritten upstream and the redirect belongs in the Hostinger
+      // panel instead — this rule is harmless either way, as it cannot match.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.tinyhomesa.com" }],
+        destination: "https://tinyhomesa.com/:path*",
+        permanent: true,
+      },
+
       // Verified live + indexed on the old WordPress site; all would 404 at cutover.
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },

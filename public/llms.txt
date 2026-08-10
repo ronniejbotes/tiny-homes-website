@@ -1,15 +1,14 @@
 # Tiny Homes SA
 
 > Tiny Homes SA sells high-end prefab tiny homes, cabins, glamping capsules, outdoor
-> kitchens, DIY garage kits and luxury safari tents, priced from R54 900 to R1 099 900 ex VAT.
+> kitchens and luxury safari tents, priced from R54 900 to R1 099 900 ex VAT.
 > The company is based in Centurion, South Africa and delivers nationwide.
 
 Tiny Homes SA (Tiny Homes (Pty) Ltd, trading as Tiny Homes SA, tinyhomesa.com) supplies
 high-end prefab tiny homes for affordable, sustainable living in South Africa. The range covers
-eight product lines — X-Folds, expandable homes, nature cabins, apple cabins and glamping
+seven product lines — X-Folds, expandable homes, nature cabins, apple cabins and glamping
 capsules (homes priced from R54 900 to R1 099 900, all prices excluding VAT), plus outdoor
-entertainment kitchens from R154 400 ex VAT, DIY steel garage kits from R139 900 ex VAT and
-luxury safari tents priced on request. The company is based at 187 Gouws Ave, Raslouw AH, Centurion, Gauteng and delivers
+entertainment kitchens from R154 400 ex VAT and luxury safari tents priced on request. The company is based at 187 Gouws Ave, Raslouw AH, Centurion, Gauteng and delivers
 nationwide; delivery is quoted separately based on location and site accessibility. Every home
 carries a 1-year limited guarantee, and full after-sales support is provided across the range. Finance
 and lay-bye options are available,
@@ -22,7 +21,7 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 ## Pages
 
 - [Home](https://tinyhomesa.com/): Overview of the full range — five prefab tiny home
-  designs from R54 900 to R1 099 900 ex VAT, plus outdoor kitchens, DIY garages and safari tents —
+  designs from R54 900 to R1 099 900 ex VAT, plus outdoor kitchens and safari tents —
   delivered nationwide from Centurion, with finance and lay-bye options available.
 - [Get a Quote](https://tinyhomesa.com/quote): Configure a home — choose size and extras and
   get an instant price estimate before requesting a formal quotation.
@@ -84,18 +83,6 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   R14 100 (3.5 m and 3.9 m only), induction flat-top stove R4 500, kettle grill R8 200 (3.5 m and
   3.9 m only), extractor fan R3 400, bar fridge R3 300, stainless-steel countertop R7 800, extra
   cabinets R3 100/m, aluminium shelf R500, outdoor speaker R1 900, starry-sky ceiling R4 700.
-- [Garages](https://tinyhomesa.com/garages): DIY steel garage kits delivered flat-packed for
-  self-assembly on a level concrete slab. Galvanised lipped-channel portal frames arrive
-  pre-assembled and fold open on site — no welding or cutting; two people have the single kit
-  up in an afternoon and the double in about a day. Every kit includes Chromadek colour-coated
-  0.47 mm IBR sheeting on walls and roof, manual roller doors (2440 × 2135 mm) — one on the
-  single, two on the double — a 813 × 2032 mm steel side door pre-hung in its frame, a gutter
-  and downpipe, all flashings, anchors, bolts and tek screws, and an illustrated instruction
-  manual with numbered parts. Both kits are 3.0 m at the high side, with a mono-pitch roof
-  falling to ±2.74 m (6 × 3) or ±2.48 m (6 × 6). Two sizes: 6 × 3 m single (18 m², from
-  R139 900 ex VAT) and 6 × 6 m double (36 m², R278 900). Optional gable/pitched roof upgrade
-  (apex frames, ridge capping, second gutter and downpipe run) priced per kit size on
-  quotation. Slab and assembly available from the turnkey team.
 - [Safari Tents](https://tinyhomesa.com/safari-tents): Luxury canvas tented suites for game
   lodges and glamping resorts — Meru-style and curved stretch-tension canvas roofs over timber
   structures, raised decks and en-suite layouts available, engineered for African conditions.
