@@ -4,7 +4,13 @@ export const site = {
   tagline: "Innovative Instant Housing Solutions",
   description:
     "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens and safari tents, delivered nationwide from Centurion, Gauteng, and across the border into Botswana, Namibia, Zimbabwe and the rest of southern Africa.",
-  /** Apex is canonical: www.tinyhomesa.com 301s here, and every indexed URL is on the apex. */
+  /**
+   * Apex is canonical: every indexed URL is on the apex, and next.config.ts
+   * 308s www.tinyhomesa.com here. Until 2026-08-10 that redirect did not
+   * exist and www served a byte-identical 200 copy of the whole site; the
+   * claim was in this comment for months before it was true, so verify from
+   * outside the network before trusting it again.
+   */
   url: "https://tinyhomesa.com",
   phone: "+27 83 660 3743",
   phoneDisplay: "083 660 3743",
