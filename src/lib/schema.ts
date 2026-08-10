@@ -170,8 +170,24 @@ export function breadcrumbSchema(items: { name: string; path: string }[]): Schem
   };
 }
 
-/** ISO date this catalogue's prices are valid until, bump when the price list is reissued. */
-const PRICE_VALID_UNTIL = "2026-12-31";
+/**
+ * ISO date the emitted prices claim to be valid until: one year out, derived
+ * rather than typed.
+ *
+ * Google drops the price from a product rich result once `priceValidUntil` is
+ * in the past, so a hardcoded literal here silently kills the price snippet on
+ * every product the day it passes — and, because the same dead date is baked in
+ * again, a redeploy does not heal it. Product pages are statically rendered, so
+ * this is evaluated at build time and every deploy pushes the window out a
+ * further year.
+ */
+function priceValidUntil(): string {
+  const now = new Date();
+  const until = new Date(
+    Date.UTC(now.getUTCFullYear() + 1, now.getUTCMonth(), now.getUTCDate()),
+  );
+  return until.toISOString().slice(0, 10);
+}
 
 /**
  * schema.org Product node: the single JSON-LD builder for every product page.
@@ -206,6 +222,8 @@ export function productSchema(product: Product): SchemaObject {
     };
   }
 
+  const validUntil = priceValidUntil();
+
   const priceSpecification = (price: number) => ({
     "@type": "PriceSpecification",
     price,
@@ -221,7 +239,7 @@ export function productSchema(product: Product): SchemaObject {
         lowPrice: Math.min(...product.variants.map((v) => v.price)),
         highPrice: Math.max(...product.variants.map((v) => v.price)),
         offerCount: product.variants.length,
-        priceValidUntil: PRICE_VALID_UNTIL,
+        priceValidUntil: validUntil,
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller,
@@ -234,7 +252,7 @@ export function productSchema(product: Product): SchemaObject {
           price: variant.price,
           priceCurrency: "ZAR",
           priceSpecification: priceSpecification(variant.price),
-          priceValidUntil: PRICE_VALID_UNTIL,
+          priceValidUntil: validUntil,
           itemCondition: "https://schema.org/NewCondition",
           availability: "https://schema.org/InStock",
           seller,
@@ -247,7 +265,7 @@ export function productSchema(product: Product): SchemaObject {
         price: product.startingPrice,
         priceCurrency: "ZAR",
         priceSpecification: priceSpecification(product.startingPrice),
-        priceValidUntil: PRICE_VALID_UNTIL,
+        priceValidUntil: validUntil,
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller,
