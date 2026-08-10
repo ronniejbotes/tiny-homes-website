@@ -69,8 +69,11 @@ export default function QuotePage() {
           {/* The standfirst is handed to the form rather than rendered here, so
               it can step aside once a quote has been issued, because "choose your home,
               size and extras" reads as a stale instruction above a finished
-              quotation. It is still server-rendered: passing JSX as a prop to a
-              client component keeps it in the initial HTML. */}
+              quotation.
+              Passing JSX as a prop keeps it in the initial HTML only as long as
+              QuoteForm renders it OUTSIDE its Suspense boundary — see the note
+              there. It did not, until 2026-08-10, and this page server-rendered
+              seven words. */}
           <QuoteForm
             intro={
               <Reveal className="max-w-3xl">
