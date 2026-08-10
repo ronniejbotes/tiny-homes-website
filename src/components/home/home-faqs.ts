@@ -23,8 +23,22 @@ const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPric
 const highestPrice = Math.max(
   ...pricedProducts.flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice])),
 );
+/* The expandable range is the answer to the granny flat / granny pod question,
+   so its entry price is read from products.ts rather than typed here. */
+const expandableFrom = Math.min(
+  ...products.filter((p) => p.slug === "expandable-homes").map((p) => p.startingPrice),
+);
 
 export const homeFaqs: HomeFaq[] = [
+  /* The vocabulary question. "Tiny house" and "granny pod" are what a large
+     share of searchers type, but neither phrase appears anywhere else on the
+     site: the copy says "tiny home" and "granny flat" throughout. Answering
+     the difference once, in the words people use, is worth more than
+     find-and-replacing terms that read worse in body copy. */
+  {
+    q: "What's the difference between a tiny house, a granny pod and a granny flat?",
+    a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT.`,
+  },
   {
     q: "How much does delivery cost?",
     a: `${site.deliveryNote} Ask about our turnkey service and we can arrange the groundwork, connections and installation for you too.`,

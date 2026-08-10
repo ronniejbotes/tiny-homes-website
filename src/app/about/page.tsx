@@ -181,7 +181,8 @@ export default function AboutPage() {
                   We supply high-end prefab tiny homes from our base in Raslouw, Centurion,
                   X-Folds, expandable homes, nature cabins, apple cabins and glamping
                   capsules, plus outdoor kitchens and safari tents, delivered anywhere
-                  in South Africa.
+                  in South Africa. Customers call them tiny houses, granny pods or
+                  prefab cabins. The labels vary; the standard does not.
                 </p>
                 <p>
                   Conventional building takes too long, costs too much and leaves too much to

@@ -362,6 +362,10 @@ export const products: Product[] = [
         q: "Can I finance an expandable home?",
         a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
+      {
+        q: "Is an expandable home the same as a granny pod?",
+        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a full stainless-steel kitchen and expand on site within hours.",
+      },
     ],
     seoKeywords: [
       "prefab granny flat South Africa",

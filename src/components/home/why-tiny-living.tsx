@@ -44,7 +44,7 @@ export function WhyTinyLiving() {
         <SectionHeading
           eyebrow="Why tiny living"
           title="Small footprint, serious upside"
-          intro="Tiny homes aren't a compromise; they're a faster, smarter way to put a high-quality roof over your head, your guests or your business."
+          intro="Tiny homes aren't a compromise; they're a faster, smarter way to put a high-quality roof over your head, your guests or your business. Tiny house or tiny home, the build is the same: a steel frame, insulated panels and a factory finish."
         />
 
         <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
