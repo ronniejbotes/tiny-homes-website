@@ -13,7 +13,7 @@
  * Server-only.
  */
 
-import { site, showroomDirectionsUrl } from "@/lib/site";
+import { site, showroomDirectionsUrl, showroomLocation } from "@/lib/site";
 import { getProduct } from "@/data/products";
 import { formatDayLong, formatSlot, formatSlotLong, VIEWING_MINUTES, type ViewingBooking } from "@/lib/viewing";
 
@@ -35,7 +35,9 @@ export function viewingInterest(booking: ViewingBooking): string {
 }
 
 export function showroomAddress(): string {
-  return `${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}, ${site.address.region}`;
+  // The showroom, NOT site.address — that is the registered head office, 2.65 km
+  // away, and this string is what a booked visitor drives to.
+  return showroomLocation;
 }
 
 export function directionsUrl(): string {

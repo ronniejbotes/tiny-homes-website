@@ -148,9 +148,11 @@ export default function BookAViewingPage() {
                   <p className="mt-3 flex items-start gap-3 text-ink">
                     <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay" aria-hidden="true" />
                     <span>
-                      <span className="block font-medium">{site.address.streetAddress}</span>
+                      {/* The showroom, not site.address: that is the head office
+                          and is not where a viewing happens. */}
+                      <span className="block font-medium">{site.showroom.name}</span>
                       <span className="block text-sm text-stone">
-                        {site.address.locality}, {site.address.city}, {site.address.region}
+                        {site.showroom.city}, {site.showroom.region}
                       </span>
                     </span>
                   </p>
