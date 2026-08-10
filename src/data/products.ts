@@ -153,7 +153,7 @@ export const products: Product[] = [
     name: "X-Folds",
     shortName: "X-Fold",
     h1: "X-Fold folding homes",
-    seoTitle: "Folding Homes from R54 900 | Site Office",
+    seoTitle: "Folding Homes South Africa from R54 900",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
       "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
@@ -263,7 +263,7 @@ export const products: Product[] = [
     name: "Expandable Homes",
     shortName: "Expandable Home",
     h1: "Expandable prefab homes",
-    seoTitle: "Prefab Granny Flats & Homes from R199 900",
+    seoTitle: "Granny Flats South Africa from R199 900",
     tagline: "Smart living, fast, flexible and future-ready.",
     summary:
       "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
@@ -362,6 +362,10 @@ export const products: Product[] = [
         q: "Can I finance an expandable home?",
         a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
+      {
+        q: "Is an expandable home the same as a granny pod?",
+        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a full stainless-steel kitchen and expand on site within hours.",
+      },
     ],
     seoKeywords: [
       "prefab granny flat South Africa",
@@ -381,7 +385,7 @@ export const products: Product[] = [
     name: "Nature Cabins",
     shortName: "Nature Cabin",
     h1: "Nature cabins",
-    seoTitle: "Airbnb & Guest Cabins from R810 900",
+    seoTitle: "Airbnb Cabins South Africa from R810 900",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
       "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
@@ -483,7 +487,7 @@ export const products: Product[] = [
     name: "Apple Cabins",
     shortName: "Apple Cabin",
     h1: "Apple cabins",
-    seoTitle: "Glamping & Resort Pods from R449 900",
+    seoTitle: "Resort Pods South Africa from R449 900",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
       "Big living in a small package: a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
@@ -575,7 +579,7 @@ export const products: Product[] = [
     name: "Glamping Capsules",
     shortName: "Glamping Capsule",
     h1: "Glamping capsules",
-    seoTitle: "Glamping Pods & Capsules from R689 900",
+    seoTitle: "Glamping Pods South Africa from R689 900",
     tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
     summary:
       "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
@@ -703,7 +707,7 @@ export const products: Product[] = [
     name: "Outdoor Kitchens",
     shortName: "Outdoor Kitchen",
     h1: "Outdoor kitchens",
-    seoTitle: "Braai & Patio Kitchens from R154 400",
+    seoTitle: "Outdoor Kitchens South Africa from R154 400",
     tagline: "Braai, cook, host, then close the roof on the weather.",
     summary:
       "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink, in four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
@@ -819,7 +823,7 @@ export const products: Product[] = [
     name: "Safari Tents",
     shortName: "Safari Tent",
     h1: "Luxury safari tents",
-    seoTitle: "Safari & Glamping Tents for Lodges",
+    seoTitle: "Safari Tents South Africa for Lodges",
     tagline: "Luxury under canvas, engineered for Africa.",
     summary:
       "Luxury canvas tented suites for game lodges and glamping resorts: Meru-style and curved stretch-tension canvas roofs over timber structures, with raised decks and en-suite layouts available. Every tent is configured to your site and brief, priced on request after a consultation.",
