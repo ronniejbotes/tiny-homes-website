@@ -485,8 +485,14 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // drawing of its own, and getPlan() would silently hand it the 6m home's
   // geometry. Offering no floor plan is the honest answer.
   const canShowPlan = planSheets.length > 0 || hasDrawnPlan(product, variantId);
-  const tabs = VIEW_TABS.filter(
-    (tab) => (tab.id !== "cutaway" || hasVisual) && (tab.id !== "floorplan" || canShowPlan),
+  // Memoised because onTabKeyDown closes over it: a fresh array every render
+  // would rebuild that callback every render too.
+  const tabs = useMemo(
+    () =>
+      VIEW_TABS.filter(
+        (tab) => (tab.id !== "cutaway" || hasVisual) && (tab.id !== "floorplan" || canShowPlan),
+      ),
+    [hasVisual, canShowPlan],
   );
   // Derived, not stored: a layout only counts while the selected size still
   // offers it, so switching size can never carry a stale plan to the quote.
