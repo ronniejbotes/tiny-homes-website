@@ -39,7 +39,7 @@ PLAN_PAGE_COUNT = {"expandable-homes": 1, "apple-cabins": 1, "glamping-capsules"
 
 COVER_IMAGE = ("nature-cabins", "exterior-timber-render.jpg")
 WHY_BAND = ("expandable-homes", "scenic-winelands.jpg")
-ORDER_BAND = ("folding-homes", "site-installations-aerial.jpg")
+ORDER_BAND = ("folding-homes", "exterior-timber-door.jpg")
 BACK_BAND = ("glamping-capsules", "exterior-night-pool.jpg")
 
 # Per-product page content. Blurbs are written price-free from the start so the
@@ -48,7 +48,7 @@ PAGES = {
     "folding-homes": {
         "name": "X-Fold",
         "eyebrow": "Folding homes",
-        "image": "exterior-evening-braai.jpg",
+        "image": "exterior-forest-render.jpg",
         "blurb": ("Flips from flat-pack to a fully enclosed, EPS-insulated 15 m&sup2; room in minutes: "
                   "two workers, four steps. Upgraded floor beams, insulated panels and a basic electrical "
                   "setup come standard. It arrives wired for electricity, ready for plumbing to be added "
@@ -97,11 +97,11 @@ PAGES = {
         "name": "Nature Cabins",
         "eyebrow": "Nature cabins",
         "image": "exterior-timber-cabin-deck.jpg",
-        "blurb": ("A 26 m&sup2; cabin with a 1.5 &times; 3.2 m viewing terrace that drops lightly into beach, "
-                  "bush or mountain sites. Nothing is left on the options list: polyurethane-insulated walls, "
+        "blurb": ("A 21 m&sup2; cabin with a 1.5 &times; 3.2 m viewing terrace, 26 m&sup2; in total, that drops "
+                  "lightly into beach, bush or mountain sites. Nothing is left on the options list: polyurethane-insulated walls, "
                   "double glazing, a fitted bathroom, a kitchen with a stone countertop, Midea air "
                   "conditioning and a storage geyser are all standard."),
-        "facts": [("26 m&sup2;", "Plus terrace"), ("Fully built", "On arrival"),
+        "facts": [("21 m&sup2;", "Plus terrace"), ("Fully built", "On arrival"),
                   ("Included", "Kitchen &amp; bath"), ("Aircon", "As standard")],
         "ticks": ["Warm timber look with steel durability",
                   "Kitchen with stone countertop and induction cooker",
@@ -363,8 +363,8 @@ def page_glance(im, priced, folio):
             + ('<col class="c-amt">' if priced else ''))
     head = (cols + '<tr><th></th><th>Product</th><th>Size</th><th>Setup</th>'
             + ('<th class="r">Price ex VAT</th>' if priced else '') + '</tr>')
-    note = ("Every product carries a 1-year limited guarantee. Delivery, groundwork and installation are "
-            "quoted separately on your location and site access. Finance and lay-bye options are "
+    note = ("Every product carries a 1-year limited guarantee. Delivery and installation are quoted "
+            "separately on your location and site access, and the groundwork is arranged by you. Finance and lay-bye options are "
             "available, subject to credit approval."
             + (" Prices exclude VAT and are subject to change." if priced else
                " Pricing for every line is provided on request, quoted to your site and specification."))
@@ -528,7 +528,8 @@ def page_index(priced, folio):
         run += n
 
     lede = ("Every model we build, on one page, with the price for each. These are the units themselves, "
-            "excluding VAT; delivery, groundwork and any optional extras are quoted separately. Each "
+            "excluding VAT; delivery and any optional extras are quoted separately, and the groundwork is "
+            "arranged by you. Each "
             "product's own pages follow, with the sizes drawn to scale."
             if priced else
             "Every model we build, on one page. Pricing for each is provided on request, quoted to your "
@@ -649,13 +650,13 @@ def page_order(im, priced, folio):
     step2 = ("Most homes are ready in around 90 days from deposit to delivered on site."
              if priced else
              "Most homes are ready in around 90 days from deposit to delivered on site.")
-    fine = ("Delivery, groundwork and installation are quoted separately on your location and site "
-            "access. Optional-extra pricing is confirmed line by line on your formal quotation. Finance "
-            "and lay-bye are subject to credit approval."
+    fine = ("Delivery and installation are quoted separately on your location and site access, and the "
+            "groundwork is arranged by you. Optional-extra pricing is confirmed line by line on your "
+            "formal quotation. Finance and lay-bye are subject to credit approval."
             if priced else
-            "Every line in this brochure is quoted to your site and specification. Delivery, groundwork "
-            "and installation are quoted separately on your location and site access. Finance and "
-            "lay-bye are subject to credit approval.")
+            "Every line in this brochure is quoted to your site and specification. Delivery and "
+            "installation are quoted separately on your location and site access, and the groundwork is "
+            "arranged by you. Finance and lay-bye are subject to credit approval.")
     return f"""
 <section class="page grain">
   <div class="flow pad head"><div class="flow-inner">
@@ -675,7 +676,7 @@ def page_order(im, priced, folio):
            location and site access.</p></li>
       <li><div class="num">4</div><h3>Installed and handed over</h3>
         <p>Setup runs from minutes for an X-Fold to professional installation for cabins and capsules.
-           Our turnkey team can prepare the groundwork while your unit is being built.</p></li>
+           In Gauteng, our turnkey team can prepare the groundwork while your unit is being built.</p></li>
     </ol>
 
     <div style="margin-top:8mm">
@@ -685,7 +686,7 @@ def page_order(im, priced, folio):
         <li>1-year limited guarantee on every product, with full after-sales support</li>
         <li>Delivered to all nine provinces, and quoted across the border on request</li>
         <li>Coastal sites are specified for salt air on quotation</li>
-        <li>Turnkey groundwork, plinths and connections available on request</li>
+        <li>Turnkey groundwork, plinths and connections available on request in Gauteng</li>
       </ul>
     </div>
 
@@ -702,15 +703,15 @@ def page_order(im, priced, folio):
 
 
 def page_contact(im, priced):
-    fine = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery, "
-            "groundwork and installation are quoted separately. Optional-extra pricing is confirmed line "
-            "by line on your formal quotation. Finance and lay-bye are subject to credit approval. "
-            "Tiny Homes (Pty) Ltd."
+    fine = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery and "
+            "installation are quoted separately, and the groundwork is arranged by you. Optional-extra "
+            "pricing is confirmed line by line on your formal quotation. Finance and lay-bye are subject "
+            "to credit approval. Tiny Homes (Pty) Ltd."
             if priced else
             "This brochure carries no pricing. Every product is quoted individually to your site, "
             "specification and volume, and the itemised quotation is confirmed in writing before "
-            "anything is committed. Delivery, groundwork and installation are quoted separately. Finance "
-            "and lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd.")
+            "anything is committed. Delivery and installation are quoted separately, and the groundwork "
+            "is arranged by you. Finance and lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd.")
     return f"""
 <section class="page grain">
   <div class="flow pad head"><div class="flow-inner">

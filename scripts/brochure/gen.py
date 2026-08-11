@@ -25,7 +25,9 @@ import segno
 import plan as planlib
 
 BASE = pathlib.Path(__file__).parent
-SITE_IMG = pathlib.Path("/Users/ronjames/Documents/GitHub/tiny-homes-website/public/images")
+# Resolved from this file, not hard-coded: a worktree or a second clone has to
+# read its own images, or it silently renders another checkout's photographs.
+SITE_IMG = pathlib.Path(__file__).resolve().parents[2] / "public" / "images"
 DATA = json.loads((BASE / "data.json").read_text())
 PRODUCTS = {p["slug"]: p for p in DATA["products"]}
 SITE = DATA["site"]
@@ -203,18 +205,17 @@ CONFIG = {
                   ("2 high", "Stackable"), ("1 year", "Guarantee")],
         "h2_product": "Four steps, two workers",
         "h2_uses": "One room, seven jobs",
-        "images": {"cover": "exterior-evening-braai.jpg", "feature": "interior-living-warm.jpg",
-                   "band2": "site-installations-aerial.jpg", "band4": "exterior-lawn-1.jpg"},
-        "feature_cap": "Finished inside on arrival. The X-Fold ships wired but without plumbing; a local installer can add a bathroom on site.",
-        "band2_cap": "Stackable two units high and relocatable: fold it back down and send it to the next site.",
+        "images": {"cover": "exterior-timber-door.jpg", "feature": "interior-shell-furnished-v2.jpg",
+                   "band2": "interior-shell-empty-v2.jpg", "band4": "exterior-forest-render.jpg"},
+        "feature_cap": "Finished inside on arrival. It ships wired but without plumbing; a local installer can add a bathroom or wet room on site.",
+        "band2_cap": "It arrives as a finished room, not a kit: white wall boards, a vinyl floor, and the steel door, window and DB board already in.",
         "band4_cap": "Delivered nationwide from Centurion, Gauteng, on a level slab or precast plinths.",
-        "cover_pos": "50% 55%",
+        "cover_pos": "50% 50%",
         "gallery": [
-            ("exterior-colour-options.jpg", "Four standard looks: a white frame with grey walls, or wood-grain walls with a white or black frame."),
-            ("exterior-timber-door.jpg", "Timber-look walls with a steel door and a PVC window, both factory fitted."),
+            ("interior-shell-empty-v2.jpg", "Inside before fit-out: white wall boards, a vinyl floor, and the steel door, window and DB board already fitted."),
             ("interior-facilities-collage.png", "Fit-out options, from bunk bedrooms to an ablution layout, arranged to your brief."),
-            ("exterior-assembled-showroom.jpg", "Set up as a backyard guest suite: unfolded, secured and connected the same day."),
-            ("site-installations-aerial.jpg", "Rows of units on a South African site: repeatable, and priced for volume deployment."),
+            ("exterior-timber-door.jpg", "Wood-grain walls with a black frame. The hinge runs the length of the side wall, and the window sits beside the door."),
+            ("exterior-forest-render.jpg", "Grey walls with a white frame, on a paved plinth: two of the four standard finishes."),
         ],
     },
     "expandable-homes": {
@@ -243,13 +244,13 @@ CONFIG = {
         "h1": "Nature Cabins",
         "eyebrow": "Nature cabins",
         "sub": "For places worth waking up in.",
-        "stats": [("26 m&sup2;", "Plus terrace"), ("Fully built", "On arrival"),
+        "stats": [("21 m&sup2;", "Plus terrace"), ("Fully built", "On arrival"),
                   ("Included", "Kitchen &amp; bath"), ("1 year", "Guarantee")],
         "h2_product": "Nothing left on the options list",
         "h2_uses": "Where it earns its keep",
         "images": {"cover": "exterior-timber-cabin-deck.jpg", "feature": "interior-fireplace-lounge.jpg",
                    "band2": "interior-bathtub-view.jpg", "band4": "exterior-forest-aerial.jpg"},
-        "feature_cap": "A fitted bathroom, a kitchen with a stone countertop and induction cooker, and Midea air conditioning all come standard. Interior photography is illustrative: the wall boards are bamboo, not timber cladding.",
+        "feature_cap": "A fitted bathroom, a kitchen with a stone countertop and induction cooker, and Midea air conditioning all come standard. Interior photography is illustrative: the wall boards are white as standard, or bamboo on request, never timber cladding.",
         "band2_cap": "Double-glazed aluminium framed glazing, and a waterproof SPC laminate floor over 18 mm cement fibre board.",
         "band4_cap": "Arrives as a fully built unit; the site must be reachable by an oversized cargo truck.",
         "cover_pos": "50% 58%",
@@ -257,7 +258,7 @@ CONFIG = {
             ("exterior-timber-render.jpg", "The arched timber gable and glazed front: the elevation that faces the view."),
             ("exterior-deck-morning-mist.jpg", "The glazed gable end and its 1.5 × 3.2 m viewing terrace at dawn."),
             ("detail-timber-window.jpg", "Honey-toned exterior cladding with black-framed double glazing."),
-            ("interior-bedroom-forest-view.jpg", "The bed faces the glazed gable end: 26 m² laid out around the view."),
+            ("interior-bedroom-forest-view.jpg", "The bed faces the glazed gable end: 21 m² laid out around the view."),
             ("exterior-dusk-firepit.jpg", "Lit at dusk, with the terrace and fire pit doing the work the main lodge would otherwise do."),
         ],
     },
@@ -339,7 +340,7 @@ CONFIG = {
                    "band2": "interior-lounge-styling.jpg", "band4": "desert-mountain-camp-aerial.jpg"},
         "feature_cap": "En-suite layouts are available, configured to your brief and the guest experience you are building.",
         "band2_cap": "Canvas over timber structures, with raised decks available for views and airflow.",
-        "band4_cap": "Supplied and installed by Tiny Homes SA with our manufacturing partner.",
+        "band4_cap": "Supplied and installed by our manufacturing partner; Tiny Homes SA is not involved in the installation.",
         "cover_pos": "50% 55%",
         "gallery": [
             ("dusk-firepit-dining-deck.jpg", "A scalloped olive roof over a timber deck, with dining and a fire pit outside."),
@@ -372,10 +373,10 @@ CONFIG = {
 ORDER = ["folding-homes", "expandable-homes", "nature-cabins", "apple-cabins",
          "glamping-capsules", "outdoor-kitchens", "safari-tents"]
 
-FINE_STD = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery, "
-            "groundwork and installation are quoted separately. Optional-extra pricing is confirmed "
-            "line by line on your formal quotation. Finance and lay-bye are subject to credit "
-            "approval. Tiny Homes (Pty) Ltd.")
+FINE_STD = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery "
+            "and installation are quoted separately, and the groundwork is arranged by you. "
+            "Optional-extra pricing is confirmed line by line on your formal quotation. Finance and "
+            "lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd.")
 
 # Second pass of per-product copy: the caveat box, the ordering step that is
 # genuinely product-specific, the sizes page and how the dimensions bar should
@@ -415,9 +416,9 @@ EXTRA = {
                        "and a kitchen, 75 mm EPS insulated walls, vinyl flooring and double-glazed windows "
                        "and a door as standard. What changes with size is the number of rooms and the "
                        "layouts available, which are set out on the next page."),
-        "sizes_note": ("<strong>Prices are per unit, ex VAT, for the home itself.</strong> Delivery, "
-                       "groundwork and the connections to water, power and sewer are quoted separately "
-                       "on your location and site access."),
+        "sizes_note": ("<strong>Prices are per unit, ex VAT, for the home itself.</strong> Delivery is quoted "
+                       "separately on your location and site access; the groundwork and the connections "
+                       "to water, power and sewer are arranged by you."),
         "h2_layouts": "Choose your layout",
         "layouts_lede": ("The internal layout is chosen when you order, at no change to the prices above. "
                          "These are the standard arrangements for each size: eight for the 6m home and "
@@ -438,12 +439,12 @@ EXTRA = {
         "order4_title": "Connect and move in",
         "order4_body": ("The cabin arrives fully built, so only the final connections to water, electricity "
                         "and sewerage remain, arranged by you on a prepared site."),
-        "fine": (FINE_STD + " Interior photography is illustrative: interior wall boards are bamboo, and the "
-                 "finish is confirmed on your quotation."),
+        "fine": (FINE_STD + " Interior photography is illustrative: interior wall boards are white as "
+                 "standard and bamboo on request, and the finish is confirmed on your quotation."),
         "h2_sizes": "The floor, drawn to scale",
-        "sizes_lede": ("The nature cabin is built in one size: 26 m&sup2; of cabin plus a 1.5 &times; 3.2 m "
-                       "viewing terrace, 8.1 m long overall. The bathroom and the kitchen are included in "
-                       "that floor, and this is where they sit."),
+        "sizes_lede": ("The nature cabin is built in one size: 21 m&sup2; of cabin plus a 1.5 &times; 3.2 m "
+                       "viewing terrace, 8.1 m long and 26 m&sup2; overall. The bathroom and the kitchen are "
+                       "included in that floor, and this is where they sit."),
         "plan_note": ("<strong>Everything in this plan is included in the price.</strong> The bathroom, the "
                       "kitchen with its stone countertop and induction cooker, the air conditioning, the "
                       "geyser and the viewing terrace are all standard: there is no options list to price "
@@ -562,11 +563,11 @@ EXTRA = {
         "order2_body": ("Lead time is confirmed with your itemised quotation once the brief and site are "
                         "settled."),
         "order4_title": "Supplied and installed",
-        "order_setup": "Supplied and installed by Tiny Homes SA with our manufacturing partner.",
+        "order_setup": "Supplied and installed by our manufacturing partner; Tiny Homes SA is not involved in the installation.",
         "fine": ("Safari tents are priced on request: every project is quoted after a consultation, and the "
                  "itemised quotation is confirmed in writing before anything is committed. Prices exclude "
-                 "VAT. Delivery, groundwork and installation are quoted separately. Finance and lay-bye are "
-                 "subject to credit approval. Tiny Homes (Pty) Ltd."),
+                 "VAT. Delivery and installation are quoted separately, and the groundwork is arranged by "
+                 "you. Finance and lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd."),
     },
 }
 
@@ -579,7 +580,6 @@ SCOPE_DEFAULT = {
            "Everything listed under Included as standard",
            "1-year limited guarantee, with full after-sales support"],
     "sep": ["Delivery from Centurion, on distance and site access",
-            "Groundwork: the slab or plinths the unit stands on",
             "Any optional extras you choose",
             "VAT"],
     "you": ["A level, prepared foundation, finished before delivery",
@@ -594,8 +594,11 @@ SCOPE = {
                "EPS insulation and upgraded floor beams",
                "Electrics: two plug points, a light fitting and a small DB board",
                "1-year limited guarantee, with full after-sales support"],
+        "sep": ["Delivery from Centurion, on distance and site access",
+                "Offloading: the crane or forklift, and the two people who unfold it, arranged by us",
+                "Any optional extras you choose",
+                "VAT"],
         "you": ["A level concrete slab or properly levelled precast plinths",
-                "A crane or forklift to offload, and two people to unfold it",
                 "The power connection to the DB board",
                 "A local plumber, if you want a bathroom or wet room added"],
     },
@@ -611,7 +614,6 @@ SCOPE = {
                "Midea air conditioning and a 40–60 L storage electric water heater",
                "Polyurethane-insulated walls, double glazing and SPC laminate flooring"],
         "sep": ["Delivery by oversized cargo truck, on distance and site access",
-                "Groundwork: foundation, water, electricity and sewerage",
                 "VAT"],
         "you": ["The foundation and all services, completed before delivery",
                 "The final connections once the cabin is placed",
@@ -630,7 +632,6 @@ SCOPE = {
                "Multi-layer thermal insulation, complete plumbing and electrical",
                "Interior and exterior lighting, intelligent front-door access"],
         "sep": ["Delivery from Centurion, on distance and site access",
-                "Groundwork, electrical and plumbing, completed before delivery",
                 "The kitchen and air conditioning, and any other extras you choose",
                 "VAT"],
     },
@@ -648,13 +649,13 @@ SCOPE = {
     },
     "safari-tents": {
         "in": ["The tent, deck and layout exactly as set out in your itemised quotation",
-               "Supply and installation by Tiny Homes SA with our manufacturing partner",
+               "Supply and installation by our manufacturing partner, who installs on site, not us",
                "Configuration to your site, brief and guest experience",
                "Full after-sales support"],
         "sep": ["Delivery and installation, quoted per project",
-                "Groundwork and platform preparation",
                 "VAT"],
-        "you": ["Site access for delivery and installation crews",
+        "you": ["Groundwork and platform preparation",
+                "Site access for delivery and installation crews",
                 "Services to the tent: water, power and waste",
                 "Any municipal or reserve approval the site requires"],
     },
@@ -1216,7 +1217,7 @@ def page_layouts(p, cfg, folio, title, sub, items, wide, lede, note, band=None):
 def page_steps(p, cfg, im, folio, band=None):
     """The X-Fold's unfold sequence: the thing people ask about before anything else."""
     steps = [
-        ("Offload", "A crane or forklift lifts the flat-packed unit onto a level concrete slab or properly levelled precast plinths."),
+        ("Offload", "We arrange the crane or forklift, quoted with your delivery. It lifts the flat-packed unit onto your level slab or precast plinths."),
         ("Unfold", "Two workers swing the hinged wall and roof panels up and out. No specialist crew and no on-site build."),
         ("Secure", "The steel frame locks square and weather-tight, with its steel door and two windows already fitted."),
         ("Connect", "Connect the power. Two plug points, a light fitting and a small DB board arrive wired and ready."),
@@ -1503,7 +1504,7 @@ def page_uses(p, cfg, im, folio):
           <p>From Centurion, Gauteng, anywhere in South Africa. Delivery is quoted separately on your
              location and site access.</p></div>
         <div class="o"><div class="k nums">04</div><h3>{cfg.get('order4_title','Installed on site')}</h3>
-          <p>{cfg.get('order4_body', setup + ' Our turnkey team can prepare the groundwork while your unit is being built.')}</p></div>
+          <p>{cfg.get('order4_body', setup + ' In Gauteng, our turnkey team can prepare the groundwork while your unit is being built.')}</p></div>
       </div>
     </div>
   </div></div>
@@ -1584,11 +1585,11 @@ def build(slug):
         im["fold"] = datauri(prep(slug, "folding-mechanism.png", "fold.png", 1100))
         im["folddiag"] = datauri(prep(slug, "unfold-mechanism-diagram.jpg", "folddiag.jpg", 1000))
         pages.append(page_steps(p, cfg, im, n, band=band_img(
-            slug, "exterior-woodland-1.jpg",
+            slug, "exterior-forest-render.jpg",
             "The unit arrives finished: steel door, windows, insulation and electrics already fitted."))); n += 1
         pages.append(page_plan(p, cfg, n, band=band_img(
             slug, "exterior-timber-door.jpg",
-            "Timber-look walls with a white frame, one of four standard finishes."))); n += 1
+            "Wood-grain walls with a black frame, one of four standard finishes."))); n += 1
     elif slug == "nature-cabins":
         pages.append(page_plan(p, cfg, n, band=band_img(
             slug, "exterior-two-cabins.jpg",
