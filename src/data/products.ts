@@ -218,11 +218,11 @@ export const products: Product[] = [
     faqs: [
       {
         q: "How long does it take to set up an X-Fold?",
-        a: "Minutes, not days. A crane or forklift offloads the unit, then two workers unfold and secure it in four simple steps: walls, windows, door and electrics arrive already installed.",
+        a: "Minutes, not days. We arrange the crane or forklift that offloads the unit, quoted with your delivery, then two workers unfold and secure it in four simple steps: walls, windows, door and electrics arrive already installed.",
       },
       {
         q: "What foundation does an X-Fold need?",
-        a: "A level concrete slab or properly levelled precast plinths. If you'd rather not manage that yourself, our turnkey team can prepare the groundwork while your home is being built.",
+        a: "A level concrete slab or properly levelled precast plinths. In Gauteng, if you'd rather not manage that yourself, our turnkey team can prepare the groundwork while your home is being built. Elsewhere the groundwork is arranged by you.",
       },
       {
         q: "Can X-Folds be moved after installation?",
@@ -388,28 +388,29 @@ export const products: Product[] = [
     seoTitle: "Airbnb Cabins South Africa from R810 900",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
-      "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
+      "A 21 m² cabin with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The 26 m² cabin (8.1 × 3.2 × 3.4 m) pairs the warm look of timber with a tough steel structure and a 1.5 × 3.2 m viewing terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
+      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
-    sizeLabel: "26 m² + terrace",
+    sizeLabel: "21 m² + terrace",
     /** Owner-confirmed 2026-08-04: units are now imported fully built, so there
      *  is no on-site assembly programme. The old "under 3 days" figure is
      *  superseded and must not reappear in copy, FAQs or brochures. */
     setupTime: "Delivered fully built",
     dims: { length: 8.1, width: 3.2, height: 3.4 },
     specs: [
-      { label: "Floor area", value: "26 m² plus 1.5 × 3.2 m viewing terrace" },
+      { label: "Floor area", value: "21 m² cabin plus a 1.5 × 3.2 m viewing terrace: 26 m² in total" },
       { label: "External size", value: "8.1 m × 3.2 m × 3.4 m" },
       { label: "Structure", value: "Steel frame with timber-look exterior" },
       { label: "Walls", value: "Polyurethane-insulated, standard" },
+      { label: "Interior finish", value: "White wall boards as standard; bamboo boards available on request. The cabin is not clad in timber inside" },
       { label: "Windows & doors", value: "Double-glazed glass with aluminium frames, standard" },
       { label: "Flooring", value: "18 mm cement-fibre board with waterproof SPC laminate, standard" },
       { label: "Kitchen", value: "Stone countertop, wash basin and induction cooker, included" },
       { label: "Bathroom", value: "Fully fitted bathroom, included" },
       { label: "Air conditioning", value: "Midea air conditioning, included as standard" },
       { label: "Hot water", value: "40–60 L storage electric water heater, included as standard" },
-      { label: "Terrace", value: "1.5 m × 3.2 m viewing terrace" },
+      { label: "Terrace", value: "1.5 m × 3.2 m viewing terrace, included in the 26 m² total" },
       { label: "Installation", value: "Arrives as a fully built unit; only the final connections to services are needed on site" },
       { label: "Site", value: "Groundwork (water, electricity, sewerage, foundation) and the final connections are arranged by the client" },
       { label: "Site access", value: "Delivered by oversized cargo truck. Sites reachable only by 4x4 cannot be serviced" },
@@ -431,7 +432,7 @@ export const products: Product[] = [
       },
       {
         title: "Guest farm and farm cottage",
-        body: "A 26 m² cabin with a 1.5 × 3.2 m viewing terrace, delivered as a fully built unit that needs only its final connections once the groundwork is in. Timber looks with a steel structure behind it, which is what makes it viable on working land rather than just pretty.",
+        body: "A 21 m² cabin with a 1.5 × 3.2 m viewing terrace, delivered as a fully built unit that needs only its final connections once the groundwork is in. Timber looks with a steel structure behind it, which is what makes it viable on working land rather than just pretty.",
       },
       {
         title: "Bush retreat",
@@ -447,7 +448,7 @@ export const products: Product[] = [
       },
       {
         title: "Backyard studio",
-        body: "A fully serviced 26 m² studio at the end of the garden, with bathroom, kitchen, air conditioning and hot water included, for a home office, a teenager, or a long-stay guest who needs their own front door.",
+        body: "A fully serviced 21 m² studio at the end of the garden, with bathroom, kitchen, air conditioning and hot water included, for a home office, a teenager, or a long-stay guest who needs their own front door.",
       },
     ],
     options: [],
@@ -458,7 +459,7 @@ export const products: Product[] = [
       },
       {
         q: "Are nature cabins good for Airbnb and guest farms?",
-        a: "Yes. The 26 m² layout plus viewing terrace is designed for hospitality use, with a fitted kitchen (stone countertop, wash basin and induction cooker), a fully fitted bathroom, Midea air conditioning, a 40–60 L storage electric water heater, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard, making it easy to run as guest accommodation.",
+        a: "Yes. The 21 m² layout plus its viewing terrace, 26 m² in total, is designed for hospitality use, with a fitted kitchen (stone countertop, wash basin and induction cooker), a fully fitted bathroom, Midea air conditioning, a 40–60 L storage electric water heater, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard, making it easy to run as guest accommodation.",
       },
       {
         q: "What's included as standard?",
@@ -839,7 +840,7 @@ export const products: Product[] = [
       { label: "Structure", value: "Canvas over timber structures, with raised decks available" },
       { label: "Layouts", value: "En-suite layouts available, configured to your brief" },
       { label: "Built for", value: "Engineered for African conditions" },
-      { label: "Supply", value: "Supplied and installed by Tiny Homes SA with our manufacturing partner" },
+      { label: "Supply", value: "Supplied and installed by our manufacturing partner. Tiny Homes SA is not involved in the installation" },
       { label: "Pricing", value: "On request: itemised quotation after a consultation" },
       { label: "Lead time", value: "Quoted per project" },
     ],

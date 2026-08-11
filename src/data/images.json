@@ -42,6 +42,22 @@
         "hero": false
       },
       {
+        "src": "/images/products/folding-homes/interior-shell-furnished-v2.jpg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "X-Fold interior furnished as a bedroom, with white wall boards, a vinyl floor and the steel door beside the window.",
+        "kind": "interior",
+        "hero": false
+      },
+      {
+        "src": "/images/products/folding-homes/interior-shell-empty-v2.jpg",
+        "width": 2000,
+        "height": 1333,
+        "alt": "Empty X-Fold interior showing the white wall boards, vinyl floor, steel door, window and DB board.",
+        "kind": "interior",
+        "hero": false
+      },
+      {
         "src": "/images/products/folding-homes/site-installations-aerial.jpg",
         "width": 2000,
         "height": 1116,
