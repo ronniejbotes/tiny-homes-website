@@ -390,6 +390,21 @@ function resolveForVariant(plan: ProductPlan, product: Product, variantId?: stri
   };
 }
 
+/**
+ * Whether a drawn plan really exists for this size, rather than a fallback.
+ *
+ * getPlan() below quietly substitutes the 6m home's geometry for any expandable
+ * size it has no drawing for, which is fine as a rendering fallback and wrong as
+ * an answer to "can we show this customer their floor plan?". The 18 m2 compact
+ * is 2.95 m wide; drawing it as the 5.8 m home and labelling it 18 m2 would be a
+ * confident wrong picture. Callers that offer a floor plan to a customer should
+ * ask this first.
+ */
+export function hasDrawnPlan(product: Product, variantId?: string): boolean {
+  if (product.slug !== "expandable-homes") return product.slug in PLANS;
+  return (variantId ?? DEFAULT_EXPANDABLE_VARIANT) in EXPANDABLE_PLANS;
+}
+
 /** Resolve the plan for a product (per-variant geometry for expandable homes). */
 export function getPlan(product: Product, variantId?: string): ProductPlan {
   const base =

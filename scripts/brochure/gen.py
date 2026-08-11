@@ -1611,7 +1611,7 @@ def build(slug):
                        "matters for site access; the expanded figure is what you live in.")))
         n += 1
         layout_pages = [
-            ("default", "6m layouts &middot; 37 m&sup2;", "Eight standard arrangements, from open plan to four bedrooms",
+            ("b20", "6m layouts &middot; 37 m&sup2;", "Eight standard arrangements, from open plan to four bedrooms",
              cfg["layouts_lede"]),
             ("b40", "12m layouts &middot; 74 m&sup2;", "Seven standard arrangements, including laundry, walk-in-wardrobe and office variants",
              "The 12m home is 12 &times; 6.3 m expanded, and takes the widest choice of layouts in the range. "

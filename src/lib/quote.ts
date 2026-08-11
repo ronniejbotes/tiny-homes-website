@@ -8,13 +8,14 @@
  */
 
 import {
+  activeOptions,
   configuredPrice,
   getProduct,
-  isOptionAvailable,
   type CustomOption,
   type Product,
   type ProductVariant,
 } from "@/data/products";
+import { findLayout, type LayoutOption } from "@/lib/layouts";
 
 /**
  * South African VAT. Held at 15% since 1 April 2018, the 2025 Budget increases
@@ -54,6 +55,8 @@ export type ContactField = keyof ContactValues;
 export interface QuoteUnit {
   slug: string;
   variantId?: string;
+  /** Chosen internal floor plan, where the size offers a choice of them. */
+  layoutId?: string;
   optionIds: string[];
   quantity: number;
 }
@@ -78,6 +81,8 @@ export interface QuoteLine {
   id: string;
   product: Product;
   variant: ProductVariant | undefined;
+  /** The chosen floor plan, resolved against what that size actually offers. */
+  layout: LayoutOption | undefined;
   activeOptions: CustomOption[];
   quantity: number;
   /** Variant (or product starting) price for one unit, before extras. */
@@ -125,14 +130,9 @@ export function resolveQuoteLine(unit: QuoteUnit, id: string): QuoteLine | null 
   const selected: Partial<Record<string, boolean>> = {};
   for (const optionId of unit.optionIds) selected[optionId] = true;
 
-  // Mirror configuredPrice()'s filter exactly: an extra that isn't offered on
-  // the chosen size costs nothing, so it must not be listed either.
-  const activeOptions = product.options.filter(
-    (o) =>
-      isOptionAvailable(o, unit.variantId) &&
-      selected[o.id] &&
-      (!o.requires || selected[o.requires]),
-  );
+  // The same resolution the price uses, not a copy of it: what gets listed and
+  // what gets charged are the same set by construction.
+  const options = activeOptions(product, selected, unit.variantId);
 
   const quantity = clampQuantity(unit.quantity);
   const unitPrice = configuredPrice(product, selected, unit.variantId);
@@ -141,7 +141,10 @@ export function resolveQuoteLine(unit: QuoteUnit, id: string): QuoteLine | null 
     id,
     product,
     variant,
-    activeOptions,
+    // An id that is unknown, or belongs to a different size, resolves to
+    // nothing rather than printing a layout we never offered.
+    layout: findLayout(product.slug, unit.variantId, unit.layoutId),
+    activeOptions: options,
     quantity,
     basePrice: variant ? variant.price : product.startingPrice,
     areaM2: variant?.areaM2,

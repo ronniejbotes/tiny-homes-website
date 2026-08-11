@@ -89,6 +89,10 @@ function LineBlock({ line, index }: { line: QuoteLine; index: number }) {
         </span>
       </div>
 
+      {line.layout && (
+        <p className="mt-1 text-sm text-stone">Layout: {line.layout.label}</p>
+      )}
+
       {onRequest ? (
         <p className="mt-2 text-sm leading-relaxed text-stone">
           Configured to your site and brief; we&apos;ll price this line after a short

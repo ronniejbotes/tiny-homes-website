@@ -20,6 +20,7 @@ import Image from "next/image";
 import {
   Armchair,
   Box,
+  Check,
   Home,
   Image as ImageIcon,
   LayoutGrid,
@@ -44,6 +45,8 @@ import { ButtonLink, Button } from "@/components/ui/button";
 import { scenes } from "./scenes";
 import { FoldingHomesScene } from "./scenes/folding-homes-scene";
 import { FloorPlanView } from "./floorplan";
+import { hasDrawnPlan } from "./floorplan/plans";
+import { getLayouts, getPlanSheets, type LayoutOption } from "@/lib/layouts";
 
 /* ------------------------------------------------------------------ */
 /* Animated price readout                                              */
@@ -201,50 +204,83 @@ const manifestConfigurator = manifest.configurator as Record<string, InteriorPai
 
 /* Catalogue floor-plan renders (per product, per size family), shown in the
    Floor plan tab instead of the illustrated SVG when the product has them. */
-interface CatalogPlan {
-  src: string;
-  width: number;
-  height: number;
-  label: string;
-}
-
-const manifestLayoutPlans = manifest.layoutPlans as Record<
-  string,
-  Record<string, CatalogPlan[]> | undefined
->;
-
+/**
+ * Manufacturer plan sheets.
+ *
+ * Where the size comes in more than one arrangement the sheets are selectable,
+ * and the choice travels to the quote. They used to be a read-only grid, which
+ * is how a customer could study eight layouts on this page and then have no way
+ * to tell us which one they wanted.
+ */
 function CatalogPlansView({
   plans,
   sizeLabel,
+  selectedId,
+  onSelect,
 }: {
-  plans: CatalogPlan[];
+  plans: LayoutOption[];
   sizeLabel: string;
+  selectedId?: string;
+  onSelect?: (id: string) => void;
 }) {
   // A variant with one plan sheet (apple cabins, glamping capsules) gets the
   // full panel width; these are long, thin drawings whose room labels and
   // dimensions are unreadable at a third of it. Multi-plan sets (expandable
   // homes) stay in the browsable grid.
   const single = plans.length === 1;
+  const selectable = Boolean(onSelect) && !single;
+
   return (
     <div>
       <div className={cn("grid gap-3", single ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-3")}>
-        {plans.map((plan) => (
-          <figure key={plan.src} className="overflow-hidden rounded-2xl border border-border bg-cream">
-            <Image
-              src={plan.src}
-              alt={`${sizeLabel} ${plan.label} floor plan`}
-              width={plan.width}
-              height={plan.height}
-              sizes={single ? "(min-width: 1024px) 55vw, 90vw" : "(min-width: 1024px) 20vw, 45vw"}
-              className="h-auto w-full"
-            />
-            <figcaption className="px-3 py-2 text-xs font-medium text-ink">{plan.label}</figcaption>
-          </figure>
-        ))}
+        {plans.map((plan) => {
+          const active = selectable && plan.id === selectedId;
+          const image = (
+            <>
+              <Image
+                src={plan.src}
+                alt={`${sizeLabel} ${plan.label} floor plan`}
+                width={plan.width}
+                height={plan.height}
+                sizes={single ? "(min-width: 1024px) 55vw, 90vw" : "(min-width: 1024px) 20vw, 45vw"}
+                className="h-auto w-full"
+              />
+              <div
+                className={cn(
+                  "flex items-center justify-between gap-2 px-3 py-2 text-xs font-medium",
+                  active ? "text-forest" : "text-ink",
+                )}
+              >
+                <span>{plan.label}</span>
+                {active && <Check className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />}
+              </div>
+            </>
+          );
+
+          return selectable ? (
+            <button
+              key={plan.id}
+              type="button"
+              aria-pressed={active}
+              onClick={() => onSelect?.(plan.id)}
+              className={cn(
+                "overflow-hidden rounded-2xl border bg-cream text-left transition-colors",
+                active ? "border-forest ring-1 ring-forest" : "border-border hover:border-stone/50",
+              )}
+            >
+              {image}
+            </button>
+          ) : (
+            <figure key={plan.id} className="overflow-hidden rounded-2xl border border-border bg-cream">
+              {image}
+            </figure>
+          );
+        })}
       </div>
       <p className="mt-3 text-sm leading-relaxed text-stone">
-        Every layout includes a fitted bathroom: toilet, vanity and a shower or tub as drawn.
-        Window and door placement can be customised on your quote.
+        {selectable
+          ? "Every layout costs the same and includes a fitted bathroom: toilet, vanity and a shower or tub as drawn. Pick one and it carries through to your quote; window and door placement can be customised there too."
+          : "Every layout includes a fitted bathroom: toilet, vanity and a shower or tub as drawn. Window and door placement can be customised on your quote."}
       </p>
     </div>
   );
@@ -435,21 +471,32 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // photo-pair products (safari tents, garages) skip that tab.
   const hasScene = product.slug in scenes;
   const interiorPair = manifestConfigurator[product.slug];
-  const layoutPlans = manifestLayoutPlans[product.slug];
   const hasVisual = hasScene || Boolean(interiorPair);
-  const tabs = useMemo(
-    () =>
-      VIEW_TABS.filter(
-        (tab) =>
-          (tab.id !== "cutaway" || hasVisual) &&
-          (tab.id !== "floorplan" || hasScene || Boolean(layoutPlans)),
-      ),
-    [hasVisual, hasScene, layoutPlans],
-  );
   const [selected, setSelected] = useState<Partial<Record<string, boolean>>>(NO_OPTIONS);
   const [furnished, setFurnished] = useState(false);
   const [variantId, setVariantId] = useState<string | undefined>(product.variants?.[0]?.id);
-  const [view, setView] = useState<ViewId>(hasVisual ? "cutaway" : "photos");
+  const [chosenLayoutId, setLayoutId] = useState<string | undefined>(undefined);
+  // Strictly by size. The old lookup fell back to a shared "default" set, which
+  // handed the 18 m2 compact the 6m home's eight plans, including layouts it
+  // cannot be built in.
+  const planSheets = getPlanSheets(product.slug, variantId);
+  const layoutChoices = getLayouts(product.slug, variantId);
+  // Per size, not per product: the 18 m2 compact has no sheet of its own and no
+  // drawing of its own, and getPlan() would silently hand it the 6m home's
+  // geometry. Offering no floor plan is the honest answer.
+  const canShowPlan = planSheets.length > 0 || hasDrawnPlan(product, variantId);
+  const tabs = VIEW_TABS.filter(
+    (tab) => (tab.id !== "cutaway" || hasVisual) && (tab.id !== "floorplan" || canShowPlan),
+  );
+  // Derived, not stored: a layout only counts while the selected size still
+  // offers it, so switching size can never carry a stale plan to the quote.
+  const layoutId = layoutChoices.some((l) => l.id === chosenLayoutId)
+    ? chosenLayoutId
+    : undefined;
+  const [chosenView, setView] = useState<ViewId>(hasVisual ? "cutaway" : "photos");
+  // Switching to a size that has no floor plan must not leave the panel on a
+  // tab that no longer exists.
+  const view = tabs.some((t) => t.id === chosenView) ? chosenView : tabs[0].id;
   const [announcement, setAnnouncement] = useState("");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -459,6 +506,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
   );
 
   const activeVariant = product.variants?.find((v) => v.id === variantId);
+
 
   const toggleOption = useCallback(
     (option: CustomOption) => {
@@ -532,6 +580,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
     setSelected(NO_OPTIONS);
     setFurnished(false);
     setVariantId(product.variants?.[0]?.id);
+    setLayoutId(undefined);
     setAnnouncement(
       `Configuration reset. Total ${formatZAR(
         configuredPrice(product, NO_OPTIONS, product.variants?.[0]?.id),
@@ -552,6 +601,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
   const quoteHref = `/quote?${new URLSearchParams({
     product: product.slug,
     ...(variantId ? { variant: variantId } : {}),
+    ...(layoutId ? { layout: layoutId } : {}),
     ...(selectedIds.length ? { options: selectedIds.join(",") } : {}),
   }).toString()}`;
 
@@ -616,7 +666,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
 
             {/* Furnish control affects Cutaway and the drawn Floor plan; hidden on
                 Photos and on catalogue floor-plan renders (fixed imagery). */}
-            {view !== "photos" && !(view === "floorplan" && layoutPlans) && (
+            {view !== "photos" && !(view === "floorplan" && planSheets.length > 0) && (
               <div
                 className="inline-flex rounded-full border border-border bg-cream p-1"
                 role="group"
@@ -678,15 +728,12 @@ export function ProductConfigurator({ product }: { product: Product }) {
                     />
                   ))}
                 {view === "floorplan" &&
-                  (layoutPlans ? (
+                  (planSheets.length > 0 ? (
                     <CatalogPlansView
-                      plans={
-                        (variantId ? layoutPlans[variantId] : undefined) ??
-                        layoutPlans["default"] ??
-                        Object.values(layoutPlans)[0] ??
-                        []
-                      }
+                      plans={planSheets}
                       sizeLabel={activeVariant?.name ?? product.shortName}
+                      selectedId={layoutId}
+                      onSelect={layoutChoices.length > 0 ? setLayoutId : undefined}
                     />
                   ) : (
                     <FloorPlanView

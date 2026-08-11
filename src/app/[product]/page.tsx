@@ -9,11 +9,10 @@ import {
   faqPageSchema,
   productSchema,
 } from "@/lib/schema";
-import { getDiagramImages, getGalleryImages, getHeroImage } from "@/components/product/product-images";
+import { getGalleryImages, getHeroImage } from "@/components/product/product-images";
 import manifest from "@/data/images.json";
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductGallery } from "@/components/product/product-gallery";
-import { LayoutDiagrams } from "@/components/product/layout-diagrams";
 import { OverviewSpecs } from "@/components/product/overview-specs";
 import { VariantCards } from "@/components/product/variant-cards";
 import { ConfiguratorSection } from "@/components/product/configurator-section";
@@ -126,9 +125,6 @@ export default async function ProductPage({ params }: { params: Params }) {
 
   const hero = getHeroImage(slug);
   const gallery = getGalleryImages(slug);
-  // Native-aspect plan sheets: expandable only until the other products'
-  // diagram imagery has been vetted for this treatment.
-  const diagrams = slug === "expandable-homes" ? getDiagramImages(slug) : [];
 
   return (
     <>
@@ -144,7 +140,6 @@ export default async function ProductPage({ params }: { params: Params }) {
       />
       <ProductHero product={product} image={hero} />
       <ProductGallery productName={product.name} images={gallery} />
-      <LayoutDiagrams productName={product.name} images={diagrams} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
       {/* Configurator renders when there is something to configure or show:

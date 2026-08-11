@@ -777,7 +777,7 @@ def build(priced):
         (sh["label"], datauri(prep_file(SITE_IMG / sh["src"].replace("/images/", "", 1),
                                         f"expandable-homes/range-lay-{pathlib.Path(sh['src']).stem}.png",
                                         420, sh["width"])))
-        for sh in (LAYOUT_PLANS["expandable-homes"]["default"][:3]
+        for sh in (LAYOUT_PLANS["expandable-homes"]["b20"][:3]
                    + LAYOUT_PLANS["expandable-homes"]["b40"][:3])]
 
     # Products whose sizes are worth a page of their own: the ones with
