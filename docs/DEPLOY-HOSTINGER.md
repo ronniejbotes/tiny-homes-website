@@ -363,12 +363,20 @@ Until you have that answer in writing, set up an uptime monitor (UptimeRobot's f
 
 Straight from Hostinger's own troubleshooting documentation plus reported real-world Next.js-on-shared-hosting behaviour.
 
-### ⛔ 11.0 Next.js is pinned to 16.2.10 — do NOT let `npm audit fix` raise it
+### ⛔ 11.0 Next.js is held on the 16.2.x line — do NOT let a CVE report raise it
+
+**This trap has now been walked into TWICE (2026-08-07 and 2026-08-11), both
+times by someone acting on a vulnerability report.** If you are here because a
+scanner or `npm audit` is demanding a Next upgrade, read this whole section
+before touching `package.json`. The pin is not staleness or neglect — it is
+load-bearing, and the version number in it moves, so match on "16.3.0 or above",
+not on a literal string.
 
 **Hostinger's build container ships a glibc older than 2.29, and Next 16.3.0's
-prebuilt Rust binary requires 2.29 or newer.** Next 16.2.10's does not. This is a
-property of Hostinger's image, not of this project, and no setting in hPanel
-changes it.
+prebuilt Rust binary requires 2.29 or newer.** The 16.2.x binaries do not. This
+is a property of Hostinger's image, not of this project, and no setting in hPanel
+changes it. Patch bumps *within* 16.2.x are fine (16.2.10 → 16.2.11 shipped
+without incident); crossing to 16.3.0 is what breaks.
 
 What it looks like when it goes wrong — verbatim from the failed build of
 `c52e208` on 2026-08-07:
@@ -398,13 +406,40 @@ fix`. Every deploy from that commit onward failed — and a failed build leaves 
 "shipped" — verify from outside with a value the commit actually changed, e.g.
 `curl -s https://tinyhomesa.com/llms.txt | wc -l` against `wc -l < public/llms.txt`.
 
-**The security trade-off, stated honestly.** 16.2.10 carries nine Next
+**The 2026-08-11 repeat (`0b4e12c`, reverted by `fix/revert-next-16.3-glibc`).**
+Hostinger's own **Security → Vulnerabilities** panel flagged 7 CVEs in postcss,
+sharp, js-yaml and brace-expansion. Three of those four are pinned *by* Next, so
+the obvious fix is "upgrade Next" — which is precisely the move this section
+forbids. The upgrade was verified thoroughly against the wrong target: local
+build, lint, smoke test and the framework's own breaking-change notes all passed,
+because a MacBook has glibc ≥ 2.29 and the build container does not. **A green
+local build proves nothing about this constraint.** The panel will keep flagging
+those CVEs; that is expected and is not a reason to re-attempt the bump.
+
+**How to tell this failure from a slow deploy:** it looks like nothing happening.
+The hPanel card sits on *Building*, then the old release keeps serving with a 200.
+Fingerprint the live bundle before merging and poll it after:
+`curl -s https://tinyhomesa.com/ | grep -oE '/_next/static/chunks/[A-Za-z0-9_.-]+\.js' | sort -u | shasum`.
+If it has not moved ~20 minutes after the merge, the build failed — go read the
+build log, do not keep waiting.
+
+**The security trade-off, stated honestly.** The 16.2.x line carries nine Next
 advisories that 16.3.0 fixes. Checked against this codebase on 2026-08-09, most
 do not reach it: there are **no Server Actions** (`grep -rn '"use server"' src/`
 → nothing), no `middleware.ts`/`proxy.ts`, no custom server, no `rewrites()`, no
 edge runtime, and `dangerouslyAllowSVG` is unset. That rules out seven of the
-nine. Note also that production has been running 16.2.10 *the entire time* — the
+nine. Note also that production has been running 16.2.x *the entire time* — the
 pin was never what was deployed, so holding it here lowers nothing.
+
+The same holds for the leaf CVEs the hPanel scanner reports (re-checked
+2026-08-11): `postcss` is build-time only, and `sharp` is reachable at runtime
+through `/_next/image` but only for images this repo ships. What you *can* fix
+without touching Next is anything that is not pinned by it — `js-yaml` went
+4.3.0 → 4.3.1 via plain `npm audit fix` and deployed fine. And note that
+`brace-expansion@1.1.18` is a **scanner false positive**: CVE-2026-14257's 1.x
+range is `< 1.1.17` and CVE-2026-69152's is `< 1.1.18`, so the installed version
+is already patched. hPanel only knows the 5.0.8 fix line and cannot see the 1.x
+backport. `npm audit` is the tiebreaker — it reads per-major ranges correctly.
 
 **To actually get onto a patched Next**, ask Hostinger support to update the
 Node build image to a base with glibc ≥ 2.29, quoting the block above. Retry the
@@ -412,7 +447,8 @@ bump only after they confirm, and only with a deploy you watch to completion.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| **`GLIBC_2.29' not found` → `Failed to load next.config.ts`** | Next raised above 16.2.10 | §11.0 — pin `next` and `eslint-config-next` back to exactly `16.2.10` |
+| **`GLIBC_2.29' not found` → `Failed to load next.config.ts`** | Next raised to 16.3.0 or above | §11.0 — pin `next` and `eslint-config-next` back to the 16.2.x line |
+| **Deploy card stuck on *Building*, old release still serving, no error** | Usually the same glibc failure — it is silent from outside | §11.0 — fingerprint `/_next/static/chunks/*`; if unchanged after ~20 min, read the build log |
 | **"Failed to build the application"** | Node version in hPanel does not match what the project needs | Set it to 24.x (§3.4) |
 | | Missing environment variable needed at build time | Not applicable here — this site needs none (§6) |
 | | `node_modules` was included in a ZIP upload | Delete it from the ZIP and re-upload |
