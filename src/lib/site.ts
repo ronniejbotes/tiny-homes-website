@@ -45,16 +45,24 @@ export const site = {
    * exist ("there is no street address for the showroom"), and the pin is the
    * authoritative location: `geo` below, plus `mapsLink`.
    *
-   * The suburb is omitted on purpose. The contact page asserted "Sunderland
-   * Ridge", but reverse-geocoding the pin on 2026-08-10 returned Rudolf
-   * Street, Raslouw — a different suburb. One of the two is wrong and nobody
-   * has confirmed which, so naming neither beats naming the wrong one.
-   * Fill in `locality` once the owner confirms it.
+   * `locality` and `postalCode` are GEOCODED, not owner-confirmed — the owner
+   * does not know the showroom's address. Reverse-geocoding the pin on
+   * 2026-08-11 returned Raslouw / 0173 consistently at every zoom level, with
+   * Rudolf Street and Poole Avenue as the nearest named roads. It is
+   * corroborated by the head office being in "Raslouw AH", i.e. the same
+   * suburb. The contact page previously asserted "Sunderland Ridge"; nothing
+   * supports that and it has been removed.
+   *
+   * Suburb only, never a street number: a wrong suburb is a slightly vague
+   * label next to an exact pin, whereas a wrong street number sends someone
+   * to a stranger's gate.
    */
   showroom: {
     name: "Tiny Homes Showroom",
+    locality: "Raslouw",
     city: "Centurion",
     region: "Gauteng",
+    postalCode: "0173",
   },
   geo: {
     // Showroom pin, owner-supplied 2026-08-06: 25°50'49.6"S 28°06'21.6"E.

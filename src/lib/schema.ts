@@ -18,13 +18,37 @@ export type SchemaObject = Record<string, unknown>;
 const ORG_ID = `${site.url}/#organization`;
 const LOCAL_ID = `${site.url}/#localbusiness`;
 
-/** Postal address, shared by the Organization and LocalBusiness nodes. */
+/** Registered head office. The Organization node's address — NOT the showroom. */
 function postalAddress(): SchemaObject {
   return {
     "@type": "PostalAddress",
     streetAddress: `${site.address.streetAddress}, ${site.address.locality}`,
     addressLocality: site.address.city,
     addressRegion: site.address.region,
+    addressCountry: site.address.countryCode,
+  };
+}
+
+/**
+ * The showroom, for the LocalBusiness node.
+ *
+ * A LocalBusiness describes the place customers are served, so this must agree
+ * with `geo` on the same node. It did not until 2026-08-11: the node paired the
+ * head office's postal address with the showroom's coordinates, two points
+ * 2.65 km apart, which is a contradiction handed straight to Google — and it
+ * would have fought the Google Business Profile being claimed at the showroom.
+ *
+ * No `streetAddress`: the showroom has none (owner-confirmed). Locality,
+ * region, postcode and the coordinates are everything that is actually known,
+ * and an incomplete address pointing at the right place beats a complete one
+ * pointing at the wrong place.
+ */
+function showroomPostalAddress(): SchemaObject {
+  return {
+    "@type": "PostalAddress",
+    addressLocality: `${site.showroom.locality}, ${site.showroom.city}`,
+    addressRegion: site.showroom.region,
+    postalCode: site.showroom.postalCode,
     addressCountry: site.address.countryCode,
   };
 }
@@ -88,7 +112,7 @@ export function localBusinessSchema(): SchemaObject {
     email: site.email,
     priceRange: `${formatZAR(Math.min(...prices))} – ${formatZAR(Math.max(...prices))} ex VAT`,
     currenciesAccepted: "ZAR",
-    address: postalAddress(),
+    address: showroomPostalAddress(),
     geo: {
       "@type": "GeoCoordinates",
       latitude: site.geo.latitude,
