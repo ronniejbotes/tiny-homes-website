@@ -84,6 +84,9 @@ function parseLines(raw: unknown): QuoteLine[] {
         {
           slug: str(u?.slug, 60),
           variantId: u?.variantId ? str(u.variantId, 60) : undefined,
+          // Bounded here, resolved in resolveQuoteLine: an id that is not on
+          // offer for that size drops out rather than reaching the quotation.
+          layoutId: u?.layoutId ? str(u.layoutId, 60) : undefined,
           optionIds: Array.isArray(u?.optionIds)
             ? u.optionIds.slice(0, 40).map((id) => str(id, 60))
             : [],

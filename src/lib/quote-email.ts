@@ -126,6 +126,8 @@ export function quoteEmailText(input: QuoteEmailInput): string {
   lines.forEach((line, i) => {
     const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${line.quantity} × ${lineTitle(line)}${size}`);
+    // The layout is what the factory builds to, so it leads the line.
+    if (line.layout) out.push(`     Layout: ${line.layout.label}`);
     const d = transportDims(line);
     if (d) out.push(`     Transport size (each): ${d}`);
     for (const option of line.activeOptions) {
@@ -173,6 +175,9 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
   const unitsHtml = lines
     .map((line) => {
       const size = line.variant ? `, ${esc(line.variant.size)}` : "";
+      const layout = line.layout
+        ? `<div style="font-size:13px;color:#67635a;margin-top:2px">Layout: ${esc(line.layout.label)}</div>`
+        : "";
       const d = transportDims(line);
       const dims = d
         ? `<div style="font-size:13px;color:#67635a;margin-top:2px">Transport size (each): ${esc(d)}</div>`
@@ -188,7 +193,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
           : "";
       return `<li style="margin-bottom:12px">
         <span style="font-size:15px;color:#1c1b17"><strong>${line.quantity} × ${esc(lineTitle(line))}</strong>${size}</span>
-        ${dims}${extras}
+        ${layout}${dims}${extras}
       </li>`;
     })
     .join("");
@@ -310,6 +315,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   lines.forEach((line, i) => {
     const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${lineTitle(line)}${size}`);
+    if (line.layout) out.push(`     Layout: ${line.layout.label}`);
     if (line.product.priceOnRequest) {
       out.push("     Priced after consultation");
       return;
@@ -411,8 +417,12 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         }</td>
       </tr>`;
 
+      const layoutRow = line.layout
+        ? `<tr><td colspan="2" style="padding:0 0 2px;font-size:13px;color:#67635a">Layout: ${esc(line.layout.label)}</td></tr>`
+        : "";
+
       if (line.product.priceOnRequest) {
-        return `${head}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief; we&rsquo;ll price this line after a short consultation.</td></tr>`;
+        return `${head}${layoutRow}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief; we&rsquo;ll price this line after a short consultation.</td></tr>`;
       }
 
       const extras = line.activeOptions
@@ -426,7 +436,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         })
         .join("");
 
-      return `${head}
+      return `${head}${layoutRow}
         ${moneyRow("Base unit", esc(formatZAR(line.basePrice)))}
         ${extras}
         ${line.activeOptions.length > 0 ? moneyRow("Unit price ex VAT", esc(formatZAR(line.unitPrice)), { strong: true }) : ""}

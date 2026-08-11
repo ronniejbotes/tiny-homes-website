@@ -329,8 +329,8 @@ export const products: Product[] = [
     ],
     variants: [
       { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable: an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
-      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
-      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
+      { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded, 5.8 × 3.3 × 2.5 m folded for transport. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
+      { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded, 12 × 2.2 × 2.5 m folded for transport. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
       { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board, for around 40% better insulation. The metal carved board also resists salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
@@ -923,17 +923,52 @@ export function isOptionAvailable(opt: CustomOption, variantId?: string): boolea
   return variantId != null && opt.availableVariantIds.includes(variantId);
 }
 
-/** Visual layers implied by the active options (dependents count only when their requirement is met). */
+/**
+ * The options that actually count, for one selection and size.
+ *
+ * Everything that prices, lists or draws a configuration resolves through here,
+ * so a selection can never mean one thing to the price and another to the list
+ * printed beside it. Three rules, in order:
+ *
+ *   1. the option has to be offered on the chosen size;
+ *   2. an option that depends on another only counts once that one is on;
+ *   3. options sharing an exclusiveGroup are mutually exclusive, so at most the
+ *      first selected one counts.
+ *
+ * Rule 3 is the reason this function exists. It used to be enforced only by the
+ * product-page configurator refusing to switch two on at once, which left every
+ * other route in — a /quote?options=a,b deep link, the quote form's own extras
+ * list, a crafted POST — free to select all four outdoor-kitchen cooking
+ * methods and be quoted for the lot. On a 3.9 m kitchen that overstated the
+ * price by R22 000, on the customer's own quotation document.
+ */
+export function activeOptions(
+  product: Product,
+  selected: Partial<Record<string, boolean>>,
+  variantId?: string,
+): CustomOption[] {
+  const claimed = new Set<string>();
+  return product.options.filter((opt) => {
+    if (!isOptionAvailable(opt, variantId)) return false;
+    if (!selected[opt.id]) return false;
+    if (opt.requires && !selected[opt.requires]) return false;
+    if (opt.exclusiveGroup) {
+      if (claimed.has(opt.exclusiveGroup)) return false;
+      claimed.add(opt.exclusiveGroup);
+    }
+    return true;
+  });
+}
+
+/** Visual layers implied by the active options. */
 export function activeVisuals(
   product: Product,
   selected: Partial<Record<string, boolean>>,
   variantId?: string,
 ): Partial<Record<VisualKey, boolean>> {
   const visuals: Partial<Record<VisualKey, boolean>> = {};
-  for (const opt of product.options) {
-    const active =
-      isOptionAvailable(opt, variantId) && selected[opt.id] && (!opt.requires || selected[opt.requires]);
-    if (active && opt.visual !== "none") visuals[opt.visual] = true;
+  for (const opt of activeOptions(product, selected, variantId)) {
+    if (opt.visual !== "none") visuals[opt.visual] = true;
   }
   return visuals;
 }
@@ -944,14 +979,13 @@ export function optionPrice(opt: CustomOption, areaM2?: number): number {
   return opt.price;
 }
 
-/** Sum of base price + selected options for a product. */
+/** Sum of base price + the options that count, for a product. */
 export function configuredPrice(product: Product, selected: Partial<Record<string, boolean>>, variantId?: string): number {
   const variant = product.variants?.find((v) => v.id === variantId);
   const base = variant ? variant.price : product.startingPrice;
   const areaM2 = variant?.areaM2;
-  return product.options.reduce((total, opt) => {
-    const active =
-      isOptionAvailable(opt, variantId) && selected[opt.id] && (!opt.requires || selected[opt.requires]);
-    return active ? total + optionPrice(opt, areaM2) : total;
-  }, base);
+  return activeOptions(product, selected, variantId).reduce(
+    (total, opt) => total + optionPrice(opt, areaM2),
+    base,
+  );
 }

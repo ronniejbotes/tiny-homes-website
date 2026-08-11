@@ -30,7 +30,8 @@ export function getGalleryImages(slug: string): ProductImage[] {
   );
 }
 
-/** Diagram images (floor plans, layout cutaways, size sheets) shown at native aspect. */
-export function getDiagramImages(slug: string): ProductImage[] {
-  return getProductImages(slug).filter((image) => image.kind === "diagram");
-}
+// getDiagramImages() lived here to feed the "Floor plans and sizes" section on
+// the expandable page. That section is gone: the configurator's Floor plan tab
+// carries the real per-size plans, and it now lets a customer pick one, which a
+// grid of pictures never did. The diagram images themselves are still used, by
+// the brochure generator in scripts/brochure/.

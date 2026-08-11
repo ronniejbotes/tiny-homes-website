@@ -7,8 +7,11 @@ import { VAT_RATE, quoteTotals, type QuoteLine } from "@/lib/quote";
 
 /** A single configured unit as it appears on the estimate. */
 function LineRow({ line }: { line: QuoteLine }) {
-  const { product, variant, activeOptions, quantity, lineTotal } = line;
+  const { product, variant, layout, activeOptions, quantity, lineTotal } = line;
   const name = variant ? variant.name : product.shortName;
+  // The layout costs nothing, so it never appears as a priced line. It reads
+  // alongside the extras instead, where the configuration is described.
+  const detail = [layout?.label, ...activeOptions.map((o) => o.label)].filter(Boolean);
 
   return (
     <li className="flex items-start gap-3">
@@ -17,10 +20,8 @@ function LineRow({ line }: { line: QuoteLine }) {
         <p className="text-sm leading-snug text-ink">
           <span className="font-medium tabular-nums">{quantity} ×</span> {name}
         </p>
-        {activeOptions.length > 0 && (
-          <p className="mt-0.5 text-xs leading-relaxed text-stone">
-            {activeOptions.map((o) => o.label).join(", ")}
-          </p>
+        {detail.length > 0 && (
+          <p className="mt-0.5 text-xs leading-relaxed text-stone">{detail.join(", ")}</p>
         )}
       </div>
       <span className="shrink-0 text-right text-sm font-medium tabular-nums nums-tabular text-ink">

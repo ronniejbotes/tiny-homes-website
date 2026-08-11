@@ -847,50 +847,58 @@
       ]
     },
     "expandable-homes": {
-      "default": [
+      "b20": [
         {
+          "id": "open-plan",
           "src": "/images/products/expandable-homes/plans/20ft-open-plan.png",
           "width": 944,
           "height": 882,
           "label": "Open plan"
         },
         {
+          "id": "1-bed-a",
           "src": "/images/products/expandable-homes/plans/20ft-1-bed-a.png",
           "width": 946,
           "height": 886,
           "label": "1 Bed A"
         },
         {
+          "id": "1-bed-b",
           "src": "/images/products/expandable-homes/plans/20ft-1-bed-b.png",
           "width": 948,
           "height": 884,
           "label": "1 Bed B"
         },
         {
+          "id": "2-bed-a",
           "src": "/images/products/expandable-homes/plans/20ft-2-bed-a.png",
           "width": 946,
           "height": 886,
           "label": "2 Bed A"
         },
         {
+          "id": "2-bed-b",
           "src": "/images/products/expandable-homes/plans/20ft-2-bed-b.png",
           "width": 944,
           "height": 882,
           "label": "2 Bed B"
         },
         {
+          "id": "3-bed-a",
           "src": "/images/products/expandable-homes/plans/20ft-3-bed-a.png",
           "width": 944,
           "height": 884,
           "label": "3 Bed A"
         },
         {
+          "id": "3-bed-b",
           "src": "/images/products/expandable-homes/plans/20ft-3-bed-b.png",
           "width": 948,
           "height": 884,
           "label": "3 Bed B"
         },
         {
+          "id": "4-bed",
           "src": "/images/products/expandable-homes/plans/20ft-4-bed.png",
           "width": 946,
           "height": 888,
@@ -899,42 +907,49 @@
       ],
       "b40": [
         {
+          "id": "2-bed",
           "src": "/images/products/expandable-homes/plans/40ft-2-bed.png",
           "width": 1640,
           "height": 876,
           "label": "2 Bed"
         },
         {
+          "id": "2-bed-laundry",
           "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry.png",
           "width": 1626,
           "height": 868,
           "label": "2 Bed + Laundry"
         },
         {
+          "id": "2-bed-wardrobe",
           "src": "/images/products/expandable-homes/plans/40ft-2-bed-wardrobe.png",
           "width": 1642,
           "height": 874,
           "label": "2 Bed + Walk-in Wardrobe"
         },
         {
+          "id": "2-bed-laundry-wardrobe",
           "src": "/images/products/expandable-homes/plans/40ft-2-bed-laundry-wardrobe.png",
           "width": 1626,
           "height": 868,
           "label": "2 Bed + Laundry + Wardrobe"
         },
         {
+          "id": "2-bed-office",
           "src": "/images/products/expandable-homes/plans/40ft-2-bed-office.png",
           "width": 1640,
           "height": 874,
           "label": "2 Bed + Office"
         },
         {
+          "id": "3-bed",
           "src": "/images/products/expandable-homes/plans/40ft-3-bed.png",
           "width": 1624,
           "height": 868,
           "label": "3 Bed"
         },
         {
+          "id": "4-bed",
           "src": "/images/products/expandable-homes/plans/40ft-4-bed.png",
           "width": 1642,
           "height": 876,

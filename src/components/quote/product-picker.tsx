@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Check, Warehouse } from "lucide-react";
 import type { Product } from "@/data/products";
 import { formatZAR } from "@/lib/format";
+import { getLayouts } from "@/lib/layouts";
 import { getHeroImage } from "@/components/product/product-images";
 import { cn } from "@/lib/cn";
 
@@ -144,6 +145,88 @@ export function VariantPicker({
             </span>
             <span className={cn("mt-3 text-sm leading-relaxed", active ? "text-cream/80" : "text-stone")}>
               {variant.description}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout cards                                                        */
+/* ------------------------------------------------------------------ */
+
+const PLAN_SIZES = "(min-width: 1024px) 15vw, (min-width: 640px) 30vw, 45vw";
+
+/**
+ * Which floor plan, on the sizes that come in more than one.
+ *
+ * Only expandable homes reach this: everywhere else one size means one plan.
+ * It renders nothing when there is no choice to make, so it can sit
+ * unconditionally in the form.
+ *
+ * The plans all cost the same, so this asks a question the price never
+ * answers. That is exactly why it has to be asked here rather than left to the
+ * notes box: the eight arrangements were on the product page all along, and
+ * the customer had no way to say which one they had been looking at.
+ */
+export function LayoutPicker({
+  slug,
+  variantId,
+  layoutId,
+  onSelect,
+}: {
+  slug: string;
+  variantId: string | undefined;
+  layoutId: string | undefined;
+  onSelect: (id: string) => void;
+}) {
+  const layouts = getLayouts(slug, variantId);
+  if (layouts.length === 0) return null;
+
+  return (
+    <div
+      role="group"
+      aria-label="Choose your layout"
+      className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+    >
+      {layouts.map((layout) => {
+        const active = layout.id === layoutId;
+        return (
+          <button
+            key={layout.id}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onSelect(layout.id)}
+            className={cn(
+              "group flex w-full flex-col overflow-hidden rounded-2xl border text-left transition-all duration-200",
+              active
+                ? "border-forest bg-parchment shadow-[var(--shadow-soft)]"
+                : "border-border bg-cream hover:-translate-y-0.5 hover:border-stone/50",
+            )}
+          >
+            <div className="relative aspect-square w-full overflow-hidden bg-cream">
+              <Image
+                src={layout.src}
+                alt={`${layout.label} floor plan`}
+                fill
+                sizes={PLAN_SIZES}
+                className="object-contain"
+              />
+              {active && (
+                <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-forest text-cream">
+                  <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+              )}
+            </div>
+            <span
+              className={cn(
+                "border-t px-3 py-2.5 text-sm font-medium",
+                active ? "border-forest/20 text-forest" : "border-border text-ink",
+              )}
+            >
+              {layout.label}
             </span>
           </button>
         );

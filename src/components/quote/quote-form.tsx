@@ -4,6 +4,7 @@ import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
 import { Loader2, Minus, Plus, Trash2, Waves } from "lucide-react";
 import { getProduct, optionPrice, products, type CustomOption } from "@/data/products";
+import { getLayouts } from "@/lib/layouts";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
@@ -35,7 +36,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { TextField, inputClasses, labelClasses } from "./fields";
-import { ProductPicker, VariantPicker } from "./product-picker";
+import { LayoutPicker, ProductPicker, VariantPicker } from "./product-picker";
 import { ExtrasPicker } from "./extras-picker";
 import { AddressFields } from "./address-fields";
 import { SummaryCard } from "./summary-card";
@@ -60,9 +61,22 @@ interface LineItem {
   /** Product slug, always set (items are only created once a product is chosen). */
   slug: string;
   variantId: string | undefined;
+  /** Chosen floor plan, on the sizes that offer a choice of them. */
+  layoutId: string | undefined;
   selected: Partial<Record<string, boolean>>;
   /** 1–10 units of this exact configuration. */
   quantity: number;
+}
+
+/**
+ * The layout to start on for a product and size: the customer's own choice when
+ * it is still on offer, otherwise none. Switching size deliberately clears it
+ * rather than guessing, because the plans differ between sizes ("2 Bed A" is a
+ * 6m layout; the 12m has no such thing) and a silently carried-over plan would
+ * put a layout on the quotation that the customer never looked at.
+ */
+function keepLayout(slug: string, variantId: string | undefined, layoutId: string | undefined) {
+  return getLayouts(slug, variantId).some((l) => l.id === layoutId) ? layoutId : undefined;
 }
 
 /** The issued quote: set once, then rendered in place of the form. */
@@ -86,14 +100,15 @@ interface IssuedQuote {
 interface DeepLink {
   slug: string;
   variantId: string | undefined;
+  layoutId: string | undefined;
   selected: Partial<Record<string, boolean>>;
 }
 
-/** Parse ?product=&variant=&options= into a starting configuration; invalid
-    values fall back gracefully (unknown product → no selection). */
+/** Parse ?product=&variant=&layout=&options= into a starting configuration;
+    invalid values fall back gracefully (unknown product → no selection). */
 function parseDeepLink(sp: ReadonlyURLSearchParams): DeepLink {
   const product = sp.get("product") ? getProduct(sp.get("product") as string) : undefined;
-  if (!product) return { slug: "", variantId: undefined, selected: {} };
+  if (!product) return { slug: "", variantId: undefined, layoutId: undefined, selected: {} };
 
   const variantParam = sp.get("variant");
   const variantId =
@@ -101,14 +116,29 @@ function parseDeepLink(sp: ReadonlyURLSearchParams): DeepLink {
 
   const selected: Partial<Record<string, boolean>> = {};
   const optionsParam = sp.get("options");
+  const claimed = new Set<string>();
   if (optionsParam) {
     for (const raw of optionsParam.split(",")) {
       const id = raw.trim();
-      if (id && product.options.some((o) => o.id === id)) selected[id] = true;
+      const option = product.options.find((o) => o.id === id);
+      if (!option) continue;
+      // A link cannot smuggle in two of a mutually exclusive set. The
+      // configurator can only ever produce one, but a hand-edited or stale URL
+      // could, and it would be priced as though you could have both.
+      if (option.exclusiveGroup) {
+        if (claimed.has(option.exclusiveGroup)) continue;
+        claimed.add(option.exclusiveGroup);
+      }
+      selected[id] = true;
     }
   }
 
-  return { slug: product.slug, variantId, selected };
+  return {
+    slug: product.slug,
+    variantId,
+    layoutId: keepLayout(product.slug, variantId, sp.get("layout") ?? undefined),
+    selected,
+  };
 }
 
 /* ------------------------------------------------------- validation */
@@ -405,6 +435,7 @@ function UnitsList({
                 <p className="font-display text-base text-ink">{line.product.name}</p>
                 <p className="mt-0.5 text-sm text-stone">
                   {line.variant ? `${name} · ` : ""}
+                  {line.layout ? `${line.layout.label} · ` : ""}
                   {extras === 0 ? "No extras" : `${extras} ${extras === 1 ? "extra" : "extras"}`}
                   {isEditing && (
                     <span className="ml-2 rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-forest">
@@ -480,6 +511,7 @@ function QuoteFormInner({
             id: "unit-0",
             slug: deep.slug,
             variantId: deep.variantId,
+            layoutId: deep.layoutId,
             selected: deep.selected,
             quantity: 1,
           },
@@ -515,7 +547,9 @@ function QuoteFormInner({
   const slug = editingItem?.slug ?? "";
   const product = slug ? getProduct(slug) : undefined;
   const variantId = editingItem?.variantId;
+  const layoutId = editingItem?.layoutId;
   const selected = editingItem?.selected ?? {};
+  const layouts = slug ? getLayouts(slug, variantId) : [];
 
   // Salt air is a property of the delivery address, not of the configuration,
   // so the requirement is derived here rather than stored on the line, so it
@@ -536,6 +570,7 @@ function QuoteFormInner({
     return {
       slug: item.slug,
       variantId: item.variantId,
+      layoutId: item.layoutId,
       optionIds: required && !chosen.includes(required) ? [...chosen, required] : chosen,
       quantity: item.quantity,
     };
@@ -561,7 +596,13 @@ function QuoteFormInner({
       setItems((prev) =>
         prev.map((i) =>
           i.id === editingId
-            ? { ...i, slug: nextSlug, variantId: next?.variants?.[0]?.id, selected: {} }
+            ? {
+                ...i,
+                slug: nextSlug,
+                variantId: next?.variants?.[0]?.id,
+                layoutId: undefined,
+                selected: {},
+              }
             : i,
         ),
       );
@@ -570,7 +611,14 @@ function QuoteFormInner({
       const id = makeId();
       setItems((prev) => [
         ...prev,
-        { id, slug: nextSlug, variantId: next?.variants?.[0]?.id, selected: {}, quantity: 1 },
+        {
+          id,
+          slug: nextSlug,
+          variantId: next?.variants?.[0]?.id,
+          layoutId: undefined,
+          selected: {},
+          quantity: 1,
+        },
       ]);
       setEditingId(id);
     }
@@ -578,7 +626,17 @@ function QuoteFormInner({
   };
 
   const handleSelectVariant = (id: string) => {
-    setItems((prev) => prev.map((i) => (i.id === editingId ? { ...i, variantId: id } : i)));
+    setItems((prev) =>
+      prev.map((i) =>
+        // The plans differ between sizes, so a layout only survives a size
+        // change if the new size actually offers it.
+        i.id === editingId ? { ...i, variantId: id, layoutId: keepLayout(i.slug, id, i.layoutId) } : i,
+      ),
+    );
+  };
+
+  const handleSelectLayout = (id: string) => {
+    setItems((prev) => prev.map((i) => (i.id === editingId ? { ...i, layoutId: id } : i)));
   };
 
   const toggleOption = (option: CustomOption) => {
@@ -590,6 +648,16 @@ function QuoteFormInner({
           ...i.selected,
           [option.id]: turningOn,
         };
+        if (turningOn && option.exclusiveGroup) {
+          // One cooking method, not four. The product-page configurator has
+          // always done this; the quote form did not, so a customer could tick
+          // every grill and be quoted for all of them.
+          for (const opt of product.options) {
+            if (opt.id !== option.id && opt.exclusiveGroup === option.exclusiveGroup) {
+              nextSel[opt.id] = false;
+            }
+          }
+        }
         // Deselecting a prerequisite unchecks anything that depends on it.
         if (!turningOn) {
           for (const opt of product.options) {
@@ -654,6 +722,8 @@ function QuoteFormInner({
       // base price on the unit, effective price on every extra.
       const base = l.product.priceOnRequest ? "" : ` (${formatZAR(l.basePrice)})`;
       out.push(`${idx + 1}. ${l.quantity} × ${lineTitle(l)}${size}${base}`);
+      // The layout is the build brief: it belongs on the message the rep reads.
+      if (l.layout) out.push(`   Layout: ${l.layout.label}`);
       if (l.activeOptions.length > 0) {
         out.push("   Extras:");
         for (const o of l.activeOptions) {
@@ -861,6 +931,23 @@ function QuoteFormInner({
                   product={product}
                   variantId={variantId}
                   onSelect={handleSelectVariant}
+                />
+              </div>
+            )}
+
+            {layouts.length > 0 && (
+              <div className="mt-8">
+                <p className="text-eyebrow mb-3 text-clay-dark">Choose your layout</p>
+                <p className="mb-4 text-sm leading-relaxed text-stone">
+                  Every layout costs the same, so pick the arrangement that suits how you&apos;ll
+                  live. Window and door placement is yours to choose and is confirmed on your
+                  quotation.
+                </p>
+                <LayoutPicker
+                  slug={slug}
+                  variantId={variantId}
+                  layoutId={layoutId}
+                  onSelect={handleSelectLayout}
                 />
               </div>
             )}
