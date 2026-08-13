@@ -20,13 +20,17 @@ export const TIME_ZONE = "Africa/Johannesburg";
 
 /* --------------------------------------------------------- opening hours */
 
-/** Owner-set, 2026-08-05: weekdays only, 08:00–15:30, no weekend viewings. */
-export const OPEN_MINUTES = 8 * 60; // 08:00
-export const CLOSE_MINUTES = 15 * 60 + 30; // 15:30
+/**
+ * Owner-set, revised 2026-08-13: weekdays only, 10:00–15:30, no weekend
+ * viewings. Closing at 15:30 with a 30-minute viewing makes 15:00 the last
+ * slot a visitor can start, which is the intent — not a 15:30 start.
+ */
+export const OPEN_MINUTES = 10 * 60; // 10:00
+export const CLOSE_MINUTES = 15 * 60 + 30; // 15:30, so the last start is 15:00
 export const SLOT_MINUTES = 30;
 
 /** Human form of the same hours, for copy and for openingHours schema. */
-export const HOURS_LABEL = "Monday to Friday, 08:00 – 15:30";
+export const HOURS_LABEL = "Monday to Friday, 10:00 – 15:30";
 
 /**
  * Earliest bookable day, in calendar days from today. 1 means the next

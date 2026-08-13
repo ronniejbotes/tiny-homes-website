@@ -24,7 +24,7 @@ see §6.
 visitor opens /book-a-viewing
    └─ GET /api/viewing/slots
         └─ CalDAV read  ──▶  iCloud  ──▶  busy times for the next 4 weeks
-             └─ weekdays 08:00–15:30, minus anything busy  ──▶  the slot grid
+             └─ weekdays 10:00–15:30, minus anything busy  ──▶  the slot grid
 
 visitor picks a slot and submits
    └─ POST /api/viewing
@@ -41,7 +41,7 @@ sits there.
 | Rule | Value | Where it lives |
 |---|---|---|
 | Days | Monday–Friday only | `src/lib/viewing.ts` |
-| Hours | 08:00 – 15:30 SAST | `OPEN_MINUTES` / `CLOSE_MINUTES` |
+| Hours | 10:00 – 15:30 SAST (last start 15:00) | `OPEN_MINUTES` / `CLOSE_MINUTES` |
 | Slot length | 30 minutes | `SLOT_MINUTES` |
 | Earliest booking | the next working day | `MIN_LEAD_DAYS` |
 | Latest booking | 28 days out | `BOOKING_WINDOW_DAYS` |

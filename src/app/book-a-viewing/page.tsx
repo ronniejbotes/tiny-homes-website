@@ -12,7 +12,7 @@ import images from "@/data/images.json";
 
 const pageTitle = "Book a Showroom Viewing | Tiny Homes SA, Centurion";
 const pageDescription =
-  "See a tiny home in person before you spend a cent. Book a free 30-minute viewing at our Centurion showroom, weekdays 08:00–15:30. Confirmed instantly.";
+  "See a tiny home in person before you spend a cent. Book a free 30-minute viewing at our Centurion showroom, weekdays 10:00–15:30. Confirmed instantly.";
 
 const ogImage = images.products["expandable-homes"][0];
 
