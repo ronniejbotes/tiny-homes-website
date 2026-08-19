@@ -18,6 +18,15 @@ export const site = {
   /** admin@ is the only mailbox confirmed to exist; swap to sales@ once that one is provisioned. */
   email: "admin@tinyhomesa.com",
   /**
+   * Safari tent enquiries and viewings, owner-instructed 2026-08-19.
+   *
+   * Tents are trade only and none stands at the showroom, so a tent viewing is
+   * arranged one at a time by Johan rather than booked through the showroom
+   * booker. Every surface that mentions seeing a tent must point here, not at
+   * `email` above and not at /book-a-viewing.
+   */
+  safariTentsEmail: "johan@tinyhomesa.com",
+  /**
    * REGISTERED HEAD OFFICE. Not the place visitors come to.
    *
    * Owner, 2026-08-10: "that is our registered address for our head office,

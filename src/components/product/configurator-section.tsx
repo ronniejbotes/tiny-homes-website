@@ -19,9 +19,16 @@ export function ConfiguratorSection({ product }: { product: Product }) {
     >
       <Container>
         <SectionHeading
-          eyebrow="Configurator"
-          title="Make it yours"
-          intro="Choose your finishes and modules and watch the total update as you go. Extras pricing is provisional and will be confirmed line by line on your formal quotation. Every price shown excludes VAT."
+          eyebrow={product.priceOnRequest ? "Inside" : "Configurator"}
+          title={product.priceOnRequest ? "See inside one" : "Make it yours"}
+          // A price-on-request product has nothing to configure and no total to
+          // watch: it reaches this section for its interior photography alone,
+          // so the standing "watch the total update" promise would be a lie.
+          intro={
+            product.priceOnRequest
+              ? "Look inside, empty and furnished. Layouts, decks and finishes are settled with you at consultation rather than picked here, and the whole configuration is quoted per project."
+              : "Choose your finishes and modules and watch the total update as you go. Extras pricing is provisional and will be confirmed line by line on your formal quotation. Every price shown excludes VAT."
+          }
         />
         <Reveal delay={0.08} className="mt-12">
           <ProductConfigurator product={product} />

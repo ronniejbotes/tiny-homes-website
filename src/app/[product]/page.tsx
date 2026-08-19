@@ -12,6 +12,7 @@ import {
 import { getGalleryImages, getHeroImage } from "@/components/product/product-images";
 import manifest from "@/data/images.json";
 import { ProductHero } from "@/components/product/product-hero";
+import { TradeOnlyNotice } from "@/components/product/trade-only-notice";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { OverviewSpecs } from "@/components/product/overview-specs";
 import { VariantCards } from "@/components/product/variant-cards";
@@ -139,6 +140,10 @@ export default async function ProductPage({ params }: { params: Params }) {
         ]}
       />
       <ProductHero product={product} image={hero} />
+      {/* Trade-only products carry their terms directly under the hero: who
+          they are sold to, that they cannot be ordered, and that a viewing is
+          arranged by email rather than booked at the showroom. */}
+      {product.tradeOnly && <TradeOnlyNotice product={product} />}
       <ProductGallery productName={product.name} images={gallery} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />

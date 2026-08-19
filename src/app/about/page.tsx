@@ -194,8 +194,10 @@ export default function AboutPage() {
                 <p>
                   The range spans five home designs, from the {formatZAR(minPrice)} X-Fold
                   to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule,
-                  every price published ex VAT, alongside outdoor entertainment kitchens and
-                  luxury safari tents quoted to your site and brief. {site.finance}.
+                  every price published ex VAT, alongside outdoor entertainment kitchens.
+                  We also supply luxury safari tents, though only to businesses and
+                  hospitality operators, quoted per project rather than sold off the
+                  page. {site.finance}.
                 </p>
               </div>
             </Reveal>

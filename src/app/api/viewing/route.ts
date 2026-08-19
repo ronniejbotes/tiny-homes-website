@@ -90,9 +90,13 @@ function parseBooking(body: Record<string, unknown>): ParsedBooking | string {
   }
 
   // An unknown slug is dropped rather than rejected: the product they came to
-  // see is a nicety, and losing the booking over it would be absurd.
+  // see is a nicety, and losing the booking over it would be absurd. A
+  // trade-only slug is dropped for the same reason and one more: none of them
+  // stands at the showroom, so it would put a product on the confirmation
+  // email that nobody can show the visitor when they arrive.
   const interestRaw = str(body.interest, 60);
-  const interest = getProduct(interestRaw) ? interestRaw : "";
+  const interestProduct = getProduct(interestRaw);
+  const interest = interestProduct && !interestProduct.tradeOnly ? interestRaw : "";
 
   const partyRaw = Number(body.partySize);
   const partySize = Number.isInteger(partyRaw)

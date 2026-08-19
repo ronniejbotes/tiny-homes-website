@@ -55,7 +55,9 @@ export function RelatedProducts({ current }: { current: Product }) {
                     </p>
                     <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                       <p className="text-ink">
-                        {p.priceOnRequest ? (
+                        {p.tradeOnly ? (
+                          <span className="font-medium">Businesses &amp; hospitality only</span>
+                        ) : p.priceOnRequest ? (
                           <span className="font-medium">Price on request</span>
                         ) : (
                           <>

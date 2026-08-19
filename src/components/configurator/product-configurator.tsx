@@ -24,6 +24,7 @@ import {
   Home,
   Image as ImageIcon,
   LayoutGrid,
+  Mail,
   RotateCcw,
   Sofa,
 } from "lucide-react";
@@ -41,7 +42,7 @@ import manifest from "@/data/images.json";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { ButtonLink, Button } from "@/components/ui/button";
+import { ButtonAnchor, ButtonLink, Button } from "@/components/ui/button";
 import { scenes } from "./scenes";
 import { FoldingHomesScene } from "./scenes/folding-homes-scene";
 import { FloorPlanView } from "./floorplan";
@@ -604,6 +605,11 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // customer arrives with their size and extras already picked and only has
   // their details and delivery address left to fill in.
   const selectedIds = activeOptions.map((o) => o.id);
+  // Trade-only products have no quote to send them to and no showroom slot to
+  // book, so their panel offers the email that arranges a viewing instead.
+  const viewingMailto = `mailto:${site.safariTentsEmail}?subject=${encodeURIComponent(
+    `${product.name} viewing request`,
+  )}`;
   const quoteHref = `/quote?${new URLSearchParams({
     product: product.slug,
     ...(variantId ? { variant: variantId } : {}),
@@ -848,28 +854,64 @@ export function ProductConfigurator({ product }: { product: Product }) {
             </fieldset>
           ))}
 
-          {/* Price panel */}
+          {/* Price panel.
+
+              A price-on-request product carries a 0 sentinel as its
+              startingPrice, so it must never reach the running total: this
+              panel would read "R 0 ex VAT" and hand the reader a quote link
+              for a product that has no published price. It gets the panel
+              below instead, and a trade-only one gets the email that arranges
+              a viewing rather than a link into the quote builder that will
+              not offer it. */}
           <div className="rounded-3xl border border-border bg-parchment p-6">
             <h3 className="text-eyebrow text-clay-dark">Your configuration</h3>
-            <p className="mt-3 flex items-baseline gap-2">
-              <span className="text-display text-4xl text-ink sm:text-5xl">
-                <AnimatedPrice value={total} />
-              </span>
-              <span className="text-sm font-medium text-stone">ex VAT</span>
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-stone">{site.deliveryNote}</p>
-            <p className="mt-2 text-xs leading-relaxed text-stone">
-              Optional extras carry provisional pricing and will be confirmed on your final quote.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <ButtonLink href={quoteHref} variant="accent">
-                Request this configuration
-              </ButtonLink>
-              <Button variant="ghost" onClick={reset}>
-                <RotateCcw className="h-4 w-4" aria-hidden="true" />
-                Reset
-              </Button>
-            </div>
+            {product.priceOnRequest ? (
+              <>
+                <p className="mt-3 text-display text-4xl text-ink sm:text-5xl">
+                  Price on request
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-stone">
+                  {product.tradeOnly
+                    ? `${product.name} are supplied to businesses and hospitality operators only and cannot be ordered here. Every one is configured to your site and brief at a consultation, then quoted itemised.`
+                    : "Configured to your site and brief at a consultation, then quoted itemised."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {product.tradeOnly ? (
+                    <ButtonAnchor href={viewingMailto} variant="accent">
+                      <Mail className="h-4 w-4" aria-hidden="true" />
+                      Book a viewing by email
+                    </ButtonAnchor>
+                  ) : (
+                    <ButtonLink href="/contact" variant="accent">
+                      Request a quote
+                    </ButtonLink>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="mt-3 flex items-baseline gap-2">
+                  <span className="text-display text-4xl text-ink sm:text-5xl">
+                    <AnimatedPrice value={total} />
+                  </span>
+                  <span className="text-sm font-medium text-stone">ex VAT</span>
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-stone">{site.deliveryNote}</p>
+                <p className="mt-2 text-xs leading-relaxed text-stone">
+                  Optional extras carry provisional pricing and will be confirmed on your final
+                  quote.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <ButtonLink href={quoteHref} variant="accent">
+                    Request this configuration
+                  </ButtonLink>
+                  <Button variant="ghost" onClick={reset}>
+                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                    Reset
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

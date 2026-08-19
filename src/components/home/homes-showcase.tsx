@@ -93,7 +93,17 @@ export function HomesShowcase() {
                         {product.name}
                       </h3>
                       <p className="mt-1.5 text-sm text-stone">
-                        {product.priceOnRequest ? (
+                        {product.tradeOnly ? (
+                          // Trade-only lines are not for sale to the public, so
+                          // the card leads with who they are for rather than a
+                          // price nobody browsing here can act on.
+                          <>
+                            {product.sizeLabel} ·{" "}
+                            <span className="font-medium text-ink">
+                              Businesses &amp; hospitality only
+                            </span>
+                          </>
+                        ) : product.priceOnRequest ? (
                           <>
                             {product.sizeLabel} ·{" "}
                             <span className="font-medium text-ink">Price on request</span>

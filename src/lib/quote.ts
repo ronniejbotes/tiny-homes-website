@@ -99,7 +99,14 @@ export interface QuoteTotals {
   totalUnits: number;
   /** True once at least one line carries a real catalogue price. */
   hasPricedTotal: boolean;
-  /** True when any line is a consultation-priced product (safari tents). */
+  /**
+   * True when any line is a consultation-priced product.
+   *
+   * No such product can currently reach a quote: safari tents, the only one,
+   * are trade-only and the picker never offers them. The on-request handling
+   * downstream is kept for the day a price-on-request product is orderable
+   * again, but today this is always false.
+   */
   someOnRequest: boolean;
   /** Sum of the priced lines, ex VAT. */
   subtotal: number;

@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { Button, ButtonAnchor } from "@/components/ui/button";
 import { TextField, inputClasses, labelClasses } from "@/components/quote/fields";
-import { products } from "@/data/products";
+import { orderableProducts } from "@/data/products";
 import { site, showroomDirectionsUrl, showroomLocation } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import {
@@ -587,13 +587,27 @@ export function ViewingBooker() {
               className={cn(inputClasses, "cursor-pointer")}
             >
               <option value="">Show me the range</option>
-              {products.map((product) => (
+              {orderableProducts.map((product) => (
                 <option key={product.slug} value={product.slug}>
                   {product.name}
                 </option>
               ))}
             </select>
-            <p className="mt-1.5 min-h-0 text-sm" />
+            {/* Safari tents are missing from that list on purpose: they are
+                trade only and none stands at the showroom, so a showroom
+                viewing cannot show you one. Say so where someone would go
+                looking for the option rather than let them book and drive out
+                for a tent that is not here. */}
+            <p className="mt-1.5 text-sm leading-relaxed text-stone">
+              Safari tents aren&apos;t at the showroom.{" "}
+              <a
+                href={`mailto:${site.safariTentsEmail}`}
+                className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+              >
+                Email {site.safariTentsEmail}
+              </a>{" "}
+              to arrange a tent viewing.
+            </p>
           </div>
 
           <div>

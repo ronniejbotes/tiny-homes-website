@@ -3,7 +3,7 @@
 import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
 import { Loader2, Minus, Plus, Trash2, Waves } from "lucide-react";
-import { getProduct, optionPrice, products, type CustomOption } from "@/data/products";
+import { getProduct, optionPrice, orderableProducts, type CustomOption } from "@/data/products";
 import { getLayouts } from "@/lib/layouts";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -108,7 +108,12 @@ interface DeepLink {
     invalid values fall back gracefully (unknown product → no selection). */
 function parseDeepLink(sp: ReadonlyURLSearchParams): DeepLink {
   const product = sp.get("product") ? getProduct(sp.get("product") as string) : undefined;
-  if (!product) return { slug: "", variantId: undefined, layoutId: undefined, selected: {} };
+  // A trade-only product is not for sale here, so a link naming one starts the
+  // builder empty rather than seeding a line nobody is allowed to order. The
+  // picker below cannot offer one either — both read the same rule.
+  if (!product || product.tradeOnly) {
+    return { slug: "", variantId: undefined, layoutId: undefined, selected: {} };
+  }
 
   const variantParam = sp.get("variant");
   const variantId =
@@ -913,7 +918,7 @@ function QuoteFormInner({
             <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
             <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
               <ProductPicker
-                products={products}
+                products={orderableProducts}
                 selectedSlug={slug}
                 onSelect={handleSelectProduct}
               />
@@ -969,13 +974,11 @@ function QuoteFormInner({
               </div>
             )}
 
-            {product?.priceOnRequest && (
-              <p className="mt-8 rounded-2xl border border-border bg-parchment/60 p-5 text-sm leading-relaxed text-stone">
-                Safari tents are configured to your site and brief, so there&apos;s no fixed price
-                or options list here. Add it to your units and we&apos;ll arrange a consultation
-                and an itemised quotation.
-              </p>
-            )}
+            {/* A price-on-request product that is NOT trade-only would land
+                here with no price and no options to show. None exists today —
+                safari tents, the only one, are trade-only and never reach the
+                picker — so there is nothing to explain; add a note here if one
+                is ever added. */}
 
             {/* Your units: the running order */}
             {lines.length > 0 && (

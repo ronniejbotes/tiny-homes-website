@@ -10,7 +10,7 @@ const steps = [
   {
     number: "01",
     title: "Choose & customise",
-    body: "Pick from five home styles, plus outdoor kitchens and safari tents, then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec.",
+    body: "Pick from five home styles plus outdoor kitchens, then make your home yours in the online configurator: finishes, insulation, wet rooms and kitchens, with the price updating as you build your spec. Safari tents sit outside this: they're supplied to businesses and hospitality operators and quoted per project rather than ordered here.",
   },
   {
     number: "02",

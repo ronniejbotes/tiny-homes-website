@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CalendarCheck, Eye, HandCoins, MapPin, Phone, Ruler } from "lucide-react";
+import { CalendarCheck, Eye, HandCoins, MapPin, Phone, Ruler, Tent } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonAnchor } from "@/components/ui/button";
@@ -109,6 +109,33 @@ export default function BookAViewingPage() {
               Viewings are free and there&apos;s no obligation. Pick the time that suits you and
               we&apos;ll have someone ready to show you around.
             </p>
+
+            {/* The homes are at the showroom; the safari tents are not. Said
+                here, before anyone picks a slot, because someone who came for
+                a tent would otherwise book a showroom viewing, drive out to
+                Centurion and find nothing they came to see. */}
+            <div className="mt-8 flex items-start gap-4 rounded-2xl border border-clay/30 bg-parchment/70 p-5 sm:p-6">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-clay text-cream">
+                <Tent className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <p className="text-[0.9375rem] leading-relaxed text-stone">
+                <span className="block font-medium text-ink">
+                  Come for the homes, not the safari tents
+                </span>
+                <span className="mt-1 block">
+                  There is no safari tent standing at the showroom, so a viewing booked here
+                  won&apos;t show you one. Safari tents are supplied to businesses and hospitality
+                  operators only and can&apos;t be ordered through the site. To see them, email{" "}
+                  <a
+                    href={`mailto:${site.safariTentsEmail}`}
+                    className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+                  >
+                    {site.safariTentsEmail}
+                  </a>{" "}
+                  and we&apos;ll arrange a time to take you to view the tents.
+                </span>
+              </p>
+            </div>
           </Reveal>
 
           <div className="mt-12 grid gap-10 sm:mt-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">

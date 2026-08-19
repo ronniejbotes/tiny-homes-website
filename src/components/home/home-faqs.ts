@@ -49,7 +49,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Do prices include VAT?",
-    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're configured to your site and brief, so they're priced on request after a consultation.`,
+    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're a trade offering supplied to businesses and hospitality operators, they can't be ordered through the site, and they're quoted per project after a consultation.`,
   },
   {
     q: "What foundations do I need?",
@@ -77,6 +77,6 @@ export const homeFaqs: HomeFaq[] = [
      a search box and quoted back by an AI assistant. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes, and we would rather you did. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and you can book a free 30-minute viewing on the website for any weekday between ${formatSlot(OPEN_MINUTES)} and ${formatSlot(CLOSE_MINUTES)}. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy.`,
+    a: `Yes, and we would rather you did. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and you can book a free 30-minute viewing on the website for any weekday between ${formatSlot(OPEN_MINUTES)} and ${formatSlot(CLOSE_MINUTES)}. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy. Safari tents are the one thing you won't see there: none stands at the showroom, so a tent viewing is arranged separately by emailing ${site.safariTentsEmail}.`,
   },
 ];
