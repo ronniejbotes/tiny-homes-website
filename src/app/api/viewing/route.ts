@@ -4,7 +4,7 @@
  * Contract with the browser, and it is the opposite of /api/quote's. A quote is
  * computed in the browser and this server only delivers it, so that route
  * answers 200 even when the mail fails. A booking is a promise that someone
- * will be standing in Centurion at 10:00 on Thursday, and the only thing that
+ * will be standing in Centurion at 09:00 on Thursday, and the only thing that
  * makes it true is the event landing in the owner's calendar. So the write to
  * iCloud is the request: if it fails, this fails, and the visitor is told to
  * phone rather than shown a confirmation nobody will honour.

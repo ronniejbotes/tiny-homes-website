@@ -124,7 +124,7 @@ export function localBusinessSchema(): SchemaObject {
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
     // When a person can actually walk in, which is what a local pack result
-    // shows as "Open · Closes 15:30". Derived from the same constants the
+    // shows as "Open · Closes 16:00". Derived from the same constants the
     // booking slots are generated from, so the two can never disagree.
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

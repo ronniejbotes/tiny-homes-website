@@ -11,7 +11,7 @@
  * the same route Fantastical and Cal.com take for Apple accounts.
  *
  * Why a client library rather than hand-rolled XML: the failure mode here is
- * not a broken page, it is quietly telling a visitor that 10:00 on Thursday is
+ * not a broken page, it is quietly telling a visitor that 09:00 on Thursday is
  * free when the owner is already out on a delivery. Discovery, namespace
  * prefixes and multistatus parsing are exactly the kind of thing that works on
  * the happy path and breaks on the one response shape you did not anticipate.

@@ -1,6 +1,6 @@
 # Showroom bookings — connecting the site to Apple Calendar
 
-**Goal: `/book-a-viewing` shows the half-hour slots that are genuinely free in the
+**Goal: `/book-a-viewing` shows the hour-long slots that are genuinely free in the
 owner's Apple Calendar, and writes each confirmed viewing straight back into it.**
 
 **The page works with or without that connection**, and says which it is:
@@ -24,7 +24,7 @@ see §6.
 visitor opens /book-a-viewing
    └─ GET /api/viewing/slots
         └─ CalDAV read  ──▶  iCloud  ──▶  busy times for the next 4 weeks
-             └─ weekdays 10:00–15:30, minus anything busy  ──▶  the slot grid
+             └─ weekdays 09:00/11:00/13:00/15:00, minus anything busy  ──▶  the slot grid
 
 visitor picks a slot and submits
    └─ POST /api/viewing
@@ -40,11 +40,20 @@ sits there.
 
 | Rule | Value | Where it lives |
 |---|---|---|
-| Days | Monday–Friday only | `src/lib/viewing.ts` |
-| Hours | 10:00 – 15:30 SAST (last start 15:00) | `OPEN_MINUTES` / `CLOSE_MINUTES` |
-| Slot length | 30 minutes | `SLOT_MINUTES` |
+| Days | Monday–Friday, minus SA public holidays | `src/lib/viewing.ts` |
+| Hours | 09:00 – 16:00 SAST (last start 15:00) | `OPEN_MINUTES` / `CLOSE_MINUTES` |
+| Slot length | 60 minutes | `SLOT_MINUTES` |
+| Hours held back | 10:00–11:00, 12:00–13:00, 14:00–15:00 | `CLOSED_BLOCKS` |
+| Slots offered | 09:00, 11:00, 13:00, 15:00 | `slotStarts()` |
 | Earliest booking | the next working day | `MIN_LEAD_DAYS` |
 | Latest booking | 28 days out | `BOOKING_WINDOW_DAYS` |
+
+Public holidays are **computed, not listed**: the ten fixed dates from the Public
+Holidays Act, Good Friday and Family Day derived from Easter, plus the Act's rule that
+a holiday falling on a Sunday makes the Monday after it a holiday too. Nothing to
+maintain each December. The exception is a once-off holiday proclaimed by the
+President — an election day, a national day of mourning — which has to be added to
+`EXTRA_PUBLIC_HOLIDAYS` by hand once it is gazetted.
 
 Change them in that one file: the page copy, the slot grid, the server-side validation
 and the `openingHours` structured data all read from those constants, so they cannot
@@ -103,8 +112,8 @@ Restart the app. The slot grid should fill in on the next page load.
 
 ### 2.3 Check it worked
 
-- Open `/book-a-viewing`. Days with commitments should show fewer than 15 slots.
-- Put a test event in the calendar for tomorrow at 10:00, reload, and confirm 10:00 has
+- Open `/book-a-viewing`. A clear day shows 4 slots; days with commitments show fewer.
+- Put a test event in the calendar for tomorrow at 09:00, reload, and confirm 09:00 has
   disappeared.
 - Book a slot as a visitor would. Within a few seconds it should appear in Apple
   Calendar on the phone, and two emails should arrive.

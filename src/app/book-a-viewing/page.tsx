@@ -7,12 +7,12 @@ import { ViewingBooker } from "@/components/viewing/viewing-booker";
 import { ShowroomMap } from "@/components/contact/showroom-map";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
-import { HOURS_LABEL, VIEWING_MINUTES } from "@/lib/viewing";
+import { HOURS_LABEL, SLOT_TIMES_LABEL } from "@/lib/viewing";
 import images from "@/data/images.json";
 
 const pageTitle = "Book a Showroom Viewing | Tiny Homes SA, Centurion";
 const pageDescription =
-  "See a tiny home in person before you spend a cent. Book a free 30-minute viewing at our Centurion showroom, weekdays 10:00–15:30. Confirmed instantly.";
+  "See a tiny home in person before you spend a cent. Book a free one-hour viewing at our Centurion showroom, weekdays from 09:00. Confirmed instantly.";
 
 const ogImage = images.products["expandable-homes"][0];
 
@@ -97,9 +97,8 @@ export default function BookAViewingPage() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-stone">
               Buying a home off the internet takes a certain amount of faith, and you shouldn&apos;t
-              have to take ours on trust. Our units are standing in Centurion. Pick a{" "}
-              {VIEWING_MINUTES}-minute slot below, drive out, and decide once you&apos;ve stood
-              inside one.
+              have to take ours on trust. Our units are standing in Centurion. Pick a one-hour
+              slot below, drive out, and decide once you&apos;ve stood inside one.
             </p>
             {/* Deliberately does not promise instant confirmation. Whether a
                 slot is confirmed on the spot or comes back to the visitor
@@ -184,7 +183,8 @@ export default function BookAViewingPage() {
                     </span>
                   </p>
                   <p className="mt-4 text-[0.9375rem] leading-relaxed text-stone">
-                    {HOURS_LABEL}. Weekend viewings aren&apos;t something we can do at the moment.
+                    {HOURS_LABEL}, with viewings starting at {SLOT_TIMES_LABEL}. Weekends and
+                    public holidays aren&apos;t something we can do at the moment.
                   </p>
                   <div className="mt-5">
                     <ButtonAnchor href={`tel:${site.phone.replace(/\s/g, "")}`} variant="outline">

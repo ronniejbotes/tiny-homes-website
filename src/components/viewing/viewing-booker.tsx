@@ -19,6 +19,7 @@ import { cn } from "@/lib/cn";
 import {
   HOURS_LABEL,
   PARTY_MAX,
+  VIEWING_LENGTH_LABEL,
   VIEWING_MINUTES,
   formatDayLong,
   formatDayShort,
@@ -430,7 +431,7 @@ export function ViewingBooker() {
       <fieldset className="min-w-0">
         <legend className="text-display text-2xl text-ink sm:text-3xl">Pick a day</legend>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-stone">
-          {HOURS_LABEL}.{" "}
+          {HOURS_LABEL}, weekends and public holidays excluded.{" "}
           {slots.verified
             ? "These are the days we still have open — everything else is already taken."
             : "Pick a time that suits you and we'll confirm it with you."}
@@ -476,11 +477,11 @@ export function ViewingBooker() {
       <fieldset className="min-w-0">
         <legend className="text-display text-2xl text-ink sm:text-3xl">Pick a time</legend>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-stone">
-          {day ? formatDayLong(day) : "Choose a day first"} · {VIEWING_MINUTES} minutes, which is
+          {day ? formatDayLong(day) : "Choose a day first"} · {VIEWING_LENGTH_LABEL}, which is
           long enough to walk through two or three homes without rushing.
         </p>
 
-        <div className="mt-5 grid grid-cols-3 gap-2.5 sm:grid-cols-4">
+        <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           {daySlots.map((option) => {
             const selected = option === minutes;
             return (

@@ -3,7 +3,7 @@
  *
  * Shared deliberately. The slot grid a visitor sees is rendered from the same
  * functions the API uses to decide whether the slot they picked was real, so a
- * hand-crafted POST cannot book 03:00 on a Sunday.
+ * hand-crafted POST cannot book 03:00 on a Sunday, or 10:00 on any day.
  *
  * Safe to import from a client component: no Node APIs, no secrets.
  */
@@ -21,16 +21,43 @@ export const TIME_ZONE = "Africa/Johannesburg";
 /* --------------------------------------------------------- opening hours */
 
 /**
- * Owner-set, revised 2026-08-13: weekdays only, 10:00–15:30, no weekend
- * viewings. Closing at 15:30 with a 30-minute viewing makes 15:00 the last
- * slot a visitor can start, which is the intent — not a 15:30 start.
+ * Owner-set, revised 2026-08-20: weekdays only, hour-long viewings, the first
+ * starting at 09:00 and the last finishing at 16:00. Nothing on a weekend and
+ * nothing on a public holiday.
+ *
+ * The day is not a plain run of hourly slots between those two times, though
+ * — see CLOSED_BLOCKS.
  */
-export const OPEN_MINUTES = 10 * 60; // 10:00
-export const CLOSE_MINUTES = 15 * 60 + 30; // 15:30, so the last start is 15:00
-export const SLOT_MINUTES = 30;
+export const OPEN_MINUTES = 9 * 60; // 09:00
+export const CLOSE_MINUTES = 16 * 60; // 16:00, so the last start is 15:00
+export const SLOT_MINUTES = 60;
 
-/** Human form of the same hours, for copy and for openingHours schema. */
-export const HOURS_LABEL = "Monday to Friday, 10:00 – 15:30";
+/**
+ * Hours inside the working day that are held back, and so never offered.
+ *
+ * The owner keeps the hour after each viewing for the follow-up and the
+ * paperwork it generates, which is why the grid alternates rather than running
+ * straight through: 09:00, 11:00, 13:00 and 15:00, and nothing else.
+ *
+ * Enforced in slotStarts(), which is what both the grid a visitor is shown and
+ * the server-side check on a submitted booking are built from — so a
+ * hand-crafted POST cannot buy an hour that is blocked here.
+ */
+export const CLOSED_BLOCKS: ReadonlyArray<{ start: number; end: number }> = [
+  { start: 10 * 60, end: 11 * 60 },
+  { start: 12 * 60, end: 13 * 60 },
+  { start: 14 * 60, end: 15 * 60 },
+];
+
+/**
+ * Human form of the span the showroom works over, for copy and for the
+ * openingHours schema. It is the outer bounds, not the list of slots — where
+ * a visitor is actually choosing a time, say SLOT_TIMES_LABEL instead.
+ */
+export const HOURS_LABEL = "Monday to Friday, 09:00 – 16:00";
+
+/** A viewing's length as it should read in prose, rather than "60 minutes". */
+export const VIEWING_LENGTH_LABEL = "one hour";
 
 /**
  * Earliest bookable day, in calendar days from today. 1 means the next
@@ -42,7 +69,7 @@ export const MIN_LEAD_DAYS = 1;
 /** How far ahead the grid runs, in calendar days. */
 export const BOOKING_WINDOW_DAYS = 28;
 
-/** A viewing occupies this much of the owner's diary, including the write-up. */
+/** A viewing occupies this much of the owner's diary. */
 export const VIEWING_MINUTES = SLOT_MINUTES;
 
 /* ------------------------------------------------------------ SAST clock */
@@ -95,6 +122,107 @@ export function isWeekday(day: DayKey): boolean {
   return weekday >= 1 && weekday <= 5;
 }
 
+/* ------------------------------------------------------- public holidays */
+
+/**
+ * South African public holidays, computed rather than listed.
+ *
+ * A hard-coded table is the obvious way to do this and the wrong one: it goes
+ * stale silently, and the failure is a visitor booked in for a Freedom Day
+ * nobody is at the showroom for. Everything below is derived, so the rules
+ * hold for any year the site is still running in.
+ *
+ * The fixed dates are the Public Holidays Act 36 of 1994. Good Friday and
+ * Family Day move with Easter and are derived from it. The Act's Sunday rule
+ * is applied too — a holiday falling on a Sunday makes the following Monday a
+ * public holiday — which is the only half of that rule that can reach us,
+ * since Sundays are not on offer in the first place.
+ *
+ * What this cannot know is a once-off holiday proclaimed by the President: an
+ * election day, a national day of mourning. Those go in EXTRA_PUBLIC_HOLIDAYS
+ * as they are gazetted.
+ */
+export const EXTRA_PUBLIC_HOLIDAYS: ReadonlyArray<DayKey> = [];
+
+/** [month, day] of each holiday whose date never moves. */
+const FIXED_HOLIDAYS: ReadonlyArray<readonly [number, number]> = [
+  [1, 1], // New Year's Day
+  [3, 21], // Human Rights Day
+  [4, 27], // Freedom Day
+  [5, 1], // Workers' Day
+  [6, 16], // Youth Day
+  [8, 9], // National Women's Day
+  [9, 24], // Heritage Day
+  [12, 16], // Day of Reconciliation
+  [12, 25], // Christmas Day
+  [12, 26], // Day of Goodwill
+];
+
+/**
+ * Gregorian Easter Sunday, by the Meeus/Jones/Butcher algorithm. Pure
+ * integer arithmetic, exact for every year in the Gregorian calendar.
+ */
+function easterSunday(year: number): DayKey {
+  const a = year % 19;
+  const b = Math.floor(year / 100);
+  const c = year % 100;
+  const d = Math.floor(b / 4);
+  const e = b % 4;
+  const f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4);
+  const k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const month = Math.floor((h + l - 7 * m + 114) / 31);
+  const dayOfMonth = ((h + l - 7 * m + 114) % 31) + 1;
+  return new Date(Date.UTC(year, month - 1, dayOfMonth)).toISOString().slice(0, 10);
+}
+
+/** Memoised per year: the grid asks about the same handful of years all day. */
+const holidayCache = new Map<number, Set<DayKey>>();
+
+function publicHolidaysIn(year: number): Set<DayKey> {
+  const cached = holidayCache.get(year);
+  if (cached) return cached;
+
+  const days = new Set<DayKey>();
+  for (const [month, dayOfMonth] of FIXED_HOLIDAYS) {
+    days.add(
+      `${year}-${String(month).padStart(2, "0")}-${String(dayOfMonth).padStart(2, "0")}`,
+    );
+  }
+
+  const easter = easterSunday(year);
+  days.add(addDays(easter, -2)); // Good Friday
+  days.add(addDays(easter, 1)); // Family Day
+
+  // Iterating a snapshot, not the live set: the Mondays being added are never
+  // themselves Sundays, so there is nothing to cascade, but reading and
+  // writing the same set in one loop is not something to leave to chance.
+  for (const day of [...days]) {
+    if (sastWeekday(day) === 0) days.add(addDays(day, 1));
+  }
+
+  for (const day of EXTRA_PUBLIC_HOLIDAYS) {
+    if (day.startsWith(`${year}-`)) days.add(day);
+  }
+
+  holidayCache.set(year, days);
+  return days;
+}
+
+/** Whether a South African calendar date is a public holiday. */
+export function isPublicHoliday(day: DayKey): boolean {
+  return publicHolidaysIn(Number(day.slice(0, 4))).has(day);
+}
+
+/** A day the showroom opens at all: a weekday that is not a public holiday. */
+export function isOpenDay(day: DayKey): boolean {
+  return isWeekday(day) && !isPublicHoliday(day);
+}
+
 /* ------------------------------------------------------------ formatting */
 
 const WEEKDAY_NAMES = [
@@ -122,7 +250,7 @@ const MONTH_NAMES = [
   "December",
 ];
 
-/** "08:30". Slots always land on the half hour, but pad anyway. */
+/** "09:00". Slots always land on the hour, but pad anyway. */
 export function formatSlot(minutes: number): string {
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
@@ -141,7 +269,7 @@ export function formatDayShort(day: DayKey): string {
   return `${WEEKDAY_NAMES[sastWeekday(day)].slice(0, 3)} ${d} ${MONTH_NAMES[m - 1].slice(0, 3)}`;
 }
 
-/** "Tuesday, 12 August 2026 at 08:30 – 09:00 (SAST)", for emails. */
+/** "Tuesday, 12 August 2026 at 09:00 – 10:00 (SAST)", for emails. */
 export function formatSlotLong(day: DayKey, minutes: number): string {
   return `${formatDayLong(day)} at ${formatSlot(minutes)} – ${formatSlot(
     minutes + VIEWING_MINUTES,
@@ -150,22 +278,38 @@ export function formatSlotLong(day: DayKey, minutes: number): string {
 
 /* ----------------------------------------------------------------- slots */
 
-/** Every slot start a full viewing fits into before closing time. */
+/**
+ * Every slot start a full viewing fits into before closing time, minus the
+ * hours held back in CLOSED_BLOCKS. Today: 09:00, 11:00, 13:00 and 15:00.
+ */
 export function slotStarts(): number[] {
   const starts: number[] = [];
   for (let m = OPEN_MINUTES; m + VIEWING_MINUTES <= CLOSE_MINUTES; m += SLOT_MINUTES) {
-    starts.push(m);
+    const end = m + VIEWING_MINUTES;
+    const blocked = CLOSED_BLOCKS.some((b) => m < b.end && end > b.start);
+    if (!blocked) starts.push(m);
   }
   return starts;
 }
 
-/** The weekdays inside the booking window, earliest first. */
+/**
+ * "09:00, 11:00, 13:00 and 15:00" — the honest companion to HOURS_LABEL, for
+ * copy that would otherwise imply every hour between 09:00 and 16:00 is on
+ * offer. Derived, so the sentence cannot drift away from the grid.
+ */
+export const SLOT_TIMES_LABEL = ((): string => {
+  const times = slotStarts().map(formatSlot);
+  if (times.length < 2) return times.join("");
+  return `${times.slice(0, -1).join(", ")} and ${times[times.length - 1]}`;
+})();
+
+/** The open days inside the booking window, earliest first. */
 export function bookableDays(now: Date = new Date()): DayKey[] {
   const today = sastDay(now);
   const days: DayKey[] = [];
   for (let offset = MIN_LEAD_DAYS; offset <= BOOKING_WINDOW_DAYS; offset += 1) {
     const day = addDays(today, offset);
-    if (isWeekday(day)) days.push(day);
+    if (isOpenDay(day)) days.push(day);
   }
   return days;
 }
@@ -194,10 +338,9 @@ function overlapsBusy(start: Date, end: Date, busy: BusyInterval[]): boolean {
 /**
  * The slots still open on a given day.
  *
- * A slot survives if nothing in the diary overlaps it. Half-hour granularity
- * means a 20-minute meeting still takes the slot it sits in, which is the
- * honest answer: the owner cannot show someone a home in the ten minutes left
- * over.
+ * A slot survives if nothing in the diary overlaps it. Whole-hour granularity
+ * means a 20-minute meeting still takes the whole slot it sits in, which is
+ * the honest answer: the owner cannot show someone a home around it.
  */
 export function freeSlotsFor(day: DayKey, busy: BusyInterval[]): number[] {
   return slotStarts().filter((minutes) => {
