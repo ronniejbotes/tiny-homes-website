@@ -69,24 +69,44 @@ interface ParsedBooking {
   details: Omit<ViewingBooking, "reference" | "day" | "minutes">;
 }
 
-function parseBooking(body: Record<string, unknown>): ParsedBooking | string {
+/**
+ * Why this is not just a string: `stale` separates "you typed your email
+ * wrong" from "the grid you are looking at is out of date". Only the second
+ * is worth making the browser re-read the diary for, and the browser cannot
+ * tell them apart from the message alone.
+ */
+interface BookingRejection {
+  error: string;
+  /**
+   * The day or time submitted is not one this site currently offers, so the
+   * grid the visitor was shown has aged out from under them — a tab left open
+   * past midnight still lists a day that has since become today, and same-day
+   * bookings are not a thing (see MIN_LEAD_DAYS). Telling them to "pick
+   * another one" while leaving that dead day on screen is a loop.
+   */
+  stale?: boolean;
+}
+
+function parseBooking(body: Record<string, unknown>): ParsedBooking | BookingRejection {
   const firstName = str(body.firstName, 80);
   const surname = str(body.surname, 80);
   const email = str(body.email, 160);
   const phone = str(body.phone, 40);
 
-  if (!firstName || !surname) return "Please give us your first name and surname.";
-  if (!EMAIL_RE.test(email)) return "That email address does not look right.";
-  if (phone.replace(/\D/g, "").length < 9) return "Please give us a contactable phone number.";
+  if (!firstName || !surname) return { error: "Please give us your first name and surname." };
+  if (!EMAIL_RE.test(email)) return { error: "That email address does not look right." };
+  if (phone.replace(/\D/g, "").length < 9) {
+    return { error: "Please give us a contactable phone number." };
+  }
 
   const day = str(body.day, 10);
   if (!isBookableDay(day)) {
-    return "That date is no longer available. Please pick another one.";
+    return { error: "That date is no longer available. Please pick another one.", stale: true };
   }
 
   const minutes = Number(body.minutes);
   if (!Number.isInteger(minutes) || !slotStarts().includes(minutes)) {
-    return "That time is not one we offer. Please pick a slot from the list.";
+    return { error: "That time is not one we offer. Please pick a slot from the list.", stale: true };
   }
 
   // An unknown slug is dropped rather than rejected: the product they came to
@@ -127,8 +147,11 @@ export async function POST(request: Request) {
   }
 
   const parsed = parseBooking(body);
-  if (typeof parsed === "string") {
-    return NextResponse.json({ error: parsed }, { status: 400 });
+  if ("error" in parsed) {
+    return NextResponse.json(
+      { error: parsed.error, ...(parsed.stale ? { stale: true } : {}) },
+      { status: 400 },
+    );
   }
 
   const { day, minutes, details } = parsed;

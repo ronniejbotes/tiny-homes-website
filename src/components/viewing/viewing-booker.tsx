@@ -235,6 +235,7 @@ export function ViewingBooker() {
         ics?: string;
         error?: string;
         taken?: boolean;
+        stale?: boolean;
       };
 
       if (response.ok && data.booked && data.reference) {
@@ -252,8 +253,12 @@ export function ViewingBooker() {
         setSubmitError(
           data.error ?? "Something went wrong booking that slot. Please call or WhatsApp us.",
         );
-        // Somebody else took it. Pull a fresh grid so the next pick is real.
-        if (data.taken) {
+        // Somebody else took it, or the grid we are showing has aged out —
+        // a tab left open past midnight still offers a day that has since
+        // become today, and today is never bookable. Either way the fix is
+        // the same: re-read the diary, so "pick another one" is advice the
+        // visitor can actually act on rather than the same dead day again.
+        if (data.taken || data.stale) {
           setMinutes(null);
           setLoading(true);
           setReloadToken((token) => token + 1);

@@ -60,9 +60,16 @@ export const HOURS_LABEL = "Monday to Friday, 09:00 – 16:00";
 export const VIEWING_LENGTH_LABEL = "one hour";
 
 /**
- * Earliest bookable day, in calendar days from today. 1 means the next
- * working day: a visitor cannot book a slot for this afternoon, which is the
- * owner's stated notice period.
+ * Earliest bookable day, in calendar days from today.
+ *
+ * 1 is the owner's stated notice period and means **no same-day bookings**:
+ * the earliest a visitor can come is tomorrow, and if tomorrow is a weekend
+ * or a public holiday, the next working day after that. Nobody turns up at
+ * the showroom on an hour's notice.
+ *
+ * Do not set this to 0 without being asked to. It is the one constant here
+ * that looks like a harmless off-by-one and is actually a promise about how
+ * much warning the owner gets.
  */
 export const MIN_LEAD_DAYS = 1;
 
