@@ -105,7 +105,7 @@ function parseBooking(body: Record<string, unknown>): ParsedBooking | BookingRej
   }
 
   const minutes = Number(body.minutes);
-  if (!Number.isInteger(minutes) || !slotStarts().includes(minutes)) {
+  if (!Number.isInteger(minutes) || !slotStarts(day).includes(minutes)) {
     return { error: "That time is not one we offer. Please pick a slot from the list.", stale: true };
   }
 

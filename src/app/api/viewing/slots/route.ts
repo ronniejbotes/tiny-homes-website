@@ -97,7 +97,7 @@ export async function GET() {
       "[viewing] ICLOUD_APPLE_ID / ICLOUD_APP_PASSWORD are unset: offering the standard timetable, bookings will be requests rather than confirmations.",
     );
     const unchecked: Record<string, number[]> = {};
-    for (const day of days) unchecked[day] = slotStarts();
+    for (const day of days) unchecked[day] = slotStarts(day);
     return respond({ days: unchecked, available: true, verified: false, rules });
   }
 

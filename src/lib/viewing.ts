@@ -50,6 +50,25 @@ export const CLOSED_BLOCKS: ReadonlyArray<{ start: number; end: number }> = [
 ];
 
 /**
+ * Hours held back on one weekday only, keyed by day of the week in the same
+ * 0 = Sunday … 6 = Saturday terms as sastWeekday().
+ *
+ * Owner-set, revised 2026-08-25: the 13:00 viewing is not offered on a Friday.
+ * Everything else about a Friday is a normal working day, so this cannot be
+ * expressed in CLOSED_BLOCKS, which applies to every day alike.
+ *
+ * Only honoured by the day-aware form of slotStarts(), which is what
+ * freeSlotsFor() — and so both the grid and the server-side check on a
+ * submitted booking — goes through. Call slotStarts() with no day only where
+ * the question really is about the standard timetable rather than a date.
+ */
+export const WEEKDAY_CLOSED_BLOCKS: Readonly<
+  Record<number, ReadonlyArray<{ start: number; end: number }>>
+> = {
+  5: [{ start: 13 * 60, end: 14 * 60 }], // Friday
+};
+
+/**
  * Human form of the span the showroom works over, for copy and for the
  * openingHours schema. It is the outer bounds, not the list of slots — where
  * a visitor is actually choosing a time, say SLOT_TIMES_LABEL instead.
@@ -288,15 +307,33 @@ export function formatSlotLong(day: DayKey, minutes: number): string {
 /**
  * Every slot start a full viewing fits into before closing time, minus the
  * hours held back in CLOSED_BLOCKS. Today: 09:00, 11:00, 13:00 and 15:00.
+ *
+ * Given a day, the blocks that day's weekday holds back are taken out too, so
+ * a Friday comes back as 09:00, 11:00 and 15:00. Given nothing, the answer is
+ * the standard timetable — right for copy, wrong for deciding whether a
+ * particular booking is real, so pass the day wherever there is one.
  */
-export function slotStarts(): number[] {
+export function slotStarts(day?: DayKey): number[] {
+  return slotStartsOn(day ? sastWeekday(day) : undefined);
+}
+
+/** slotStarts() by weekday number, for the copy below that has no date. */
+function slotStartsOn(weekday?: number): number[] {
+  const weekly = weekday === undefined ? [] : (WEEKDAY_CLOSED_BLOCKS[weekday] ?? []);
   const starts: number[] = [];
   for (let m = OPEN_MINUTES; m + VIEWING_MINUTES <= CLOSE_MINUTES; m += SLOT_MINUTES) {
     const end = m + VIEWING_MINUTES;
-    const blocked = CLOSED_BLOCKS.some((b) => m < b.end && end > b.start);
+    const blocked = [...CLOSED_BLOCKS, ...weekly].some((b) => m < b.end && end > b.start);
     if (!blocked) starts.push(m);
   }
   return starts;
+}
+
+/** "09:00, 11:00 and 15:00" from [540, 660, 900]. */
+function joinTimes(minutes: number[]): string {
+  const times = minutes.map(formatSlot);
+  if (times.length < 2) return times.join("");
+  return `${times.slice(0, -1).join(", ")} and ${times[times.length - 1]}`;
 }
 
 /**
@@ -304,10 +341,17 @@ export function slotStarts(): number[] {
  * copy that would otherwise imply every hour between 09:00 and 16:00 is on
  * offer. Derived, so the sentence cannot drift away from the grid.
  */
-export const SLOT_TIMES_LABEL = ((): string => {
-  const times = slotStarts().map(formatSlot);
-  if (times.length < 2) return times.join("");
-  return `${times.slice(0, -1).join(", ")} and ${times[times.length - 1]}`;
+export const SLOT_TIMES_LABEL = joinTimes(slotStarts());
+
+/**
+ * "13:00" — the standard slots a Friday is short of, and "" on a Friday that
+ * runs the standard timetable, in which case the sentence using this should
+ * disappear with it. Derived from WEEKDAY_CLOSED_BLOCKS, so copy saying a
+ * Friday is different cannot outlive the rule that makes it different.
+ */
+export const FRIDAY_MISSING_SLOTS_LABEL = ((): string => {
+  const friday = new Set(slotStartsOn(5));
+  return joinTimes(slotStarts().filter((m) => !friday.has(m)));
 })();
 
 /** The open days inside the booking window, earliest first. */
@@ -350,7 +394,7 @@ function overlapsBusy(start: Date, end: Date, busy: BusyInterval[]): boolean {
  * the honest answer: the owner cannot show someone a home around it.
  */
 export function freeSlotsFor(day: DayKey, busy: BusyInterval[]): number[] {
-  return slotStarts().filter((minutes) => {
+  return slotStarts(day).filter((minutes) => {
     const start = sastToInstant(day, minutes);
     const end = sastToInstant(day, minutes + VIEWING_MINUTES);
     return !overlapsBusy(start, end, busy);

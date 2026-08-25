@@ -1,7 +1,7 @@
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
-import { SLOT_TIMES_LABEL } from "@/lib/viewing";
+import { FRIDAY_MISSING_SLOTS_LABEL, SLOT_TIMES_LABEL } from "@/lib/viewing";
 
 /**
  * Homepage FAQ content. Rendered by the accordion AND serialised into
@@ -77,6 +77,6 @@ export const homeFaqs: HomeFaq[] = [
      a search box and quoted back by an AI assistant. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes, and we would rather you did. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and you can book a free one-hour viewing on the website for any weekday, starting at ${SLOT_TIMES_LABEL}. We are closed on weekends and public holidays. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy. Safari tents are the one thing you won't see there: none stands at the showroom, so a tent viewing is arranged separately by emailing ${site.safariTentsEmail}.`,
+    a: `Yes, and we would rather you did. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and you can book a free one-hour viewing on the website for any weekday, starting at ${SLOT_TIMES_LABEL}${FRIDAY_MISSING_SLOTS_LABEL ? ` (the ${FRIDAY_MISSING_SLOTS_LABEL} viewing is not offered on a Friday)` : ""}. We are closed on weekends and public holidays. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy. Safari tents are the one thing you won't see there: none stands at the showroom, so a tent viewing is arranged separately by emailing ${site.safariTentsEmail}.`,
   },
 ];
