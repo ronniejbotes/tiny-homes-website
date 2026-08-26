@@ -127,8 +127,15 @@ export const site = {
   /** 1-year limited guarantee, owner-confirmed 2026-07-29 (supersedes the sales
    *  deck's 10-year claim): quote verbatim across features/about/FAQ. */
   guarantee: "1-year limited guarantee on all our products",
-  /** Finance/lay-bye line, official price list; always pair with "subject to credit approval". */
-  finance: "Finance & lay-bye options available, subject to credit approval",
+  /**
+   * The one payment line, owner-confirmed 2026-08-25: a home is either paid
+   * for in full or financed by an outside provider. Lay-bye was withdrawn on
+   * that date and must not come back into the copy — we do not hold stock
+   * against instalments, and saying we do is a promise the business cannot
+   * keep. Always pair with "subject to credit approval": the decision is the
+   * provider's, never ours.
+   */
+  finance: "Finance available through a third-party provider, subject to credit approval",
 } as const;
 
 /* ------------------------------------------------------------ the showroom */

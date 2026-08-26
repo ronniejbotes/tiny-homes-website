@@ -23,7 +23,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Five home designs from R54 900 ex VAT, plus outdoor kitchens and safari tents, with finance & lay-bye options available.";
+  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Five home designs from R54 900 ex VAT, plus outdoor kitchens and safari tents, with third-party finance available.";
 
 export const metadata: Metadata = {
   title: { absolute: "About Tiny Homes SA | Prefab Home Builder in Centurion" },
@@ -381,7 +381,7 @@ export default function AboutPage() {
               <StaggerItem className="flex items-start gap-4 rounded-2xl border border-cream/15 bg-forest-light/40 p-6">
                 <Wallet className="mt-1 h-6 w-6 shrink-0 text-sage" aria-hidden="true" />
                 <div>
-                  <h3 className="font-display text-xl">Finance & lay-bye available</h3>
+                  <h3 className="font-display text-xl">Finance available</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
                     {site.finance}. You&rsquo;ll need a valid SA ID or passport, your latest
                     three months&rsquo; bank statements or proof of income and a good credit

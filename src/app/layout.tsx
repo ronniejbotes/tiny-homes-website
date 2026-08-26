@@ -29,7 +29,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const defaultDescription = `${site.description} ${site.guarantee}, with finance and lay-bye options available.`;
+const defaultDescription = `${site.description} ${site.guarantee}, with third-party finance available.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

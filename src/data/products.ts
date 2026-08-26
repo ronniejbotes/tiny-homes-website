@@ -255,7 +255,7 @@ export const products: Product[] = [
       },
       {
         q: "Can I finance an X-Fold?",
-        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record.",
+        a: "Yes. Finance is available through a third-party provider, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record.",
       },
     ],
     seoKeywords: [
@@ -373,7 +373,7 @@ export const products: Product[] = [
       },
       {
         q: "Can I finance an expandable home?",
-        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
+        a: "Yes. Finance is available through a third-party provider, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
       {
         q: "Is an expandable home the same as a granny pod?",
@@ -484,7 +484,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee, and can I finance a nature cabin?",
-        a: "Yes. Every home we sell carries a 1-year limited guarantee and is backed by full after-sales support. Finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes. Every home we sell carries a 1-year limited guarantee and is backed by full after-sales support. Finance is available through a third-party provider, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -577,7 +577,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a guarantee?",
-        a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee, and finance and lay-bye options are available, subject to credit approval.",
+        a: "Yes. Every Tiny Homes SA product carries a 1-year limited guarantee, and finance is available through a third-party provider, subject to credit approval.",
       },
     ],
     seoKeywords: [
@@ -704,7 +704,7 @@ export const products: Product[] = [
       },
       {
         q: "Can I finance a Glamping Capsule?",
-        a: "Yes. Finance and lay-bye options are available, subject to credit approval, and every Tiny Homes SA product carries a 1-year limited guarantee.",
+        a: "Yes. Finance is available through a third-party provider, subject to credit approval, and every Tiny Homes SA product carries a 1-year limited guarantee.",
       },
     ],
     seoKeywords: [
@@ -821,7 +821,7 @@ export const products: Product[] = [
       },
       {
         q: "Can I finance an outdoor kitchen?",
-        a: "Yes. Finance and lay-bye options are available, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
+        a: "Yes. Finance is available through a third-party provider, subject to credit approval. You'll need a valid SA ID or passport, your latest three months' bank statements or proof of income and a good credit record; a deposit may be required depending on the unit.",
       },
     ],
     seoKeywords: [

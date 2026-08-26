@@ -157,7 +157,7 @@ export default function PrivacyPage() {
             <p>
               We do not ask for ID numbers, banking details or any of POPIA&apos;s special personal
               information on this website, and we do not knowingly collect information from
-              children. If you apply for finance or lay-bye, that application is handled by the
+              children. If you apply for finance, that application is handled by the
               finance provider under its own terms; it does not run through this site.
             </p>
           </Clause>

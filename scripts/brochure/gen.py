@@ -375,8 +375,8 @@ ORDER = ["folding-homes", "expandable-homes", "nature-cabins", "apple-cabins",
 
 FINE_STD = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery "
             "and installation are quoted separately, and the groundwork is arranged by you. "
-            "Optional-extra pricing is confirmed line by line on your formal quotation. Finance and "
-            "lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd.")
+            "Optional-extra pricing is confirmed line by line on your formal quotation. Third-party "
+            "finance is subject to credit approval. Tiny Homes (Pty) Ltd.")
 
 # Second pass of per-product copy: the caveat box, the ordering step that is
 # genuinely product-specific, the sizes page and how the dimensions bar should
@@ -567,7 +567,7 @@ EXTRA = {
         "fine": ("Safari tents are priced on request: every project is quoted after a consultation, and the "
                  "itemised quotation is confirmed in writing before anything is committed. Prices exclude "
                  "VAT. Delivery and installation are quoted separately, and the groundwork is arranged by "
-                 "you. Finance and lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd."),
+                 "you. Third-party finance is subject to credit approval. Tiny Homes (Pty) Ltd."),
     },
 }
 
@@ -667,7 +667,7 @@ QUICK = [
     ("Lead time", "&plusmn;90 days", "From deposit to delivered on site for most orders."),
     ("Guarantee", "1 year", "Limited guarantee on every product, with full after-sales support."),
     ("Delivery", "Nationwide", "From Centurion, Gauteng to all nine provinces; cross-border on request."),
-    ("Finance", "Available", "Finance and lay-bye, subject to credit approval."),
+    ("Finance", "Available", "Through a third-party provider, subject to credit approval."),
 ]
 
 
@@ -1496,8 +1496,8 @@ def page_uses(p, cfg, im, folio):
       <hr class="rule" style="margin:3mm 0 4.5mm">
       <div class="order">
         <div class="o"><div class="k nums">01</div><h3>Secure with a deposit</h3>
-          <p>Confirm your order with a deposit and we get to work. Finance and lay-bye options are
-             available, subject to credit approval.</p></div>
+          <p>Confirm your order with a deposit and we get to work. Finance is available through a
+             third-party provider, subject to credit approval.</p></div>
         <div class="o"><div class="k nums">02</div><h3>{cfg.get('order2_title', 'Delivered in &plusmn;90 days')}</h3>
           <p>{cfg.get('order2_body', 'From deposit to delivered on site is around 90 days for most orders.')}</p></div>
         <div class="o"><div class="k nums">03</div><h3>Delivered nationwide</h3>

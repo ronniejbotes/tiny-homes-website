@@ -364,8 +364,8 @@ def page_glance(im, priced, folio):
     head = (cols + '<tr><th></th><th>Product</th><th>Size</th><th>Setup</th>'
             + ('<th class="r">Price ex VAT</th>' if priced else '') + '</tr>')
     note = ("Every product carries a 1-year limited guarantee. Delivery and installation are quoted "
-            "separately on your location and site access, and the groundwork is arranged by you. Finance and lay-bye options are "
-            "available, subject to credit approval."
+            "separately on your location and site access, and the groundwork is arranged by you. Finance is "
+            "available through a third-party provider, subject to credit approval."
             + (" Prices exclude VAT and are subject to change." if priced else
                " Pricing for every line is provided on request, quoted to your site and specification."))
     return f"""
@@ -652,11 +652,11 @@ def page_order(im, priced, folio):
              "Most homes are ready in around 90 days from deposit to delivered on site.")
     fine = ("Delivery and installation are quoted separately on your location and site access, and the "
             "groundwork is arranged by you. Optional-extra pricing is confirmed line by line on your "
-            "formal quotation. Finance and lay-bye are subject to credit approval."
+            "formal quotation. Third-party finance is subject to credit approval."
             if priced else
             "Every line in this brochure is quoted to your site and specification. Delivery and "
             "installation are quoted separately on your location and site access, and the groundwork is "
-            "arranged by you. Finance and lay-bye are subject to credit approval.")
+            "arranged by you. Third-party finance is subject to credit approval.")
     return f"""
 <section class="page grain">
   <div class="flow pad head"><div class="flow-inner">
@@ -669,8 +669,8 @@ def page_order(im, priced, folio):
         <p>Pick the line that fits the job, then make it yours: finishes, insulation, wet rooms,
            kitchens and the extras each range offers.</p></li>
       <li><div class="num">2</div><h3>Secure with a deposit</h3>
-        <p>Confirm your order with a deposit and we get to work in the factory. Finance and lay-bye
-           options are available, subject to credit approval.</p></li>
+        <p>Confirm your order with a deposit and we get to work in the factory. Finance is available
+           through a third-party provider, subject to credit approval.</p></li>
       <li><div class="num">3</div><h3>Delivered in &plusmn;90 days</h3>
         <p>{step2} Delivery runs from Centurion, Gauteng to anywhere in South Africa, quoted on your
            location and site access.</p></li>
@@ -705,13 +705,13 @@ def page_order(im, priced, folio):
 def page_contact(im, priced):
     fine = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery and "
             "installation are quoted separately, and the groundwork is arranged by you. Optional-extra "
-            "pricing is confirmed line by line on your formal quotation. Finance and lay-bye are subject "
+            "pricing is confirmed line by line on your formal quotation. Third-party finance is subject "
             "to credit approval. Tiny Homes (Pty) Ltd."
             if priced else
             "This brochure carries no pricing. Every product is quoted individually to your site, "
             "specification and volume, and the itemised quotation is confirmed in writing before "
             "anything is committed. Delivery and installation are quoted separately, and the groundwork "
-            "is arranged by you. Finance and lay-bye are subject to credit approval. Tiny Homes (Pty) Ltd.")
+            "is arranged by you. Third-party finance is subject to credit approval. Tiny Homes (Pty) Ltd.")
     return f"""
 <section class="page grain">
   <div class="flow pad head"><div class="flow-inner">
