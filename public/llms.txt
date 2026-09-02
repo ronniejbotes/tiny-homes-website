@@ -220,9 +220,13 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   specified purpose and specified limited period. Instead of a full plan set you submit the
   period required, a site plan, layout drawings (size, form, materials) and any structural
   safety details; a safety certificate from a competent person is mandatory if the public will
-  access it. Limits: the authorisation is time-limited, extensions must be applied for before
-  expiry with an affidavit, and if authorisation is refused or lapses the structure MUST be
-  removed. IMPORTANT: "minor building work" (tool sheds under 10 m², greenhouses to 15 m²,
+  access it. What is granted is PROVISIONAL authorisation for a limited period, and two
+  distinct mechanisms follow: A23(4) allows extensions of the period (with a competent
+  person's structural certificate where the public has access), and A23(5)-(6) allow
+  CONVERSION TO PERMANENT by submitting, before the period ends, the further plans the
+  authority needs to consider a full section 4 application, followed by an affidavit
+  confirming what was built matches them. Under A23(7), if those plans are not submitted or
+  are refused, the owner "shall forthwith remove or demolish" the building. IMPORTANT: "minor building work" (tool sheds under 10 m², greenhouses to 15 m²,
   carports to 40 m², playhouses to 5 m², aviaries to 20 m², freestanding walls to 1.8 m) does
   NOT include a dwelling — being small does not exempt habitable accommodation from approval.
 - [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab home
