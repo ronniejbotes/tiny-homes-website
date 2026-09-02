@@ -1876,7 +1876,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do prefab homes need building plans in South Africa?",
-        a: "A permanently founded prefab dwelling generally faces the same municipal approval path as any other dwelling. A structure genuinely declared temporary follows a different and much lighter route under regulation A23 of the National Building Regulations — but that authorisation is for a limited period and the structure must be removed when it expires.",
+        a: "A permanently founded prefab dwelling generally faces the same municipal approval path as any other dwelling. A structure genuinely declared temporary follows a lighter route under regulation A23 — provisional authorisation on layout drawings rather than a full plan set — but it is time-limited, and if it is not extended or converted to a full approval before the period ends, the Act requires the owner to remove or demolish it.",
       },
       {
         q: "Does a prefab home lose value?",
@@ -1935,7 +1935,35 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `There are **two different legal routes**, and which one you are on changes everything.`,
+        text: `There are **two different legal routes**, and which one you are on changes everything. But first, the question underneath all of this.`,
+      },
+
+      { type: "h2", text: "Does a movable structure need plans?" },
+      {
+        type: "p",
+        text: `This is where most of the bad advice in this market lives, so here is the Act itself. Section 1 of the National Building Regulations and Building Standards Act 103 of 1977 defines a building as including:`,
+      },
+      {
+        type: "callout",
+        title: "Section 1, definition of “building”",
+        text: `“…**any other structure, whether of a temporary or permanent nature and irrespective of the materials used in the erection thereof**, erected or used for or in connection with — (i) **the accommodation or convenience of human beings** or animals…”`,
+      },
+      {
+        type: "p",
+        text: `Read that carefully, because it settles the question. A structure does not escape the Act by being **temporary**, by being **movable**, or by being made of **steel rather than brick** — all three are expressly covered. If people will live in it, it is a building.`,
+      },
+      {
+        type: "p",
+        text: `And section 4(1) is equally blunt: *"No person shall without the prior approval in writing of the local authority in question, erect any building in respect of which plans and specifications are to be drawn and submitted in terms of this Act."*`,
+      },
+      {
+        type: "p",
+        text: `So the honest answer to "does a movable tiny home need plans?" is: **it needs the local authority's permission either way — but not necessarily a full architectural plan set.** The lighter option is real, and it is route 2 below.`,
+      },
+      {
+        type: "callout",
+        title: "Do not confuse a tiny home with a caravan",
+        text: `Caravans and trailers are road vehicles, registered under road traffic law, and are treated differently. A tiny home delivered on a truck and set down on plinths is not a caravan — it has no wheels, no registration and it stays put. A great deal of "tiny homes need no permits" content online is American or Australian and describes homes on registered road trailers. It does not transfer to a unit standing on your plot in South Africa.`,
       },
 
       { type: "h2", text: "Route 1: a permanent building" },
@@ -2037,16 +2065,22 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Now the limits, which matter as much as the advantages:`,
+        text: `What the authority grants is **provisional authorisation**, for a limited period set with regard to the period you asked for. Two separate things can then happen, and they are worth keeping apart because they are different sub-regulations:`,
       },
       {
         type: "ol",
         items: [
-          `The authorisation is for a **specified limited period**. It is not permanence by another name.`,
-          `Extensions are possible, but you must apply **before the current authorisation expires**, with further documentation and an affidavit confirming the structure still matches what was approved.`,
-          `If authorisation is refused, or the documentation is not submitted, **the owner must remove the structure**.`,
-          `It has to be genuinely temporary. Declaring a permanent home "temporary" to avoid the approval path is not a loophole; it is a misdeclaration with a removal order attached.`,
+          `**Extension (A23(4)).** The authority may, at your request, grant one or more extensions of the period. Where the public has access to the building, each request must be accompanied by a certificate from an approved competent person confirming the structural system is satisfactory.`,
+          `**Conversion to permanent (A23(5)–(6)).** Not later than the last day of the authorised period, you may submit the additional plans and details the authority requires so it can consider a full section 4 application. If that is approved, you then submit an affidavit confirming what was built matches those plans. This is the legitimate path from temporary to permanent.`,
         ],
+      },
+      {
+        type: "p",
+        text: `And the consequence of doing neither is explicit. Under A23(7), if those plans and details are not submitted, or the authority refuses them, **the owner shall forthwith remove or demolish the building**. That is the sentence to keep in mind before treating a temporary authorisation as a permanent solution.`,
+      },
+      {
+        type: "p",
+        text: `One more thing this route is not: a loophole. A temporary building is one *"so declared by the owner"* for a *"specified purpose for a specified limited period"*. Declaring a permanent home temporary to dodge the approval path is a misdeclaration with a demolition clause attached to it.`,
       },
 
       { type: "h2", text: "What minor building work does — and does not — cover" },
@@ -2131,6 +2165,14 @@ export const blogPosts: BlogPost[] = [
       {
         q: "Does a tiny home count as minor building work?",
         a: "Not if anyone lives in it. The minor building work categories are sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds — habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
+      },
+      {
+        q: "Does a movable or relocatable structure need building plans in South Africa?",
+        a: "It needs the local authority's permission either way. Section 1 of the National Building Regulations and Building Standards Act defines a building to include any structure \"whether of a temporary or permanent nature and irrespective of the materials used\" that is erected or used for the accommodation of human beings — so being movable, temporary or steel-framed does not take it outside the Act. What being genuinely temporary can change is the paperwork: regulation A23 allows provisional authorisation on layout drawings, a site plan and a statement of period rather than a full architectural plan set.",
+      },
+      {
+        q: "Is a tiny home the same as a caravan for planning purposes?",
+        a: "No. Caravans and trailers are road vehicles registered under road traffic law. A tiny home delivered by truck and set down on plinths has no wheels and no registration, and is a structure on your land. Much of the \"tiny homes need no permits\" material online is American or Australian and describes homes on registered road trailers; it does not apply to a unit standing on a plot in South Africa.",
       },
       {
         q: "What is a temporary building under regulation A23?",
