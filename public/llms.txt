@@ -22,7 +22,18 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 
 - [Home](https://tinyhomesa.com/): Overview of the full range — five prefab tiny home
   designs from R54 900 to R1 099 900 ex VAT, plus outdoor kitchens and safari tents —
-  delivered nationwide from Centurion, with third-party finance available.
+  delivered nationwide, with third-party finance available.
+- [Housing Pods](https://tinyhomesa.com/housing-pods): The pod range on one page — what a
+  housing pod is, which five Tiny Homes ranges answer that search, and what each costs.
+  "Pod", "living pod", "pod house" and "granny pod" are used loosely in South Africa, and the
+  units sold under those words split three ways: an insulated shell with electrics and no
+  plumbing (X-Fold, R54 900 ex VAT); a self-contained dwelling with its own bathroom and
+  kitchen (expandable homes, from R199 900); and a finished guest unit built to be let out
+  (Apple Cabins from R449 900, glamping capsules from R689 900, nature cabins R810 900).
+  Includes what is and is not in the price — groundwork, service connections, transport and
+  council approval all sit outside it — and the four site questions that decide whether a pod
+  works on a given property: truck access, a level base, where services come from, and
+  whether the municipality wants plans.
 - [Get a Quote](https://tinyhomesa.com/quote): Configure a home — choose size and extras and
   get an instant price estimate before requesting a formal quotation.
 - [Book a Viewing](https://tinyhomesa.com/book-a-viewing): Book a free 30-minute showroom
@@ -89,8 +100,37 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   Supplied and installed in partnership with Bushtec, one of Africa's leading safari-tent
   manufacturers (Tiny Homes SA is an authorised reseller). Priced on request after a
   consultation; lead time quoted per project.
-- [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab builder,
-  steel construction, roughly 90-day deposit-to-move-in process, nationwide delivery, 1-year limited
+- [Guides & Advice](https://tinyhomesa.com/blog): Long-form buying guides written by the
+  company, with prices taken from the same price list the product pages use.
+- [How much does a housing pod cost in South
+  Africa?](https://tinyhomesa.com/blog/housing-pod-cost-south-africa): Price guide. The pod
+  market splits into three tiers — an insulated shell (roughly R50 000–R150 000), a
+  self-contained dwelling (roughly R200 000–R600 000) and a finished guest unit (R450 000 and
+  up) — and the tier, not the quality, is what explains the price spread. Also covers the four
+  costs that sit outside every advertised pod price: transport, groundwork, service
+  connections and council approval. The question to ask any supplier is "what is the total,
+  delivered and standing on my site, ready to connect?"
+- [Housing pod vs container home vs wendy
+  house](https://tinyhomesa.com/blog/housing-pod-vs-container-home-vs-wendy-house):
+  Comparison. Insulation is the main structural difference — a pod has it in the panel, a
+  container conversion adds it internally (at the cost of already-tight internal space, and
+  with condensation as the failure mode if done poorly), and a wendy house typically has
+  none. A shipping container's 2.44 m external width fixes the layout; pods and wendy houses
+  are drawn as rooms. Containers genuinely win where a unit will be repeatedly craned and
+  moved. A pod is the wrong buy for pure storage, for sites a delivery vehicle cannot reach,
+  and where the budget only stretches by cutting the groundwork.
+- [Where can you put a housing pod? Plans, foundations and
+  services](https://tinyhomesa.com/blog/where-can-you-put-a-housing-pod): Site guide.
+  Building approval in South Africa is administered locally under the National Building
+  Regulations and Building Standards Act with SANS 10400, and how it applies to a
+  relocatable second dwelling is a determination for your own municipality's building control
+  department — Tiny Homes supplies dimensions and specifications for a submission but cannot
+  predict the outcome. Also covers foundations (a level concrete slab or properly levelled
+  precast plinths; level matters more than mass), which ranges arrive with plumbing already
+  installed and which do not, off-grid options, and the site-access problems that stop a
+  delivery at the gate.
+- [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab home
+  supplier, steel-framed construction, roughly 90-day deposit-to-move-in process, nationwide delivery, 1-year limited
   guarantee with after-sales support, and third-party finance.
 - [Contact](https://tinyhomesa.com/contact): Phone 083 660 3743, WhatsApp
   https://wa.me/27836603743, email admin@tinyhomesa.com; based at 187 Gouws Ave, Raslouw AH,

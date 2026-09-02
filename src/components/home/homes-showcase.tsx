@@ -6,7 +6,7 @@ import { formatZAR } from "@/lib/format";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Stagger, StaggerItem } from "@/components/ui/reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import manifest from "@/data/images.json";
 
 type ManifestImage = {
@@ -137,6 +137,25 @@ export function HomesShowcase() {
             );
           })}
         </Stagger>
+
+        {/* A vocabulary footnote, not a billboard. The cards above are named
+            for the catalogue, and buyers arrive using four or five other words
+            for the same buildings; "pod" is one of them, listed alongside the
+            others rather than singled out. Small type on purpose — the seven
+            ranges are what this section is selling. */}
+        <Reveal delay={0.1} className="mt-12">
+          <p className="mx-auto max-w-2xl text-center text-[0.9375rem] leading-relaxed text-stone">
+            People call these tiny houses, granny flats, prefab cabins and housing pods.
+            If it was the last of those you came looking for,{" "}
+            <Link
+              href="/housing-pods"
+              className="font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay"
+            >
+              compare the pod ranges side by side
+            </Link>
+            .
+          </p>
+        </Reveal>
       </Container>
     </section>
   );

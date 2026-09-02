@@ -48,6 +48,12 @@ export const metadata: Metadata = {
     "nature cabins",
     "glamping pods for sale South Africa",
     "tiny home finance",
+    // "Pod" is one more vocabulary the range answers to, appended rather than
+    // promoted: the terms above are the ones the seven product pages are built
+    // on and they keep their place. /housing-pods is where the pod query is
+    // actually answered — this list is a hint, that page is the argument.
+    "housing pod for sale",
+    "pod house South Africa",
   ],
   openGraph: {
     type: "website",

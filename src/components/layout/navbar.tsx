@@ -67,7 +67,8 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
-  const isProductActive = nav.products.some((p) => pathname === `/${p.slug}`);
+  const isProductActive =
+    pathname === "/housing-pods" || nav.products.some((p) => pathname === `/${p.slug}`);
 
   return (
     <header
@@ -151,6 +152,21 @@ export function Navbar() {
                         {p.label}
                       </Link>
                     ))}
+                    {/* The pod hub sits BELOW the ranges, deliberately. It is a
+                        cross-cutting comparison of products that already have
+                        their own entries above, not an eighth product — and
+                        the seven ranges are what this menu is for. One link on
+                        every page is enough internal signal for it to rank. */}
+                    <div className="mx-2 my-1 border-t border-border" />
+                    <Link
+                      href="/housing-pods"
+                      className={cn(
+                        "block rounded-xl px-4 py-2.5 text-sm transition-colors hover:bg-sand/60",
+                        pathname === "/housing-pods" ? "text-clay" : "text-stone",
+                      )}
+                    >
+                      Compare housing pods
+                    </Link>
                   </div>
                 </motion.div>
               )}
@@ -227,6 +243,16 @@ export function Navbar() {
                   {p.label}
                 </Link>
               ))}
+              <Link
+                href="/housing-pods"
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "block rounded-xl px-3 py-3 text-base",
+                  pathname === "/housing-pods" ? "text-clay" : "text-stone",
+                )}
+              >
+                Compare housing pods
+              </Link>
               <div className="my-4 border-t border-border" />
               {nav.pages.map((page) => (
                 <Link

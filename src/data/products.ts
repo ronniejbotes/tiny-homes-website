@@ -269,6 +269,7 @@ export const products: Product[] = [
       "garden office South Africa",
       "foldable container home",
       "affordable tiny home South Africa",
+      "cheap housing pod South Africa",
     ],
   },
   {
@@ -391,6 +392,8 @@ export const products: Product[] = [
       "prefab home Gauteng",
       "modular classroom clinic South Africa",
       "2 bedroom expandable container home",
+      "granny pod South Africa",
+      "living pod for sale",
     ],
   },
   {
@@ -586,6 +589,8 @@ export const products: Product[] = [
       "luxury prefab cabin price",
       "eco resort accommodation pods",
       "luxury pod cabin South Africa",
+      "housing pod for sale",
+      "pod house South Africa",
     ],
   },
   {
@@ -714,6 +719,7 @@ export const products: Product[] = [
       "space capsule house South Africa",
       "vineyard accommodation unit",
       "luxury glamping South Africa",
+      "luxury housing pod South Africa",
     ],
   },
   {

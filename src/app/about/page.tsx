@@ -23,12 +23,12 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes built in Centurion, delivered across South Africa. Five home designs from R54 900 ex VAT, plus outdoor kitchens and safari tents, with third-party finance available.";
+  "High-end prefab tiny homes delivered across South Africa, with a showroom in Centurion. Five home designs from R54 900 ex VAT, plus outdoor kitchens and safari tents, with third-party finance available.";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Tiny Homes SA | Prefab Home Builder in Centurion" },
+  title: { absolute: "About Tiny Homes SA | Prefab Tiny Home Supplier" },
   description:
-    "Tiny Homes SA builds prefab tiny homes in Centurion, delivered nationwide: steel-built homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA supplies prefab tiny homes from its Centurion base, delivered nationwide: steel-framed homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
@@ -139,7 +139,7 @@ const stats = [
   { value: formatZAR(minPrice), label: "entry price, ex VAT" },
   { value: "±90 days", label: "from deposit to move-in" },
   { value: "1-year", label: "limited guarantee on every home" },
-  { value: "Nationwide", label: "delivery from Centurion" },
+  { value: "Nationwide", label: "delivery, all nine provinces" },
 ];
 
 export default function AboutPage() {
@@ -150,7 +150,7 @@ export default function AboutPage() {
           webPageSchema("AboutPage", {
             name: "About Tiny Homes SA",
             description:
-              "The story and process behind Tiny Homes SA: high-end prefab tiny homes built in Centurion and delivered across South Africa.",
+              "The story and process behind Tiny Homes SA: high-end prefab tiny homes supplied from Centurion and delivered across South Africa.",
             path: "/about",
           }),
           breadcrumbSchema([
@@ -171,11 +171,11 @@ export default function AboutPage() {
               </h1>
               <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-stone">
                 <p>
-                  Tiny Homes SA started with a simple question: how can we build better,
-                  faster and smarter? From that challenge grew a team who believe dignified
-                  housing shouldn&rsquo;t demand decades of debt. We refine every bolt and
-                  bracket until compact spaces feel generous, resilient and genuinely
-                  affordable.
+                  Tiny Homes SA started with a simple question: how can housing be done
+                  better, faster and smarter? From that challenge grew a team who believe
+                  dignified housing shouldn&rsquo;t demand decades of debt. We hold every
+                  unit we put our name to against one standard: compact spaces that feel
+                  generous, resilient and genuinely affordable.
                 </p>
                 <p>
                   We supply high-end prefab tiny homes from our base in Raslouw, Centurion,
@@ -186,10 +186,10 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Conventional building takes too long, costs too much and leaves too much to
-                  chance. Our answer is precision factory building: steel-framed, insulated
+                  chance. The answer is precision factory building: steel-framed, insulated
                   homes finished indoors, trucked to your site and standing in anything from
                   minutes to a few days. From deposit to move-in takes around 90 days, and
-                  every home we build comes with a {site.guarantee}.
+                  every home we supply comes with a {site.guarantee}.
                 </p>
                 <p>
                   The range spans five home designs, from the {formatZAR(minPrice)} X-Fold
@@ -341,8 +341,8 @@ export default function AboutPage() {
             <SectionHeading
               dark
               eyebrow="Delivery & installation"
-              title="From Centurion to every corner of the country"
-              intro={`Every home leaves our base in Raslouw, Centurion, Gauteng on a flatbed truck. ${site.deliveryNote} We can also arrange the full turnkey install, so all you do is unlock the front door.`}
+              title="To every corner of the country"
+              intro={`Your home arrives on a flatbed truck, anywhere in South Africa. ${site.deliveryNote} We can also arrange the full turnkey install, so all you do is unlock the front door.`}
             />
             <Stagger className="space-y-5">
               <StaggerItem className="flex items-start gap-4 rounded-2xl border border-cream/15 bg-forest-light/40 p-6">
@@ -350,7 +350,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-display text-xl">Based in Raslouw, Centurion</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
-                    Built in Gauteng, at the centre of the national road network, well placed
+                    Based in Gauteng, at the centre of the national road network, well placed
                     to reach any province.
                   </p>
                 </div>

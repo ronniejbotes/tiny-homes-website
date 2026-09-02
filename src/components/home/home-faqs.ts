@@ -59,13 +59,22 @@ export const homeFaqs: HomeFaq[] = [
     q: "Can the homes run off-grid?",
     a: "Yes. The range is designed to pair with solar power, gas geysers and rainwater tanks; we size and quote the right off-grid setup for your model and site.",
   },
+  /* The pod question, in the vocabulary buyers type. Deliberately NOT near the
+     top: delivery, timelines, VAT and foundations are what most visitors came
+     to the FAQ for, and a terminology question above them would be answering
+     our SEO before their question. It earns a place because "housing pod" is a
+     real query, not because it outranks the practical ones. */
+  {
+    q: "Do you sell housing pods?",
+    a: `Yes. Several of our ranges are what people mean by a housing pod, living pod or pod house — from an X-Fold at ${formatZAR(lowestStartingPrice)} ex VAT up to the glamping capsules. Which one suits you depends on how finished it needs to be, and our housing pods page compares them side by side.`,
+  },
   {
     q: "Can I finance a tiny home?",
     a: `${site.finance}. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
   },
   {
     q: "Which areas do you deliver to?",
-    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is built in Centurion, Gauteng and trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We deliver across the border too, into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}. Cross-border runs are priced per project, including the transport and the customs paperwork.`,
+    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We deliver across the border too, into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}. Cross-border runs are priced per project, including the transport and the customs paperwork.`,
   },
   {
     q: "Is there a guarantee on Tiny Homes SA products?",

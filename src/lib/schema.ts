@@ -331,3 +331,143 @@ export function JsonLd({ data }: { data: SchemaObject | SchemaObject[] }) {
     dangerouslySetInnerHTML: { __html: JSON.stringify(data) },
   });
 }
+
+/* ------------------------------------------------------ collections & blog */
+
+/**
+ * CollectionPage node for a hub page that gathers several products under one
+ * search term (e.g. /housing-pods).
+ *
+ * Typed CollectionPage rather than WebPage because that is what the page is:
+ * it does not describe one product, it groups the ones that answer a query.
+ * The ItemList is emitted as a SEPARATE node by `itemListSchema` rather than
+ * nested in `mainEntity`, matching what the homepage already does — a
+ * top-level ItemList is the form Google's list parsers actually read.
+ */
+export function collectionPageSchema(page: {
+  name: string;
+  description: string;
+  path: string;
+}): SchemaObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: page.name,
+    description: page.description,
+    url: `${site.url}${page.path}`,
+    inLanguage: "en-ZA",
+    isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
+/**
+ * ItemList of products, each with its offer, for a hub page.
+ *
+ * Price-on-request products publish no offer — a 0 sentinel reaching
+ * structured data would be a false price claim, the same rule the homepage
+ * ItemList and `productSchema` already follow.
+ */
+export function productItemListSchema(
+  name: string,
+  items: Product[],
+): SchemaObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.name,
+      url: `${site.url}/${product.slug}`,
+      item: {
+        "@type": "Product",
+        name: product.name,
+        description: product.summary,
+        url: `${site.url}/${product.slug}`,
+        brand: { "@type": "Brand", name: site.name },
+        ...(product.priceOnRequest
+          ? {}
+          : {
+              offers: {
+                "@type": "Offer",
+                price: product.startingPrice,
+                priceCurrency: "ZAR",
+                availability: "https://schema.org/InStock",
+                seller: { "@id": ORG_ID },
+              },
+            }),
+      },
+    })),
+  };
+}
+
+/**
+ * BlogPosting node for one article.
+ *
+ * `author` is the Organization, not a person: nobody on the site has a byline
+ * or an author page, and inventing a named author to satisfy an E-E-A-T
+ * checklist is the kind of fabricated authority Google's own guidance calls
+ * out. The company genuinely is the author.
+ *
+ * `dateModified` falls back to `datePublished` so the field is never absent,
+ * and both are plain ISO dates carried in the post data rather than derived
+ * from the build — a build-stamped `dateModified` would tell Google the whole
+ * blog was rewritten on every deploy.
+ */
+export function blogPostingSchema(post: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  keywords?: readonly string[];
+}): SchemaObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url: `${site.url}${post.path}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}${post.path}` },
+    inLanguage: "en-ZA",
+    datePublished: post.datePublished,
+    dateModified: post.dateModified ?? post.datePublished,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    ...(post.image ? { image: `${site.url}${post.image}` } : {}),
+    ...(post.keywords?.length ? { keywords: post.keywords.join(", ") } : {}),
+    isPartOf: {
+      "@type": "Blog",
+      name: `${site.name} Journal`,
+      url: `${site.url}/blog`,
+    },
+  };
+}
+
+/** Blog node for the index page, listing its posts newest first. */
+export function blogSchema(
+  posts: { title: string; description: string; path: string; datePublished: string }[],
+): SchemaObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${site.name} Journal`,
+    description:
+      "Guides to buying a prefab tiny home, housing pod or cabin in South Africa: prices, sizes, site preparation and how the options compare.",
+    url: `${site.url}/blog`,
+    inLanguage: "en-ZA",
+    publisher: { "@id": ORG_ID },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      url: `${site.url}${post.path}`,
+      datePublished: post.datePublished,
+      author: { "@id": ORG_ID },
+    })),
+  };
+}

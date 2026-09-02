@@ -24,7 +24,7 @@ export function DeliveryCoverage() {
         <SectionHeading
           eyebrow="Where we deliver"
           title="Anywhere the truck can reach"
-          intro="Every home is built in Centurion, Gauteng and trucked to your site. Delivery is quoted separately on distance and access, at cost, with no markup."
+          intro="Your home is trucked to your site anywhere in South Africa. Delivery is quoted separately on distance and access, at cost, with no markup."
           id="coverage-heading"
         />
 

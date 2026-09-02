@@ -15,12 +15,12 @@ const steps = [
   {
     number: "02",
     title: "Secure with a deposit",
-    body: "Confirm your order with a deposit and we get to work in the factory. Most homes are ready in around 90 days from deposit to completion.",
+    body: "Confirm your order with a deposit and your home goes into production. Most homes are ready in around 90 days from deposit to completion.",
   },
   {
     number: "03",
     title: "We deliver nationwide",
-    body: "Your home travels anywhere in South Africa from Centurion, Gauteng; delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
+    body: "Your home travels anywhere in South Africa; delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
   },
   {
     number: "04",

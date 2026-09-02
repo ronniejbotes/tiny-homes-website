@@ -3,7 +3,7 @@ export const site = {
   legalName: "Tiny Homes (Pty) Ltd",
   tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens and safari tents, delivered nationwide from Centurion, Gauteng, and across the border into Botswana, Namibia, Zimbabwe and the rest of southern Africa.",
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens and safari tents, delivered nationwide across South Africa from a showroom in Centurion, Gauteng, and across the border into Botswana, Namibia, Zimbabwe and the rest of southern Africa.",
   /**
    * Apex is canonical: every indexed URL is on the apex, and next.config.ts
    * 308s www.tinyhomesa.com here. Until 2026-08-10 that redirect did not
@@ -179,7 +179,22 @@ export const nav = {
   ],
   pages: [
     { href: "/book-a-viewing", label: "Book a viewing" },
+    { href: "/blog", label: "Guides" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
+  ],
+  /**
+   * Pages that belong in the footer but not in the top bar.
+   *
+   * /housing-pods is a hub over products that already have their own nav
+   * entries, so putting it in the header would list the same five ranges
+   * twice. It still needs a site-wide internal link from every page — a hub
+   * reachable only from the sitemap is a hub search engines discount — and
+   * the footer is where that link costs nothing.
+   */
+  resources: [
+    { href: "/housing-pods", label: "Housing Pods" },
+    { href: "/blog", label: "Guides & Advice" },
+    { href: "/quote", label: "Get a Quote" },
   ],
 } as const;

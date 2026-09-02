@@ -32,13 +32,13 @@ export function Footer() {
     <footer className="bg-forest text-cream">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-2 lg:max-w-sm">
+          <div className="md:col-span-2 lg:col-span-1 lg:max-w-sm">
             <p className="font-display text-2xl font-semibold tracking-tight">
               Tiny Homes <span className="text-sage">SA</span>
             </p>
             <p className="mt-4 leading-relaxed text-cream/70">
               High-end prefab tiny homes for an affordable, sustainable way of living,
-              designed, built and delivered across South Africa from Centurion, Gauteng.
+              supplied and delivered across South Africa from our base in Centurion, Gauteng.
             </p>
             <div className="mt-6 flex gap-3">
               <a
@@ -84,6 +84,22 @@ export function Footer() {
                     className="inline-flex min-h-11 items-center text-cream/80 transition-colors hover:text-cream"
                   >
                     {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Guides and resources">
+            <p className="text-eyebrow text-sage">Guides &amp; Resources</p>
+            <ul className="mt-3 space-y-0">
+              {nav.resources.map((r) => (
+                <li key={r.href}>
+                  <Link
+                    href={r.href}
+                    className="inline-flex min-h-11 items-center text-cream/80 transition-colors hover:text-cream"
+                  >
+                    {r.label}
                   </Link>
                 </li>
               ))}
