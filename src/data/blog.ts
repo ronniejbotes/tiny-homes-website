@@ -1717,6 +1717,481 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  /* =============================================================== 11 ==== */
+  {
+    slug: "prefab-vs-building-a-house-south-africa",
+    seoTitle: "Prefab vs Building a House in South Africa",
+    title: "Prefab vs building a house in South Africa: the pros and cons",
+    description:
+      "An honest list of what each route gives you and what it costs you — money, time, paperwork, finance and resale — and which situations each one genuinely suits.",
+    datePublished: "2026-09-02",
+    keywords: [
+      "prefab vs building a house",
+      "prefab home pros and cons",
+      "modular home advantages disadvantages South Africa",
+      "should I build or buy a prefab",
+      "prefab house disadvantages",
+      "brick vs prefab South Africa",
+    ],
+    imageProduct: "expandable-homes",
+    readingMinutes: 9,
+    body: [
+      {
+        type: "p",
+        text: `We sell prefab homes, so treat the framing here with appropriate suspicion — and then check the cons list, which is longer and more specific than the one you will find on most suppliers' websites. There are situations where conventional building is straightforwardly the better decision, and pretending otherwise wastes your time and ours.`,
+      },
+
+      { type: "h2", text: "What you are actually choosing between" },
+      {
+        type: "p",
+        text: `Not "cheap versus expensive". You are choosing between **a construction project** and **a purchase**.`,
+      },
+      {
+        type: "p",
+        text: `A conventional build is a project you run: you appoint people, approve drawings, carry the risk of variation, and end up with something drawn for your site. A prefab is a product you buy: fixed specification, fixed price, delivered. Almost every advantage and disadvantage below flows from that one distinction.`,
+      },
+
+      { type: "h2", text: "Building conventionally: the case for" },
+      {
+        type: "ul",
+        items: [
+          `**It fits the site and the brief exactly.** Awkward plot, specific view, a layout your family actually needs — you can draw it. Prefab comes in catalogue sizes.`,
+          `**Finance is easier.** Far more lenders will bond conventional construction than a prefabricated structure. This is the single most underrated practical difference, and we go through the bank-by-bank position in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
+          `**It matches what is already there.** If the new building has to read as part of an existing house, masonry does that and a delivered unit does not.`,
+          `**Valuation and resale are well understood.** Valuers, insurers and buyers have decades of comparable data on brick. Prefab has thinner data, which shows up as caution.`,
+          `**Marginal cost falls if you are already building.** Contractors on site for a bigger job can add a room more cheaply than a separate delivered unit with its own transport and groundwork.`,
+        ],
+      },
+
+      { type: "h2", text: "Building conventionally: the case against" },
+      {
+        type: "ul",
+        items: [
+          `**You do not know the final number.** You are quoted a rate against a scope, and scope moves. Contingency is not pessimism, it is arithmetic.`,
+          `**The paperwork is heavy.** Plans by a SACAP-registered professional, municipal approval, NHBRC enrolment for a new home, an electrical certificate, an occupancy certificate before anyone may move in. Set out in full in [what you actually need to put a building on your land](/blog/building-approval-south-africa-what-you-need).`,
+          `**It takes months, on your property.** Trades, deliveries, noise, dust and a garden you cannot use.`,
+          `**You carry the coordination risk.** When the plumber and the electrician disagree about a wall, that is your problem and your delay.`,
+          `**It cannot leave.** Whatever you spend stays with the property.`,
+        ],
+      },
+
+      { type: "h2", text: "Prefab: the case for" },
+      {
+        type: "ul",
+        items: [
+          `**One price, known up front.** You are buying a finished unit, not a rate against a scope.`,
+          `**Speed.** Around 90 days from deposit, and on-site setup runs from minutes for an [X-Fold](/folding-homes) to a few days for a cabin or capsule on a prepared base.`,
+          `**Almost no disruption.** The building work happens somewhere else. Your property sees a delivery, not a site.`,
+          `**Factory conditions.** Panels built indoors, to a repeated specification, out of the weather — which is a genuinely different quality-control problem from wet trades on site in February.`,
+          `**Fewer people to coordinate.** A base, a delivery and two connections, rather than five trades in sequence.`,
+          `**It can move.** An X-Fold folds down; a pod lifts out. If you sell, or the use changes, the asset is not stuck.`,
+          `**A lighter regulatory route may exist.** A structure genuinely declared temporary follows a different and much shorter path than a permanent building — with real limits, covered in the guide linked above.`,
+        ],
+      },
+
+      { type: "h2", text: "Prefab: the case against" },
+      {
+        type: "p",
+        text: `The part most supplier websites skip. All of these are real:`,
+      },
+      {
+        type: "ul",
+        items: [
+          `**Finance is harder.** Some major South African banks do not currently bond prefabricated structures at all. If you need a bond rather than cash or third-party finance, check this before anything else.`,
+          `**It is not automatically cheaper.** Per square metre our [expandable homes](/expandable-homes) land inside the same band as a mid-range conventional build. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
+          `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
+          `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
+          `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling — by everyone.`,
+          `**Approval is not automatically avoided.** A permanently founded prefab dwelling generally faces the same municipal approval as any other dwelling. The lighter route exists only for genuinely temporary structures, and it is time-limited.`,
+          `**Extras add up.** The advertised price is factory-gate. Transport, groundwork and service connections are yours, and on a distant or awkward site they are not small.`,
+        ],
+      },
+
+      { type: "h2", text: "Side by side" },
+      {
+        type: "table",
+        caption: "Conventional building versus a delivered prefab unit",
+        head: ["", "Build conventionally", "Prefab unit"],
+        rows: [
+          ["Final cost known", "At the end", "Before you order"],
+          ["Time on your property", "Months", "Hours to a few days"],
+          ["Layout", "Anything you can draw", "Catalogue sizes"],
+          ["Paperwork", "Full approval path", "Full path if permanent; lighter if genuinely temporary"],
+          ["Bond finance", "Widely available", "Restricted — some banks decline outright"],
+          ["Coordination", "Yours", "Largely the supplier's"],
+          ["Weather risk during build", "Yours", "The factory's"],
+          ["Can it be moved later", "No", "Yes"],
+          ["Resale comparables", "Deep", "Thin"],
+        ],
+      },
+
+      { type: "h2", text: "Which one fits your situation" },
+      {
+        type: "h3", text: "Choose conventional building if…",
+      },
+      {
+        type: "ul",
+        items: [
+          `You need a bond and cannot use cash or third-party finance.`,
+          `The layout genuinely has to be bespoke.`,
+          `It must match existing brickwork or form part of a larger renovation already underway.`,
+          `Delivery vehicles cannot reach the position.`,
+        ],
+      },
+      { type: "h3", text: "Choose prefab if…" },
+      {
+        type: "ul",
+        items: [
+          `Knowing the final figure up front matters more to you than a bespoke plan.`,
+          `You want the building usable in months rather than a year.`,
+          `You cannot live through a construction site — a working farm, a lodge taking bookings, a home with small children.`,
+          `The use might change, or you might move, and a relocatable asset is worth something to you.`,
+          `The job is a standard one: a granny flat, a guest unit, staff accommodation, a site office, a rental cabin.`,
+        ],
+      },
+      {
+        type: "callout",
+        title: "The question that settles it fastest",
+        text: `"Do I need a bond?" If yes, find out whether your bank will lend against a prefabricated structure before you look at a single unit. It is a five-minute call, and it removes an entire option — in one direction or the other — before you spend any time on the rest.`,
+      },
+      {
+        type: "p",
+        text: `And whichever way you lean, go and stand inside a unit before deciding. Small buildings photograph much larger than they measure, and fifteen minutes settles a question that no amount of comparison reading will.`,
+      },
+      {
+        type: "cta",
+        text: `Units are on site at our showroom in ${site.showroom.city} — free to view, no obligation.`,
+        href: "/book-a-viewing",
+        label: "Book a viewing",
+      },
+    ],
+    faqs: [
+      {
+        q: "What are the main disadvantages of a prefab home?",
+        a: "Bond finance is restricted — some major South African banks do not currently bond prefabricated structures at all. Beyond that: catalogue sizes rather than bespoke layouts, delivery access can make a site unworkable at any budget, resale and valuation data is thinner than for brick, and the advertised price excludes transport, groundwork and service connections.",
+      },
+      {
+        q: "Is prefab better quality than brick?",
+        a: "Different, rather than better. Factory assembly means repeatable conditions, indoors, out of the weather — a genuinely different quality-control problem from wet trades working on site in bad weather. But a well-built masonry house by a good contractor is an excellent building, and a poorly specified prefab is still a poorly specified building.",
+      },
+      {
+        q: "Do prefab homes need building plans in South Africa?",
+        a: "A permanently founded prefab dwelling generally faces the same municipal approval path as any other dwelling. A structure genuinely declared temporary follows a different and much lighter route under regulation A23 of the National Building Regulations — but that authorisation is for a limited period and the structure must be removed when it expires.",
+      },
+      {
+        q: "Does a prefab home lose value?",
+        a: "It depends heavily on whether it is fixed and approved. A permanently founded, municipally approved dwelling with an occupancy certificate is treated as property. A relocatable unit standing on plinths behaves more like a movable asset — which is an advantage if you want to take it with you and a disadvantage at valuation.",
+      },
+    ],
+    references: [
+      {
+        title: "Prefab homes: will the bank grant you a bond?",
+        publisher: "ooba Home Loans",
+        url: "https://www.ooba.co.za/resources/prefab-homes/",
+        note: "Source for the finance restriction cited in the cons list.",
+      },
+      {
+        title: "National Building Regulations and Building Standards Act 103 of 1977",
+        publisher: "SAFLII (consolidated legislation)",
+        url: "https://www.saflii.org/za/legis/consol_act/nbrabsa1977476/",
+        note: "The Act governing plan approval, temporary buildings and occupancy certificates for both routes.",
+      },
+      {
+        title: "What it costs to build a house in South Africa",
+        publisher: "ooba Home Loans",
+        url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
+        note: "Conventional building cost context.",
+      },
+    ],
+  },
+
+  /* =============================================================== 12 ==== */
+  {
+    slug: "building-approval-south-africa-what-you-need",
+    seoTitle: "What You Need to Build on Your Land in SA",
+    title: "What you actually need to put a building on your land in South Africa",
+    description:
+      "The approval path for a permanent building — zoning, SACAP plans, NHBRC, certificates — against the lighter temporary-structure route, and where each ends.",
+    datePublished: "2026-09-02",
+    keywords: [
+      "building plans approval South Africa",
+      "what permits do I need to build South Africa",
+      "occupancy certificate South Africa",
+      "NHBRC enrolment requirement",
+      "temporary building regulation A23",
+      "do I need plans for a prefab structure",
+    ],
+    imageProduct: "expandable-homes",
+    readingMinutes: 12,
+    body: [
+      {
+        type: "callout",
+        title: "This is not legal advice",
+        text: `What follows is national framework, researched and sourced at the foot of this article. Building approval in South Africa is administered by your local municipality, and by-laws and practice differ. Where this article and your building control department disagree, they are right.`,
+      },
+      {
+        type: "p",
+        text: `Most of this industry answers "do I need plans?" with "ask your municipality" and stops there. That is true but useless. Here is the actual framework, so you know what you are asking about and can tell whether the answer you get sounds right.`,
+      },
+      {
+        type: "p",
+        text: `There are **two different legal routes**, and which one you are on changes everything.`,
+      },
+
+      { type: "h2", text: "Route 1: a permanent building" },
+      {
+        type: "p",
+        text: `This is the path for anything intended to stay — a house, a granny flat, a permanently founded cabin. It runs under the **National Building Regulations and Building Standards Act 103 of 1977**, with SANS 10400 supplying the deemed-to-satisfy standards.`,
+      },
+
+      { type: "h3", text: "Step 1 — Land use, before anything else" },
+      {
+        type: "p",
+        text: `Zoning is a separate question from building plans, and it is the one that can stop the project outright. Land use sits under the **Spatial Planning and Land Use Management Act 16 of 2013 (SPLUMA)** and your municipality's land use scheme.`,
+      },
+      {
+        type: "p",
+        text: `For a second dwelling on a Residential 1 stand, the usual mechanism is **consent use** rather than rezoning — permission to use the property for something beyond its zoning, granted to you rather than to the land. Two consequences worth knowing: it is decided by the municipal planning authority, and **consent use generally lapses when the property is sold**, so a buyer has to reapply. Rezoning permanently changes the zoning and is the heavier application.`,
+      },
+
+      { type: "h3", text: "Step 2 — Plans, drawn by someone specific" },
+      {
+        type: "p",
+        text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person registered with the South African Council for the Architectural Profession (SACAP)** — a professional architect, senior architectural technologist, architectural technologist or architectural draughtsperson, depending on the building's complexity. Their registration number appears on the title block of each drawing sheet, and providing architectural services without SACAP registration is an offence.`,
+      },
+      {
+        type: "p",
+        text: `Depending on the structure, an engineer may also have to take responsibility for the foundation or structural design — a rational design signed by a registered professional rather than a deemed-to-satisfy detail.`,
+      },
+
+      { type: "h3", text: "Step 3 — Municipal approval, with a clock on it" },
+      {
+        type: "p",
+        text: `Once submitted, the Act gives the local authority a deadline to grant or refuse:`,
+      },
+      {
+        type: "ul",
+        items: [
+          `**Under 500 m² architectural area — 30 days** from receipt of the application.`,
+          `**500 m² or larger — 60 days.**`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Those are the statutory periods; real-world turnaround depends on the municipality and on how many times the plans come back for correction. One more clause catches people out: **an approval lapses after 12 months** if the work has not commenced or proceeded, unless you apply in writing for an extension.`,
+      },
+
+      { type: "h3", text: "Step 4 — NHBRC, if it is a new home" },
+      {
+        type: "p",
+        text: `Under the **Housing Consumers Protection Measures Act 95 of 1998**, a new home must be enrolled with the NHBRC **15 days before construction commences**, and the home must be available for inspection by the Council's inspectorate throughout construction.`,
+      },
+      {
+        type: "p",
+        text: `Section 10(1) goes further: no person may carry on business as a home builder, or receive payment under an agreement for the sale or construction of a home, unless registered as a home builder. Failing to register is an offence under section 21, carrying a fine of up to **R25 000 or a year's imprisonment on each charge**. Late enrolment is possible but attracts a fee and a special inspection.`,
+      },
+      {
+        type: "p",
+        text: `Owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs — no warranty cover, and restrictions on selling the property for a period afterwards.`,
+      },
+
+      { type: "h3", text: "Step 5 — Certificates, at the end" },
+      {
+        type: "ul",
+        items: [
+          `**Electrical certificate of compliance.** Required under the Occupational Health and Safety Act and the Electrical Installation Regulations, issued by a registered person holding a wireman's licence. Valid two years unless the installation is altered, and required before a property transfers.`,
+          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it — and it is the document that surfaces years later when you sell.`,
+        ],
+      },
+      {
+        type: "callout",
+        title: "The honest summary of route 1",
+        text: `Land use decision, SACAP-registered plans, a 30- or 60-day municipal clock, NHBRC enrolment 15 days before you break ground, inspections through construction, an electrical certificate and an occupancy certificate at the end. None of it is optional, and the occupancy certificate is the one that bites at resale.`,
+      },
+
+      { type: "h2", text: "Route 2: a temporary building" },
+      {
+        type: "p",
+        text: `This is the route most people asking about tiny homes have never heard of, and it is genuinely different.`,
+      },
+      {
+        type: "p",
+        text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one *"so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time"* — explicitly excluding a builder's shed.`,
+      },
+      {
+        type: "p",
+        text: `Permission is still required before you erect it. But what you submit is much lighter than a full plan set:`,
+      },
+      {
+        type: "ul",
+        items: [
+          `A statement specifying the **period** of authorisation you need.`,
+          `A **site plan** showing existing structures and exactly where it will stand.`,
+          `**Layout drawings** giving size, form and materials.`,
+          `Any **structural safety details** the authority asks for.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `The local authority assesses the intended use and lifespan, the location, and the suitability of the materials. If the public will have access to the building, a safety certificate from an approved competent person is mandatory.`,
+      },
+      {
+        type: "p",
+        text: `Now the limits, which matter as much as the advantages:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `The authorisation is for a **specified limited period**. It is not permanence by another name.`,
+          `Extensions are possible, but you must apply **before the current authorisation expires**, with further documentation and an affidavit confirming the structure still matches what was approved.`,
+          `If authorisation is refused, or the documentation is not submitted, **the owner must remove the structure**.`,
+          `It has to be genuinely temporary. Declaring a permanent home "temporary" to avoid the approval path is not a loophole; it is a misdeclaration with a removal order attached.`,
+        ],
+      },
+
+      { type: "h2", text: "What minor building work does — and does not — cover" },
+      {
+        type: "p",
+        text: `The third thing people hope applies. A building control officer may exempt an owner in writing from submitting plans for **minor building work**, and authorise it subject to conditions. The listed categories carry size thresholds:`,
+      },
+      {
+        type: "table",
+        caption: "Examples of minor building work and their thresholds",
+        head: ["Structure", "Threshold"],
+        rows: [
+          ["Tool shed", "Under 10 m²"],
+          ["Greenhouse", "Max 15 m²"],
+          ["Open-sided carport or shelter", "Max 40 m²"],
+          ["Children's playhouse", "Max 5 m²"],
+          ["Aviary", "Max 20 m²"],
+          ["Freestanding wall or fence", "Max 1.8 m, non-retaining"],
+        ],
+      },
+      {
+        type: "p",
+        text: `Read that list carefully and the crucial point is what is **absent from it: a dwelling**. Minor building work covers sheds, carports, playhouses and walls — not habitable accommodation. A tiny home someone sleeps in does not become exempt because it is small. And even where the exemption applies, the work must still comply with the National Building Regulations; you are excused the plans, not the standards.`,
+      },
+
+      { type: "h2", text: "Which route applies to which unit" },
+      {
+        type: "table",
+        caption: "How the two routes map onto real uses",
+        head: ["What you are doing", "Likely route", "Why"],
+        rows: [
+          ["Granny flat, permanently founded", "Route 1, in full", "A dwelling intended to stay; plus consent use for a second dwelling"],
+          ["Site office for a 14-month project", "Route 2 (A23)", "Genuinely temporary, specified period, removed at the end"],
+          ["Rental cabin on a farm, staying", "Route 1", "Permanent accommodation, plus a land-use question for the use itself"],
+          ["Staff accommodation, this site only", "Route 2 (A23)", "Time-bound, relocates with the operation"],
+          ["Home office in the garden", "Ask the BCO", "Depends on foundation, permanence and whether anyone sleeps in it"],
+          ["Tool store under 10 m²", "Minor building work", "Listed category, written exemption from the BCO"],
+        ],
+      },
+      {
+        type: "p",
+        text: `Our range spans both. An [X-Fold](/folding-homes) that folds down and moves between sites is the natural temporary-building case. A [nature cabin](/nature-cabins) or a permanently founded [expandable home](/expandable-homes) used as a granny flat is a route 1 building, and should be treated as one from the start.`,
+      },
+
+      { type: "h2", text: "What to ask, and in what order" },
+      {
+        type: "ol",
+        items: [
+          `**Phone your municipality's building control department.** Free. Describe the actual structure, its size, its foundation and whether anyone will sleep in it — not "a tiny home", which means different things to different officials.`,
+          `**Ask the land-use question separately**: does my zoning permit this use, and do I need consent use?`,
+          `**Ask which route applies**: permanent building, temporary building under A23, or minor building work.`,
+          `**If route 1**, appoint a SACAP-registered professional early — nothing proceeds until plans exist.`,
+          `**If route 2**, confirm the period you can get and what happens at expiry, before you buy.`,
+          `**Check your HOA or body corporate rules**, which can be stricter than the municipality's.`,
+          `**Tell your insurer** what you are putting up, and confirm it is covered.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `We supply the dimensions and specifications of any unit for your submission. What we cannot do — and what nobody selling you a building can honestly do — is tell you what your municipality will decide.`,
+      },
+      {
+        type: "cta",
+        text: `Tell us the unit and the site and we will give you the dimensions and specifications your submission needs.`,
+        href: "/contact",
+        label: "Ask for the specifications",
+      },
+    ],
+    faqs: [
+      {
+        q: "How long does building plan approval take in South Africa?",
+        a: "The National Building Regulations and Building Standards Act gives the local authority 30 days to grant or refuse where the architectural area is under 500 m², and 60 days where it is 500 m² or more. Real turnaround depends on the municipality and on how many revisions the plans need. An approval lapses after 12 months if work has not started, unless extended in writing.",
+      },
+      {
+        q: "Can I draw my own building plans in South Africa?",
+        a: "No. Plans must be prepared and submitted by a competent person registered with SACAP — a professional architect, senior architectural technologist, architectural technologist or architectural draughtsperson — whose registration number appears on each drawing sheet. Providing architectural services without SACAP registration is an offence.",
+      },
+      {
+        q: "Do I need an occupancy certificate?",
+        a: "For a permanent building, yes. Section 14 of the Act requires the local authority to issue one within 14 days of the owner requesting it in writing after completion, and nobody may lawfully occupy the building without it. It is also the document that surfaces when you sell.",
+      },
+      {
+        q: "Does a tiny home count as minor building work?",
+        a: "Not if anyone lives in it. The minor building work categories are sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds — habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
+      },
+      {
+        q: "What is a temporary building under regulation A23?",
+        a: "One declared by the owner to be used for a specified purpose for a specified limited period. Instead of a full plan set you submit the period required, a site plan, layout drawings showing size, form and materials, and any structural safety details required. Authorisation is time-limited, extensions must be applied for before expiry, and if authorisation is refused or lapses the structure must be removed.",
+      },
+      {
+        q: "Does a prefab home need NHBRC enrolment?",
+        a: "If it is a new home, the Housing Consumers Protection Measures Act requires enrolment 15 days before construction commences, with inspection access throughout. Section 10(1) also requires anyone carrying on business as a home builder to be registered, with a fine of up to R25 000 or a year's imprisonment per charge for failing to do so. Owner-builder exemption must be applied for before construction starts.",
+      },
+    ],
+    references: [
+      {
+        title: "National Building Regulations and Building Standards Act 103 of 1977",
+        publisher: "SAFLII (consolidated legislation)",
+        url: "https://www.saflii.org/za/legis/consol_act/nbrabsa1977476/",
+        note: "Primary source for the 30/60-day approval periods, the 12-month lapse, temporary buildings and the section 14 occupancy certificate.",
+      },
+      {
+        title: "Regulations under the National Building Regulations and Building Standards Act",
+        publisher: "SAFLII (consolidated regulations)",
+        url: "https://www.saflii.org/za/legis/consol_reg/rutnbrabsa1977693/",
+        note: "The regulations themselves, including regulation A23 on temporary buildings and the minor building work definitions.",
+      },
+      {
+        title: "Housing Consumers Protection Measures Act 95 of 1998",
+        publisher: "SAFLII (consolidated legislation)",
+        url: "https://www.saflii.org/za/legis/consol_act/hcpma1998443/",
+        note: "Source for NHBRC enrolment, the section 10(1) registration requirement and the section 21 penalties.",
+      },
+      {
+        title: "Temporary buildings",
+        publisher: "sans10400.co.za",
+        url: "https://www.sans10400.co.za/temporary-buildings/",
+        note: "Plain-language explanation of regulation A23 — what must be submitted, the assessment criteria, extensions and removal.",
+      },
+      {
+        title: "Plans and minor building work",
+        publisher: "sans10400.co.za",
+        url: "https://www.sans10400.co.za/minor-building-work/",
+        note: "Source for the minor building work categories and size thresholds in the table above.",
+      },
+      {
+        title: "A competent person",
+        publisher: "sans10400.co.za",
+        url: "https://www.sans10400.co.za/a-competent-person/",
+        note: "Who may draw and submit building plans, and the SACAP registration categories.",
+      },
+      {
+        title: "Electrical Installation Regulations",
+        publisher: "SAFLII (consolidated regulations)",
+        url: "https://www.saflii.org/za/legis/consol_reg/eir342/",
+        note: "The regulations behind the electrical certificate of compliance requirement.",
+      },
+      {
+        title: "Spatial Planning and Land Use Management Act 16 of 2013",
+        publisher: "South African Government",
+        url: "https://www.gov.za/documents/spatial-planning-and-land-use-management-act",
+        note: "The land use framework behind zoning, consent use and rezoning applications.",
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------- accessors */

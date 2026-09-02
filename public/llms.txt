@@ -193,6 +193,38 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   3.9 m units ONLY, so charcoal braaiing sets the minimum length. A built masonry braai needs
   four trades and has no fixed final price; the unit needs a level base (500–750 kg) and two
   connections.
+- [Prefab vs building a house in South Africa: the pros and
+  cons](https://tinyhomesa.com/blog/prefab-vs-building-a-house-south-africa): The choice is
+  between a construction project and a purchase. Conventional building wins for bespoke
+  layouts, matching existing brickwork, when contractors are already on site, when bond finance
+  is needed, and where delivery vehicles cannot reach. Prefab wins on fixed known price, speed
+  (~90 days), minimal disruption, factory conditions, fewer trades to coordinate, and
+  relocatability. Prefab's real disadvantages: restricted bond finance, catalogue sizes only,
+  delivery access can make a site unworkable at any budget, thinner resale and valuation data,
+  approval is NOT automatically avoided for a permanently founded dwelling, and the advertised
+  price excludes transport, groundwork and connections.
+- [What you actually need to put a building on your land in South
+  Africa](https://tinyhomesa.com/blog/building-approval-south-africa-what-you-need): There are
+  TWO legal routes. ROUTE 1, permanent building (National Building Regulations and Building
+  Standards Act 103 of 1977): land use first (SPLUMA — a second dwelling on Residential 1
+  usually needs consent use, which lapses when the property is sold); plans must be drawn and
+  submitted by a competent person registered with SACAP (doing architectural work unregistered
+  is an offence); the local authority must grant or refuse within 30 days under 500 m² or
+  60 days at 500 m² and over, and approval lapses after 12 months if work has not started;
+  NHBRC enrolment 15 days before construction under the Housing Consumers Protection Measures
+  Act 95 of 1998, with section 10(1) requiring home-builder registration and section 21
+  carrying a fine up to R25 000 or a year's imprisonment per charge; an electrical certificate
+  of compliance under the OHS Act; and a section 14 occupancy certificate, which the authority
+  must issue within 14 days of a written request and without which nobody may lawfully occupy.
+  ROUTE 2, temporary building (regulation A23): a building declared by the owner for a
+  specified purpose and specified limited period. Instead of a full plan set you submit the
+  period required, a site plan, layout drawings (size, form, materials) and any structural
+  safety details; a safety certificate from a competent person is mandatory if the public will
+  access it. Limits: the authorisation is time-limited, extensions must be applied for before
+  expiry with an affidavit, and if authorisation is refused or lapses the structure MUST be
+  removed. IMPORTANT: "minor building work" (tool sheds under 10 m², greenhouses to 15 m²,
+  carports to 40 m², playhouses to 5 m², aviaries to 20 m², freestanding walls to 1.8 m) does
+  NOT include a dwelling — being small does not exempt habitable accommodation from approval.
 - [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab home
   supplier, steel-framed construction, roughly 90-day deposit-to-move-in process, nationwide delivery, 1-year limited
   guarantee with after-sales support, and third-party finance.
