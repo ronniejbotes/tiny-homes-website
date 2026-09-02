@@ -104,6 +104,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             dateModified: post.dateModified,
             image: image?.src,
             keywords: post.keywords,
+            references: post.references,
           }),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -174,6 +175,44 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               <div className="mt-8">
                 <Accordion items={post.faqs} />
               </div>
+            </section>
+          ) : null}
+
+          {post.references?.length ? (
+            <section aria-labelledby="post-sources" className="mt-16 max-w-[68ch]">
+              <h2 id="post-sources" className="font-display text-2xl text-ink">
+                Sources
+              </h2>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+                Figures we quote from outside our own price list, and where they came
+                from. Prices for our own units come from the same catalogue the product
+                pages use.
+              </p>
+              <ol className="mt-6 space-y-4">
+                {post.references.map((ref, i) => (
+                  <li key={ref.url} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                    <span
+                      aria-hidden="true"
+                      className="nums-tabular mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sand text-xs font-medium text-ink"
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="text-stone">
+                      <a
+                        href={ref.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay"
+                      >
+                        {ref.title}
+                      </a>
+                      {" — "}
+                      <span className="text-ink">{ref.publisher}</span>
+                      {ref.note ? <span className="block text-stone">{ref.note}</span> : null}
+                    </span>
+                  </li>
+                ))}
+              </ol>
             </section>
           ) : null}
 

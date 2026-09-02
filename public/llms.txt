@@ -129,6 +129,70 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   precast plinths; level matters more than mass), which ranges arrive with plumbing already
   installed and which do not, off-grid options, and the site-access problems that stop a
   delivery at the gate.
+- [Is a prefab home cheaper than building in South
+  Africa?](https://tinyhomesa.com/blog/is-a-prefab-home-cheaper-than-building): Cost
+  comparison with rand-per-square-metre figures. Not automatically cheaper: the X-Fold is far
+  below any conventional rate because it is a shell; the expandable homes land inside the same
+  R10 000–R15 000/m² band as a mid-range conventional build (but that rate already includes
+  insulation, glazing, a fitted bathroom and installed services); Apple Cabins and glamping
+  capsules sit well above it, which is a finish premium rather than a prefab premium. Rand per
+  square metre rises as buildings get smaller, whichever way you build. Prefab reliably wins on
+  time, price certainty, disruption and relocatability rather than always on total cost.
+  Conventional building wins for bespoke layouts, when contractors are already on site, when
+  bond finance is needed, and when access is impossible.
+- [How much does a granny flat cost in South
+  Africa?](https://tinyhomesa.com/blog/granny-flat-cost-south-africa): A granny flat is a
+  "second dwelling" in municipal by-law language — self-contained, with its own bathroom,
+  kitchen and entrance. Conventional Gauteng builds run roughly R250 000 to over R1 000 000
+  per industry cost guides; expandable homes start at R199 900 ex VAT for a self-contained
+  18 m². Two separate approval questions: whether zoning permits a second dwelling at all, and
+  whether building plans are required. Both are decided locally; HOA rules can be stricter.
+- [Can you get a home loan for a prefab home in South
+  Africa?](https://tinyhomesa.com/blog/prefab-home-finance-south-africa): Per bond originator
+  ooba, Standard Bank and Absa have been reported as NOT currently bonding prefabricated
+  structures (outside their acceptable security requirements). FNB is open where the home is
+  fixed to a foundation and complies with the National Building Regulations. Nedbank assesses
+  land and unit separately, with a reported 50% deposit on the land. Lenders are concerned with
+  whether the structure is fixed or movable, whether it is approved, and what it is worth in
+  year fifteen. Alternatives: third-party finance (subject to credit approval), an access bond
+  or further advance against existing property, unsecured lending, or staged cash purchase.
+- [Starting a glamping business in South
+  Africa](https://tinyhomesa.com/blog/start-a-glamping-business-south-africa): The SA glamping
+  market was about USD 28.1m in 2025, forecast around USD 76.5m by 2034 (11.42% CAGR), with
+  cabins and pods the largest revenue segment — but national accommodation occupancy was
+  reported at roughly 40% in January 2026, so model below that for a new site. Units: Apple
+  Cabins from R449 900, glamping capsules from R689 900 (kitchen and air conditioning are
+  EXTRAS, not standard), nature cabins R810 900 (most fitted), safari tents trade-only on
+  request. Budget also for transport, a level base per unit, water, sewerage and power to each
+  site, decking and full guest fit-out. Tourist accommodation raises a land-use question as
+  well as a building one.
+- [Taking a tiny home off-grid in South
+  Africa](https://tinyhomesa.com/blog/off-grid-tiny-home-south-africa): Power, water and waste
+  are three independent decisions. Water heating is the largest electrical load and sizes the
+  whole solar system; the fridge sets overnight battery; size on the worst winter month.
+  Rainwater alone is rarely enough — tanks must carry the dry season, not the annual average.
+  Sewerage options (conservancy tank, septic, package plant) depend on soil, water table and
+  local authority rules. Decide before the unit is built: on fitted ranges the electrical
+  layout and water heating are installed at the factory. The X-Fold is the blankest canvas
+  (electrics only, no plumbing); the nature cabin the most fitted.
+- [Staff accommodation and site
+  offices](https://tinyhomesa.com/blog/staff-accommodation-units-south-africa): For farm, mine
+  and construction housing. X-Fold R54 900 ex VAT for an insulated wired 15 m² room — ships
+  flat, unfolds in minutes with two people, stacks two high, relocatable, NO plumbing.
+  Expandable homes from R199 900 for self-contained accommodation with bathroom and services.
+  The ablution decision drives the budget: a shared block is almost always cheaper per bed at
+  scale than per-unit wet rooms. Cost per bed, not cost per unit, is the number that matters.
+  Buying beats hiring a site office over long programmes. Housing farm workers carries legal
+  obligations beyond the building — a question for a legal advisor.
+- [What does an outdoor kitchen cost in South
+  Africa?](https://tinyhomesa.com/blog/outdoor-kitchen-cost-south-africa): Four lengths from
+  R154 400 ex VAT (2.5 m) to R196 800 (3.9 m), all 0.8 m deep × 2.4 m high, delivered with the
+  motorised lift-up roof, quartz countertop, stainless-steel sink and embedded plumbing and
+  electrics. Cooking appliances are extras from R9 300 for a single gas grill. IMPORTANT
+  CONSTRAINT: the double gas grill and the kettle grill (R8 200) are available on the 3.5 m and
+  3.9 m units ONLY, so charcoal braaiing sets the minimum length. A built masonry braai needs
+  four trades and has no fixed final price; the unit needs a level base (500–750 kg) and two
+  connections.
 - [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab home
   supplier, steel-framed construction, roughly 90-day deposit-to-move-in process, nationwide delivery, 1-year limited
   guarantee with after-sales support, and third-party finance.

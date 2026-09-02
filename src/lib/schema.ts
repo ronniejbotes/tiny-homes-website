@@ -425,6 +425,7 @@ export function blogPostingSchema(post: {
   dateModified?: string;
   image?: string;
   keywords?: readonly string[];
+  references?: readonly { title: string; publisher: string; url: string }[];
 }): SchemaObject {
   return {
     "@context": "https://schema.org",
@@ -440,6 +441,19 @@ export function blogPostingSchema(post: {
     publisher: { "@id": ORG_ID },
     ...(post.image ? { image: `${site.url}${post.image}` } : {}),
     ...(post.keywords?.length ? { keywords: post.keywords.join(", ") } : {}),
+    // Sources the article leans on. `citation` is the field that says "this
+    // claim came from somewhere checkable", which is the whole difference
+    // between a researched piece and an asserted one.
+    ...(post.references?.length
+      ? {
+          citation: post.references.map((ref) => ({
+            "@type": "CreativeWork",
+            name: ref.title,
+            publisher: { "@type": "Organization", name: ref.publisher },
+            url: ref.url,
+          })),
+        }
+      : {}),
     isPartOf: {
       "@type": "Blog",
       name: `${site.name} Journal`,

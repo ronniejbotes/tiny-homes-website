@@ -170,8 +170,8 @@ export default function BlogIndexPage() {
               <ButtonLink href="/book-a-viewing" variant="primary" size="lg">
                 Book a free viewing
               </ButtonLink>
-              <ButtonLink href="/housing-pods" variant="outline" size="lg">
-                Compare the pod ranges
+              <ButtonLink href="/quote" variant="outline" size="lg">
+                Price a unit
               </ButtonLink>
             </div>
           </Reveal>

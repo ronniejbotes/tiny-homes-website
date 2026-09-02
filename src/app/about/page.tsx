@@ -28,7 +28,7 @@ const aboutOgDescription =
 export const metadata: Metadata = {
   title: { absolute: "About Tiny Homes SA | Prefab Tiny Home Supplier" },
   description:
-    "Tiny Homes SA supplies prefab tiny homes from its Centurion base, delivered nationwide: steel-framed homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA supplies prefab tiny homes from its Centurion base, delivered nationwide: homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
