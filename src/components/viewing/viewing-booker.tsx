@@ -436,7 +436,7 @@ export function ViewingBooker() {
       <fieldset className="min-w-0">
         <legend className="text-display text-2xl text-ink sm:text-3xl">Pick a day</legend>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-stone">
-          {HOURS_LABEL}, weekends and public holidays excluded.{" "}
+          {HOURS_LABEL} — weekends and public holidays excluded.{" "}
           {slots.verified
             ? "These are the days we still have open — everything else is already taken."
             : "Pick a time that suits you and we'll confirm it with you."}

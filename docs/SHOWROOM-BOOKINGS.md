@@ -42,9 +42,10 @@ sits there.
 |---|---|---|
 | Days | Monday–Friday, minus SA public holidays | `src/lib/viewing.ts` |
 | Hours | 09:00 – 16:00 SAST (last start 15:00) | `OPEN_MINUTES` / `CLOSE_MINUTES` |
+| Friday | shuts at 13:00, so the last start is 11:00 | `WEEKDAY_CLOSE_MINUTES` |
 | Slot length | 60 minutes | `SLOT_MINUTES` |
 | Hours held back | 10:00–11:00, 12:00–13:00, 14:00–15:00 | `CLOSED_BLOCKS` |
-| Slots offered | 09:00, 11:00, 13:00, 15:00 | `slotStarts()` |
+| Slots offered | 09:00, 11:00, 13:00, 15:00 — on a Friday, 09:00 and 11:00 | `slotStarts(day)` |
 | Earliest booking | the next working day | `MIN_LEAD_DAYS` |
 | Latest booking | 28 days out | `BOOKING_WINDOW_DAYS` |
 
@@ -57,7 +58,9 @@ President — an election day, a national day of mourning — which has to be ad
 
 Change them in that one file: the page copy, the slot grid, the server-side validation
 and the `openingHours` structured data all read from those constants, so they cannot
-drift apart.
+drift apart. A day that shuts early goes in `WEEKDAY_CLOSE_MINUTES` — one line, and the
+grid, the sentence on the page and the hours Google shows all follow. `CLOSED_BLOCKS` is
+for an hour held back *inside* a day the showroom is otherwise open through.
 
 ---
 

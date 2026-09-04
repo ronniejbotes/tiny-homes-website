@@ -7,7 +7,12 @@ import { ViewingBooker } from "@/components/viewing/viewing-booker";
 import { ShowroomMap } from "@/components/contact/showroom-map";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
-import { FRIDAY_MISSING_SLOTS_LABEL, HOURS_LABEL, SLOT_TIMES_LABEL } from "@/lib/viewing";
+import {
+  FRIDAY_CLOSE_LABEL,
+  FRIDAY_SLOT_TIMES_LABEL,
+  HOURS_LABEL,
+  SLOT_TIMES_LABEL,
+} from "@/lib/viewing";
 import images from "@/data/images.json";
 
 const pageTitle = "Book a Showroom Viewing | Tiny Homes SA, Centurion";
@@ -184,8 +189,10 @@ export default function BookAViewingPage() {
                   </p>
                   <p className="mt-4 text-[0.9375rem] leading-relaxed text-stone">
                     {HOURS_LABEL}, with viewings starting at {SLOT_TIMES_LABEL}.{" "}
-                    {FRIDAY_MISSING_SLOTS_LABEL
-                      ? `On a Friday the ${FRIDAY_MISSING_SLOTS_LABEL} viewing isn't on offer. `
+                    {FRIDAY_SLOT_TIMES_LABEL
+                      ? `On a Friday it's ${FRIDAY_SLOT_TIMES_LABEL} only${
+                          FRIDAY_CLOSE_LABEL ? `, as we shut at ${FRIDAY_CLOSE_LABEL}` : ""
+                        }. `
                       : ""}
                     Weekends and public holidays aren&apos;t something we can do at the moment.
                   </p>

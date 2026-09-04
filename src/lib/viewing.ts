@@ -50,30 +50,33 @@ export const CLOSED_BLOCKS: ReadonlyArray<{ start: number; end: number }> = [
 ];
 
 /**
- * Hours held back on one weekday only, keyed by day of the week in the same
- * 0 = Sunday … 6 = Saturday terms as sastWeekday().
+ * Days that shut earlier than CLOSE_MINUTES, keyed by day of the week in the
+ * same 0 = Sunday … 6 = Saturday terms as sastWeekday().
  *
- * Owner-set, revised 2026-08-25: the 13:00 viewing is not offered on a Friday.
- * Everything else about a Friday is a normal working day, so this cannot be
- * expressed in CLOSED_BLOCKS, which applies to every day alike.
+ * Owner-set, revised 2026-09-04: **the showroom shuts at 13:00 on a Friday**,
+ * so a Friday ends with the 11:00 viewing and the last visitor is out by 12:00.
+ * The 13:00 viewing had already come off the grid on 2026-08-25; the rest of
+ * the afternoon went with the early close.
+ *
+ * This is a closing time rather than an entry in CLOSED_BLOCKS on purpose. The
+ * showroom is genuinely shut, not merely unbookable, and stating it that way is
+ * what lets HOURS_LABEL and the openingHours structured data below say so
+ * without a second constant to keep in step. CLOSED_BLOCKS remains the right
+ * home for an hour held back *inside* a working day.
  *
  * Only honoured by the day-aware form of slotStarts(), which is what
  * freeSlotsFor() — and so both the grid and the server-side check on a
  * submitted booking — goes through. Call slotStarts() with no day only where
  * the question really is about the standard timetable rather than a date.
  */
-export const WEEKDAY_CLOSED_BLOCKS: Readonly<
-  Record<number, ReadonlyArray<{ start: number; end: number }>>
-> = {
-  5: [{ start: 13 * 60, end: 14 * 60 }], // Friday
+export const WEEKDAY_CLOSE_MINUTES: Readonly<Record<number, number>> = {
+  5: 13 * 60, // Friday
 };
 
-/**
- * Human form of the span the showroom works over, for copy and for the
- * openingHours schema. It is the outer bounds, not the list of slots — where
- * a visitor is actually choosing a time, say SLOT_TIMES_LABEL instead.
- */
-export const HOURS_LABEL = "Monday to Friday, 09:00 – 16:00";
+/** When a given weekday shuts; CLOSE_MINUTES for every day not named above. */
+export function closeMinutesOn(weekday?: number): number {
+  return (weekday === undefined ? undefined : WEEKDAY_CLOSE_MINUTES[weekday]) ?? CLOSE_MINUTES;
+}
 
 /** A viewing's length as it should read in prose, rather than "60 minutes". */
 export const VIEWING_LENGTH_LABEL = "one hour";
@@ -261,6 +264,11 @@ const WEEKDAY_NAMES = [
   "Saturday",
 ];
 
+/** "Friday" from 5, in the same 0 = Sunday … 6 = Saturday terms as sastWeekday(). */
+export function weekdayName(weekday: number): string {
+  return WEEKDAY_NAMES[weekday];
+}
+
 const MONTH_NAMES = [
   "January",
   "February",
@@ -302,16 +310,74 @@ export function formatSlotLong(day: DayKey, minutes: number): string {
   )} (SAST)`;
 }
 
+/* ----------------------------------------------------------------- hours */
+
+/**
+ * The working week as runs of consecutive days sharing a closing time, in the
+ * order a person would read them out: Monday to Thursday, then Friday.
+ *
+ * Derived from WEEKDAY_CLOSE_MINUTES rather than written down, and the single
+ * source for both HOURS_LABEL and the openingHours structured data in
+ * schema.ts — so the hours on the page, the hours Google shows in a local pack
+ * result, and the hours the booking grid actually enforces cannot drift apart.
+ * Give the owner a Wednesday half-day and all three follow from one line.
+ */
+export const OPENING_HOURS: ReadonlyArray<{
+  days: number[];
+  opens: number;
+  closes: number;
+}> = ((): { days: number[]; opens: number; closes: number }[] => {
+  const spans: { days: number[]; opens: number; closes: number }[] = [];
+  for (let weekday = 1; weekday <= 5; weekday += 1) {
+    const closes = closeMinutesOn(weekday);
+    const previous = spans[spans.length - 1];
+    if (previous && previous.closes === closes) previous.days.push(weekday);
+    else spans.push({ days: [weekday], opens: OPEN_MINUTES, closes });
+  }
+  return spans;
+})();
+
+/** "Monday to Thursday" from [1,2,3,4], "Friday" from [5]. */
+function daySpanLabel(days: number[], short = false): string {
+  const name = (weekday: number) =>
+    short ? WEEKDAY_NAMES[weekday].slice(0, 3) : WEEKDAY_NAMES[weekday];
+  if (days.length === 1) return name(days[0]);
+  return `${name(days[0])}${short ? "–" : " to "}${name(days[days.length - 1])}`;
+}
+
+function hoursLabel(short: boolean): string {
+  return OPENING_HOURS.map(
+    (span) =>
+      `${daySpanLabel(span.days, short)} ${formatSlot(span.opens)}${
+        short ? "–" : " – "
+      }${formatSlot(span.closes)}`,
+  ).join(", ");
+}
+
+/**
+ * "Monday to Thursday 09:00 – 16:00, Friday 09:00 – 13:00" — the span the
+ * showroom is open over, for copy and for the openingHours schema. It is the
+ * outer bounds, not the list of slots: where a visitor is actually choosing a
+ * time, say SLOT_TIMES_LABEL instead.
+ */
+export const HOURS_LABEL = hoursLabel(false);
+
+/**
+ * "Mon–Thu 09:00–16:00, Fri 09:00–13:00" — the same fact for somewhere it has
+ * to sit on one line, such as the dot-separated note under a call to action.
+ */
+export const HOURS_SHORT_LABEL = hoursLabel(true);
+
 /* ----------------------------------------------------------------- slots */
 
 /**
  * Every slot start a full viewing fits into before closing time, minus the
  * hours held back in CLOSED_BLOCKS. Today: 09:00, 11:00, 13:00 and 15:00.
  *
- * Given a day, the blocks that day's weekday holds back are taken out too, so
- * a Friday comes back as 09:00, 11:00 and 15:00. Given nothing, the answer is
- * the standard timetable — right for copy, wrong for deciding whether a
- * particular booking is real, so pass the day wherever there is one.
+ * Given a day, the day stops at its own closing time, so a Friday comes back
+ * as 09:00 and 11:00 only. Given nothing, the answer is the standard timetable
+ * — right for copy, wrong for deciding whether a particular booking is real,
+ * so pass the day wherever there is one.
  */
 export function slotStarts(day?: DayKey): number[] {
   return slotStartsOn(day ? sastWeekday(day) : undefined);
@@ -319,17 +385,17 @@ export function slotStarts(day?: DayKey): number[] {
 
 /** slotStarts() by weekday number, for the copy below that has no date. */
 function slotStartsOn(weekday?: number): number[] {
-  const weekly = weekday === undefined ? [] : (WEEKDAY_CLOSED_BLOCKS[weekday] ?? []);
+  const closes = closeMinutesOn(weekday);
   const starts: number[] = [];
-  for (let m = OPEN_MINUTES; m + VIEWING_MINUTES <= CLOSE_MINUTES; m += SLOT_MINUTES) {
+  for (let m = OPEN_MINUTES; m + VIEWING_MINUTES <= closes; m += SLOT_MINUTES) {
     const end = m + VIEWING_MINUTES;
-    const blocked = [...CLOSED_BLOCKS, ...weekly].some((b) => m < b.end && end > b.start);
+    const blocked = CLOSED_BLOCKS.some((b) => m < b.end && end > b.start);
     if (!blocked) starts.push(m);
   }
   return starts;
 }
 
-/** "09:00, 11:00 and 15:00" from [540, 660, 900]. */
+/** "09:00, 11:00 and 13:00" from [540, 660, 780]. */
 function joinTimes(minutes: number[]): string {
   const times = minutes.map(formatSlot);
   if (times.length < 2) return times.join("");
@@ -344,15 +410,30 @@ function joinTimes(minutes: number[]): string {
 export const SLOT_TIMES_LABEL = joinTimes(slotStarts());
 
 /**
- * "13:00" — the standard slots a Friday is short of, and "" on a Friday that
- * runs the standard timetable, in which case the sentence using this should
- * disappear with it. Derived from WEEKDAY_CLOSED_BLOCKS, so copy saying a
- * Friday is different cannot outlive the rule that makes it different.
+ * "09:00 and 11:00" — the slots a Friday actually offers, and "" on a Friday
+ * that runs the standard timetable, in which case the sentence using this
+ * should disappear with it. Derived from WEEKDAY_CLOSED_BLOCKS, so copy saying
+ * a Friday is different cannot outlive the rule that makes it different.
+ *
+ * Deliberately the times that *are* offered rather than the ones that are not:
+ * the missing half of the timetable grows every time the owner trims a Friday,
+ * and a sentence built from it drifts into listing more hours than it offers.
  */
-export const FRIDAY_MISSING_SLOTS_LABEL = ((): string => {
-  const friday = new Set(slotStartsOn(5));
-  return joinTimes(slotStarts().filter((m) => !friday.has(m)));
+export const FRIDAY_SLOT_TIMES_LABEL = ((): string => {
+  const friday = slotStartsOn(5);
+  const standard = slotStarts();
+  const unchanged =
+    friday.length === standard.length && friday.every((m, i) => m === standard[i]);
+  return unchanged ? "" : joinTimes(friday);
 })();
+
+/**
+ * "13:00" — when the showroom shuts on a Friday, and "" when a Friday shuts
+ * with the rest of the week, in which case the clause using this should
+ * disappear with it.
+ */
+export const FRIDAY_CLOSE_LABEL =
+  closeMinutesOn(5) === CLOSE_MINUTES ? "" : formatSlot(closeMinutesOn(5));
 
 /** The open days inside the booking window, earliest first. */
 export function bookableDays(now: Date = new Date()): DayKey[] {

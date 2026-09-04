@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
 import { site } from "@/lib/site";
-import { HOURS_LABEL } from "@/lib/viewing";
+import { HOURS_SHORT_LABEL } from "@/lib/viewing";
 
 /**
  * The trust section.
@@ -86,7 +86,7 @@ export function ShowroomInvite() {
             </div>
 
             <p className="mt-6 text-sm text-cream/55">
-              Free · No obligation · {HOURS_LABEL}
+              Free · No obligation · {HOURS_SHORT_LABEL}
             </p>
           </Reveal>
 

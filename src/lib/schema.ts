@@ -10,7 +10,7 @@ import { createElement } from "react";
 import { site } from "@/lib/site";
 import { products, type Product, type ProductFaq } from "@/data/products";
 import { formatZAR } from "@/lib/format";
-import { CLOSE_MINUTES, OPEN_MINUTES, formatSlot } from "@/lib/viewing";
+import { OPENING_HOURS, formatSlot, weekdayName } from "@/lib/viewing";
 import images from "@/data/images.json";
 
 export type SchemaObject = Record<string, unknown>;
@@ -125,19 +125,15 @@ export function localBusinessSchema(): SchemaObject {
     areaServed: areaServed(),
     // When a person can actually walk in, which is what a local pack result
     // shows as "Open · Closes 16:00". Derived from the same constants the
-    // booking slots are generated from, so the two can never disagree.
-    openingHoursSpecification: {
+    // booking slots are generated from, so the two can never disagree — which
+    // matters most on a Friday, when the showroom shuts at 13:00 and a single
+    // Monday-to-Friday span would send someone to a locked gate at 15:00.
+    openingHoursSpecification: OPENING_HOURS.map((span) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "https://schema.org/Monday",
-        "https://schema.org/Tuesday",
-        "https://schema.org/Wednesday",
-        "https://schema.org/Thursday",
-        "https://schema.org/Friday",
-      ],
-      opens: formatSlot(OPEN_MINUTES),
-      closes: formatSlot(CLOSE_MINUTES),
-    },
+      dayOfWeek: span.days.map((weekday) => `https://schema.org/${weekdayName(weekday)}`),
+      opens: formatSlot(span.opens),
+      closes: formatSlot(span.closes),
+    })),
     parentOrganization: { "@id": ORG_ID },
   };
 }
