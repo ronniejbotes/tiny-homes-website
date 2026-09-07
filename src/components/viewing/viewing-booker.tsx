@@ -21,6 +21,7 @@ import {
   PARTY_MAX,
   VIEWING_LENGTH_LABEL,
   VIEWING_MINUTES,
+  closureNotice,
   formatDayLong,
   formatDayShort,
   formatSlot,
@@ -173,6 +174,15 @@ export function ViewingBooker() {
     () => (slots ? Object.keys(slots.days).sort() : []),
     [slots],
   );
+
+  /**
+   * Why a closure needs saying out loud: the days it covers simply are not in
+   * the grid, so without this the visitor sees a week missing from the row of
+   * chips and no reason for it — which reads as a broken form rather than a
+   * shut showroom. Computed in the browser because the answer depends on
+   * today's date and this page is served statically.
+   */
+  const closureLine = useMemo(() => (loading ? "" : closureNotice()), [loading]);
 
   // Derived rather than stored, so the first open day is selected without an
   // effect — and a day that vanishes from a refreshed grid falls back cleanly
@@ -404,6 +414,10 @@ export function ViewingBooker() {
             ? "Every slot in the next four weeks is taken. Give us a call and we'll find you a time, including one further out."
             : "Our online diary isn't reachable right now, so we won't promise you a time we haven't checked. Call or WhatsApp us and we'll book you in properly, on the spot."}
         </p>
+        {/* A closure long enough to swallow the whole window would otherwise
+            leave "fully booked" standing on its own, which is the wrong
+            reason and sends the caller in asking about a slot further out. */}
+        {closureLine && <p className="mt-3 text-lg leading-relaxed text-stone">{closureLine}</p>}
         <div className="mt-7 flex flex-wrap gap-3">
           <ButtonAnchor href={telHref} variant="accent" size="lg">
             <Phone className="h-4 w-4" aria-hidden="true" />
@@ -441,6 +455,11 @@ export function ViewingBooker() {
             ? "These are the days we still have open — everything else is already taken."
             : "Pick a time that suits you and we'll confirm it with you."}
         </p>
+        {closureLine && (
+          <p className="mt-3 rounded-xl border border-clay/25 bg-clay/5 px-4 py-3 text-[0.9375rem] leading-relaxed text-ink">
+            {closureLine}
+          </p>
+        )}
 
         <div className="-mx-1 mt-5 flex snap-x gap-2.5 overflow-x-auto px-1 pb-2 sm:flex-wrap sm:overflow-visible">
           {availableDays.map((option) => {

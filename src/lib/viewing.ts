@@ -247,9 +247,52 @@ export function isPublicHoliday(day: DayKey): boolean {
   return publicHolidaysIn(Number(day.slice(0, 4))).has(day);
 }
 
-/** A day the showroom opens at all: a weekday that is not a public holiday. */
+/* ---------------------------------------------------------------- closures */
+
+/** A stretch of days the showroom takes no viewings over, both ends included. */
+export interface Closure {
+  /** First day shut, inclusive. */
+  from: DayKey;
+  /** Last day shut, inclusive. */
+  to: DayKey;
+}
+
+/**
+ * One-off periods the showroom is shut, on top of weekends and public
+ * holidays. Owner-set by hand, and safe to delete once they are in the past —
+ * everything that reads them checks the date, so a stale entry costs nothing
+ * but clutter.
+ *
+ * A closure takes the day out of isOpenDay(), which bookableDays(), the slot
+ * grid and the server-side check on a submitted booking all go through — so a
+ * hand-crafted POST for a closed day is turned away exactly as a Sunday is.
+ *
+ * It deliberately does *not* touch HOURS_LABEL or the openingHours structured
+ * data. Those state the standard working week, and a week off is not a change
+ * to it; a closure that belongs in Google's local pack is a different fact
+ * from one that only stops the booking form, and nobody has said the showroom
+ * itself is shut to walk-ins.
+ *
+ * Ranges are compared as strings, which is exact for zero-padded `YYYY-MM-DD`
+ * and leaves no date arithmetic to get wrong.
+ */
+export const CLOSURES: ReadonlyArray<Closure> = [
+  // Owner-set 2026-09-07: no viewings for the rest of this week, or over the
+  // weekend and the Monday that follow it. First day back is Tue 15 September.
+  { from: "2026-09-07", to: "2026-09-14" },
+];
+
+/** The closure a day falls inside, if it falls inside one at all. */
+export function closureOn(day: DayKey): Closure | undefined {
+  return CLOSURES.find((closure) => day >= closure.from && day <= closure.to);
+}
+
+/**
+ * A day the showroom opens at all: a weekday that is neither a public holiday
+ * nor inside a one-off closure.
+ */
 export function isOpenDay(day: DayKey): boolean {
-  return isWeekday(day) && !isPublicHoliday(day);
+  return isWeekday(day) && !isPublicHoliday(day) && !closureOn(day);
 }
 
 /* ------------------------------------------------------------ formatting */
@@ -455,6 +498,47 @@ export function isBookableDay(day: string, now: Date = new Date()): day is DayKe
   const normalised = new Date(Date.UTC(y, m - 1, d)).toISOString().slice(0, 10);
   if (normalised !== day) return false;
   return bookableDays(now).includes(day);
+}
+
+/**
+ * The sentence a visitor needs when a closure has taken days out of the grid,
+ * and "" when none has — in which case the line rendering it should disappear
+ * with it.
+ *
+ * Derived from CLOSURES rather than typed onto a page, so a closure that has
+ * passed cannot leave behind a notice still claiming the showroom is shut.
+ * Only closures reaching into the booking window are announced: one entirely
+ * in the past, or further out than anyone can book, has taken nothing off the
+ * grid, and saying so would raise a doubt rather than settle one.
+ *
+ * A function rather than a constant because the answer changes with the date.
+ * Call it where `now` is genuinely now — a client component, or a route that
+ * does not cache — not at the top of a statically rendered page, which would
+ * freeze the build date's answer into the HTML.
+ */
+export function closureNotice(now: Date = new Date()): string {
+  const today = sastDay(now);
+  const lastOffered = addDays(today, BOOKING_WINDOW_DAYS);
+  const closure = [...CLOSURES]
+    .sort((a, b) => a.from.localeCompare(b.from))
+    .find((c) => c.to >= today && c.from <= lastOffered);
+  if (!closure) return "";
+
+  // The first day still on offer after it. Not simply the day after the
+  // closure ends: that may be a Saturday, a public holiday, or the start of
+  // the next closure, and bookableDays() has already ruled all three out.
+  const reopens = bookableDays(now).find((day) => day > closure.to);
+
+  if (closure.from <= today) {
+    const back = reopens ? ` The first day you can book is ${formatDayLong(reopens)}.` : "";
+    return `The showroom isn't taking viewings up to and including ${formatDayLong(
+      closure.to,
+    )}.${back}`;
+  }
+
+  return `The showroom isn't taking viewings from ${formatDayLong(
+    closure.from,
+  )} to ${formatDayLong(closure.to)}, so those days aren't on the list.`;
 }
 
 /** A span of the owner's diary that is already spoken for. */

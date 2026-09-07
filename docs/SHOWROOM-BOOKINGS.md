@@ -48,6 +48,7 @@ sits there.
 | Slots offered | 09:00, 11:00, 13:00, 15:00 — on a Friday, 09:00 and 11:00 | `slotStarts(day)` |
 | Earliest booking | the next working day | `MIN_LEAD_DAYS` |
 | Latest booking | 28 days out | `BOOKING_WINDOW_DAYS` |
+| Closed periods | one-off stretches taking no viewings at all | `CLOSURES` |
 
 Public holidays are **computed, not listed**: the ten fixed dates from the Public
 Holidays Act, Good Friday and Family Day derived from Easter, plus the Act's rule that
@@ -55,6 +56,15 @@ a holiday falling on a Sunday makes the Monday after it a holiday too. Nothing t
 maintain each December. The exception is a once-off holiday proclaimed by the
 President — an election day, a national day of mourning — which has to be added to
 `EXTRA_PUBLIC_HOLIDAYS` by hand once it is gazetted.
+
+**To shut the showroom for a stretch of days** — a week off, a stocktake, a move — add
+the range to `CLOSURES` in the same file. Both ends are included, the days vanish from
+the grid, the server turns away a booking for one exactly as it turns away a Sunday, and
+the booking page grows a line saying so and naming the first day back. Old entries can
+be deleted whenever, or left: everything reading them checks the date. A closure is not
+a change to the working week, so `HOURS_LABEL` and the `openingHours` structured data
+are deliberately left alone — if the showroom is shut to walk-ins too, that belongs in
+Google Business Profile as special hours, which is a separate job to this one.
 
 Change them in that one file: the page copy, the slot grid, the server-side validation
 and the `openingHours` structured data all read from those constants, so they cannot
