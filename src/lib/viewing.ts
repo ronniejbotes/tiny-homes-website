@@ -21,14 +21,22 @@ export const TIME_ZONE = "Africa/Johannesburg";
 /* --------------------------------------------------------- opening hours */
 
 /**
- * Owner-set, revised 2026-08-20: weekdays only, hour-long viewings, the first
- * starting at 09:00 and the last finishing at 16:00. Nothing on a weekend and
- * nothing on a public holiday.
+ * Owner-set, revised 2026-09-09: weekdays only, the showroom **open from
+ * 08:00** to 16:00 (13:00 on a Friday). Nothing on a weekend and nothing on a
+ * public holiday.
  *
- * The day is not a plain run of hourly slots between those two times, though
- * — see CLOSED_BLOCKS.
+ * OPEN_MINUTES is when the gate is attended, which is not the same thing as
+ * when a viewing can start — the first viewing is at 09:00. Google's opening
+ * hours, and the copy built on HOURS_LABEL, want the door; the booking grid
+ * wants the slots. Both are derived from here, so the 08:00–09:00 hour is held
+ * back in CLOSED_BLOCKS rather than by moving this constant: opening later
+ * than we really do would understate the hours on the Business Profile, and
+ * that field is a claim about when someone can turn up, not about bookings.
+ *
+ * The day is not a plain run of hourly slots between these two times — see
+ * CLOSED_BLOCKS.
  */
-export const OPEN_MINUTES = 9 * 60; // 09:00
+export const OPEN_MINUTES = 8 * 60; // 08:00 — the door, not the first viewing
 export const CLOSE_MINUTES = 16 * 60; // 16:00, so the last start is 15:00
 export const SLOT_MINUTES = 60;
 
@@ -39,11 +47,20 @@ export const SLOT_MINUTES = 60;
  * paperwork it generates, which is why the grid alternates rather than running
  * straight through: 09:00, 11:00, 13:00 and 15:00, and nothing else.
  *
+ * The 08:00 entry is there for a different reason and must not be tidied away
+ * into OPEN_MINUTES. The showroom genuinely opens at 08:00 — that is what the
+ * Business Profile and the openingHours schema have to say, because it is when
+ * someone can arrive — but the owner does not sell that hour as a viewing.
+ * Moving OPEN_MINUTES to 09:00 to drop the slot would publish an opening time
+ * an hour later than the truth; blocking it here keeps the door and the grid
+ * telling their own separate, honest stories.
+ *
  * Enforced in slotStarts(), which is what both the grid a visitor is shown and
  * the server-side check on a submitted booking are built from — so a
  * hand-crafted POST cannot buy an hour that is blocked here.
  */
 export const CLOSED_BLOCKS: ReadonlyArray<{ start: number; end: number }> = [
+  { start: 8 * 60, end: 9 * 60 }, // open, but the first viewing is at 09:00
   { start: 10 * 60, end: 11 * 60 },
   { start: 12 * 60, end: 13 * 60 },
   { start: 14 * 60, end: 15 * 60 },

@@ -79,8 +79,11 @@ export const site = {
     // in the viewing confirmation and the GEO on the calendar invitation, so
     // the coordinates Google is told about and the ones a visitor navigates to
     // are the same point.
+    // 28.106002, not 28.106: Google's LocalBusiness reference requires at
+    // least five decimal places on both, and the truncated value also
+    // disagreed with the DMS reading recorded above by about 20 cm.
     latitude: -25.847111,
-    longitude: 28.106,
+    longitude: 28.106002,
   },
   /**
    * The owner's own Google Maps pin, short form.
