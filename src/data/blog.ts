@@ -243,7 +243,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT — not a pod shape at all, but the most completely finished unit we sell: 26 m² plus a viewing terrace, with the bathroom, the kitchen with its stone countertop and induction cooker, air conditioning and a storage water heater all fitted as standard rather than sold as extras.`,
+        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT — not a pod shape at all, but the most completely finished unit we sell: 21 m² plus a viewing terrace, 26 m² in total, with the bathroom, the kitchen with its stone countertop and induction cooker, air conditioning and a storage water heater all fitted as standard rather than sold as extras.`,
       },
 
       { type: "h2", text: "The prices, side by side" },
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
           ["Expandable home", "18 – 74 m²", R(expandable), "Yes, from the 18 m²", "Yes, basic from the 18 m²"],
           ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on 9 m and 11.8 m"],
           ["Glamping capsule", "18.6 – 38 m²", R(capsule), "Yes, every model", "Optional extra"],
-          ["Nature cabin", "26 m²", R(nature), "Yes, fully fitted", "Yes, fitted as standard"],
+          ["Nature cabin", "21 m² + terrace", R(nature), "Yes, fully fitted", "Yes, fitted as standard"],
         ],
       },
       {
@@ -731,7 +731,7 @@ export const blogPosts: BlogPost[] = [
           ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, full kitchen"],
           ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "Up to 4 bedrooms, fitted throughout"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
-          ["Nature Cabin", "26 m²", R(nature), perM2("nature-cabins"), "Fully fitted incl. kitchen, aircon, water heater"],
+          ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fully fitted incl. kitchen, aircon, water heater"],
           ["Glamping Capsule", "18.6 m²", R(capsule), perM2("glamping-capsules", "capsule-5-85"), "270° glazing, premium bathroom, geyser"],
         ],
       },
@@ -1179,7 +1179,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings all sizes; kitchenette on 9 m and 11.8 m", "Entry to the premium end; strong photography"],
           ["Glamping Capsule", R(capsule), "18.6 – 38 m²", "Bathroom + premium fittings, geyser, insulation, smart entry", "Flagship units where the room is the reason for the booking"],
-          ["Nature Cabin", R(nature), "26 m²", "Bathroom, kitchen, air conditioning, water heater — all fitted", "Longer stays; nothing left to add"],
+          ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater — all fitted", "Longer stays; nothing left to add"],
           ["Safari Tent", "On request", "Per project", "Trade only — supplied and installed with Bushtec", "Lodges and resorts wanting canvas"],
         ],
       },

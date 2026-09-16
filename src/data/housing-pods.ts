@@ -85,9 +85,14 @@ export const podEntries: PodEntry[] = [
     /** Owner withdrew the "under three days" setup figure on 2026-08-04: the
      *  cabins are imported fully built and there is no on-site assembly
      *  programme. See the guard at src/data/products.ts:412. This pitch must
-     *  keep saying what the product page says — it arrives fully built. */
+     *  keep saying what the product page says — it arrives fully built.
+     *
+     *  Floor area: 21 m² enclosed, plus a 1.5 × 3.2 m terrace, 26 m² in total.
+     *  8.1 × 3.2 m overall is 25.92 m²; less the 4.8 m² terrace leaves 21.1 m²
+     *  enclosed. Do not write "26 m² cabin" — 26 includes the terrace, and the
+     *  size chip on this same page reads "21 m² + terrace" from products.ts. */
     podPitch:
-      "The alternative for a buyer who wants nothing left to do on arrival. A 26 m² timber-look steel cabin with a viewing terrace that arrives fully built, with the bathroom, kitchen, air conditioning and a storage water heater all fitted as standard rather than sold as extras.",
+      "The alternative for a buyer who wants nothing left to do on arrival. A 21 m² timber-look steel cabin with a viewing terrace, 26 m² in total, that arrives fully built, with the bathroom, kitchen, air conditioning and a storage water heater all fitted as standard rather than sold as extras.",
     bestFor: "Moving in with nothing left to add",
     notAPod:
       "A cabin, plainly — pitched roof, terrace, no curves. It sits on this page because it competes for the same money as a large pod and answers the same question differently.",
