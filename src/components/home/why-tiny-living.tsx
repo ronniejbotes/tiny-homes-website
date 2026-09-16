@@ -32,8 +32,13 @@ const values = [
   },
   {
     icon: Shield,
+    /** No fire-rating certificate exists for the wall panels, and the specs
+     *  across the range are EPS and polyurethane — both foam plastics. The
+     *  word "fireproof" is therefore an unproven safety claim and must not
+     *  reappear here or on /about. If the supplier produces a certificate,
+     *  state the actual rating instead; do not restore the old wording. */
     title: "Engineered for South African conditions",
-    body: "Fireproof insulated panels and weather-resistant steel shells designed for South Africa's climate, from coastal humidity to inland heat and cold.",
+    body: "Insulated steel-framed panels and weather-resistant steel shells designed for South Africa's climate, from coastal humidity to inland heat and cold.",
   },
 ];
 

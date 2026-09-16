@@ -86,8 +86,13 @@ const maxPrice = Math.max(...allPrices);
 const values = [
   {
     icon: Shield,
+    /** No fire-rating certificate exists for the wall panels, and the specs
+     *  across the range are EPS and polyurethane — both foam plastics. The
+     *  word "fireproof" is therefore an unproven safety claim and must not
+     *  reappear here or on the homepage. If the supplier produces a
+     *  certificate, state the actual rating instead. */
     title: "Quality in steel",
-    body: "Every home in the range is built around a steel structure with insulated, fireproof wall panels: factory-precision construction made for South African conditions.",
+    body: "Every home in the range is built around a steel structure with insulated wall panels: factory-precision construction made for South African conditions.",
   },
   {
     icon: Check,
