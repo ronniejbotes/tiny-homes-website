@@ -54,30 +54,41 @@ const nextConfig: NextConfig = {
     // written without one: Next prepends its own internal `/:path+/` -> `/:path+`
     // 308 ahead of this list, so /about-us/ is stripped to /about-us before
     // these are matched. Adding "/" variants here would be dead code.
+    //
+    // ORDER AND ABSOLUTE DESTINATIONS (changed 2026-09-17, T-22). The old-path
+    // rules are listed BEFORE the www host rule and every destination is
+    // absolute on the apex host. That combination collapses the host hop and
+    // the path hop into one:
+    //
+    //   www.tinyhomesa.com/about-us -> https://tinyhomesa.com/about   (1 hop)
+    //   tinyhomesa.com/about-us     -> https://tinyhomesa.com/about   (1 hop)
+    //   www.tinyhomesa.com/anything -> falls through to the host rule (1 hop)
+    //
+    // Measured live before the change on 2026-09-17: www.tinyhomesa.com/about-us/
+    // took three hops (trailing slash, then host, then path) and
+    // tinyhomesa.com/thedome/ took two. Do NOT move the host rule back above
+    // these: a www request would then match it first and need a second hop to
+    // reach its final page, which is what it was doing.
+    //
+    // WHAT THIS DOES NOT FIX, and why. A request that arrives WITH a trailing
+    // slash still costs one extra hop, because Next's own trailing-slash 308
+    // runs before this list and nothing here can pre-empt it. So
+    // /thedome/ -> /thedome -> /glamping-capsules stays at two hops. Removing
+    // that hop means setting `skipTrailingSlashRedirect: true` and taking over
+    // trailing-slash handling for the whole site in a proxy file — which would
+    // put every address on the site behind code we have written, to save one
+    // hop on a handful of old paths. That is a decision for the owner, not a
+    // quiet config change, so it has not been made here.
     return [
-      // Canonical host. www.tinyhomesa.com served a byte-identical copy of the
-      // whole site under a 200 (verified by matching sha1 on 2026-08-10), so
-      // every page existed at two addresses and Google had to pick one itself.
-      // Listed FIRST so the host is normalised before any path rule runs,
-      // otherwise a www request matches a path redirect below and needs a
-      // second hop to reach the apex.
-      //
-      // `permanent: true` emits a 308, which Google treats as a 301 for
-      // canonicalisation. If this has no effect in production, the host header
-      // is being rewritten upstream and the redirect belongs in the Hostinger
-      // panel instead — this rule is harmless either way, as it cannot match.
+      // Verified live + indexed on the old WordPress site; all would 404 at cutover.
+      { source: "/about-us", destination: "https://tinyhomesa.com/about", permanent: true },
+      { source: "/contact-us", destination: "https://tinyhomesa.com/contact", permanent: true },
+      { source: "/privacy-policy", destination: "https://tinyhomesa.com/privacy", permanent: true },
       {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.tinyhomesa.com" }],
-        destination: "https://tinyhomesa.com/:path*",
+        source: "/terms-and-conditions-tiny-homes-sa",
+        destination: "https://tinyhomesa.com/terms",
         permanent: true,
       },
-
-      // Verified live + indexed on the old WordPress site; all would 404 at cutover.
-      { source: "/about-us", destination: "/about", permanent: true },
-      { source: "/contact-us", destination: "/contact", permanent: true },
-      { source: "/privacy-policy", destination: "/privacy", permanent: true },
-      { source: "/terms-and-conditions-tiny-homes-sa", destination: "/terms", permanent: true },
 
       // The Dome is discontinued and its page is gone, so both the old
       // WordPress URL (/thedome, indexed) and the current one (/the-dome, also
@@ -85,25 +96,45 @@ const nextConfig: NextConfig = {
       // capsules are the closest remaining line, so sending both there keeps
       // the inbound link equity and lands visitors on something relevant
       // instead of a dead end.
-      { source: "/thedome", destination: "/glamping-capsules", permanent: true },
-      { source: "/the-dome", destination: "/glamping-capsules", permanent: true },
+      { source: "/thedome", destination: "https://tinyhomesa.com/glamping-capsules", permanent: true },
+      { source: "/the-dome", destination: "https://tinyhomesa.com/glamping-capsules", permanent: true },
 
       // Rank Math's sitemap URLs. /sitemap_index.xml is the one currently
       // submitted in Search Console, so it must keep resolving after cutover.
-      { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
-      { source: "/page-sitemap.xml", destination: "/sitemap.xml", permanent: true },
+      // Confirmed still submitted on 2026-09-17: Search Console lists both
+      // /sitemap.xml and /sitemap_index.xml, each reporting 28 addresses and
+      // zero errors.
+      { source: "/sitemap_index.xml", destination: "https://tinyhomesa.com/sitemap.xml", permanent: true },
+      { source: "/page-sitemap.xml", destination: "https://tinyhomesa.com/sitemap.xml", permanent: true },
 
       // DIY garages are withdrawn from sale (owner decision 2026-08-04): the
       // design needs an engineer's sign-off before we can carry public and
       // property liability under the CPA. Deliberately NOT permanent, because
       // the line is expected back once that is in place and a 308 would
-      // consolidate /garages into the homepage in Google's index.
-      { source: "/garages", destination: "/", permanent: false },
+      // consolidate /garages into the homepage in Google's index. Question 12
+      // to the owner decides whether this becomes permanent; until it is
+      // answered, leave it exactly as it is.
+      { source: "/garages", destination: "https://tinyhomesa.com/", permanent: false },
 
       // Speculative — these paths were never live on the old site (they 404 there
       // today). Kept purely as defensive aliases for stale off-site links.
-      { source: "/about-tiny-homes-sa", destination: "/about", permanent: true },
-      { source: "/request-a-call", destination: "/contact", permanent: true },
+      { source: "/about-tiny-homes-sa", destination: "https://tinyhomesa.com/about", permanent: true },
+      { source: "/request-a-call", destination: "https://tinyhomesa.com/contact", permanent: true },
+
+      // Canonical host, LAST so the specific old paths above can answer a www
+      // request in a single hop. www.tinyhomesa.com served a byte-identical copy
+      // of the whole site under a 200 (verified by matching sha1 on 2026-08-10),
+      // so every page existed at two addresses and Google had to pick one itself.
+      //
+      // `permanent: true` emits a 308, which Google treats as a 301 for
+      // canonicalisation. Confirmed firing in production on 2026-09-17:
+      // www.tinyhomesa.com/ returns 308 to https://tinyhomesa.com/.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.tinyhomesa.com" }],
+        destination: "https://tinyhomesa.com/:path*",
+        permanent: true,
+      },
     ];
   },
 };
