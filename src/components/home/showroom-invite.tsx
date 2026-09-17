@@ -54,11 +54,17 @@ export function ShowroomInvite() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center lg:gap-20">
           <Reveal>
             <p className="text-eyebrow text-clay-light">Still not sure about us?</p>
+            {/* This heading read "Think this is a scam?" until 2026-09-17 (T-21).
+                The section stays exactly as it is — inviting a doubtful buyer to
+                come and look is the most persuasive thing on this page — but the
+                old wording put the brand name and the word "scam" side by side in
+                the one heading Google and the AI assistants quote most readily.
+                Keep the heading an invitation. Do not put the word back. */}
             <h2
               id="showroom-invite-heading"
               className="text-display mt-4 text-4xl sm:text-5xl lg:text-6xl"
             >
-              Think this is a scam?
+              Want to see one before you pay?
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-cream/75">
               Fair enough. Anyone can put up a website and a handful of flattering
