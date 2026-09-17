@@ -311,13 +311,20 @@ export const products: Product[] = [
       /** This entry used to quote "roughly R11 000 to R15 000 per m²" for a
        *  conventional Gauteng build, plus a R550 000–R750 000 total derived
        *  from that rate. Neither carried a source, and the only rand-per-m²
-       *  building rate on this site that does carry one — R10 000 to
-       *  R15 000 at blog.ts:716, cited to Kandua and ooba — is a different
-       *  range, so the product page and the blog post contradicted each
-       *  other. Removed 2026-09-17 (T-14). Do not put a per-m² building rate
-       *  back on a product page unless somebody has opened the source and the
-       *  date it was checked is printed on the page beside it. Our own
-       *  catalogue prices are a different matter: they come off this file. */
+       *  building rate on this site that does carry one — R10 000 to R15 000
+       *  in the is-a-prefab-home-cheaper-than-building post, cited to ooba —
+       *  is a different range, so the product page and the blog post
+       *  contradicted each other. (Kandua is cited in the separate
+       *  granny-flat-cost-south-africa post, for a different claim: a total
+       *  of about R250 000 to over R1 000 000, not a per-m² rate.)
+       *  Removed 2026-09-17 (T-14). Do not put a per-m² building rate back
+       *  on a product page unless somebody has opened the source and the date
+       *  it was checked is printed on the page beside it. Our own catalogue
+       *  prices are a different matter: they come off this file.
+       *
+       *  Posts are named by slug, not line number, on purpose: the line
+       *  numbers this comment first carried drifted the same day, when T-16
+       *  inserted lines higher up in blog.ts. */
       {
         title: "Granny flat",
         body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
