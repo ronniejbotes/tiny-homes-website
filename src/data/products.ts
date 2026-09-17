@@ -308,9 +308,19 @@ export const products: Product[] = [
       "Layouts from open-plan to four bedrooms",
     ],
     useCases: [
+      /** This entry used to quote "roughly R11 000 to R15 000 per m²" for a
+       *  conventional Gauteng build, plus a R550 000–R750 000 total derived
+       *  from that rate. Neither carried a source, and the only rand-per-m²
+       *  building rate on this site that does carry one — R10 000 to
+       *  R15 000 at blog.ts:716, cited to Kandua and ooba — is a different
+       *  range, so the product page and the blog post contradicted each
+       *  other. Removed 2026-09-17 (T-14). Do not put a per-m² building rate
+       *  back on a product page unless somebody has opened the source and the
+       *  date it was checked is printed on the page beside it. Our own
+       *  catalogue prices are a different matter: they come off this file. */
       {
         title: "Granny flat",
-        body: "Building a granny flat conventionally in Gauteng runs roughly R11 000 to R15 000 per m², which puts a 50 m² unit somewhere between R550 000 and R750 000 before it is furnished. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
+        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the fittings are still to come. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
       },
       {
         title: "Family home",
