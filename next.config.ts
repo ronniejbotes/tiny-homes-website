@@ -56,19 +56,35 @@ const nextConfig: NextConfig = {
     // these are matched. Adding "/" variants here would be dead code.
     //
     // ORDER AND ABSOLUTE DESTINATIONS (changed 2026-09-17, T-22). The old-path
-    // rules are listed BEFORE the www host rule and every destination is
-    // absolute on the apex host. That combination collapses the host hop and
-    // the path hop into one:
+    // rules are listed BEFORE the www host rule, and each one is emitted TWICE
+    // from the single list below:
+    //
+    //   1. scoped to `host = www.tinyhomesa.com`, with an absolute destination
+    //      on the apex. The absolute destination is what collapses the host hop
+    //      and the path hop into one.
+    //   2. unscoped, with a RELATIVE destination, for every other host.
     //
     //   www.tinyhomesa.com/about-us -> https://tinyhomesa.com/about   (1 hop)
-    //   tinyhomesa.com/about-us     -> https://tinyhomesa.com/about   (1 hop)
+    //   tinyhomesa.com/about-us     -> /about                         (1 hop)
     //   www.tinyhomesa.com/anything -> falls through to the host rule (1 hop)
+    //   localhost:3000/about-us     -> /about, still on localhost
     //
     // Measured live before the change on 2026-09-17: www.tinyhomesa.com/about-us/
     // took three hops (trailing slash, then host, then path) and
     // tinyhomesa.com/thedome/ took two. Do NOT move the host rule back above
     // these: a www request would then match it first and need a second hop to
     // reach its final page, which is what it was doing.
+    //
+    // WHY THE PAIR, instead of one absolute rule for everybody (fixed
+    // 2026-09-17, review of T-22). An absolute destination with no `has` host
+    // condition fires on EVERY host, so it sends non-production hosts to
+    // production: http://localhost:3111/about-us returned a 308 to
+    // https://tinyhomesa.com/about, and any preview deployment did the same.
+    // Nothing user-facing was broken - these are dead legacy paths and
+    // scripts/smoke.mjs does not exercise them - but docs/ documents a local
+    // workflow (`node scripts/smoke.mjs http://localhost:3000`), and the next
+    // person testing a redirect locally would have landed on production with no
+    // clue why. Keep the host condition on any absolute destination added here.
     //
     // WHAT THIS DOES NOT FIX, and why. A request that arrives WITH a trailing
     // slash still costs one extra hop, because Next's own trailing-slash 308
@@ -79,16 +95,13 @@ const nextConfig: NextConfig = {
     // put every address on the site behind code we have written, to save one
     // hop on a handful of old paths. That is a decision for the owner, not a
     // quiet config change, so it has not been made here.
-    return [
+    // [source, relative destination, permanent]
+    const oldPaths: Array<[string, string, boolean]> = [
       // Verified live + indexed on the old WordPress site; all would 404 at cutover.
-      { source: "/about-us", destination: "https://tinyhomesa.com/about", permanent: true },
-      { source: "/contact-us", destination: "https://tinyhomesa.com/contact", permanent: true },
-      { source: "/privacy-policy", destination: "https://tinyhomesa.com/privacy", permanent: true },
-      {
-        source: "/terms-and-conditions-tiny-homes-sa",
-        destination: "https://tinyhomesa.com/terms",
-        permanent: true,
-      },
+      ["/about-us", "/about", true],
+      ["/contact-us", "/contact", true],
+      ["/privacy-policy", "/privacy", true],
+      ["/terms-and-conditions-tiny-homes-sa", "/terms", true],
 
       // The Dome is discontinued and its page is gone, so both the old
       // WordPress URL (/thedome, indexed) and the current one (/the-dome, also
@@ -96,16 +109,16 @@ const nextConfig: NextConfig = {
       // capsules are the closest remaining line, so sending both there keeps
       // the inbound link equity and lands visitors on something relevant
       // instead of a dead end.
-      { source: "/thedome", destination: "https://tinyhomesa.com/glamping-capsules", permanent: true },
-      { source: "/the-dome", destination: "https://tinyhomesa.com/glamping-capsules", permanent: true },
+      ["/thedome", "/glamping-capsules", true],
+      ["/the-dome", "/glamping-capsules", true],
 
       // Rank Math's sitemap URLs. /sitemap_index.xml is the one currently
       // submitted in Search Console, so it must keep resolving after cutover.
       // Confirmed still submitted on 2026-09-17: Search Console lists both
       // /sitemap.xml and /sitemap_index.xml, each reporting 28 addresses and
       // zero errors.
-      { source: "/sitemap_index.xml", destination: "https://tinyhomesa.com/sitemap.xml", permanent: true },
-      { source: "/page-sitemap.xml", destination: "https://tinyhomesa.com/sitemap.xml", permanent: true },
+      ["/sitemap_index.xml", "/sitemap.xml", true],
+      ["/page-sitemap.xml", "/sitemap.xml", true],
 
       // DIY garages are withdrawn from sale (owner decision 2026-08-04): the
       // design needs an engineer's sign-off before we can carry public and
@@ -114,12 +127,32 @@ const nextConfig: NextConfig = {
       // consolidate /garages into the homepage in Google's index. Question 12
       // to the owner decides whether this becomes permanent; until it is
       // answered, leave it exactly as it is.
-      { source: "/garages", destination: "https://tinyhomesa.com/", permanent: false },
+      ["/garages", "/", false],
 
       // Speculative — these paths were never live on the old site (they 404 there
       // today). Kept purely as defensive aliases for stale off-site links.
-      { source: "/about-tiny-homes-sa", destination: "https://tinyhomesa.com/about", permanent: true },
-      { source: "/request-a-call", destination: "https://tinyhomesa.com/contact", permanent: true },
+      ["/about-tiny-homes-sa", "/about", true],
+      ["/request-a-call", "/contact", true],
+    ];
+
+    const wwwHost = [{ type: "host" as const, value: "www.tinyhomesa.com" }];
+
+    return [
+      // www + an old path, answered in a single hop by an absolute destination.
+      ...oldPaths.map(([source, destination, permanent]) => ({
+        source,
+        has: wwwHost,
+        destination: `https://tinyhomesa.com${destination}`,
+        permanent,
+      })),
+
+      // Every other host — the apex in production, plus localhost and any
+      // preview deployment — keeps a relative destination and stays where it is.
+      ...oldPaths.map(([source, destination, permanent]) => ({
+        source,
+        destination,
+        permanent,
+      })),
 
       // Canonical host, LAST so the specific old paths above can answer a www
       // request in a single hop. www.tinyhomesa.com served a byte-identical copy
@@ -131,7 +164,7 @@ const nextConfig: NextConfig = {
       // www.tinyhomesa.com/ returns 308 to https://tinyhomesa.com/.
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.tinyhomesa.com" }],
+        has: wwwHost,
         destination: "https://tinyhomesa.com/:path*",
         permanent: true,
       },
