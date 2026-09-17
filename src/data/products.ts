@@ -320,7 +320,7 @@ export const products: Product[] = [
        *  catalogue prices are a different matter: they come off this file. */
       {
         title: "Granny flat",
-        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the fittings are still to come. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
+        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
       },
       {
         title: "Family home",
