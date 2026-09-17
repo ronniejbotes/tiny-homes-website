@@ -191,7 +191,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Ask what a housing pod costs in South Africa and the honest answer is anything from about R50 000 to well over a million rand — frequently for units that look near-identical in the photographs. That spread is not a market failing to settle on a price. It is the market selling three genuinely different things under one word.`,
+        text: `Ask what a housing pod costs in South Africa and the honest answer is that there is no single price — the cheapest thing sold as a pod and the most expensive one are barely the same product, though they frequently look near-identical in the photographs. That spread is not a market failing to settle on a price. It is the market selling three genuinely different things under one word.`,
       },
       {
         type: "p",
@@ -203,8 +203,22 @@ export const blogPosts: BlogPost[] = [
         type: "p",
         text: `Almost every pod on sale in South Africa sits in one of three tiers. The differences between them are not really about quality. They are about **how much of the work is already done** when the truck leaves.`,
       },
+      /** The three tier headings used to carry market-wide price bands
+       *  (roughly R50 000–R150 000, R200 000–R600 000, R450 000 and up), and
+       *  the FAQ below carried a fourth. They were competitors' prices with
+       *  nothing behind them — this post's own source list only backs the
+       *  conventional building cost — and they contradicted the paragraph
+       *  above, which promises the reader our own prices "rather than vague
+       *  ranges". Removed 2026-09-17 (T-16). If a band goes back in, it needs
+       *  a visible link to where it came from and the date somebody opened
+       *  it. Our own catalogue prices, rendered through R(), are not affected:
+       *  they come off products.ts. */
+      {
+        type: "p",
+        text: `You will not find other suppliers' prices in this guide. We cannot check them, they move, and a competitor's figure we have not verified is worth nothing to you. What we can give you is our own price in each tier and the thing that actually separates the tiers — which is the part that decides what you should be paying.`,
+      },
 
-      { type: "h3", text: "Tier 1: the insulated shell — roughly R50 000 to R150 000" },
+      { type: "h3", text: "Tier 1: the insulated shell — a room, and nothing else" },
       {
         type: "p",
         text: `A weatherproof, insulated room with electrics and nothing else. No bathroom, no kitchen, usually no plumbing at all. You are buying enclosed, comfortable floor area and doing the rest yourself.`,
@@ -218,7 +232,7 @@ export const blogPosts: BlogPost[] = [
         text: `What it does not have is plumbing. If you want a shower and a toilet, a local installer fits them on site, and that cost is yours. This tier is honest value for a home office, a site office, staff accommodation or a storeroom. It is a poor choice for a granny flat, because the plumbing you add afterwards is the expensive half.`,
       },
 
-      { type: "h3", text: "Tier 2: the self-contained dwelling — roughly R200 000 to R600 000" },
+      { type: "h3", text: "Tier 2: the self-contained dwelling — bathroom and kitchen already in it" },
       {
         type: "p",
         text: `A pod somebody can actually live in without using the main house: its own bathroom, its own kitchen, plumbing and electrics installed at the factory. This is what most people picture when they search for a granny pod or a second dwelling for the garden.`,
@@ -232,7 +246,7 @@ export const blogPosts: BlogPost[] = [
         text: `The party trick is the deployment: the unit arrives as one module on a truck and expands on site within hours, not weeks. For a family adding accommodation to an existing property, this tier is usually the right answer.`,
       },
 
-      { type: "h3", text: "Tier 3: the finished guest unit — R450 000 and up" },
+      { type: "h3", text: "Tier 3: the finished guest unit — built to be let" },
       {
         type: "p",
         text: `Built to be looked at, and built to be let. Panoramic glazing, premium bathroom fittings, smart-lock entry, finishes chosen so the unit itself is the reason somebody books it. At this tier the pod is a revenue asset rather than a shelter, and it is priced accordingly.`,
@@ -307,7 +321,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "What is the cheapest housing pod in South Africa?",
-        a: `Entry-level pods and insulated shells start in the R50 000–R100 000 region across the market. Ours is the X-Fold at ${R(folding)} ex VAT for a 15 m² insulated, wired room with no plumbing. Below roughly R50 000 you are generally looking at an uninsulated timber or nutec structure rather than a pod.`,
+        a: `The cheapest tier everywhere is the insulated shell: a room with electrics and no plumbing. Ours is the X-Fold at ${R(folding)} ex VAT for a 15 m² insulated, wired room. We do not publish other suppliers' prices because we cannot verify them, but the thing to check is what you are comparing: below the shell tier you are generally looking at an uninsulated timber or nutec structure, which is a different product sold at a different price for a reason.`,
       },
       {
         q: "Do housing pod prices include VAT and delivery?",
