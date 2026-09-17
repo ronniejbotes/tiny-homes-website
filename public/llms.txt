@@ -111,12 +111,15 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   company, with prices taken from the same price list the product pages use.
 - [How much does a housing pod cost in South
   Africa?](https://tinyhomesa.com/blog/housing-pod-cost-south-africa): Price guide. The pod
-  market splits into three tiers — an insulated shell (roughly R50 000–R150 000), a
-  self-contained dwelling (roughly R200 000–R600 000) and a finished guest unit (R450 000 and
-  up) — and the tier, not the quality, is what explains the price spread. Also covers the four
-  costs that sit outside every advertised pod price: transport, groundwork, service
-  connections and council approval. The question to ask any supplier is "what is the total,
-  delivered and standing on my site, ready to connect?"
+  market splits into three tiers by how much of the work is already done when the truck
+  leaves — an insulated shell (a wired, insulated room, no plumbing), a self-contained
+  dwelling (its own bathroom and kitchen, plumbing and electrics fitted at the factory) and a
+  finished guest unit (built to be looked at and let out) — and the tier, not the quality, is
+  what explains the price spread. The guide publishes Tiny Homes SA's own price in each tier
+  and no other supplier's: competitors' figures cannot be verified from here, so they are
+  left out deliberately. Also covers the four costs that sit outside every advertised pod
+  price: transport, groundwork, service connections and council approval. The question to ask
+  any supplier is "what is the total, delivered and standing on my site, ready to connect?"
 - [Housing pod vs container home vs wendy
   house](https://tinyhomesa.com/blog/housing-pod-vs-container-home-vs-wendy-house):
   Comparison. Insulation is the main structural difference — a pod has it in the panel, a
