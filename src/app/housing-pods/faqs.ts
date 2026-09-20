@@ -56,7 +56,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "What foundation does a housing pod need?",
-    a: "Most units sit on a level concrete slab or on properly levelled precast plinths, and the larger cabins and capsules are professionally assembled on a prepared foundation. Level is the word that matters: a pod is a rigid finished box, and standing it on a base that is out by more than a little shows up in the doors and windows. We confirm the exact requirement for your model and site when you order, and our turnkey team can prepare the groundwork if you would rather it was our problem.",
+    a: "Most units sit on a level concrete slab or on properly levelled precast plinths, and the larger cabins and capsules arrive fully built and are placed onto a prepared foundation. Level is the word that matters: a pod is a rigid finished box, and standing it on a base that is out by more than a little shows up in the doors and windows. We confirm the exact requirement for your model and site when you order, and our turnkey team can prepare the groundwork if you would rather it was our problem.",
   },
   {
     q: "How long does delivery take, and can a truck reach my site?",

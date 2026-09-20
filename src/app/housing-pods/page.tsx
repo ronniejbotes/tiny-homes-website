@@ -410,7 +410,7 @@ export default function HousingPodsPage() {
               },
               {
                 h: "What is the base standing on?",
-                p: "Most units sit on a level concrete slab or properly levelled precast plinths, and the larger cabins and capsules are professionally assembled on a prepared foundation. Getting this wrong is the one site error that is genuinely difficult to fix afterwards. We confirm the exact requirement for your model when you order.",
+                p: "Most units sit on a level concrete slab or properly levelled precast plinths, and the larger cabins and capsules arrive fully built and are placed onto a prepared foundation. Getting this wrong is the one site error that is genuinely difficult to fix afterwards. We confirm the exact requirement for your model when you order.",
               },
               {
                 h: "Where are the services coming from?",

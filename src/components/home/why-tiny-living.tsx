@@ -13,7 +13,7 @@ const values = [
   {
     icon: Timer,
     title: "Rapid deployment",
-    body: "An X-Fold unfolds in minutes; even the flagship capsule is professionally assembled on site in days, not months. Far faster than a conventional brick build.",
+    body: "An X-Fold unfolds in minutes and an expandable home is set up the day it arrives; cabins and capsules arrive fully built and are placed onto a prepared foundation. Far faster than a conventional brick build.",
   },
   {
     icon: Truck,

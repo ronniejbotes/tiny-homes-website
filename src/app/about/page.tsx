@@ -102,7 +102,7 @@ const values = [
   {
     icon: Timer,
     title: "Speed, without shortcuts",
-    body: "About 90 days from deposit to move-in. On-site setup ranges from minutes for an X-Fold to professional assembly for cabins and capsules.",
+    body: "About 90 days from deposit to move-in. On-site setup ranges from minutes for an X-Fold to placing a fully built cabin or capsule onto its foundation.",
   },
   {
     icon: Leaf,
@@ -135,7 +135,7 @@ const processSteps = [
   },
   {
     title: "Deliver & install",
-    body: "We truck the finished home anywhere in South Africa and set it up on site, from minutes for an X-Fold to professional assembly for cabins and capsules.",
+    body: "We truck the finished home anywhere in South Africa and set it up on site, from minutes for an X-Fold to placing a fully built cabin or capsule onto its foundation.",
   },
 ];
 

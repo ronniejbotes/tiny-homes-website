@@ -570,7 +570,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "2. What is it standing on?" },
       {
         type: "p",
-        text: `Most units sit on a **level concrete slab** or on **properly levelled precast plinths**. The larger cabins and capsules are professionally assembled on a prepared foundation. We confirm the exact requirement for your model and site when you order.`,
+        text: `Most units sit on a **level concrete slab** or on **properly levelled precast plinths**. The larger cabins and capsules arrive fully built and are placed onto a prepared foundation. We confirm the exact requirement for your model and site when you order.`,
       },
       {
         type: "p",
@@ -652,7 +652,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Move-in is typically around 90 days from deposit for most units, and on-site setup itself is quick: an X-Fold unfolds in minutes, an expandable home deploys within hours, and cabins and capsules are professionally assembled on a prepared site. Nearly all of that 90 days is manufacturing — which is exactly why the site questions should be answered while it is happening, not afterwards.`,
+        text: `Move-in is typically around 90 days from deposit for most units, and on-site setup itself is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. Nearly all of that 90 days is manufacturing — which is exactly why the site questions should be answered while it is happening, not afterwards.`,
       },
       {
         type: "cta",
@@ -668,7 +668,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What foundation does a prefab pod need?",
-        a: "Most units sit on a level concrete slab or properly levelled precast plinths, with larger cabins and capsules professionally assembled on a prepared foundation. Level matters more than mass: the unit arrives square and rigid, and a base that is out shows up immediately in the doors and windows.",
+        a: "Most units sit on a level concrete slab or properly levelled precast plinths, with larger cabins and capsules arriving fully built and placed onto a prepared foundation. Level matters more than mass: the unit arrives square and rigid, and a base that is out shows up immediately in the doors and windows.",
       },
       {
         q: "How long does it take from deposit to move-in?",

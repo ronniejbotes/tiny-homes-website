@@ -45,7 +45,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "How long until I can move in?",
-    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home deploys within hours, and cabins and capsules are professionally assembled on a prepared site.",
+    a: "Around 90 days from deposit to move-in for most homes. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site.",
   },
   {
     q: "Do prices include VAT?",
@@ -53,7 +53,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "What foundations do I need?",
-    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Larger units, cabins and capsules, are professionally assembled on a prepared foundation. We confirm the exact requirement for your model and site when you order, or our turnkey team can prepare the groundwork for you.",
+    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Larger units, cabins and capsules, arrive fully built and are placed onto a prepared foundation. We confirm the exact requirement for your model and site when you order, or our turnkey team can prepare the groundwork for you.",
   },
   {
     q: "Can the homes run off-grid?",
