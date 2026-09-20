@@ -303,7 +303,9 @@ export const products: Product[] = [
     features: [
       "Full home delivered as one compact module, expanding within hours",
       "Bathroom and kitchen included on every size, with a full stainless-steel kitchen in the 6m and 12m models",
-      "107 exterior colours and finishes: brick, timber-grain, plain or textured",
+      // The count of finishes came from no source we can find. Restore an exact
+      // number only with a supplier document and the date it was issued.
+      "A wide choice of exterior colours and finishes: brick, timber-grain, plain or textured",
       "Window and door placement of your choice",
       "Layouts from open-plan to four bedrooms",
     ],
@@ -339,11 +341,11 @@ export const products: Product[] = [
       },
       {
         title: "Staff accommodation and living quarters",
-        body: "Self-contained units for mine, lodge, security or estate staff, each with its own bathroom and kitchen, so there is no shared ablution block to build. 75 mm EPS insulated walls come standard, upgradeable to polyurethane for roughly 40% better thermal performance on hot or cold sites.",
+        body: "Self-contained units for mine, lodge, security or estate staff, each with its own bathroom and kitchen, so there is no shared ablution block to build. 75 mm EPS insulated walls come standard, upgradeable to polyurethane, which holds heat in better in winter and out better in summer on exposed sites.",
       },
       {
         title: "Student accommodation",
-        body: "Repeatable, self-contained rooms for private student housing, delivered as modules and expanded on site so a block goes up in a fraction of a conventional programme. Layouts run from open-plan to four bedrooms, and 107 exterior finishes let a scheme match what is already there.",
+        body: "Repeatable, self-contained rooms for private student housing, delivered as modules and expanded on site so a block goes up in a fraction of a conventional programme. Layouts run from open-plan to four bedrooms, and the range of exterior finishes lets a scheme match what is already there.",
       },
       {
         title: "Site office and project office",
@@ -364,7 +366,7 @@ export const products: Product[] = [
       { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded, 12 × 2.2 × 2.5 m folded for transport. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
     options: [
-      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board, for around 40% better insulation. The metal carved board also resists salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
+      { id: "pu-wall-insulation", label: "Upgraded wall insulation (polyurethane)", description: "Swaps the standard 75 mm EPS wall panels for polyurethane metal carved board, which insulates better than the standard panel. The metal carved board also resists salt-air corrosion, so it is required on coastal sites. Priced per m² of floor area.", price: 0, pricePerM2: 300, category: "structure", visual: "walls", provisional: false },
       { id: "spc-flooring", label: "Waterproof SPC laminate flooring", description: "Upgrades the standard vinyl to waterproof SPC stone-composite laminate. Priced per m² of floor area.", price: 0, pricePerM2: 185, category: "interior", visual: "floors", provisional: false },
       { id: "glass-front-wall", label: "Full glass front wall", description: "Replaces a front wall panel with a full-height glass wall for light and views.", price: 14900, category: "structure", visual: "glazing", provisional: false },
     ],
@@ -383,7 +385,7 @@ export const products: Product[] = [
       },
       {
         q: "What upgrades can I add to an expandable home?",
-        a: "Three upgrades are available on every size: polyurethane wall insulation for around 40% better thermal performance (R300 per m²), waterproof SPC laminate flooring (R185 per m²), and a full glass front wall (R14 900). The per-m² upgrades scale with the size you choose.",
+        a: "Three upgrades are available on every size: polyurethane wall insulation, warmer in winter and cooler in summer than the standard panel (R300 per m²), waterproof SPC laminate flooring (R185 per m²), and a full glass front wall (R14 900). The per-m² upgrades scale with the size you choose.",
       },
       {
         q: "How much does delivery cost?",
