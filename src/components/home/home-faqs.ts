@@ -70,7 +70,20 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Can I finance a tiny home?",
-    a: `${site.finance}. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
+    a: `${site.finance}. The unit is financed as a movable asset rather than as property — broadly the same lending category as a truck or earthmoving equipment — because banks don't generally treat these as permanent residential structures, which is also why the term is typically around five years rather than a bond's twenty. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
+  },
+  /* The rent-to-own question, answered with a flat no.
+     It earns a place on demand alone: it arrives in the same enquiry as "can
+     I bond it", and no supplier in this market publishes an honest answer to
+     it. The answer is also protective. Lay-bye was withdrawn in Aug 2026
+     precisely because holding stock against instalments is a promise the
+     business cannot keep (see the note on site.finance), and rent-to-own is
+     that same promise under another name. Saying no in public, in the words
+     people actually search, is what stops a salesperson being asked to say
+     yes in private. */
+  {
+    q: "Do you offer rent-to-own on a tiny home?",
+    a: "No. We're not a registered financial institution, so we don't offer in-house financing, rent-to-own terms or instalments of any kind. A home is either paid for in full or financed by an outside provider, and that provider's credit decision is theirs, not ours. We'll point you at the finance option when you request a quote.",
   },
   {
     q: "Which areas do you deliver to?",
