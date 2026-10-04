@@ -876,7 +876,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Granny Flat Cost in South Africa",
     title: "How much does a granny flat cost in South Africa?",
     description:
-      "What a second dwelling costs built conventionally versus delivered as a unit, what your municipality needs, and the rental maths that decides if it pays.",
+      "What a granny flat costs built conventionally or delivered as a prefab unit, what your municipality needs, and the rental maths that decides if it pays.",
     datePublished: "2026-09-02",
     keywords: [
       "granny flat cost South Africa",
