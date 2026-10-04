@@ -20,6 +20,7 @@ import { ConfiguratorSection } from "@/components/product/configurator-section";
 import { FeatureGrid } from "@/components/product/feature-grid";
 import { UseCaseChips } from "@/components/product/use-case-chips";
 import { ProductFaq } from "@/components/product/product-faq";
+import { ProductGuides } from "@/components/product/product-guides";
 import { RelatedProducts } from "@/components/product/related-products";
 import { ProductCta } from "@/components/product/product-cta";
 
@@ -157,6 +158,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       <FeatureGrid product={product} />
       <UseCaseChips product={product} />
       <ProductFaq product={product} />
+      <ProductGuides slug={product.slug} />
       <RelatedProducts current={product} />
       <ProductCta product={product} />
     </>
