@@ -84,7 +84,7 @@ export async function generateMetadata({
     (product.priceOnRequest
       ? `${product.name}: Price on Request`
       : `${product.name} from ${formatZAR(product.startingPrice)}`);
-  const description = metaDescription(product);
+  const description = product.metaDescription ?? metaDescription(product);
 
   return {
     title,

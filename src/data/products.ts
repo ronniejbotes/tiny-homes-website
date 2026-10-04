@@ -109,6 +109,8 @@ export interface Product {
    * " | Tiny Homes SA" (16 chars) to whatever this is.
    */
   seoTitle?: string;
+  /** Hand-written meta description, 155 characters or fewer. Falls back to the generated price-plus-summary form. */
+  metaDescription?: string;
   tagline: string;
   /** One-paragraph summary used on cards and meta descriptions. */
   summary: string;
