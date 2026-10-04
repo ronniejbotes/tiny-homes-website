@@ -87,7 +87,7 @@ export function Hero() {
         <h1 className="text-display mt-5 max-w-4xl text-[clamp(1.75rem,9.2vw,6rem)] leading-[0.95] text-cream">
           <span className="animate-rise-in block" style={rise(0.24)}>
             Modular tiny homes
-          </span>
+          </span>{" "}
           <span className="animate-rise-in block" style={rise(0.36)}>
             for South Africa
           </span>
