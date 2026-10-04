@@ -276,7 +276,7 @@ export const products: Product[] = [
     slug: "expandable-homes",
     name: "Expandable Homes",
     shortName: "Expandable Home",
-    h1: "Expandable prefab homes",
+    h1: "Expandable prefab houses and granny flats",
     seoTitle: "Granny Flats South Africa from R199 900",
     tagline: "Smart living, fast, flexible and future-ready.",
     summary:
