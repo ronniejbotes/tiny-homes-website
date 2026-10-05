@@ -422,7 +422,7 @@ export const products: Product[] = [
     name: "Nature Cabins",
     shortName: "Nature Cabin",
     h1: "Nature cabins",
-    seoTitle: "Airbnb Cabins South Africa from R810 900",
+    seoTitle: "Prefab Cabins South Africa from R810 900",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
       "A 21 m² cabin with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
