@@ -36,7 +36,7 @@ const lowestStartingPrice = Math.min(
     .map((p) => p.startingPrice),
 );
 
-const homeTitle = "Tiny Homes SA | Prefab Tiny Homes & Cabins South Africa";
+const homeTitle = "Tiny Homes SA | Prefab Houses & Cabins South Africa";
 /** Kept to 120–160 characters: Google truncates beyond that, and SEO auditors
  *  flag it. The provinces and cross-border detail live in the page copy and in
  *  the LocalBusiness areaServed schema, which is where they actually rank. */
