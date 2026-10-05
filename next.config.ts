@@ -42,10 +42,22 @@ const nextConfig: NextConfig = {
     // The fix: HTML must be revalidated rather than trusted for a year. Next still
     // sends an ETag, so revalidation is a cheap 304, not a re-render.
     //
-    // Scope: only single-segment paths, which is every route this site has (`/`,
-    // `/about`, `/contact`, `/privacy`, `/quote`, `/terms`, and the eight
-    // `/[product]` pages) plus small root files like /sitemap.xml and /robots.txt,
-    // which should not be frozen for a year either. Deliberately NOT matched:
+    // Scope: every HTML route this site has, which comes in two shapes.
+    //   - Single-segment paths, matched by `/` and `/:path`: every top-level
+    //     page, `/blog` itself and the `/[product]` pages, plus small root files
+    //     like /sitemap.xml and /robots.txt, which should not be frozen for a
+    //     year either.
+    //   - The blog posts, matched by `/blog/:slug`. They are two segments deep,
+    //     so `/:path` never reached them: until that line was added (T-42,
+    //     raised 2026-09-17) every post kept Next's one-year s-maxage, the exact
+    //     condition described above. `:slug` matches a single segment, the same
+    //     shape as the `/blog/[slug]` route, and there is no public/blog/, so no
+    //     media file is caught by it.
+    // A route added later that sits deeper than one segment needs its own line
+    // below. `node scripts/smoke.mjs` against a local production build catches a
+    // miss: it fails any sitemap route whose Cache-Control has a long s-maxage.
+    //
+    // Deliberately NOT matched:
     // `/_next/static/*` (content-hashed and immutable — Next refuses to let it be
     // overridden anyway), `/_next/image` (the optimiser's own cache), and the
     // 132 MB of `/images/*`, `/videos/*` and `/models/*` under public/, all of
@@ -62,6 +74,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/", headers: revalidateHtml },
       { source: "/:path", headers: revalidateHtml },
+      { source: "/blog/:slug", headers: revalidateHtml },
     ];
   },
   async redirects() {
