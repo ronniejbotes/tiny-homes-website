@@ -1,6 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Why this exists: on 5 October 2026 Hostinger's build of this site died
+    // in Turbopack's PostCSS step for src/app/globals.css with "node process
+    // exited before we could connect to it with exit status: 0", and other
+    // Next.js sites on Hostinger report the same from late September. By
+    // default Turbopack runs PostCSS in a child Node process that must connect
+    // back to the build over 127.0.0.1; on that runner it never does. Worker
+    // threads run the same PostCSS inside the build process instead.
+    //
+    // The build output does not change: built locally with and without this
+    // line, every /_next/static file name and every prerendered page was
+    // identical. That matters because of the edge cache described in headers()
+    // below. Do NOT swap this for `next build --webpack`, the other common fix:
+    // webpack renames every chunk, which strands pages the edge still holds.
+    turbopackPluginRuntimeStrategy: "workerThreads",
+  },
   images: {
     // AVIF first (typically ~20% smaller than WebP for photographic product
     // shots), falling back to WebP for browsers without AVIF support. Next.js
