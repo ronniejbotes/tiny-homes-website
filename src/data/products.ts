@@ -525,7 +525,7 @@ export const products: Product[] = [
     name: "Apple Cabins",
     shortName: "Apple Cabin",
     h1: "Apple cabins",
-    seoTitle: "Resort Pods South Africa from R449 900",
+    seoTitle: "Eco Pods South Africa from R449 900",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
       "Big living in a small package: a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
