@@ -619,7 +619,7 @@ export const products: Product[] = [
     name: "Glamping Capsules",
     shortName: "Glamping Capsule",
     h1: "Glamping capsules",
-    seoTitle: "Glamping Pods South Africa from R689 900",
+    seoTitle: "Capsule Houses & Glamping Pods from R689 900",
     tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
     summary:
       "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
