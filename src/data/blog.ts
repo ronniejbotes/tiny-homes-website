@@ -783,7 +783,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Where it stops being a wash is what is inside the number. That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead — but not by the multiple the marketing in this industry implies.`,
+        text: `Where it stops being a wash is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead — but not by the multiple the marketing in this industry implies.`,
       },
 
       { type: "h3", text: "The premium units cost more per square metre, and should" },
@@ -1783,7 +1783,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `A conventional build is a project you run: you appoint people, approve drawings, carry the risk of variation, and end up with something drawn for your site. A prefab is a product you buy: fixed specification, fixed price, delivered. Almost every advantage and disadvantage below flows from that one distinction.`,
+        text: `A conventional build is a project you run: you appoint people, approve drawings, carry the risk of variation, and end up with something drawn for your site. A prefab is a product you buy: [fixed specification, fixed price](/blog/what-is-included-in-a-prefab-house-price), delivered. Almost every advantage and disadvantage below flows from that one distinction.`,
       },
 
       { type: "h2", text: "Building conventionally: the case for" },
@@ -2610,6 +2610,142 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `This article is general information about building terms and the approval framework. It is not legal advice. Your municipality's building control office decides what it needs for your site.`,
+      },
+    ],
+  },
+
+  /* =============================================================== 15 ==== */
+  {
+    slug: "what-is-included-in-a-prefab-house-price",
+    seoTitle: "What Is Included in a Prefab House Price?",
+    title: "What is included in a prefab house price?",
+    description:
+      "What is included in a prefab house price: what our two-bedroom units come with as standard, which upgrades cost extra, and how to compare two quotes.",
+    datePublished: "2026-09-16",
+    keywords: [
+      "what is included in a prefab house price",
+      "what does a prefab home price include",
+      "what comes standard in a prefab house",
+      "does a prefab house price include a kitchen",
+      "prefab house hidden costs",
+    ],
+    imageProduct: "glamping-capsules",
+    readingMinutes: 7,
+    body: [
+      {
+        type: "p",
+        text: `What is included in a prefab house price is set by the specification behind it. Read the price as the unit and the fittings that specification lists as standard, and nothing around the unit unless the quote says otherwise. On our two-bedroom units, the price includes insulated walls, double glazing, a bathroom, and the plumbing and wiring inside, with a kitchen on the expandable homes. The base, the connections to services, council approval, transport to your site and VAT come on top.`,
+      },
+      {
+        type: "p",
+        text: `Our current [two-bedroom prefab house prices](/expandable-homes) are on the expandable homes page, and the capsule prices are on the [glamping capsules](/glamping-capsules) page. Those pages, not this post, carry the figures. A price on its own cannot show what it buys, so we go through that here, item by item, for both of our two-bedroom ranges.`,
+      },
+      {
+        type: "p",
+        text: `Further down are the upgrades each range charges extra for, and what to check line by line when you set another supplier's quote beside ours. Our [housing pods page](/housing-pods) covers the smaller units, for when one bedroom or an open-plan room is enough.`,
+      },
+
+      { type: "h2", text: "What does the price of a two-bedroom expandable home include?" },
+      {
+        type: "p",
+        text: `The rooms, the fittings in them and the shell around them. Two bedrooms come as standard on the two larger sizes, the 6m and the 12m, and the 12m can be laid out with more. Both sizes have a fully fitted bathroom with a separate shower, and a full stainless-steel kitchen.`,
+      },
+      {
+        type: "p",
+        text: `The shell is in the price as well. The frame is galvanised steel, and the walls are panels insulated with EPS, which is expanded polystyrene. The floor is timber-look vinyl. The windows are aluminium-framed double glazing with fly screens, and the entry door is sliding glass. You choose where the windows and the door go, and the size cards for the 6m and 12m say how many windows each one comes with.`,
+      },
+      {
+        type: "p",
+        text: `The plumbing and wiring inside the unit come as standard on every size. Joining them to your property is a separate job, which we come to below.`,
+      },
+
+      { type: "h2", text: "What comes standard in a two-bedroom glamping capsule?" },
+      {
+        type: "p",
+        text: `A bathroom with premium fittings, a geyser, multi-layer insulation, complete plumbing and electrical, interior and exterior lighting, what the page calls intelligent front-door access, and the double glazing. All of that is standard on every capsule model. The glazing runs from floor to ceiling and wraps around each room.`,
+      },
+      {
+        type: "p",
+        text: `In the core range, the 9.5m and 11.5m capsules have two bedrooms either side of a central bathroom, and the 11.5m adds a balcony. The Space range is a more premium build. Its D8 has two bedrooms and a bathroom with a tub, and the D7 is available as a two-bedroom on request. Other sizes and layouts can be ordered too, so check that the layout on your quotation is the one you want.`,
+      },
+      {
+        type: "p",
+        text: `Every capsule arrives fully built, and our [guide to modular homes](/blog/modular-homes-south-africa-explained) explains what that means next to flat-pack and expandable units. The standard list leaves out the kitchen and the air conditioning, which are optional on every model.`,
+      },
+
+      { type: "h2", text: "Which upgrades are priced on top?" },
+      {
+        type: "p",
+        text: `The expandable homes offer the same upgrades on every size. You can swap the EPS walls for polyurethane insulation in a metal carved board panel, change the vinyl to waterproof SPC laminate, or add a full glass front wall. The insulation and the flooring are priced by floor area, so they scale with the size you choose.`,
+      },
+      {
+        type: "p",
+        text: `One of those is not optional everywhere. The page says the metal carved board resists salt-air corrosion and is required on coastal sites. If you are pricing a 6m for a plot in Ballito, price it with that panel from the start, because the standard wall is not the one you will be buying.`,
+      },
+      {
+        type: "p",
+        text: `The core capsules list central air conditioning, a kitchen sold by the metre, under-floor heating, motorised curtains and a skylight with a roller shade. The Space range has a longer list: a full kitchen, under-floor heating, smart double-track curtains, thicker polyurethane insulation, a skylight with an electric sunshade, a fully enclosed balcony and an HD projector with a screen. The capsule page says the extras it lists are a selection, so ask about anything you want that is not there.`,
+      },
+
+      { type: "h2", text: "Does a prefab house price include a kitchen?" },
+      {
+        type: "p",
+        text: `Not always, and the word kitchen can mean very different things. On the two-bedroom expandable homes, the full stainless-steel kitchen is part of the standard price, though the page names no appliances. On the capsules it is an extra, and the capsule page describes two different kitchens. The core range's is basic cabinetry with a sink and a stone top, sold by the metre, with no appliances. The Space range's full kitchen has a stone countertop, a sink, a double stove and an oven.`,
+      },
+      {
+        type: "p",
+        text: `So before you compare a capsule with an expandable home, add the kitchen you want to the capsule. Leave it off and the gap between the two looks smaller than it is.`,
+      },
+      {
+        type: "p",
+        text: `With any supplier, ask what the kitchen contains: cabinets and a sink, or appliances as well, and which ones. Ask us the same about any of our units.`,
+      },
+
+      { type: "h2", text: "What sits outside the price of the unit?" },
+      {
+        type: "p",
+        text: `Treat everything around the unit as outside its price until a quote says otherwise: the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT. Our [housing pod cost guide](/blog/housing-pod-cost-south-africa) and our guide to [where you can put a pod](/blog/where-can-you-put-a-housing-pod) go through each of them. Connecting the wiring also needs a certificate of compliance from a registered electrician, which our [building approval guide](/blog/building-approval-south-africa-what-you-need) explains.`,
+      },
+
+      { type: "h2", text: "How do you compare two prefab house quotes?" },
+      {
+        type: "p",
+        text: `Match the two specifications line by line before you look at either total. Check:`,
+      },
+      {
+        type: "ul",
+        items: [
+          `the kitchen, and whether it comes with appliances`,
+          `the bathroom: a shower or a bath, and what heats the water (a geyser is standard in our capsules)`,
+          `what the walls are insulated with and, on a coastal site, whether the exterior is made for salt air`,
+          `the windows and doors: how many there are, and whether they are double-glazed`,
+          `the floor area, because a lower headline price on a much smaller unit can work out dearer per square metre`,
+          `what the guarantee covers, and for how long`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Then check how each price treats VAT. VAT is charged at the standard rate of 15% on goods and services supplied by registered vendors ([SARS](https://www.sars.gov.za/types-of-tax/value-added-tax/)). If one quote is marked ex VAT and the other includes it, add 15% to the first before you compare them. A supplier that is not registered for VAT does not charge it, so ask which applies.`,
+      },
+      {
+        type: "p",
+        text: `If a quote is silent on any of these, ask the supplier to put the answer in writing before you weigh one total against the other.`,
+      },
+
+      { type: "h2", text: "How do you get a quotation for one of our units?" },
+      {
+        type: "p",
+        text: `It starts on the product page and ends with a formal quotation. Every price on our product pages is ex VAT, and the headline price is for the unit alone. The size you choose sets the base price in the configurator, and the total updates as you add finishes and modules. Extras pricing there is provisional until your formal quotation confirms it line by line. Treat a configured total as a guide, and the quotation as the number.`,
+      },
+      {
+        type: "p",
+        text: `Transport to your site is quoted separately, on distance and access. Installation on site is quoted separately too, as part of your quotation. Ask whether our turnkey service covers your area and your unit. Where it does, we can arrange the groundwork, connections and installation, or you can use your own contractors. Nothing in this post is a quotation.`,
+      },
+
+      { type: "h2", text: "Where do you start pricing a two-bedroom unit?" },
+      {
+        type: "p",
+        text: `On the product page, with the specification open beside the price. Choose a two-bedroom size on the [expandable homes page](/expandable-homes) and add any upgrade your site calls for, such as the coastal wall panel. Write down what the page lists as standard. For a capsule, do the same on the [glamping capsules page](/glamping-capsules), and add the kitchen if you want it, and ask about air conditioning on a Space model. Then add what sits outside the unit, from the base to the VAT, before you compare your total with any other quote.`,
       },
     ],
   },

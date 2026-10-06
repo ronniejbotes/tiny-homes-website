@@ -20,6 +20,7 @@ const GUIDES: Record<string, string[]> = {
     "granny-flat-cost-south-africa",
     "building-approval-south-africa-what-you-need",
     "prefab-home-finance-south-africa",
+    "what-is-included-in-a-prefab-house-price",
   ],
   "nature-cabins": [
     "start-a-glamping-business-south-africa",
