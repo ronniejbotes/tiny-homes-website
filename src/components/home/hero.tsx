@@ -77,7 +77,13 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-40 sm:px-8 sm:pb-32 lg:px-12">
         <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.12)}>
-          Prefab &amp; modular housing · South Africa
+          <Link
+            href="/blog/modular-homes-south-africa-explained"
+            className="underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"
+          >
+            Prefab &amp; modular housing
+          </Link>{" "}
+          · South Africa
         </p>
         {/* Fluid rather than stepped: the longest line ("Modular tiny homes")
             runs ~8.7em, so a fixed ramp overflowed the viewport on phones and

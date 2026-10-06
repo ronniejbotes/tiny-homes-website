@@ -259,7 +259,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The party trick is the deployment: the unit arrives as one module on a truck and expands on site within hours, not weeks. For a family adding accommodation to an existing property, this tier is usually the right answer.`,
+        text: `The party trick is the deployment: the unit [arrives as one module](/blog/modular-homes-south-africa-explained) on a truck and expands on site within hours, not weeks. For a family adding accommodation to an existing property, this tier is usually the right answer.`,
       },
 
       { type: "h3", text: "Tier 3: the finished guest unit — built to be let" },
@@ -2471,6 +2471,145 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/prefab-homes/",
         note: "Source for the position that some major South African banks decline prefabricated structures while others will bond them subject to a fixed foundation and National Building Regulations compliance.",
+      },
+    ],
+  },
+
+  /* =============================================================== 14 ==== */
+  {
+    slug: "modular-homes-south-africa-explained",
+    seoTitle: "What Is a Modular Home? Modular vs Prefab",
+    title: "What is a modular home? Modular, prefab and flat-pack explained",
+    description:
+      "What is a modular home, and how is it different from prefab or flat-pack? Plain definitions, which of our units is which, and what approval it needs.",
+    datePublished: "2026-09-09",
+    keywords: [
+      "what is a modular home",
+      "modular vs prefab",
+      "difference between modular and prefab homes",
+      "what is a prefab home",
+    ],
+    imageProduct: "expandable-homes",
+    readingMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: `A modular home is a home built away from your site as one or more complete sections, called modules. They are carried in on a truck and set down on a prepared base. The walls, floor, roof and, usually, the plumbing and wiring are made before the home reaches your property. On site, the work is the base, the placing and the connections to water, power and drainage.`,
+      },
+      {
+        type: "p",
+        text: `In South Africa the word travels with several others: prefab, flat-pack, container home, pod, tiny home. People use them loosely, and sellers pick whichever one suits what they make, so the word on its own tells you little about the unit.`,
+      },
+      {
+        type: "p",
+        text: `This guide says what each word usually means and what modular does and does not change about approval. It also shows which of our own units fits which word, and what to ask before you buy. If you came here shopping for [modular homes in South Africa](/), our home page shows every range we sell. This guide is about the words.`,
+      },
+
+      { type: "h2", text: "What is the difference between modular, prefab and flat-pack?" },
+      {
+        type: "p",
+        text: `Prefab is the widest of the three, and a modular home is one kind of prefab. Flat-pack is another kind: it arrives in panels or folded, not as a finished section. The table sets out how each word is usually used.`,
+      },
+      {
+        type: "table",
+        caption: "How each word is usually used",
+        head: ["Word", "What it usually means"],
+        rows: [
+          ["Prefab (prefabricated)", "The widest term. Any building whose parts are made off site. A modular home is one kind of prefab."],
+          ["Modular", "Built as complete three-dimensional sections away from the site, then delivered and set on a base."],
+          ["Flat-pack or kit", "Delivered as panels or a folded frame, and put up or unfolded on site."],
+          ["Expandable", "A module that travels folded or closed up, then opens out on site to a larger floor."],
+          ["Container home", "A converted shipping container, so its width is fixed by the container."],
+          ["Tiny home or pod", "A description of size and use. It says nothing about how the home was built."],
+        ],
+      },
+      {
+        type: "p",
+        text: `These are our working definitions, written to help you compare what is on offer. They are not drawn from any regulation, and another supplier may use the words differently. When in doubt, ask how the unit arrives and what is still to be done when it lands.`,
+      },
+
+      { type: "h2", text: "Does a modular home still need building approval?" },
+      {
+        type: "p",
+        text: `Yes. A home made off site is still a building once it is on your land and someone lives in it. George Municipality's building control notice puts the national rule plainly: "The National Building Regulations and Building Standards Act requires submission of building plans to and approval by the Municipality before any construction work commences" ([George Municipality](https://www.george.gov.za/notices/obtain-building-plan-approval-before-commencing-with-construction/)). The same notice lists stop-work orders and compliance notices among the consequences of building first.`,
+      },
+      {
+        type: "p",
+        text: `So the approval question is the same for a modular home as for a brick one. The detail of which route applies, a permanent building or a temporary one, is in our [guide to building approval](/blog/building-approval-south-africa-what-you-need).`,
+      },
+
+      { type: "h2", text: "How does a modular home show it meets the building regulations?" },
+      {
+        type: "p",
+        text: `Where the way it is built is not covered by the South African National Standards, it does so through a rational design or an Agrément certificate. A building control officer will want to know how the system shows it meets the regulations.`,
+      },
+      {
+        type: "p",
+        text: `Agrément South Africa, a public entity of the National Department of Public Works and Infrastructure, was set up "to assess innovative, non-standardised construction products and systems". Its own guidance says: "As per the National Building Regulations and Building Standards Act, unconventional building methods can only be deemed to satisfy by way of rational design or Agrément certification" ([Agrément South Africa FAQ](https://agrement.co.za/faq/)).`,
+      },
+      {
+        type: "p",
+        text: `In practice, that gives two routes:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `A rational design. A registered professional, usually an engineer, takes responsibility for showing that the structure meets the regulations for your particular building, and signs for it.`,
+          `An Agrément certificate. The building system itself has been assessed and certified. Agrément South Africa says a certificate is valid for three years, subject to annual fees and audits, and it publishes a list of [active certificates](https://agrement.co.za/active-certificates/) that anyone can look through.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Agrément also says its certificates can help a system gain acceptance with regulatory authorities and with financial institutions. If you will need a loan, ask the lender about this before you choose a unit.`,
+      },
+
+      { type: "h2", text: "What should you ask about any modular home?" },
+      {
+        type: "p",
+        text: `Whichever supplier you are talking to, including us, these questions separate one offer from another.`,
+      },
+      {
+        type: "ol",
+        items: [
+          `How does it arrive? Flat, as a closed module, or fully built. This decides how much work happens on your site.`,
+          `What is already inside? Bathroom, kitchen, plumbing, wiring. A unit without plumbing needs a bathroom fitted on site, or a shared ablution block, before anyone can live in it.`,
+          `What base does it need? A slab, plinths or something else, and who builds it.`,
+          `Can the truck reach the site? Large fully built units need a route an oversized truck can use.`,
+          `Which route will the plans submission use? A rational design for your building, or a certificate for the system, and who provides the paperwork.`,
+          `What is left out of the price? For our own units, that is groundwork, service connections, council plan approval, VAT and transport, all quoted or arranged separately.`,
+        ],
+      },
+
+      { type: "h2", text: "Which of our units is modular, and which is flat-pack?" },
+      {
+        type: "p",
+        text: `Our homes and cabins arrive in one of three ways: flat, as a single module that expands, or fully built.`,
+      },
+      {
+        type: "p",
+        text: `The [X-Fold](/folding-homes) is the flat-pack one. It arrives flat on a truck and unfolds on site into a weather-tight, insulated room. It comes wired for electricity and has no plumbing, so a bathroom is a job for a local installer. It is prefab, and it is flat-pack rather than modular.`,
+      },
+      {
+        type: "p",
+        text: `The [expandable homes](/expandable-homes) are expandable modules. Each one is delivered as a single module, and the 6m and 12m sizes expand on site, opening out to a much larger floor than they take up on the truck. The plumbing and electrics are already installed when it arrives. Of everything we sell, this is the closest to the usual picture of a modular home. It is a full home in one section, made before it reaches you, with a bathroom, a kitchen and, on the larger sizes, bedrooms.`,
+      },
+      {
+        type: "p",
+        text: `The [Apple Cabins](/apple-cabins), [Glamping Capsules](/glamping-capsules) and [Nature Cabins](/nature-cabins) are fully built modules, and they arrive complete. The Apple Cabins arrive fully assembled. The Glamping Capsules are delivered and placed on site with no on-site construction. The Nature Cabin arrives fully built and needs only its final connections to services. Because it comes on an oversized cargo truck, the site has to be reachable without 4x4 access.`,
+      },
+      {
+        type: "p",
+        text: `None of our units is a converted shipping container. If you are weighing one up, our [comparison of pods, container homes and wendy houses](/blog/housing-pod-vs-container-home-vs-wendy-house) covers the differences.`,
+      },
+
+      { type: "h2", text: "Where can you see the difference for yourself?" },
+      {
+        type: "p",
+        text: `The labels matter less once you can see the ranges next to each other. Our [housing pods guide](/housing-pods) puts our homes and cabins side by side, with their prices and what a unit price does and does not include. Start there if you are still choosing between a folding room, an expandable home and a fully built cabin. You can also browse [every range we sell](/) from the home page. If you are in or near Gauteng, [book a viewing at our showroom in Centurion](/book-a-viewing) and look at the build quality for yourself.`,
+      },
+      {
+        type: "p",
+        text: `This article is general information about building terms and the approval framework. It is not legal advice. Your municipality's building control office decides what it needs for your site.`,
       },
     ],
   },
