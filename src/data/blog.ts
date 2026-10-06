@@ -1539,7 +1539,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Site offices" },
       {
         type: "p",
-        text: `The same unit does this job. An X-Fold unfolds into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands rather than a fortnight later, with plug points, a light and a small DB board already wired. When the job finishes it folds back down and goes to the next site.`,
+        text: `The same unit does this job. An X-Fold unfolds into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands rather than a fortnight later, with plug points, a light and a small DB board already wired. When the job finishes it [folds back down and goes to the next site](/blog/mobile-homes-south-africa).`,
       },
       {
         type: "p",
@@ -2157,7 +2157,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our range spans both. An [X-Fold](/folding-homes) that folds down and moves between sites is the natural temporary-building case. A [nature cabin](/nature-cabins) or a permanently founded [expandable home](/expandable-homes) used as a granny flat is a route 1 building, and should be treated as one from the start.`,
+        text: `Our range spans both. An [X-Fold](/folding-homes) that [folds down and moves between sites](/blog/mobile-homes-south-africa) is the natural temporary-building case. A [nature cabin](/nature-cabins) or a permanently founded [expandable home](/expandable-homes) used as a granny flat is a route 1 building, and should be treated as one from the start.`,
       },
 
       { type: "h2", text: "What to ask, and in what order" },
@@ -2746,6 +2746,156 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `On the product page, with the specification open beside the price. Choose a two-bedroom size on the [expandable homes page](/expandable-homes) and add any upgrade your site calls for, such as the coastal wall panel. Write down what the page lists as standard. For a capsule, do the same on the [glamping capsules page](/glamping-capsules), and add the kitchen if you want it, and ask about air conditioning on a Space model. Then add what sits outside the unit, from the base to the VAT, before you compare your total with any other quote.`,
+      },
+    ],
+  },
+
+  /* =============================================================== 16 ==== */
+  {
+    slug: "mobile-homes-south-africa",
+    seoTitle: "Mobile Homes in South Africa: Can They Move?",
+    title: "Mobile homes in South Africa: what can you buy, and which units can be moved again?",
+    description:
+      "Mobile homes in South Africa: what the law calls a mobile home, which prefab units can be moved again, and what a move needs at each end.",
+    datePublished: "2026-09-30",
+    keywords: [
+      "mobile homes South Africa",
+      "mobile homes for sale",
+      "relocatable homes South Africa",
+      "can you move a prefab home",
+    ],
+    imageProduct: "folding-homes",
+    readingMinutes: 8,
+    body: [
+      {
+        type: "p",
+        text: `Mobile homes in South Africa are not the same thing as caravans. Where municipal by-laws define the two, a caravan is a vehicle and a mobile home is an approved dwelling with its services connected. You can move one, but the building law counts putting it up again as erecting it, so check with building control at the new address before the move. Of our own ranges, the X-Fold is the one designed to fold back down and move.`,
+      },
+      {
+        type: "p",
+        text: `The words mobile home, park home, relocatable home and caravan get used for very different things, so it pays to know which one you are being sold. If you are comparing mobile homes for sale, start by asking whether you are looking at a vehicle or at a home that stands on a base.`,
+      },
+      {
+        type: "p",
+        text: `We start with what the law means by a mobile home, and why a move sends you back to the municipality. Then we look at which of our units can be moved again, and what a move needs at each end. If the words you are stuck on are prefab, modular and flat-pack, our guide to [what a modular home is](/blog/modular-homes-south-africa-explained) sorts those out first.`,
+      },
+
+      { type: "h2", text: "What counts as a mobile home in South Africa?" },
+      {
+        type: "p",
+        text: `In everyday speech, almost anything that arrives ready-made on a truck gets called a mobile home. The law is narrower. Its clearest wording sits in by-laws that some municipalities make for parks for caravans and mobile homes.`,
+      },
+      {
+        type: "p",
+        text: `Take Drakenstein Municipality's Parks for Caravans and Mobile Homes By-law, published in the Western Cape Provincial Gazette in 2007. It defines a caravan as "any vehicle permanently fitted out for use by persons for living and sleeping purposes, whether or not such a vehicle is a trailer". A mobile home is a structure assembled off site and approved by the municipality, with its services connected. In the by-law's words, it is "designed to be used as a permanent dwelling". [Cederberg Municipality's by-law on the same subject](https://www.westerncape.gov.za/department-premier/files/wcg-blob-files?file=documents/gazette-2004-10-6181-provin04ex-exgaz6181-1c54bafb.pdf&type=file#page=197), gazetted in 2004, defines both words the same way.`,
+      },
+      {
+        type: "p",
+        text: `So a caravan is a vehicle, and a mobile home is a home. It is approved, connected to services and meant to be lived in for good. Mobile only means it can be moved. It does not make it a vehicle.`,
+      },
+      {
+        type: "p",
+        text: `The same by-laws explain the park in park home. A park is land used for caravans or mobile homes. The by-law sets rules for running one: a site plan filed with the municipality, marked-out sites, space between units, and water and ablutions to a set standard. It also limits how long anyone may live in a caravan in a park, and how many sites may be lived on permanently unless the municipality approves more. If you are looking at a park home in a holiday resort, ask the park what its approval allows before you buy.`,
+      },
+
+      { type: "h2", text: "Do you need approval again when a unit moves?" },
+      {
+        type: "p",
+        text: `Yes, as we read the Act, and again at every address the unit moves to. Under the [National Building Regulations and Building Standards Act](https://www.gov.za/documents/national-building-regulations-and-building-standards-act-16-apr-2015-1302), a building includes any structure "whether of a temporary or permanent nature" that is used to accommodate people. The Act's definition of erecting a building includes "re-erection". And section 4(1) says no one may erect a building that needs plans without the local authority's written approval first.`,
+      },
+      {
+        type: "p",
+        text: `Read together, those mean that a unit lifted off one site and set down on another is being erected again, as far as the Act is concerned. The municipality where it lands decides on it afresh. The approval from the first address does not travel on the truck.`,
+      },
+      {
+        type: "p",
+        text: `A unit that will only stand somewhere for a stated time, such as a site office for one contract, has a separate route. The Act lets the national building regulations deal with temporary buildings, and they do so in regulation A23. That route is still an application, not an exemption. Drakenstein's [Building Control By-law](https://www.westerncape.gov.za/department-premier/files/wcg-blob-files?file=documents/gazette-2020-03-8220-8220-gaz-13-march-2020-d48966d7.pdf&type=file#page=12), for one, lists temporary buildings under regulation A23 among the buildings that need the municipality's approval. Our [guide to building approval](/blog/building-approval-south-africa-what-you-need) explains how the temporary route works and what happens when the period runs out. None of this is legal advice, and building control at each address has the final word.`,
+      },
+
+      { type: "h2", text: "Can a prefab home be moved after it is installed?" },
+      {
+        type: "p",
+        text: `Some can, and in our range the one designed for it is the [X-Fold folding home](/folding-homes). It travels flat and unfolds where it will stand, without a specialist crew. When it needs to go somewhere else, you fold it back down, load it and set it up at the new site. That is the point of the design.`,
+      },
+      {
+        type: "p",
+        text: `Several of its uses depend on being able to move it. A site office folds down when the job finishes and goes to the next site. A storeroom on a farm or yard moves when the operation does. Bought instead of a wendy house, it is a room you can fold down and take with you if you move house.`,
+      },
+      {
+        type: "p",
+        text: `Our other homes and cabins arrive ready-made. The [expandable homes](/expandable-homes) travel as one module and open out on site. The [Apple Cabins](/apple-cabins) come fully assembled and are installed by professionals. The [glamping capsules](/glamping-capsules) and [Nature Cabins](/nature-cabins) come fully built and are placed on a prepared site. If you think you will want to move one of these later, ask us before you order rather than after.`,
+      },
+
+      { type: "h2", text: "What does moving a unit involve?" },
+      {
+        type: "p",
+        text: `Moving a prefab home is a job with steps at both ends, not just a drive. Say an X-Fold has been the site office on a contract near Rustenburg, and the next job is outside Polokwane. The move would run in roughly this order:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `Phone building control in the municipality where it is going, and have the approval or temporary authorisation in place before anything else.`,
+          `Get the new base ready. An X-Fold needs a level concrete slab or properly levelled precast plinths, just as it did at the first site.`,
+          `Have the power disconnected. Unless someone added a bathroom on site, an X-Fold has power and nothing else to undo.`,
+          `Fold it down and lift it onto the truck. That takes a crane or a forklift, with room to use it, at both ends.`,
+          `Set it on the new base, unfold it and have it reconnected.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `A slab cannot come with you, so budget for a base at every address the unit will stand on, not just the first.`,
+      },
+      {
+        type: "p",
+        text: `An X-Fold that has had a bathroom fitted on site asks more of a move. The water and drainage have to be undone with the power before the lift, and made good again at the new site. Our guide to [what is included in a prefab house price](/blog/what-is-included-in-a-prefab-house-price) lists the costs that sit outside the unit itself, and a move brings most of them back.`,
+      },
+
+      { type: "h2", text: "What does the truck need at each end?" },
+      {
+        type: "p",
+        text: `Room to work, at both addresses. The truck has to reach the spot, and the crane or forklift needs space to lift. Our guide on [where you can put a housing pod](/blog/where-can-you-put-a-housing-pod) covers what stops a delivery at the gate, from narrow driveways to overhead cables. Every one of those checks applies again on the way out.`,
+      },
+      {
+        type: "p",
+        text: `Size matters on the road as well. A load bigger or heavier than the road rules allow travels as an abnormal load, and that needs a permit from the provincial authority. The [Western Cape Government's permit page](https://www.westerncape.gov.za/mobility/service/permits-abnormal-loads-and-vehicles), for example, says the requirements depend on the size and nature of the load. Applications must go in well before the travel date, and a permit's conditions can include traffic assistance. Ask whoever quotes the transport whether the permit and any escort are in the price.`,
+      },
+      {
+        type: "p",
+        text: `A folding unit has the easiest time of it, because the X-Fold ships flat and stacks on a truck. A fully built unit travels at its full size, so check early whether yours counts as an abnormal load.`,
+      },
+
+      { type: "h2", text: "When is a relocatable unit the right choice?" },
+      {
+        type: "p",
+        text: `When the work moves, or might. Site offices, staff accommodation and secure storerooms are all X-Fold uses, and each of them can follow a project from one site to the next. Our guide to [staff accommodation and site offices](/blog/staff-accommodation-units-south-africa) works through that kind of purchase.`,
+      },
+      {
+        type: "p",
+        text: `If the home is for a parent at the bottom of the garden and will stay put, being able to move it matters less than what is inside. A bathroom and a kitchen of its own will count for more, and the expandable homes include both on every size.`,
+      },
+
+      { type: "h2", text: "What do we do, and what do you arrange?" },
+      {
+        type: "p",
+        text: `We deliver to all nine provinces and quote each delivery for its address, because distance and access set the cost. For an X-Fold, we arrange the crane or forklift that offloads it and quote it with the delivery. If you would rather not organise the groundwork yourself, ask about our turnkey service.`,
+      },
+      {
+        type: "p",
+        text: `We also supply each unit's dimensions and specifications for your plans submission. The approval itself is between you and your municipality, and no supplier can tell you in advance what it will decide.`,
+      },
+
+      { type: "h2", text: "What should you do next?" },
+      {
+        type: "p",
+        text: `Start with how often the unit will move. If it will follow the work, the [folding homes](/folding-homes) page has the X-Fold's full specification. If it will move once, or maybe never, choose it for what you need inside it.`,
+      },
+      {
+        type: "p",
+        text: `Then make two calls before any money changes hands. One is to building control where the unit will first stand. The other is to whoever will move it, with photographs of the way in to the site. Our [showroom in Centurion](/book-a-viewing) has units you can stand inside before you decide.`,
+      },
+      {
+        type: "p",
+        text: `After that, every later move starts the same way: with a call to building control at the new address.`,
       },
     ],
   },
