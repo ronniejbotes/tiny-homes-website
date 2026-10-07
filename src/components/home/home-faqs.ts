@@ -70,7 +70,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Can I finance a tiny home?",
-    a: `${site.finance}. The unit is financed as a movable asset rather than as property — broadly the same lending category as a truck or earthmoving equipment — because banks don't generally treat these as permanent residential structures, which is also why the term is typically around five years rather than a bond's twenty. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
+    a: `${site.finance}. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, because banks don't generally treat these as permanent residential structures. The term is typically around five years, against the twenty years or more of a bond. You'll need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record; a deposit may be required depending on the unit. Ask us when you request a quote.`,
   },
   /* The rent-to-own question, answered with a flat no.
      It earns a place on demand alone: it arrives in the same enquiry as "can

@@ -1040,7 +1040,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Which South African banks will bond a prefab home and which will not, the conditions FNB and Nedbank attach, and what works when a bond does not.",
     datePublished: "2026-09-02",
-    dateModified: "2026-09-21",
+    dateModified: "2026-10-07",
     keywords: [
       "home loan prefab house South Africa",
       "bond for prefab home",
@@ -1105,7 +1105,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ol",
         items: [
-          `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The unit is financed as a movable asset rather than as property — broadly the same lending category as a truck or earthmoving equipment — which is why it works where a bond does not, and why the term is typically around five years rather than twenty. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
+          `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
           `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available — and the bank is lending against the house it already holds, not against the new unit.`,
           `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a capsule.`,
           `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)}.`,
@@ -2290,6 +2290,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "The honest answer on rent-to-own, why a tiny home is financed as a movable asset instead of a bond, and what a five-year term does to the monthly figure.",
     datePublished: "2026-09-21",
+    dateModified: "2026-10-07",
     keywords: [
       "rent to own tiny homes South Africa",
       "tiny home finance South Africa",
@@ -2303,69 +2304,77 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Two money questions arrive here more often than any others, and they usually arrive in the same email: **can I rent-to-own it**, and **can I put it on my bond**. The short answer to both is no. That is not the end of the conversation, though, because there is a third route that most of our buyers actually use — and almost nobody in this market explains how it works or what it does to the monthly figure.`,
+        text: `We don't offer rent-to-own, and a new bond on the unit itself is usually out of reach. Drawing on a bond you already have is a different question, and we'll come to it.`,
+      },
+      {
+        type: "p",
+        text: `Those are the two money questions we get more than any others, and they usually come in the same email: **can I rent-to-own it**, and **can I put it on my bond**. Neither answer ends the conversation. There's a third route, the one most of our buyers actually use, and this page explains how it works and what it does to the monthly figure.`,
       },
 
-      { type: "h2", text: "Do we offer rent-to-own?" },
+      { type: "h2", text: "Why we don't offer rent-to-own" },
       {
         type: "p",
-        text: `No. We are not a registered financial institution, so we do not offer in-house financing, rent-to-own terms, or instalments of any kind. A home here is either paid for in full or financed by an outside provider — and that provider's credit decision is theirs, never ours.`,
+        text: `We're not a registered financial institution, so we don't offer in-house financing, rent-to-own terms or instalments of any kind. You either pay for a home in full or finance it through an outside provider, and that provider's credit decision is theirs, never ours.`,
       },
       {
         type: "p",
-        text: `We say that plainly because rent-to-own is widely advertised in this market, and the arrangement it describes — a supplier holding a unit while you pay it off — is a promise we would rather not make than break. Any arrangement where a supplier holds your money against a unit for a year or two also makes you an unsecured creditor of that supplier, and the question worth asking is what happens to the money you have already paid if the business has a bad year. We would rather not put a customer in that position at all.`,
+        text: `We say that plainly for a reason. Any arrangement that takes your money in instalments before the home is fully yours rests on a promise, and it's a promise we'd rather not make than break. Whatever it's called, the question to ask is what happens to the money you've already paid if the business has a bad year. We'd rather not put a customer in that position at all.`,
       },
       {
         type: "callout",
         title: "If another supplier does offer it, ask these three things",
-        text: `Who holds ownership of the unit while you are paying? What happens to the money you have already paid if you miss an instalment? And is the agreement registered with the National Credit Regulator? Paying for movable goods in instalments is a credit agreement in substance, whatever it is called on the flyer, and the National Credit Act generally requires the party extending that credit to be a registered credit provider.`,
+        text: `Who owns the unit while you're paying, what happens to the money you've already paid if you miss an instalment, and whether the supplier is registered with the National Credit Regulator as a credit provider. A registered credit provider has an NCR registration number, and you can look it up on the regulator's website. Paying for movable goods in instalments, with interest or fees on top, is a credit agreement under the National Credit Act whatever the flyer calls it, and the Act generally requires whoever extends that credit to be a registered credit provider.`,
       },
 
-      { type: "h2", text: "Why it cannot go on your home loan" },
+      { type: "h2", text: "Why a new home loan usually won't cover it" },
       {
         type: "p",
-        text: `Banks do not generally classify these units as permanent residential structures, which puts them outside what a home loan is secured against. Some lenders will bond a prefabricated home where it is fixed to a permanent foundation and complies with the National Building Regulations, and others will not consider it at all.`,
+        text: `Banks don't generally classify these units as permanent residential structures, which puts them outside what a home loan is secured against. Some lenders will bond a prefabricated home if it's fixed to a permanent foundation and complies with the National Building Regulations. Others won't consider it at all.`,
       },
       {
         type: "p",
-        text: `That bank-by-bank picture is a whole article of its own, and it is the one to read if you own land and are weighing a fixed, approved build: [Can you get a home loan for a prefab home?](/blog/prefab-home-finance-south-africa) The rest of this page is about what exists when the answer comes back no.`,
+        text: `Where each bank stands is a whole article of its own, and it's the one to read if you own land and you're weighing up a fixed, approved build: [Can you get a home loan for a prefab home?](/blog/prefab-home-finance-south-africa) The rest of this page is about what's still open to you when the answer comes back no.`,
       },
 
-      { type: "h2", text: "It is financed as a movable asset, not as property" },
+      { type: "h2", text: "It's financed as a movable asset, not as property" },
       {
         type: "p",
-        text: `Here is the part that surprises people. When a third-party provider funds a tiny home, it is not underwritten like a house. It is underwritten like **equipment** — broadly the same lending category as a truck or a piece of yellow-metal earthmoving plant.`,
+        text: `This is the part that surprises people. The provider we refer buyers to doesn't underwrite a tiny home like a house. It underwrites it like **equipment**, in broadly the same lending category as a truck or a piece of yellow-metal earthmoving plant.`,
       },
       {
         type: "p",
-        text: `That sounds dismissive until you see why it is good news. A bond lender is asking what a structure will be worth in year fifteen, in a market with thin resale data for prefab. An asset financier is asking something much easier to answer: is this an identifiable, movable, re-saleable thing I could recover and sell? A finished tiny home answers that well. A half-built brick extension answers it terribly. The classification that disqualifies the unit from a bond is the same one that makes it financeable at all.`,
+        text: `That sounds dismissive until you see why it's good news. A bond lender is asking what a structure will be worth in year fifteen. An asset financier is asking something much easier to answer: if it came to it, could I identify this thing, take it away and sell it? A finished tiny home answers that well. A half-built brick extension answers it terribly. The same classification that rules the unit out for a bond is what makes asset finance possible.`,
       },
       {
         type: "p",
-        text: `Three things follow from it, and they are the three that change how you should shop:`,
+        text: `Three things follow from that, and they change how you should shop.`,
       },
       {
-        type: "ul",
-        items: [
-          `**The security is generally the unit itself rather than the land under it** — which is the thing a bond cannot do, because a bond needs a title deed to attach to. If your site is family land, a farm or a rented stand, that makes this route worth asking the provider about early. Ask rather than assume: the decision is theirs, not ours.`,
-          `**The term is short.** Asset finance runs over a handful of years rather than decades. Five years is the typical structure.`,
-          `**It is a credit decision about you, not a valuation of a property.** Your credit record and affordability carry the application. There is no bond registration, no conveyancer and no transfer duty in the process.`,
-        ],
+        type: "p",
+        text: `The first is security, and it's worth asking about early. A bond needs a title deed to attach to, which ties it to land you own. Finance on a movable unit is a different arrangement, so if your site is family land, a farm or a rented stand, ask the provider what it takes as security before anything else. The decision is theirs, not ours.`,
+      },
+      {
+        type: "p",
+        text: `The term is short, too. Asset finance runs over a handful of years rather than decades, and the provider we refer buyers to typically structures it over five.`,
+      },
+      {
+        type: "p",
+        text: `And it's a credit decision about you, not a valuation of a property. Your credit record and affordability carry the application. There's no bond registration, no conveyancer and no transfer duty in the process.`,
       },
 
       { type: "h2", text: "The five-year term is the thing to plan around" },
       {
         type: "p",
-        text: `A bond runs for twenty years. Finance on a unit like this is typically structured over five. Same capital, a quarter of the time — and that, far more than the interest rate, is what sets the monthly number.`,
+        text: `A bond usually runs for twenty years or more. The provider we refer buyers to typically structures finance on a unit like this over five. Same capital, a quarter of the time or less. That, far more than the interest rate, is what sets the monthly number.`,
       },
       {
         type: "p",
-        text: `The table below uses our own prices to show the shape of it. **These are capital only.** They divide the price by the term and ignore interest, fees, the deposit and VAT, so a real instalment will be higher than every figure here. They are a floor, not a quote — we are not a credit provider and cannot quote you one. What they do show is what the term does.`,
+        text: `The table below uses our own prices to show the shape of it. **These are capital only.** They divide the price by the term and ignore interest, fees, the deposit and VAT, so a real instalment will be higher than every figure here. They're a floor, not a quote. We're not a credit provider and can't quote you one. What they do show is what the term does.`,
       },
       {
         type: "table",
         caption:
-          "What the term does to the monthly figure — capital only, before interest, fees, deposit and VAT",
+          "What the term does to the monthly figure: capital only, before interest, fees, deposit and VAT",
         head: ["Unit", "Price ex VAT", "Over 5 years", "Over 20 years, for scale"],
         rows: [
           ["X-Fold folding home", R(folding), capitalPerMonth(folding, 60), capitalPerMonth(folding, 240)],
@@ -2376,22 +2385,22 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The twenty-year column is not an option on these units. It is there to show you what you are giving up when a bond is off the table, because the gap is roughly fourfold and it is the single biggest thing people get wrong when they budget for a tiny home. A buyer who has been mentally pricing a R1 million house at bond rates and assumes a ${R(expandable)} unit will feel like pocket change is in for a surprise on the first instalment.`,
+        text: `The twenty-year column isn't an option on these units. It's there to show what you give up when a bond is off the table. Without interest, as in the table, the five-year figure is four times the twenty-year one. Add interest and the gap narrows, but the five-year instalment stays far higher, and that's easy to underestimate when you budget for a tiny home. If you've been mentally pricing a R1 million house at bond rates and you assume a ${R(expandable)} unit will feel like pocket change, the first instalment will come as a surprise.`,
       },
       {
         type: "callout",
         title: "What this should change about how you shop",
-        text: `Work out what you can service **over five years**, and shop that number — not the number you could service over twenty. It is the difference between the [X-Fold](/folding-homes) end of the range and the [glamping capsule](/glamping-capsules) end, and it is far better discovered before you have chosen a unit than after.`,
+        text: `Work out what you can service **over five years** and shop for that number, not the one you could service over twenty. It's the difference between the [X-Fold](/folding-homes) end of the range and the [glamping capsule](/glamping-capsules) end, and it's far better to find that out before you've chosen a unit than after.`,
       },
 
       { type: "h2", text: "The routes that exist, cheapest money first" },
       {
         type: "ol",
         items: [
-          `**Access bond or further advance**, if you already own property with equity. Usually the cheapest money available and the longest term, because the bank is lending against the house it already holds rather than against the new unit. Worth checking before anything else.`,
-          `**Third-party asset finance.** ${site.finance}. This is the route most of our customers use, and it is the one the movable-asset structure above describes. Ask us when you request a quote and we will point you at the provider.`,
-          `**A personal loan from your own bank.** Depending on your circumstances and their lending criteria, your existing bank may simply lend you the money as an unsecured personal loan. Faster and less fussy about what you are buying, at a rate that reflects that. Realistic at the lower end of the range rather than for a capsule.`,
-          `**Cash, in stages.** Genuinely workable here in a way it never is with conventional building, because the units are discrete products with published prices. An [outdoor kitchen](/outdoor-kitchens) or an X-Fold now and a second unit later is a real plan rather than a fantasy.`,
+          `An access bond or further advance, if you already own property with equity. It's usually the cheapest money available and the longest term, because the bank is lending against the house it already holds rather than against the new unit. It's worth checking before anything else.`,
+          `Third-party asset finance, the route most of our customers use and the one the movable-asset structure above describes. ${site.finance}. Ask us when you request a quote and we'll point you to the provider.`,
+          `A personal loan from your own bank. Depending on your circumstances and its lending criteria, your existing bank may simply lend you the money as an unsecured personal loan. It's faster and less fussy about what you're buying, at a rate that reflects that, and realistic at the lower end of the range rather than for a capsule.`,
+          `Cash, in stages. That works here in a way it never does with conventional building, because the units are separate products with published prices. An [outdoor kitchen](/outdoor-kitchens) or an X-Fold now and a second unit later is a real plan, not a fantasy.`,
         ],
       },
 
@@ -2406,26 +2415,26 @@ export const blogPosts: BlogPost[] = [
           `A valid South African ID or passport.`,
           `Your latest three months' bank statements.`,
           `Payslips or proof of income.`,
-          `A good credit record — this is the part that decides most applications.`,
+          `A good credit record.`,
           `A deposit, which may be required depending on the unit.`,
         ],
       },
       {
         type: "p",
-        text: `One more number to have ready: the **total delivered, standing and connected cost**, not the unit price. Delivery is quoted separately on distance and site access, and groundwork and connections are real money. That total is what has to be funded, and an application built on the sticker price alone tends to come up short at exactly the wrong moment.`,
+        text: `Have one more number ready: the **total cost of getting the home delivered, set up and connected**, not the unit price. Delivery is quoted separately on distance and site access, and groundwork and connections are real money. That total is what has to be funded, and an application built on the sticker price alone tends to come up short at exactly the wrong moment.`,
       },
       {
         type: "callout",
         title: "Not financial advice",
-        text: `We sell homes, not credit. Nothing here is a credit quotation, an offer of finance or advice about your circumstances — the provider's rates, terms and requirements are theirs and they change. Get the agreement in writing and read what it says about ownership, early settlement and what happens if you fall behind.`,
+        text: `We sell homes, not credit. Nothing here is a credit quotation, an offer of finance or advice about your circumstances. The provider's rates, terms and requirements are theirs, and they change. Get the agreement in writing and read what it says about ownership, early settlement and what happens if you fall behind.`,
       },
       {
         type: "p",
-        text: `If the finance answer points you at a smaller unit than you had hoped for, that is genuinely useful to learn now. The [expandable homes](/expandable-homes) from ${R(expandable)} ex VAT are the cheapest fully self-contained option, and the whole range sits with its prices on the [housing pods page](/housing-pods).`,
+        text: `If the finance answer points you to a smaller unit than you'd hoped for, it's better to learn that now. The [expandable homes](/expandable-homes) from ${R(expandable)} ex VAT are the cheapest fully self-contained option, and the whole range is on the [housing pods page](/housing-pods) with its prices.`,
       },
       {
         type: "cta",
-        text: `Price the unit first — the finance conversation is a great deal shorter once you know the number.`,
+        text: `Price the unit first. The finance conversation is a lot shorter once you know the number.`,
         href: "/quote",
         label: "Get an instant quote",
       },
@@ -2433,27 +2442,27 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Do you offer rent-to-own on a tiny home?",
-        a: "No. We are not a registered financial institution, so we do not offer in-house financing, rent-to-own terms or instalments. A home is either paid for in full or financed by an outside provider, subject to that provider's credit approval. We can point you at the finance option when you request a quote.",
+        a: "No. We're not a registered financial institution, so we don't offer in-house financing, rent-to-own terms or instalments. You either pay for a home in full or finance it through an outside provider, subject to that provider's credit approval. We can point you to the finance option when you request a quote.",
       },
       {
         q: "How is a tiny home financed in South Africa?",
-        a: `${site.finance}. The unit is typically financed as a movable asset rather than as property — broadly the same lending category as a truck or earthmoving equipment — because banks do not generally classify these units as permanent residential structures. That means the security tends to be the unit itself rather than the land it stands on, and approval rests on your credit record and affordability rather than on a property valuation.`,
+        a: `${site.finance}. The provider we refer buyers to finances the unit as a movable asset rather than as property, in broadly the same lending category as a truck or earthmoving equipment, because banks don't generally classify these units as permanent residential structures. Approval rests on your credit record and affordability, not on a property valuation.`,
       },
       {
         q: "How long is the finance term on a tiny home?",
-        a: "Typically around five years. That is much shorter than the twenty years a home loan runs for, and the term — more than the interest rate — is what sets the monthly instalment. Budget against a five-year term rather than a bond-length one, because the difference on the same capital is roughly fourfold.",
+        a: "Around five years is typical with the provider we refer buyers to. That's much shorter than a home loan, which usually runs for twenty years or more, and the term sets the monthly instalment more than the interest rate does. Budget against a five-year term, not a bond-length one, because on the same capital the five-year instalment is far higher.",
       },
       {
         q: "Can I put a tiny home on my home loan or bond?",
-        a: "Usually not. Banks do not generally classify these units as permanent residential structures, so they fall outside what a home loan is secured against. Some lenders will consider a prefabricated home that is fixed to a permanent foundation and complies with the National Building Regulations, and others will not consider it at all — our article on prefab home loans sets out where the major banks stand.",
+        a: "Usually not as a new bond on the unit itself. Banks don't generally classify these units as permanent residential structures, so they fall outside what a home loan is secured against. Some lenders will consider a prefabricated home that's fixed to a permanent foundation and complies with the National Building Regulations, and others won't consider it at all. Our article on prefab home loans sets out where the major banks stand. Drawing on a bond you already have, through an access bond or a further advance, is a separate option worth asking your bank about.",
       },
       {
         q: "Do I need to own the land to finance a tiny home?",
-        a: "Possibly not. Because the unit is financed as a movable asset, the security is generally the unit itself rather than the land under it — unlike a bond, which needs a title deed to attach to. That is what makes this route worth asking about if your site is family land, a farm or a rented stand. Ask the provider before you plan around it, because the decision is theirs rather than ours.",
+        a: "Possibly not, but ask the provider before you plan around it. A bond needs a title deed to attach to. Finance on a movable unit is a different arrangement, so if your site is family land, a farm or a rented stand, that's the first question to put to the provider. The decision is theirs, not ours.",
       },
       {
         q: "What do I need to apply for finance on a tiny home?",
-        a: "Generally a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record. A deposit may be required depending on the unit. Have the total delivered and installed cost ready rather than just the unit price, since that is the amount that actually has to be funded.",
+        a: "Generally a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income, and a good credit record. A deposit may be required, depending on the unit. Have the total delivered and installed cost ready, not only the unit price, because that's the amount you actually have to fund.",
       },
     ],
     references: [
@@ -2461,7 +2470,13 @@ export const blogPosts: BlogPost[] = [
         title: "National Credit Act 34 of 2005",
         publisher: "South African Government",
         url: "https://www.gov.za/documents/national-credit-act",
-        note: "The framework behind the instalment-agreement and registered-credit-provider points — what makes a rent-to-own arrangement a credit agreement in substance.",
+        note: "The framework behind the instalment-agreement and registered-credit-provider points: what makes a rent-to-own arrangement a credit agreement in substance.",
+      },
+      {
+        title: "National Credit Act: Determination of threshold for credit provider registration",
+        publisher: "South African Government",
+        url: "https://www.gov.za/documents/national-credit-act-determination-threshold-credit-provider-registration-11-may-2016-0000",
+        note: "Government Notice 513 of 11 May 2016, which set the registration threshold at nil, so a credit provider must be registered however little credit it extends. The Act's original text above still shows the old threshold.",
       },
       {
         title: "National Credit Regulator",
