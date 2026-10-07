@@ -22,6 +22,7 @@ const GUIDES: Record<string, string[]> = {
     "building-approval-south-africa-what-you-need",
     "prefab-home-finance-south-africa",
     "what-is-included-in-a-prefab-house-price",
+    "prefab-homes-coast-salt-air",
   ],
   "nature-cabins": [
     "start-a-glamping-business-south-africa",

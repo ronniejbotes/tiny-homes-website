@@ -444,7 +444,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "How long each one lasts, and what it is worth afterwards" },
       {
         type: "p",
-        text: `Be sceptical of lifespan numbers in this market, including anyone's. Too much depends on the site, the coastal exposure, the maintenance and the quality of the original build for a single figure to mean much, which is why we do not publish one. What is worth comparing instead is **what fails first**.`,
+        text: `Be sceptical of lifespan numbers in this market, including anyone's. Too much depends on the site, [the coastal exposure](/blog/prefab-homes-coast-salt-air), the maintenance and the quality of the original build for a single figure to mean much, which is why we do not publish one. What is worth comparing instead is **what fails first**.`,
       },
       {
         type: "ul",
@@ -2685,7 +2685,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `One of those is not optional everywhere. The page says the metal carved board resists salt-air corrosion and is required on coastal sites. If you are pricing a 6m for a plot in Ballito, price it with that panel from the start, because the standard wall is not the one you will be buying.`,
+        text: `One of those is not optional everywhere. The page says the metal carved board [resists salt-air corrosion](/blog/prefab-homes-coast-salt-air) and is required on coastal sites. If you are pricing a 6m for a plot in Ballito, price it with that panel from the start, because the standard wall is not the one you will be buying.`,
       },
       {
         type: "p",
@@ -2901,6 +2901,135 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `After that, every later move starts the same way: with a call to building control at the new address.`,
+      },
+    ],
+  },
+
+  /* =============================================================== 17 ==== */
+  {
+    slug: "prefab-homes-coast-salt-air",
+    seoTitle: "Prefab Homes on the Coast: Salt Air and What to Specify",
+    title: "Prefab homes on the coast: what does salt air do, and what should you specify?",
+    description:
+      "Buying a prefab home for the coast? What salt air does to steel, the exterior panel we require near the sea, and the coastal rules to check first.",
+    datePublished: "2026-10-07",
+    keywords: [
+      "prefab homes Cape Town",
+      "prefab homes coast South Africa",
+      "prefab home salt air",
+      "coastal management line",
+      "prefab homes KZN",
+    ],
+    imageProduct: "expandable-homes",
+    readingMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: `Salt air rusts steel faster than inland air does, so a prefab home going to the coast needs an exterior made for it. On our X-Fold folding homes and expandable homes, that's the metal carved board panel, and we require it on coastal sites. And before you buy, check whether a coastal management line affects your plot.`,
+      },
+      {
+        type: "p",
+        text: `That holds anywhere from the West Coast round to the KwaZulu-Natal North Coast.`,
+      },
+
+      { type: "h2", text: "What salt does to steel" },
+      {
+        type: "p",
+        text: `It speeds up rust. Metal corrodes when a film of moisture sits on it, and sea salt dissolved in that film [makes the reaction much faster](https://www.branz.co.nz/documents/1207/FS_Metal_Corrosion_1_v3.pdf). The [international standard](https://www.evs.ee/en/iso-9223-2012) that classifies how corrosive the air is in a given place names airborne salinity as a key factor, alongside humidity and sulphur dioxide.`,
+      },
+      {
+        type: "p",
+        text: `Galvanising doesn't make a frame immune, either. In tests by BRANZ, New Zealand's building research body, galvanised steel at its coastal site generally corroded faster than the same parts at its rural site. Salt travels, too. Wind off the sea carries it inland, so a plot with no sea view can still be exposed.`,
+      },
+      {
+        type: "p",
+        text: `That's New Zealand research, and their coast isn't ours. The chemistry is the same, though. It's why we treat the coast as part of the specification, not as a finish you pick.`,
+      },
+      {
+        type: "p",
+        text: `The parts most at risk are the ones the rain doesn't reach. You might expect the walls facing the sea to suffer most, but sheltered spots, like wall faces under an eave or a deck, [often collect the most salt](https://www.branz.co.nz/documents/1209/FS_Metal_Corrosion_3_v2.pdf) because rain never rinses them. An exposed roof gets washed every time it rains. A sheltered wall just keeps collecting salt.`,
+      },
+      {
+        type: "p",
+        text: `It's the same reason a metal sheet can be [recommended for a roof in a harsh coastal setting and not for wall cladding](https://www.branz.co.nz/documents/1207/FS_Metal_Corrosion_1_v3.pdf). So when you compare units for the coast, ask what the walls are made of as well as the roof.`,
+      },
+
+      { type: "h2", text: "What we specify on each range" },
+      {
+        type: "p",
+        text: `It depends on the range. If you're still deciding between kinds of prefab home, our guide to [what a modular home is](/blog/modular-homes-south-africa-explained) explains how they compare. On ours, near the sea, it works like this.`,
+      },
+      {
+        type: "p",
+        text: `The standard panels on our [X-Fold folding homes](/folding-homes) corrode in salt air. So near the coast the X-Fold takes the metal carved board exterior instead, and we require it there. It replaces the standard panel exterior and comes in a wide choice of colours and textures.`,
+      },
+      {
+        type: "p",
+        text: `The [expandable homes](/expandable-homes) have a galvanised steel frame, with EPS insulated wall panels as standard. On a coastal site the walls change to the polyurethane metal carved board panel, which resists salt-air corrosion and insulates better than the standard panel. Inland, it's an insulation upgrade. At the coast, it's part of the specification.`,
+      },
+      {
+        type: "p",
+        text: `The [Nature Cabin](/nature-cabins) has a steel structure behind its timber-look exterior, and for a coastal site we specify it for salt air on the quotation.`,
+      },
+      {
+        type: "p",
+        text: `Then there are the Apple Cabins and glamping capsules. There's no coastal option to tick in the configurator for these, so we confirm the right coastal specification on your formal quotation.`,
+      },
+      {
+        type: "p",
+        text: `Our [outdoor kitchens](/outdoor-kitchens) have a corrosion-resistant galvanised steel frame, an aluminium-alloy shell and rust-resistant aluminium switches and sockets. Resistant is the honest word. Salt still settles on them, so they need the same rinsing as anything else near the sea.`,
+      },
+
+      { type: "h2", text: "How the quote knows your site is coastal" },
+      {
+        type: "p",
+        text: `It goes by the delivery address. When you build a [quote on our site](/quote), it checks the town and suburb against the coastal places it recognises. If the address is in a coastal town and you're pricing an X-Fold or an expandable home, it adds the coastal panel to the quote by itself. You'll see it marked as included because your address is a coastal site, and you can't remove it.`,
+      },
+      {
+        type: "p",
+        text: `If the address is in a coastal province (the Western Cape, Eastern Cape, KwaZulu-Natal or Northern Cape) but the town isn't on its list, the quote asks you outright whether the site is near the sea. It won't issue the quote until you answer. An address in a landlocked province is treated as inland.`,
+      },
+      {
+        type: "p",
+        text: `We built it that way because no town list can hold every coastal suburb, and guessing wrong in the inland direction means a unit that rusts. If you're not sure, say yes. We'll confirm the specification with you when we prepare the formal quotation.`,
+      },
+
+      { type: "h2", text: "Looking after it by the sea" },
+      {
+        type: "p",
+        text: `Rinse off the salt that rain can't reach. Washing down surfaces exposed to wind-driven salt spray, and recoating protective finishes, are both [basic maintenance](https://www.branz.co.nz/documents/1209/FS_Metal_Corrosion_3_v2.pdf). Get the maintenance recommendations for each product and follow them. For a unit on the coast, that means:`,
+      },
+      {
+        type: "ul",
+        items: [
+          `Hose down the sheltered walls, the areas under overhangs and the underside of any deck with fresh water, more often than you would inland.`,
+          `Look for scratches or chips in the exterior finish and get them touched up before rust gets a start.`,
+          `Ask us how often the outside of your unit should be washed, and keep the answer with your paperwork.`,
+        ],
+      },
+
+      { type: "h2", text: "Coastal rules to check before you buy" },
+      {
+        type: "p",
+        text: `Building approval works at the coast the way it does anywhere else. The [National Building Regulations and Building Standards Act](https://www.gov.za/documents/national-building-regulations-and-building-standards-act-16-apr-2015-1302) says no one may put up a building that needs plans without the local authority's written approval first. Our guide to [building approval](/blog/building-approval-south-africa-what-you-need) walks through how that works for a prefab unit.`,
+      },
+      {
+        type: "p",
+        text: `Close to the shore, there's another layer. The [Integrated Coastal Management Act](https://www.gov.za/documents/national-environmental-management-integrated-coastal-management-act) sets up a coastal protection zone, where the use of land next to the shore can be "managed, regulated or restricted". Part of the point is to protect people and property from "dynamic coastal processes", sea-level rise included. And under the Act as [amended and consolidated](https://leap.unep.org/en/akn/za/act/2008/24/eng%402023-06-30), the MEC responsible in each coastal province sets coastal management lines and may prohibit or restrict building seaward of them.`,
+      },
+      {
+        type: "p",
+        text: `These lines are real, and they're mapped. The Western Cape Government, for one, publishes coastal management lines for the West Coast District, marking an area where development is ["prohibited or controlled"](https://gis.westerncape.gov.za/server2/rest/services/DEADP/Coastal_Management_Lines_West_Coast/MapServer/info/iteminfo?f=pjson). If your plot is anywhere near the high-water mark, ask the municipality whether a coastal management line or the coastal protection zone affects it, and do that before you pay for anything. This is general information, not legal advice. The municipality and the province have the final word on any particular plot.`,
+      },
+
+      { type: "h2", text: "What to do next" },
+      {
+        type: "p",
+        text: `Start with the address. Put your delivery address into the quote and see whether it flags the site as coastal. Then compare the coastal panel on the [expandable homes page](/expandable-homes), or on the X-Fold if a folding unit suits you better.`,
+      },
+      {
+        type: "p",
+        text: `Make a couple of calls early, too. Ask the municipality's building control office about approval and any coastal line on the plot, and ask us to confirm the coastal specification for the unit you have in mind. And if you're near Centurion, come and stand inside our units at the [showroom](/book-a-viewing) before you decide.`,
       },
     ],
   },
