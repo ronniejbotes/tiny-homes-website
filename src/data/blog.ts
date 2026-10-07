@@ -2486,6 +2486,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What is a modular home, and how is it different from prefab or flat-pack? Plain definitions, which of our units is which, and what approval it needs.",
     datePublished: "2026-09-09",
+    dateModified: "2026-10-07",
     keywords: [
       "what is a modular home",
       "modular vs prefab",
@@ -2578,7 +2579,7 @@ export const blogPosts: BlogPost[] = [
           `What is already inside? Bathroom, kitchen, plumbing, wiring. A unit without plumbing needs a bathroom fitted on site, or a shared ablution block, before anyone can live in it.`,
           `What base does it need? A slab, plinths or something else, and who builds it.`,
           `Can the truck reach the site? Large fully built units need a route an oversized truck can use.`,
-          `Which route will the plans submission use? A rational design for your building, or a certificate for the system, and who provides the paperwork.`,
+          `Which route will the plans submission use? A rational design for your building, or a certificate for the system, and who provides the paperwork. For our own units, engineers at the companies that build them sign off the design, and the paperwork comes from those companies, so ask us for it early.`,
           `What is left out of the price? For our own units, that is groundwork, service connections, council plan approval, VAT and transport, all quoted or arranged separately.`,
         ],
       },
