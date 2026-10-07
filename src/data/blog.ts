@@ -194,6 +194,7 @@ export const blogPosts: BlogPost[] = [
     title: "How much does a housing pod cost in South Africa?",
     description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT — what each tier includes, and what it quietly leaves out.`,
     datePublished: "2026-09-02",
+    dateModified: "2026-10-07",
     keywords: [
       "how much does a housing pod cost",
       "housing pod price South Africa",
@@ -255,7 +256,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable)} ex VAT for the compact 18 m² — which is not a bare shell; it includes a bathroom and a small basic kitchen — up to ${R(expandable12m)} for 74 m² with up to four bedrooms. The 37 m² at ${R(expandable6m)} adds two bedrooms and a full stainless-steel kitchen. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
+        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable)} ex VAT for the compact 18 m² — which is not a bare shell; it includes a bathroom and a small basic kitchen — up to ${R(expandable12m)} for 74 m² with up to four bedrooms. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
       },
       {
         type: "p",
@@ -720,6 +721,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre figures set against what a conventional build costs — including the cases where prefab is the more expensive option.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-07",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -758,7 +760,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["X-Fold", "15 m²", R(folding), perM2("folding-homes"), "Insulated shell, electrics only, no plumbing"],
           ["Expandable 18 m²", "18 m²", R(expandable), perM2("expandable-homes", "b20-slim"), "Self-contained: bathroom, basic kitchen, services in"],
-          ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, full kitchen"],
+          ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "Up to 4 bedrooms, fitted throughout"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
           ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fully fitted incl. kitchen, aircon, water heater"],
@@ -878,6 +880,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What a granny flat costs built conventionally or delivered as a prefab unit, what your municipality needs, and the rental maths that decides if it pays.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-07",
     keywords: [
       "granny flat cost South Africa",
       "how much does a granny flat cost",
@@ -924,7 +927,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [expandable homes](/expandable-homes) are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell — it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a full stainless-steel kitchen; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
+        text: `Our [expandable homes](/expandable-homes) are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell — it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
       },
       {
         type: "p",
@@ -977,7 +980,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**One person, or a parent nearby** — the 18 m² compact at ${R(expandable)} ex VAT. Self-contained, and the smallest footprint that still counts as a dwelling.`,
-          `**A couple, or a lettable unit** — the 37 m² at ${R(expandable6m)}: two bedrooms, a fitted bathroom and a full kitchen. This is the size most rental demand sits at.`,
+          `**A couple, or a lettable unit** — the 37 m² at ${R(expandable6m)}: two bedrooms, a fitted bathroom and a stainless-steel kitchen without appliances. This is the size most rental demand sits at.`,
           `**A family, or a permanent second home** — the 74 m² at ${R(expandable12m)}, with layouts up to four bedrooms.`,
           `**A guest suite rather than a let** — an [Apple Cabin](/apple-cabins) from ${R(apple)} ex VAT, if the unit is going to be looked at as much as lived in.`,
         ],
@@ -2622,6 +2625,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What is included in a prefab house price: what our two-bedroom units come with as standard, which upgrades cost extra, and how to compare two quotes.",
     datePublished: "2026-09-16",
+    dateModified: "2026-10-07",
     keywords: [
       "what is included in a prefab house price",
       "what does a prefab home price include",
@@ -2648,7 +2652,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "What does the price of a two-bedroom expandable home include?" },
       {
         type: "p",
-        text: `The rooms, the fittings in them and the shell around them. Two bedrooms come as standard on the two larger sizes, the 6m and the 12m, and the 12m can be laid out with more. Both sizes have a fully fitted bathroom with a separate shower, and a full stainless-steel kitchen.`,
+        text: `The rooms, the fittings in them and the shell around them. Two bedrooms come as standard on the two larger sizes, the 6m and the 12m, and the 12m can be laid out with more. Both sizes have a fully fitted bathroom with a separate shower, and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances.`,
       },
       {
         type: "p",
@@ -2690,7 +2694,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Does a prefab house price include a kitchen?" },
       {
         type: "p",
-        text: `Not always, and the word kitchen can mean very different things. On the two-bedroom expandable homes, the full stainless-steel kitchen is part of the standard price, though the page names no appliances. On the capsules it is an extra, and the capsule page describes two different kitchens. The core range's is basic cabinetry with a sink and a stone top, sold by the metre, with no appliances. The Space range's full kitchen has a stone countertop, a sink, a double stove and an oven.`,
+        text: `Not always, and the word kitchen can mean very different things. On the two-bedroom expandable homes, the standard price includes the kitchen's stainless-steel cabinetry and sink, without appliances. On the capsules it is an extra, and the capsule page describes two different kitchens. The core range's is basic cabinetry with a sink and a stone top, sold by the metre, with no appliances. The Space range's full kitchen has a stone countertop, a sink, a double stove and an oven.`,
       },
       {
         type: "p",
@@ -2698,7 +2702,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `With any supplier, ask what the kitchen contains: cabinets and a sink, or appliances as well, and which ones. Ask us the same about any of our units.`,
+        text: `With any supplier, ask what the kitchen contains: cabinets and a sink, or appliances as well, and which ones. Of the kitchens described here, only the Space range's full kitchen comes with appliances.`,
       },
 
       { type: "h2", text: "What sits outside the price of the unit?" },

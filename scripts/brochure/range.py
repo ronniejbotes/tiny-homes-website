@@ -72,7 +72,7 @@ PAGES = {
         "facts": [("18 – 74 m&sup2;", "Floor area"), ("Hours", "To expand"),
                   ("Up to 4", "Bedrooms"), ("107", "Exterior finishes")],
         "ticks": ["Bathroom and kitchen included on every size",
-                  "Full stainless-steel kitchen in the 6m and 12m models",
+                  "Stainless-steel kitchen cabinetry and a sink in the 6m and 12m, no appliances",
                   "Layouts from open-plan to four bedrooms",
                   "Window and door placement of your choice"],
         "best": "Granny flats, family homes, farm cottages, staff and student accommodation, site offices and clinics.",

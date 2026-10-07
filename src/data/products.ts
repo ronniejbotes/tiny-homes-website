@@ -284,7 +284,7 @@ export const products: Product[] = [
     summary:
       "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and stainless-steel kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
+      "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
     sizeLabel: "18 – 74 m²",
     bedrooms: "Open plan – 4 bedrooms",
@@ -299,12 +299,12 @@ export const products: Product[] = [
       { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door, standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
       { label: "Utilities", value: "Plumbing and electrical factory-installed on every size" },
-      { label: "Bathroom & kitchen", value: "Included on every size: the 18 m² has a bathroom and small basic kitchen; the 6m and 12m add a full stainless-steel kitchen" },
+      { label: "Bathroom & kitchen", value: "Included on every size: the 18 m² has a bathroom and small basic kitchen; the 6m and 12m have a kitchen of basic stainless-steel cabinetry and a sink, with no appliances" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
       "Full home delivered as one compact module, expanding within hours",
-      "Bathroom and kitchen included on every size, with a full stainless-steel kitchen in the 6m and 12m models",
+      "Bathroom and kitchen included on every size; in the 6m and 12m models the kitchen is basic stainless-steel cabinetry and a sink, with no appliances",
       // The count of finishes came from no source we can find. Restore an exact
       // number only with a supplier document and the date it was issued.
       "A wide choice of exterior colours and finishes: brick, timber-grain, plain or textured",
@@ -331,15 +331,15 @@ export const products: Product[] = [
        *  inserted lines higher up in blog.ts. */
       {
         title: "Granny flat",
-        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a full stainless-steel kitchen already in it, and it expands on site within hours rather than tying up the garden for months.",
+        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a kitchen (basic stainless-steel cabinetry and a sink, with no appliances) already in it, and it expands on site within hours rather than tying up the garden for months.",
       },
       {
         title: "Family home",
-        body: "A complete house delivered as one module: up to 74 m², layouts to four bedrooms, a fully fitted bathroom with a separate shower, a stainless-steel kitchen, and plumbing and electrics installed in the factory. On a prepared slab you can move in the same day it arrives.",
+        body: "A complete house delivered as one module: up to 74 m², layouts to four bedrooms, a fully fitted bathroom with a separate shower, a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and plumbing and electrics installed in the factory. On a prepared slab you can move in the same day it arrives.",
       },
       {
         title: "Farm cottage and farmworker housing",
-        body: "Insulated, double-glazed housing that reaches remote farms as a single load and opens out within hours, with no local build crew to organise. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a full kitchen for R329 900.",
+        body: "Insulated, double-glazed housing that reaches remote farms as a single load and opens out within hours, with no local build crew to organise. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink (no appliances) for R329 900.",
       },
       {
         title: "Staff accommodation and living quarters",
@@ -375,7 +375,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "What sizes and prices are available?",
-        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (open plan, with a bathroom and a small basic kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a full stainless-steel kitchen, with layouts up to four bedrooms on the 12m.",
+        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (open plan, with a bathroom and a small basic kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), with layouts up to four bedrooms on the 12m.",
       },
       {
         q: "How long does installation take?",
@@ -383,7 +383,7 @@ export const products: Product[] = [
       },
       {
         q: "What's included as standard?",
-        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, double-glazed glass windows and a door, a bathroom and factory-installed plumbing and electrics. The compact 18 m² is open plan with a bathroom and a small basic kitchen; the 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower and a full stainless-steel kitchen.",
+        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, double-glazed glass windows and a door, a bathroom and factory-installed plumbing and electrics. The compact 18 m² is open plan with a bathroom and a small basic kitchen; the 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances.",
       },
       {
         q: "What upgrades can I add to an expandable home?",
@@ -399,7 +399,7 @@ export const products: Product[] = [
       },
       {
         q: "Is an expandable home the same as a granny pod?",
-        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a full stainless-steel kitchen and expand on site within hours.",
+        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and expand on site within hours.",
       },
     ],
     seoKeywords: [
