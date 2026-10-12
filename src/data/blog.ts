@@ -2923,7 +2923,7 @@ export const blogPosts: BlogPost[] = [
   /* =============================================================== 17 ==== */
   {
     slug: "prefab-homes-coast-salt-air",
-    seoTitle: "Prefab Homes on the Coast: Salt Air and What to Specify",
+    seoTitle: "Prefab Homes on the Coast: Salt Air & Specs",
     title: "Prefab homes on the coast: what does salt air do, and what should you specify?",
     description:
       "Buying a prefab home for the coast? What salt air does to steel, the exterior panel we require near the sea, and the coastal rules to check first.",
