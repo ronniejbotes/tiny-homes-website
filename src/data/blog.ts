@@ -1761,7 +1761,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Prefab vs Building a House in South Africa",
     title: "Prefab vs building a house in South Africa: the pros and cons",
     description:
-      "An honest list of what each route gives you and what it costs you — money, time, paperwork, finance and resale — and which situations each one genuinely suits.",
+      "An honest list of what each route gives you and what it costs you (money, time, paperwork, finance and resale) and which situations each one suits.",
     datePublished: "2026-09-02",
     keywords: [
       "prefab vs building a house",
