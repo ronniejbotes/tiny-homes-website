@@ -167,7 +167,7 @@ export const products: Product[] = [
     slug: "folding-homes",
     name: "X-Folds",
     shortName: "X-Fold",
-    h1: "X-Fold folding homes",
+    h1: "X-Fold folding and flat-pack homes",
     seoTitle: "Folding Homes South Africa from R54 900",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
