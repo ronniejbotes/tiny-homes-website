@@ -864,7 +864,7 @@ export const products: Product[] = [
     name: "Safari Tents",
     shortName: "Safari Tent",
     h1: "Luxury safari tents",
-    seoTitle: "Safari Tents South Africa for Lodges",
+    seoTitle: "Luxury Safari Tents South Africa for Lodges",
     tagline: "Luxury under canvas, engineered for Africa.",
     summary:
       "Luxury canvas tented suites offered to businesses and hospitality operators only: game lodges, glamping resorts, boutique hotels and event venues. Safari tents cannot be ordered through this site, and viewings are by appointment rather than at the showroom.",
