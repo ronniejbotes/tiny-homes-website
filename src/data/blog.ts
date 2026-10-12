@@ -1610,7 +1610,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "What Does an Outdoor Kitchen Cost in SA?",
     title: "What does an outdoor kitchen cost in South Africa?",
     description:
-      "Building a braai area versus buying a delivered outdoor kitchen: what each length costs, which extras are worth it, and the ones only the larger units can take.",
+      "Building a braai area or buying a delivered outdoor kitchen: what each length costs, which extras are worth it, and the ones only larger units can take.",
     datePublished: "2026-09-02",
     keywords: [
       "outdoor kitchen South Africa",
