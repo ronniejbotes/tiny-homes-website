@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { nav, site } from "@/lib/site";
+import { CurrentYear } from "@/components/layout/current-year";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -160,7 +161,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-cream/15 pt-8 text-sm text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {site.legalName}. All prices exclude VAT.
+            © <CurrentYear buildYear={new Date().getFullYear()} /> {site.legalName}. All prices exclude VAT.
           </p>
           <p>
             <Link href="/book-a-viewing" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
