@@ -178,6 +178,8 @@ export const products: Product[] = [
     shortName: "X-Fold",
     h1: "X-Fold folding and flat-pack homes",
     seoTitle: "Folding Homes South Africa from R54 900",
+    metaSummary:
+      "A foldable house: flat-pack to an insulated 15 m² room in minutes, wired for electricity, and it folds back down to move.",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
       "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
@@ -635,6 +637,8 @@ export const products: Product[] = [
     shortName: "Glamping Capsule",
     h1: "Glamping capsules",
     seoTitle: "Capsule Houses & Glamping Pods from R689 900",
+    metaSummary:
+      "Capsule houses with 270° floor-to-ceiling glazing and the bathroom standard, 18.6 to 38 m², delivered fully built.",
     tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
     summary:
       "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
@@ -764,6 +768,8 @@ export const products: Product[] = [
     shortName: "Outdoor Kitchen",
     h1: "Outdoor kitchens",
     seoTitle: "Outdoor Kitchens South Africa from R154 400",
+    metaSummary:
+      "A braai area without the bricklaying: motorised roof, quartz countertop and sink, four lengths, ready to use.",
     tagline: "Braai, cook, host, then close the roof on the weather.",
     summary:
       "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink, in four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
@@ -880,6 +886,11 @@ export const products: Product[] = [
     shortName: "Safari Tent",
     h1: "Luxury safari tents",
     seoTitle: "Luxury Safari Tents South Africa for Lodges",
+    // Price on request, so there is no price to keep in sync: the whole
+    // description is hand-written instead of the "price on request" lead.
+    // Says who it is sold to (trade only); never "manufacturer".
+    metaDescription:
+      "Luxury canvas safari tents for sale to lodges, glamping resorts and reserves: Meru-style or stretch-tension roofs, decks and en-suites, quoted per project.",
     tagline: "Luxury under canvas, engineered for Africa.",
     summary:
       "Luxury canvas tented suites offered to businesses and hospitality operators only: game lodges, glamping resorts, boutique hotels and event venues. Safari tents cannot be ordered through this site, and viewings are by appointment rather than at the showroom.",
