@@ -447,9 +447,14 @@ export const products: Product[] = [
     shortName: "Nature Cabin",
     h1: "Prefab nature cabins",
     seoTitle: "Prefab Cabins South Africa from R810 900",
+    // "Cabin house" is the search the home page wins and this page should own;
+    // every word after it is already on this page (fully built, bathroom,
+    // kitchen, Midea air conditioning).
+    metaSummary:
+      "A prefab cabin house: 21 m² plus a viewing terrace, delivered fully built with bathroom, kitchen and air conditioning.",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
-      "A 21 m² cabin with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
+      "A 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
       "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,

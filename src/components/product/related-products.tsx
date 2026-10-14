@@ -82,6 +82,19 @@ export function RelatedProducts({ current }: { current: Product }) {
             );
           })}
         </Stagger>
+        {/* Three cards show only part of the range. This sends the rest of the
+            way to the home page grid and its price table, in the words people
+            search ("prefab houses"), rather than a bare "Home". */}
+        <p className="mt-10 text-center text-[0.9375rem] text-stone">
+          Or see{" "}
+          <Link
+            href="/#homes"
+            className="font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay"
+          >
+            all our prefab houses and tiny homes
+          </Link>{" "}
+          side by side, with their prices.
+        </p>
       </Container>
     </section>
   );
