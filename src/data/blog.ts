@@ -373,7 +373,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost — including where a pod is the wrong answer.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-14",
+    dateModified: "2026-10-15",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -484,6 +484,10 @@ export const blogPosts: BlogPost[] = [
         text: `Then go and stand inside all three. Fifteen minutes does more than a week of reading, and it is the step people skip.`,
       },
       {
+        type: "p",
+        text: `One more check before you buy any of the three: if someone will live or sleep in it, read [whether a wendy house or tiny home needs building plans](/blog/building-approval-south-africa-what-you-need). The answer changes with the use, not the material.`,
+      },
+      {
         type: "cta",
         text: `Our units are on site in ${site.showroom.city} and viewing is free, with no obligation to buy.`,
         href: "/book-a-viewing",
@@ -498,6 +502,10 @@ export const blogPosts: BlogPost[] = [
       {
         q: "Is a housing pod better than a wendy house?",
         a: `For a room someone occupies, yes — insulation, factory finishing and weatherproofing are built in rather than added. For storage, a wendy house is the sensible buy and a pod is money spent on comfort nobody is there to use. Our X-Fold at ${R(folding)} ex VAT overlaps the premium nutec end of the wendy house market, which is where the two genuinely compete.`,
+      },
+      {
+        q: "I want a wendy house with a bathroom and kitchen. What should I look at?",
+        a: `A self-contained unit rather than a standard wendy house, which in its common form is panels and a roof. Our expandable homes arrive with a bathroom and a small basic kitchen from ${R(expandable)} ex VAT, and the nature cabins arrive fully fitted, with bathroom, kitchen and air conditioning. The X-Fold, the unit closest to a wendy house in price, carries electrics only, so a local installer fits the shower and toilet. Either way, budget for connecting water and sewerage to the property, and check with your municipality whether you need plans before anyone moves in.`,
       },
       {
         q: "Can you insulate a shipping container properly?",
@@ -1952,6 +1960,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Do you need building plans in South Africa? Zoning, SACAP plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-15",
     keywords: [
       "building plans approval South Africa",
       "what permits do I need to build South Africa",
@@ -2216,6 +2225,14 @@ export const blogPosts: BlogPost[] = [
       {
         q: "What is a temporary building under regulation A23?",
         a: "One declared by the owner to be used for a specified purpose for a specified limited period. Instead of a full plan set you submit the period required, a site plan, layout drawings showing size, form and materials, and any structural safety details required. Authorisation is time-limited, extensions must be applied for before expiry, and if authorisation is refused or lapses the structure must be removed.",
+      },
+      {
+        q: "Do I need building plans for a wendy house?",
+        a: "It depends on what the wendy house is for. Used as a tool shed under 10 m² or a children's playhouse of up to 5 m², it falls under minor building work, and the building control officer can exempt you in writing from submitting plans, though it must still meet the National Building Regulations. A wendy house that someone lives or sleeps in is a building under the Act whatever it is made of, and minor building work does not cover it. Phone your municipality's building control department, describe the structure and its use, and ask which route applies before you buy.",
+      },
+      {
+        q: "Are tiny homes legal in South Africa?",
+        a: "Yes, on the same terms as any other building. A tiny home someone lives in is a building under the National Building Regulations and Building Standards Act, whether it is temporary, movable or steel-framed, so it needs the local authority's permission: approved plans for a permanent home, or provisional authorisation under regulation A23 for a genuinely temporary one. Your zoning also has to allow the use, which for a second dwelling usually means consent use.",
       },
       {
         q: "Does a prefab home need NHBRC enrolment?",

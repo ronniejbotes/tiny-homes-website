@@ -265,6 +265,10 @@ export const products: Product[] = [
         a: "Upgraded floor beams for added support, EPS insulation to keep it comfortable year-round, and a basic electrical setup: two plug points, a light fitting and a small DB board. It arrives wired for electricity but without plumbing. A metal carved board exterior finish and aluminium window frames are available upgrades, and near the coast the metal carved board is required, because standard panels corrode in salt air.",
       },
       {
+        q: "Can I buy a ready-made room rather than a whole house?",
+        a: "Yes. That is what the X-Fold is: a ready-made, insulated 15 m² room that arrives flat on a truck and unfolds in minutes, wired with two plug points, a light fitting and a small DB board, for R54 900 ex VAT. It folds back down when you move, so it also works as a mobile or portable room for a garden, a farm or a site. It has no plumbing, so if someone will live in it, a local installer adds the shower and toilet.",
+      },
+      {
         q: "Does the X-Fold come with a bathroom or kitchen?",
         a: "No. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, we recommend arranging a local installer to fit one on site.",
       },
@@ -601,8 +605,8 @@ export const products: Product[] = [
         body: "Angular architecture and panoramic glazing aimed straight at the view across the vines, on a footprint from 2.25 m wide that fits between established plantings. Premium interior finishes and curtain tracks come as standard.",
       },
       {
-        title: "Backyard guest suite",
-        body: "A self-contained guest suite with its own bathroom and smart-lock entry, delivered fully assembled so the garden is disrupted for hours rather than months. The 5.8 m cabin fits 13 m² into a compact plot.",
+        title: "Backyard guest house",
+        body: "A self-contained mini guest house for the garden, with its own bathroom and smart-lock entry, delivered fully assembled so the garden is disrupted for hours rather than months. The 5.8 m cabin fits 13 m² into a compact plot.",
       },
       {
         title: "Scenic escape and off-site retreat",

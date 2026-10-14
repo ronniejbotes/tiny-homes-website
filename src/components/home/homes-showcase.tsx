@@ -216,6 +216,10 @@ export function HomesShowcase() {
             ,{" "}
             <Link href="/glamping-capsules" className={footnoteLink}>
               capsule houses
+            </Link>
+            ,{" "}
+            <Link href="/folding-homes" className={`${footnoteLink} whitespace-nowrap`}>
+              ready-made rooms
             </Link>{" "}
             and housing pods. If it was the last of those you came looking for,{" "}
             <Link href="/housing-pods" className={footnoteLink}>
