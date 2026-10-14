@@ -258,7 +258,7 @@ export const products: Product[] = [
       },
       {
         q: "Can X-Folds be moved after installation?",
-        a: "Yes. Fold the unit back down, load it and redeploy it somewhere new. That's the whole point of the design.",
+        a: "Yes. The X-Fold is collapsible: fold the unit back down, load it and redeploy it somewhere new. That's the whole point of the design.",
       },
       {
         q: "What comes standard on an X-Fold?",
@@ -310,7 +310,7 @@ export const products: Product[] = [
       "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
     tagline: "Smart living, fast, flexible and future-ready.",
     summary:
-      "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
+      "A prefabricated granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
       "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
@@ -458,7 +458,7 @@ export const products: Product[] = [
       "A prefab cabin house: 21 m² plus a viewing terrace, delivered fully built with bathroom, kitchen and air conditioning.",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
-      "A 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
+      "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
       "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
@@ -558,6 +558,7 @@ export const products: Product[] = [
     name: "Apple Cabins",
     shortName: "Apple Cabin",
     h1: "Apple cabin eco pods",
+    sizesHeading: "Eco pods for sale, in three sizes",
     seoTitle: "Eco Pods South Africa from R449 900",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
@@ -652,6 +653,7 @@ export const products: Product[] = [
     name: "Glamping Capsules",
     shortName: "Glamping Capsule",
     h1: "Glamping capsules",
+    sizesHeading: "Glamping pods for sale: choose your capsule house",
     seoTitle: "Capsule Houses & Glamping Pods from R689 900",
     metaSummary:
       "Capsule houses with 270° floor-to-ceiling glazing and the bathroom standard, 18.6 to 38 m², delivered fully built.",

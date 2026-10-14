@@ -1011,6 +1011,10 @@ export const blogPosts: BlogPost[] = [
         a: "Generally yes, and there are two questions rather than one: whether your zoning permits a second dwelling at all, and whether the structure needs approved building plans. Both are decided by your local municipality. Phone their building control department before ordering anything — and check your HOA or body corporate rules, which can be stricter.",
       },
       {
+        q: "What is the cheapest way to build a granny flat in South Africa?",
+        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, industry cost guides put a Gauteng granny flat at about R250 000 to R1 000 000 depending on size and finish; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
+      },
+      {
         q: "Is a prefab granny flat cheaper than building one?",
         a: "Usually on time and on certainty, and often on total cost — but not by the multiple this industry likes to imply. Per square metre our expandable homes land inside the same band as a mid-range conventional build; the difference is that the rate already includes insulation, glazing, a fitted bathroom and installed services.",
       },

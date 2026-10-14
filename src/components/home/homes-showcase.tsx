@@ -157,7 +157,7 @@ export function HomesShowcase() {
         <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
           <table className="w-full border-collapse text-left text-sm">
             <caption className="text-eyebrow mb-4 text-left text-clay-dark">
-              Prefab house prices at a glance (all prices exclude VAT)
+              Prefab house prices at a glance: every home for sale, cheapest first (all prices exclude VAT)
             </caption>
             <thead>
               <tr className="border-b border-border">
@@ -197,7 +197,7 @@ export function HomesShowcase() {
             are what this section is selling. */}
         <Reveal delay={0.1} className="mt-12">
           <p className="mx-auto max-w-2xl text-center text-[0.9375rem] leading-relaxed text-stone">
-            People call these tiny houses, prefab houses, modular homes,{" "}
+            People call these tiny houses, prefab or prefabricated houses, modular homes,{" "}
             <Link href="/blog/mobile-homes-south-africa" className={footnoteLink}>
               mobile homes
             </Link>

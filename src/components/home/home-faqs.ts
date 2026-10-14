@@ -28,6 +28,11 @@ const highestPrice = Math.max(
 const expandableFrom = Math.min(
   ...products.filter((p) => p.slug === "expandable-homes").map((p) => p.startingPrice),
 );
+/* The 2-bedroom searches ("2 bedroom tiny house south africa prices") land on
+   the home page, which never said "bedroom". The 37 m² (b20) is the smallest
+   size with two bedrooms as standard; its price is read, never typed. */
+const twoBedroomFrom =
+  products.find((p) => p.slug === "expandable-homes")?.variants?.find((v) => v.id === "b20")?.price ?? expandableFrom;
 
 export const homeFaqs: HomeFaq[] = [
   /* The vocabulary question. "Tiny house" and "granny pod" are what a large
@@ -37,7 +42,7 @@ export const homeFaqs: HomeFaq[] = [
      find-and-replacing terms that read worse in body copy. */
   {
     q: "What's the difference between a tiny house, a granny pod and a granny flat?",
-    a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT.`,
+    a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT. The 37 m² and 74 m² sizes come with 2 bedrooms as standard, the 37 m² from ${formatZAR(twoBedroomFrom)} ex VAT.`,
   },
   {
     q: "How much does delivery cost?",
@@ -87,7 +92,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Which areas do you deliver to?",
-    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. Every home is trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We deliver across the border too, into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}. Cross-border runs are priced per project, including the transport and the customs paperwork.`,
+    a: `We deliver to all nine South African provinces: ${site.deliveryRegions.provinces.join(", ")}. That includes Cape Town and the rest of the coast as well as Gauteng. Every home is trucked to your site, with delivery quoted separately on distance and site access, at cost and with no markup. We deliver across the border too, into ${site.deliveryRegions.countries.slice(0, -1).join(", ")} and ${site.deliveryRegions.countries.slice(-1)[0]}. Cross-border runs are priced per project, including the transport and the customs paperwork.`,
   },
   {
     q: "Is there a guarantee on Tiny Homes SA products?",
