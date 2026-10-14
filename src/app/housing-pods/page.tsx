@@ -39,7 +39,7 @@ import { podFaqs } from "./faqs";
 const heroImage = getHeroImage("apple-cabins");
 
 const title = "Housing Pods for Sale in South Africa";
-const description = `Housing pods for sale from ${formatZAR(podPriceFrom)} ex VAT: living pods, granny pods, resort pods and luxury glamping pods, delivered nationwide, with a showroom in Centurion.`;
+const description = `Housing pods for sale from ${formatZAR(podPriceFrom)} ex VAT: living pods, granny pods, resort pods and luxury glamping pods, delivered nationwide, showroom in Centurion.`;
 
 export const metadata: Metadata = {
   title,
