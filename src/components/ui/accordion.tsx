@@ -1,7 +1,6 @@
 "use client";
 
 import { useId, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -10,11 +9,19 @@ export interface AccordionEntry {
   a: string;
 }
 
-/** Accessible FAQ accordion: one panel open at a time, animated height. */
+/**
+ * Accessible FAQ accordion: one panel open at a time, animated height.
+ *
+ * Every answer is rendered into the HTML, open or closed. Closed panels
+ * collapse to zero height (the grid-rows 0fr/1fr transition) and are `inert`,
+ * so they are neither seen, focused nor read out, but a crawler reading the
+ * served page still finds every answer. Unmounting closed panels left all but
+ * the first answer out of the HTML, while the FAQPage JSON-LD built from the
+ * same items carried them all (found 14 October 2026).
+ */
 export function Accordion({ items }: { items: AccordionEntry[] }) {
   const [open, setOpen] = useState<number | null>(0);
   const baseId = useId();
-  const reduce = useReducedMotion();
 
   return (
     <div className="divide-y divide-border overflow-hidden rounded-3xl border border-border bg-parchment/60">
@@ -41,22 +48,20 @@ export function Accordion({ items }: { items: AccordionEntry[] }) {
                 />
               </button>
             </h3>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  id={`${baseId}-panel-${i}`}
-                  role="region"
-                  aria-labelledby={`${baseId}-button-${i}`}
-                  initial={reduce ? false : { height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={reduce ? undefined : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="max-w-3xl px-6 pb-6 leading-relaxed text-stone">{item.a}</p>
-                </motion.div>
+            <div
+              id={`${baseId}-panel-${i}`}
+              role="region"
+              aria-labelledby={`${baseId}-button-${i}`}
+              inert={!isOpen}
+              className={cn(
+                "grid transition-[grid-template-rows,opacity] duration-300 ease-in-out motion-reduce:transition-none",
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
               )}
-            </AnimatePresence>
+            >
+              <div className="overflow-hidden">
+                <p className="max-w-3xl px-6 pb-6 leading-relaxed text-stone">{item.a}</p>
+              </div>
+            </div>
           </div>
         );
       })}
