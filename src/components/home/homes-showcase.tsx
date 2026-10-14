@@ -45,6 +45,15 @@ const spanClasses = [
   "lg:col-span-7",
 ];
 
+/* The houses with a published price, for the price table: no trade-only or
+   price-on-request line, and no outdoor kitchens. */
+const pricedHouses = products
+  .filter((p) => !p.priceOnRequest && !p.tradeOnly && p.slug !== "outdoor-kitchens")
+  .sort((a, b) => a.startingPrice - b.startingPrice);
+
+const footnoteLink =
+  "font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay";
+
 export function HomesShowcase() {
   return (
     <section
@@ -138,19 +147,78 @@ export function HomesShowcase() {
           })}
         </Stagger>
 
+        {/* The cards above, again as one plain table, because "prefab house
+            prices" is what a large share of visitors searched for and a table
+            is what both they and Google read fastest. Nothing is typed here:
+            every name, size and price comes off products.ts, so it can never
+            disagree with the cards or the product pages. Left out: safari
+            tents (trade only, price on request) and the outdoor kitchens
+            (not a house). Cheapest first. */}
+        <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
+          <table className="w-full border-collapse text-left text-sm">
+            <caption className="text-eyebrow mb-4 text-left text-clay-dark">
+              Prefab house prices at a glance (all prices exclude VAT)
+            </caption>
+            <thead>
+              <tr className="border-b border-border">
+                <th scope="col" className="py-3 pr-4 font-medium text-ink">Range</th>
+                <th scope="col" className="py-3 pr-4 font-medium text-ink">Size</th>
+                <th scope="col" className="py-3 font-medium text-ink">From</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pricedHouses.map((p) => (
+                <tr key={p.slug} className="border-b border-border">
+                  <th scope="row" className="py-3 pr-4 font-normal">
+                    <Link
+                      href={`/${p.slug}`}
+                      className="text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-clay"
+                    >
+                      {p.name}
+                    </Link>
+                  </th>
+                  <td className="py-3 pr-4 text-stone">{p.sizeLabel}</td>
+                  <td className="nums-tabular whitespace-nowrap py-3 text-ink">
+                    {formatZAR(p.startingPrice)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+
         {/* A vocabulary footnote, not a billboard. The cards above are named
-            for the catalogue, and buyers arrive using four or five other words
-            for the same buildings; "pod" is one of them, listed alongside the
-            others rather than singled out. Small type on purpose — the seven
-            ranges are what this section is selling. */}
+            for the catalogue, and buyers arrive using other words for the same
+            buildings. Each of those words links to the range it means, so the
+            page that answers "capsule house" or "prefab cabins" is the one that
+            gets the link, not this one; "mobile homes" goes to the guide that
+            says which units can move again. "Pod" is listed alongside the
+            others rather than singled out. Small type on purpose — the ranges
+            are what this section is selling. */}
         <Reveal delay={0.1} className="mt-12">
           <p className="mx-auto max-w-2xl text-center text-[0.9375rem] leading-relaxed text-stone">
-            People call these tiny houses, prefab houses, modular homes, granny flats, prefab cabins and housing pods.
-            If it was the last of those you came looking for,{" "}
-            <Link
-              href="/housing-pods"
-              className="font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay"
-            >
+            People call these tiny houses, prefab houses, modular homes,{" "}
+            <Link href="/blog/mobile-homes-south-africa" className={footnoteLink}>
+              mobile homes
+            </Link>
+            ,{" "}
+            <Link href="/expandable-homes" className={footnoteLink}>
+              granny flats
+            </Link>
+            ,{" "}
+            <Link href="/nature-cabins" className={footnoteLink}>
+              prefab cabins
+            </Link>
+            ,{" "}
+            <Link href="/apple-cabins" className={footnoteLink}>
+              eco pods
+            </Link>
+            ,{" "}
+            <Link href="/glamping-capsules" className={footnoteLink}>
+              capsule houses
+            </Link>{" "}
+            and housing pods. If it was the last of those you came looking for,{" "}
+            <Link href="/housing-pods" className={footnoteLink}>
               compare the pod ranges side by side
             </Link>
             .
