@@ -145,7 +145,7 @@ export function HomesShowcase() {
             ranges are what this section is selling. */}
         <Reveal delay={0.1} className="mt-12">
           <p className="mx-auto max-w-2xl text-center text-[0.9375rem] leading-relaxed text-stone">
-            People call these tiny houses, granny flats, prefab cabins and housing pods.
+            People call these tiny houses, prefab houses, modular homes, granny flats, prefab cabins and housing pods.
             If it was the last of those you came looking for,{" "}
             <Link
               href="/housing-pods"

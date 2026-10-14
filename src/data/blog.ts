@@ -735,7 +735,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Almost every prefab supplier in South Africa will tell you their product is cheaper than building. We sell prefab homes, and we think that answer is too simple to be useful — it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
+        text: `Almost every prefab supplier in South Africa will tell you their product is cheaper than building. We sell [prefab homes](/), and we think that answer is too simple to be useful — it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
       },
       {
         type: "p",
@@ -1776,7 +1776,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `We sell prefab homes, so treat the framing here with appropriate suspicion — and then check the cons list, which is longer and more specific than the one you will find on most suppliers' websites. There are situations where conventional building is straightforwardly the better decision, and pretending otherwise wastes your time and ours.`,
+        text: `We sell [prefab homes](/), so treat the framing here with appropriate suspicion — and then check the cons list, which is longer and more specific than the one you will find on most suppliers' websites. There are situations where conventional building is straightforwardly the better decision, and pretending otherwise wastes your time and ours.`,
       },
 
       { type: "h2", text: "What you are actually choosing between" },
