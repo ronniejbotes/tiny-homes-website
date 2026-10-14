@@ -111,6 +111,15 @@ export interface Product {
   seoTitle?: string;
   /** Hand-written meta description, 155 characters or fewer. Falls back to the generated price-plus-summary form. */
   metaDescription?: string;
+  /**
+   * Hand-written words for the meta description, placed after the generated
+   * "<shortName> from <price> ex VAT. " lead, so the price is still read from
+   * startingPrice and never typed. Written to fit 155 characters together with
+   * that lead, so Google shows a whole sentence instead of `summary` cut off
+   * with an ellipsis. Falls back to `summary`. Ignored when metaDescription
+   * is set.
+   */
+  metaSummary?: string;
   tagline: string;
   /** One-paragraph summary used on cards and meta descriptions. */
   summary: string;
@@ -279,7 +288,13 @@ export const products: Product[] = [
     name: "Expandable Homes",
     shortName: "Expandable Home",
     h1: "Expandable prefab houses and granny flats",
-    seoTitle: "Granny Flats South Africa from R199 900",
+    // Led by the 2-bedroom price searches the page already ranks for. No
+    // price in the title: "2-Bedroom ... from R199 900" would pin the 18 m²
+    // open-plan price on a 2-bedroom home, and the lead of the description
+    // already carries the from-price read from startingPrice.
+    seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
+    metaSummary:
+      "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
     tagline: "Smart living, fast, flexible and future-ready.",
     summary:
       "A granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",

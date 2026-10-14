@@ -52,7 +52,9 @@ function metaDescription(product: Product): string {
     ? `${product.shortName}: price on request. `
     : `${product.shortName} from ${formatZAR(product.startingPrice)} ex VAT. `;
   const budget = MAX_DESCRIPTION - lead.length;
-  const summary = product.summary;
+  // metaSummary is written to fit, so it is normally never cut; the trim
+  // below stays as the safety net for it and for the longer card summary.
+  const summary = product.metaSummary ?? product.summary;
   if (summary.length <= budget) return `${lead}${summary}`;
   const cut = summary.slice(0, budget - 1); // reserve one char for the ellipsis
   let trimmed = cut
