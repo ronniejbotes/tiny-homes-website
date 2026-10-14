@@ -875,10 +875,10 @@ export const blogPosts: BlogPost[] = [
   /* ================================================================ 5 ==== */
   {
     slug: "granny-flat-cost-south-africa",
-    seoTitle: "Granny Flat Cost in South Africa",
+    seoTitle: "Granny Flat Cost in SA: Building vs Prefab",
     title: "How much does a granny flat cost in South Africa?",
     description:
-      "What a granny flat costs built conventionally or delivered as a prefab unit, what your municipality needs, and the rental maths that decides if it pays.",
+      "What a granny flat costs built conventionally or delivered as a prefab, side by side, which council approvals you need, and how to tell if it pays.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-07",
     keywords: [
@@ -1946,10 +1946,10 @@ export const blogPosts: BlogPost[] = [
   /* =============================================================== 12 ==== */
   {
     slug: "building-approval-south-africa-what-you-need",
-    seoTitle: "What You Need to Build on Your Land in SA",
+    seoTitle: "Building Plan Approval in SA: What You Need",
     title: "What you actually need to put a building on your land in South Africa",
     description:
-      "The approval path for a permanent building — zoning, SACAP plans, NHBRC, certificates — against the lighter temporary-structure route, and where each ends.",
+      "Do you need building plans in South Africa? Zoning, SACAP plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
     datePublished: "2026-09-02",
     keywords: [
       "building plans approval South Africa",
