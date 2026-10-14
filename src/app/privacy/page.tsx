@@ -1,8 +1,8 @@
 /**
  * General-purpose POPIA privacy policy describing how this site actually
- * behaves today (mailto/WhatsApp hand-off, GA4, self-hosted media). It is not
- * legal advice; have a legal professional review it before relying on it, and
- * update it whenever the data practices described here change.
+ * behaves today (mailto/WhatsApp hand-off, GA4, Microsoft Clarity, self-hosted
+ * media). It is not legal advice; have a legal professional review it before
+ * relying on it, and update it whenever the data practices described here change.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
           until you press send, and then it travels to us by WhatsApp or email, the same way a
           message from your phone would.
         </p>
-        <p className="mt-4 text-sm text-stone">Last updated: 26 July 2026</p>
+        <p className="mt-4 text-sm text-stone">Last updated: 14 October 2026</p>
 
         <div className="mt-14 space-y-12">
           <Clause n={1} title="Who we are">
@@ -254,6 +254,10 @@ export default function PrivacyPage() {
                 only, as described in section 8;
               </li>
               <li>
+                <strong className="font-semibold text-ink">Microsoft</strong>: how visitors use
+                the site, through Microsoft Clarity, as described in section 8;
+              </li>
+              <li>
                 <strong className="font-semibold text-ink">our hosting provider</strong>: which
                 serves the site and keeps standard server logs;
               </li>
@@ -283,7 +287,7 @@ export default function PrivacyPage() {
 
           <Clause n={7} title="Information sent outside South Africa">
             <p>
-              WhatsApp, Google and the email and hosting services we rely on are operated by
+              WhatsApp, Google, Microsoft and the email and hosting services we rely on are operated by
               international companies with servers outside South Africa, including in the European
               Union and the United States. Sending us an enquiry through those channels therefore
               involves a transfer of your personal information across the border, as contemplated
@@ -306,6 +310,21 @@ export default function PrivacyPage() {
               browser details, and the pages you view. We look at it in aggregate; we do not use it
               to identify individual visitors, and we have not enabled Google&apos;s advertising or
               remarketing features.
+            </p>
+            <p>
+              We also use <strong className="font-semibold text-ink">Microsoft Clarity</strong> to
+              see how visitors use this website (where people click and scroll, and anonymised
+              recordings of visits) so we can make it easier to use. Clarity sets cookies and hides
+              sensitive details typed into forms. Microsoft processes this data under its{" "}
+              <a
+                href="https://privacy.microsoft.com/privacystatement"
+                className={linkClasses}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                privacy statement
+              </a>
+              .
             </p>
             <p>
               You can opt out at any time by blocking or deleting cookies in your browser settings,

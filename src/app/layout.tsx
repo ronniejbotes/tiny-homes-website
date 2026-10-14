@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -17,6 +18,13 @@ const defaultOgImage = images.products["nature-cabins"].find((img) => img.hero);
  * history across the migration; do not mint a new property.
  */
 const gaMeasurementId = "G-5R1KHZE03G";
+
+/**
+ * Microsoft Clarity (heatmaps and session recordings), approved by the owner
+ * on 14 October 2026 for every site. Disclosed in section 8 of /privacy; if
+ * this is ever removed, take it out of the privacy policy too.
+ */
+const clarityProjectId = "yxic0ngpza";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -111,6 +119,9 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <GoogleAnalytics gaId={gaMeasurementId} />
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${clarityProjectId}");`}
+        </Script>
       </body>
     </html>
   );
