@@ -373,6 +373,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost — including where a pod is the wrong answer.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-14",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -386,7 +387,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. They get compared constantly and usually badly, because the comparison is almost always made on sticker price alone.`,
+        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. If you are looking for a wendy house alternative, the first two are the usual candidates. They get compared constantly and usually badly, because the comparison is almost always made on sticker price alone.`,
       },
       {
         type: "p",
