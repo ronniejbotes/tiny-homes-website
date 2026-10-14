@@ -18,7 +18,7 @@ export function UseCaseChips({ product }: { product: Product }) {
       <Container>
         <SectionHeading
           eyebrow="Use cases"
-          title={`Where the ${product.shortName.toLowerCase()} fits`}
+          title={`Where the ${/^[A-Z]-[A-Z]/.test(product.shortName) ? product.shortName : product.shortName.toLowerCase()} fits`}
         />
         <Reveal delay={0.08} className="mt-10">
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

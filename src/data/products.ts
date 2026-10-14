@@ -146,6 +146,12 @@ export interface Product {
    */
   tradeOnly?: boolean;
   sizeLabel: string;
+  /**
+   * Heading over the size cards. Falls back to "Choose your size". Set it when
+   * the sizes are what people search for (the expandable home's 2-bedroom
+   * price searches), and keep it to what the variant descriptions already say.
+   */
+  sizesHeading?: string;
   bedrooms?: string;
   setupTime: string;
   dims: { length: number; width: number; height: number }; // metres, external
@@ -182,9 +188,9 @@ export const products: Product[] = [
       "A foldable house: flat-pack to an insulated 15 m² room in minutes, wired for electricity, and it folds back down to move.",
     tagline: "Durable. Adaptable. Ready when you are.",
     summary:
-      "The X-Fold flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
+      "The X-Fold is a foldable house that flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes: two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa, all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
+      "The X-Fold is a foldable house and the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes: two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa, all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
     startingPrice: 54900,
     sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
@@ -295,6 +301,7 @@ export const products: Product[] = [
     // open-plan price on a 2-bedroom home, and the lead of the description
     // already carries the from-price read from startingPrice.
     seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
+    sizesHeading: "Sizes and prices, from open plan to 2 bedrooms",
     metaSummary:
       "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
     tagline: "Smart living, fast, flexible and future-ready.",
@@ -438,7 +445,7 @@ export const products: Product[] = [
     slug: "nature-cabins",
     name: "Nature Cabins",
     shortName: "Nature Cabin",
-    h1: "Nature cabins",
+    h1: "Prefab nature cabins",
     seoTitle: "Prefab Cabins South Africa from R810 900",
     tagline: "Effortless luxury. Naturally simple.",
     summary:
@@ -541,7 +548,7 @@ export const products: Product[] = [
     slug: "apple-cabins",
     name: "Apple Cabins",
     shortName: "Apple Cabin",
-    h1: "Apple cabins",
+    h1: "Apple cabin eco pods",
     seoTitle: "Eco Pods South Africa from R449 900",
     tagline: "Sleek. Smart. Instantly livable.",
     summary:
@@ -641,7 +648,7 @@ export const products: Product[] = [
       "Capsule houses with 270° floor-to-ceiling glazing and the bathroom standard, 18.6 to 38 m², delivered fully built.",
     tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
     summary:
-      "Glamping dreams delivered: capsules wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
+      "Glamping dreams delivered: capsule houses wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
     description:
       "Glamping Capsules are the flagship of the Tiny Homes SA range: scenic, serene luxury delivered to beaches, bush settings and vineyards. Rooms sit either side of the bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard, with the kitchen and air conditioning offered as extras so you only pay for what you need. Choose the core range: 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900, or step up to the Space range, a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts: both ranges build other sizes and layouts to order, and there are far more options than we can list, so tell us what you need and we'll check. Each capsule arrives fully built and is delivered to your site, so there's no on-site construction and it's ready for immediate occupancy.",
     startingPrice: 689900,
@@ -884,7 +891,7 @@ export const products: Product[] = [
     slug: "safari-tents",
     name: "Safari Tents",
     shortName: "Safari Tent",
-    h1: "Luxury safari tents",
+    h1: "Luxury safari and glamping tents",
     seoTitle: "Luxury Safari Tents South Africa for Lodges",
     // Price on request, so there is no price to keep in sync: the whole
     // description is hand-written instead of the "price on request" lead.
@@ -893,7 +900,7 @@ export const products: Product[] = [
       "Luxury canvas safari tents for sale to lodges, glamping resorts and reserves: Meru-style or stretch-tension roofs, decks and en-suites, quoted per project.",
     tagline: "Luxury under canvas, engineered for Africa.",
     summary:
-      "Luxury canvas tented suites offered to businesses and hospitality operators only: game lodges, glamping resorts, boutique hotels and event venues. Safari tents cannot be ordered through this site, and viewings are by appointment rather than at the showroom.",
+      "Luxury canvas safari tents, for sale to businesses and hospitality operators only: game lodges, glamping resorts, boutique hotels and event venues. Safari tents cannot be ordered through this site, and viewings are by appointment rather than at the showroom.",
     description:
       "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites built by one of Africa's leading safari-tent manufacturers. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions: sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues, all backed by our after-sales support. One thing to know before you enquire: safari tents are a trade offering. We supply them to businesses and hospitality operators only, not to private buyers, and they cannot be ordered or quoted through this site the way our homes can. They are also not kept at our Centurion showroom, so seeing one is arranged individually: email johan@tinyhomesa.com and we will set up a time to view the tents.",
     startingPrice: 0, // sentinel: priceOnRequest, must never render

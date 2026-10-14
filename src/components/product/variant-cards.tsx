@@ -12,7 +12,7 @@ export function VariantCards({ product }: { product: Product }) {
       <Container>
         <SectionHeading
           eyebrow="Sizes"
-          title="Choose your size"
+          title={product.sizesHeading ?? "Choose your size"}
           intro="Pick the footprint that fits your site and budget. Your chosen size sets the base price in the configurator below. All prices exclude VAT."
         />
         <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
