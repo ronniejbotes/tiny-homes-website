@@ -20,6 +20,15 @@ const defaultOgImage = images.products["nature-cabins"].find((img) => img.hero);
 const gaMeasurementId = "G-5R1KHZE03G";
 
 /**
+ * Second GA4 property, in Position Xero's agency Analytics account, added on
+ * 15 October 2026 beside the one above, which stays as it is. Configured in its
+ * own small script straight after <GoogleAnalytics>, so the one gtag.js loader
+ * that component adds serves both IDs. Page changes inside the app are counted
+ * by the property's own history-change tracking, as for the first ID.
+ */
+const gaSecondMeasurementId = "G-YDLZNN0TGG";
+
+/**
  * Microsoft Clarity (heatmaps and session recordings), approved by the owner
  * on 14 October 2026 for every site. Disclosed in section 8 of /privacy; if
  * this is ever removed, take it out of the privacy policy too.
@@ -119,6 +128,9 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <GoogleAnalytics gaId={gaMeasurementId} />
+        <Script id="ga-second-config" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('config', '${gaSecondMeasurementId}');`}
+        </Script>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${clarityProjectId}");`}
         </Script>
