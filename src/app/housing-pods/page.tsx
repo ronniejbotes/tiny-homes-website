@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
 import { Accordion } from "@/components/ui/accordion";
+import { PhoneLabel } from "@/components/ui/phone-label";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import {
   JsonLd,
@@ -259,15 +260,19 @@ export default function HousingPodsPage() {
           />
 
           <Reveal delay={0.08} className="mt-10 lg:mt-14">
-            {/* Wide table on a phone is a horizontal scroller rather than a
-                squeezed one: the price column is the reason the table exists
-                and it must never wrap to three lines. */}
-            <div className="overflow-x-auto rounded-3xl border border-border bg-cream">
-              <table className="w-full min-w-[46rem] border-collapse text-left">
+            {/* Phones first: under `sm` each range is a card, its name as
+                the title and every other column under its own heading, so
+                the price is never off the edge of the screen (15 October
+                2026 mobile review: on a 390px phone the table scrolled
+                sideways and showed only the first two columns). From `sm`
+                up it is the full table, scrolling sideways rather than
+                squeezing the price column onto three lines. */}
+            <div className="rounded-3xl border border-border bg-cream sm:overflow-x-auto">
+              <table className="block w-full border-collapse text-left sm:table sm:min-w-[46rem]">
                 <caption className="sr-only">
                   Housing pod ranges compared by price, size and what they are best suited to
                 </caption>
-                <thead>
+                <thead className="sr-only sm:not-sr-only sm:table-header-group">
                   <tr className="border-b border-border">
                     <th scope="col" className="px-6 py-5 text-sm font-medium text-stone">
                       Range
@@ -286,10 +291,13 @@ export default function HousingPodsPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border">
+                <tbody className="block divide-y divide-border sm:table-row-group">
                   {podRanges.map(({ product, podType, bestFor }) => (
-                    <tr key={product.slug} className="align-top transition-colors hover:bg-sand/30">
-                      <th scope="row" className="px-6 py-5 font-normal">
+                    <tr
+                      key={product.slug}
+                      className="block px-5 py-5 align-top transition-colors hover:bg-sand/30 sm:table-row sm:p-0"
+                    >
+                      <th scope="row" className="block font-normal sm:table-cell sm:px-6 sm:py-5">
                         <Link
                           href={`/${product.slug}`}
                           className="font-display text-lg text-ink underline decoration-border underline-offset-4 transition-colors hover:text-clay"
@@ -297,14 +305,22 @@ export default function HousingPodsPage() {
                           {product.name}
                         </Link>
                       </th>
-                      <td className="px-6 py-5 text-[0.9375rem] text-stone">{podType}</td>
-                      <td className="px-6 py-5 text-[0.9375rem] text-stone">
+                      <td className="mt-3 block text-[0.9375rem] text-stone sm:mt-0 sm:table-cell sm:px-6 sm:py-5">
+                        <PhoneLabel>In pod terms</PhoneLabel>
+                        {podType}
+                      </td>
+                      <td className="mt-3 block text-[0.9375rem] text-stone sm:mt-0 sm:table-cell sm:px-6 sm:py-5">
+                        <PhoneLabel>Size</PhoneLabel>
                         {product.sizeLabel}
                       </td>
-                      <td className="nums-tabular px-6 py-5 font-medium text-ink">
+                      <td className="nums-tabular mt-3 block font-medium text-ink sm:mt-0 sm:table-cell sm:px-6 sm:py-5">
+                        <PhoneLabel>From (ex VAT)</PhoneLabel>
                         {formatZAR(product.startingPrice)}
                       </td>
-                      <td className="px-6 py-5 text-[0.9375rem] text-stone">{bestFor}</td>
+                      <td className="mt-3 block text-[0.9375rem] text-stone sm:mt-0 sm:table-cell sm:px-6 sm:py-5">
+                        <PhoneLabel>Best for</PhoneLabel>
+                        {bestFor}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

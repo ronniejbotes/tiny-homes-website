@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import type { BlogBlock } from "@/data/blog";
 import { ButtonLink } from "@/components/ui/button";
+import { PhoneLabel } from "@/components/ui/phone-label";
 import { RichText } from "@/components/blog/rich-text";
 
 /**
@@ -97,13 +98,18 @@ export function BlogBody({ blocks }: { blocks: BlogBlock[] }) {
 
           case "table":
             return (
+              // Phones first: under `sm` each row is a card, its first cell
+              // the title and every other cell under its column heading
+              // (PhoneLabel), so no column is cut off at the screen edge
+              // (15 October 2026 mobile review). From `sm` up it is the full
+              // table, scrolling sideways when it is wider than the column.
               <div
                 key={i}
-                className="my-6 overflow-x-auto rounded-3xl border border-border bg-parchment"
+                className="my-6 rounded-3xl border border-border bg-parchment sm:overflow-x-auto"
               >
-                <table className="w-full min-w-[42rem] border-collapse text-left">
+                <table className="block w-full border-collapse text-left sm:table sm:min-w-[42rem]">
                   <caption className="sr-only">{block.caption}</caption>
-                  <thead>
+                  <thead className="sr-only sm:not-sr-only sm:table-header-group">
                     <tr className="border-b border-border">
                       {block.head.map((cell, j) => (
                         <th
@@ -116,9 +122,9 @@ export function BlogBody({ blocks }: { blocks: BlogBlock[] }) {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-border">
+                  <tbody className="block divide-y divide-border sm:table-row-group">
                     {block.rows.map((row, j) => (
-                      <tr key={j} className="align-top">
+                      <tr key={j} className="block px-5 py-4 align-top sm:table-row sm:p-0">
                         {row.map((cell, k) =>
                           // First column is the row's label, so it is a row
                           // header: that is what lets a screen reader announce
@@ -127,12 +133,16 @@ export function BlogBody({ blocks }: { blocks: BlogBlock[] }) {
                             <th
                               key={k}
                               scope="row"
-                              className="px-5 py-4 font-display text-base font-normal text-ink"
+                              className="block font-display text-base font-normal text-ink sm:table-cell sm:px-5 sm:py-4"
                             >
                               {cell}
                             </th>
                           ) : (
-                            <td key={k} className="px-5 py-4 text-[0.9375rem] text-stone">
+                            <td
+                              key={k}
+                              className="mt-2.5 block text-[0.9375rem] text-stone sm:mt-0 sm:table-cell sm:px-5 sm:py-4"
+                            >
+                              {block.head[k] ? <PhoneLabel>{block.head[k]}</PhoneLabel> : null}
                               {cell}
                             </td>
                           ),

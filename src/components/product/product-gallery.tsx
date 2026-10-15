@@ -8,6 +8,13 @@ import type { ProductImage } from "./product-images";
  * Masonry-ish photo grid. With more than four images the first (largest)
  * image spans a 2×2 block; span helpers keep the final row filled at each
  * breakpoint. Skipped entirely when there is at most one extra image.
+ *
+ * Phones first: below `sm` every tile is a 4:3 landscape frame, the shape
+ * most of these photos were taken in, so a whole cabin or pod stays in the
+ * picture. The fixed 200px rows the grid used to have on a phone turned a
+ * 169px-wide column into tall portrait tiles, which cut the buildings off
+ * at both sides and squeezed a square render into a thin strip (15 October
+ * 2026 mobile review). From `sm` up the fixed row heights take over again.
  */
 export function ProductGallery({
   productName,
@@ -37,7 +44,7 @@ export function ProductGallery({
       <Container>
         <Stagger
           className={cn(
-            "grid auto-rows-[200px] gap-3 sm:auto-rows-[240px] sm:gap-4 lg:auto-rows-[280px]",
+            "grid gap-3 sm:auto-rows-[240px] sm:gap-4 lg:auto-rows-[280px]",
             gridCols,
           )}
         >
@@ -48,7 +55,7 @@ export function ProductGallery({
               <StaggerItem
                 key={image.src}
                 className={cn(
-                  "group relative overflow-hidden rounded-2xl",
+                  "group relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-auto",
                   featureFirst && isFirst && "col-span-2 sm:row-span-2",
                   isLast && fillLastMobile && "max-sm:col-span-2",
                   isLast && fillLastSm && "sm:col-span-2",
