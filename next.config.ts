@@ -75,6 +75,15 @@ const nextConfig: NextConfig = {
       { source: "/", headers: revalidateHtml },
       { source: "/:path", headers: revalidateHtml },
       { source: "/blog/:slug", headers: revalidateHtml },
+      // HSTS (T-68, 16 October 2026). Its own entry, kept apart from the
+      // Cache-Control lines above, which stay exactly as they are. One day
+      // first; after a week with no problems raise 86400 to 31536000 (one
+      // year). No includeSubDomains and no preload: the DNS changed in the
+      // email move and nobody has checked that every subdomain serves https.
+      {
+        source: "/:path*",
+        headers: [{ key: "Strict-Transport-Security", value: "max-age=86400" }],
+      },
     ];
   },
   async redirects() {
