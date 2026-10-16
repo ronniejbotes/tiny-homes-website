@@ -170,10 +170,11 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 - [How much does a granny flat cost in South
   Africa?](https://tinyhomesa.com/blog/granny-flat-cost-south-africa): A granny flat is a
   "second dwelling" in municipal by-law language — self-contained, with its own bathroom,
-  kitchen and entrance. Conventional Gauteng builds run roughly R250 000 to over R1 000 000
-  per industry cost guides; expandable homes start at R199 900 ex VAT for a self-contained
-  18 m². Two separate approval questions: whether zoning permits a second dwelling at all, and
-  whether building plans are required. Both are decided locally; HOA rules can be stricter.
+  kitchen and entrance. An industry cost guide put a mid-range conventional one-bedroom build
+  at R150 000 to R300 000 in October 2026 (R50 000 to over R500 000 from budget to luxury);
+  expandable homes start at R199 900 ex VAT for a self-contained 18 m². Two separate approval
+  questions: whether zoning permits a second dwelling at all, and whether building plans are
+  required. Both are decided locally; HOA rules can be stricter.
 - [Can you get a home loan for a prefab home in South
   Africa?](https://tinyhomesa.com/blog/prefab-home-finance-south-africa): Per bond originator
   ooba, Standard Bank and Absa have been reported as NOT currently bonding prefabricated
@@ -185,9 +186,9 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   or further advance against existing property, unsecured lending, or staged cash purchase.
 - [Starting a glamping business in South
   Africa](https://tinyhomesa.com/blog/start-a-glamping-business-south-africa): The SA glamping
-  market was about USD 28.1m in 2025, forecast around USD 76.5m by 2034 (11.42% CAGR), with
-  cabins and pods the largest revenue segment — but national accommodation occupancy was
-  reported at roughly 40% in January 2026, so model below that for a new site. Units: Apple
+  market was about USD 28.1m in 2025, forecast around USD 76.5m by 2034 (11.42% CAGR; IMARC,
+  updated June 2026), but national accommodation occupancy was reported at 43.9% in July 2026
+  and 40.6% in June, so model below that for a new site. Units: Apple
   Cabins from R449 900, glamping capsules from R689 900 (kitchen and air conditioning are
   EXTRAS, not standard), nature cabins R810 900 (most fitted), safari tents trade-only on
   request. Budget also for transport, a level base per unit, water, sewerage and power to each

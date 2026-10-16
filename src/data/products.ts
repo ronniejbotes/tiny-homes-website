@@ -348,7 +348,8 @@ export const products: Product[] = [
        *  is a different range, so the product page and the blog post
        *  contradicted each other. (Kandua is cited in the separate
        *  granny-flat-cost-south-africa post, for a different claim: a total
-       *  of about R250 000 to over R1 000 000, not a per-m² rate.)
+       *  for a one-bedroom granny flat, not a per-m² rate. Its figures were
+       *  re-read and reworded on 2026-10-16, T-84.)
        *  Removed 2026-09-17 (T-14). Do not put a per-m² building rate back
        *  on a product page unless somebody has opened the source and the date
        *  it was checked is printed on the page beside it. Our own catalogue

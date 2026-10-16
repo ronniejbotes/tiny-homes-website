@@ -362,7 +362,7 @@ export const blogPosts: BlogPost[] = [
         title: "What it costs to build a house in South Africa",
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
-        note: "Used for the conventional rand-per-square-metre band a pod price is compared against.",
+        note: "Background on conventional building costs, which are charged per square metre and vary by province, if you want to set a pod's price against building a room.",
         checked: "2026-10-16",
       },
       {
@@ -904,7 +904,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What a granny flat costs built conventionally or delivered as a prefab, side by side, which council approvals you need, and how to tell if it pays.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-07",
+    dateModified: "2026-10-16",
     keywords: [
       "granny flat cost South Africa",
       "how much does a granny flat cost",
@@ -918,7 +918,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `A granny flat is the most-asked-about building in South Africa that nobody can price for you over the phone. The range is genuinely enormous — industry cost guides put a conventional Gauteng build anywhere from about R250 000 to over R1 000 000 — because "granny flat" covers everything from a converted garage to a two-bedroom cottage with its own kitchen.`,
+        text: `Nobody can price a granny flat for you over the phone. "Granny flat" covers everything from a converted garage to a two-bedroom cottage with its own kitchen, and even a one-bedroom unit built conventionally has a wide spread: an industry cost guide put a mid-range build at R150 000 to R300 000 in October 2026, and the full range at R50 000 to over R500 000.`,
       },
       {
         type: "p",
@@ -941,7 +941,7 @@ export const blogPosts: BlogPost[] = [
         caption: "Granny flat routes compared on cost, timeline and certainty",
         head: ["", "Conventional build", "Delivered unit"],
         rows: [
-          ["Typical outlay", "R250 000 – R1 000 000+ (Gauteng guides)", `From ${R(expandable)} ex VAT`],
+          ["Typical outlay", "R150 000 – R300 000 for a mid-range one-bedroom (Oct 2026 guide)", `From ${R(expandable)} ex VAT`],
           ["Quoted as", "A rate plus a scope", "A price for a finished unit"],
           ["Time on your property", "Months", "Hours to a few days"],
           ["Layout freedom", "Whatever you can draw", "Catalogue sizes"],
@@ -1019,7 +1019,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "How much does a granny flat cost in South Africa?",
-        a: `Conventionally built, industry cost guides put a Gauteng granny flat somewhere between about R250 000 and R1 000 000 depending on size and finish. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 18 m² with its own bathroom and a small basic kitchen. Add transport, groundwork and service connections to either figure.`,
+        a: `Conventionally built, an industry cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 in October 2026, with budget builds from R50 000 and the top end past R500 000, depending on finishes and scope. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 18 m² with its own bathroom and a small basic kitchen. Add transport, groundwork and service connections to either figure.`,
       },
       {
         q: "Do I need council approval for a granny flat?",
@@ -1027,7 +1027,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What is the cheapest way to build a granny flat in South Africa?",
-        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, industry cost guides put a Gauteng granny flat at about R250 000 to R1 000 000 depending on size and finish; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
+        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, an industry cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 in October 2026; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",
@@ -1043,7 +1043,8 @@ export const blogPosts: BlogPost[] = [
         title: "Cost of building a 1-bedroom house (granny flat) in South Africa",
         publisher: "Kandua",
         url: "https://kandua.com/cost-guides/cost-of-building-a-1-bedroom-house-granny-flat-in-south-africa",
-        note: "Industry cost guide used for the conventional-build range quoted here. Contractor-sourced estimates, not official statistics.",
+        note: "Industry cost guide for the conventional-build figures quoted here: R150 000 to R300 000 for a mid-range one-bedroom granny flat, and R50 000 to R500 000+ from budget to luxury. Estimates from a home-services marketplace, not official statistics.",
+        checked: "2026-10-16",
       },
       {
         title: "What it costs to build a house in South Africa",
@@ -1222,6 +1223,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping site actually pays.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-16",
     keywords: [
       "start a glamping business South Africa",
       "glamping business setup cost",
@@ -1235,11 +1237,11 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Glamping is one of the few genuinely growing accommodation categories in South Africa. Market research puts the local glamping market at around **USD 28 million in 2025, forecast to reach roughly USD 76 million by 2034** — a compound growth rate above 11% — with cabins and pods the largest revenue-generating accommodation type.`,
+        text: `Glamping is a growing accommodation category in South Africa. Market research updated in June 2026 puts the local glamping market at **USD 28.1 million in 2025, forecast to reach USD 76.5 million by 2034**, a compound growth rate above 11%.`,
       },
       {
         type: "p",
-        text: `That is the encouraging half. Here is the other half, and the reason to read the arithmetic before the brochure: national accommodation occupancy was reported at **around 40% in January 2026**. Your units stand empty more nights than they are let. Any plan that assumes otherwise is not a plan.`,
+        text: `That is the encouraging half. Here is the other half, and the reason to read the arithmetic before the brochure: national accommodation occupancy was reported at **43.9% in July 2026**, up from 40.6% in June. Your units stand empty more nights than they are let. Any plan that assumes otherwise is not a plan.`,
       },
 
       { type: "h2", text: "What the units cost" },
@@ -1281,7 +1283,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Build the model on the units you can fund now",
-        text: `Occupancy at 40% nationally means the difference between three units and six is not a doubling of profit — it is a doubling of fixed cost against a market that may not fill either. Most successful small sites start with a couple of units, learn their real occupancy and rate, then add. That is also the cheaper mistake if the location turns out not to work.`,
+        text: `Occupancy of 43.9% nationally in July 2026 means the difference between three units and six is not a doubling of profit. It is a doubling of fixed cost against a market that may not fill either. Most successful small sites start with a couple of units, learn their real occupancy and rate, then add. That is also the cheaper mistake if the location turns out not to work.`,
       },
 
       { type: "h2", text: "The arithmetic that decides it" },
@@ -1332,7 +1334,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What occupancy should I plan for?",
-        a: "National accommodation occupancy was reported at around 40% in January 2026. A new site with no reviews should model below that and check the plan still works at 30%. Any model that only breaks even above 50% is fragile.",
+        a: "National accommodation occupancy was reported at 43.9% in July 2026 and 40.6% in June. A new site with no reviews should model below that and check the plan still works at 30%. Any model that only breaks even above 50% is fragile.",
       },
       {
         q: "Do glamping units need building plans?",
@@ -1344,13 +1346,15 @@ export const blogPosts: BlogPost[] = [
         title: "South Africa glamping market size, share and forecast",
         publisher: "IMARC Group",
         url: "https://www.imarcgroup.com/south-africa-glamping-market",
-        note: "Source for the market size (USD 28.1m in 2025, forecast USD 76.5m by 2034, 11.42% CAGR) and for cabins and pods being the largest accommodation segment by revenue.",
+        note: "Source for the market size: USD 28.1m in 2025, forecast USD 76.5m by 2034, an 11.42% CAGR over 2026 to 2034 (page last updated 12 June 2026).",
+        checked: "2026-10-16",
       },
       {
         title: "South Africa accommodation occupancy rate",
         publisher: "CEIC Data",
         url: "https://www.ceicdata.com/en/south-africa/accommodation-statistics/accommodation-occupancy-rate",
-        note: "Source for the ~40.4% national occupancy figure reported for January 2026.",
+        note: "Source for the national occupancy figures, which CEIC takes from Statistics South Africa: 43.9% for July 2026 and 40.6% for June 2026.",
+        checked: "2026-10-16",
       },
       {
         title: "Tourism statistics",
@@ -1501,7 +1505,8 @@ export const blogPosts: BlogPost[] = [
         title: "Plans and minor building work",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/minor-building-work/",
-        note: "Background on approval requirements — sewerage and water solutions are frequently the part a municipality scrutinises most.",
+        note: "Background on approval: anything you build needs plans unless it counts as minor building work, and even minor building work needs your local authority's permission before you start.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -1780,7 +1785,8 @@ export const blogPosts: BlogPost[] = [
         title: "SANS 10400 — the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
-        note: "Relevant to any permanent outdoor structure, and to the electrical and drainage work feeding it.",
+        note: "The building regulations for any type of structure, drainage included (Part P). They do not cover electrical installations: for wiring, the site refers you to SANS 10142.",
+        checked: "2026-10-16",
       },
       {
         title: "What it costs to build a house in South Africa",
@@ -2305,7 +2311,8 @@ export const blogPosts: BlogPost[] = [
         title: "A competent person",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/a-competent-person/",
-        note: "Who may draw and submit building plans, and the SACAP registration categories.",
+        note: "Who may draw and submit building plans: a competent person, registered in an appropriate category under the acts for the architectural, engineering or natural scientific professions, or any other relevant act.",
+        checked: "2026-10-16",
       },
       {
         title: "Electrical Installation Regulations",
