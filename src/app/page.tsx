@@ -17,6 +17,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { products } from "@/data/products";
+import { productAvailability } from "@/lib/schema";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
@@ -105,7 +106,7 @@ const itemListJsonLd = {
               "@type": "Offer",
               price: p.startingPrice,
               priceCurrency: "ZAR",
-              availability: "https://schema.org/InStock",
+              availability: productAvailability(p),
             },
           }),
     },

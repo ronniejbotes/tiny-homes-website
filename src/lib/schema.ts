@@ -210,6 +210,20 @@ function priceValidUntil(): string {
 }
 
 /**
+ * What Google is told about stock. The owner, 16 October 2026: every unit is
+ * made to order after the deposit, except the X-Fold, which is sometimes in
+ * stock but needs an enquiry to confirm. Google's product docs list no
+ * "MadeToOrder" value, so built-to-order units say PreOrder, and the X-Fold
+ * says LimitedAvailability. Never InStock: nothing is bought online and the
+ * pages give about 90 days from deposit to move-in.
+ */
+export function productAvailability(product: Product): string {
+  return product.slug === "folding-homes"
+    ? "https://schema.org/LimitedAvailability"
+    : "https://schema.org/PreOrder";
+}
+
+/**
  * schema.org Product node: the single JSON-LD builder for every product page.
  * Uses an AggregateOffer spanning the variant range (with a nested per-variant
  * Offer carrying its own sku) when the product has size variants, otherwise a
@@ -229,6 +243,7 @@ export function productSchema(product: Product): SchemaObject {
   // Offers carry the same province-and-neighbour list as the business node, so
   // a product page is eligible for a regional query, not only a national one.
   const offerArea = areaServed();
+  const availability = productAvailability(product);
 
   if (product.priceOnRequest) {
     return {
@@ -261,7 +276,7 @@ export function productSchema(product: Product): SchemaObject {
         offerCount: product.variants.length,
         priceValidUntil: validUntil,
         itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
+        availability,
         seller,
         areaServed: offerArea,
         offers: product.variants.map((variant) => ({
@@ -274,7 +289,7 @@ export function productSchema(product: Product): SchemaObject {
           priceSpecification: priceSpecification(variant.price),
           priceValidUntil: validUntil,
           itemCondition: "https://schema.org/NewCondition",
-          availability: "https://schema.org/InStock",
+          availability,
           seller,
         })),
       }
@@ -287,7 +302,7 @@ export function productSchema(product: Product): SchemaObject {
         priceSpecification: priceSpecification(product.startingPrice),
         priceValidUntil: validUntil,
         itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
+        availability,
         seller,
         areaServed: offerArea,
       };
@@ -391,7 +406,7 @@ export function productItemListSchema(
                 "@type": "Offer",
                 price: product.startingPrice,
                 priceCurrency: "ZAR",
-                availability: "https://schema.org/InStock",
+                availability: productAvailability(product),
                 seller: { "@id": ORG_ID },
               },
             }),
