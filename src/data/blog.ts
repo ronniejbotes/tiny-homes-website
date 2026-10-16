@@ -534,7 +534,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Where Can You Put a Housing Pod in SA?",
     title: "Where can you put a housing pod? Plans, foundations and services in South Africa",
     description:
-      "Before you buy a pod: what to ask your municipality, what base it needs, how services reach it, and the site-access problems that stop a delivery at the gate.",
+      "Before you buy a pod: what to ask your municipality, what base it needs, how services reach it, and the access problems that stop a delivery at the gate.",
     datePublished: "2026-09-02",
     keywords: [
       "do you need plans for a housing pod",
