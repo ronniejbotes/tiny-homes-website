@@ -60,12 +60,19 @@ export function Hero() {
         {/* Separate inner element hosts the on-load ken-burns settle, so its
             CSS scale and the scroll-driven transform above never collide. */}
         <div className="animate-hero-kenburns relative h-full w-full">
+          {/* sizes: on a portrait screen object-cover fills the box by height,
+              so the photo is drawn much wider than the viewport. The box is
+              124% of the hero's height (the -12% bleed top and bottom) and the
+              hero is at least 100svh, so the drawn width is 124vh x 16/9, about
+              221vh: some 1,860px on a 390x844 phone, where "100vw" fetched a
+              640px file and stretched it about three times. Landscape screens
+              keep 100vw, so the desktop download is unchanged. */}
           <Image
             src={heroImage.src}
             alt={heroImage.alt}
             fill
             preload
-            sizes="100vw"
+            sizes="(orientation: portrait) 221vh, 100vw"
             className="object-cover"
           />
         </div>
