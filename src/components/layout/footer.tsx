@@ -153,7 +153,7 @@ export function Footer() {
                 href="/contact"
                 className="inline-flex h-11 items-center rounded-full border border-cream/30 px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:border-cream/70 hover:bg-cream/10"
               >
-                Request a Call
+                Call or WhatsApp us
               </Link>
             </div>
           </div>
