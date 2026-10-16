@@ -1805,6 +1805,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "An honest list of what each route gives you and what it costs you (money, time, paperwork, finance and resale) and which situations each one suits.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-16",
     keywords: [
       "prefab vs building a house",
       "prefab home pros and cons",
@@ -1848,7 +1849,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**You do not know the final number.** You are quoted a rate against a scope, and scope moves. Contingency is not pessimism, it is arithmetic.`,
-          `**The paperwork is heavy.** Plans by a SACAP-registered professional, municipal approval, NHBRC enrolment for a new home, an electrical certificate, an occupancy certificate before anyone may move in. Set out in full in [what you actually need to put a building on your land](/blog/building-approval-south-africa-what-you-need).`,
+          `**The paperwork is heavy.** Plans by a registered competent person, municipal approval, NHBRC enrolment for a new home, an electrical certificate, an occupancy certificate before anyone may move in. Set out in full in [what you actually need to put a building on your land](/blog/building-approval-south-africa-what-you-need).`,
           `**It takes months, on your property.** Trades, deliveries, noise, dust and a garden you cannot use.`,
           `**You carry the coordination risk.** When the plumber and the electrician disagree about a wall, that is your problem and your delay.`,
           `**It cannot leave.** Whatever you spend stays with the property.`,
@@ -1993,9 +1994,9 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Building Plan Approval in SA: What You Need",
     title: "What you actually need to put a building on your land in South Africa",
     description:
-      "Do you need building plans in South Africa? Zoning, SACAP plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
+      "Do you need building plans in South Africa? Zoning, who draws the plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-15",
+    dateModified: "2026-10-16",
     keywords: [
       "building plans approval South Africa",
       "what permits do I need to build South Africa",
@@ -2068,7 +2069,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "Step 2 — Plans, drawn by someone specific" },
       {
         type: "p",
-        text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person registered with the South African Council for the Architectural Profession (SACAP)** — a professional architect, senior architectural technologist, architectural technologist or architectural draughtsperson, depending on the building's complexity. Their registration number appears on the title block of each drawing sheet, and providing architectural services without SACAP registration is an offence.`,
+        text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person**, registered in an appropriate category under the Architectural Profession Act, the Engineering Profession Act or another relevant act. For architectural services, that means the **South African Council for the Architectural Profession (SACAP)**: a person who is not registered with SACAP is not legally allowed to provide them. Its four professional categories are Professional Architect, Professional Senior Architectural Technologist, Professional Architectural Technologist and Professional Architectural Draughtsperson, and which of them may design a project depends on its complexity and the sensitivity of the site. SACAP's Code of Conduct requires them to use their title and SACAP registration number in their architectural reports and other documentation, and practising in any of those categories without being registered in it is an offence under the Architectural Profession Act.`,
       },
       {
         type: "p",
@@ -2117,7 +2118,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "The honest summary of route 1",
-        text: `Land use decision, SACAP-registered plans, a 30- or 60-day municipal clock, NHBRC enrolment 15 days before you break ground, inspections through construction, an electrical certificate and an occupancy certificate at the end. None of it is optional, and the occupancy certificate is the one that bites at resale.`,
+        text: `Land use decision, plans by a registered competent person, a 30- or 60-day municipal clock, NHBRC enrolment 15 days before you break ground, inspections through construction, an electrical certificate and an occupancy certificate at the end. None of it is optional, and the occupancy certificate is the one that bites at resale.`,
       },
 
       { type: "h2", text: "Route 2: a temporary building" },
@@ -2215,7 +2216,7 @@ export const blogPosts: BlogPost[] = [
           `**Phone your municipality's building control department.** Free. Describe the actual structure, its size, its foundation and whether anyone will sleep in it — not "a tiny home", which means different things to different officials.`,
           `**Ask the land-use question separately**: does my zoning permit this use, and do I need consent use?`,
           `**Ask which route applies**: permanent building, temporary building under A23, or minor building work.`,
-          `**If route 1**, appoint a SACAP-registered professional early — nothing proceeds until plans exist.`,
+          `**If route 1**, appoint a registered competent person early: nothing proceeds until plans exist.`,
           `**If route 2**, confirm the period you can get and what happens at expiry, before you buy.`,
           `**Check your HOA or body corporate rules**, which can be stricter than the municipality's.`,
           `**Tell your insurer** what you are putting up, and confirm it is covered.`,
@@ -2239,7 +2240,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Can I draw my own building plans in South Africa?",
-        a: "No. Plans must be prepared and submitted by a competent person registered with SACAP — a professional architect, senior architectural technologist, architectural technologist or architectural draughtsperson — whose registration number appears on each drawing sheet. Providing architectural services without SACAP registration is an offence.",
+        a: "No. Plans must be prepared and submitted by a competent person, registered in an appropriate category under the Architectural Profession Act, the Engineering Profession Act or another relevant act. For architectural services, that means someone registered with SACAP. SACAP's four professional categories are Professional Architect, Professional Senior Architectural Technologist, Professional Architectural Technologist and Professional Architectural Draughtsperson. SACAP's Code of Conduct requires them to use their title and SACAP registration number in their architectural reports and other documentation, and practising in any of those categories without being registered in it is an offence under the Architectural Profession Act.",
       },
       {
         q: "Do I need an occupancy certificate?",
@@ -2312,6 +2313,34 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/a-competent-person/",
         note: "Who may draw and submit building plans: a competent person, registered in an appropriate category under the acts for the architectural, engineering or natural scientific professions, or any other relevant act.",
+        checked: "2026-10-16",
+      },
+      {
+        title: "Architectural Profession Act 44 of 2000",
+        publisher: "South African Council for the Architectural Profession (SACAP)",
+        url: "https://www.sacapsa.com/documents/uploads/OUP38xHG3lrMZ5Fi-0.pdf",
+        note: "Section 18(1) lists the registration categories, including the four professional ones; section 18(2) says a person may not practise in a category unless registered in it, and section 41(1) makes contravening section 18(2) an offence.",
+        checked: "2026-10-16",
+      },
+      {
+        title: "For Public",
+        publisher: "South African Council for the Architectural Profession (SACAP)",
+        url: "https://www.sacapsa.com/for-public",
+        note: "SACAP's statement that a person who is not registered with SACAP is not legally allowed to provide architectural services in South Africa.",
+        checked: "2026-10-16",
+      },
+      {
+        title: "Identification of Work for the Architectural Profession (Board Notice 901 of 2026)",
+        publisher: "South African Council for the Architectural Profession (SACAP)",
+        url: "https://www.sacapsa.com/documents/uploads/GcP5nKKkSf45Xipk-0.pdf",
+        note: "The work each category of registration may design is based on the competence requirements, the complexity of the project and the sensitivity of the site.",
+        checked: "2026-10-16",
+      },
+      {
+        title: "Code of Conduct for Registered Persons (Board Notice 7 of 2021)",
+        publisher: "South African Council for the Architectural Profession (SACAP)",
+        url: "https://www.sacapsa.com/documents/uploads/WGxnWxu4FdvIwr6S-0.pdf",
+        note: "Rule 5.11(e): registered persons use their titles and SACAP registration number in all architectural reports and other documentation relating to their work.",
         checked: "2026-10-16",
       },
       {

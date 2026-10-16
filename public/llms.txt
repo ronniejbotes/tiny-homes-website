@@ -236,9 +236,11 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   TWO legal routes. ROUTE 1, permanent building (National Building Regulations and Building
   Standards Act 103 of 1977): land use first (SPLUMA — a second dwelling on Residential 1
   usually needs consent use, which lapses when the property is sold); plans must be drawn and
-  submitted by a competent person registered with SACAP (doing architectural work unregistered
-  is an offence); the local authority must grant or refuse within 30 days under 500 m² or
-  60 days at 500 m² and over, and approval lapses after 12 months if work has not started;
+  submitted by a registered competent person (for architectural services, registered with
+  SACAP; practising in a SACAP category unregistered is an offence under sections 18(2) and
+  41(1) of the Architectural Profession Act 44 of 2000); the local authority must grant or
+  refuse within 30 days under 500 m² or 60 days at 500 m² and over, and approval lapses after
+  12 months if work has not started;
   NHBRC enrolment 15 days before construction under the Housing Consumers Protection Measures
   Act 95 of 1998, with section 10(1) requiring home-builder registration and section 21
   carrying a fine up to R25 000 or a year's imprisonment per charge; an electrical certificate
