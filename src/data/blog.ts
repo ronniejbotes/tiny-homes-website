@@ -71,6 +71,14 @@ export interface BlogReference {
   url: string;
   /** What we used it for. */
   note?: string;
+  /**
+   * ISO date (YYYY-MM-DD) someone last opened this source and confirmed it
+   * still says what `note` uses it for. Shown on the post as "Checked on".
+   * Set it only after that check, never as a guess or a build stamp: a source
+   * that has moved, gone, or no longer backs its note keeps no date until the
+   * copy or the source is fixed (T-17, first pass 16 October 2026).
+   */
+  checked?: string;
 }
 
 export interface BlogPost {
@@ -355,6 +363,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Used for the conventional rand-per-square-metre band a pod price is compared against.",
+        checked: "2026-10-16",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
@@ -518,12 +527,14 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "Plain-language reference on the deemed-to-satisfy standards any of these three structures is measured against once it is a habitable room.",
+        checked: "2026-10-16",
       },
       {
         title: "What it costs to build a house in South Africa",
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Context for the conventional-build end of the comparison.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -707,12 +718,14 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/minor-building-work/",
         note: "What the regulations treat as minor building work, and where that stops. Your municipality still makes the call on your stand.",
+        checked: "2026-10-16",
       },
       {
         title: "National Home Builders Registration Council",
         publisher: "NHBRC",
         url: "https://nhbrc.org.za/",
         note: "The home-warranty regulator. Relevant if a unit is being built for sale as a dwelling, and the place to check owner-builder exemption rules.",
+        checked: "2026-10-16",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
@@ -866,6 +879,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Source for the conventional rand-per-square-metre band used throughout this article.",
+        checked: "2026-10-16",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
@@ -878,6 +892,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards a habitable structure is measured against, whichever way it is built.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -1035,12 +1050,14 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Cross-check on conventional rand-per-square-metre rates.",
+        checked: "2026-10-16",
       },
       {
         title: "Plans and minor building work",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/minor-building-work/",
         note: "Background on when building plan approval is required. Your municipality makes the final call.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -1179,18 +1196,21 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/prefab-homes/",
         note: "Source for every bank position quoted in this article, including the FNB foundation and National Building Regulations conditions and the Nedbank land-deposit structure.",
+        checked: "2026-10-16",
       },
       {
         title: "SANS 10400 — the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards FNB's compliance condition refers to.",
+        checked: "2026-10-16",
       },
       {
         title: "National Home Builders Registration Council",
         publisher: "NHBRC",
         url: "https://nhbrc.org.za/",
         note: "Home-warranty registration, which lenders may ask about on a new dwelling.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -1475,6 +1495,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "Includes the parts covering drainage, non-water-borne sanitation and energy usage in buildings, which govern what off-grid solutions are permitted.",
+        checked: "2026-10-16",
       },
       {
         title: "Plans and minor building work",
@@ -1608,6 +1629,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards habitable accommodation is measured against, including the parts covering lighting, ventilation and sanitary fittings.",
+        checked: "2026-10-16",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
@@ -1765,6 +1787,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Context for the conventional building rates a masonry braai area is quoted against.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -1940,6 +1963,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/prefab-homes/",
         note: "Source for the finance restriction cited in the cons list.",
+        checked: "2026-10-16",
       },
       {
         title: "National Building Regulations and Building Standards Act 103 of 1977",
@@ -1952,6 +1976,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
         note: "Conventional building cost context.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -2267,12 +2292,14 @@ export const blogPosts: BlogPost[] = [
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/temporary-buildings/",
         note: "Plain-language explanation of regulation A23 — what must be submitted, the assessment criteria, extensions and removal.",
+        checked: "2026-10-16",
       },
       {
         title: "Plans and minor building work",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/minor-building-work/",
         note: "Source for the minor building work categories and size thresholds in the table above.",
+        checked: "2026-10-16",
       },
       {
         title: "A competent person",
@@ -2291,6 +2318,7 @@ export const blogPosts: BlogPost[] = [
         publisher: "South African Government",
         url: "https://www.gov.za/documents/spatial-planning-and-land-use-management-act",
         note: "The land use framework behind zoning, consent use and rezoning applications.",
+        checked: "2026-10-16",
       },
     ],
   },
@@ -2493,24 +2521,28 @@ export const blogPosts: BlogPost[] = [
         publisher: "South African Government",
         url: "https://www.gov.za/documents/national-credit-act",
         note: "The framework behind the instalment-agreement and registered-credit-provider points: what makes a rent-to-own arrangement a credit agreement in substance.",
+        checked: "2026-10-16",
       },
       {
         title: "National Credit Act: Determination of threshold for credit provider registration",
         publisher: "South African Government",
         url: "https://www.gov.za/documents/national-credit-act-determination-threshold-credit-provider-registration-11-may-2016-0000",
         note: "Government Notice 513 of 11 May 2016, which set the registration threshold at nil, so a credit provider must be registered however little credit it extends. The Act's original text above still shows the old threshold.",
+        checked: "2026-10-16",
       },
       {
         title: "National Credit Regulator",
         publisher: "NCR",
         url: "https://www.ncr.org.za/",
         note: "The regulator that registers credit providers, and where a provider's registration can be checked under Registrants → Credit Providers.",
+        checked: "2026-10-16",
       },
       {
         title: "Prefab homes: will the bank grant you a bond?",
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/prefab-homes/",
         note: "Source for the position that some major South African banks decline prefabricated structures while others will bond them subject to a fixed foundation and National Building Regulations compliance.",
+        checked: "2026-10-16",
       },
     ],
   },

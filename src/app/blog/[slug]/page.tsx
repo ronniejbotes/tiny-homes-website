@@ -209,6 +209,12 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                       {" — "}
                       <span className="text-ink">{ref.publisher}</span>
                       {ref.note ? <span className="block text-stone">{ref.note}</span> : null}
+                      {ref.checked ? (
+                        <span className="mt-1 block text-sm text-stone">
+                          Checked on{" "}
+                          <time dateTime={ref.checked}>{formatDate(ref.checked)}</time>
+                        </span>
+                      ) : null}
                     </span>
                   </li>
                 ))}
