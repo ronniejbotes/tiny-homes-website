@@ -163,23 +163,22 @@ export function Footer() {
           <p>
             © <CurrentYear buildYear={new Date().getFullYear()} /> {site.legalName}. All prices exclude VAT.
           </p>
-          <p>
+          {/* A wrapping flex row with a gap, not "·" separators: on a phone the
+              row breaks after Contact and a separator was left dangling at the
+              end of the first line. The 28px gap matches the old dot spacing. */}
+          <p className="flex flex-wrap gap-x-7">
             <Link href="/book-a-viewing" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Book a Viewing
             </Link>
-            <span className="mx-3">·</span>
             <Link href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               About
             </Link>
-            <span className="mx-3">·</span>
             <Link href="/contact" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Contact
             </Link>
-            <span className="mx-3">·</span>
             <Link href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Privacy Policy
             </Link>
-            <span className="mx-3">·</span>
             <Link href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Terms
             </Link>
