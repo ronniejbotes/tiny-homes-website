@@ -385,9 +385,14 @@ export default function HousingPodsPage() {
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="nums-tabular mt-2 text-lg font-medium text-ink">
+                      {/* The size keeps its units together (no lone "m²"). JSX
+                          leaves no space between "VAT" and the span, so on
+                          phones a flex row gives the size its own line when it
+                          does not fit, flush left, instead of the line breaking
+                          inside "ex VAT". sm and up stay inline as before. */}
+                      <p className="nums-tabular mt-2 text-lg font-medium text-ink max-sm:flex max-sm:flex-wrap max-sm:items-baseline max-sm:gap-x-3">
                         From {formatZAR(product.startingPrice)} ex VAT
-                        <span className="ml-3 text-sm font-normal text-stone">
+                        <span className="whitespace-nowrap text-sm font-normal text-stone sm:ml-3">
                           {product.sizeLabel}
                         </span>
                       </p>
