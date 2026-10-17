@@ -128,12 +128,19 @@ export default function HousingPodsPage() {
       <section className="relative isolate overflow-hidden bg-forest text-cream">
         {heroImage && (
           <>
+            {/* sizes: as on the home hero (T-83), object-cover fills this box by
+                height on a phone, so the 4:3 photo is drawn far wider than the
+                screen. Here the box height comes from the text, not the
+                viewport: 815-845px on every phone measured (360 to 430 wide),
+                so the photo is drawn about 1,090-1,130px wide. "100vw" fetched
+                a 640px file at DPR 1 and 1200px at DPR 3 and stretched it up
+                to 2.7 times. sm and up keep 100vw, so desktop is unchanged. */}
             <Image
               src={heroImage.src}
               alt={heroImage.alt}
               fill
               priority
-              sizes="100vw"
+              sizes="(max-width: 639px) 1130px, 100vw"
               className="object-cover opacity-45"
             />
             <div
