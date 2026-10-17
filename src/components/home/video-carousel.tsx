@@ -10,6 +10,9 @@ import { SectionHeading } from "@/components/ui/section-heading";
 type Clip = {
   id: string;
   src: string;
+  /** Lighter copy served below the sm breakpoint (see VideoTile). Same clip,
+      no audio track (the tiles are muted), roughly 1-2 MB. */
+  mobileSrc?: string;
   poster: string;
   width: number;
   height: number;
@@ -31,6 +34,7 @@ const clips: Clip[] = [
   {
     id: "expandable-home-unfold",
     src: "/videos/expandable-home-unfold.mp4",
+    mobileSrc: "/videos/expandable-home-unfold-mobile.mp4",
     poster: "/videos/expandable-home-unfold-poster.jpg",
     width: 405,
     height: 720,
@@ -39,6 +43,7 @@ const clips: Clip[] = [
   {
     id: "expandable-home-exterior",
     src: "/videos/expandable-home-exterior.mp4",
+    mobileSrc: "/videos/expandable-home-exterior-mobile.mp4",
     poster: "/videos/expandable-home-exterior-poster.jpg",
     width: 360,
     height: 640,
@@ -47,6 +52,7 @@ const clips: Clip[] = [
   {
     id: "nature-cabin-exterior",
     src: "/videos/nature-cabin-exterior.mp4",
+    mobileSrc: "/videos/nature-cabin-exterior-mobile.mp4",
     poster: "/videos/nature-cabin-exterior-poster.jpg",
     width: 360,
     height: 640,
@@ -55,6 +61,7 @@ const clips: Clip[] = [
   {
     id: "nature-cabin-interior",
     src: "/videos/nature-cabin-interior.mp4",
+    mobileSrc: "/videos/nature-cabin-interior-mobile.mp4",
     poster: "/videos/nature-cabin-interior-poster.jpg",
     width: 360,
     height: 640,
@@ -63,6 +70,7 @@ const clips: Clip[] = [
   {
     id: "glamping-capsule-tour",
     src: "/videos/glamping-capsule-tour.mp4",
+    mobileSrc: "/videos/glamping-capsule-tour-mobile.mp4",
     poster: "/videos/glamping-capsule-tour-poster.jpg",
     width: 360,
     height: 640,
@@ -71,6 +79,7 @@ const clips: Clip[] = [
   {
     id: "glamping-capsule-exterior",
     src: "/videos/glamping-capsule-exterior.mp4",
+    mobileSrc: "/videos/glamping-capsule-exterior-mobile.mp4",
     poster: "/videos/glamping-capsule-exterior-poster.jpg",
     width: 480,
     height: 848,
@@ -79,6 +88,7 @@ const clips: Clip[] = [
   {
     id: "safari-tent-lodge",
     src: "/videos/safari-tent-lodge.mp4",
+    mobileSrc: "/videos/safari-tent-lodge-mobile.mp4",
     poster: "/videos/safari-tent-lodge-poster.jpg",
     width: 640,
     height: 272,
@@ -148,6 +158,13 @@ function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
+        {/* Phones get the light copy: the originals run to 26.7 MB (the
+            safari clip), and swiping through all eight fetched about 62 MB.
+            The browser takes the first <source> whose media matches, so it
+            must come first; sm and up keep the original file. */}
+        {clip.mobileSrc && (
+          <source src={clip.mobileSrc} type="video/mp4" media="(max-width: 639px)" />
+        )}
         <source src={clip.src} type="video/mp4" />
         Your browser does not support embedded video.
       </video>
