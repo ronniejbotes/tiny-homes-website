@@ -65,10 +65,16 @@ export function ProductGallery({
                   src={image.src}
                   alt={image.alt}
                   fill
+                  // A last tile stretched across two columns from sm up is as
+                  // wide as the feature image (784px at 1440), so it gets the
+                  // same sm-up slot; "33vw" fetched a 640px file for it. The
+                  // phone value is unchanged.
                   sizes={
                     featureFirst && isFirst
                       ? "(min-width: 640px) 62vw, 100vw"
-                      : "(min-width: 640px) 33vw, 50vw"
+                      : isLast && fillLastSm
+                        ? "(min-width: 640px) 62vw, 50vw"
+                        : "(min-width: 640px) 33vw, 50vw"
                   }
                   className="object-cover transition-transform duration-300 ease-[var(--ease-smooth)] group-hover:scale-105"
                 />

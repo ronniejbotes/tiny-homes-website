@@ -83,7 +83,14 @@ export function Hero() {
       <div className="bg-grain pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-40 sm:px-8 sm:pb-32 lg:px-12">
-        <p className="text-eyebrow animate-rise-in text-sage" style={rise(0.12)}>
+        {/* A lighter tint of sage (#cbd9c5) with a soft dark halo: plain sage
+            on the bright interior of the photo measured about 2:1. The halo
+            darkens only the few pixels around each letter, so the photo and
+            the scrim are untouched; median contrast is now about 5-6:1. */}
+        <p
+          className="text-eyebrow animate-rise-in text-[#cbd9c5] [text-shadow:0_0_3px_rgba(28,27,23,0.6),0_0_8px_rgba(28,27,23,0.6),0_0_16px_rgba(28,27,23,0.45)]"
+          style={rise(0.12)}
+        >
           <Link
             href="/blog/modular-homes-south-africa-explained"
             className="underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"

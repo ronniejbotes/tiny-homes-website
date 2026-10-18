@@ -108,8 +108,12 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-1 lg:flex">
+        {/* Desktop nav from xl (1280px) up. The full row (logo, five links,
+            phone number and quote button) needs about 1,180px; from lg
+            (1024px) every item wrapped onto two lines below that ("Book a /
+            viewing", "083 660 / 3743"). Up to xl the burger menu below carries
+            the same links, phone number and quote button. */}
+        <div className="hidden items-center gap-1 xl:flex">
           <div
             className="relative"
             onMouseEnter={() => setProductsOpen(true)}
@@ -206,7 +210,7 @@ export function Navbar() {
         <button
           ref={toggleRef}
           type="button"
-          className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 lg:hidden"
+          className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 xl:hidden"
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileOpen((v) => !v)}
@@ -226,7 +230,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={reduce ? undefined : { opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="overflow-hidden border-t border-border bg-cream lg:hidden"
+            className="overflow-hidden border-t border-border bg-cream xl:hidden"
           >
             <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto px-5 pb-8 pt-4">
               <p className="text-eyebrow mb-2 mt-2 text-stone">Our Tiny Solutions</p>

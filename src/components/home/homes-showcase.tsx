@@ -32,6 +32,15 @@ const cropPosition: Record<string, string> = {
   "safari-tents": "object-[50%_35%]",
 };
 
+/* The glamping capsule hero is a 2400 x 1018 panorama. object-cover fills the
+   4:3 frame by height, so on lg the photo is drawn about 1.77 times the card's
+   width: some 1,200px in its 681px card at 1440. "45vw" fetched a 750px file
+   and stretched it 1.6 times. Its lg slot is sized for the drawn width; phones
+   and tablets keep the shared values. */
+const lgSizes: Record<string, string> = {
+  "glamping-capsules": "83vw",
+};
+
 /* Alternating wide/narrow rows on lg for an editorial, asymmetric rhythm,
    cycled with modulo so the grid stays balanced however many products exist. */
 const spanClasses = [
@@ -88,7 +97,7 @@ export function HomesShowcase() {
                         src={image.src}
                         alt={image.alt}
                         fill
-                        sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
+                        sizes={`(min-width: 1024px) ${lgSizes[product.slug] ?? "45vw"}, (min-width: 640px) 50vw, 100vw`}
                         className={cn(
                           "object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105",
                           cropPosition[product.slug],

@@ -17,6 +17,7 @@ import {
 } from "@/lib/schema";
 import { getHeroImage } from "@/components/product/product-images";
 import { podRanges, podPriceFrom, podPriceTo } from "@/data/housing-pods";
+import { cn } from "@/lib/cn";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { podFaqs } from "./faqs";
@@ -336,7 +337,9 @@ export default function HousingPodsPage() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-stone">
+            {/* max-w-xl, about 80 characters a line; at max-w-3xl this 14px
+                note ran to about 110. */}
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone">
               Prices are for the product only and exclude VAT, earthworks and the provision
               of services. Larger sizes and extras carry their own prices — the{" "}
               <Link href="/quote" className="underline underline-offset-2 hover:text-ink">
@@ -359,18 +362,41 @@ export default function HousingPodsPage() {
           />
 
           <Stagger className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-2" as="ul">
-            {podRanges.map(({ product, podType, podPitch, notAPod }) => {
+            {podRanges.map(({ product, podType, podPitch, notAPod }, i) => {
               const image = getHeroImage(product.slug);
+              /* Five ranges in two columns left the last card alone beside an
+                 empty cell (about 600 x 770px at 1440). On lg an odd last card
+                 spans both columns as a row, photo left and text right, so its
+                 text keeps the same measure as the cards above. The photo fills
+                 the text's height by object-cover; for the 2400 x 1018 Nature
+                 Cabins panorama that draws it about 1,060px wide at 1440, hence
+                 its own sizes. Phones are unchanged. */
+              const wide = podRanges.length % 2 === 1 && i === podRanges.length - 1;
               return (
-                <StaggerItem key={product.slug} as="li">
-                  <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment">
+                <StaggerItem key={product.slug} as="li" className={wide ? "lg:col-span-2" : undefined}>
+                  <article
+                    className={cn(
+                      "flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment",
+                      wide && "lg:flex-row",
+                    )}
+                  >
                     {image && (
-                      <Link href={`/${product.slug}`} className="relative block aspect-[16/9]">
+                      <Link
+                        href={`/${product.slug}`}
+                        className={cn(
+                          "relative block aspect-[16/9]",
+                          wide && "lg:aspect-auto lg:w-1/2 lg:shrink-0",
+                        )}
+                      >
                         <Image
                           src={image.src}
                           alt={image.alt}
                           fill
-                          sizes="(min-width: 1024px) 40rem, 100vw"
+                          sizes={
+                            wide
+                              ? "(min-width: 1024px) 75rem, 100vw"
+                              : "(min-width: 1024px) 40rem, 100vw"
+                          }
                           className="object-cover"
                         />
                       </Link>
@@ -459,7 +485,9 @@ export default function HousingPodsPage() {
           </Stagger>
 
           <Reveal delay={0.15} className="mt-10">
-            <p className="text-[0.9375rem] leading-relaxed text-stone">
+            {/* Capped at max-w-2xl (about 85 characters a line); uncapped it
+                ran the full 1,184px container. */}
+            <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-stone">
               We have written this up in more detail:{" "}
               <Link
                 href="/blog/where-can-you-put-a-housing-pod"

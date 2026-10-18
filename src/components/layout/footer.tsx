@@ -186,8 +186,10 @@ export function Footer() {
         </div>
 
         {/* pb-24 on phones: the floating WhatsApp badge (80px, 20px off the
-            bottom) otherwise sits on the last lines of this note. */}
-        <p className="mt-6 max-w-4xl pb-24 text-xs leading-relaxed text-cream/45 sm:pb-0">
+            bottom) otherwise sits on the last lines of this note. Cream at 70%
+            on forest is 6.5:1; the 45% it had was 3.6:1, under the 4.5:1 that
+            12px text needs. */}
+        <p className="mt-6 max-w-4xl pb-24 text-xs leading-relaxed text-cream/70 sm:pb-0">
           All prices exclude VAT and are quoted as delivered in Durban; transport to your site
           is quoted separately. Prices are for the product only and exclude earthworks or the
           provision of services, which are quoted separately. Site preparation and access are the
