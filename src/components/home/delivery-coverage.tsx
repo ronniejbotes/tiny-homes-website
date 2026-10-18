@@ -23,7 +23,7 @@ export function DeliveryCoverage() {
       <Container>
         <SectionHeading
           eyebrow="Where we deliver"
-          title="Anywhere the truck can reach"
+          title="Delivered anywhere in South Africa, from Cape Town to Limpopo"
           intro="Your home is trucked to your site anywhere in South Africa. Delivery is quoted separately on distance and access, at cost, with no markup."
           id="coverage-heading"
         />
@@ -35,7 +35,7 @@ export function DeliveryCoverage() {
               All nine South African provinces
             </h3>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
-              From the Cape coast to the Limpopo bushveld. If a truck and a crane can reach the
+              From Cape Town and the Garden Route to the Limpopo bushveld. If a truck and a crane can reach the
               site, we can put a home on it.
             </p>
             <Stagger as="ul" className="mt-6 flex flex-wrap gap-2.5">

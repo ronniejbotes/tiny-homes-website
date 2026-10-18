@@ -951,7 +951,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [expandable homes](/expandable-homes) are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell — it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
+        text: `Our [prefab granny flats](/expandable-homes), the expandable homes, are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell — it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
       },
       {
         type: "p",
