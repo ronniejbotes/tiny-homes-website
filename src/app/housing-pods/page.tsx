@@ -136,11 +136,16 @@ export default function HousingPodsPage() {
                 so the photo is drawn about 1,090-1,130px wide. "100vw" fetched
                 a 640px file at DPR 1 and 1200px at DPR 3 and stretched it up
                 to 2.7 times. sm and up keep 100vw, so desktop is unchanged. */}
+            {/* The page's LCP element on phones (Lighthouse, 18 October 2026),
+                so it is preloaded and asked for at high priority: before, the
+                preload carried no fetchpriority and the browser only raised
+                the request once layout showed the photo on screen. */}
             <Image
               src={heroImage.src}
               alt={heroImage.alt}
               fill
-              priority
+              preload
+              fetchPriority="high"
               sizes="(max-width: 639px) 1130px, 100vw"
               className="object-cover opacity-45"
             />
@@ -151,7 +156,11 @@ export default function HousingPodsPage() {
           </>
         )}
         <Container className="relative pt-36 pb-20 sm:pt-44 sm:pb-28">
-          <Reveal className="max-w-3xl">
+          {/* No <Reveal> on the first screen (18 October 2026): its framer
+              fade starts at opacity 0 and waits for JavaScript, so the H1 and
+              intro were blank until the page hydrated. Below the hero the
+              scroll reveals stay as they are. */}
+          <div className="max-w-3xl">
             <p className="text-eyebrow text-sage">
               From <span className="nums-tabular">{formatZAR(podPriceFrom)}</span> ex VAT
             </p>
@@ -177,7 +186,7 @@ export default function HousingPodsPage() {
             <p className="mt-6 text-sm text-cream/60">
               Delivered to all nine provinces. Showroom in Centurion, Gauteng.
             </p>
-          </Reveal>
+          </div>
         </Container>
       </section>
 

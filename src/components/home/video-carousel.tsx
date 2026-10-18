@@ -98,7 +98,16 @@ const clips: Clip[] = [
 
 /** One portrait video tile. Plays only while in view; a per-tile control
     lets a visitor stop it regardless (WCAG 2.2.2 hide/pause). */
-function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
+function VideoTile({
+  clip,
+  reduce,
+  showPoster,
+}: {
+  clip: Clip;
+  reduce: boolean;
+  /** False until the carousel is near the screen (see VideoCarousel). */
+  showPoster: boolean;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
   /** The visitor's intent: separate from whether it's actually in view. */
@@ -151,7 +160,7 @@ function VideoTile({ clip, reduce }: { clip: Clip; reduce: boolean }) {
         loop
         playsInline
         preload="none"
-        poster={clip.poster}
+        poster={showPoster ? clip.poster : undefined}
         aria-label={clip.label}
         width={clip.width}
         height={clip.height}
@@ -193,6 +202,30 @@ export function VideoCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  /* The eight posters (about 85 KB) used to download with the first screen,
+     competing with the hero photo, although the carousel sits well down the
+     page. They are now set once the carousel comes within about 1,500px of
+     the screen, so each still has loaded long before it is scrolled to and
+     the tiles look exactly as before. The track is observed, not each tile:
+     tiles off to the right are clipped by the scroll track, so a per-tile
+     observer would only fire as each one was swiped into view. */
+  const [showPosters, setShowPosters] = useState(false);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowPosters(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "1500px 0px 1500px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const updateScrollState = useCallback(() => {
     const el = trackRef.current;
@@ -264,7 +297,12 @@ export function VideoCarousel() {
           )}
         >
           {clips.map((clip) => (
-            <VideoTile key={clip.id} clip={clip} reduce={reduce ?? false} />
+            <VideoTile
+              key={clip.id}
+              clip={clip}
+              reduce={reduce ?? false}
+              showPoster={showPosters}
+            />
           ))}
         </div>
       </Container>
