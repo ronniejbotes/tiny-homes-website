@@ -228,8 +228,10 @@ export function productAvailability(product: Product): string {
  * Uses an AggregateOffer spanning the variant range (with a nested per-variant
  * Offer carrying its own sku) when the product has size variants, otherwise a
  * single ex-VAT Offer. All prices are ZAR, VAT-exclusive per PriceSpecification.
- * Price-on-request products emit the Product node WITHOUT offers; their 0
- * sentinel price must never reach structured data.
+ * Price-on-request products (the trade-only safari tents) emit a plain WebPage
+ * node instead: their 0 sentinel price must never reach structured data, and a
+ * Product with no offer, review or rating is an invalid product snippet to
+ * Google (URL Inspection ERROR on /safari-tents, 18 October 2026).
  */
 export function productSchema(product: Product): SchemaObject {
   const productImages =
@@ -247,13 +249,12 @@ export function productSchema(product: Product): SchemaObject {
 
   if (product.priceOnRequest) {
     return {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: `${product.name} | ${site.name}`,
-      description: product.summary,
+      ...webPageSchema("WebPage", {
+        name: `${product.name} | ${site.name}`,
+        description: product.summary,
+        path: `/${product.slug}`,
+      }),
       image,
-      brand: { "@type": "Brand", name: site.name },
-      url,
     };
   }
 
@@ -374,11 +375,14 @@ export function collectionPageSchema(page: {
 }
 
 /**
- * ItemList of products, each with its offer, for a hub page.
+ * ItemList of products, each with its offer and main photo, for the homepage
+ * and hub pages.
  *
- * Price-on-request products publish no offer — a 0 sentinel reaching
- * structured data would be a false price claim, the same rule the homepage
- * ItemList and `productSchema` already follow.
+ * `image` is the product's hero photo, the same one its card shows (Google
+ * reports a merchant listing without one as an ERROR). Price-on-request
+ * products publish no offer — a 0 sentinel reaching structured data would be a
+ * false price claim — so they are listed by name and link only, never as a
+ * Product, matching `productSchema`.
  */
 export function productItemListSchema(
   name: string,
@@ -388,31 +392,44 @@ export function productItemListSchema(
     "@context": "https://schema.org",
     "@type": "ItemList",
     name,
-    itemListElement: items.map((product, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: product.name,
-      url: `${site.url}/${product.slug}`,
-      item: {
-        "@type": "Product",
+    itemListElement: items.map((product, index) => {
+      const image = heroImageUrl(product.slug);
+      return {
+        "@type": "ListItem",
+        position: index + 1,
         name: product.name,
-        description: product.summary,
         url: `${site.url}/${product.slug}`,
-        brand: { "@type": "Brand", name: site.name },
         ...(product.priceOnRequest
           ? {}
           : {
-              offers: {
-                "@type": "Offer",
-                price: product.startingPrice,
-                priceCurrency: "ZAR",
-                availability: productAvailability(product),
-                seller: { "@id": ORG_ID },
+              item: {
+                "@type": "Product",
+                name: product.name,
+                description: product.summary,
+                url: `${site.url}/${product.slug}`,
+                ...(image ? { image } : {}),
+                brand: { "@type": "Brand", name: site.name },
+                offers: {
+                  "@type": "Offer",
+                  price: product.startingPrice,
+                  priceCurrency: "ZAR",
+                  availability: productAvailability(product),
+                  seller: { "@id": ORG_ID },
+                },
               },
             }),
-      },
-    })),
+      };
+    }),
   };
+}
+
+/** Absolute URL of a product's hero photo (the manifest's `hero` image, else
+ *  its first), the photo the homepage and hub cards show for it. */
+function heroImageUrl(slug: string): string | undefined {
+  const productImages =
+    (images.products as Record<string, { src: string; hero?: boolean }[]>)[slug] ?? [];
+  const hero = productImages.find((img) => img.hero) ?? productImages[0];
+  return hero ? `${site.url}${hero.src}` : undefined;
 }
 
 /**

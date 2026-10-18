@@ -17,7 +17,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { products } from "@/data/products";
-import { productAvailability } from "@/lib/schema";
+import { productItemListSchema } from "@/lib/schema";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
@@ -84,34 +84,9 @@ const faqJsonLd = {
   })),
 };
 
-const itemListJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Tiny Homes SA product range",
-  itemListElement: products.map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: p.name,
-    url: `${site.url}/${p.slug}`,
-    item: {
-      "@type": "Product",
-      name: p.name,
-      description: p.summary,
-      url: `${site.url}/${p.slug}`,
-      // Price-on-request products publish no offer, a R0 offer would be a false price claim.
-      ...(p.priceOnRequest
-        ? {}
-        : {
-            offers: {
-              "@type": "Offer",
-              price: p.startingPrice,
-              priceCurrency: "ZAR",
-              availability: productAvailability(p),
-            },
-          }),
-    },
-  })),
-};
+/* The shared builder the /housing-pods hub uses: each product with its offer,
+   brand and card photo; the price-on-request safari tents by name and link only. */
+const itemListJsonLd = productItemListSchema("Tiny Homes SA product range", products);
 
 export default function HomePage() {
   return (
