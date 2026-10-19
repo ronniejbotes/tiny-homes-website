@@ -206,7 +206,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                       >
                         {ref.title}
                       </a>
-                      {" — "}
+                      {", "}
                       <span className="text-ink">{ref.publisher}</span>
                       {ref.note ? <span className="block text-stone">{ref.note}</span> : null}
                       {ref.checked ? (
@@ -231,7 +231,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             <p className="mt-4 leading-relaxed text-stone">
               The quote builder prices a specific configuration in a couple of minutes. Or
               book a free viewing and walk through the units at our showroom in{" "}
-              {site.showroom.city} — no deposit, no obligation.
+              {site.showroom.city}. No deposit, no obligation.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <ButtonLink href="/quote" variant="accent" size="lg">

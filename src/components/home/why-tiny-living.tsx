@@ -8,27 +8,27 @@ const values = [
   {
     icon: Sun,
     title: "Off-grid & solar ready",
-    body: "Solar power, battery banks, gas geysers and rainwater tanks can be paired with selected models, sized and quoted for your site, and designed to keep running through load-shedding and far beyond the grid.",
+    body: "Solar power, battery banks, gas geysers and rainwater tanks can be paired with selected models, sized and quoted for your site. The set-up is designed to keep running through load-shedding, or far from any grid.",
   },
   {
     icon: Timer,
-    title: "Rapid deployment",
-    body: "An X-Fold unfolds in minutes and an expandable home is set up the day it arrives; cabins and capsules arrive fully built and are placed onto a prepared foundation. Far faster than a conventional brick build.",
+    title: "Quick to set up",
+    body: "An X-Fold unfolds in minutes and an expandable home is set up the day it arrives. Cabins and capsules arrive fully built and are placed onto a prepared foundation. It's far faster than a conventional brick build.",
   },
   {
     icon: Truck,
     title: "A relocatable asset",
-    body: "Steel-framed and crane-ready. If life moves, your home moves with it: fold it back down or lift it whole onto a truck and redeploy it.",
+    body: "Steel-framed and crane-ready. If you move, it can move too: fold it back down, or lift it whole onto a truck and set it up somewhere new.",
   },
   {
     icon: BadgeCheck,
-    title: "Backed for the long haul",
+    title: "Guarantee, support and finance",
     body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation, and ${site.finance.toLowerCase()}.`,
   },
   {
     icon: Leaf,
     title: "Sustainable steel construction",
-    body: "Factory precision means materials are used exactly, sites stay undisturbed and the durable steel structure is built to last for decades.",
+    body: "Building in a factory means materials are used exactly and your site stays undisturbed. The steel structure is built to last for decades.",
   },
   {
     icon: Shield,

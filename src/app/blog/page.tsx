@@ -163,7 +163,7 @@ export default function BlogIndexPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl leading-relaxed text-stone">
               Every guide here started as a question a customer asked on the phone. If yours
-              is not covered, call us — or come and stand inside one of the units in{" "}
+              is not covered, call us, or come and stand inside one of the units in{" "}
               {site.showroom.city}.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

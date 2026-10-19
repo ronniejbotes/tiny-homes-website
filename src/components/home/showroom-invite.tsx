@@ -69,7 +69,7 @@ export function ShowroomInvite() {
             <p className="mt-6 text-lg leading-relaxed text-cream/75">
               Fair enough. Anyone can put up a website and a handful of flattering
               photographs, and you have never met us. So don&apos;t take our word for any of
-              it — take the drive instead.
+              it. Take the drive instead.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-cream/75">
               Our homes are standing in Centurion. Book a slot, walk through one, kick the

@@ -71,7 +71,7 @@ export const homeFaqs: HomeFaq[] = [
      real query, not because it outranks the practical ones. */
   {
     q: "Do you sell housing pods?",
-    a: `Yes. Several of our ranges are what people mean by a housing pod, living pod or pod house — from an X-Fold at ${formatZAR(lowestStartingPrice)} ex VAT up to the glamping capsules. Which one suits you depends on how finished it needs to be, and our housing pods page compares them side by side.`,
+    a: `Yes. Several of our ranges are what people mean by a housing pod, living pod or pod house, from an X-Fold at ${formatZAR(lowestStartingPrice)} ex VAT up to the glamping capsules. Which one suits you depends on how finished it needs to be, and our housing pods page compares them side by side.`,
   },
   {
     q: "Can I finance a tiny home?",

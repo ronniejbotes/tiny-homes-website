@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
     slug: "housing-pod-cost-south-africa",
     seoTitle: "How Much Does a Housing Pod Cost in SA?",
     title: "How much does a housing pod cost in South Africa?",
-    description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT — what each tier includes, and what it quietly leaves out.`,
+    description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT: what each tier includes, and what it quietly leaves out.`,
     datePublished: "2026-09-02",
     dateModified: "2026-10-07",
     keywords: [
@@ -216,11 +216,11 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Ask what a housing pod costs in South Africa and the honest answer is that there is no single price — the cheapest thing sold as a pod and the most expensive one are barely the same product, though they frequently look near-identical in the photographs. That spread is not a market failing to settle on a price. It is the market selling three genuinely different things under one word.`,
+        text: `Ask what a housing pod costs in South Africa and the honest answer is that there is no single price: the cheapest thing sold as a pod and the most expensive one are barely the same product, though they frequently look near-identical in the photographs. That spread is not a market failing to settle on a price. It is the market selling three genuinely different things under one word.`,
       },
       {
         type: "p",
-        text: `This is a guide to telling them apart. Our own range runs from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT, so we have skin in the game, and we have used our prices throughout rather than vague ranges — you can check every one of them against the product pages. The structure of the market, though, is the same whoever you buy from.`,
+        text: `This is a guide to telling them apart. Our own range runs from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT, so we have skin in the game, and we have used our prices throughout rather than vague ranges. You can check every one of them against the product pages. The structure of the market, though, is the same whoever you buy from.`,
       },
 
       { type: "h2", text: "The three tiers, and why the price gap is so wide" },
@@ -240,38 +240,38 @@ export const blogPosts: BlogPost[] = [
        *  they come off products.ts. */
       {
         type: "p",
-        text: `You will not find other suppliers' prices in this guide. We cannot check them, they move, and a competitor's figure we have not verified is worth nothing to you. What we can give you is our own price in each tier and the thing that actually separates the tiers — which is the part that decides what you should be paying.`,
+        text: `You will not find other suppliers' prices in this guide. We cannot check them, they move, and a competitor's figure we have not verified is worth nothing to you. What we can give you is our own price in each tier and the thing that actually separates the tiers, which is the part that decides what you should be paying.`,
       },
 
-      { type: "h3", text: "Tier 1: the insulated shell — a room, and nothing else" },
+      { type: "h3", text: "Tier 1: the insulated shell (a room, and nothing else)" },
       {
         type: "p",
         text: `A weatherproof, insulated room with electrics and nothing else. No bathroom, no kitchen, usually no plumbing at all. You are buying enclosed, comfortable floor area and doing the rest yourself.`,
       },
       {
         type: "p",
-        text: `Our entry here is the [X-Fold](/folding-homes) at ${R(folding)} ex VAT for 15 m². It ships flat, and two people unfold it into a finished room in minutes — four steps, no specialist crew. It comes with upgraded floor beams, EPS insulation and a basic electrical setup: two plug points, a light fitting and a small DB board. It stacks two units high, and it folds back down if you move.`,
+        text: `Our entry here is the [X-Fold](/folding-homes) at ${R(folding)} ex VAT for 15 m². It ships flat, and two people unfold it into a finished room in minutes: four steps, no specialist crew. It comes with upgraded floor beams, EPS insulation and a basic electrical setup: two plug points, a light fitting and a small DB board. It stacks two units high, and it folds back down if you move.`,
       },
       {
         type: "p",
         text: `What it does not have is plumbing. If you want a shower and a toilet, a local installer fits them on site, and that cost is yours. This tier is honest value for a home office, a site office, staff accommodation or a storeroom. It is a poor choice for a granny flat, because the plumbing you add afterwards is the expensive half.`,
       },
 
-      { type: "h3", text: "Tier 2: the self-contained dwelling — bathroom and kitchen already in it" },
+      { type: "h3", text: "Tier 2: the self-contained dwelling (bathroom and kitchen already in it)" },
       {
         type: "p",
         text: `A pod somebody can actually live in without using the main house: its own bathroom, its own kitchen, plumbing and electrics installed at the factory. This is what most people picture when they search for a granny pod or a second dwelling for the garden.`,
       },
       {
         type: "p",
-        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable)} ex VAT for the compact 18 m² — which is not a bare shell; it includes a bathroom and a small basic kitchen — up to ${R(expandable12m)} for 74 m² with up to four bedrooms. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
+        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable)} ex VAT for the compact 18 m² (which is not a bare shell; it includes a bathroom and a small basic kitchen) up to ${R(expandable12m)} for 74 m² with up to four bedrooms. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
       },
       {
         type: "p",
         text: `The party trick is the deployment: the unit [arrives as one module](/blog/modular-homes-south-africa-explained) on a truck and expands on site within hours, not weeks. For a family adding accommodation to an existing property, this tier is usually the right answer.`,
       },
 
-      { type: "h3", text: "Tier 3: the finished guest unit — built to be let" },
+      { type: "h3", text: "Tier 3: the finished guest unit (built to be let)" },
       {
         type: "p",
         text: `Built to be looked at, and built to be let. Panoramic glazing, premium bathroom fittings, smart-lock entry, finishes chosen so the unit itself is the reason somebody books it. At this tier the pod is a revenue asset rather than a shelter, and it is priced accordingly.`,
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT — not a pod shape at all, but the most completely finished unit we sell: 21 m² plus a viewing terrace, 26 m² in total, with the bathroom, the kitchen with its stone countertop and induction cooker, air conditioning and a storage water heater all fitted as standard rather than sold as extras.`,
+        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT, not a pod shape at all, but the most completely finished unit we sell: 21 m² plus a viewing terrace, 26 m² in total, with the bathroom, the kitchen with its stone countertop and induction cooker, air conditioning and a storage water heater all fitted as standard rather than sold as extras.`,
       },
 
       { type: "h2", text: "The prices, side by side" },
@@ -291,7 +291,7 @@ export const blogPosts: BlogPost[] = [
         caption: "Tiny Homes SA housing pod ranges by price, size and what is fitted",
         head: ["Range", "Size", "From (ex VAT)", "Bathroom", "Kitchen"],
         rows: [
-          ["X-Fold", "15 m²", R(folding), "No — add locally", "No"],
+          ["X-Fold", "15 m²", R(folding), "No, add locally", "No"],
           ["Expandable home", "18 – 74 m²", R(expandable), "Yes, from the 18 m²", "Yes, basic from the 18 m²"],
           ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on 9 m and 11.8 m"],
           ["Glamping capsule", "18.6 – 38 m²", R(capsule), "Yes, every model", "Optional extra"],
@@ -311,7 +311,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Transport.** Quoted on distance and site access, not included in any advertised figure. It is not a small line on a long run — ask for it in writing before you commit.`,
+          `**Transport.** Quoted on distance and site access, not included in any advertised figure. It is not a small line on a long run. Ask for it in writing before you commit.`,
           `**Groundwork.** A level concrete slab or properly levelled precast plinths. Level is the operative word: a pod is a rigid finished box, and a base that is out shows up in the doors and windows.`,
           `**Connections.** Water, sewerage and the tie-in to your DB board. The unit may arrive with plumbing installed, but something still has to connect it to the property.`,
           `**Approval.** Where your municipality requires plans for a second structure, that is a cost and a timeline of its own.`,
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Ask every supplier this one question",
-        text: `"What is the total, delivered and standing on my site, ready to connect?" A supplier who will not put that in writing is quoting you a number you cannot compare to anybody else's. We will quote it — ask on the [quote form](/quote) and we will price the groundwork and delivery alongside the unit.`,
+        text: `"What is the total, delivered and standing on my site, ready to connect?" A supplier who will not put that in writing is quoting you a number you cannot compare to anybody else's. We will quote it. Ask on the [quote form](/quote) and we will price the groundwork and delivery alongside the unit.`,
       },
 
       { type: "h2", text: "How to pick the tier without overbuying" },
@@ -330,7 +330,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `So work backwards from the job, not the budget. **Nobody sleeping in it long-term?** Tier 1 is genuinely enough — a home office, a studio, a site office, a store. **Somebody living in it?** Tier 2, and do not compromise on the bathroom. **Letting it to guests at a nightly rate?** Tier 3, where the finish is the product and the unit pays for itself.`,
+        text: `So work backwards from the job, not the budget. **Nobody sleeping in it long-term?** Tier 1 is genuinely enough: a home office, a studio, a site office, a store. **Somebody living in it?** Tier 2, and do not compromise on the bathroom. **Letting it to guests at a nightly rate?** Tier 3, where the finish is the product and the unit pays for itself.`,
       },
       {
         type: "p",
@@ -354,7 +354,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a housing pod cheaper than building a room?",
-        a: "Usually on time, and often on total cost — but the honest comparison includes the groundwork, connections and transport that conventional building also carries. What a pod reliably beats is the timeline and the disruption: the building work happens in a factory, and the unit is on your property and enclosed in days rather than months.",
+        a: "Usually on time, and often on total cost, but the honest comparison includes the groundwork, connections and transport that conventional building also carries. What a pod reliably beats is the timeline and the disruption: the building work happens in a factory, and the unit is on your property and enclosed in days rather than months.",
       },
     ],
     references: [
@@ -380,7 +380,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Housing Pod vs Container Home vs Wendy House",
     title: "Housing pod vs container home vs wendy house: what is actually different",
     description:
-      "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost — including where a pod is the wrong answer.",
+      "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost, including where a pod is the wrong answer.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-15",
     keywords: [
@@ -425,7 +425,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `A shipping container is a steel box. Steel conducts heat superbly, which is exactly what you do not want in a Gauteng summer or a Free State winter, and an unlined container swings between uninhabitable extremes. Container conversions therefore have to add insulation internally, and doing it properly — with a vapour barrier and a ventilation strategy — is the difference between a comfortable room and a condensation problem. It can absolutely be done well. It also eats the internal dimensions, which were tight to begin with.`,
+        text: `A shipping container is a steel box. Steel conducts heat superbly, which is exactly what you do not want in a Gauteng summer or a Free State winter, and an unlined container swings between uninhabitable extremes. Container conversions therefore have to add insulation internally, and doing it properly (with a vapour barrier and a ventilation strategy) is the difference between a comfortable room and a condensation problem. It can absolutely be done well. It also eats the internal dimensions, which were tight to begin with.`,
       },
       {
         type: "p",
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Wendy house:** the timber and the fixings, particularly where water gets in at the base. Maintenance is ongoing and non-optional.`,
-          `**Container conversion:** rust at the cut edges — every opening cut for a window or door breaks the factory coating — and condensation behind poorly executed lining.`,
+          `**Container conversion:** rust at the cut edges (every opening cut for a window or door breaks the factory coating) and condensation behind poorly executed lining.`,
           `**Pod:** the finishes and the seals, as with any building. The steel frame is the part least likely to be the problem.`,
         ],
       },
@@ -478,7 +478,7 @@ export const blogPosts: BlogPost[] = [
         type: "ol",
         items: [
           `**You need storage, not a room.** If nobody will sit in it, insulation and finishes are money spent on nothing. Buy a wendy house.`,
-          `**Nothing can reach the site.** Pods arrive whole and have to be lifted or rolled into place. A steep, narrow or overgrown approach can make delivery impossible, and something assembled on site is then the only option. Our X-Fold is the exception — it ships flat and is carried in — but the rest need access.`,
+          `**Nothing can reach the site.** Pods arrive whole and have to be lifted or rolled into place. A steep, narrow or overgrown approach can make delivery impossible, and something assembled on site is then the only option. Our X-Fold is the exception (it ships flat and is carried in), but the rest need access.`,
           `**Your budget is genuinely fixed below the entry price.** Do not stretch to the cheapest pod by cutting the groundwork or the connections. A well-built wendy house on a proper base beats a pod standing on an inadequate one.`,
         ],
       },
@@ -486,7 +486,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "The comparison that actually decides it" },
       {
         type: "p",
-        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and — for a container — the conversion and lining. That is the number that differs from the advertised one by the largest margin, and it is the only one that lets you compare a R60 000 quote to a R250 000 quote honestly.`,
+        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and, for a container, the conversion and lining. That is the number that differs from the advertised one by the largest margin, and it is the only one that lets you compare a R60 000 quote to a R250 000 quote honestly.`,
       },
       {
         type: "p",
@@ -510,7 +510,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a housing pod better than a wendy house?",
-        a: `For a room someone occupies, yes — insulation, factory finishing and weatherproofing are built in rather than added. For storage, a wendy house is the sensible buy and a pod is money spent on comfort nobody is there to use. Our X-Fold at ${R(folding)} ex VAT overlaps the premium nutec end of the wendy house market, which is where the two genuinely compete.`,
+        a: `For a room someone occupies, yes: insulation, factory finishing and weatherproofing are built in rather than added. For storage, a wendy house is the sensible buy and a pod is money spent on comfort nobody is there to use. Our X-Fold at ${R(folding)} ex VAT overlaps the premium nutec end of the wendy house market, which is where the two genuinely compete.`,
       },
       {
         q: "I want a wendy house with a bathroom and kitchen. What should I look at?",
@@ -518,12 +518,12 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Can you insulate a shipping container properly?",
-        a: "Yes, and good converters do. It requires insulation, a vapour barrier and a ventilation strategy, executed carefully — the failure mode is condensation trapped behind the lining. It also costs internal space in a format that has little to spare.",
+        a: "Yes, and good converters do. It requires insulation, a vapour barrier and a ventilation strategy, executed carefully. The failure mode is condensation trapped behind the lining. It also costs internal space in a format that has little to spare.",
       },
     ],
     references: [
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "Plain-language reference on the deemed-to-satisfy standards any of these three structures is measured against once it is a habitable room.",
@@ -560,7 +560,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `The pod is the easy part. Choosing it takes an afternoon. What decides whether the project goes smoothly is the property it lands on — and almost every expensive surprise in this market comes from leaving those questions until after the deposit.`,
+        text: `The pod is the easy part. Choosing it takes an afternoon. What decides whether the project goes smoothly is the property it lands on, and almost every expensive surprise in this market comes from leaving those questions until after the deposit.`,
       },
       {
         type: "p",
@@ -579,7 +579,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Building work in South Africa sits under the National Building Regulations and Building Standards Act, with SANS 10400 setting the deemed-to-satisfy standards, and approval is granted by your local authority. There is a category of minor building work that is treated more lightly, and municipalities also take different views on structures that are relocatable rather than permanent — but how those apply to a second dwelling on your specific stand is a local determination, not something to infer from a forum post.`,
+        text: `Building work in South Africa sits under the National Building Regulations and Building Standards Act, with SANS 10400 setting the deemed-to-satisfy standards, and approval is granted by your local authority. There is a category of minor building work that is treated more lightly, and municipalities also take different views on structures that are relocatable rather than permanent, but how those apply to a second dwelling on your specific stand is a local determination, not something to infer from a forum post.`,
       },
       {
         type: "p",
@@ -601,7 +601,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `We supply the dimensions and specifications for your submission. What we cannot do is tell you what your municipality will decide — anybody who promises you that outcome is guessing with your money.`,
+        text: `We supply the dimensions and specifications for your submission. What we cannot do is tell you what your municipality will decide. Anybody who promises you that outcome is guessing with your money.`,
       },
 
       { type: "h2", text: "2. What is it standing on?" },
@@ -611,11 +611,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The word doing the work in both of those is *level*. A pod is a rigid, finished box that arrives square. Stand it on a base that is out and the box does not adjust — the doors bind, the windows stop closing cleanly, and in a unit with panoramic glazing the consequences get expensive. This is the one site error that is genuinely difficult and costly to correct afterwards, because fixing it means lifting the unit off again.`,
+        text: `The word doing the work in both of those is *level*. A pod is a rigid, finished box that arrives square. Stand it on a base that is out and the box does not adjust: the doors bind, the windows stop closing cleanly, and in a unit with panoramic glazing the consequences get expensive. This is the one site error that is genuinely difficult and costly to correct afterwards, because fixing it means lifting the unit off again.`,
       },
       {
         type: "p",
-        text: `Two other base questions worth asking early: **what the ground is** — soft, filled or waterlogged ground needs designing for, not hoping about — and **where the water goes**, because a pod placed at the bottom of a slope with nowhere for runoff to drain will find that out in the first serious storm.`,
+        text: `Two other base questions worth asking early: **what the ground is** (soft, filled or waterlogged ground needs designing for, not hoping about) and **where the water goes**, because a pod placed at the bottom of a slope with nowhere for runoff to drain will find that out in the first serious storm.`,
       },
       {
         type: "p",
@@ -630,9 +630,9 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `[X-Fold](/folding-homes): **electrics only** — two plug points, a light fitting and a small DB board. No plumbing. A bathroom or wet room is fitted by a local installer.`,
+          `[X-Fold](/folding-homes): **electrics only** (two plug points, a light fitting and a small DB board). No plumbing. A bathroom or wet room is fitted by a local installer.`,
           `[Expandable homes](/expandable-homes): **bathroom and factory-installed plumbing and electrical** from the 18 m² up.`,
-          `[Nature cabins](/nature-cabins): fully fitted — bathroom, kitchen, air conditioning and a storage water heater as standard.`,
+          `[Nature cabins](/nature-cabins): fully fitted (bathroom, kitchen, air conditioning and a storage water heater as standard).`,
           `[Apple Cabins](/apple-cabins): **integrated lighting and plumbing**, with bathroom fittings included in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): **complete plumbing and electrical** with the bathroom, its fittings and a geyser standard on every model.`,
         ],
@@ -643,7 +643,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `**Off-grid is a real option** across the range — solar, gas geysers and rainwater tanks, sized and quoted for your site. Decide it early rather than retro-fitting: on the fully-fitted units the electrical layout and the water heating are installed at the factory, and specification is much easier to change before the unit is built.`,
+        text: `**Off-grid is a real option** across the range: solar, gas geysers and rainwater tanks, sized and quoted for your site. Decide it early rather than retro-fitting: on the fully-fitted units the electrical layout and the water heating are installed at the factory, and specification is much easier to change before the unit is built.`,
       },
 
       { type: "h2", text: "4. Can the delivery actually reach the spot?" },
@@ -658,7 +658,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `A **gate or driveway** narrower than the unit — a glamping capsule is up to 3.3 m wide, an expandable home wider still once open.`,
+          `A **gate or driveway** narrower than the unit: a glamping capsule is up to 3.3 m wide, an expandable home wider still once open.`,
           `**Overhead power or telephone cables** on the approach, or low branches.`,
           `A **slope** the truck cannot hold, or a turning circle it cannot make.`,
           `**Soft ground** after rain, which is how a delivery vehicle ends up needing recovery.`,
@@ -667,7 +667,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The fix is free and takes ten minutes: photograph the route in — the street approach, the gate with something in frame for scale, the driveway, and the final position — and send them to us before you order. We would far rather tell you a unit will not fit than deliver one that does not.`,
+        text: `The fix is free and takes ten minutes: photograph the route in (the street approach, the gate with something in frame for scale, the driveway, and the final position) and send them to us before you order. We would far rather tell you a unit will not fit than deliver one that does not.`,
       },
       {
         type: "p",
@@ -682,14 +682,14 @@ export const blogPosts: BlogPost[] = [
           `Check your HOA or body corporate rules, if you have either.`,
           `Photograph the access route and the intended position, and send them to us.`,
           `Settle the base specification for the model you want.`,
-          `Confirm where water, sewerage and power will come from — or specify off-grid.`,
+          `Confirm where water, sewerage and power will come from, or specify off-grid.`,
           `Get the delivered, standing, connected total in writing.`,
           `Then pay a deposit.`,
         ],
       },
       {
         type: "p",
-        text: `Move-in is typically around 90 days from deposit for most units, and on-site setup itself is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. Nearly all of that 90 days is manufacturing — which is exactly why the site questions should be answered while it is happening, not afterwards.`,
+        text: `Move-in is typically around 90 days from deposit for most units, and on-site setup itself is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. Nearly all of that 90 days is manufacturing, which is exactly why the site questions should be answered while it is happening, not afterwards.`,
       },
       {
         type: "cta",
@@ -701,7 +701,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Do you need council approval for a prefab home in South Africa?",
-        a: "Frequently, and it is decided by your local municipality rather than by a single national rule. Building work falls under the National Building Regulations and Building Standards Act with SANS 10400 setting the standards, but how those apply to a relocatable second dwelling on your particular stand is a local determination. Phone your building control department before you commit — it costs nothing.",
+        a: "Frequently, and it is decided by your local municipality rather than by a single national rule. Building work falls under the National Building Regulations and Building Standards Act with SANS 10400 setting the standards, but how those apply to a relocatable second dwelling on your particular stand is a local determination. Phone your building control department before you commit. It costs nothing.",
       },
       {
         q: "What foundation does a prefab pod need?",
@@ -709,7 +709,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "How long does it take from deposit to move-in?",
-        a: "Around 90 days for most units. On-site setup is the quick part — minutes for an X-Fold, hours for an expandable home, a few days for a cabin or capsule assembled on a prepared site. The bulk of the time is manufacturing, which is the window in which to sort out plans, groundwork and connections.",
+        a: "Around 90 days for most units. On-site setup is the quick part: minutes for an X-Fold, hours for an expandable home, a few days for a cabin or capsule assembled on a prepared site. The bulk of the time is manufacturing, which is the window in which to sort out plans, groundwork and connections.",
       },
     ],
     references: [
@@ -741,7 +741,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Is a Prefab Home Cheaper Than Building?",
     title: "Is a prefab home cheaper than building in South Africa?",
     description:
-      "Our own rand-per-square-metre figures set against what a conventional build costs — including the cases where prefab is the more expensive option.",
+      "Our own rand-per-square-metre figures set against what a conventional build costs, including the cases where prefab is the more expensive option.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-07",
     keywords: [
@@ -757,7 +757,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Almost every prefab supplier in South Africa will tell you their product is cheaper than building. We sell [prefab homes](/), and we think that answer is too simple to be useful — it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
+        text: `Almost every prefab supplier in South Africa will tell you their product is cheaper than building. We sell [prefab homes](/), and we think that answer is too simple to be useful: it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
       },
       {
         type: "p",
@@ -771,7 +771,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Two things to hold on to about that number. It is a **construction** rate — it does not include the land, and it frequently excludes professional fees, municipal connections and site works. And it is an average of an enormous range: the same 40 m² in the same suburb can differ by a factor of two depending on the specification.`,
+        text: `Two things to hold on to about that number. It is a **construction** rate: it does not include the land, and it frequently excludes professional fees, municipal connections and site works. And it is an average of an enormous range: the same 40 m² in the same suburb can differ by a factor of two depending on the specification.`,
       },
 
       { type: "h2", text: "What our units cost per square metre" },
@@ -794,7 +794,7 @@ export const blogPosts: BlogPost[] = [
         text: `Read that table honestly and it does not say "prefab is cheaper". It says three different things.`,
       },
 
-      { type: "h3", text: "The shell is dramatically cheaper — because it is a shell" },
+      { type: "h3", text: "The shell is dramatically cheaper, because it is a shell" },
       {
         type: "p",
         text: `At ${perM2("folding-homes")} per square metre the [X-Fold](/folding-homes) is a fraction of any conventional rate. It is also a room with two plug points, a light and no plumbing. Compare it to building a bare insulated room, not to building a house, and the comparison is fair. Compare it to a granny flat and it is not.`,
@@ -803,22 +803,22 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "The mid-range lands inside the conventional band" },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre as the size goes up — squarely inside the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis this is roughly a wash.`,
+        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre as the size goes up, squarely inside the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis this is roughly a wash.`,
       },
       {
         type: "p",
-        text: `Where it stops being a wash is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead — but not by the multiple the marketing in this industry implies.`,
+        text: `Where it stops being a wash is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead, but not by the multiple the marketing in this industry implies.`,
       },
 
       { type: "h3", text: "The premium units cost more per square metre, and should" },
       {
         type: "p",
-        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above any conventional residential rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate. Building that conventionally would not be cheaper — it would be considerably more, and it would take a year.`,
+        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above any conventional residential rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate. Building that conventionally would not be cheaper. It would be considerably more, and it would take a year.`,
       },
       {
         type: "callout",
         title: "The small-building penalty nobody mentions",
-        text: `Rand per square metre rises sharply as buildings get smaller, whichever way you build. A bathroom costs roughly the same whether it sits in 18 m² or 180 m² — but in the small unit it is a much larger share of the total. This is why a 74 m² expandable is cheaper per square metre than an 18 m² one, and why comparing a tiny home's rate to a full house's rate flatters the house.`,
+        text: `Rand per square metre rises sharply as buildings get smaller, whichever way you build. A bathroom costs roughly the same whether it sits in 18 m² or 180 m², but in the small unit it is a much larger share of the total. This is why a 74 m² expandable is cheaper per square metre than an 18 m² one, and why comparing a tiny home's rate to a full house's rate flatters the house.`,
       },
 
       { type: "h2", text: "Where prefab wins, and it is not mainly price" },
@@ -838,7 +838,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**You want a specific layout.** Prefab is catalogue-shaped. If the space has to fit an awkward site or an exact brief, conventional building does that and a factory unit does not.`,
           `**You are already building.** If contractors are on site for a larger project, adding a room to that scope is often cheaper than a separate delivered unit with its own transport and groundwork.`,
-          `**You need bond finance.** More banks will lend against conventional construction than against a prefab structure — this is the single most underrated cost difference, and we have written it up separately in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
+          `**You need bond finance.** More banks will lend against conventional construction than against a prefab structure. This is the single most underrated cost difference, and we have written it up separately in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
           `**Access is impossible.** If a truck and crane cannot reach the spot, the delivered-unit model does not work at any price.`,
         ],
       },
@@ -846,7 +846,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "The comparison that actually decides it" },
       {
         type: "p",
-        text: `Compare **delivered, standing, connected and usable** — not sticker against rate. For a prefab that means the unit plus transport, groundwork and service connections. For a conventional build it means construction plus fees, connections and the contingency you will use. Both numbers are larger than the one first quoted, and they are the only two that can honestly sit next to each other.`,
+        text: `Compare **delivered, standing, connected and usable**, not sticker against rate. For a prefab that means the unit plus transport, groundwork and service connections. For a conventional build it means construction plus fees, connections and the contingency you will use. Both numbers are larger than the one first quoted, and they are the only two that can honestly sit next to each other.`,
       },
       {
         type: "p",
@@ -866,11 +866,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What is the cheapest prefab option per square metre?",
-        a: `The X-Fold, at ${perM2("folding-homes")} per square metre ex VAT. That figure is low because it is an insulated, wired shell with no plumbing — the fair comparison is a bare room, not a finished home.`,
+        a: `The X-Fold, at ${perM2("folding-homes")} per square metre ex VAT. That figure is low because it is an insulated, wired shell with no plumbing. The fair comparison is a bare room, not a finished home.`,
       },
       {
         q: "Does a prefab home add value to a property?",
-        a: "It depends whether it is fixed and approved. A permanently founded, municipally approved second dwelling is treated very differently from a relocatable unit standing on plinths — by valuers, by insurers and by banks. Decide which you are buying before you order, because it affects approval, finance and resale.",
+        a: "It depends whether it is fixed and approved. A permanently founded, municipally approved second dwelling is treated very differently from a relocatable unit standing on plinths: by valuers, by insurers and by banks. Decide which you are buying before you order, because it affects approval, finance and resale.",
       },
     ],
     references: [
@@ -885,10 +885,10 @@ export const blogPosts: BlogPost[] = [
         title: "Building statistics (Statistical release P5041.1)",
         publisher: "Statistics South Africa",
         url: "https://www.statssa.gov.za/publications/P50411/",
-        note: "Official monthly building statistics — plans passed and buildings completed, by province and building type.",
+        note: "Official monthly building statistics: plans passed and buildings completed, by province and building type.",
       },
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards a habitable structure is measured against, whichever way it is built.",
@@ -928,7 +928,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "What you are actually buying" },
       {
         type: "p",
-        text: `A granny flat — a **second dwelling** or **secondary dwelling** in municipal by-law language — is a self-contained home on a stand that already has one. Self-contained is the operative word: its own bathroom, its own kitchen, its own entrance. Strip any of those out and it is a room, not a dwelling, and both the municipality and your future tenant will treat it differently.`,
+        text: `A granny flat (a **second dwelling** or **secondary dwelling** in municipal by-law language) is a self-contained home on a stand that already has one. Self-contained is the operative word: its own bathroom, its own kitchen, its own entrance. Strip any of those out and it is a room, not a dwelling, and both the municipality and your future tenant will treat it differently.`,
       },
       {
         type: "p",
@@ -951,7 +951,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [prefab granny flats](/expandable-homes), the expandable homes, are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell — it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
+        text: `Our [prefab granny flats](/expandable-homes), the expandable homes, are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell: it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
       },
       {
         type: "p",
@@ -971,13 +971,13 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Zoning** — does your stand's zoning permit a second dwelling at all? Some do, some allow it only with consent, some do not.`,
-          `**Building plans** — municipalities generally require approved plans for a second dwelling, and views differ on relocatable structures. Coverage limits, height and how close to a boundary you may build all come into it.`,
+          `**Zoning**: does your stand's zoning permit a second dwelling at all? Some do, some allow it only with consent, some do not.`,
+          `**Building plans**: municipalities generally require approved plans for a second dwelling, and views differ on relocatable structures. Coverage limits, height and how close to a boundary you may build all come into it.`,
         ],
       },
       {
         type: "p",
-        text: `Both are decided by your local authority, not by a national rule and not by us. Phone your building control department before you commit — it is a free call and everything else depends on it. If you are in a complex or estate, your body corporate or HOA rules can be stricter than the municipality's. We supply the unit's dimensions and specifications for your submission. There is more detail in [where can you put a housing pod](/blog/where-can-you-put-a-housing-pod), which covers plans, foundations and site access in full.`,
+        text: `Both are decided by your local authority, not by a national rule and not by us. Phone your building control department before you commit. It is a free call and everything else depends on it. If you are in a complex or estate, your body corporate or HOA rules can be stricter than the municipality's. We supply the unit's dimensions and specifications for your submission. There is more detail in [where can you put a housing pod](/blog/where-can-you-put-a-housing-pod), which covers plans, foundations and site access in full.`,
       },
 
       { type: "h2", text: "Does it pay for itself?" },
@@ -988,7 +988,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ol",
         items: [
-          `Find what a comparable self-contained unit actually lets for **in your suburb** — not the city average. Search current listings, not agent estimates.`,
+          `Find what a comparable self-contained unit actually lets for **in your suburb**, not the city average. Search current listings, not agent estimates.`,
           `Subtract what it costs you to run: rates impact, insurance, maintenance, and the months it stands empty between tenants.`,
           `Divide the total delivered-and-connected cost by the annual net figure. That is your payback in years.`,
           `Ask what the same money does elsewhere over the same period before you commit it to a building.`,
@@ -996,17 +996,17 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Two honest caveats. Rental income is not guaranteed, and a unit that is not approved is harder to let, harder to insure and harder to sell. And a granny flat put up for family rather than income does not need to pay back at all — the value is that someone has their own front door.`,
+        text: `Two honest caveats. Rental income is not guaranteed, and a unit that is not approved is harder to let, harder to insure and harder to sell. And a granny flat put up for family rather than income does not need to pay back at all: the value is that someone has their own front door.`,
       },
 
       { type: "h2", text: "Which size to choose" },
       {
         type: "ul",
         items: [
-          `**One person, or a parent nearby** — the 18 m² compact at ${R(expandable)} ex VAT. Self-contained, and the smallest footprint that still counts as a dwelling.`,
-          `**A couple, or a lettable unit** — the 37 m² at ${R(expandable6m)}: two bedrooms, a fitted bathroom and a stainless-steel kitchen without appliances. This is the size most rental demand sits at.`,
-          `**A family, or a permanent second home** — the 74 m² at ${R(expandable12m)}, with layouts up to four bedrooms.`,
-          `**A guest suite rather than a let** — an [Apple Cabin](/apple-cabins) from ${R(apple)} ex VAT, if the unit is going to be looked at as much as lived in.`,
+          `**One person, or a parent nearby**: the 18 m² compact at ${R(expandable)} ex VAT. Self-contained, and the smallest footprint that still counts as a dwelling.`,
+          `**A couple, or a lettable unit**: the 37 m² at ${R(expandable6m)} (two bedrooms, a fitted bathroom and a stainless-steel kitchen without appliances). This is the size most rental demand sits at.`,
+          `**A family, or a permanent second home**: the 74 m² at ${R(expandable12m)}, with layouts up to four bedrooms.`,
+          `**A guest suite rather than a let**: an [Apple Cabin](/apple-cabins) from ${R(apple)} ex VAT, if the unit is going to be looked at as much as lived in.`,
         ],
       },
       {
@@ -1023,7 +1023,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do I need council approval for a granny flat?",
-        a: "Generally yes, and there are two questions rather than one: whether your zoning permits a second dwelling at all, and whether the structure needs approved building plans. Both are decided by your local municipality. Phone their building control department before ordering anything — and check your HOA or body corporate rules, which can be stricter.",
+        a: "Generally yes, and there are two questions rather than one: whether your zoning permits a second dwelling at all, and whether the structure needs approved building plans. Both are decided by your local municipality. Phone their building control department before ordering anything, and check your HOA or body corporate rules, which can be stricter.",
       },
       {
         q: "What is the cheapest way to build a granny flat in South Africa?",
@@ -1031,7 +1031,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",
-        a: "Usually on time and on certainty, and often on total cost — but not by the multiple this industry likes to imply. Per square metre our expandable homes land inside the same band as a mid-range conventional build; the difference is that the rate already includes insulation, glazing, a fitted bathroom and installed services.",
+        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre our expandable homes land inside the same band as a mid-range conventional build; the difference is that the rate already includes insulation, glazing, a fitted bathroom and installed services.",
       },
       {
         q: "Can I get a bond for a granny flat?",
@@ -1103,14 +1103,14 @@ export const blogPosts: BlogPost[] = [
         head: ["Bank", "Position", "What that means in practice"],
         rows: [
           ["Standard Bank", "Not currently bonding prefab", "Reported as falling outside their acceptable security requirements"],
-          ["Absa", "Not currently bonding prefab", "Same position — outside acceptable security"],
+          ["Absa", "Not currently bonding prefab", "Same position: outside acceptable security"],
           ["FNB", "Open, with conditions", "The home must be fixed to a foundation and comply with the National Building Regulations"],
           ["Nedbank", "Open, structured differently", "Land and unit assessed separately; land financing reported to require a 50% deposit"],
         ],
       },
       {
         type: "p",
-        text: `Bank policy changes, and these are reported positions rather than a quote — confirm directly with the bank or a bond originator before you plan around any of it. But the shape of the answer has been stable for a while, and it tells you what matters.`,
+        text: `Bank policy changes, and these are reported positions rather than a quote. Confirm directly with the bank or a bond originator before you plan around any of it. But the shape of the answer has been stable for a while, and it tells you what matters.`,
       },
 
       { type: "h2", text: "What the lenders are actually worried about" },
@@ -1121,7 +1121,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Is it fixed, or can it be driven away?** A structure that can be lifted onto a truck is weak security. This is why FNB's condition is a fixed foundation — it is the difference between a building and a large movable asset.`,
+          `**Is it fixed, or can it be driven away?** A structure that can be lifted onto a truck is weak security. This is why FNB's condition is a fixed foundation: it is the difference between a building and a large movable asset.`,
           `**Is it approved?** Compliance with the National Building Regulations is what makes it a lawful permanent structure. An unapproved building is a liability on a valuation, not an asset.`,
           `**Will it hold value?** Bonds run for twenty years. The lender is asking what the structure is worth in year fifteen, and there is thinner resale data for prefab than for brick.`,
         ],
@@ -1129,7 +1129,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "The decision this forces you to make early",
-        text: `Fixed and approved, or relocatable? Fixed-and-approved opens the widest finance options and behaves like property for valuation and resale. Relocatable keeps the flexibility to take the unit with you, but narrows finance sharply. Both are legitimate — just decide before you order, because the foundation specification follows from it.`,
+        text: `Fixed and approved, or relocatable? Fixed-and-approved opens the widest finance options and behaves like property for valuation and resale. Relocatable keeps the flexibility to take the unit with you, but narrows finance sharply. Both are legitimate. Just decide before you order, because the foundation specification follows from it.`,
       },
 
       { type: "h2", text: "The routes that work when a bond does not" },
@@ -1137,7 +1137,7 @@ export const blogPosts: BlogPost[] = [
         type: "ol",
         items: [
           `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
-          `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available — and the bank is lending against the house it already holds, not against the new unit.`,
+          `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available, and the bank is lending against the house it already holds, not against the new unit.`,
           `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a capsule.`,
           `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)}.`,
         ],
@@ -1149,7 +1149,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `Decide fixed-and-approved versus relocatable. Everything else follows.`,
           `Talk to your municipality about approval for the structure you have in mind.`,
-          `Speak to a bond originator or your own bank **before** paying a deposit, and ask specifically about a prefabricated structure — not about "a home".`,
+          `Speak to a bond originator or your own bank **before** paying a deposit, and ask specifically about a prefabricated structure, not about "a home".`,
           `Get the total delivered, standing and connected cost in writing, since that is what has to be funded, not the unit price.`,
           `Then ask us about the third-party finance option if a bond is not going to work.`,
         ],
@@ -1164,7 +1164,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Price the unit you want first — the finance conversation is much shorter when you know the number.`,
+        text: `Price the unit you want first: the finance conversation is much shorter when you know the number.`,
         href: "/quote",
         label: "Get an instant quote",
       },
@@ -1188,7 +1188,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Does the unit need approved plans to be financed?",
-        a: "For FNB it is explicit — the home must comply with the National Building Regulations and be fixed to a foundation. More broadly, an approved permanent structure is treated as property while an unapproved one is a problem on a valuation, so approval helps with finance, insurance and resale alike.",
+        a: "For FNB it is explicit: the home must comply with the National Building Regulations and be fixed to a foundation. More broadly, an approved permanent structure is treated as property while an unapproved one is a problem on a valuation, so approval helps with finance, insurance and resale alike.",
       },
     ],
     references: [
@@ -1200,7 +1200,7 @@ export const blogPosts: BlogPost[] = [
         checked: "2026-10-16",
       },
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards FNB's compliance condition refers to.",
@@ -1252,17 +1252,17 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings all sizes; kitchenette on 9 m and 11.8 m", "Entry to the premium end; strong photography"],
           ["Glamping Capsule", R(capsule), "18.6 – 38 m²", "Bathroom + premium fittings, geyser, insulation, smart entry", "Flagship units where the room is the reason for the booking"],
-          ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater — all fitted", "Longer stays; nothing left to add"],
-          ["Safari Tent", "On request", "Per project", "Trade only — supplied and installed with Bushtec", "Lodges and resorts wanting canvas"],
+          ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater: all fitted", "Longer stays; nothing left to add"],
+          ["Safari Tent", "On request", "Per project", "Trade only: supplied and installed with Bushtec", "Lodges and resorts wanting canvas"],
         ],
       },
       {
         type: "p",
-        text: `A note on the [glamping capsules](/glamping-capsules): the bathroom, its premium fittings, a geyser, multi-layer insulation, plumbing and electrics, lighting and intelligent front-door access are standard on every model. The **kitchen and air conditioning are extras**. For a glamping operation that is usually the right way round — most sites feed guests centrally and do not want a kitchen in every unit — but price it deliberately rather than assuming.`,
+        text: `A note on the [glamping capsules](/glamping-capsules): the bathroom, its premium fittings, a geyser, multi-layer insulation, plumbing and electrics, lighting and intelligent front-door access are standard on every model. The **kitchen and air conditioning are extras**. For a glamping operation that is usually the right way round (most sites feed guests centrally and do not want a kitchen in every unit), but price it deliberately rather than assuming.`,
       },
       {
         type: "p",
-        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are the most completely fitted thing we sell — kitchen, air conditioning and water heater standard — which suits longer stays. [Safari tents](/safari-tents) are a trade offering supplied to businesses and hospitality operators only, quoted per project.`,
+        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are the most completely fitted thing we sell (kitchen, air conditioning and water heater standard), which suits longer stays. [Safari tents](/safari-tents) are a trade offering supplied to businesses and hospitality operators only, quoted per project.`,
       },
 
       { type: "h2", text: "The costs that are not the unit" },
@@ -1273,7 +1273,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Transport to site**, quoted on distance and access — and glamping sites are, by definition, usually not next to a main road.`,
+          `**Transport to site**, quoted on distance and access, and glamping sites are, by definition, usually not next to a main road.`,
           `**Groundwork**: a level slab or properly levelled plinths, per unit, plus decking and paths.`,
           `**Services**: water, sewerage or a treatment solution, and power to each unit. On remote sites this is frequently the largest line after the units themselves.`,
           `**Approval and land use**: tourist accommodation is a land-use question as much as a building one, and a rural stand may need consent for the use, not just plans for the structure.`,
@@ -1293,7 +1293,7 @@ export const blogPosts: BlogPost[] = [
           `**Find the real nightly rate** for comparable units within an hour of your site. Current live listings, not aspiration.`,
           `**Choose an occupancy you can defend.** Start below the national figure for a new, unknown site with no reviews. Model 30%, 40% and 50% and see which of them still works.`,
           `**Subtract the running cost**: cleaning and linen per stay, platform commission, power and water, maintenance, insurance, staff.`,
-          `**Divide total setup — units, transport, groundwork, services, fit-out — by annual net.** That is payback in years.`,
+          `**Divide total setup (units, transport, groundwork, services, fit-out) by annual net.** That is payback in years.`,
           `**Then ask what happens in a bad year.** A site that only works at 55% occupancy is a site that fails in its first winter.`,
         ],
       },
@@ -1312,13 +1312,13 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**The view through the glass is the product.** 270° glazing pointed at a parking area is money wasted. Site the units for the outlook before anything else.`,
           `**Separation matters more than size.** Guests pay for privacy. Units in a row facing each other undo the thing they came for.`,
-          `**Year-round comfort protects the rate.** Insulation, glazing and heating are what let you charge in July as well as December. Air conditioning is an extra on the capsules — for a commercial site it is rarely optional.`,
+          `**Year-round comfort protects the rate.** Insulation, glazing and heating are what let you charge in July as well as December. Air conditioning is an extra on the capsules. For a commercial site it is rarely optional.`,
           `**Delivery speed is revenue.** Capsules and Apple Cabins arrive fully built and are ready within hours to days on a prepared site, so the site is not closed for a construction season.`,
         ],
       },
       {
         type: "cta",
-        text: `Units are on site at our showroom in ${site.showroom.city} — worth walking through before committing capital to a fleet of them.`,
+        text: `Units are on site at our showroom in ${site.showroom.city}: worth walking through before committing capital to a fleet of them.`,
         href: "/book-a-viewing",
         label: "Book a viewing",
       },
@@ -1338,7 +1338,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do glamping units need building plans?",
-        a: "Usually, and tourist accommodation raises a land-use question as well — a rural stand may need consent for the use itself, not just plans for the structures. Both are decided by your local municipality, so speak to them before committing to a layout.",
+        a: "Usually, and tourist accommodation raises a land-use question as well: a rural stand may need consent for the use itself, not just plans for the structures. Both are decided by your local municipality, so speak to them before committing to a layout.",
       },
     ],
     references: [
@@ -1360,7 +1360,7 @@ export const blogPosts: BlogPost[] = [
         title: "Tourism statistics",
         publisher: "Statistics South Africa",
         url: "https://www.statssa.gov.za/?cat=36",
-        note: "Official tourist accommodation and tourism releases — the primary data behind occupancy and income figures.",
+        note: "Official tourist accommodation and tourism releases: the primary data behind occupancy and income figures.",
       },
     ],
   },
@@ -1371,7 +1371,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Off-Grid Tiny Homes in South Africa",
     title: "Taking a tiny home off-grid in South Africa: power, water and sewerage",
     description:
-      "What running a prefab home off-grid involves — solar sizing, water supply, waste treatment — and the decisions to make before the unit is built.",
+      "What running a prefab home off-grid involves (solar sizing, water supply, waste treatment) and the decisions to make before the unit is built.",
     datePublished: "2026-09-02",
     keywords: [
       "off grid tiny home South Africa",
@@ -1386,7 +1386,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Off-grid is not one decision. It is three — power, water and waste — and they are independent. Plenty of South African sites are off-grid for electricity and on municipal water, or on borehole water with a grid connection. Working out which of the three you actually need is the first job, and it changes what the unit has to be.`,
+        text: `Off-grid is not one decision. It is three (power, water and waste), and they are independent. Plenty of South African sites are off-grid for electricity and on municipal water, or on borehole water with a grid connection. Working out which of the three you actually need is the first job, and it changes what the unit has to be.`,
       },
       {
         type: "p",
@@ -1396,7 +1396,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Power" },
       {
         type: "p",
-        text: `Solar sizing is driven by what you run, not by the size of the building. The pattern that catches people out is that the small, boring loads — a fridge running all day, a geyser element, a kettle — dominate, while lights barely register.`,
+        text: `Solar sizing is driven by what you run, not by the size of the building. The pattern that catches people out is that the small, boring loads (a fridge running all day, a geyser element, a kettle) dominate, while lights barely register.`,
       },
       {
         type: "ul",
@@ -1415,7 +1415,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Water" },
       {
         type: "p",
-        text: `Three sources, usually in combination: **municipal**, **borehole** and **rainwater**. Rainwater is the one people over-estimate — a roof the size of a tiny home's collects far less than intuition suggests, and South African rainfall is seasonal almost everywhere, so tank capacity has to carry the dry months, not the average.`,
+        text: `Three sources, usually in combination: **municipal**, **borehole** and **rainwater**. Rainwater is the one people over-estimate: a roof the size of a tiny home's collects far less than intuition suggests, and South African rainfall is seasonal almost everywhere, so tank capacity has to carry the dry months, not the average.`,
       },
       {
         type: "ul",
@@ -1429,7 +1429,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Sewerage" },
       {
         type: "p",
-        text: `The least glamorous decision and the one most likely to be regulated. Where there is no municipal connection the options run from conservancy tanks (sealed, pumped out periodically) through septic-and-soakaway to package treatment plants — and which are permitted depends on your soil, your water table, the site's proximity to watercourses and your local authority's rules.`,
+        text: `The least glamorous decision and the one most likely to be regulated. Where there is no municipal connection the options run from conservancy tanks (sealed, pumped out periodically) through septic-and-soakaway to package treatment plants, and which are permitted depends on your soil, your water table, the site's proximity to watercourses and your local authority's rules.`,
       },
       {
         type: "p",
@@ -1445,11 +1445,11 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `[X-Fold](/folding-homes): electrics only — two plug points, a light fitting and a small DB board. **No plumbing.** The blankest canvas here, and the cheapest to adapt.`,
+          `[X-Fold](/folding-homes): electrics only (two plug points, a light fitting and a small DB board). **No plumbing.** The blankest canvas here, and the cheapest to adapt.`,
           `[Expandable homes](/expandable-homes): bathroom with factory-installed plumbing and electrical from the 18 m² up.`,
           `[Apple Cabins](/apple-cabins): integrated lighting and plumbing, bathroom fittings in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): complete plumbing and electrics, bathroom and geyser standard on every model.`,
-          `[Nature cabins](/nature-cabins): the most complete — bathroom, kitchen, air conditioning and a storage water heater fitted as standard.`,
+          `[Nature cabins](/nature-cabins): the most complete (bathroom, kitchen, air conditioning and a storage water heater fitted as standard).`,
         ],
       },
       {
@@ -1463,7 +1463,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `Decide which of power, water and waste are genuinely off-grid on your site.`,
           `List your real electrical loads, honestly, including the fridge and any water heating.`,
-          `Settle water heating first — it moves the solar sizing more than anything else.`,
+          `Settle water heating first: it moves the solar sizing more than anything else.`,
           `Ask the municipality what sewerage solutions are permitted where you are.`,
           `Then choose the unit, and put the off-grid specification on the order.`,
         ],
@@ -1482,7 +1482,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What is the biggest electrical load in an off-grid tiny home?",
-        a: "Water heating, by a wide margin — an electric geyser element will size the whole system on its own. Moving hot water to gas changes the economics of everything downstream. The fridge is second, because it runs continuously and therefore sets your overnight battery capacity.",
+        a: "Water heating, by a wide margin. An electric geyser element will size the whole system on its own. Moving hot water to gas changes the economics of everything downstream. The fridge is second, because it runs continuously and therefore sets your overnight battery capacity.",
       },
       {
         q: "Is rainwater enough for a tiny home in South Africa?",
@@ -1490,12 +1490,12 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Which unit is easiest to set up off-grid?",
-        a: "The X-Fold is the blankest canvas because it arrives with electrics only and no plumbing, so nothing has to be undone. The nature cabin is the opposite — the most fitted unit, which means the off-grid specification needs to be agreed before it is built rather than retrofitted after.",
+        a: "The X-Fold is the blankest canvas because it arrives with electrics only and no plumbing, so nothing has to be undone. The nature cabin is the opposite: the most fitted unit, which means the off-grid specification needs to be agreed before it is built rather than retrofitted after.",
       },
     ],
     references: [
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "Includes the parts covering drainage, non-water-borne sanitation and energy usage in buildings, which govern what off-grid solutions are permitted.",
@@ -1547,7 +1547,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["From (ex VAT)", R(folding), R(expandable)],
           ["Floor area", "15 m²", "18 – 74 m²"],
-          ["Plumbing", "None — shared ablutions or local fit-out", "Bathroom and services installed"],
+          ["Plumbing", "None: shared ablutions or local fit-out", "Bathroom and services installed"],
           ["Electrics", "2 plugs, light, small DB board", "Full installation"],
           ["Setup", "Unfolds in minutes, 2 people", "Expands on site within hours"],
           ["Stackable", "Two units high", "No"],
@@ -1556,7 +1556,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `For volume deployment the [X-Fold](/folding-homes) at ${R(folding)} ex VAT is the workhorse. It ships flat — which matters when you are moving twenty of them — and two people unfold it in minutes with no specialist crew. It carries upgraded floor beams, EPS insulation and a basic electrical setup, and it stacks two high where ground space is tight.`,
+        text: `For volume deployment the [X-Fold](/folding-homes) at ${R(folding)} ex VAT is the workhorse. It ships flat (which matters when you are moving twenty of them) and two people unfold it in minutes with no specialist crew. It carries upgraded floor beams, EPS insulation and a basic electrical setup, and it stacks two high where ground space is tight.`,
       },
       {
         type: "p",
@@ -1575,7 +1575,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Cost per bed, not cost per unit",
-        text: `Divide the total — units, transport, groundwork, ablutions and connections — by the number of people actually housed. A cheaper unit that needs its own plumbing can lose to a more expensive one that does not, and neither price tag tells you that on its own.`,
+        text: `Divide the total (units, transport, groundwork, ablutions and connections) by the number of people actually housed. A cheaper unit that needs its own plumbing can lose to a more expensive one that does not, and neither price tag tells you that on its own.`,
       },
 
       { type: "h2", text: "Site offices" },
@@ -1585,7 +1585,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Worth comparing against hire rates over the real project duration: on a long programme, buying and relocating a unit you keep is often the cheaper answer, and you own an asset at the end. It also doubles as a lockable, insulated storeroom for tools and stock — the steel frame and steel door take daily use.`,
+        text: `Worth comparing against hire rates over the real project duration: on a long programme, buying and relocating a unit you keep is often the cheaper answer, and you own an asset at the end. It also doubles as a lockable, insulated storeroom for tools and stock: the steel frame and steel door take daily use.`,
       },
 
       { type: "h2", text: "What to check before you order" },
@@ -1593,10 +1593,10 @@ export const blogPosts: BlogPost[] = [
         type: "ol",
         items: [
           `**Access for the delivery.** X-Folds ship flat and can be carried in, which is why they work on sites nothing else reaches. Expandables arrive as a module and need a truck close by.`,
-          `**Ground and base.** Level slab or properly levelled plinths, per unit. On a temporary site this is still not optional — a unit standing out of level does not close properly.`,
+          `**Ground and base.** Level slab or properly levelled plinths, per unit. On a temporary site this is still not optional: a unit standing out of level does not close properly.`,
           `**Ablutions and services**, per the section above. Settle this first.`,
           `**Approval.** Even temporary staff accommodation can be a land-use and building question. Ask the local authority.`,
-          `**The legal context.** Housing people on land you own — particularly farm workers — carries obligations beyond the building itself. That is a question for your own legal advisor, not for a supplier.`,
+          `**The legal context.** Housing people on land you own, particularly farm workers, carries obligations beyond the building itself. That is a question for your own legal advisor, not for a supplier.`,
         ],
       },
       {
@@ -1613,11 +1613,11 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "What does staff accommodation cost per unit in South Africa?",
-        a: `Our X-Fold is ${R(folding)} ex VAT for an insulated, wired 15 m² room — the volume-deployment option, stackable two high and relocatable. Self-contained accommodation with its own bathroom and kitchen starts at ${R(expandable)} ex VAT for an 18 m² expandable home. Add transport, groundwork and ablutions or connections to both.`,
+        a: `Our X-Fold is ${R(folding)} ex VAT for an insulated, wired 15 m² room: the volume-deployment option, stackable two high and relocatable. Self-contained accommodation with its own bathroom and kitchen starts at ${R(expandable)} ex VAT for an 18 m² expandable home. Add transport, groundwork and ablutions or connections to both.`,
       },
       {
         q: "Does the X-Fold have a bathroom?",
-        a: "No. It arrives wired for electricity — two plug points, a light fitting and a small DB board — but with no plumbing. For staff accommodation that usually means a shared ablution block, which is cheaper per bed at scale, or a local installer fitting a wet room into individual units.",
+        a: "No. It arrives wired for electricity (two plug points, a light fitting and a small DB board) but with no plumbing. For staff accommodation that usually means a shared ablution block, which is cheaper per bed at scale, or a local installer fitting a wet room into individual units.",
       },
       {
         q: "Can the units be moved to the next site?",
@@ -1630,7 +1630,7 @@ export const blogPosts: BlogPost[] = [
     ],
     references: [
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The standards habitable accommodation is measured against, including the parts covering lighting, ventilation and sanitary fittings.",
@@ -1665,7 +1665,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `South Africans entertain outside, so the built-in braai area is one of the most common home projects in the country — and one of the most reliably over-budget. Bricklaying, a countertop, plumbing to a sink, an electrician for lights and plugs, and a roof over the whole thing: it is four trades and a project manager for what people imagine is a weekend job.`,
+        text: `South Africans entertain outside, so the built-in braai area is one of the most common home projects in the country, and one of the most reliably over-budget. Bricklaying, a countertop, plumbing to a sink, an electrician for lights and plugs, and a roof over the whole thing: it is four trades and a project manager for what people imagine is a weekend job.`,
       },
       {
         type: "p",
@@ -1690,13 +1690,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The frame is corrosion-resistant galvanised steel with an aluminium-alloy shell, and the interior panels are aluminium honeycomb — high-temperature resistant and wipe-clean after the braai. It is built to live outdoors permanently rather than to be covered up in winter.`,
+        text: `The frame is corrosion-resistant galvanised steel with an aluminium-alloy shell, and the interior panels are aluminium honeycomb, high-temperature resistant and wipe-clean after the braai. It is built to live outdoors permanently rather than to be covered up in winter.`,
       },
 
       { type: "h2", text: "Building versus buying" },
       {
         type: "p",
-        text: `A masonry braai area is genuinely the better answer in some cases — if it has to match existing brickwork, tuck into an awkward corner, or form part of a larger renovation already underway. What it is not is quicker or more predictable.`,
+        text: `A masonry braai area is genuinely the better answer in some cases: if it has to match existing brickwork, tuck into an awkward corner, or form part of a larger renovation already underway. What it is not is quicker or more predictable.`,
       },
       {
         type: "ul",
@@ -1705,19 +1705,19 @@ export const blogPosts: BlogPost[] = [
           `**Price certainty.** You are quoted a figure for a finished unit rather than a rate against a scope that grows.`,
           `**Time.** Weeks of site work versus a delivery, positioned and connected.`,
           `**It can move.** A built braai stays with the house. The unit does not have to.`,
-          `**Layout.** This is where building wins — a delivered unit comes in four lengths and one depth, and that is that.`,
+          `**Layout.** This is where building wins: a delivered unit comes in four lengths and one depth, and that is that.`,
         ],
       },
       {
         type: "callout",
         title: "Two things to sort before delivery",
-        text: `A level base — these are 500 to 750 kg units — and where water and power come from. The plumbing and electrical are embedded in the unit, but something still has to feed them. Sort both while the order is in production and delivery day is a delivery rather than the start of another project.`,
+        text: `A level base (these are 500 to 750 kg units) and where water and power come from. The plumbing and electrical are embedded in the unit, but something still has to feed them. Sort both while the order is in production and delivery day is a delivery rather than the start of another project.`,
       },
 
       { type: "h2", text: "Which extras are worth it" },
       {
         type: "p",
-        text: `The unit arrives with the countertop, sink, plumbing, electrics and lighting already in. What it does **not** arrive with is anything to cook on — that is a deliberate choice, because how South Africans cook outside varies enormously.`,
+        text: `The unit arrives with the countertop, sink, plumbing, electrics and lighting already in. What it does **not** arrive with is anything to cook on. That is a deliberate choice, because how South Africans cook outside varies enormously.`,
       },
       {
         type: "table",
@@ -1726,7 +1726,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["Single gas grill", R(optionOf("outdoor-kitchens", "gas-grill-single")), "The default choice on any length"],
           ["Double gas grill", R(optionOf("outdoor-kitchens", "gas-grill-double")), "3.5 m and 3.9 m only"],
-          ["Kettle grill", R(optionOf("outdoor-kitchens", "kettle-grill")), "3.5 m and 3.9 m only — for charcoal"],
+          ["Kettle grill", R(optionOf("outdoor-kitchens", "kettle-grill")), "3.5 m and 3.9 m only (for charcoal)"],
           ["Induction flat-top stove", R(optionOf("outdoor-kitchens", "induction-stove")), "Pans and sides, not braai duty"],
           ["Extractor fan", R(optionOf("outdoor-kitchens", "extractor-fan")), "Matters most under a closed roof"],
           ["Bar fridge", R(optionOf("outdoor-kitchens", "bar-fridge")), "Saves the trip inside"],
@@ -1753,7 +1753,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `If the outdoor kitchen is going in alongside a guest unit or a rental cabin, it is worth pricing them together — an [Apple Cabin](/apple-cabins) or [nature cabin](/nature-cabins) with a proper entertainment area beside it is a materially better letting proposition than either on its own.`,
+        text: `If the outdoor kitchen is going in alongside a guest unit or a rental cabin, it is worth pricing them together: an [Apple Cabin](/apple-cabins) or [nature cabin](/nature-cabins) with a proper entertainment area beside it is a materially better letting proposition than either on its own.`,
       },
       {
         type: "cta",
@@ -1782,7 +1782,7 @@ export const blogPosts: BlogPost[] = [
     ],
     references: [
       {
-        title: "SANS 10400 — the application of the National Building Regulations",
+        title: "SANS 10400: the application of the National Building Regulations",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/",
         note: "The building regulations for any type of structure, drainage included (Part P). They do not cover electrical installations: for wiring, the site refers you to SANS 10142.",
@@ -1819,7 +1819,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `We sell [prefab homes](/), so treat the framing here with appropriate suspicion — and then check the cons list, which is longer and more specific than the one you will find on most suppliers' websites. There are situations where conventional building is straightforwardly the better decision, and pretending otherwise wastes your time and ours.`,
+        text: `We sell [prefab homes](/), so treat the framing here with appropriate suspicion, and then check the cons list, which is longer and more specific than the one you will find on most suppliers' websites. There are situations where conventional building is straightforwardly the better decision, and pretending otherwise wastes your time and ours.`,
       },
 
       { type: "h2", text: "What you are actually choosing between" },
@@ -1836,7 +1836,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**It fits the site and the brief exactly.** Awkward plot, specific view, a layout your family actually needs — you can draw it. Prefab comes in catalogue sizes.`,
+          `**It fits the site and the brief exactly.** Awkward plot, specific view, a layout your family actually needs: you can draw it. Prefab comes in catalogue sizes.`,
           `**Finance is easier.** Far more lenders will bond conventional construction than a prefabricated structure. This is the single most underrated practical difference, and we go through the bank-by-bank position in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
           `**It matches what is already there.** If the new building has to read as part of an existing house, masonry does that and a delivered unit does not.`,
           `**Valuation and resale are well understood.** Valuers, insurers and buyers have decades of comparable data on brick. Prefab has thinner data, which shows up as caution.`,
@@ -1863,10 +1863,10 @@ export const blogPosts: BlogPost[] = [
           `**One price, known up front.** You are buying a finished unit, not a rate against a scope.`,
           `**Speed.** Around 90 days from deposit, and on-site setup runs from minutes for an [X-Fold](/folding-homes) to a few days for a cabin or capsule on a prepared base.`,
           `**Almost no disruption.** The building work happens somewhere else. Your property sees a delivery, not a site.`,
-          `**Factory conditions.** Panels built indoors, to a repeated specification, out of the weather — which is a genuinely different quality-control problem from wet trades on site in February.`,
+          `**Factory conditions.** Panels built indoors, to a repeated specification, out of the weather, which is a genuinely different quality-control problem from wet trades on site in February.`,
           `**Fewer people to coordinate.** A base, a delivery and two connections, rather than five trades in sequence.`,
           `**It can move.** An X-Fold folds down; a pod lifts out. If you sell, or the use changes, the asset is not stuck.`,
-          `**A lighter regulatory route may exist.** A structure genuinely declared temporary follows a different and much shorter path than a permanent building — with real limits, covered in the guide linked above.`,
+          `**A lighter regulatory route may exist.** A structure genuinely declared temporary follows a different and much shorter path than a permanent building, with real limits, covered in the guide linked above.`,
         ],
       },
 
@@ -1882,7 +1882,7 @@ export const blogPosts: BlogPost[] = [
           `**It is not automatically cheaper.** Per square metre our [expandable homes](/expandable-homes) land inside the same band as a mid-range conventional build. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
           `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
           `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
-          `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling — by everyone.`,
+          `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling, by everyone.`,
           `**Approval is not automatically avoided.** A permanently founded prefab dwelling generally faces the same municipal approval as any other dwelling. The lighter route exists only for genuinely temporary structures, and it is time-limited.`,
           `**Extras add up.** The advertised price is factory-gate. Transport, groundwork and service connections are yours, and on a distant or awkward site they are not small.`,
         ],
@@ -1898,7 +1898,7 @@ export const blogPosts: BlogPost[] = [
           ["Time on your property", "Months", "Hours to a few days"],
           ["Layout", "Anything you can draw", "Catalogue sizes"],
           ["Paperwork", "Full approval path", "Full path if permanent; lighter if genuinely temporary"],
-          ["Bond finance", "Widely available", "Restricted — some banks decline outright"],
+          ["Bond finance", "Widely available", "Restricted: some banks decline outright"],
           ["Coordination", "Yours", "Largely the supplier's"],
           ["Weather risk during build", "Yours", "The factory's"],
           ["Can it be moved later", "No", "Yes"],
@@ -1925,7 +1925,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `Knowing the final figure up front matters more to you than a bespoke plan.`,
           `You want the building usable in months rather than a year.`,
-          `You cannot live through a construction site — a working farm, a lodge taking bookings, a home with small children.`,
+          `You cannot live through a construction site: a working farm, a lodge taking bookings, a home with small children.`,
           `The use might change, or you might move, and a relocatable asset is worth something to you.`,
           `The job is a standard one: a granny flat, a guest unit, staff accommodation, a site office, a rental cabin.`,
         ],
@@ -1933,7 +1933,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "The question that settles it fastest",
-        text: `"Do I need a bond?" If yes, find out whether your bank will lend against a prefabricated structure before you look at a single unit. It is a five-minute call, and it removes an entire option — in one direction or the other — before you spend any time on the rest.`,
+        text: `"Do I need a bond?" If yes, find out whether your bank will lend against a prefabricated structure before you look at a single unit. It is a five-minute call, and it removes an entire option, in one direction or the other, before you spend any time on the rest.`,
       },
       {
         type: "p",
@@ -1941,7 +1941,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Units are on site at our showroom in ${site.showroom.city} — free to view, no obligation.`,
+        text: `Units are on site at our showroom in ${site.showroom.city}: free to view, no obligation.`,
         href: "/book-a-viewing",
         label: "Book a viewing",
       },
@@ -1949,19 +1949,19 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "What are the main disadvantages of a prefab home?",
-        a: "Bond finance is restricted — some major South African banks do not currently bond prefabricated structures at all. Beyond that: catalogue sizes rather than bespoke layouts, delivery access can make a site unworkable at any budget, resale and valuation data is thinner than for brick, and the advertised price excludes transport, groundwork and service connections.",
+        a: "Bond finance is restricted: some major South African banks do not currently bond prefabricated structures at all. Beyond that: catalogue sizes rather than bespoke layouts, delivery access can make a site unworkable at any budget, resale and valuation data is thinner than for brick, and the advertised price excludes transport, groundwork and service connections.",
       },
       {
         q: "Is prefab better quality than brick?",
-        a: "Different, rather than better. Factory assembly means repeatable conditions, indoors, out of the weather — a genuinely different quality-control problem from wet trades working on site in bad weather. But a well-built masonry house by a good contractor is an excellent building, and a poorly specified prefab is still a poorly specified building.",
+        a: "Different, rather than better. Factory assembly means repeatable conditions, indoors, out of the weather: a genuinely different quality-control problem from wet trades working on site in bad weather. But a well-built masonry house by a good contractor is an excellent building, and a poorly specified prefab is still a poorly specified building.",
       },
       {
         q: "Do prefab homes need building plans in South Africa?",
-        a: "A permanently founded prefab dwelling generally faces the same municipal approval path as any other dwelling. A structure genuinely declared temporary follows a lighter route under regulation A23 — provisional authorisation on layout drawings rather than a full plan set — but it is time-limited, and if it is not extended or converted to a full approval before the period ends, the Act requires the owner to remove or demolish it.",
+        a: "A permanently founded prefab dwelling generally faces the same municipal approval path as any other dwelling. A structure genuinely declared temporary follows a lighter route under regulation A23 (provisional authorisation on layout drawings rather than a full plan set), but it is time-limited, and if it is not extended or converted to a full approval before the period ends, the Act requires the owner to remove or demolish it.",
       },
       {
         q: "Does a prefab home lose value?",
-        a: "It depends heavily on whether it is fixed and approved. A permanently founded, municipally approved dwelling with an occupancy certificate is treated as property. A relocatable unit standing on plinths behaves more like a movable asset — which is an advantage if you want to take it with you and a disadvantage at valuation.",
+        a: "It depends heavily on whether it is fixed and approved. A permanently founded, municipally approved dwelling with an occupancy certificate is treated as property. A relocatable unit standing on plinths behaves more like a movable asset, which is an advantage if you want to take it with you and a disadvantage at valuation.",
       },
     ],
     references: [
@@ -2034,7 +2034,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Read that carefully, because it settles the question. A structure does not escape the Act by being **temporary**, by being **movable**, or by being made of **steel rather than brick** — all three are expressly covered. If people will live in it, it is a building.`,
+        text: `Read that carefully, because it settles the question. A structure does not escape the Act by being **temporary**, by being **movable**, or by being made of **steel rather than brick**. All three are expressly covered. If people will live in it, it is a building.`,
       },
       {
         type: "p",
@@ -2042,41 +2042,41 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `So the honest answer to "does a movable tiny home need plans?" is: **it needs the local authority's permission either way — but not necessarily a full architectural plan set.** The lighter option is real, and it is route 2 below.`,
+        text: `So the honest answer to "does a movable tiny home need plans?" is: **it needs the local authority's permission either way, but not necessarily a full architectural plan set.** The lighter option is real, and it is route 2 below.`,
       },
       {
         type: "callout",
         title: "Do not confuse a tiny home with a caravan",
-        text: `Caravans and trailers are road vehicles, registered under road traffic law, and are treated differently. A tiny home delivered on a truck and set down on plinths is not a caravan — it has no wheels, no registration and it stays put. A great deal of "tiny homes need no permits" content online is American or Australian and describes homes on registered road trailers. It does not transfer to a unit standing on your plot in South Africa.`,
+        text: `Caravans and trailers are road vehicles, registered under road traffic law, and are treated differently. A tiny home delivered on a truck and set down on plinths is not a caravan: it has no wheels, no registration and it stays put. A great deal of "tiny homes need no permits" content online is American or Australian and describes homes on registered road trailers. It does not transfer to a unit standing on your plot in South Africa.`,
       },
 
       { type: "h2", text: "Route 1: a permanent building" },
       {
         type: "p",
-        text: `This is the path for anything intended to stay — a house, a granny flat, a permanently founded cabin. It runs under the **National Building Regulations and Building Standards Act 103 of 1977**, with SANS 10400 supplying the deemed-to-satisfy standards.`,
+        text: `This is the path for anything intended to stay: a house, a granny flat, a permanently founded cabin. It runs under the **National Building Regulations and Building Standards Act 103 of 1977**, with SANS 10400 supplying the deemed-to-satisfy standards.`,
       },
 
-      { type: "h3", text: "Step 1 — Land use, before anything else" },
+      { type: "h3", text: "Step 1: Land use, before anything else" },
       {
         type: "p",
         text: `Zoning is a separate question from building plans, and it is the one that can stop the project outright. Land use sits under the **Spatial Planning and Land Use Management Act 16 of 2013 (SPLUMA)** and your municipality's land use scheme.`,
       },
       {
         type: "p",
-        text: `For a second dwelling on a Residential 1 stand, the usual mechanism is **consent use** rather than rezoning — permission to use the property for something beyond its zoning, granted to you rather than to the land. Two consequences worth knowing: it is decided by the municipal planning authority, and **consent use generally lapses when the property is sold**, so a buyer has to reapply. Rezoning permanently changes the zoning and is the heavier application.`,
+        text: `For a second dwelling on a Residential 1 stand, the usual mechanism is **consent use** rather than rezoning: permission to use the property for something beyond its zoning, granted to you rather than to the land. Two consequences worth knowing: it is decided by the municipal planning authority, and **consent use generally lapses when the property is sold**, so a buyer has to reapply. Rezoning permanently changes the zoning and is the heavier application.`,
       },
 
-      { type: "h3", text: "Step 2 — Plans, drawn by someone specific" },
+      { type: "h3", text: "Step 2: Plans, drawn by someone specific" },
       {
         type: "p",
         text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person**, registered in an appropriate category under the Architectural Profession Act, the Engineering Profession Act or another relevant act. For architectural services, that means the **South African Council for the Architectural Profession (SACAP)**: a person who is not registered with SACAP is not legally allowed to provide them. Its four professional categories are Professional Architect, Professional Senior Architectural Technologist, Professional Architectural Technologist and Professional Architectural Draughtsperson, and which of them may design a project depends on its complexity and the sensitivity of the site. SACAP's Code of Conduct requires them to use their title and SACAP registration number in their architectural reports and other documentation, and practising in any of those categories without being registered in it is an offence under the Architectural Profession Act.`,
       },
       {
         type: "p",
-        text: `Depending on the structure, an engineer may also have to take responsibility for the foundation or structural design — a rational design signed by a registered professional rather than a deemed-to-satisfy detail.`,
+        text: `Depending on the structure, an engineer may also have to take responsibility for the foundation or structural design: a rational design signed by a registered professional rather than a deemed-to-satisfy detail.`,
       },
 
-      { type: "h3", text: "Step 3 — Municipal approval, with a clock on it" },
+      { type: "h3", text: "Step 3: Municipal approval, with a clock on it" },
       {
         type: "p",
         text: `Once submitted, the Act gives the local authority a deadline to grant or refuse:`,
@@ -2084,8 +2084,8 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Under 500 m² architectural area — 30 days** from receipt of the application.`,
-          `**500 m² or larger — 60 days.**`,
+          `**Under 500 m² architectural area: 30 days** from receipt of the application.`,
+          `**500 m² or larger: 60 days.**`,
         ],
       },
       {
@@ -2093,7 +2093,7 @@ export const blogPosts: BlogPost[] = [
         text: `Those are the statutory periods; real-world turnaround depends on the municipality and on how many times the plans come back for correction. One more clause catches people out: **an approval lapses after 12 months** if the work has not commenced or proceeded, unless you apply in writing for an extension.`,
       },
 
-      { type: "h3", text: "Step 4 — NHBRC, if it is a new home" },
+      { type: "h3", text: "Step 4: NHBRC, if it is a new home" },
       {
         type: "p",
         text: `Under the **Housing Consumers Protection Measures Act 95 of 1998**, a new home must be enrolled with the NHBRC **15 days before construction commences**, and the home must be available for inspection by the Council's inspectorate throughout construction.`,
@@ -2104,15 +2104,15 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs — no warranty cover, and restrictions on selling the property for a period afterwards.`,
+        text: `Owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs: no warranty cover, and restrictions on selling the property for a period afterwards.`,
       },
 
-      { type: "h3", text: "Step 5 — Certificates, at the end" },
+      { type: "h3", text: "Step 5: Certificates, at the end" },
       {
         type: "ul",
         items: [
           `**Electrical certificate of compliance.** Required under the Occupational Health and Safety Act and the Electrical Installation Regulations, issued by a registered person holding a wireman's licence. Valid two years unless the installation is altered, and required before a property transfers.`,
-          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it — and it is the document that surfaces years later when you sell.`,
+          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it, and it is the document that surfaces years later when you sell.`,
         ],
       },
       {
@@ -2128,7 +2128,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one *"so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time"* — explicitly excluding a builder's shed.`,
+        text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one *"so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time"*, explicitly excluding a builder's shed.`,
       },
       {
         type: "p",
@@ -2167,7 +2167,7 @@ export const blogPosts: BlogPost[] = [
         text: `One more thing this route is not: a loophole. A temporary building is one *"so declared by the owner"* for a *"specified purpose for a specified limited period"*. Declaring a permanent home temporary to dodge the approval path is a misdeclaration with a demolition clause attached to it.`,
       },
 
-      { type: "h2", text: "What minor building work does — and does not — cover" },
+      { type: "h2", text: "What minor building work does, and does not, cover" },
       {
         type: "p",
         text: `The third thing people hope applies. A building control officer may exempt an owner in writing from submitting plans for **minor building work**, and authorise it subject to conditions. The listed categories carry size thresholds:`,
@@ -2187,7 +2187,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Read that list carefully and the crucial point is what is **absent from it: a dwelling**. Minor building work covers sheds, carports, playhouses and walls — not habitable accommodation. A tiny home someone sleeps in does not become exempt because it is small. And even where the exemption applies, the work must still comply with the National Building Regulations; you are excused the plans, not the standards.`,
+        text: `Read that list carefully and the crucial point is what is **absent from it: a dwelling**. Minor building work covers sheds, carports, playhouses and walls, not habitable accommodation. A tiny home someone sleeps in does not become exempt because it is small. And even where the exemption applies, the work must still comply with the National Building Regulations; you are excused the plans, not the standards.`,
       },
 
       { type: "h2", text: "Which route applies to which unit" },
@@ -2213,7 +2213,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ol",
         items: [
-          `**Phone your municipality's building control department.** Free. Describe the actual structure, its size, its foundation and whether anyone will sleep in it — not "a tiny home", which means different things to different officials.`,
+          `**Phone your municipality's building control department.** Free. Describe the actual structure, its size, its foundation and whether anyone will sleep in it, not "a tiny home", which means different things to different officials.`,
           `**Ask the land-use question separately**: does my zoning permit this use, and do I need consent use?`,
           `**Ask which route applies**: permanent building, temporary building under A23, or minor building work.`,
           `**If route 1**, appoint a registered competent person early: nothing proceeds until plans exist.`,
@@ -2224,7 +2224,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `We supply the dimensions and specifications of any unit for your submission. What we cannot do — and what nobody selling you a building can honestly do — is tell you what your municipality will decide.`,
+        text: `We supply the dimensions and specifications of any unit for your submission. What we cannot do, and what nobody selling you a building can honestly do, is tell you what your municipality will decide.`,
       },
       {
         type: "cta",
@@ -2248,11 +2248,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Does a tiny home count as minor building work?",
-        a: "Not if anyone lives in it. The minor building work categories are sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds — habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
+        a: "Not if anyone lives in it. The minor building work categories are sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds. Habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
       },
       {
         q: "Does a movable or relocatable structure need building plans in South Africa?",
-        a: "It needs the local authority's permission either way. Section 1 of the National Building Regulations and Building Standards Act defines a building to include any structure \"whether of a temporary or permanent nature and irrespective of the materials used\" that is erected or used for the accommodation of human beings — so being movable, temporary or steel-framed does not take it outside the Act. What being genuinely temporary can change is the paperwork: regulation A23 allows provisional authorisation on layout drawings, a site plan and a statement of period rather than a full architectural plan set.",
+        a: "It needs the local authority's permission either way. Section 1 of the National Building Regulations and Building Standards Act defines a building to include any structure \"whether of a temporary or permanent nature and irrespective of the materials used\" that is erected or used for the accommodation of human beings, so being movable, temporary or steel-framed does not take it outside the Act. What being genuinely temporary can change is the paperwork: regulation A23 allows provisional authorisation on layout drawings, a site plan and a statement of period rather than a full architectural plan set.",
       },
       {
         q: "Is a tiny home the same as a caravan for planning purposes?",
@@ -2298,7 +2298,7 @@ export const blogPosts: BlogPost[] = [
         title: "Temporary buildings",
         publisher: "sans10400.co.za",
         url: "https://www.sans10400.co.za/temporary-buildings/",
-        note: "Plain-language explanation of regulation A23 — what must be submitted, the assessment criteria, extensions and removal.",
+        note: "Plain-language explanation of regulation A23: what must be submitted, the assessment criteria, extensions and removal.",
         checked: "2026-10-16",
       },
       {

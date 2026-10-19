@@ -54,7 +54,7 @@ export const podEntries: PodEntry[] = [
       "The cheapest way into a pod-sized building in the range. It arrives flat on a truck and unfolds into a weather-tight, insulated 15 m² room in minutes, wired for electricity with two plug points, a light fitting and a small DB board. It carries no plumbing, so a bathroom is a local installer's job.",
     bestFor: "The lowest possible price per room",
     notAPod:
-      "Square, not curved. The X-Fold is a folding steel room rather than a moulded capsule, so if the picture in your head is a rounded pod with a glass end, this is not it — but it is a quarter of the price of anything that is.",
+      "Square, not curved. The X-Fold is a folding steel room rather than a moulded capsule, so if the picture in your head is a rounded pod with a glass end, this is not it, but it is a quarter of the price of anything that is.",
   },
   {
     slug: "expandable-homes",
@@ -95,7 +95,7 @@ export const podEntries: PodEntry[] = [
       "The alternative for a buyer who wants nothing left to do on arrival. A 21 m² timber-look steel cabin with a viewing terrace, 26 m² in total, that arrives fully built, with the bathroom, kitchen, air conditioning and a storage water heater all fitted as standard rather than sold as extras.",
     bestFor: "Moving in with nothing left to add",
     notAPod:
-      "A cabin, plainly — pitched roof, terrace, no curves. It sits on this page because it competes for the same money as a large pod and answers the same question differently.",
+      "A cabin, plainly: pitched roof, terrace, no curves. It sits on this page because it competes for the same money as a large pod and answers the same question differently.",
   },
 ];
 

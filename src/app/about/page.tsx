@@ -131,7 +131,7 @@ const processSteps = [
   },
   {
     title: "Build",
-    body: "Your home is built under factory conditions in steel and insulated panelling: precise, weather-independent and quality-checked before it ships.",
+    body: "Your home is built precisely, under factory conditions and out of the weather, in steel and insulated panelling, and it's quality-checked before it ships.",
   },
   {
     title: "Deliver & install",
@@ -176,31 +176,31 @@ export default function AboutPage() {
               </h1>
               <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-stone">
                 <p>
-                  Tiny Homes SA started with a simple question: how can housing be done
-                  better, faster and smarter? From that challenge grew a team who believe
-                  dignified housing shouldn&rsquo;t demand decades of debt. We hold every
-                  unit we put our name to against one standard: compact spaces that feel
-                  generous, resilient and genuinely affordable.
+                  Tiny Homes SA started with one question: could housing be done better
+                  and faster than the usual way? We believe a dignified home
+                  shouldn&rsquo;t cost decades of debt. Every unit we put our name to is held
+                  to one standard: it&rsquo;s small but feels generous inside, it&rsquo;s
+                  resilient, and it&rsquo;s genuinely affordable.
                 </p>
                 <p>
-                  We supply high-end prefab tiny homes from our base in Raslouw, Centurion,
-                  X-Folds, expandable homes, nature cabins, apple cabins and glamping
-                  capsules, plus outdoor kitchens and safari tents, delivered anywhere
-                  in South Africa. Customers call them tiny houses, granny pods or
-                  prefab cabins. The labels vary; the standard does not.
+                  From our base in Raslouw, Centurion, we supply high-end prefab tiny homes
+                  (X-Folds, expandable homes, nature cabins, apple cabins and glamping
+                  capsules) plus outdoor kitchens and safari tents, and we deliver anywhere
+                  in South Africa. Customers call them tiny houses, granny pods or prefab
+                  cabins. Whatever you call them, they&rsquo;re built to the same standard.
                 </p>
                 <p>
-                  Conventional building takes too long, costs too much and leaves too much to
-                  chance. The answer is precision factory building: steel-framed, insulated
-                  homes finished indoors, trucked to your site and standing in anything from
-                  minutes to a few days. From deposit to move-in takes around 90 days, and
+                  Building the conventional way takes too long, costs too much and leaves too
+                  much to chance. Our answer is precision factory building: steel-framed,
+                  insulated homes finished indoors, trucked to your site and standing in anything from
+                  minutes to a few days. Deposit to move-in takes around 90 days, and
                   every home we supply comes with a {site.guarantee}.
                 </p>
                 <p>
-                  The range spans five home designs, from the {formatZAR(minPrice)} X-Fold
-                  to the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule,
-                  every price published ex VAT, alongside outdoor entertainment kitchens.
-                  We also supply luxury safari tents, though only to businesses and
+                  There are five home designs, from the {formatZAR(minPrice)} X-Fold to
+                  the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule, and every
+                  price we publish is ex VAT. We also supply outdoor entertainment
+                  kitchens. Our luxury safari tents go only to businesses and
                   hospitality operators, quoted per project rather than sold off the
                   page. {site.finance}.
                 </p>
@@ -249,8 +249,8 @@ export default function AboutPage() {
               </p>
             </blockquote>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/75">
-              We use precision factory building to make high-end, sustainable living
-              attainable for more South Africans: on farms, in gardens, at lodges and
+              We use precision factory building so that a high-end, sustainable home is
+              within reach of more South Africans, on farms, in gardens, at lodges and
               everywhere in between.
             </p>
           </Reveal>

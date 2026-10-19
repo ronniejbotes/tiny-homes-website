@@ -186,7 +186,7 @@ export const products: Product[] = [
     seoTitle: "Folding Homes South Africa from R54 900",
     metaSummary:
       "A foldable house: flat-pack to an insulated 15 m² room in minutes, wired for electricity, and it folds back down to move.",
-    tagline: "Durable. Adaptable. Ready when you are.",
+    tagline: "Unfolds in minutes, and folds back down when you move.",
     summary:
       "The X-Fold is a foldable house that flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
@@ -308,7 +308,7 @@ export const products: Product[] = [
     sizesHeading: "Sizes and prices, from open plan to 2 bedrooms",
     metaSummary:
       "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
-    tagline: "Smart living, fast, flexible and future-ready.",
+    tagline: "One module that expands on site within hours.",
     summary:
       "A prefabricated granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
@@ -360,7 +360,7 @@ export const products: Product[] = [
        *  inserted lines higher up in blog.ts. */
       {
         title: "Granny flat",
-        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done — and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a kitchen (basic stainless-steel cabinetry and a sink, with no appliances) already in it, and it expands on site within hours rather than tying up the garden for months.",
+        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done, and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a kitchen (basic stainless-steel cabinetry and a sink, with no appliances) already in it, and it expands on site within hours rather than tying up the garden for months.",
       },
       {
         title: "Family home",
@@ -457,7 +457,7 @@ export const products: Product[] = [
     // kitchen, Midea air conditioning).
     metaSummary:
       "A prefab cabin house: 21 m² plus a viewing terrace, delivered fully built with bathroom, kitchen and air conditioning.",
-    tagline: "Effortless luxury. Naturally simple.",
+    tagline: "A timber look on a steel frame, delivered fully built.",
     summary:
       "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
@@ -561,11 +561,14 @@ export const products: Product[] = [
     h1: "Apple cabin eco pods",
     sizesHeading: "Eco pods for sale, in three sizes",
     seoTitle: "Eco Pods South Africa from R449 900",
-    tagline: "Sleek. Smart. Instantly livable.",
+    tagline: "Floor-to-ceiling glass, luxury bathroom fittings, ready within hours.",
+    // Written to fit 155 characters after the "Apple Cabin from <price> ex VAT. " lead.
+    metaSummary:
+      "An eco pod wrapped in panoramic glass, with luxurious bathroom fittings and smart-lock entry, ready within hours.",
     summary:
-      "Big living in a small package: a futuristic cabin wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry, arriving fully assembled and ready within hours. From R449 900 ex VAT.",
+      "An eco pod with a futuristic look, wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry. It arrives fully assembled and is ready within hours. From R449 900 ex VAT.",
     description:
-      "Apple Cabins bring futuristic architecture to eco-resorts, vineyards and scenic escapes. Luxury living redefined: compact, stylish, smart. The angular shell and curved, floor-to-ceiling panoramic glass flood the interior with light, while double-glazed windows and an insulated, low-maintenance build keep it comfortable year-round. Luxurious bathroom fittings are included in all three sizes, with a kitchenette included in the 9 m and 11.8 m cabins, plus premium interior finishes with curtain tracks, smart-lock entry and integrated lighting and plumbing: plug in and you're ready. Choose the 13 m² Apple Cabin 5.8m from R449 900 ex VAT, the 20 m² Apple Cabin 9m at R549 900 or the 26.5 m² Apple Cabin 11.8m at R649 900, with various sizes and designs available. Each cabin arrives fully assembled and is professionally installed, ready for occupation within hours.",
+      "Apple Cabins are eco pods with a futuristic, angular shell, made for eco-resorts, vineyards and scenic getaways. Curved, floor-to-ceiling panoramic glass fills the inside with light, and the double-glazed windows and insulated, low-maintenance build keep it comfortable all year. All three sizes come with luxurious bathroom fittings, and the 9 m and 11.8 m cabins add a kitchenette. You also get premium interior finishes with curtain tracks, smart-lock entry, and lighting and plumbing already built in: plug in and you're ready. You can choose the 13 m² Apple Cabin 5.8m from R449 900 ex VAT, the 20 m² Apple Cabin 9m at R549 900 or the 26.5 m² Apple Cabin 11.8m at R649 900, and other sizes and designs are available too. Each cabin arrives fully assembled and is professionally installed, ready for occupation within hours.",
     startingPrice: 449900,
     sizeLabel: "13 – 26.5 m²",
     setupTime: "Ready within hours",
@@ -658,11 +661,11 @@ export const products: Product[] = [
     seoTitle: "Capsule Houses & Glamping Pods from R689 900",
     metaSummary:
       "Capsule houses with 270° floor-to-ceiling glazing and the bathroom standard, 18.6 to 38 m², delivered fully built.",
-    tagline: "Luxury in the heart of nature: the art of glamping, perfected.",
+    tagline: "270° of glass, with the bathroom as standard.",
     summary:
-      "Glamping dreams delivered: capsule houses wrapped in 270° oversized floor-to-ceiling double glazing, with the bathroom, its premium fittings and a geyser standard on every model, in a core range from R689 900 ex VAT and a more premium Space range with a much longer options list.",
+      "Capsule houses wrapped in 270° of oversized floor-to-ceiling double glazing, built for glamping. The bathroom, its premium fittings and a geyser are standard on every model. There's a core range from R689 900 ex VAT, and a more premium Space range with a much longer options list.",
     description:
-      "Glamping Capsules are the flagship of the Tiny Homes SA range: scenic, serene luxury delivered to beaches, bush settings and vineyards. Rooms sit either side of the bathroom, each wrapped in 270-degree oversized floor-to-ceiling double-glazed windows and roomy enough for a queen bed, lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard, with the kitchen and air conditioning offered as extras so you only pay for what you need. Choose the core range: 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900, or step up to the Space range, a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts: both ranges build other sizes and layouts to order, and there are far more options than we can list, so tell us what you need and we'll check. Each capsule arrives fully built and is delivered to your site, so there's no on-site construction and it's ready for immediate occupancy.",
+      "Glamping Capsules are the flagship of the Tiny Homes SA range: luxury capsule houses we deliver to beaches, bush settings and vineyards. The rooms sit either side of the bathroom. Each one is wrapped in 270-degree oversized floor-to-ceiling double-glazed windows, with room for a queen bed, a lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard. The kitchen and air conditioning are extras, so you only pay for what you need. There are two ranges. The core range comes in 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900. The Space range is a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts. Both ranges build other sizes and layouts to order, and there are far more options than we can list, so tell us what you need and we'll check. Each capsule arrives at your site fully built, so there's no construction on site and it's ready to occupy straight away.",
     startingPrice: 689900,
     sizeLabel: "18.6 – 38 m²",
     bedrooms: "1 – 2 rooms + bathroom",
@@ -910,11 +913,11 @@ export const products: Product[] = [
     // Says who it is sold to (trade only); never "manufacturer".
     metaDescription:
       "Luxury canvas safari tents for sale to lodges, glamping resorts and reserves: Meru-style or stretch-tension roofs, decks and en-suites, quoted per project.",
-    tagline: "Luxury under canvas, engineered for Africa.",
+    tagline: "Luxury canvas suites for lodges and resorts, engineered for African sun, wind and rain.",
     summary:
-      "Luxury canvas safari tents, for sale to businesses and hospitality operators only: game lodges, glamping resorts, boutique hotels and event venues. Safari tents cannot be ordered through this site, and viewings are by appointment rather than at the showroom.",
+      "Luxury canvas safari tents, sold only to businesses and hospitality operators: game lodges, glamping resorts, boutique hotels and event venues. You can't order a safari tent through this site, and viewings are by appointment, not at the showroom.",
     description:
-      "Safari tents are how Africa's best lodges put guests inside the landscape without giving up an inch of comfort. We supply and install luxury canvas tented suites built by one of Africa's leading safari-tent manufacturers. Choose between classic Meru-style canvas and curved stretch-tension roofs over timber structures, add raised decks and en-suite layouts, and the result is a suite engineered for African conditions: sun, wind, rain and everything in between. Because no two sites or briefs are the same, there's no price list: we start with a consultation, configure every tent to your site, layout and guest experience, and give you an itemised quotation. From game lodge suites and glamping resorts to private reserves, bush camps, boutique hotels and event venues, all backed by our after-sales support. One thing to know before you enquire: safari tents are a trade offering. We supply them to businesses and hospitality operators only, not to private buyers, and they cannot be ordered or quoted through this site the way our homes can. They are also not kept at our Centurion showroom, so seeing one is arranged individually: email johan@tinyhomesa.com and we will set up a time to view the tents.",
+      "Safari tents are how Africa's best lodges put guests out in the bush without giving up an inch of comfort. We supply and install luxury canvas tented suites built by one of Africa's leading safari-tent manufacturers. Over a timber structure, you choose a classic Meru-style canvas roof or a curved stretch-tension one, then add raised decks and en-suite layouts. Each suite is engineered for African conditions: sun, wind, rain and everything in between. There's no price list, because no two sites or briefs are the same. We start with a consultation, configure every tent to your site, layout and guest experience, and then give you an itemised quotation. They work for game lodge suites, glamping resorts, private reserves, bush camps, boutique hotels and event venues, and every one is backed by our after-sales support. One thing to know before you enquire: safari tents are a trade offering. We supply them only to businesses and hospitality operators, not to private buyers, and they can't be ordered or quoted through this site the way our homes can. They aren't kept at our Centurion showroom either, so viewings are arranged individually: email johan@tinyhomesa.com and we'll set up a time to view the tents.",
     startingPrice: 0, // sentinel: priceOnRequest, must never render
     priceOnRequest: true,
     // Trade only, owner-instructed 2026-08-19: offered to businesses and
@@ -949,7 +952,7 @@ export const products: Product[] = [
     useCases: [
       {
         title: "Game lodge suites",
-        body: "Canvas tented suites that put guests inside the landscape without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed by Tiny Homes SA, built by one of Africa's leading safari-tent manufacturers.",
+        body: "Canvas tented suites that put guests out in the bush without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed by Tiny Homes SA, built by one of Africa's leading safari-tent manufacturers.",
       },
       {
         title: "Glamping resort",
@@ -996,7 +999,7 @@ export const products: Product[] = [
       },
       {
         q: "Where do safari tents work best?",
-        a: "Game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues: anywhere you want guests immersed in the landscape with lodge-level comfort.",
+        a: "Game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues: anywhere you want guests close to nature with the comfort of a lodge.",
       },
       {
         q: "What is the lead time?",

@@ -98,7 +98,7 @@ const included = [
 
 const notIncluded = [
   "Groundwork: a level slab or properly levelled precast plinths",
-  "The connections themselves — municipal or borehole water, sewerage, and the tie-in to your DB board",
+  "The connections themselves: municipal or borehole water, sewerage, and the tie-in to your DB board",
   "Council plan approval, where your municipality requires it",
   "VAT, and transport, which is quoted separately for your site",
 ];
@@ -168,7 +168,7 @@ export default function HousingPodsPage() {
               Housing pods for sale in South Africa
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-cream/80 sm:text-xl">
-              &ldquo;Pod&rdquo; covers a lot of ground — a R55 000 room at the bottom of the
+              &ldquo;Pod&rdquo; covers a lot of ground: a R55 000 room at the bottom of the
               garden and a R1 million glass capsule on a game farm both get called one. We
               build five ranges that answer the search, from{" "}
               <span className="nums-tabular">{formatZAR(podPriceFrom)}</span> to{" "}
@@ -350,7 +350,7 @@ export default function HousingPodsPage() {
                 note ran to about 110. */}
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone">
               Prices are for the product only and exclude VAT, earthworks and the provision
-              of services. Larger sizes and extras carry their own prices — the{" "}
+              of services. Larger sizes and extras carry their own prices. The{" "}
               <Link href="/quote" className="underline underline-offset-2 hover:text-ink">
                 quote builder
               </Link>{" "}
@@ -463,13 +463,13 @@ export default function HousingPodsPage() {
             id="pod-buying"
             eyebrow="Before you buy"
             title="Four things worth checking first"
-            intro="The questions that decide whether a pod works on your property — and the ones that cost money if you leave them until after the deposit."
+            intro="The questions that decide whether a pod works on your property, and the ones that cost money if you leave them until after the deposit."
           />
           <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14" as="ul">
             {[
               {
                 h: "Can a truck reach the spot?",
-                p: "A pod is delivered whole. Every one of these ranges except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position, so the route in — gate width, overhead cables, slope, soft ground — decides as much as the plot itself. Send us photos of the access and we will tell you before you order, not after.",
+                p: "A pod is delivered whole. Every one of these ranges except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position, so the route in (gate width, overhead cables, slope, soft ground) decides as much as the plot itself. Send us photos of the access and we will tell you before you order, not after.",
               },
               {
                 h: "What is the base standing on?",
@@ -477,11 +477,11 @@ export default function HousingPodsPage() {
               },
               {
                 h: "Where are the services coming from?",
-                p: "A pod is only self-contained once water, sewerage and power reach it. Some ranges arrive with plumbing installed at the factory and some — the X-Fold — carry electrics only. Off-grid is a real option across the range: solar, gas geysers and rainwater tanks are sized and quoted for your site.",
+                p: "A pod is only self-contained once water, sewerage and power reach it. Some ranges arrive with plumbing installed at the factory and some (the X-Fold) carry electrics only. Off-grid is a real option across the range: solar, gas geysers and rainwater tanks are sized and quoted for your site.",
               },
               {
                 h: "Does your municipality want plans?",
-                p: "Approval rules for a second structure are set locally and genuinely differ between municipalities, so the only reliable answer comes from your own building control department. Ask them before you commit — it is a free phone call, and it is the answer everything else depends on.",
+                p: "Approval rules for a second structure are set locally and genuinely differ between municipalities, so the only reliable answer comes from your own building control department. Ask them before you commit. It is a free phone call, and it is the answer everything else depends on.",
               },
             ].map((item) => (
               <StaggerItem key={item.h} as="li">

@@ -40,19 +40,19 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "What is the cheapest housing pod you sell?",
-    a: `The X-Fold, at ${formatZAR(foldingFrom)} ex VAT for 15 m². It arrives flat, unfolds in minutes with two people, and comes with upgraded floor beams, EPS insulation and a basic electrical setup: two plug points, a light fitting and a small DB board. Be clear about what it is not — it has no plumbing, so a shower and toilet mean a local installer, and it is a square folding room rather than a curved capsule. For that money it is the most building you can put on a property in a day.`,
+    a: `The X-Fold, at ${formatZAR(foldingFrom)} ex VAT for 15 m². It arrives flat, unfolds in minutes with two people, and comes with upgraded floor beams, EPS insulation and a basic electrical setup: two plug points, a light fitting and a small DB board. Be clear about what it is not: it has no plumbing, so a shower and toilet mean a local installer, and it is a square folding room rather than a curved capsule. For that money it is the most building you can put on a property in a day.`,
   },
   {
     q: "Is a housing pod the same as a tiny home, a granny pod or a capsule?",
-    a: "In everyday South African usage, near enough. A tiny home and a pod both mean a compact, factory-built home delivered largely finished. A granny pod (or granny flat) specifically means a self-contained second dwelling on the same property as the main house, which is what our expandable homes are bought for. A capsule usually means the rounded, heavily glazed units at the luxury end — our glamping capsules. The words are marketing; what matters is the floor area, what is fitted inside, and whether it arrives with plumbing.",
+    a: "In everyday South African usage, near enough. A tiny home and a pod both mean a compact, factory-built home delivered largely finished. A granny pod (or granny flat) specifically means a self-contained second dwelling on the same property as the main house, which is what our expandable homes are bought for. A capsule usually means the rounded, heavily glazed units at the luxury end: our glamping capsules. The words are marketing; what matters is the floor area, what is fitted inside, and whether it arrives with plumbing.",
   },
   {
     q: "Can you live in a housing pod permanently?",
-    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home are the ones that arrive self-contained: an expandable home, a nature cabin or a glamping capsule, all of which include a bathroom and factory-installed plumbing and electrics. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has — floor area, storage and whether your municipality approves a second dwelling on that stand.",
+    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home are the ones that arrive self-contained: an expandable home, a nature cabin or a glamping capsule, all of which include a bathroom and factory-installed plumbing and electrics. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has: floor area, storage and whether your municipality approves a second dwelling on that stand.",
   },
   {
     q: "Do housing pods need building plans in South Africa?",
-    a: "Often, and the answer is set by your local municipality rather than by us or by any national rule of thumb you will read online. Building control departments differ on what counts as a temporary or relocatable structure, on second dwellings, and on how close to a boundary anything may stand. Phone your municipality's building control department before you commit — it costs nothing and it is the answer everything else on the project depends on. We supply the unit's dimensions and specifications for your submission.",
+    a: "Often, and the answer is set by your local municipality rather than by us or by any national rule of thumb you will read online. Building control departments differ on what counts as a temporary or relocatable structure, on second dwellings, and on how close to a boundary anything may stand. Phone your municipality's building control department before you commit. It costs nothing and it is the answer everything else on the project depends on. We supply the unit's dimensions and specifications for your submission.",
   },
   {
     q: "What foundation does a housing pod need?",
