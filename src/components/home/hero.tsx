@@ -99,14 +99,17 @@ export function Hero() {
           </Link>{" "}
           · South Africa
         </p>
-        {/* Fluid rather than stepped: the longest line ("Modular tiny homes")
+        {/* Fluid rather than stepped: the longest line ("modular tiny homes")
             runs ~8.7em, so a fixed ramp overflowed the viewport on phones and
             again in the 640–700px band just after the sm step. clamp() tracks
             the container instead of the breakpoints, and tops out at the 6rem
             the lg step used to set. */}
         <h1 className="text-display mt-5 max-w-4xl text-[clamp(1.75rem,9.2vw,6rem)] leading-[0.95] text-cream">
           <span className="animate-rise-in block" style={rise(0.24)}>
-            Modular tiny homes
+            Prefab houses and
+          </span>{" "}
+          <span className="animate-rise-in block" style={rise(0.3)}>
+            modular tiny homes
           </span>{" "}
           <span className="animate-rise-in block" style={rise(0.36)}>
             for South Africa

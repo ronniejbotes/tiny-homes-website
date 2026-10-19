@@ -305,7 +305,7 @@ export const products: Product[] = [
     // open-plan price on a 2-bedroom home, and the lead of the description
     // already carries the from-price read from startingPrice.
     seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
-    sizesHeading: "Sizes and prices, from open plan to 2 bedrooms",
+    sizesHeading: "Modular home sizes and prices, from open plan to 2 bedrooms",
     metaSummary:
       "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
     tagline: "One module that expands on site within hours.",
@@ -421,6 +421,11 @@ export const products: Product[] = [
       {
         q: "How much does delivery cost?",
         a: "Delivery is quoted separately based on distance and site accessibility. We deliver nationwide and can arrange the full turnkey installation.",
+      },
+      {
+        // Answered from /blog/what-is-included-in-a-prefab-house-price, in its words.
+        q: "What is not included in the price?",
+        a: "Treat everything around the unit as outside its price until a quote says otherwise: the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT. Connecting the wiring also needs a certificate of compliance from a registered electrician, which our [building approval guide](/blog/building-approval-south-africa-what-you-need) explains. Our guide to [what is included in a prefab house price](/blog/what-is-included-in-a-prefab-house-price) sets out what sits outside the price of the unit.",
       },
       {
         q: "Can I finance an expandable home?",
@@ -656,7 +661,7 @@ export const products: Product[] = [
     slug: "glamping-capsules",
     name: "Glamping Capsules",
     shortName: "Glamping Capsule",
-    h1: "Glamping capsules",
+    h1: "Glamping capsule houses",
     sizesHeading: "Glamping pods for sale: choose your capsule house",
     seoTitle: "Capsule Houses & Glamping Pods from R689 900",
     metaSummary:

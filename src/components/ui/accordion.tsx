@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { RichText } from "@/components/blog/rich-text";
 
 export interface AccordionEntry {
   q: string;
@@ -59,7 +60,9 @@ export function Accordion({ items }: { items: AccordionEntry[] }) {
               )}
             >
               <div className="overflow-hidden">
-                <p className="max-w-3xl px-6 pb-6 leading-relaxed text-stone">{item.a}</p>
+                <p className="max-w-3xl px-6 pb-6 leading-relaxed text-stone">
+                  <RichText text={item.a} />
+                </p>
               </div>
             </div>
           </div>

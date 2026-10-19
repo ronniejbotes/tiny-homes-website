@@ -164,9 +164,12 @@ export function HomesShowcase() {
             tents (trade only, price on request) and the outdoor kitchens
             (not a house). Cheapest first. */}
         <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
-          <table className="w-full border-collapse text-left text-sm">
+          <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
+            Prefab house price list
+          </h3>
+          <table className="mt-5 w-full border-collapse text-left text-sm">
             <caption className="text-eyebrow mb-4 text-left text-clay-dark">
-              Prefab house prices at a glance: every home for sale, cheapest first (all prices exclude VAT)
+              Every home for sale, cheapest first (all prices exclude VAT)
             </caption>
             <thead>
               <tr className="border-b border-border">
@@ -194,6 +197,23 @@ export function HomesShowcase() {
               ))}
             </tbody>
           </table>
+          {/* In the words of the guide it links, so the two never disagree. */}
+          <p className="mt-4 text-[0.9375rem] leading-relaxed text-stone">
+            Each price is for the unit alone. Treat everything around it as outside the
+            price until a quote says otherwise: the base it stands on, the connections to
+            water, sewerage and power,{" "}
+            <Link
+              href="/blog/building-approval-south-africa-what-you-need"
+              className={footnoteLink}
+            >
+              council approval
+            </Link>
+            , transport to your site and VAT, as our guide to{" "}
+            <Link href="/blog/what-is-included-in-a-prefab-house-price" className={footnoteLink}>
+              what is included in a prefab house price
+            </Link>{" "}
+            sets out.
+          </p>
         </Reveal>
 
         {/* A vocabulary footnote, not a billboard. The cards above are named

@@ -12,6 +12,7 @@ import { products, type Product, type ProductFaq } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { OPENING_HOURS, formatSlot, weekdayName } from "@/lib/viewing";
 import images from "@/data/images.json";
+import { toPlainText } from "@/components/blog/rich-text";
 
 export type SchemaObject = Record<string, unknown>;
 
@@ -328,7 +329,7 @@ export function faqPageSchema(faqs: ProductFaq[]): SchemaObject {
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
+      acceptedAnswer: { "@type": "Answer", text: toPlainText(faq.a) },
     })),
   };
 }
