@@ -743,7 +743,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre figures set against what a conventional build costs, including the cases where prefab is the more expensive option.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-07",
+    dateModified: "2026-10-21",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -863,6 +863,10 @@ export const blogPosts: BlogPost[] = [
       {
         q: "Is prefab always cheaper than brick in South Africa?",
         a: `No. Per square metre our expandable homes land inside the same band as a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
+      },
+      {
+        q: "What is the cheapest way to build a house in South Africa?",
+        a: `Compare complete prices rather than rates. The cheapest home we sell is the X-Fold, at ${perM2("folding-homes")} per square metre ex VAT, but it is an insulated room with no plumbing, so it replaces a bare room rather than a house. For a home with its own bathroom and kitchen, our expandable homes run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up: a bigger building costs less per square metre, whichever way you build, but more in total. Then add what sits outside each price (transport, groundwork and connections for a prefab; fees, connections and contingency for a conventional build), because delivered, standing, connected and usable is the only fair comparison.`,
       },
       {
         q: "What is the cheapest prefab option per square metre?",
@@ -1805,7 +1809,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "An honest list of what each route gives you and what it costs you (money, time, paperwork, finance and resale) and which situations each one suits.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-16",
+    dateModified: "2026-10-21",
     keywords: [
       "prefab vs building a house",
       "prefab home pros and cons",
@@ -1950,6 +1954,10 @@ export const blogPosts: BlogPost[] = [
       {
         q: "What are the main disadvantages of a prefab home?",
         a: "Bond finance is restricted: some major South African banks do not currently bond prefabricated structures at all. Beyond that: catalogue sizes rather than bespoke layouts, delivery access can make a site unworkable at any budget, resale and valuation data is thinner than for brick, and the advertised price excludes transport, groundwork and service connections.",
+      },
+      {
+        q: "How long does it take to build a house in South Africa?",
+        a: "A conventionally built house takes months on your property, after its plans have been drawn and approved, and nobody may move in before the occupancy certificate is issued. Most of our homes take around 90 days from deposit to move-in, and the work on your property is short: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. A permanently founded prefab dwelling generally faces the same municipal approval as any other dwelling, so start the paperwork early whichever way you build.",
       },
       {
         q: "Is prefab better quality than brick?",
