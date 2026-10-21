@@ -33,6 +33,14 @@ const expandableFrom = Math.min(
    size with two bedrooms as standard; its price is read, never typed. */
 const twoBedroomFrom =
   products.find((p) => p.slug === "expandable-homes")?.variants?.find((v) => v.id === "b20")?.price ?? expandableFrom;
+/* Sizes for the prefab price question, read like the prices. Throws at build
+   time rather than rendering "undefined" into the answer. */
+function sizeOf(slug: string, variantId?: string): string {
+  const product = products.find((p) => p.slug === slug);
+  const size = variantId ? product?.variants?.find((v) => v.id === variantId)?.size : product?.sizeLabel;
+  if (!size) throw new Error(`home-faqs.ts: no size for "${slug}"${variantId ? ` variant "${variantId}"` : ""}`);
+  return size;
+}
 
 export const homeFaqs: HomeFaq[] = [
   /* The vocabulary question. "Tiny house" and "granny pod" are what a large
@@ -43,6 +51,14 @@ export const homeFaqs: HomeFaq[] = [
   {
     q: "What's the difference between a tiny house, a granny pod and a granny flat?",
     a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT. The 37 m² and 74 m² sizes come with 2 bedrooms as standard, the 37 m² from ${formatZAR(twoBedroomFrom)} ex VAT.`,
+  },
+  /* The price question, in the words buyers search ("prefab houses south
+     africa prices"). Every price and size comes from products.ts, the same
+     source as the price list above the FAQ, and the last sentence keeps to
+     the words of the line under that list. */
+  {
+    q: "How much does a prefab house cost in South Africa?",
+    a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A granny flat with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20-slim")} expandable home), and a two-bedroom home starts at ${formatZAR(twoBedroomFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20")} size). The price list on this page gives the from-price of every home we sell. Each price is for the unit alone, so the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top until a quote says otherwise.`,
   },
   {
     q: "How much does delivery cost?",
