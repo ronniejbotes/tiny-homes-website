@@ -803,7 +803,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "The mid-range lands at or below the conventional band" },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, at or below the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis this is roughly a wash.`,
+        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, at or below the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis the 18 m² is roughly a wash, and the two bigger sizes come in under it.`,
       },
       {
         type: "p",
@@ -862,7 +862,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Is prefab always cheaper than brick in South Africa?",
-        a: `No. Per square metre ex VAT, our expandable homes land at or below the band quoted for a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
+        a: `No. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre of a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
       },
       {
         q: "What is the cheapest way to build a house in South Africa?",
@@ -1035,7 +1035,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",
-        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre ex VAT, our expandable homes land at or below the band quoted for a mid-range conventional build; the difference is that the rate already includes insulation, glazing, a fitted bathroom and installed services.",
+        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre that our [cost comparison](/blog/is-a-prefab-home-cheaper-than-building) uses for a mid-range conventional build; the difference is that our rate already includes insulation, glazing, a fitted bathroom and installed services.",
       },
       {
         q: "Can I get a bond for a granny flat?",
@@ -1883,7 +1883,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Finance is harder.** Some major South African banks do not currently bond prefabricated structures at all. If you need a bond rather than cash or third-party finance, check this before anything else.`,
-          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land at or below the band quoted for a mid-range conventional build. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
+          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land at or below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
           `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
           `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
           `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling, by everyone.`,
