@@ -767,7 +767,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "What a conventional build costs per square metre" },
       {
         type: "p",
-        text: `There is no single national number, and anyone who gives you one is rounding hard. Industry cost guides for 2026 put a mid-range conventional home somewhere in the region of **R10 000 to R15 000 per square metre**, with budget builds below that and luxury finishes well above. It varies by province, by finish level, and by how much of the site work is already done.`,
+        text: `There is no single national number, and anyone who gives you one is rounding hard. The 2025 building-cost estimates ooba publishes for each province put most of them in the region of **R10 000 to R15 000 per square metre**, so that is the band we use for a mid-range conventional home, with budget builds below that and luxury finishes well above. It varies by province, by finish level, and by how much of the site work is already done.`,
       },
       {
         type: "p",
@@ -882,8 +882,8 @@ export const blogPosts: BlogPost[] = [
         title: "What it costs to build a house in South Africa",
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
-        note: "Source for the conventional rand-per-square-metre band used throughout this article.",
-        checked: "2026-10-16",
+        note: "Source for the 2025 per-square-metre estimates by province. The R10 000 to R15 000 band used throughout this article is our rounding of where most provinces sit, not a figure ooba prints.",
+        checked: "2026-10-22",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
