@@ -376,9 +376,17 @@ export function QuoteDocument({
                 Delivery to your site is not included
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-stone">
-                The total above covers your units, the extras you selected and VAT,{" "}
-                and shipping into South Africa is already in that price. What it doesn&apos;t
-                cover is the national leg: getting your unit here by road. That depends on where
+                {/* A quote of price-on-request lines only has no total above. */}
+                {totals.hasPricedTotal ? (
+                  <>
+                    The total above covers your units, the extras you selected and VAT,{" "}
+                    and shipping into South Africa is already in that price. What it doesn&apos;t
+                    cover
+                  </>
+                ) : (
+                  <>Our prices include shipping into South Africa. What they don&apos;t cover</>
+                )}{" "}
+                is the national leg: getting your unit here by road. That depends on where
                 you are, so{" "}
                 <strong className="font-medium text-ink">
                   we&apos;ll come back to you with a separate quote for delivery

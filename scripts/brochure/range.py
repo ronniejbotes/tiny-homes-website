@@ -27,7 +27,7 @@ import gen
 import plan as planlib
 from gen import (BASE, CHROME, CSS, EXTRA, FIT_JS, IMAGES, LAYOUT_PLANS, PRODUCTS, SITE, SITE_IMG,
                  b64, datauri, dims_clause as dims_of, esc, img_by_name, m2, plan_rooms, prep,
-                 prep_file, qr_svg, quote_url, rands, render, sentences, svg_scoped)
+                 prep_file, qr_svg, quote_url, rands, render, sentences, svg_scoped, vprice)
 
 # Order the range is presented in: cheapest and simplest first, building to the
 # flagship, with the two non-home lines last.
@@ -345,10 +345,13 @@ def page_glance(im, priced, folio):
             elif p.get("variants"):
                 # The whole price ladder, not just its bottom rung: a "from"
                 # figure on its own is the thing that makes people phone.
-                lo = min(v["price"] for v in p["variants"])
-                hi = max(v["price"] for v in p["variants"])
+                lo = min(v["price"] for v in p["variants"] if not v.get("priceOnRequest"))
+                hi = max(v["price"] for v in p["variants"] if not v.get("priceOnRequest"))
+                some_por = any(v.get("priceOnRequest") for v in p["variants"])
                 price = (f'<span class="amt nums">{rands(lo)}</span>'
-                         f'<div class="sub nums" style="text-align:right">to {rands(hi)}</div>')
+                         + ('<div class="sub nums" style="text-align:right">Some sizes on request</div>'
+                            if some_por else
+                            f'<div class="sub nums" style="text-align:right">to {rands(hi)}</div>'))
             else:
                 price = f'<span class="amt nums">{rands(p["startingPrice"])}</span>'
             cell = f"<td>{price}</td>"
@@ -404,7 +407,7 @@ def models_table(p, priced, ids=None):
             + '</tr>')
     rows = ""
     for v in variants:
-        cell = f'<td style="text-align:right"><span class="amt nums">{rands(v["price"])}</span></td>' if priced else ""
+        cell = f'<td style="text-align:right"><span class="amt nums">{vprice(v)}</span></td>' if priced else ""
         rows += (f'<tr><td><div class="name">{esc(v["name"])}</div></td>'
                  f'<td style="text-align:right"><span class="sz nums">{m2(v["size"])}</span></td>'
                  f'<td style="padding-left:5mm"><span class="sz nums">{m2(esc(dims_of(v)))}</span></td>{cell}</tr>')
@@ -423,10 +426,13 @@ def page_product(slug, im, priced, folio):
                      '<div class="amt">Price on request</div>'
                      '<div class="vat">Quoted after a consultation</div></div>')
         elif multi:
-            lo, hi = min(v["price"] for v in p["variants"]), max(v["price"] for v in p["variants"])
+            lo = min(v["price"] for v in p["variants"] if not v.get("priceOnRequest"))
+            hi = max(v["price"] for v in p["variants"] if not v.get("priceOnRequest"))
+            some_por = any(v.get("priceOnRequest") for v in p["variants"])
             strip = (f'<div class="pricestrip"><div><div class="lab">{len(p["variants"])} sizes</div></div>'
-                     f'<div class="amt nums">{rands(lo)} – {rands(hi)}</div>'
-                     f'<div class="vat">excluding VAT</div></div>')
+                     + (f'<div class="amt nums">From {rands(lo)}</div>' if some_por
+                        else f'<div class="amt nums">{rands(lo)} – {rands(hi)}</div>')
+                     + '<div class="vat">excluding VAT</div></div>')
         else:
             strip = (f'<div class="pricestrip"><div><div class="lab">One size</div></div>'
                      f'<div class="amt nums">{rands(p["startingPrice"])}</div>'
@@ -496,7 +502,7 @@ def page_index(priced, folio):
         rows = ""
         if p.get("variants"):
             for v in p["variants"]:
-                cell = (f'<td style="text-align:right"><span class="amt nums">{rands(v["price"])}</span></td>'
+                cell = (f'<td style="text-align:right"><span class="amt nums">{vprice(v)}</span></td>'
                         if priced else "")
                 rows += (f'<tr><td><div class="name">{esc(v["name"])}</div></td>'
                          f'<td style="text-align:right"><span class="sz nums">{m2(v["size"])}</span></td>{cell}</tr>')

@@ -65,7 +65,7 @@ for slug in g.ORDER:
     for v in (p.get("variants") or []):
         if norm(v["name"]) not in txt:
             probs.append(f"var:{v['name']}")
-        if norm(g.rands(v["price"])) not in txt:
+        if norm(g.vprice(v)) not in txt:
             probs.append(f"varprice:{v['name']}")
     for s in p["specs"]:
         if norm(s["value"])[-35:] not in txt:
@@ -122,7 +122,7 @@ for stem, priced in (("full-range", True), ("full-range-no-prices", False)):
         for v in (p.get("variants") or []):
             if norm(v["name"]) not in txt:
                 probs.append(f"var:{v['name']}")
-            if priced and norm(g.rands(v["price"])) not in txt:
+            if priced and norm(g.vprice(v)) not in txt:
                 probs.append(f"varprice:{v['name']}")
         if priced and not p.get("priceOnRequest") and not p.get("variants"):
             if norm(g.rands(p["startingPrice"])) not in txt:
