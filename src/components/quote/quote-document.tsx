@@ -70,7 +70,7 @@ function AmountRow({
 }
 
 function LineBlock({ line, index }: { line: QuoteLine; index: number }) {
-  const onRequest = line.product.priceOnRequest;
+  const onRequest = line.onRequest;
   const size = line.variant ? `, ${line.variant.size}` : "";
 
   return (

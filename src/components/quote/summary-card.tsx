@@ -25,7 +25,7 @@ function LineRow({ line }: { line: QuoteLine }) {
         )}
       </div>
       <span className="shrink-0 text-right text-sm font-medium tabular-nums nums-tabular text-ink">
-        {product.priceOnRequest ? (
+        {line.onRequest ? (
           <span className="text-xs font-normal text-stone">priced after consultation</span>
         ) : (
           formatZAR(lineTotal)

@@ -32,6 +32,7 @@ import {
   activeVisuals,
   configuredPrice,
   isOptionAvailable,
+  isPriceOnRequest,
   optionPrice,
   type CustomOption,
   type OptionCategory,
@@ -75,6 +76,17 @@ function AnimatedPrice({ value }: { value: number }) {
   }, [spring]);
 
   return <span className="tabular-nums nums-tabular">{formatZAR(reduce ? value : display)}</span>;
+}
+
+/** The total read out after a change, or that a price-on-request size has none. */
+function totalAnnouncement(
+  product: Product,
+  selected: Partial<Record<string, boolean>>,
+  variantId?: string,
+): string {
+  return isPriceOnRequest(product, variantId)
+    ? "Price on request"
+    : `Total ${formatZAR(configuredPrice(product, selected, variantId))}`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -513,7 +525,9 @@ export function ProductConfigurator({ product }: { product: Product }) {
   );
 
   const activeVariant = product.variants?.find((v) => v.id === variantId);
-
+  // A price-on-request size (the 3.5 m and 3.9 m outdoor kitchens) keeps its
+  // extras but has no total: its base is a 0 sentinel, see the price panel.
+  const sizeOnRequest = !product.priceOnRequest && Boolean(activeVariant?.priceOnRequest);
 
   const toggleOption = useCallback(
     (option: CustomOption) => {
@@ -534,9 +548,8 @@ export function ProductConfigurator({ product }: { product: Product }) {
             if (opt.requires === option.id) next[opt.id] = false;
           }
         }
-        const nextTotal = configuredPrice(product, next, variantId);
         setAnnouncement(
-          `${option.label} ${turningOn ? "added" : "removed"}. Total ${formatZAR(nextTotal)}`,
+          `${option.label} ${turningOn ? "added" : "removed"}. ${totalAnnouncement(product, next, variantId)}`,
         );
         return next;
       });
@@ -549,8 +562,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
       setVariantId(id);
       const variant = product.variants?.find((v) => v.id === id);
       if (variant) {
-        const nextTotal = configuredPrice(product, selected, id);
-        setAnnouncement(`${variant.name} selected. Total ${formatZAR(nextTotal)}`);
+        setAnnouncement(`${variant.name} selected. ${totalAnnouncement(product, selected, id)}`);
       }
     },
     [product, selected],
@@ -589,9 +601,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
     setVariantId(product.variants?.[0]?.id);
     setLayoutId(undefined);
     setAnnouncement(
-      `Configuration reset. Total ${formatZAR(
-        configuredPrice(product, NO_OPTIONS, product.variants?.[0]?.id),
-      )}`,
+      `Configuration reset. ${totalAnnouncement(product, NO_OPTIONS, product.variants?.[0]?.id)}`,
     );
   }, [product]);
 
@@ -815,7 +825,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                         </span>
                       </span>
                       <span className={cn("text-sm font-medium tabular-nums nums-tabular", active ? "text-cream" : "text-ink")}>
-                        {formatZAR(variant.price)}
+                        {variant.priceOnRequest ? "Price on request" : formatZAR(variant.price)}
                       </span>
                     </button>
                   );
@@ -862,7 +872,13 @@ export function ProductConfigurator({ product }: { product: Product }) {
               for a product that has no published price. It gets the panel
               below instead, and a trade-only one gets the email that arranges
               a viewing rather than a link into the quote builder that will
-              not offer it. */}
+              not offer it.
+
+              A price-on-request size of a priced product (the 3.5 m and
+              3.9 m outdoor kitchens) carries the same 0 sentinel as its base,
+              so it gets the same "Price on request" panel and never a total.
+              Its size and extras still go to the quote builder, which lists
+              the line as priced after consultation. */}
           <div className="rounded-3xl border border-border bg-parchment p-6">
             <h3 className="text-eyebrow text-clay-dark">Your configuration</h3>
             {product.priceOnRequest ? (
@@ -886,6 +902,24 @@ export function ProductConfigurator({ product }: { product: Product }) {
                       Request a quote
                     </ButtonLink>
                   )}
+                </div>
+              </>
+            ) : sizeOnRequest ? (
+              <>
+                <p className="mt-3 text-display text-4xl text-ink sm:text-5xl">
+                  Price on request
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-stone">
+                  Configured to your site and brief at a consultation, then quoted itemised.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <ButtonLink href={quoteHref} variant="accent">
+                    Request this configuration
+                  </ButtonLink>
+                  <Button variant="ghost" onClick={reset}>
+                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                    Reset
+                  </Button>
                 </div>
               </>
             ) : (

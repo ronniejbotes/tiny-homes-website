@@ -8,7 +8,7 @@
 
 import { createElement } from "react";
 import { site } from "@/lib/site";
-import { products, type Product, type ProductFaq } from "@/data/products";
+import { pricedVariants, products, type Product, type ProductFaq } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { OPENING_HOURS, formatSlot, weekdayName } from "@/lib/viewing";
 import images from "@/data/images.json";
@@ -94,12 +94,16 @@ export function organizationSchema(): SchemaObject {
 /** The Centurion showroom as a physical business, for local search. */
 export function localBusinessSchema(): SchemaObject {
   // Range across every variant, not just base prices, the 11.5 m capsule tops
-  // out at R1 070 900. Price-on-request products carry a 0 sentinel and are excluded.
+  // out at R1 070 900. Price-on-request products and sizes carry a 0 sentinel
+  // and are excluded.
   // Garages are a DIY steel-kit line, not a home, excluded so the advertised
   // homes price range matches the site-wide "homes from R54 900" copy.
   const prices = products
     .filter((p) => !p.priceOnRequest && p.slug !== "garages")
-    .flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice]));
+    .flatMap((p) => {
+      const priced = pricedVariants(p);
+      return priced.length ? priced.map((v) => v.price) : [p.startingPrice];
+    });
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -268,20 +272,24 @@ export function productSchema(product: Product): SchemaObject {
     valueAddedTaxIncluded: false,
   });
 
-  const offers = product.variants?.length
+  // Only sizes with a published price become Offers. A price-on-request size
+  // (the 3.5 m and 3.9 m outdoor kitchens) has a 0 sentinel and no price to
+  // offer, so it is left out of the range, the count and the nested list.
+  const priced = pricedVariants(product);
+  const offers = priced.length
     ? {
         "@type": "AggregateOffer",
         url,
         priceCurrency: "ZAR",
-        lowPrice: Math.min(...product.variants.map((v) => v.price)),
-        highPrice: Math.max(...product.variants.map((v) => v.price)),
-        offerCount: product.variants.length,
+        lowPrice: Math.min(...priced.map((v) => v.price)),
+        highPrice: Math.max(...priced.map((v) => v.price)),
+        offerCount: priced.length,
         priceValidUntil: validUntil,
         itemCondition: "https://schema.org/NewCondition",
         availability,
         seller,
         areaServed: offerArea,
-        offers: product.variants.map((variant) => ({
+        offers: priced.map((variant) => ({
           "@type": "Offer",
           url,
           name: variant.name,

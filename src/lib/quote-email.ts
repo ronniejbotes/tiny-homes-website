@@ -316,7 +316,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
     const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${lineTitle(line)}${size}`);
     if (line.layout) out.push(`     Layout: ${line.layout.label}`);
-    if (line.product.priceOnRequest) {
+    if (line.onRequest) {
       out.push("     Priced after consultation");
       return;
     }
@@ -411,7 +411,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
       const head = `<tr>
         <td style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17">${index + 1}. ${esc(lineTitle(line))}${size}</td>
         <td align="right" style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17;white-space:nowrap">${
-          line.product.priceOnRequest
+          line.onRequest
             ? `<span style="font-size:13px;font-weight:400;color:#67635a">On consultation</span>`
             : esc(formatZAR(line.lineTotal))
         }</td>
@@ -421,7 +421,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         ? `<tr><td colspan="2" style="padding:0 0 2px;font-size:13px;color:#67635a">Layout: ${esc(line.layout.label)}</td></tr>`
         : "";
 
-      if (line.product.priceOnRequest) {
+      if (line.onRequest) {
         return `${head}${layoutRow}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief; we&rsquo;ll price this line after a short consultation.</td></tr>`;
       }
 

@@ -17,7 +17,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/schema";
-import { products } from "@/data/products";
+import { pricedVariants, products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
@@ -74,12 +74,13 @@ const bandImage = findImage(images.products["nature-cabins"], "exterior-timber-r
 
 // True range across every variant, not just each product's headline starting
 // price: the flagship glamping capsule's top variant is R1 070 900.
-// Price-on-request products carry a 0 sentinel and are excluded from the range.
+// Price-on-request products and sizes carry a 0 sentinel and are excluded
+// from the range.
 // Garages are a DIY steel-kit line, not a home; excluded so the "from the
 // R… X-Fold folding home" copy keeps naming the cheapest actual home.
 const allPrices = products
   .filter((p) => !p.priceOnRequest && p.slug !== "garages")
-  .flatMap((p) => [p.startingPrice, ...(p.variants?.map((v) => v.price) ?? [])]);
+  .flatMap((p) => [p.startingPrice, ...pricedVariants(p).map((v) => v.price)]);
 const minPrice = Math.min(...allPrices);
 const maxPrice = Math.max(...allPrices);
 
