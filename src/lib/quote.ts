@@ -11,6 +11,7 @@ import {
   activeOptions,
   configuredPrice,
   getProduct,
+  isPriceOnRequest,
   type CustomOption,
   type Product,
   type ProductVariant,
@@ -85,6 +86,14 @@ export interface QuoteLine {
   layout: LayoutOption | undefined;
   activeOptions: CustomOption[];
   quantity: number;
+  /**
+   * No published price for this line: the product is price on request, or the
+   * chosen size is (the 3.5 m and 3.9 m outdoor kitchens). Such a line is
+   * listed as priced after consultation, its prices below are 0 and must never
+   * render, and it stays out of the subtotal. Check this, not
+   * `product.priceOnRequest`, which misses a price-on-request size.
+   */
+  onRequest: boolean;
   /** Variant (or product starting) price for one unit, before extras. */
   basePrice: number;
   /** Floor area of the chosen variant, m², resolves per-m² extra pricing. */
@@ -100,12 +109,11 @@ export interface QuoteTotals {
   /** True once at least one line carries a real catalogue price. */
   hasPricedTotal: boolean;
   /**
-   * True when any line is a consultation-priced product.
+   * True when any line is priced after consultation (QuoteLine.onRequest).
    *
-   * No such product can currently reach a quote: safari tents, the only one,
-   * are trade-only and the picker never offers them. The on-request handling
-   * downstream is kept for the day a price-on-request product is orderable
-   * again, but today this is always false.
+   * No price-on-request product can reach a quote: safari tents, the only one,
+   * are trade-only and the picker never offers them. A price-on-request size
+   * can: the 3.5 m and 3.9 m outdoor kitchens (from 26 October 2026).
    */
   someOnRequest: boolean;
   /** Sum of the priced lines, ex VAT. */
@@ -142,7 +150,11 @@ export function resolveQuoteLine(unit: QuoteUnit, id: string): QuoteLine | null 
   const options = activeOptions(product, selected, unit.variantId);
 
   const quantity = clampQuantity(unit.quantity);
-  const unitPrice = configuredPrice(product, selected, unit.variantId);
+  // A price-on-request line has no unit price: its base is a 0 sentinel, so a
+  // configuredPrice() here would be the extras alone, a figure that must not
+  // reach any total or document.
+  const onRequest = isPriceOnRequest(product, unit.variantId);
+  const unitPrice = onRequest ? 0 : configuredPrice(product, selected, unit.variantId);
 
   return {
     id,
@@ -153,7 +165,8 @@ export function resolveQuoteLine(unit: QuoteUnit, id: string): QuoteLine | null 
     layout: findLayout(product.slug, unit.variantId, unit.layoutId),
     activeOptions: options,
     quantity,
-    basePrice: variant ? variant.price : product.startingPrice,
+    onRequest,
+    basePrice: onRequest ? 0 : variant ? variant.price : product.startingPrice,
     areaM2: variant?.areaM2,
     unitPrice,
     lineTotal: unitPrice * quantity,
@@ -161,7 +174,7 @@ export function resolveQuoteLine(unit: QuoteUnit, id: string): QuoteLine | null 
 }
 
 export function quoteTotals(lines: QuoteLine[]): QuoteTotals {
-  const priced = lines.filter((l) => !l.product.priceOnRequest);
+  const priced = lines.filter((l) => !l.onRequest);
   const subtotal = priced.reduce((sum, l) => sum + l.lineTotal, 0);
   // Round VAT once, then derive the total from it, so the three printed figures
   // always add up exactly as shown, no cent-level drift on the document.
@@ -170,7 +183,7 @@ export function quoteTotals(lines: QuoteLine[]): QuoteTotals {
   return {
     totalUnits: lines.reduce((sum, l) => sum + l.quantity, 0),
     hasPricedTotal: priced.length > 0,
-    someOnRequest: lines.some((l) => l.product.priceOnRequest),
+    someOnRequest: lines.some((l) => l.onRequest),
     subtotal,
     vat,
     total: subtotal + vat,

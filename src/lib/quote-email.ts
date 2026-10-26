@@ -316,7 +316,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
     const size = line.variant ? `, ${line.variant.size}` : "";
     out.push(`  ${i + 1}. ${lineTitle(line)}${size}`);
     if (line.layout) out.push(`     Layout: ${line.layout.label}`);
-    if (line.product.priceOnRequest) {
+    if (line.onRequest) {
       out.push("     Priced after consultation");
       return;
     }
@@ -352,8 +352,13 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   }
 
   out.push("DELIVERY TO YOUR SITE IS NOT INCLUDED");
-  out.push("The total above covers your units, the extras you selected and VAT, and");
-  out.push("shipping into South Africa is already in that price. What it doesn't cover");
+  // A quote of price-on-request lines only has no total above this note.
+  if (totals.hasPricedTotal) {
+    out.push("The total above covers your units, the extras you selected and VAT, and");
+    out.push("shipping into South Africa is already in that price. What it doesn't cover");
+  } else {
+    out.push("Our prices include shipping into South Africa. What they don't cover");
+  }
   out.push("is the national leg: getting your unit here by road. That depends on where");
   out.push(`you are, so we'll come back to you with a separate quote for delivery to`);
   out.push(`${address.city.trim() || "your site"}.`);
@@ -411,7 +416,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
       const head = `<tr>
         <td style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17">${index + 1}. ${esc(lineTitle(line))}${size}</td>
         <td align="right" style="padding:14px 0 4px;font-size:16px;font-weight:600;color:#1c1b17;white-space:nowrap">${
-          line.product.priceOnRequest
+          line.onRequest
             ? `<span style="font-size:13px;font-weight:400;color:#67635a">On consultation</span>`
             : esc(formatZAR(line.lineTotal))
         }</td>
@@ -421,7 +426,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
         ? `<tr><td colspan="2" style="padding:0 0 2px;font-size:13px;color:#67635a">Layout: ${esc(line.layout.label)}</td></tr>`
         : "";
 
-      if (line.product.priceOnRequest) {
+      if (line.onRequest) {
         return `${head}${layoutRow}<tr><td colspan="2" style="padding:0 0 10px;font-size:13px;line-height:1.6;color:#67635a">Configured to your site and brief; we&rsquo;ll price this line after a short consultation.</td></tr>`;
       }
 
@@ -564,8 +569,11 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             <tr><td style="padding:18px 20px">
               <p style="margin:0;font-size:16px;font-weight:700;color:#1c1b17">Delivery to your site is not included</p>
               <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#67635a">
-                The total above covers your units, the extras you selected and VAT, and shipping into
-                South Africa is already in that price. What it doesn&rsquo;t cover is the national leg:
+                ${
+                  totals.hasPricedTotal
+                    ? "The total above covers your units, the extras you selected and VAT, and shipping into South Africa is already in that price. What it doesn&rsquo;t cover"
+                    : "Our prices include shipping into South Africa. What they don&rsquo;t cover"
+                } is the national leg:
                 getting your unit here by road. That depends on where you are, so
                 <strong style="color:#1c1b17">we&rsquo;ll come back to you with a separate quote for
                 delivery</strong> to ${esc(address.city.trim() || "your site")}, along with anything else

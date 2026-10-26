@@ -58,6 +58,10 @@ def rands(n):
     return "R" + f"{int(n):,}".replace(",", "&thinsp;")
 
 
+def vprice(v):
+    return "Price on request" if v.get("priceOnRequest") else rands(v["price"])
+
+
 def m2(s):
     """m2 -> m² and keep non-breaking where it reads better."""
     return str(s).replace("m2", "m&sup2;").replace("m²", "m&sup2;")
@@ -1049,7 +1053,7 @@ def model_row(p, v, plan_html, rooms):
       <div class="mplan">{plan_html}</div>
       <div class="minfo">
         <div class="mhead"><div class="mname">{esc(v["name"])}</div>
-          <div><div class="mamt nums">{rands(v["price"])}</div><div class="mvat">ex VAT</div></div>
+          <div><div class="mamt nums">{vprice(v)}</div><div class="mvat">ex VAT</div></div>
         </div>
         <div class="mmeta nums">{m2(v["size"])} &nbsp;&middot;&nbsp; {m2(esc(dims))}</div>
         <p class="mdesc">{m2(esc(sentences(v["description"], 210)))}</p>
@@ -1142,7 +1146,7 @@ def page_sizes_table(p, cfg, im, folio, ladder_svg=None, extra_img=None, extra_c
         rows += (f'<tr><td><div class="name">{esc(v["name"])}</div>'
                  f'<div class="desc">{m2(esc(sentences(v["description"], 150)))}</div></td>'
                  f'<td><span class="sz nums">{m2(v["size"])}</span></td>'
-                 f'<td><span class="amt nums">{rands(v["price"])}</span></td></tr>')
+                 f'<td><span class="amt nums">{vprice(v)}</span></td></tr>')
     qrs = "".join(
         f'<div style="text-align:center">{qr_svg(quote_url(p["slug"], v["id"]), 15)}'
         f'<div style="font-size:6.9pt;color:var(--stone);margin-top:1.5mm;line-height:1.3">'
@@ -1275,7 +1279,7 @@ def variants_table(p):
         rows += (f'<tr><td><div class="name">{esc(v["name"])}</div>'
                  f'<div class="desc">{m2(esc(sentences(v["description"], 130)))}</div></td>'
                  f'<td><span class="sz nums">{m2(v["size"])}</span></td>'
-                 f'<td><span class="amt nums">{rands(v["price"])}</span></td></tr>')
+                 f'<td><span class="amt nums">{vprice(v)}</span></td></tr>')
     return f"""
     <div class="eyebrow" style="margin-top:8mm">Sizes &amp; prices</div>
     <table class="up" style="margin-top:3.5mm">

@@ -467,7 +467,7 @@ function UnitsList({
               />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium tabular-nums text-ink">
-                  {line.product.priceOnRequest ? (
+                  {line.onRequest ? (
                     <span className="text-xs font-normal text-stone">on consultation</span>
                   ) : (
                     formatZAR(line.lineTotal)
@@ -725,7 +725,7 @@ function QuoteFormInner({
       const size = l.variant ? ` (${l.variant.size})` : "";
       // Each line carries its own money so the rep can read the build-up:
       // base price on the unit, effective price on every extra.
-      const base = l.product.priceOnRequest ? "" : ` (${formatZAR(l.basePrice)})`;
+      const base = l.onRequest ? "" : ` (${formatZAR(l.basePrice)})`;
       out.push(`${idx + 1}. ${l.quantity} × ${lineTitle(l)}${size}${base}`);
       // The layout is the build brief: it belongs on the message the rep reads.
       if (l.layout) out.push(`   Layout: ${l.layout.label}`);
@@ -740,7 +740,7 @@ function QuoteFormInner({
         }
       }
       out.push(
-        l.product.priceOnRequest
+        l.onRequest
           ? "   Line estimate: priced after consultation"
           : `   Line estimate (ex VAT): ${formatZAR(l.lineTotal)}`,
       );

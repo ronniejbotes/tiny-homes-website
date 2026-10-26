@@ -1,4 +1,4 @@
-import { products } from "@/data/products";
+import { pricedVariants, products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { FRIDAY_CLOSE_LABEL, FRIDAY_SLOT_TIMES_LABEL, SLOT_TIMES_LABEL } from "@/lib/viewing";
@@ -19,9 +19,13 @@ export interface HomeFaq {
 const pricedProducts = products.filter((p) => !p.priceOnRequest && p.slug !== "garages");
 const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPrice));
 /* Highest price across every variant (not just startingPrice), the top of
-   the range is the 11.5 m glamping capsule variant, not its base price. */
+   the range is the 11.5 m glamping capsule variant, not its base price.
+   Price-on-request sizes carry a 0 sentinel and are left out too. */
 const highestPrice = Math.max(
-  ...pricedProducts.flatMap((p) => (p.variants?.length ? p.variants.map((v) => v.price) : [p.startingPrice])),
+  ...pricedProducts.flatMap((p) => {
+    const priced = pricedVariants(p);
+    return priced.length ? priced.map((v) => v.price) : [p.startingPrice];
+  }),
 );
 /* The expandable range is the answer to the granny flat / granny pod question,
    so its entry price is read from products.ts rather than typed here. */

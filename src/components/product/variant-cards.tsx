@@ -23,10 +23,24 @@ export function VariantCards({ product }: { product: Product }) {
                   <h3 className="font-display text-xl text-ink">{variant.name}</h3>
                   <p className="text-sm font-medium text-stone">{variant.size}</p>
                 </div>
-                <p className="text-display mt-4 text-2xl text-ink">
-                  <span className="nums-tabular">{formatZAR(variant.price)}</span>
-                </p>
-                <p className="mt-1 text-xs text-stone">ex VAT</p>
+                {/* A price-on-request size carries a 0 sentinel as its
+                    price: it says so instead of printing "R 0". The blank
+                    line keeps its description level with its neighbours'. */}
+                {variant.priceOnRequest ? (
+                  <>
+                    <p className="text-display mt-4 text-2xl text-ink">Price on request</p>
+                    <p className="mt-1 text-xs text-stone" aria-hidden="true">
+                      &nbsp;
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-display mt-4 text-2xl text-ink">
+                      <span className="nums-tabular">{formatZAR(variant.price)}</span>
+                    </p>
+                    <p className="mt-1 text-xs text-stone">ex VAT</p>
+                  </>
+                )}
                 <p className="mt-4 text-sm leading-relaxed text-stone">
                   {variant.description}
                 </p>

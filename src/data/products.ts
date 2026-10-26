@@ -66,6 +66,14 @@ export interface ProductVariant {
   name: string;
   size: string;
   price: number; // ZAR ex VAT
+  /**
+   * This size has no published price: it is quoted on request, like a
+   * price-on-request product (Product.priceOnRequest), while the product's
+   * other sizes keep theirs. When true, `price` is a 0 sentinel that must
+   * NEVER render or reach a total, a range or an Offer: read prices through
+   * pricedVariants() and check isPriceOnRequest() before showing one.
+   */
+  priceOnRequest?: boolean;
   /** Numeric floor area in m², drives per-m² option pricing (see optionPrice). */
   areaM2?: number;
   description: string;
@@ -794,15 +802,18 @@ export const products: Product[] = [
     name: "Outdoor Kitchens",
     shortName: "Outdoor Kitchen",
     h1: "Outdoor kitchens",
-    seoTitle: "Outdoor Kitchens South Africa from R154 400",
+    seoTitle: "Outdoor Kitchens South Africa from R207 816",
     metaSummary:
       "A braai area without the bricklaying: motorised roof, quartz countertop and sink, four lengths, ready to use.",
     tagline: "Braai, cook, host, then close the roof on the weather.",
     summary:
-      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink, in four lengths from 2.5 m to 3.9 m, delivered ready to use from R154 400 ex VAT.",
+      "An all-in-one outdoor entertainment kitchen with a remote-controlled motorised lift-up roof, quartz stone countertop and stainless-steel sink, in four lengths from 2.5 m to 3.9 m, delivered ready to use from R207 816 ex VAT.",
     description:
-      "South Africans entertain outside, and the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths, 2.5, 2.9, 3.5 or 3.9 m, and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours in the configurator with add-ons: a gas grill, induction stove or kettle grill, an extractor fan, bar fridge, stainless-steel countertop, outdoor speaker or an illuminated 'starry sky' ceiling. From R154 400 ex VAT, delivered ready to use.",
-    startingPrice: 154400,
+      "South Africans entertain outside, and the outdoor kitchen just makes it official. Press the remote and the motorised roof lifts to reveal a complete entertainment kitchen: a quartz stone countertop with a water-barrier edge and a sink cover that doubles as extra workspace, a stainless-steel sink with pull-out faucet, recessed warm or white lighting with an adjustable LED ambient strip, and rust-resistant aluminium switches and sockets. The corrosion-resistant galvanised steel frame, aluminium-alloy shell and panels and comprehensive waterproof design are built to live outdoors year-round, while the aluminium honeycomb interior panels shrug off heat and wipe clean after the braai. Plumbing and electrical are embedded, with an outdoor distribution box with leakage protection and a cement-board base. Choose from four lengths, 2.5, 2.9, 3.5 or 3.9 m, and a wide range of custom colours from white and navy to grey, charcoal and green, then tailor yours in the configurator with add-ons: a gas grill, induction stove or kettle grill, an extractor fan, bar fridge, stainless-steel countertop, outdoor speaker or an illuminated 'starry sky' ceiling. From R207 816 ex VAT, delivered ready to use.",
+    // Client's price list of 26 Oct 2026 (K1 R207 815,71, K2 R217 718,1x),
+    // shown in whole rands and ex VAT on the owner's instruction the same
+    // day. The 3.5 m and 3.9 m are price on request from that date.
+    startingPrice: 207816,
     sizeLabel: "2.5 – 3.9 m",
     setupTime: "Delivered ready to use",
     dims: { length: 2.5, width: 0.8, height: 2.4 },
@@ -856,14 +867,19 @@ export const products: Product[] = [
       },
     ],
     variants: [
-      { id: "ok-2-5", name: "2.5 m Outdoor Kitchen", size: "2.5 m", price: 154400, description: "2.5 × 0.8 × 2.4 m, approx 500 kg, the compact entertainer." },
-      { id: "ok-2-9", name: "2.9 m Outdoor Kitchen", size: "2.9 m", price: 164500, description: "2.9 × 0.8 × 2.4 m, approx 600 kg." },
-      { id: "ok-3-5", name: "3.5 m Outdoor Kitchen", size: "3.5 m", price: 183700, description: "3.5 × 0.8 × 2.4 m, approx 700 kg." },
-      { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 196800, description: "3.9 × 0.8 × 2.4 m, the largest, for serious entertaining." },
+      { id: "ok-2-5", name: "2.5 m Outdoor Kitchen", size: "2.5 m", price: 207816, description: "2.5 × 0.8 × 2.4 m, approx 500 kg, the compact entertainer." },
+      { id: "ok-2-9", name: "2.9 m Outdoor Kitchen", size: "2.9 m", price: 217718, description: "2.9 × 0.8 × 2.4 m, approx 600 kg." },
+      // Price on request (owner, 26 Oct 2026): listed, never priced. 0 is the
+      // sentinel ProductVariant.priceOnRequest describes.
+      { id: "ok-3-5", name: "3.5 m Outdoor Kitchen", size: "3.5 m", price: 0, priceOnRequest: true, description: "3.5 × 0.8 × 2.4 m, approx 700 kg." },
+      { id: "ok-3-9", name: "3.9 m Outdoor Kitchen", size: "3.9 m", price: 0, priceOnRequest: true, description: "3.9 × 0.8 × 2.4 m, the largest, for serious entertaining." },
     ],
     // Extras from the supplier options list, marked up 30% and rounded up to the
     // nearest R100. No cutaway scene, the configurator shows the Photos panel.
     // Gas Grill Double and Kettle Grill are offered on the 3.5 m and 3.9 m units only.
+    // The pizza oven is the client's own price (26 Oct 2026, R16 500 ex VAT), not
+    // a marked-up supplier line, and the client gave no size limit or detail
+    // for it, so its description says no more than what it is.
     options: [
       { id: "gas-grill-single", label: "Single gas grill", description: "Built-in single-burner gas grill for everyday braais. Choose one cooking method.", price: 9300, category: "modules", visual: "none", exclusiveGroup: "cooking", provisional: false },
       { id: "gas-grill-double", label: "Double gas grill", description: "Built-in double-burner gas grill for serious entertaining. Choose one cooking method.", price: 14100, category: "modules", visual: "none", availableVariantIds: ["ok-3-5", "ok-3-9"], exclusiveGroup: "cooking", provisional: false },
@@ -871,6 +887,7 @@ export const products: Product[] = [
       { id: "kettle-grill", label: "Kettle grill", description: "Built-in kettle grill for charcoal cooking and smoking. Choose one cooking method.", price: 8200, category: "modules", visual: "none", availableVariantIds: ["ok-3-5", "ok-3-9"], exclusiveGroup: "cooking", provisional: false },
       { id: "extractor-fan", label: "Extractor fan", description: "Overhead extractor fan to clear smoke and steam.", price: 3400, category: "modules", visual: "none", provisional: false },
       { id: "bar-fridge", label: "Bar fridge", description: "Small under-counter refrigerator for drinks and ingredients.", price: 3300, category: "modules", visual: "none", provisional: false },
+      { id: "pizza-oven", label: "Pizza oven", description: "Adds a pizza oven to the kitchen.", price: 16500, category: "modules", visual: "none", provisional: false },
       { id: "stainless-countertop", label: "Stainless-steel countertop", description: "Upgrades the quartz stone counter to a stainless-steel worktop.", price: 7800, category: "interior", visual: "none", provisional: false },
       { id: "extra-cabinets", label: "Extra cabinet module (1 m)", description: "A 1-metre run of extra cabinetry at R3 100/m. Need more? We'll quote the length you want.", price: 3100, category: "interior", visual: "none", provisional: false },
       { id: "aluminium-shelf", label: "Aluminium shelf", description: "Wall-mounted aluminium shelf for extra storage.", price: 500, category: "interior", visual: "none", provisional: false },
@@ -888,7 +905,7 @@ export const products: Product[] = [
       },
       {
         q: "What add-ons can I get?",
-        a: "A single gas grill, a double gas grill (on the 3.5 m and 3.9 m units), an induction flat-top stove, a kettle grill (on the 3.5 m and 3.9 m units), an extractor fan, a bar fridge, a stainless-steel countertop upgrade, extra cabinet modules by the metre, an aluminium shelf, an outdoor speaker and an illuminated 'starry-sky' ceiling, each quoted on your quotation.",
+        a: "A single gas grill, a double gas grill (on the 3.5 m and 3.9 m units), an induction flat-top stove, a kettle grill (on the 3.5 m and 3.9 m units), an extractor fan, a bar fridge, a pizza oven, a stainless-steel countertop upgrade, extra cabinet modules by the metre, an aluminium shelf, an outdoor speaker and an illuminated 'starry-sky' ceiling, each quoted on your quotation.",
       },
       {
         q: "How much does delivery and installation cost?",
@@ -1102,7 +1119,30 @@ export function optionPrice(opt: CustomOption, areaM2?: number): number {
   return opt.price;
 }
 
-/** Sum of base price + the options that count, for a product. */
+/**
+ * The sizes with a published price. A price-on-request size carries a 0
+ * sentinel (ProductVariant.priceOnRequest), so every from-price, range, total
+ * and Offer reads variant prices through this rather than `variants`.
+ */
+export function pricedVariants(product: Product): ProductVariant[] {
+  return (product.variants ?? []).filter((v) => !v.priceOnRequest);
+}
+
+/**
+ * Whether a configuration has no published price: the whole product is price
+ * on request, or the chosen size is. Anything that prints a price or a running
+ * total checks this first and says "Price on request" instead.
+ */
+export function isPriceOnRequest(product: Product, variantId?: string): boolean {
+  if (product.priceOnRequest) return true;
+  return Boolean(product.variants?.find((v) => v.id === variantId)?.priceOnRequest);
+}
+
+/**
+ * Sum of base price + the options that count, for a product. Meaningless for a
+ * price-on-request configuration (its base is a 0 sentinel): callers check
+ * isPriceOnRequest() before showing it.
+ */
 export function configuredPrice(product: Product, selected: Partial<Record<string, boolean>>, variantId?: string): number {
   const variant = product.variants?.find((v) => v.id === variantId);
   const base = variant ? variant.price : product.startingPrice;

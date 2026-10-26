@@ -119,7 +119,22 @@ function variantPrice(slug: string, variantId: string): number {
   if (!variant) {
     throw new Error(`blog.ts: no variant "${variantId}" on product "${slug}"`);
   }
+  // A price-on-request size carries a 0 sentinel: fail the build rather than
+  // print "R 0" into a post. Use variantPriceLabel() where a size may be one.
+  if (variant.priceOnRequest) {
+    throw new Error(`blog.ts: variant "${variantId}" on "${slug}" is price on request`);
+  }
   return variant.price;
+}
+
+/** A size's price for a table cell: the figure, or "Price on request". */
+function variantPriceLabel(slug: string, variantId: string): string {
+  const product = getProduct(slug);
+  const variant = product?.variants?.find((v) => v.id === variantId);
+  if (!variant) {
+    throw new Error(`blog.ts: no variant "${variantId}" on product "${slug}"`);
+  }
+  return variant.priceOnRequest ? "Price on request" : formatZAR(variant.price);
 }
 
 const folding = priceOf("folding-homes");
@@ -186,9 +201,8 @@ function capitalPerMonth(price: number, months: number): string {
 function perM2(slug: string, variantId?: string): string {
   const product = getProduct(slug);
   if (!product) throw new Error(`blog.ts: unknown product slug "${slug}"`);
-  const price = variantId
-    ? (product.variants?.find((v) => v.id === variantId)?.price ?? 0)
-    : product.startingPrice;
+  // variantPrice() throws on a price-on-request size rather than dividing a 0.
+  const price = variantId ? variantPrice(slug, variantId) : product.startingPrice;
   return R(Math.round(price / areaOf(slug, variantId) / 10) * 10);
 }
 
@@ -1656,6 +1670,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Building a braai area or buying a delivered outdoor kitchen: what each length costs, which extras are worth it, and the ones only larger units can take.",
     datePublished: "2026-09-02",
+    // New prices, the 3.5 m and 3.9 m on request, and the pizza oven extra.
+    dateModified: "2026-10-26",
     keywords: [
       "outdoor kitchen South Africa",
       "outdoor kitchen cost",
@@ -1682,10 +1698,10 @@ export const blogPosts: BlogPost[] = [
         caption: "Tiny Homes SA outdoor kitchen lengths and prices, ex VAT",
         head: ["Length", "Price ex VAT", "Approx. weight", "Notes"],
         rows: [
-          ["2.5 m", R(variantPrice("outdoor-kitchens", "ok-2-5")), "±500 kg", "The compact entertainer"],
-          ["2.9 m", R(variantPrice("outdoor-kitchens", "ok-2-9")), "±600 kg", "Extra prep space"],
-          ["3.5 m", R(variantPrice("outdoor-kitchens", "ok-3-5")), "±700 kg", "Takes the double grill and kettle grill"],
-          ["3.9 m", R(variantPrice("outdoor-kitchens", "ok-3-9")), "±750 kg", "The largest, for serious entertaining"],
+          ["2.5 m", variantPriceLabel("outdoor-kitchens", "ok-2-5"), "±500 kg", "The compact entertainer"],
+          ["2.9 m", variantPriceLabel("outdoor-kitchens", "ok-2-9"), "±600 kg", "Extra prep space"],
+          ["3.5 m", variantPriceLabel("outdoor-kitchens", "ok-3-5"), "±700 kg", "Takes the double grill and kettle grill"],
+          ["3.9 m", variantPriceLabel("outdoor-kitchens", "ok-3-9"), "±750 kg", "The largest, for serious entertaining"],
         ],
       },
       {
@@ -1734,6 +1750,7 @@ export const blogPosts: BlogPost[] = [
           ["Induction flat-top stove", R(optionOf("outdoor-kitchens", "induction-stove")), "Pans and sides, not braai duty"],
           ["Extractor fan", R(optionOf("outdoor-kitchens", "extractor-fan")), "Matters most under a closed roof"],
           ["Bar fridge", R(optionOf("outdoor-kitchens", "bar-fridge")), "Saves the trip inside"],
+          ["Pizza oven", R(optionOf("outdoor-kitchens", "pizza-oven")), "Any length"],
           ["Stainless-steel countertop", R(optionOf("outdoor-kitchens", "stainless-countertop")), "Over the quartz, for heavy use"],
           ["Extra cabinet module", `${R(optionOf("outdoor-kitchens", "extra-cabinets"))}/m`, "Storage is the thing people underestimate"],
           ["Outdoor speaker", R(optionOf("outdoor-kitchens", "outdoor-speaker")), "Low cost, high use"],
@@ -1769,7 +1786,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "How much does an outdoor kitchen cost in South Africa?",
-        a: `Ours run from ${R(variantPrice("outdoor-kitchens", "ok-2-5"))} ex VAT for the 2.5 m up to ${R(variantPrice("outdoor-kitchens", "ok-3-9"))} for the 3.9 m, delivered ready to use with the motorised roof, quartz countertop, stainless-steel sink and embedded plumbing and electrics included. Cooking appliances are extras, from ${R(optionOf("outdoor-kitchens", "gas-grill-single"))} for a single gas grill.`,
+        a: `Ours run from ${R(variantPrice("outdoor-kitchens", "ok-2-5"))} ex VAT for the 2.5 m to ${R(variantPrice("outdoor-kitchens", "ok-2-9"))} for the 2.9 m, and the 3.5 m and 3.9 m are priced on request. Each is delivered ready to use with the motorised roof, quartz countertop, stainless-steel sink and embedded plumbing and electrics included. Cooking appliances are extras, from ${R(optionOf("outdoor-kitchens", "gas-grill-single"))} for a single gas grill.`,
       },
       {
         q: "Is it cheaper to build a braai area or buy one?",

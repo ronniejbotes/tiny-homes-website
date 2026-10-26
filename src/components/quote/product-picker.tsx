@@ -137,12 +137,17 @@ export function VariantPicker({
                 {variant.size}
               </span>
             </div>
-            <span className="mt-2 text-xl font-medium tabular-nums nums-tabular">
-              {formatZAR(variant.price)}
-              <span className={cn("ml-1.5 text-xs font-normal", active ? "text-sage" : "text-stone")}>
-                ex VAT
+            {/* A price-on-request size has a 0 sentinel for a price. */}
+            {variant.priceOnRequest ? (
+              <span className="mt-2 text-xl font-medium">Price on request</span>
+            ) : (
+              <span className="mt-2 text-xl font-medium tabular-nums nums-tabular">
+                {formatZAR(variant.price)}
+                <span className={cn("ml-1.5 text-xs font-normal", active ? "text-sage" : "text-stone")}>
+                  ex VAT
+                </span>
               </span>
-            </span>
+            )}
             <span className={cn("mt-3 text-sm leading-relaxed", active ? "text-cream/80" : "text-stone")}>
               {variant.description}
             </span>
