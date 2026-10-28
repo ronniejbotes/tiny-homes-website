@@ -23,20 +23,27 @@ export const DURATION = {
    left Stagger grids permanently invisible, the hook resolves only after the
    hidden `initial` state has been committed, and `initial` is mount-only. */
 
+/* When a reveal fires: as soon as the top edge is 40px inside the viewport
+   ("some" plus a bottom margin), not once a fraction of the element is visible.
+   A fraction never fires on an element taller than the viewport divided by it.
+   Until 29 October 2026 Stagger waited for 15% of its group. The /blog list had
+   grown to 17 posts, about 6,300px, so the cards needed 945px of a laptop's
+   roughly 870px viewport and stayed invisible however far a visitor scrolled. */
+const VIEWPORT_MARGIN = "0px 0px -40px 0px";
+
 /**
- * Scroll-triggered reveal. Fades + rises content into view once, when ~20%
- * of it enters the viewport. Respects prefers-reduced-motion.
+ * Scroll-triggered reveal. Fades + rises content into view once, when its top
+ * edge comes 40px into the viewport. Respects prefers-reduced-motion.
  *
- * Backward-compatible: every prop that existed before (children, className,
- * delay, y, as) keeps its original default and behaviour. `amount` and
- * `duration` are new, optional, and default to the previous hard-coded values.
+ * `amount` is still accepted, but a number only suits an element that is
+ * always shorter than the viewport; see VIEWPORT_MARGIN above.
  */
 export function Reveal({
   children,
   className,
   delay = 0,
   y = 28,
-  amount = 0.2,
+  amount = "some",
   duration = DURATION.reveal,
   as: Tag = "div",
 }: {
@@ -44,7 +51,7 @@ export function Reveal({
   className?: string;
   delay?: number;
   y?: number;
-  amount?: number;
+  amount?: number | "some" | "all";
   duration?: number;
   as?: "div" | "section" | "li" | "span";
 }) {
@@ -56,7 +63,7 @@ export function Reveal({
         className={className}
         initial={{ opacity: 0, y }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount, margin: "0px 0px -40px 0px" }}
+        viewport={{ once: true, amount, margin: VIEWPORT_MARGIN }}
         transition={{ duration, delay, ease: EASE }}
       >
         {children}
@@ -76,19 +83,19 @@ const staggerChild: Variants = {
 };
 
 /** Parent that staggers its <StaggerItem> children into view.
- *  `amount` (new, optional) tunes how much must be visible before the run
- *  begins; it defaults to the previous 0.15. `as` (new, optional) lets a
- *  staggered group render as a real list, the way Reveal already allows,
- *  it defaults to "div", so every existing caller is unaffected. */
+ *  The run begins when the group's top edge is 40px into the viewport, the
+ *  same rule as Reveal, so a long list can never stay hidden. `as` (optional)
+ *  lets a staggered group render as a real list, the way Reveal already
+ *  allows; it defaults to "div". */
 export function Stagger({
   children,
   className,
-  amount = 0.15,
+  amount = "some",
   as: Tag = "div",
 }: {
   children: React.ReactNode;
   className?: string;
-  amount?: number;
+  amount?: number | "some" | "all";
   as?: "div" | "ul" | "ol";
 }) {
   const MotionTag = motion[Tag];
@@ -100,7 +107,7 @@ export function Stagger({
         variants={staggerParent}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount }}
+        viewport={{ once: true, amount, margin: VIEWPORT_MARGIN }}
       >
         {children}
       </MotionTag>

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { nav, site } from "@/lib/site";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { nav, site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
 import { CurrentYear } from "@/components/layout/current-year";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -130,10 +130,13 @@ export function Footer() {
               </li>
               {/* Full street address, not just the suburb: Google matches the
                   site to the Business Profile on a complete, visible NAP, and
-                  an address without a street line does not register as one. */}
+                  an address without a street line does not register as one.
+                  Labelled since the showroom map went in below: this is the
+                  head office, and the pin on the map is somewhere else. */}
               <li className="flex items-start gap-3 text-cream/80">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" />
                 <address className="not-italic">
+                  <span className="block text-sm text-sage">Registered office</span>
                   {site.address.streetAddress}, {site.address.locality}
                   <br />
                   {site.address.city}, {site.address.region}
@@ -156,6 +159,43 @@ export function Footer() {
                 Call or WhatsApp us
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* The showroom on a map, on every page (owner, 29 October 2026). The
+            pin is the showroom, where visitors go, not the registered office
+            above. Named, not addressed, as on /contact: the showroom has no
+            street address. Lazy, so Google's half megabyte of map script only
+            loads when someone scrolls this far. */}
+        <div className="mt-14 grid overflow-hidden rounded-3xl border border-cream/15 lg:grid-cols-3">
+          <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
+            <p className="text-eyebrow text-sage">Visit the showroom</p>
+            <p className="flex items-start gap-3 text-cream/80">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" aria-hidden="true" />
+              <span>
+                <span className="block font-medium text-cream">{site.showroom.name}</span>
+                {site.showroom.city}, {site.showroom.region}
+              </span>
+            </p>
+            <a
+              href={showroomDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center gap-2 self-start rounded-full border border-cream/30 px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:border-cream/70 hover:bg-cream/10"
+            >
+              Get directions
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+          <div className="relative aspect-[4/3] border-t border-cream/15 sm:aspect-[21/9] lg:col-span-2 lg:aspect-auto lg:h-72 lg:border-t-0 lg:border-l">
+            <iframe
+              src={showroomMapEmbedUrl}
+              title={`Map showing the ${site.name} showroom in ${site.showroom.city}, ${site.showroom.region}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full border-0"
+            />
           </div>
         </div>
 
