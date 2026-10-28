@@ -120,9 +120,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <Container>
           <Reveal className="max-w-[68ch]">
             <nav aria-label="Breadcrumb">
+              {/* min-h-11 makes the tap target 44px tall (it was 20px);
+                  -my-3 hands the extra 24px back so the header doesn't move. */}
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-medium text-stone transition-colors hover:text-ink"
+                className="-my-3 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-stone transition-colors hover:text-ink"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 All guides

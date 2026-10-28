@@ -791,7 +791,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               ))}
             </AnimatePresence>
             {chips.length === 0 && (
-              <span className="text-xs text-stone">Base configuration: add options to see them appear.</span>
+              <span className="text-sm text-stone sm:text-xs">Base configuration: add options to see them appear.</span>
             )}
           </div>
         </div>
@@ -931,7 +931,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                   <span className="text-sm font-medium text-stone">ex VAT</span>
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-stone">{site.deliveryNote}</p>
-                <p className="mt-2 text-xs leading-relaxed text-stone">
+                <p className="mt-2 text-sm leading-relaxed text-stone sm:text-xs">
                   Optional extras carry provisional pricing and will be confirmed on your final
                   quote.
                 </p>

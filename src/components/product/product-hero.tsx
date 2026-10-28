@@ -80,7 +80,12 @@ export function ProductHero({
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            {/* max-sm:pr-16 keeps this row out of the column the floating
+                WhatsApp badge covers on phones (56px, 12px off the edge).
+                Where the price and its "ex VAT" label don't both fit in
+                what's left, the label wraps under the price instead of
+                running in under the badge (it did at 360–390px wide). */}
+            <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 max-sm:pr-16">
               {product.priceOnRequest ? (
                 <>
                   <p className="text-display text-3xl text-ink sm:text-4xl">

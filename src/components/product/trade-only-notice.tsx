@@ -72,7 +72,15 @@ export function TradeOnlyNotice({ product }: { product: Product }) {
           </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
-            <ButtonAnchor href={mailto} variant="accent" size="lg">
+            {/* The address can't wrap (whitespace-nowrap): at px-8 and 16px the
+                button ran 3px past a 360px screen and well past the card.
+                On phones it takes the md button's 15px text and px-5. */}
+            <ButtonAnchor
+              href={mailto}
+              variant="accent"
+              size="lg"
+              className="max-sm:px-5 max-sm:text-[0.9375rem]"
+            >
               <Mail className="h-4 w-4" aria-hidden="true" />
               Email {site.safariTentsEmail}
             </ButtonAnchor>
