@@ -8,6 +8,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 
 /* Hand-supplied brand hero (2560px) rather than a manifest product photo, a
    full-bleed hero upscales anything smaller into visible blur, and this frame is
@@ -124,30 +125,35 @@ export function Hero() {
           for affordable, sustainable living and delivered anywhere in South Africa in around
           90 days.
         </p>
+        {/* Business buyers lead (owner, 29 Oct 2026: "Our main target for tiny
+            homes now is to deal with larger companies that will buy multiple
+            units"). The instant quote stays beside it for anyone buying one
+            for themselves. "Explore our homes" went to make room; the range
+            starts directly below the stats strip. */}
         <div
           className="animate-rise-in mt-9 flex flex-wrap items-center gap-4"
           style={rise(0.6)}
         >
-          <ButtonLink href="/quote" variant="accent" size="lg">
-            Get an instant quote
+          <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+            Business enquiry
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </ButtonLink>
-          <ButtonLink href="#homes" variant="outline-dark" size="lg">
-            Explore our homes
+          <ButtonLink href="/quote" variant="outline-dark" size="lg">
+            Get an instant quote
           </ButtonLink>
         </div>
-        {/* A link rather than a third button: the viewing CTA belongs above the
-            fold, but not competing with the two decisions already there. */}
+        {/* A link rather than a third button, where the showroom-viewing line
+            used to be: viewings are by email only now (see /contact#viewing). */}
         <p
-          className="animate-rise-in mt-6 text-[0.9375rem] text-cream/75"
+          className="animate-rise-in mt-6 max-w-xl text-base text-cream/75"
           style={rise(0.72)}
         >
-          Rather see one first?{" "}
+          Buying several units for staff, guests or a development?{" "}
           <Link
-            href="/book-a-viewing"
+            href="#business"
             className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
           >
-            Book a viewing at our Centurion showroom
+            See what suits a business
           </Link>
         </p>
       </div>

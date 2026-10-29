@@ -111,8 +111,8 @@ export interface QuoteTotals {
   /**
    * True when any line is priced after consultation (QuoteLine.onRequest).
    *
-   * No price-on-request product can reach a quote: safari tents, the only one,
-   * are trade-only and the picker never offers them. A price-on-request size
+   * No price-on-request product exists to reach a quote (the safari tents,
+   * the only one, were removed on 29 October 2026). A price-on-request size
    * can: the 3.5 m and 3.9 m outdoor kitchens (from 26 October 2026).
    */
   someOnRequest: boolean;

@@ -216,7 +216,7 @@ export const blogPosts: BlogPost[] = [
     title: "How much does a housing pod cost in South Africa?",
     description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT: what each tier includes, and what it quietly leaves out.`,
     datePublished: "2026-09-02",
-    dateModified: "2026-10-07",
+    dateModified: "2026-10-29",
     keywords: [
       "how much does a housing pod cost",
       "housing pod price South Africa",
@@ -348,7 +348,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Whatever tier you land on, go and stand inside one before you pay a deposit. Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site in ${site.showroom.city} and viewing is free.`,
+        text: `Whatever tier you land on, go and stand inside one before you pay a deposit. Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site at our showroom in ${site.showroom.city}, and viewings are arranged by email: [here is what to send](/contact#viewing).`,
       },
       {
         type: "cta",
@@ -396,7 +396,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost, including where a pod is the wrong answer.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-15",
+    dateModified: "2026-10-29",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -512,9 +512,9 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Our units are on site in ${site.showroom.city} and viewing is free, with no obligation to buy.`,
-        href: "/book-a-viewing",
-        label: "Book a free viewing",
+        text: `Our units are on site at our showroom in ${site.showroom.city}, and viewings are arranged by email.`,
+        href: "/contact#viewing",
+        label: "How to arrange a viewing",
       },
     ],
     faqs: [
@@ -1242,7 +1242,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping site actually pays.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-16",
+    dateModified: "2026-10-29",
     keywords: [
       "start a glamping business South Africa",
       "glamping business setup cost",
@@ -1272,7 +1272,6 @@ export const blogPosts: BlogPost[] = [
           ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings all sizes; kitchenette on 9 m and 11.8 m", "Entry to the premium end; strong photography"],
           ["Glamping Capsule", R(capsule), "18.6 – 38 m²", "Bathroom + premium fittings, geyser, insulation, smart entry", "Flagship units where the room is the reason for the booking"],
           ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater: all fitted", "Longer stays; nothing left to add"],
-          ["Safari Tent", "On request", "Per project", "Trade only: supplied and installed with Bushtec", "Lodges and resorts wanting canvas"],
         ],
       },
       {
@@ -1281,7 +1280,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are the most completely fitted thing we sell (kitchen, air conditioning and water heater standard), which suits longer stays. [Safari tents](/safari-tents) are a trade offering supplied to businesses and hospitality operators only, quoted per project.`,
+        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are the most completely fitted thing we sell (kitchen, air conditioning and water heater standard), which suits longer stays.`,
       },
 
       { type: "h2", text: "The costs that are not the unit" },
@@ -1337,9 +1336,9 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Units are on site at our showroom in ${site.showroom.city}: worth walking through before committing capital to a fleet of them.`,
-        href: "/book-a-viewing",
-        label: "Book a viewing",
+        text: `Planning several units for a glamping or lodge operation? Send us your company name, what the units will be used for, where they will go and how many you need.`,
+        href: "/contact#business",
+        label: "Send a business enquiry",
       },
     ],
     faqs: [
@@ -1349,7 +1348,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Which unit is best for a glamping site?",
-        a: "Glamping capsules where the unit itself is the reason for the booking and you want the highest nightly rate; Apple Cabins where you want the premium look at lower capital per key; nature cabins for longer stays, since kitchen, air conditioning and water heater are fitted as standard. Safari tents are trade only, quoted per project.",
+        a: "Glamping capsules where the unit itself is the reason for the booking and you want the highest nightly rate; Apple Cabins where you want the premium look at lower capital per key; nature cabins for longer stays, since kitchen, air conditioning and water heater are fitted as standard.",
       },
       {
         q: "What occupancy should I plan for?",
@@ -1538,6 +1537,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Costing accommodation for farm, mine and construction staff: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-29",
     keywords: [
       "staff accommodation units South Africa",
       "farm worker housing South Africa",
@@ -1963,9 +1963,9 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Units are on site at our showroom in ${site.showroom.city}: free to view, no obligation.`,
-        href: "/book-a-viewing",
-        label: "Book a viewing",
+        text: `Housing a crew or a workforce? Send us your company name, what the units will be used for, where they will go and how many you need.`,
+        href: "/contact#business",
+        label: "Send a business enquiry",
       },
     ],
     faqs: [
@@ -2617,7 +2617,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What is a modular home, and how is it different from prefab or flat-pack? Plain definitions, which of our units is which, and what approval it needs.",
     datePublished: "2026-09-09",
-    dateModified: "2026-10-07",
+    dateModified: "2026-10-29",
     keywords: [
       "what is a modular home",
       "modular vs prefab",
@@ -2740,7 +2740,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Where can you see the difference for yourself?" },
       {
         type: "p",
-        text: `The labels matter less once you can see the ranges next to each other. Our [housing pods guide](/housing-pods) puts our homes and cabins side by side, with their prices and what a unit price does and does not include. Start there if you are still choosing between a folding room, an expandable home and a fully built cabin. You can also browse [every range we sell](/) from the home page. If you are in or near Gauteng, [book a viewing at our showroom in Centurion](/book-a-viewing) and look at the build quality for yourself.`,
+        text: `The labels matter less once you can see the ranges next to each other. Our [housing pods guide](/housing-pods) puts our homes and cabins side by side, with their prices and what a unit price does and does not include. Start there if you are still choosing between a folding room, an expandable home and a fully built cabin. You can also browse [every range we sell](/) from the home page. If you are in or near Gauteng, [email us to arrange a viewing at our showroom in Centurion](/contact#viewing) and look at the build quality for yourself.`,
       },
       {
         type: "p",
@@ -2894,6 +2894,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Mobile homes in South Africa: what the law calls a mobile home, which prefab units can be moved again, and what a move needs at each end.",
     datePublished: "2026-09-30",
+    dateModified: "2026-10-29",
     keywords: [
       "mobile homes South Africa",
       "mobile homes for sale",
@@ -3027,7 +3028,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Then make two calls before any money changes hands. One is to building control where the unit will first stand. The other is to whoever will move it, with photographs of the way in to the site. Our [showroom in Centurion](/book-a-viewing) has units you can stand inside before you decide.`,
+        text: `Then make two calls before any money changes hands. One is to building control where the unit will first stand. The other is to whoever will move it, with photographs of the way in to the site. Our [showroom in Centurion](/contact#viewing) has units you can stand inside before you decide, and viewings are arranged by email.`,
       },
       {
         type: "p",
@@ -3044,6 +3045,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Buying a prefab home for the coast? What salt air does to steel, the exterior panel we require near the sea, and the coastal rules to check first.",
     datePublished: "2026-10-07",
+    dateModified: "2026-10-29",
     keywords: [
       "prefab homes Cape Town",
       "prefab homes coast South Africa",
@@ -3160,7 +3162,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Make a couple of calls early, too. Ask the municipality's building control office about approval and any coastal line on the plot, and ask us to confirm the coastal specification for the unit you have in mind. And if you're near Centurion, come and stand inside our units at the [showroom](/book-a-viewing) before you decide.`,
+        text: `Make a couple of calls early, too. Ask the municipality's building control office about approval and any coastal line on the plot, and ask us to confirm the coastal specification for the unit you have in mind. And if you're near Centurion, [email us to arrange a viewing](/contact#viewing) and stand inside our units at the showroom before you decide.`,
       },
     ],
   },

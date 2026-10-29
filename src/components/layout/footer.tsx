@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { nav, site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
 import { CurrentYear } from "@/components/layout/current-year";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -147,10 +148,10 @@ export function Footer() {
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/book-a-viewing"
+                href={BUSINESS_ENQUIRY_HREF}
                 className="inline-flex h-11 items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:bg-clay-dark"
               >
-                Book a Viewing
+                Business enquiry
               </Link>
               <Link
                 href="/contact"
@@ -166,16 +167,26 @@ export function Footer() {
             pin is the showroom, where visitors go, not the registered office
             above. Named, not addressed, as on /contact: the showroom has no
             street address. Lazy, so Google's half megabyte of map script only
-            loads when someone scrolls this far. */}
+            loads when someone scrolls this far. Viewings are by email only
+            (owner, 29 October 2026), so this says so and links to how. */}
         <div className="mt-14 grid overflow-hidden rounded-3xl border border-cream/15 lg:grid-cols-3">
           <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
-            <p className="text-eyebrow text-sage">Visit the showroom</p>
+            <p className="text-eyebrow text-sage">Our showroom</p>
             <p className="flex items-start gap-3 text-cream/80">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" aria-hidden="true" />
               <span>
                 <span className="block font-medium text-cream">{site.showroom.name}</span>
                 {site.showroom.city}, {site.showroom.region}
               </span>
+            </p>
+            <p className="text-cream/80">
+              Viewings by email only.{" "}
+              <Link
+                href={VIEWING_HREF}
+                className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+              >
+                How to arrange one
+              </Link>
             </p>
             <a
               href={showroomDirectionsUrl}
@@ -207,9 +218,6 @@ export function Footer() {
               row breaks after Contact and a separator was left dangling at the
               end of the first line. The 28px gap matches the old dot spacing. */}
           <p className="flex flex-wrap gap-x-7">
-            <Link href="/book-a-viewing" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
-              Book a Viewing
-            </Link>
             <Link href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               About
             </Link>

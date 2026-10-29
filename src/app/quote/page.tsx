@@ -3,7 +3,9 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { QuoteForm } from "@/components/quote/quote-form";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
+import Link from "next/link";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 import images from "@/data/images.json";
 
 const pageDescription =
@@ -87,6 +89,18 @@ export default function QuotePage() {
                   include is road delivery to your site, because that depends on where you are, so
                   we price it separately and email that quote through to you. We pass it on at cost
                   with no markup, so you&apos;re welcome to arrange your own truck too.
+                </p>
+                {/* Volume buyers to the business enquiry (owner, 29 Oct 2026). */}
+                <p className="mt-4 text-lg leading-relaxed text-stone">
+                  Buying several units for a business?{" "}
+                  <Link
+                    href={BUSINESS_ENQUIRY_HREF}
+                    className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+                  >
+                    Send us a business enquiry
+                  </Link>{" "}
+                  with your company name, what the units will be used for, where they will go
+                  and how many you need.
                 </p>
               </Reveal>
             }

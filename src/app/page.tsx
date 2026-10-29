@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Phone } from "lucide-react";
 import { Hero } from "@/components/home/hero";
 import { StatsStrip } from "@/components/home/stats-strip";
+import { ForBusinesses } from "@/components/home/for-businesses";
 import { HomesShowcase } from "@/components/home/homes-showcase";
 import { CustomiseTeaser } from "@/components/home/customise-teaser";
 import { HowItWorks } from "@/components/home/how-it-works";
@@ -20,6 +21,7 @@ import { products } from "@/data/products";
 import { productItemListSchema } from "@/lib/schema";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 import images from "@/data/images.json";
 
 /* Same manifest image the visible hero uses (hero.tsx), the 2048px night-pool shot. */
@@ -28,8 +30,8 @@ const heroImage =
     img.src.endsWith("exterior-night-pool.jpg"),
   ) ?? images.products["glamping-capsules"][0];
 
-/* Safari tents carry a price-on-request 0 sentinel; never let it win the range.
-   Garages are a DIY steel-kit line, not a home, excluded so the "From …" CTA
+/* A price-on-request product would carry a 0 sentinel; never let it win the
+   range. Garages are a DIY steel-kit line, not a home, excluded so the "From …" CTA
    under "Your tiny home starts here" names the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products
@@ -85,7 +87,7 @@ const faqJsonLd = {
 };
 
 /* The shared builder the /housing-pods hub uses: each product with its offer,
-   brand and card photo; the price-on-request safari tents by name and link only. */
+   brand and card photo. */
 const itemListJsonLd = productItemListSchema("Tiny Homes SA product range", products);
 
 export default function HomePage() {
@@ -102,6 +104,7 @@ export default function HomePage() {
 
       <Hero />
       <StatsStrip />
+      <ForBusinesses />
       <HomesShowcase />
       <CustomiseTeaser />
       <HowItWorks />
@@ -138,19 +141,19 @@ export default function HomePage() {
               Your tiny home starts here.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-cream/75">
-              Tell us where you want to live smaller, and we&apos;ll handle the spec, the
-              supply and the delivery, anywhere in South Africa.
+              Tell us where you want to live smaller, or how many units your business needs,
+              and we&apos;ll handle the spec, the supply and the delivery, anywhere in South
+              Africa.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <ButtonLink href="/quote" variant="accent" size="lg">
-                Get an instant quote
+              {/* Business buyers first (owner, 29 Oct 2026); the instant quote
+                  for anyone buying one for themselves. The "Book a viewing"
+                  button that sat here went with the booker. */}
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
               </ButtonLink>
-              {/* Was "Request a call". A booked viewing is a firm commitment
-                  from someone who has already decided to come and look, and the
-                  phone number sitting next to it covers anyone who just wants
-                  to talk — so this slot is worth more spent on the showroom. */}
-              <ButtonLink href="/book-a-viewing" variant="outline-dark" size="lg">
-                Book a viewing
+              <ButtonLink href="/quote" variant="outline-dark" size="lg">
+                Get an instant quote
               </ButtonLink>
               <ButtonAnchor
                 href={`tel:${site.phone.replace(/\s/g, "")}`}

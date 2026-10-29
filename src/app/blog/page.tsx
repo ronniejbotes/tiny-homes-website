@@ -9,6 +9,7 @@ import { JsonLd, blogSchema, breadcrumbSchema } from "@/lib/schema";
 import { getHeroImage } from "@/components/product/product-images";
 import { blogPostsByDate } from "@/data/blog";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
 
 /**
  * /blog — the journal index.
@@ -163,12 +164,18 @@ export default function BlogIndexPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl leading-relaxed text-stone">
               Every guide here started as a question a customer asked on the phone. If yours
-              is not covered, call us, or come and stand inside one of the units in{" "}
-              {site.showroom.city}.
+              is not covered, call us, or{" "}
+              <Link
+                href={VIEWING_HREF}
+                className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+              >
+                email us to view one of the units
+              </Link>{" "}
+              in {site.showroom.city}.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <ButtonLink href="/book-a-viewing" variant="primary" size="lg">
-                Book a free viewing
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="primary" size="lg">
+                Business enquiry
               </ButtonLink>
               <ButtonLink href="/quote" variant="outline" size="lg">
                 Price a unit

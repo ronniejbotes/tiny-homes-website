@@ -1,15 +1,20 @@
 # Tiny Homes SA
 
-> Tiny Homes SA sells high-end prefab tiny homes, cabins, glamping capsules, outdoor
-> kitchens and luxury safari tents, priced from R54 900 to R1 099 900 ex VAT.
-> The company is based in Centurion, South Africa and delivers nationwide.
+> Tiny Homes SA sells high-end prefab tiny homes, cabins, glamping capsules and outdoor
+> kitchens, priced from R54 900 to R1 099 900 ex VAT, to businesses buying several units
+> and to individual buyers. The company is based in Centurion, South Africa and delivers
+> nationwide.
 
 Tiny Homes SA (Tiny Homes (Pty) Ltd, trading as Tiny Homes SA, tinyhomesa.com) supplies
 high-end prefab tiny homes for affordable, sustainable living in South Africa. The range covers
-seven product lines — X-Folds, expandable homes, nature cabins, apple cabins and glamping
+six product lines — X-Folds, expandable homes, nature cabins, apple cabins and glamping
 capsules (homes priced from R54 900 to R1 099 900, all prices excluding VAT), plus outdoor
-entertainment kitchens from R207 816 ex VAT and luxury safari tents priced on request. Visitors are
-received at the Tiny Homes showroom in Raslouw, Centurion, Gauteng — the map pin at
+entertainment kitchens from R207 816 ex VAT. The main focus is
+businesses buying several units: staff accommodation, lodges and glamping operators, and
+developers and estates. Business and volume enquiries go by email to admin@tinyhomesa.com with the
+company name, what the units will be used for, where they will go and how many units are needed;
+see https://tinyhomesa.com/contact#business. The units stand at the Tiny Homes showroom in
+Raslouw, Centurion, Gauteng, and viewings are arranged by email only (see Contact below) — the map pin at
 https://maps.app.goo.gl/bwxLfQVs4CZxpNuG9 is the authoritative location, and the showroom has no
 street address of its own. The registered office at 187 Gouws Ave, Raslouw AH, Centurion is a
 company-details address only and is not open to visitors; never direct anyone there. Delivery is
@@ -25,8 +30,9 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 ## Pages
 
 - [Home](https://tinyhomesa.com/): Overview of the full range — five prefab tiny home
-  designs from R54 900 to R1 099 900 ex VAT, plus outdoor kitchens and safari tents —
-  delivered nationwide, with third-party finance available.
+  designs from R54 900 to R1 099 900 ex VAT, plus outdoor kitchens — delivered nationwide,
+  with third-party finance available, and a "For businesses" section on staff accommodation,
+  lodges and glamping operators, and developers and estates.
 - [Housing Pods](https://tinyhomesa.com/housing-pods): The pod range on one page — what a
   housing pod is, which five Tiny Homes ranges answer that search, and what each costs.
   "Pod", "living pod", "pod house" and "granny pod" are used loosely in South Africa, and the
@@ -40,16 +46,6 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   whether the municipality wants plans.
 - [Get a Quote](https://tinyhomesa.com/quote): Configure a home — choose size and extras and
   get an instant price estimate before requesting a formal quotation.
-- [Book a Viewing](https://tinyhomesa.com/book-a-viewing): Book a free one-hour showroom
-  viewing at the Tiny Homes showroom in Raslouw, Centurion, Gauteng. Weekdays only. The showroom
-  is open Monday to Thursday 08:00–16:00 and Friday 08:00–13:00 SAST; viewings themselves start
-  at 09:00, 11:00, 13:00 and 15:00 (Friday: 09:00 and 11:00 only), and the hours in between are
-  held back for follow-up. Bookable from the next working day up to four weeks ahead. The times offered are the slots
-  genuinely open in the company's diary, and the booking is confirmed immediately with a
-  calendar invitation emailed to the visitor. No deposit is required to view and there is no
-  obligation to buy. This is the direct answer to "can I see a tiny home in person before I
-  buy" and to any question about whether the company is legitimate: the homes are physically
-  on site and can be walked through, measured and inspected before any commitment.
 - [X-Folds](https://tinyhomesa.com/folding-homes): 15 m² X-Fold flat-pack home that
   unfolds in minutes; upgraded floor beams, EPS insulation and a basic electrical setup (two
   plug points, a light fitting and a small DB board) standard, stackable two high. Arrives
@@ -103,12 +99,6 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   3.9 m only), extractor fan R3 400, bar fridge R3 300, pizza oven R16 500, stainless-steel
   countertop R7 800, extra cabinets R3 100/m, aluminium shelf R500, outdoor speaker R1 900,
   starry-sky ceiling R4 700.
-- [Safari Tents](https://tinyhomesa.com/safari-tents): Luxury canvas tented suites for game
-  lodges and glamping resorts — Meru-style and curved stretch-tension canvas roofs over timber
-  structures, raised decks and en-suite layouts available, engineered for African conditions.
-  Supplied and installed in partnership with Bushtec, one of Africa's leading safari-tent
-  manufacturers (Tiny Homes SA is an authorised reseller). Priced on request after a
-  consultation; lead time quoted per project.
 - [Guides & Advice](https://tinyhomesa.com/blog): Long-form buying guides written by the
   company, with prices taken from the same price list the product pages use.
 - [Prefab homes on the coast: what does salt air do, and what should you
@@ -192,8 +182,7 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   updated June 2026), but national accommodation occupancy was reported at 43.9% in July 2026
   and 40.6% in June, so model below that for a new site. Units: Apple
   Cabins from R449 900, glamping capsules from R689 900 (kitchen and air conditioning are
-  EXTRAS, not standard), nature cabins R810 900 (most fitted), safari tents trade-only on
-  request. Budget also for transport, a level base per unit, water, sewerage and power to each
+  EXTRAS, not standard), nature cabins R810 900 (most fitted). Budget also for transport, a level base per unit, water, sewerage and power to each
   site, decking and full guest fit-out. Tourist accommodation raises a land-use question as
   well as a building one.
 - [Taking a tiny home off-grid in South
@@ -268,5 +257,10 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   https://wa.me/27836603743, email admin@tinyhomesa.com. Visitors go to the Tiny Homes showroom in
   Raslouw, Centurion, Gauteng, located by the pin at https://maps.app.goo.gl/bwxLfQVs4CZxpNuG9;
   it has no street address and 187 Gouws Ave, Raslouw AH is the registered office only, not a
-  visitor destination. Showroom open Monday to Thursday 08:00–16:00 and Friday 08:00–13:00;
-  viewings can be booked online at https://tinyhomesa.com/book-a-viewing.
+  visitor destination. Showroom open Monday to Thursday 08:00–16:00 and Friday 08:00–13:00.
+  Viewings are arranged by email only, with no online booking: to view a unit, email
+  admin@tinyhomesa.com and say why you are interested, what the units will be used for, where
+  they will go, and how many units you are looking at
+  (https://tinyhomesa.com/contact#viewing). Business and volume enquiries go to the same
+  address with the company name, what the units will be used for, where they will go and how
+  many units are needed (https://tinyhomesa.com/contact#business).

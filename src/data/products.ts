@@ -138,21 +138,10 @@ export interface Product {
    * No public price: quoted per project after a consultation. When true,
    * startingPrice is a 0 sentinel that must NEVER render; every price
    * derivation and "From R…" card must skip or special-case this product.
+   * No product carries it since the safari tents were removed (owner,
+   * 29 October 2026); the guards stay so a future one is handled safely.
    */
   priceOnRequest?: boolean;
-  /**
-   * Trade only: offered to businesses and hospitality operators (lodges,
-   * resorts, hotels, event venues), never sold to a member of the public and
-   * never orderable through the site.
-   *
-   * This is a harder rule than `priceOnRequest`, which only says the price is
-   * quoted rather than published. A trade-only product must be kept out of
-   * every ordering surface — the quote builder's picker and its deep links —
-   * and it is not kept at the showroom, so it must also stay out of the
-   * viewing booker's "what would you like to see?" list. Viewings are arranged
-   * one at a time by email (`site.safariTentsEmail`).
-   */
-  tradeOnly?: boolean;
   sizeLabel: string;
   /**
    * Heading over the size cards. Falls back to "Choose your size". Set it when
@@ -924,122 +913,6 @@ export const products: Product[] = [
       "garden kitchen for sale",
     ],
   },
-  {
-    slug: "safari-tents",
-    name: "Safari Tents",
-    shortName: "Safari Tent",
-    h1: "Luxury safari and glamping tents",
-    seoTitle: "Luxury Safari Tents South Africa for Lodges",
-    // Price on request, so there is no price to keep in sync: the whole
-    // description is hand-written instead of the "price on request" lead.
-    // Says who it is sold to (trade only); never "manufacturer".
-    metaDescription:
-      "Luxury canvas safari tents for sale to lodges, glamping resorts and reserves: Meru-style or stretch-tension roofs, decks and en-suites, quoted per project.",
-    tagline: "Luxury canvas suites for lodges and resorts, engineered for African sun, wind and rain.",
-    summary:
-      "Luxury canvas safari tents, sold only to businesses and hospitality operators: game lodges, glamping resorts, boutique hotels and event venues. You can't order a safari tent through this site, and viewings are by appointment, not at the showroom.",
-    description:
-      "Safari tents are how Africa's best lodges put guests out in the bush without giving up an inch of comfort. We supply and install luxury canvas tented suites built by one of Africa's leading safari-tent manufacturers. Over a timber structure, you choose a classic Meru-style canvas roof or a curved stretch-tension one, then add raised decks and en-suite layouts. Each suite is engineered for African conditions: sun, wind, rain and everything in between. There's no price list, because no two sites or briefs are the same. We start with a consultation, configure every tent to your site, layout and guest experience, and then give you an itemised quotation. They work for game lodge suites, glamping resorts, private reserves, bush camps, boutique hotels and event venues, and every one is backed by our after-sales support. One thing to know before you enquire: safari tents are a trade offering. We supply them only to businesses and hospitality operators, not to private buyers, and they can't be ordered or quoted through this site the way our homes can. They aren't kept at our Centurion showroom either, so viewings are arranged individually: email johan@tinyhomesa.com and we'll set up a time to view the tents.",
-    startingPrice: 0, // sentinel: priceOnRequest, must never render
-    priceOnRequest: true,
-    // Trade only, owner-instructed 2026-08-19: offered to businesses and
-    // hospitality operators, never orderable, and viewed by appointment
-    // because no tent stands at the showroom. See Product.tradeOnly.
-    tradeOnly: true,
-    sizeLabel: "Custom sizes",
-    setupTime: "Quoted per project",
-    dims: { length: 0, width: 0, height: 0 }, // no doc-sourced dimensions, never rendered (no configurator/floor plan)
-    specs: [
-      { label: "Roof styles", value: "Meru-style canvas or curved stretch-tension canvas" },
-      { label: "Structure", value: "Canvas over timber structures, with raised decks available" },
-      { label: "Layouts", value: "En-suite layouts available, configured to your brief" },
-      { label: "Built for", value: "Engineered for African conditions" },
-      { label: "Supply", value: "Supplied and installed by our manufacturing partner. Tiny Homes SA is not involved in the installation" },
-      { label: "Available to", value: "Businesses and hospitality operators only: lodges, resorts, hotels, reserves and event venues. Not sold to private buyers" },
-      { label: "Ordering", value: "Cannot be ordered online. Quoted per project after a consultation" },
-      { label: "Viewings", value: "By appointment only, and not at the Centurion showroom. Email johan@tinyhomesa.com to arrange a time" },
-      { label: "Pricing", value: "On request: itemised quotation after a consultation" },
-      { label: "Lead time", value: "Quoted per project" },
-    ],
-    features: [
-      "Meru-style and curved stretch-tension canvas roof designs",
-      "Timber structures with raised decks for views and airflow",
-      "En-suite layouts available for full lodge-suite comfort",
-      "Engineered for African conditions: sun, wind and rain",
-      "Configured to your site, brief and guest experience",
-      "Offered to businesses and hospitality operators only, not to private buyers",
-      "Viewed by appointment rather than ordered: email johan@tinyhomesa.com",
-      "Backed by our full after-sales support",
-    ],
-    useCases: [
-      {
-        title: "Game lodge suites",
-        body: "Canvas tented suites that put guests out in the bush without giving up comfort: Meru-style or curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Supplied and installed by Tiny Homes SA, built by one of Africa's leading safari-tent manufacturers.",
-      },
-      {
-        title: "Glamping resort",
-        body: "A full tented resort configured as one brief rather than bought unit by unit: layouts, decks and guest flow are set with you at consultation, then quoted itemised. Engineered for African sun, wind and rain.",
-      },
-      {
-        title: "Private reserve",
-        body: "Low-impact guest accommodation for a reserve where a permanent build is unwanted or not permitted. Canvas over timber sits lightly on the ground and can be specified around the trees and views already there.",
-      },
-      {
-        title: "Bush camp",
-        body: "Tented camps built for real conditions rather than a season, with raised decks where the ground demands it and en-suite layouts where guests expect them. Configured per site, because no two camps share a footprint.",
-      },
-      {
-        title: "Boutique hotel",
-        body: "Tented suites as a distinct offering alongside existing rooms, specified to match the standard of the house. Every tent is configured to your brief and backed by our after-sales support.",
-      },
-      {
-        title: "Event venue",
-        body: "Permanent or semi-permanent canvas structures for weddings, functions and hospitality, engineered to stand up to weather rather than hired in for a weekend. Sizes and layouts are quoted per project after a consultation.",
-      },
-    ],
-    options: [],
-    faqs: [
-      {
-        q: "Who can buy a safari tent?",
-        a: "Businesses and hospitality operators: game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues. Safari tents are a trade offering and we do not sell them to private buyers for a home or a garden.",
-      },
-      {
-        q: "Can I order a safari tent online?",
-        a: "No. Unlike our homes, safari tents cannot be ordered or quoted through the site. Every tent is configured to your site and brief, so it starts with a consultation and ends with an itemised quotation.",
-      },
-      {
-        q: "Can I see a safari tent at the showroom?",
-        a: "No. There is no safari tent at our Centurion showroom, so a showroom viewing will not show you one. Viewings are arranged individually: email johan@tinyhomesa.com and we will book a time to go and view the tents.",
-      },
-      {
-        q: "How does safari tent pricing work?",
-        a: "Every tent is configured to your site and brief, so there's no one-size price list. We start with a consultation about your site, layout and guest experience, then send you an itemised quotation covering the tent, deck, installation and delivery.",
-      },
-      {
-        q: "What configurations are available?",
-        a: "Meru-style canvas and curved stretch-tension roofs over timber structures, with raised decks and en-suite layouts available. Each suite is configured to your brief, from a single honeymoon suite to a full camp.",
-      },
-      {
-        q: "Where do safari tents work best?",
-        a: "Game lodges, glamping resorts, private reserves, bush camps, boutique hotels and event venues: anywhere you want guests close to nature with the comfort of a lodge.",
-      },
-      {
-        q: "What is the lead time?",
-        a: "Lead time is quoted per project, because it depends on the configuration, the number of units and your site. We confirm the programme with your quotation.",
-      },
-      {
-        q: "What support do I get after installation?",
-        a: "Full after-sales support from our team. We stay involved long after handover.",
-      },
-    ],
-    seoKeywords: [
-      "safari tents South Africa",
-      "luxury glamping tents",
-      "canvas safari tent suites",
-      "lodge tents South Africa",
-      "luxury safari tents South Africa",
-    ],
-  },
 ];
 
 export function getProduct(slug: string): Product | undefined {
@@ -1047,15 +920,6 @@ export function getProduct(slug: string): Product | undefined {
 }
 
 export const productSlugs = products.map((p) => p.slug);
-
-/**
- * The products a visitor can actually order: everything except the trade-only
- * lines. Every ordering surface (the quote builder's picker, its deep links)
- * and the showroom viewing booker must read this list rather than `products`,
- * otherwise a trade-only product is offered as though it were for sale or as
- * though it were standing at the showroom. See Product.tradeOnly.
- */
-export const orderableProducts = products.filter((p) => !p.tradeOnly);
 
 /** Whether an option is offered for a given variant (options with no availableVariantIds are offered on all). */
 export function isOptionAvailable(opt: CustomOption, variantId?: string): boolean {

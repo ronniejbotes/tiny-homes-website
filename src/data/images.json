@@ -596,88 +596,6 @@
         "hero": false
       }
     ],
-    "safari-tents": [
-      {
-        "src": "/images/products/safari-tents/hero-single-suite-sunset.jpg",
-        "width": 2400,
-        "height": 1792,
-        "alt": "Luxury canvas safari tent suite on a timber deck in golden South African bushveld at sunset.",
-        "kind": "exterior",
-        "hero": true
-      },
-      {
-        "src": "/images/products/safari-tents/dusk-firepit-dining-deck.jpg",
-        "width": 1600,
-        "height": 1069,
-        "alt": "Canvas Safari Tent suite with a scalloped olive roof on a timber deck at sunset, lantern-lit dining table and fire pit.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/desert-mountain-camp-aerial.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Aerial view at sunset of a canvas Safari Tent suite with a plunge pool and loungers on its timber deck.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/interior-ensuite-tub.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Freestanding copper bathtub with petals and lanterns in a Safari Tent ensuite, bifold doors open to a bushveld sunset.",
-        "kind": "interior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/interior-lounge-styling.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Lounge corner inside a cream canvas Safari Tent with leather butterfly chairs and kilim rugs, bifold doors open to the savanna.",
-        "kind": "interior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/hillside-suite-plunge-pool-sunset.jpg",
-        "width": 1375,
-        "height": 784,
-        "alt": "Elevated canvas Safari Tent suite with a glass facade, wraparound deck and plunge pool overlooking a bushveld valley at sunset.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/twilight-tented-suite-reflection.jpg",
-        "width": 1306,
-        "height": 816,
-        "alt": "Twin-peaked canvas Safari Tent suite on a timber deck glowing with lantern light at dusk, reflected in a bushveld waterhole.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/deck-lounge-firepit-twilight.jpg",
-        "width": 1251,
-        "height": 832,
-        "alt": "Curved bench with striped cushions around a fire pit on the deck of a canvas-roofed Safari Tent suite at sunset.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/exterior-deck-dinner-dusk.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Lantern-lit dinner table for two on the timber deck of a cream canvas Safari Tent at dusk.",
-        "kind": "exterior",
-        "hero": false
-      },
-      {
-        "src": "/images/products/safari-tents/exterior-dawn-mist.jpg",
-        "width": 1264,
-        "height": 848,
-        "alt": "Luxury cream canvas Safari Tent with a charcoal canopy roof on a timber deck at dawn, mist drifting over golden savanna grass.",
-        "kind": "exterior",
-        "hero": false
-      }
-    ],
     "garages": [
       {
         "src": "/images/products/garages/exterior-double-closed-roller-door.jpg",
@@ -1047,24 +965,6 @@
       "video": {
         "furnish": "/videos/configurator/capsule-furnish.mp4",
         "unfurnish": "/videos/configurator/capsule-unfurnish.mp4"
-      }
-    },
-    "safari-tents": {
-      "empty": {
-        "src": "/images/products/safari-tents/interior-shell-empty.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Bare empty Safari Tent interior with canvas walls, timber poles and an empty deck floor opening to the savanna."
-      },
-      "furnished": {
-        "src": "/images/products/safari-tents/interior-shell-furnished.jpg",
-        "width": 1200,
-        "height": 896,
-        "alt": "Furnished Safari Tent lounge with leather butterfly chairs, a brass side table, kilim rug and basket ottoman on the same deck."
-      },
-      "video": {
-        "furnish": "/videos/configurator/safari-furnish.mp4",
-        "unfurnish": "/videos/configurator/safari-unfurnish.mp4"
       }
     },
     "garages": {

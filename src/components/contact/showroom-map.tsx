@@ -1,44 +1,63 @@
-import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink, Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
+import { viewingMailto } from "@/lib/enquiry";
+import { HOURS_LABEL } from "@/lib/hours";
 
 /**
- * Where the showroom actually is.
+ * Where the showroom actually is, and how to view a unit there.
+ *
+ * `id="viewing"` is the target of every viewing link on the site, and of the
+ * 301 from the old /book-a-viewing page. The online booker is gone: owner,
+ * 29 October 2026, "If they want to view, they need to send an email and state
+ * why they are interested, what it will be used for, where it will be and how
+ * many potential units will be purchased." The opening sentence below is that
+ * instruction in the site's voice, and the button opens an email carrying the
+ * same four questions (src/lib/enquiry.ts).
+ *
+ * The map and both directions links stay exactly as they were: the owner
+ * wants people who find the showroom on Google Maps to land on the site.
  *
  * Loaded lazily and given a fixed aspect box: the iframe pulls roughly half a
  * megabyte of Google's own JavaScript, which has no business competing with
  * the page for bandwidth before a visitor has scrolled to it. Reserving the
  * box also keeps it from shifting layout when it does arrive.
  */
-/**
- * @param showBooking Suppressed on /book-a-viewing itself, where a button
- *   pointing at the page you are already on is just noise.
- */
-export function ShowroomMap({ showBooking = true }: { showBooking?: boolean } = {}) {
+export function ShowroomMap() {
   return (
-    <section aria-labelledby="showroom-heading" className="pb-20 sm:pb-28">
+    <section
+      id="viewing"
+      aria-labelledby="showroom-heading"
+      className="scroll-mt-24 pb-20 sm:pb-28"
+    >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
         <Reveal>
-          <p className="text-eyebrow mb-4 text-clay">Showroom</p>
+          <p className="text-eyebrow mb-4 text-clay">Viewings</p>
           <h2 id="showroom-heading" className="text-display text-3xl text-ink sm:text-4xl">
-            Come and walk through one
+            Viewing a unit at our showroom
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
-            Photographs only go so far. Our units are on site in Centurion, so you can stand
-            inside one, check the finishes and get a feel for the space before you commit.
-            {showBooking
-              ? " Book a slot and we'll have someone free to show you around."
-              : " Pick a time above and we'll have someone free to show you around."}
+            To view a unit, email us at{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+            >
+              {site.email}
+            </a>{" "}
+            and tell us why you&apos;re interested, what the units will be used for, where they
+            will go, and how many units you&apos;re looking at.
           </p>
-          {showBooking && (
-            <div className="mt-6">
-              <ButtonLink href="/book-a-viewing" variant="accent" size="lg">
-                Book a viewing
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ButtonLink>
-            </div>
-          )}
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <ButtonAnchor href={viewingMailto} variant="accent" size="lg">
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              Email to arrange a viewing
+            </ButtonAnchor>
+            <p className="text-base text-stone">Opens an email with these questions in it.</p>
+          </div>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone">
+            Viewings are by email only. Showroom hours: {HOURS_LABEL}.
+          </p>
         </Reveal>
 
         <Reveal delay={0.08} className="mt-8">

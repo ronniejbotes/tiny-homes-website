@@ -25,13 +25,6 @@ function heroImageFor(slug: string): ManifestImage | undefined {
   return images?.find((img) => img.hero) ?? images?.[0];
 }
 
-/* Per-product framing tweaks for the 4:3 crop, the safari tent's sail-like
-   roofline (its signature silhouette) sits high in the hero, so bias the crop
-   upward instead of using the default centre crop. */
-const cropPosition: Record<string, string> = {
-  "safari-tents": "object-[50%_35%]",
-};
-
 /* The glamping capsule hero is a 2400 x 1018 panorama. object-cover fills the
    4:3 frame by height, so on lg the photo is drawn about 1.77 times the card's
    width: some 1,200px in its 681px card at 1440. "45vw" fetched a 750px file
@@ -54,10 +47,10 @@ const spanClasses = [
   "lg:col-span-7",
 ];
 
-/* The houses with a published price, for the price table: no trade-only or
-   price-on-request line, and no outdoor kitchens. */
+/* The houses with a published price, for the price table: no price-on-request
+   line, and no outdoor kitchens. */
 const pricedHouses = products
-  .filter((p) => !p.priceOnRequest && !p.tradeOnly && p.slug !== "outdoor-kitchens")
+  .filter((p) => !p.priceOnRequest && p.slug !== "outdoor-kitchens")
   .sort((a, b) => a.startingPrice - b.startingPrice);
 
 /* The smallest expandable size with two bedrooms as standard (variant b20,
@@ -87,7 +80,7 @@ export function HomesShowcase() {
         <SectionHeading
           eyebrow="Our range"
           title="Our prefab houses, cabins and capsules"
-          intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass, plus outdoor kitchens for entertaining and safari tents for lodges. Factory-built, delivered nationwide. All prices exclude VAT."
+          intro="From a flat-pack X-Fold you can set up before lunch to a flagship glamping capsule wrapped in 270° of glass, plus outdoor kitchens for entertaining. Factory-built, delivered nationwide. All prices exclude VAT."
         />
 
         <Stagger className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-y-16">
@@ -113,7 +106,6 @@ export function HomesShowcase() {
                         sizes={`(min-width: 1024px) ${lgSizes[product.slug] ?? "45vw"}, (min-width: 640px) 50vw, 100vw`}
                         className={cn(
                           "object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105",
-                          cropPosition[product.slug],
                         )}
                       />
                     )}
@@ -124,17 +116,7 @@ export function HomesShowcase() {
                         {product.name}
                       </h3>
                       <p className="mt-1.5 text-sm text-stone">
-                        {product.tradeOnly ? (
-                          // Trade-only lines are not for sale to the public, so
-                          // the card leads with who they are for rather than a
-                          // price nobody browsing here can act on.
-                          <>
-                            {product.sizeLabel} ·{" "}
-                            <span className="font-medium text-ink">
-                              Businesses &amp; hospitality only
-                            </span>
-                          </>
-                        ) : product.priceOnRequest ? (
+                        {product.priceOnRequest ? (
                           <>
                             {product.sizeLabel} ·{" "}
                             <span className="font-medium text-ink">Price on request</span>
@@ -173,9 +155,8 @@ export function HomesShowcase() {
             prices" is what a large share of visitors searched for and a table
             is what both they and Google read fastest. Nothing is typed here:
             every name, size and price comes off products.ts, so it can never
-            disagree with the cards or the product pages. Left out: safari
-            tents (trade only, price on request) and the outdoor kitchens
-            (not a house). Cheapest first. */}
+            disagree with the cards or the product pages. Left out: the
+            outdoor kitchens (not a house). Cheapest first. */}
         <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
           <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
             Prefab house price list

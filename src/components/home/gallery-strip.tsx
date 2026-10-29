@@ -38,8 +38,9 @@ function photoNamed(slug: string, filenameContains: string): ManifestImage {
    image is a real product photo, looked up by filename/hero flag, not by
    array index, so the manifest can be reordered without breaking this row.
 
-   One shot per product line, all eight, so the strip is a complete tour of the
-   range. Card widths deliberately alternate large/medium/small: a uniform row
+   One shot per product line, plus a second glamping capsule shot where the
+   safari tent used to be (removed 29 October 2026): seven cards, so the row
+   stays as wide as it was. Card widths deliberately alternate large/medium/small: a uniform row
    reads as a contact sheet rather than a gallery, and the varied rhythm is also
    what keeps the marquee wide enough to loop seamlessly on ultra-wide screens. */
 const shots = [
@@ -54,7 +55,7 @@ const shots = [
     sizes: "(min-width: 640px) 320px, 288px",
   },
   {
-    image: heroPhoto("safari-tents"),
+    image: photoNamed("glamping-capsules", "exterior-capsule-row-dusk"),
     width: "w-[22rem] sm:w-[26rem]",
     sizes: "(min-width: 640px) 416px, 352px",
   },

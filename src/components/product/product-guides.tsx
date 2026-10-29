@@ -8,7 +8,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
  * The guides that answer the questions a buyer asks before choosing this
  * range. Plain links, titles only (no descriptions, which carry prices), so
  * crawlers and readers can go from the product page down to the guide.
- * Safari tents get none until the installation wording (T-11) is settled.
  */
 const GUIDES: Record<string, string[]> = {
   "folding-homes": [

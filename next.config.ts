@@ -173,6 +173,25 @@ const nextConfig: NextConfig = {
       ["/request-a-call", "/contact", true],
     ];
 
+    // Pages removed on 29 October 2026 (owner): "remove the book a viewing
+    // option completely", "remove the tents off the website completely", and
+    // "put in applicable 301 redirects where need be". These answer a literal
+    // 301 (`statusCode`), as the owner asked, rather than the 308 the rules
+    // above emit; Google treats the two the same. `:path*` matches the bare
+    // path as well as anything under it.
+    //
+    //   /book-a-viewing  -> /contact#viewing   viewings are by email only now,
+    //                                          and that section says how
+    //   /safari-tents    -> /glamping-capsules the lodge and glamping intent the
+    //                                          tent page served (as the Dome's)
+    //
+    // Same pair as above: www gets an absolute apex destination (one hop), every
+    // other host a relative one.
+    const removedPages: Array<[string, string]> = [
+      ["/book-a-viewing/:path*", "/contact#viewing"],
+      ["/safari-tents/:path*", "/glamping-capsules"],
+    ];
+
     const wwwHost = [{ type: "host" as const, value: "www.tinyhomesa.com" }];
 
     return [
@@ -183,6 +202,12 @@ const nextConfig: NextConfig = {
         destination: `https://tinyhomesa.com${destination}`,
         permanent,
       })),
+      ...removedPages.map(([source, destination]) => ({
+        source,
+        has: wwwHost,
+        destination: `https://tinyhomesa.com${destination}`,
+        statusCode: 301 as const,
+      })),
 
       // Every other host — the apex in production, plus localhost and any
       // preview deployment — keeps a relative destination and stays where it is.
@@ -190,6 +215,11 @@ const nextConfig: NextConfig = {
         source,
         destination,
         permanent,
+      })),
+      ...removedPages.map(([source, destination]) => ({
+        source,
+        destination,
+        statusCode: 301 as const,
       })),
 
       // Canonical host, LAST so the specific old paths above can answer a www

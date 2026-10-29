@@ -1,7 +1,6 @@
 import { pricedVariants, products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
-import { FRIDAY_CLOSE_LABEL, FRIDAY_SLOT_TIMES_LABEL, SLOT_TIMES_LABEL } from "@/lib/viewing";
 
 /**
  * Homepage FAQ content. Rendered by the accordion AND serialised into
@@ -13,7 +12,7 @@ export interface HomeFaq {
 }
 
 /* Prices derived from products.ts so the FAQ (and its JSON-LD) never drifts.
-   Price-on-request products carry a 0 sentinel and are excluded from the range.
+   A price-on-request product would carry a 0 sentinel and is excluded from the range.
    Garages are a DIY steel-kit line, not a home, excluded so the "starts at …
    for an X-Fold" answer keeps naming the genuine cheapest home. */
 const pricedProducts = products.filter((p) => !p.priceOnRequest && p.slug !== "garages");
@@ -72,6 +71,16 @@ export const homeFaqs: HomeFaq[] = [
     q: "What do people use a tiny home for?",
     a: "Buyers use them as a granny flat for a parent or an adult child, a unit to let or a guest suite, staff accommodation or a site office, or a home of their own. Setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built. Allow around 90 days from deposit to move-in.",
   },
+  /* The business question (owner, 29 Oct 2026: larger companies buying
+     multiple units are the main target). Every use is one the site already
+     sells: the X-Fold and expandable staff-accommodation use cases, the
+     expandable home's "Developer and rental projects" and the lodge use cases
+     of the cabins and capsules. The four things to send are the business
+     enquiry's own (src/lib/enquiry.ts). */
+  {
+    q: "Do you supply businesses that need several units?",
+    a: `Yes. Our ranges suit staff accommodation, lodge and glamping suites, and rental or resort schemes, where expandable homes can be ordered in volume, delivered in phases and finished identically. Email ${site.email} with your company name, what the units will be used for, where they will go and how many units you need, and we'll come back to you with a formal quotation.`,
+  },
   {
     q: "How much does delivery cost?",
     a: `${site.deliveryNote} Ask about our turnkey service and we can arrange the groundwork, connections and installation for you too.`,
@@ -82,7 +91,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Do prices include VAT?",
-    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule. Safari tents are the exception: they're a trade offering supplied to businesses and hospitality operators, they can't be ordered through the site, and they're quoted per project after a consultation.`,
+    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule.`,
   },
   {
     q: "What foundations do I need?",
@@ -130,8 +139,10 @@ export const homeFaqs: HomeFaq[] = [
      It earns its place in the FAQ twice over: it is a real objection to a
      large purchase made online, and it is the phrasing that gets typed into
      a search box and quoted back by an AI assistant. */
+  /* Viewings by email only since 29 Oct 2026 (owner). The answer is the
+     owner's four questions, in the same words as /contact#viewing. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes, and we would rather you did. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and you can book a free one-hour viewing on the website for any weekday, starting at ${SLOT_TIMES_LABEL}${FRIDAY_SLOT_TIMES_LABEL ? ` (on a Friday it is ${FRIDAY_SLOT_TIMES_LABEL} only${FRIDAY_CLOSE_LABEL ? `, as the showroom shuts at ${FRIDAY_CLOSE_LABEL}` : ""})` : ""}. We are closed on weekends and public holidays. Pick the time that suits you and we will have someone ready to show you around. There is no deposit to view and no obligation to buy. Safari tents are the one thing you won't see there: none stands at the showroom, so a tent viewing is arranged separately by emailing ${site.safariTentsEmail}.`,
+    a: `Yes. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and viewings are arranged by email only. To view a unit, email us at ${site.email} and tell us why you're interested, what the units will be used for, where they will go, and how many units you're looking at.`,
   },
 ];

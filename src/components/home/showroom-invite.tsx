@@ -1,9 +1,10 @@
-import { ArrowRight, BadgeCheck, Building2, MapPin, PhoneCall } from "lucide-react";
+import Link from "next/link";
+import { BadgeCheck, Building2, Mail, MapPin, PhoneCall } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { site } from "@/lib/site";
-import { HOURS_SHORT_LABEL } from "@/lib/viewing";
+import { VIEWING_HREF, viewingMailto } from "@/lib/enquiry";
 
 /**
  * The trust section.
@@ -11,9 +12,15 @@ import { HOURS_SHORT_LABEL } from "@/lib/viewing";
  * Buying a house off a website is a large act of faith, and pretending nobody
  * has that thought does not remove it — it just leaves it unanswered at the
  * moment someone is deciding. Naming it outright and answering with an
- * address, a registered name, a phone number and a bookable slot converts the
+ * address, a registered name, a phone number and a way to view converts the
  * doubt into the strongest thing this business has: units you can go and stand
  * inside.
+ *
+ * Viewings are arranged by email only since 29 October 2026 (owner: "If they
+ * want to view, they need to send an email and state why they are interested,
+ * what it will be used for, where it will be and how many potential units will
+ * be purchased"). The online booker, its slots and its "Free · No obligation ·
+ * hours" line are gone.
  *
  * Placed straight after the video carousel on purpose. Footage is exactly the
  * kind of proof a sceptical reader discounts, so the pivot from "here's our
@@ -69,18 +76,19 @@ export function ShowroomInvite() {
             <p className="mt-6 text-lg leading-relaxed text-cream/75">
               Fair enough. Anyone can put up a website and a handful of flattering
               photographs, and you have never met us. So don&apos;t take our word for any of
-              it. Take the drive instead.
+              it.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-cream/75">
-              Our homes are standing in Centurion. Book a slot, walk through one, kick the
-              walls, ask us the awkward questions. Then decide.
+              Our homes are standing at our showroom in Centurion. To view one, email us and
+              tell us why you&apos;re interested, what the units will be used for, where they
+              will go, and how many units you&apos;re looking at.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <ButtonLink href="/book-a-viewing" variant="accent" size="lg">
-                Book a viewing
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ButtonLink>
+              <ButtonAnchor href={viewingMailto} variant="accent" size="lg">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Email to arrange a viewing
+              </ButtonAnchor>
               <ButtonAnchor
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
                 variant="outline-dark"
@@ -91,8 +99,21 @@ export function ShowroomInvite() {
               </ButtonAnchor>
             </div>
 
-            <p className="mt-6 text-sm text-cream/55">
-              Free · No obligation · {HOURS_SHORT_LABEL}
+            <p className="mt-6 text-base text-cream/75">
+              Viewings are arranged by email only, at{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+              >
+                {site.email}
+              </a>
+              .{" "}
+              <Link
+                href={VIEWING_HREF}
+                className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+              >
+                How it works
+              </Link>
             </p>
           </Reveal>
 

@@ -24,7 +24,6 @@ import {
   Home,
   Image as ImageIcon,
   LayoutGrid,
-  Mail,
   RotateCcw,
   Sofa,
 } from "lucide-react";
@@ -43,7 +42,7 @@ import manifest from "@/data/images.json";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { ButtonAnchor, ButtonLink, Button } from "@/components/ui/button";
+import { ButtonLink, Button } from "@/components/ui/button";
 import { scenes } from "./scenes";
 import { FoldingHomesScene } from "./scenes/folding-homes-scene";
 import { FloorPlanView } from "./floorplan";
@@ -481,7 +480,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // five homes) or a photographed empty-shell/furnished pair. Products with
   // neither (e.g. outdoor kitchens) show just the Photos panel, so they never
   // fall back to a home's cutaway. The drawn floor plan is scene-only, so
-  // photo-pair products (safari tents, garages) skip that tab.
+  // photo-pair products (garages) skip that tab.
   const hasScene = product.slug in scenes;
   const interiorPair = manifestConfigurator[product.slug];
   const hasVisual = hasScene || Boolean(interiorPair);
@@ -615,11 +614,6 @@ export function ProductConfigurator({ product }: { product: Product }) {
   // customer arrives with their size and extras already picked and only has
   // their details and delivery address left to fill in.
   const selectedIds = activeOptions.map((o) => o.id);
-  // Trade-only products have no quote to send them to and no showroom slot to
-  // book, so their panel offers the email that arranges a viewing instead.
-  const viewingMailto = `mailto:${site.safariTentsEmail}?subject=${encodeURIComponent(
-    `${product.name} viewing request`,
-  )}`;
   const quoteHref = `/quote?${new URLSearchParams({
     product: product.slug,
     ...(variantId ? { variant: variantId } : {}),
@@ -870,9 +864,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               startingPrice, so it must never reach the running total: this
               panel would read "R 0 ex VAT" and hand the reader a quote link
               for a product that has no published price. It gets the panel
-              below instead, and a trade-only one gets the email that arranges
-              a viewing rather than a link into the quote builder that will
-              not offer it.
+              below instead.
 
               A price-on-request size of a priced product (the 3.5 m and
               3.9 m outdoor kitchens) carries the same 0 sentinel as its base,
@@ -887,21 +879,12 @@ export function ProductConfigurator({ product }: { product: Product }) {
                   Price on request
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-stone">
-                  {product.tradeOnly
-                    ? `${product.name} are supplied to businesses and hospitality operators only and cannot be ordered here. Every one is configured to your site and brief at a consultation, then quoted itemised.`
-                    : "Configured to your site and brief at a consultation, then quoted itemised."}
+                  Configured to your site and brief at a consultation, then quoted itemised.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                  {product.tradeOnly ? (
-                    <ButtonAnchor href={viewingMailto} variant="accent">
-                      <Mail className="h-4 w-4" aria-hidden="true" />
-                      Book a viewing by email
-                    </ButtonAnchor>
-                  ) : (
-                    <ButtonLink href="/contact" variant="accent">
-                      Request a quote
-                    </ButtonLink>
-                  )}
+                  <ButtonLink href="/contact" variant="accent">
+                    Request a quote
+                  </ButtonLink>
                 </div>
               </>
             ) : sizeOnRequest ? (
