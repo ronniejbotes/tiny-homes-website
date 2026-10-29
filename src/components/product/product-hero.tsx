@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bed, Building2, Mail, Ruler, Timer } from "lucide-react";
+import { ArrowRight, Bed, Ruler, Timer } from "lucide-react";
 import type { Product } from "@/data/products";
 import { formatZAR } from "@/lib/format";
-import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 import { Container } from "@/components/ui/container";
-import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import type { ProductImage } from "./product-images";
 
@@ -17,21 +17,10 @@ export function ProductHero({
   image?: ProductImage;
 }) {
   const chips: { icon: typeof Ruler; label: string }[] = [
-    // Who it is for leads on a trade-only product: the single fact that
-    // decides whether the rest of the page is relevant to the reader at all.
-    ...(product.tradeOnly
-      ? [{ icon: Building2, label: "Businesses & hospitality only" }]
-      : []),
     { icon: Ruler, label: product.sizeLabel },
     { icon: Timer, label: product.setupTime },
     ...(product.bedrooms ? [{ icon: Bed, label: product.bedrooms }] : []),
   ];
-
-  // A trade-only product has no quote to get and no showroom slot to book, so
-  // the one action worth offering is the email that arranges a viewing.
-  const viewingMailto = `mailto:${site.safariTentsEmail}?subject=${encodeURIComponent(
-    `${product.name} viewing request`,
-  )}`;
 
   return (
     <section className="pt-28 pb-14 sm:pt-36 sm:pb-20">
@@ -98,11 +87,7 @@ export function ProductHero({
                   <p className="text-display text-3xl text-ink sm:text-4xl">
                     Price on request
                   </p>
-                  <p className="text-sm text-stone">
-                    {product.tradeOnly
-                      ? "not available to order: quoted per project"
-                      : "quoted to your site and brief"}
-                  </p>
+                  <p className="text-sm text-stone">quoted to your site and brief</p>
                 </>
               ) : (
                 <>
@@ -117,42 +102,29 @@ export function ProductHero({
               )}
             </div>
 
+            {/* The business enquiry leads (owner, 29 Oct 2026: "Our main target
+                for tiny homes now is to deal with larger companies that will
+                buy multiple units"). Individual buyers keep their route one
+                button along: the configurator, or the quote builder where a
+                product has nothing to configure. "Request a call" went to make
+                room; the phone number is in the header and the closing CTA. */}
             <div className="mt-5 flex flex-wrap gap-3 sm:mt-8">
-              {/* No options means no #configure section to anchor to, so lead with the quote instead. */}
-              {product.tradeOnly ? (
-                <>
-                  <ButtonAnchor href={viewingMailto} variant="accent" size="lg">
-                    <Mail className="h-4 w-4" aria-hidden="true" />
-                    Book a viewing by email
-                  </ButtonAnchor>
-                  <ButtonLink href="/#homes" variant="outline" size="lg">
-                    Explore the range
-                  </ButtonLink>
-                </>
-              ) : product.options.length > 0 ? (
-                <>
-                  <ButtonLink href="#configure" variant="accent" size="lg">
-                    Customise yours
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </ButtonLink>
-                  <ButtonLink href="/contact" variant="outline" size="lg">
-                    Request a call
-                  </ButtonLink>
-                </>
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ButtonLink>
+              {product.options.length > 0 ? (
+                <ButtonLink href="#configure" variant="outline" size="lg">
+                  Customise yours
+                </ButtonLink>
               ) : (
-                <>
-                  <ButtonLink
-                    href={product.priceOnRequest ? "/contact" : `/quote?product=${product.slug}`}
-                    variant="accent"
-                    size="lg"
-                  >
-                    {product.priceOnRequest ? "Request a quote" : "Get a quote"}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </ButtonLink>
-                  <ButtonLink href="/#homes" variant="outline" size="lg">
-                    Explore the range
-                  </ButtonLink>
-                </>
+                <ButtonLink
+                  href={product.priceOnRequest ? "/contact" : `/quote?product=${product.slug}`}
+                  variant="outline"
+                  size="lg"
+                >
+                  {product.priceOnRequest ? "Request a quote" : "Get a quote"}
+                </ButtonLink>
               )}
             </div>
           </Reveal>

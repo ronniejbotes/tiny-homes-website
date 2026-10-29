@@ -10,7 +10,7 @@ import { createElement } from "react";
 import { site } from "@/lib/site";
 import { pricedVariants, products, type Product, type ProductFaq } from "@/data/products";
 import { formatZAR } from "@/lib/format";
-import { OPENING_HOURS, formatSlot, weekdayName } from "@/lib/viewing";
+import { OPENING_HOURS, formatTime, weekdayName } from "@/lib/hours";
 import images from "@/data/images.json";
 import { toPlainText } from "@/components/blog/rich-text";
 
@@ -128,16 +128,16 @@ export function localBusinessSchema(): SchemaObject {
     hasMap: site.mapsLink,
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
-    // When a person can actually walk in, which is what a local pack result
-    // shows as "Open · Closes 16:00". Derived from the same constants the
-    // booking slots are generated from, so the two can never disagree — which
-    // matters most on a Friday, when the showroom shuts at 13:00 and a single
-    // Monday-to-Friday span would send someone to a locked gate at 15:00.
+    // The showroom's opening hours, the same as the Google Business Profile
+    // and the hours line on /contact (all three read src/lib/hours.ts). The
+    // Friday is its own span because the showroom shuts at 13:00. Viewings
+    // are arranged by email only (owner, 29 October 2026); these are the
+    // hours the showroom is open, not bookable slots.
     openingHoursSpecification: OPENING_HOURS.map((span) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: span.days.map((weekday) => `https://schema.org/${weekdayName(weekday)}`),
-      opens: formatSlot(span.opens),
-      closes: formatSlot(span.closes),
+      opens: formatTime(span.opens),
+      closes: formatTime(span.closes),
     })),
     parentOrganization: { "@id": ORG_ID },
   };
@@ -233,10 +233,11 @@ export function productAvailability(product: Product): string {
  * Uses an AggregateOffer spanning the variant range (with a nested per-variant
  * Offer carrying its own sku) when the product has size variants, otherwise a
  * single ex-VAT Offer. All prices are ZAR, VAT-exclusive per PriceSpecification.
- * Price-on-request products (the trade-only safari tents) emit a plain WebPage
- * node instead: their 0 sentinel price must never reach structured data, and a
- * Product with no offer, review or rating is an invalid product snippet to
- * Google (URL Inspection ERROR on /safari-tents, 18 October 2026).
+ * A price-on-request product (none since the safari tents were removed on
+ * 29 October 2026) emits a plain WebPage node instead: its 0 sentinel price
+ * must never reach structured data, and a Product with no offer, review or
+ * rating is an invalid product snippet to Google (URL Inspection ERROR on the
+ * old /safari-tents page, 18 October 2026).
  */
 export function productSchema(product: Product): SchemaObject {
   const productImages =

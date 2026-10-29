@@ -41,7 +41,7 @@ const stats: Stat[] = [
     to: products.length,
     suffix: " styles",
     full: `${products.length} styles`,
-    label: "Folding homes to safari tents",
+    label: "Folding homes to glamping capsules",
   },
   {
     prefix: "±",

@@ -18,6 +18,7 @@ import { toPlainText } from "@/components/blog/rich-text";
 import { getHeroImage } from "@/components/product/product-images";
 import { blogSlugs, getBlogPost, relatedPosts } from "@/data/blog";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 
 export const dynamicParams = false;
 
@@ -145,6 +146,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               </span>
               {site.name}
             </p>
+            <div className="mt-6">
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
+              </ButtonLink>
+            </div>
           </Reveal>
         </Container>
       </header>
@@ -227,20 +233,23 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           {/* One CTA at the foot of every post, not three through the body:
               the in-body `cta` blocks are placed where they are argued for. */}
           <Reveal className="mt-16 max-w-[68ch] rounded-3xl border border-border bg-parchment p-8 sm:p-10">
+            {/* Business buyers first (owner, 29 Oct 2026); the viewing
+                invitation that sat here went with the booker. */}
             <h2 className="text-display text-3xl text-ink">
-              Price one, or come and see one
+              Buying for a business, or for yourself?
             </h2>
             <p className="mt-4 leading-relaxed text-stone">
-              The quote builder prices a specific configuration in a couple of minutes. Or
-              book a free viewing and walk through the units at our showroom in{" "}
-              {site.showroom.city}. No deposit, no obligation.
+              Buying several units for a business? Send us a business enquiry with your
+              company name, what the units will be used for, where they will go and how many
+              you need. Buying one for yourself? The quote builder prices a specific
+              configuration in a couple of minutes.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href="/quote" variant="accent" size="lg">
-                Get an instant quote
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
               </ButtonLink>
-              <ButtonLink href="/book-a-viewing" variant="outline" size="lg">
-                Book a viewing
+              <ButtonLink href="/quote" variant="outline" size="lg">
+                Get an instant quote
               </ButtonLink>
             </div>
           </Reveal>

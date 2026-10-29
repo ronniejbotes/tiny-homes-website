@@ -3,7 +3,7 @@ export const site = {
   legalName: "Tiny Homes (Pty) Ltd",
   tagline: "Innovative Instant Housing Solutions",
   description:
-    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens and safari tents, delivered nationwide across South Africa from a showroom in Centurion, Gauteng, and across the border into Botswana, Namibia, Zimbabwe and the rest of southern Africa.",
+    "High-end prefab tiny homes designed for affordable, sustainable living in South Africa. Folding homes, expandable homes, nature cabins, apple cabins and glamping capsules, plus outdoor kitchens, delivered nationwide across South Africa from a showroom in Centurion, Gauteng, and across the border into Botswana, Namibia, Zimbabwe and the rest of southern Africa.",
   /**
    * Apex is canonical: every indexed URL is on the apex, and next.config.ts
    * 308s www.tinyhomesa.com here. Until 2026-08-10 that redirect did not
@@ -15,17 +15,13 @@ export const site = {
   phone: "+27 83 660 3743",
   phoneDisplay: "083 660 3743",
   whatsapp: "https://wa.me/27836603743",
-  /** admin@ is the only mailbox confirmed to exist; swap to sales@ once that one is provisioned. */
-  email: "admin@tinyhomesa.com",
   /**
-   * Safari tent enquiries and viewings, owner-instructed 2026-08-19.
-   *
-   * Tents are trade only and none stands at the showroom, so a tent viewing is
-   * arranged one at a time by Johan rather than booked through the showroom
-   * booker. Every surface that mentions seeing a tent must point here, not at
-   * `email` above and not at /book-a-viewing.
+   * admin@ is the only mailbox confirmed to exist; swap to sales@ once that one
+   * is provisioned. Business enquiries and viewing requests both come here
+   * (src/lib/enquiry.ts). The safari-tent address that sat beside this one went
+   * with the tents on 29 October 2026.
    */
-  safariTentsEmail: "johan@tinyhomesa.com",
+  email: "admin@tinyhomesa.com",
   /**
    * REGISTERED HEAD OFFICE. Not the place visitors come to.
    *
@@ -35,9 +31,9 @@ export const site = {
    * the quotation letterhead and the company details in the footer.
    *
    * Anything a visitor navigates to must use `showroom` below. Until
-   * 2026-08-10 this address was rendered on the book-a-viewing page, in the
-   * confirmation email and as the calendar invitation's location, so people
-   * who booked a viewing were sent to the office.
+   * 2026-08-10 this address was rendered on the old book-a-viewing page (gone
+   * since 29 October 2026), so people who booked a viewing were sent to the
+   * office.
    */
   address: {
     streetAddress: "187 Gouws Ave",
@@ -48,7 +44,8 @@ export const site = {
     countryCode: "ZA",
   },
   /**
-   * THE SHOWROOM — where viewings happen and where every visitor goes.
+   * THE SHOWROOM — where the units stand and where every visitor goes.
+   * Viewings are arranged by email only (owner, 29 October 2026).
    *
    * Deliberately carries no street address. The owner confirmed one does not
    * exist ("there is no street address for the showroom"), and the pin is the
@@ -75,10 +72,9 @@ export const site = {
   },
   geo: {
     // Showroom pin, owner-supplied 2026-08-06: 25°50'49.6"S 28°06'21.6"E.
-    // Feeds the LocalBusiness schema, the map on /contact, the directions link
-    // in the viewing confirmation and the GEO on the calendar invitation, so
-    // the coordinates Google is told about and the ones a visitor navigates to
-    // are the same point.
+    // Feeds the LocalBusiness schema, the map on /contact and the footer map
+    // and directions link, so the coordinates Google is told about and the
+    // ones a visitor navigates to are the same point.
     // 28.106002, not 28.106: Google's LocalBusiness reference requires at
     // least five decimal places on both, and the truncated value also
     // disagreed with the DMS reading recorded above by about 20 cm.
@@ -147,20 +143,9 @@ export const site = {
 export const showroomPin = `${site.geo.latitude},${site.geo.longitude}`;
 
 /**
- * How the showroom is named anywhere a visitor reads it: on the page, in the
- * confirmation email, and as the calendar invitation's LOCATION.
- *
- * A name and a town rather than a street address, because the showroom has no
- * street address to give. The pin does the navigating — every surface that
- * uses this string sits next to `site.mapsLink` or `showroomDirectionsUrl`,
- * and the calendar invitation carries the coordinates in its GEO field.
- */
-export const showroomLocation = `${site.showroom.name}, ${site.showroom.city}, ${site.showroom.region}`;
-
-/**
- * The three ways we point someone at the showroom, derived once so the map on
- * /contact, the button on the confirmation screen and the link in the
- * confirmation email can never drift apart.
+ * The ways we point someone at the showroom, derived once so the map on
+ * /contact and the map and directions link in the footer can never drift
+ * apart.
  *
  * `showroomDirectionsUrl` opens turn-by-turn navigation from wherever the
  * visitor is standing; `site.mapsLink` just shows them the pin. The embed uses
@@ -178,10 +163,8 @@ export const nav = {
     { slug: "apple-cabins", label: "Apple Cabins" },
     { slug: "glamping-capsules", label: "Glamping Capsules" },
     { slug: "outdoor-kitchens", label: "Outdoor Kitchens" },
-    { slug: "safari-tents", label: "Safari Tents" },
   ],
   pages: [
-    { href: "/book-a-viewing", label: "Book a viewing" },
     { href: "/blog", label: "Guides" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },

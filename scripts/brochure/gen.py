@@ -375,7 +375,7 @@ CONFIG = {
 # DIY garages are withdrawn pending an engineer's sign-off and a resolution on
 # CPA liability (owner decision 2026-08-04), so no garage brochure is produced.
 ORDER = ["folding-homes", "expandable-homes", "nature-cabins", "apple-cabins",
-         "glamping-capsules", "outdoor-kitchens", "safari-tents"]
+         "glamping-capsules", "outdoor-kitchens"]
 
 FINE_STD = ("All prices in South African Rand and exclude VAT, and are subject to change. Delivery "
             "and installation are quoted separately, and the groundwork is arranged by you. "

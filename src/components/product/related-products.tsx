@@ -21,7 +21,7 @@ export function RelatedProducts({ current }: { current: Product }) {
         <SectionHeading
           eyebrow="Keep exploring"
           title="Explore the rest of the range"
-          intro="Seven product lines, from flat-pack starters to flagship glamping suites, plus outdoor kitchens and safari tents. All prices exclude VAT."
+          intro="Five home designs, from flat-pack starters to flagship glamping suites, plus outdoor kitchens. All prices exclude VAT."
         />
         <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((p) => {
@@ -55,9 +55,7 @@ export function RelatedProducts({ current }: { current: Product }) {
                     </p>
                     <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                       <p className="text-ink">
-                        {p.tradeOnly ? (
-                          <span className="font-medium">Businesses &amp; hospitality only</span>
-                        ) : p.priceOnRequest ? (
+                        {p.priceOnRequest ? (
                           <span className="font-medium">Price on request</span>
                         ) : (
                           <>

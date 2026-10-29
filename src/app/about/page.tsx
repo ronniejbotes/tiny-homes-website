@@ -20,15 +20,16 @@ import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { pricedVariants, products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 import images from "@/data/images.json";
 
 const aboutOgDescription =
-  "High-end prefab tiny homes delivered across South Africa, with a showroom in Centurion. Five home designs from R54 900 ex VAT, plus outdoor kitchens and safari tents, with third-party finance available.";
+  "High-end prefab tiny homes delivered across South Africa, with a showroom in Centurion. Five home designs from R54 900 ex VAT, plus outdoor kitchens, with third-party finance available.";
 
 export const metadata: Metadata = {
   title: { absolute: "About Tiny Homes SA | Prefab Tiny Home Supplier" },
   description:
-    "Tiny Homes SA supplies prefab tiny homes from its Centurion base, delivered nationwide: homes from R54 900 ex VAT, plus outdoor kitchens and safari tents.",
+    "Tiny Homes SA supplies prefab tiny homes from its Centurion base, delivered nationwide: homes from R54 900 ex VAT, plus outdoor kitchens.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
@@ -183,10 +184,15 @@ export default function AboutPage() {
                   to one standard: it&rsquo;s small but feels generous inside, it&rsquo;s
                   resilient, and it&rsquo;s genuinely affordable.
                 </p>
+                <div className="mt-6">
+                  <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                    Business enquiry
+                  </ButtonLink>
+                </div>
                 <p>
                   From our base in Raslouw, Centurion, we supply high-end prefab tiny homes
                   (X-Folds, expandable homes, nature cabins, apple cabins and glamping
-                  capsules) plus outdoor kitchens and safari tents, and we deliver anywhere
+                  capsules) plus outdoor kitchens, and we deliver anywhere
                   in South Africa. Customers call them tiny houses, granny pods or prefab
                   cabins. Whatever you call them, they&rsquo;re built to the same standard.
                 </p>
@@ -202,9 +208,7 @@ export default function AboutPage() {
                   There are five home designs, from the {formatZAR(minPrice)} X-Fold to
                   the {formatZAR(maxPrice)} flagship 11.5 m glamping capsule, and every
                   price we publish is ex VAT. We also supply outdoor entertainment
-                  kitchens. Our luxury safari tents go only to businesses and
-                  hospitality operators, quoted per project rather than sold off the
-                  page. {site.finance}.
+                  kitchens. {site.finance}.
                 </p>
               </div>
             </Reveal>
@@ -427,9 +431,14 @@ export default function AboutPage() {
             intro="Tell us about your site and budget, and we'll get back to you with a quote."
           />
           <Reveal delay={0.1} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <ButtonLink href="/contact" variant="accent" size="lg">
-              Start your enquiry
+            {/* The business enquiry section of /contact (owner, 29 Oct 2026:
+                larger companies buying multiple units are the main target). */}
+            <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+              Business enquiry
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </ButtonLink>
+            <ButtonLink href="/quote" variant="outline" size="lg">
+              Get an instant quote
             </ButtonLink>
             <ButtonLink href="/" variant="outline" size="lg">
               Explore the homes

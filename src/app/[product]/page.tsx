@@ -12,7 +12,6 @@ import {
 import { getGalleryImages, getHeroImage } from "@/components/product/product-images";
 import manifest from "@/data/images.json";
 import { ProductHero } from "@/components/product/product-hero";
-import { TradeOnlyNotice } from "@/components/product/trade-only-notice";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { OverviewSpecs } from "@/components/product/overview-specs";
 import { VariantCards } from "@/components/product/variant-cards";
@@ -143,17 +142,13 @@ export default async function ProductPage({ params }: { params: Params }) {
         ]}
       />
       <ProductHero product={product} image={hero} />
-      {/* Trade-only products carry their terms directly under the hero: who
-          they are sold to, that they cannot be ordered, and that a viewing is
-          arranged by email rather than booked at the showroom. */}
-      {product.tradeOnly && <TradeOnlyNotice product={product} />}
       <ProductGallery productName={product.name} images={gallery} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
       {/* Configurator renders when there is something to configure or show:
           priced options, or a real empty-shell/furnished interior photo pair
-          (manifest.configurator). Kitchens and safari tents have neither;
-          they are quoted, not configured. */}
+          (manifest.configurator). A product with neither is quoted, not
+          configured. */}
       {(product.options.length > 0 || product.slug in manifest.configurator) && (
         <ConfiguratorSection product={product} />
       )}

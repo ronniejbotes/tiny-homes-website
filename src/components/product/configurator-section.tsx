@@ -8,7 +8,7 @@ import { ProductConfigurator } from "@/components/configurator/product-configura
 export function ConfiguratorSection({ product }: { product: Product }) {
   // Render when there is something to configure or show: priced options, or a
   // real empty-shell/furnished interior pair (manifest.configurator). Products
-  // with neither (outdoor kitchens, safari tents) are quoted, not configured.
+  // with neither are quoted, not configured.
   if (product.options.length === 0 && !(product.slug in manifest.configurator)) return null;
 
   return (

@@ -3,7 +3,7 @@
 import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
 import { Loader2, Minus, Plus, Trash2, Waves } from "lucide-react";
-import { getProduct, optionPrice, orderableProducts, type CustomOption } from "@/data/products";
+import { getProduct, optionPrice, products, type CustomOption } from "@/data/products";
 import { getLayouts } from "@/lib/layouts";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -108,10 +108,7 @@ interface DeepLink {
     invalid values fall back gracefully (unknown product → no selection). */
 function parseDeepLink(sp: ReadonlyURLSearchParams): DeepLink {
   const product = sp.get("product") ? getProduct(sp.get("product") as string) : undefined;
-  // A trade-only product is not for sale here, so a link naming one starts the
-  // builder empty rather than seeding a line nobody is allowed to order. The
-  // picker below cannot offer one either — both read the same rule.
-  if (!product || product.tradeOnly) {
+  if (!product) {
     return { slug: "", variantId: undefined, layoutId: undefined, selected: {} };
   }
 
@@ -918,7 +915,7 @@ function QuoteFormInner({
             <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
             <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
               <ProductPicker
-                products={orderableProducts}
+                products={products}
                 selectedSlug={slug}
                 onSelect={handleSelectProduct}
               />
@@ -974,11 +971,10 @@ function QuoteFormInner({
               </div>
             )}
 
-            {/* A price-on-request product that is NOT trade-only would land
-                here with no price and no options to show. None exists today —
-                safari tents, the only one, are trade-only and never reach the
-                picker — so there is nothing to explain; add a note here if one
-                is ever added. */}
+            {/* A price-on-request product would land here with no price and no
+                options to show. None exists today (the safari tents, the only
+                one, were removed on 29 October 2026), so there is nothing to
+                explain; add a note here if one is ever added. */}
 
             {/* Your units: the running order */}
             {lines.length > 0 && (

@@ -36,8 +36,8 @@ function bucketFor(name: string, windowMs: number, max: number): Bucket {
 /**
  * Record a hit and report whether this caller has had too many.
  *
- * Named buckets keep the flows independent: someone who has just built three
- * quotes should still be able to book a viewing.
+ * Named buckets keep the flows independent, so a busy flow cannot lock a
+ * caller out of another one.
  */
 export function rateLimited(
   name: string,

@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { CalendarCheck, Phone, Mail, MapPin } from "lucide-react";
+import { Eye, Phone, Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/lib/site";
+import { VIEWING_HREF } from "@/lib/enquiry";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -30,7 +31,7 @@ function ContactCard({ icon, label, value, detail, href, external, delay = 0 }: 
       <span className="min-w-0">
         <span className="text-eyebrow block text-clay">{label}</span>
         <span className="mt-1.5 block break-words text-lg font-medium text-ink">{value}</span>
-        <span className="mt-1 block text-sm leading-relaxed text-stone">{detail}</span>
+        <span className="mt-1 block text-base leading-relaxed text-stone">{detail}</span>
       </span>
     </>
   );
@@ -100,12 +101,15 @@ export function ContactCards() {
         detail="Every home leaves from here, and we deliver nationwide."
         delay={0.24}
       />
+      {/* Was "Book a viewing", a link to the online booker. Viewings are by
+          email only since 29 Oct 2026 (owner); this points at the section
+          below that says what to put in the email. */}
       <ContactCard
-        icon={<CalendarCheck className="h-5 w-5" aria-hidden="true" />}
-        label="Book a viewing"
-        value="See one in person"
-        detail="Pick a one-hour slot at the Centurion showroom. Free, and no obligation to buy."
-        href="/book-a-viewing"
+        icon={<Eye className="h-5 w-5" aria-hidden="true" />}
+        label="Viewings"
+        value="By email only"
+        detail="Tell us why you're interested, what the units are for, where they'll go and how many you need."
+        href={VIEWING_HREF}
         delay={0.28}
       />
       <Reveal delay={0.3}>

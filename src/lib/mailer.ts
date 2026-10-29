@@ -1,6 +1,6 @@
 /**
- * SMTP transport for transactional site mail: instant-quote copies and
- * showroom-viewing confirmations.
+ * SMTP transport for transactional site mail: instant-quote copies. (The
+ * showroom-viewing confirmations went with the online booker, 29 Oct 2026.)
  *
  * Server-only; never import this from a "use client" module.
  *
@@ -11,9 +11,8 @@
  * §"Client configuration" for the host/port table.
  *
  * The one limit that matters: Hostinger's plan caps a mailbox at **100 sends
- * per 24 hours**. Both flows cost two sends apiece (the customer's copy and
- * the office's), so the ceiling is roughly 50 quotes and viewings a day
- * combined. It is comfortably clear today, but it is the number to watch as
+ * per 24 hours**. A quote costs two sends (the customer's copy and the
+ * office's), so the ceiling is roughly 50 quotes a day. It is comfortably clear today, but it is the number to watch as
  * volume grows; the fix is a dedicated sending mailbox or a relay, not a code
  * change here.
  */

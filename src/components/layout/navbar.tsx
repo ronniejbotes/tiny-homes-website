@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Menu, X, Phone } from "lucide-react";
 import { nav, site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 import { cn } from "@/lib/cn";
 
 export function Navbar() {
@@ -108,11 +109,15 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop nav from xl (1280px) up. The full row (logo, five links,
-            phone number and quote button) needs about 1,180px; from lg
-            (1024px) every item wrapped onto two lines below that ("Book a /
-            viewing", "083 660 / 3743"). Up to xl the burger menu below carries
-            the same links, phone number and quote button. */}
+        {/* Desktop nav from xl (1280px) up. From lg (1024px) every item
+            wrapped onto two lines ("083 660 / 3743"). Up to xl the burger menu
+            below carries the same links, phone number and buttons.
+
+            29 Oct 2026 (owner): "Book a viewing" is gone (viewings are by
+            email only), and the business enquiry is the main button, for the
+            larger companies buying several units that are now the main
+            target. "Get a quote" stays beside it, smaller, for anyone buying
+            one for themselves. */}
         <div className="hidden items-center gap-1 xl:flex">
           <div
             className="relative"
@@ -200,9 +205,16 @@ export function Navbar() {
 
           <Link
             href="/quote"
-            className="ml-2 inline-flex h-11 cursor-pointer items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream shadow-[var(--shadow-soft)] transition-all duration-200 hover:-translate-y-px hover:bg-clay-dark"
+            className="ml-2 inline-flex h-11 cursor-pointer items-center rounded-full border border-ink/25 px-5 text-[0.9375rem] font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
           >
             Get a quote
+          </Link>
+
+          <Link
+            href={BUSINESS_ENQUIRY_HREF}
+            className="ml-2 inline-flex h-11 cursor-pointer items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream shadow-[var(--shadow-soft)] transition-all duration-200 hover:-translate-y-px hover:bg-clay-dark"
+          >
+            Business enquiry
           </Link>
         </div>
 
@@ -273,18 +285,18 @@ export function Navbar() {
               ))}
               <div className="mt-6 flex flex-col gap-3">
                 <Link
-                  href="/quote"
+                  href={BUSINESS_ENQUIRY_HREF}
                   onClick={() => setMobileOpen(false)}
                   className="inline-flex h-13 items-center justify-center rounded-full bg-clay px-8 text-base font-medium text-cream"
                 >
-                  Get a quote
+                  Business enquiry
                 </Link>
                 <Link
-                  href="/book-a-viewing"
+                  href="/quote"
                   onClick={() => setMobileOpen(false)}
                   className="inline-flex h-13 items-center justify-center rounded-full bg-forest px-8 text-base font-medium text-cream"
                 >
-                  Book a viewing
+                  Get a quote
                 </Link>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}

@@ -20,6 +20,7 @@ import { podRanges, podPriceFrom, podPriceTo } from "@/data/housing-pods";
 import { cn } from "@/lib/cn";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
+import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
 import { podFaqs } from "./faqs";
 
 /**
@@ -175,12 +176,15 @@ export default function HousingPodsPage() {
               <span className="nums-tabular">{formatZAR(podPriceTo)}</span> ex VAT. Below is
               which is which, what each one actually includes, and what it costs.
             </p>
+            {/* Business enquiry first (owner, 29 Oct 2026); the instant price
+                second for anyone buying one. "See one in Centurion" pointed
+                at the online booker, which is gone. */}
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href="/quote" variant="accent" size="lg">
-                Get an instant price
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
               </ButtonLink>
-              <ButtonLink href="/book-a-viewing" variant="outline-dark" size="lg">
-                See one in Centurion
+              <ButtonLink href="/quote" variant="outline-dark" size="lg">
+                Get an instant price
               </ButtonLink>
             </div>
             <p className="mt-6 text-sm text-cream/60">
@@ -550,11 +554,16 @@ export default function HousingPodsPage() {
             <p className="mx-auto mt-6 max-w-xl text-lg text-cream/75">
               Photographs of pods all look the same. Fifteen minutes in one tells you
               whether the size works for you. The units are on site at our showroom in{" "}
-              {site.showroom.city}, and viewing is free with no obligation to buy.
+              {site.showroom.city}, and viewings are arranged by email.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <ButtonLink href="/book-a-viewing" variant="accent" size="lg">
-                Book a free viewing
+            {/* Viewings by email only (owner, 29 Oct 2026): the first button
+                goes to the section of /contact that says what to send. */}
+            <div className="mt-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row">
+              <ButtonLink href={VIEWING_HREF} variant="accent" size="lg">
+                Arrange a viewing
+              </ButtonLink>
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="outline-dark" size="lg">
+                Business enquiry
               </ButtonLink>
               <ButtonLink href="/quote" variant="outline-dark" size="lg">
                 Price one online

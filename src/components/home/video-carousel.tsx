@@ -85,15 +85,6 @@ const clips: Clip[] = [
     height: 848,
     label: "Product video: exterior detail on a glamping capsule",
   },
-  {
-    id: "safari-tent-lodge",
-    src: "/videos/safari-tent-lodge.mp4",
-    mobileSrc: "/videos/safari-tent-lodge-mobile.mp4",
-    poster: "/videos/safari-tent-lodge-poster.jpg",
-    width: 640,
-    height: 272,
-    label: "Product video: a safari tented lodge at sunset",
-  },
 ];
 
 /** One portrait video tile. Plays only while in view; a per-tile control
@@ -167,8 +158,9 @@ function VideoTile({
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
-        {/* Phones get the light copy: the originals run to 26.7 MB (the
-            safari clip), and swiping through all eight fetched about 62 MB.
+        {/* Phones get the light copy: the originals ran to 26.7 MB (the
+            safari clip, removed 29 Oct 2026), and swiping through all eight
+            fetched about 62 MB.
             The browser takes the first <source> whose media matches, so it
             must come first; sm and up keep the original file. */}
         {clip.mobileSrc && (
