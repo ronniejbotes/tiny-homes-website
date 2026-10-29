@@ -32,7 +32,7 @@ from gen import (BASE, CHROME, CSS, EXTRA, FIT_JS, IMAGES, LAYOUT_PLANS, PRODUCT
 # Order the range is presented in: cheapest and simplest first, building to the
 # flagship, with the two non-home lines last.
 ORDER = ["folding-homes", "expandable-homes", "apple-cabins", "nature-cabins",
-         "glamping-capsules", "outdoor-kitchens", "safari-tents"]
+         "glamping-capsules", "outdoor-kitchens"]
 
 # Products that carry a page of floor plans or layouts after their own page.
 PLAN_PAGE_COUNT = {"expandable-homes": 1, "apple-cabins": 1, "glamping-capsules": 2}
@@ -738,7 +738,7 @@ def page_contact(im, priced):
       <div>
         <div class="eyebrow on-dark">Tiny Homes SA</div>
         <h2 class="display" style="margin-top:2.5mm">Innovative instant housing solutions.</h2>
-        <p class="sell">Prefab tiny homes, cabins, glamping capsules, outdoor kitchens and safari tents,
+        <p class="sell">Prefab tiny homes, cabins, glamping capsules and outdoor kitchens,
           built in Centurion and delivered across South Africa.</p>
       </div>
       <img class="logo" src="{im['logo_white']}" alt="Tiny Homes SA">
@@ -835,7 +835,7 @@ def build(priced):
     doc = f"""<!DOCTYPE html>
 <html lang="en-ZA"><head><meta charset="utf-8">
 <title>{title}</title>
-<meta name="description" content="The full Tiny Homes SA range: folding homes, expandable homes, cabins, glamping capsules, outdoor kitchens and safari tents, built in Centurion and delivered nationwide.">
+<meta name="description" content="The full Tiny Homes SA range: folding homes, expandable homes, cabins, glamping capsules and outdoor kitchens, built in Centurion and delivered nationwide.">
 <style>{css}</style></head><body>
 {''.join(pages)}
 <script>{FIT_JS}</script>

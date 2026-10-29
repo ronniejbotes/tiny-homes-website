@@ -184,6 +184,11 @@ export default function AboutPage() {
                   to one standard: it&rsquo;s small but feels generous inside, it&rsquo;s
                   resilient, and it&rsquo;s genuinely affordable.
                 </p>
+                <div className="mt-6">
+                  <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                    Business enquiry
+                  </ButtonLink>
+                </div>
                 <p>
                   From our base in Raslouw, Centurion, we supply high-end prefab tiny homes
                   (X-Folds, expandable homes, nature cabins, apple cabins and glamping

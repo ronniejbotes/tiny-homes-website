@@ -146,6 +146,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               </span>
               {site.name}
             </p>
+            <div className="mt-6">
+              <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="accent" size="lg">
+                Business enquiry
+              </ButtonLink>
+            </div>
           </Reveal>
         </Container>
       </header>
