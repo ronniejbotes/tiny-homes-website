@@ -37,7 +37,14 @@ export function ProductHero({
     <section className="pt-28 pb-14 sm:pt-36 sm:pb-20">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          {/* Phones first (29 Oct 2026 review): below `sm` the column is a
+              flex column and the summary and chips take order-1, so they
+              follow the price and buttons. The main button then sits on the
+              first screen at 360x800 and 390x844. With the summary above it,
+              "Customise yours" started at 828px on /expandable-homes at
+              390x844 and at 949px at 360x800. The DOM order, and every layout
+              from `sm` up, is unchanged; nothing moved is focusable. */}
+          <Reveal className="max-sm:flex max-sm:flex-col">
             <nav aria-label="Breadcrumb" className="mb-5">
               <ol className="flex items-center gap-2 text-sm text-stone">
                 <li>
@@ -64,11 +71,11 @@ export function ProductHero({
             <p className="mt-4 font-display text-xl text-clay sm:text-2xl">
               {product.tagline}
             </p>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone max-sm:order-1 max-sm:mt-8">
               {product.summary}
             </p>
 
-            <ul className="mt-7 flex flex-wrap gap-2.5">
+            <ul className="mt-7 flex flex-wrap gap-2.5 max-sm:order-1">
               {chips.map(({ icon: Icon, label }) => (
                 <li
                   key={label}
@@ -85,7 +92,7 @@ export function ProductHero({
                 Where the price and its "ex VAT" label don't both fit in
                 what's left, the label wraps under the price instead of
                 running in under the badge (it did at 360–390px wide). */}
-            <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 max-sm:pr-16">
+            <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 max-sm:pr-16 sm:mt-8">
               {product.priceOnRequest ? (
                 <>
                   <p className="text-display text-3xl text-ink sm:text-4xl">
@@ -110,7 +117,7 @@ export function ProductHero({
               )}
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-3 sm:mt-8">
               {/* No options means no #configure section to anchor to, so lead with the quote instead. */}
               {product.tradeOnly ? (
                 <>

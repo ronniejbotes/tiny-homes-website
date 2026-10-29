@@ -60,6 +60,19 @@ const pricedHouses = products
   .filter((p) => !p.priceOnRequest && !p.tradeOnly && p.slug !== "outdoor-kitchens")
   .sort((a, b) => a.startingPrice - b.startingPrice);
 
+/* The smallest expandable size with two bedrooms as standard (variant b20,
+   the same one home-faqs.ts names). Throws at build time rather than
+   rendering "undefined" into the sentence under the price list. The space
+   becomes a non-breaking one so "37" and "m²" never split across lines on a
+   phone (they did at 360px). */
+const twoBedroomSize = (() => {
+  const size = products
+    .find((p) => p.slug === "expandable-homes")
+    ?.variants?.find((v) => v.id === "b20")?.size;
+  if (!size) throw new Error('homes-showcase.tsx: no size for expandable-homes variant "b20"');
+  return size.replace(/ /g, "\u00a0");
+})();
+
 const footnoteLink =
   "font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay";
 
@@ -214,6 +227,17 @@ export function HomesShowcase() {
             </Link>{" "}
             sets out.
           </p>
+          {/* The 2-bedroom searches belong to /expandable-homes (it sells the
+              37 m² and 74 m² with layouts and prices), but the home page ranks
+              for them too. One line in the searcher's words sends them on. No
+              price here: the size is read from products.ts, like the table. */}
+          <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+            Two bedrooms come standard from the {twoBedroomSize} expandable home: see the{" "}
+            <Link href="/expandable-homes" className={footnoteLink}>
+              2-bedroom tiny house prices
+            </Link>
+            .
+          </p>
         </Reveal>
 
         {/* A vocabulary footnote, not a billboard. The cards above are named
@@ -252,7 +276,7 @@ export function HomesShowcase() {
             </Link>{" "}
             and housing pods. If it was the last of those you came looking for,{" "}
             <Link href="/housing-pods" className={footnoteLink}>
-              compare the pod ranges side by side
+              compare our pod houses side by side
             </Link>
             .
           </p>

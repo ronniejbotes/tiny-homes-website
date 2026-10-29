@@ -366,7 +366,7 @@ export default function HousingPodsPage() {
           <SectionHeading
             id="pod-ranges"
             eyebrow="The five ranges"
-            title="Which pod is which"
+            title="Pod houses compared: which pod is which"
             intro="Two of these are pods in the shape you are probably picturing. The other three are not, and we would rather say so here than have you find out on delivery day."
           />
 

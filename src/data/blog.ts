@@ -561,6 +561,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Before you buy a pod: what to ask your municipality, what base it needs, how services reach it, and the access problems that stop a delivery at the gate.",
     datePublished: "2026-09-02",
+    dateModified: "2026-10-29",
     keywords: [
       "do you need plans for a housing pod",
       "building plans prefab home South Africa",
@@ -723,7 +724,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "How long does it take from deposit to move-in?",
-        a: "Around 90 days for most units. On-site setup is the quick part: minutes for an X-Fold, hours for an expandable home, a few days for a cabin or capsule assembled on a prepared site. The bulk of the time is manufacturing, which is the window in which to sort out plans, groundwork and connections.",
+        a: "Around 90 days for most units. On-site setup is the quick part: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. The bulk of the time is manufacturing, which is the window in which to sort out plans, groundwork and connections.",
       },
     ],
     references: [
@@ -757,7 +758,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre figures set against what a conventional build costs, including the cases where prefab is the more expensive option.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-22",
+    dateModified: "2026-10-29",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -839,7 +840,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**Time.** Around 90 days from deposit to move-in, with on-site setup running from minutes for an X-Fold to a few days for a cabin. A conventional build of the same size is a multi-month programme on your property.`,
+          `**Time.** Around 90 days from deposit to move-in. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. A conventional build of the same size is a multi-month programme on your property.`,
           `**Price certainty.** You are quoted a figure for a finished unit. Conventional building is quoted on a rate and a scope, and the final number is the one nobody can tell you at the start.`,
           `**Disruption.** The building work happens somewhere else. There is no site, no rubble, no trades in your garden for months.`,
           `**Relocatability.** An X-Fold folds down; a pod lifts out. A brick room stays with the property whatever happens next.`,
@@ -1826,7 +1827,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "An honest list of what each route gives you and what it costs you (money, time, paperwork, finance and resale) and which situations each one suits.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-22",
+    dateModified: "2026-10-29",
     keywords: [
       "prefab vs building a house",
       "prefab home pros and cons",
@@ -1882,7 +1883,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**One price, known up front.** You are buying a finished unit, not a rate against a scope.`,
-          `**Speed.** Around 90 days from deposit, and on-site setup runs from minutes for an [X-Fold](/folding-homes) to a few days for a cabin or capsule on a prepared base.`,
+          `**Speed.** Around 90 days from deposit. On-site setup is quick: an [X-Fold](/folding-homes) unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site.`,
           `**Almost no disruption.** The building work happens somewhere else. Your property sees a delivery, not a site.`,
           `**Factory conditions.** Panels built indoors, to a repeated specification, out of the weather, which is a genuinely different quality-control problem from wet trades on site in February.`,
           `**Fewer people to coordinate.** A base, a delivery and two connections, rather than five trades in sequence.`,
