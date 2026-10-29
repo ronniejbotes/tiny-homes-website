@@ -64,6 +64,14 @@ export const homeFaqs: HomeFaq[] = [
     q: "How much does a prefab house cost in South Africa?",
     a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A granny flat with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20-slim")} expandable home), and a two-bedroom home starts at ${formatZAR(twoBedroomFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20")} size). The price list on this page gives the from-price of every home we sell. Each price is for the unit alone, so the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top until a quote says otherwise.`,
   },
+  /* The problem question (owner, 28 Oct 2026: pages name the problem the
+     buyer has, not only the product). Every use is one the site already
+     sells: the granny flat FAQ above, the expandable and X-Fold use cases,
+     and the setup wording of "How long until I can move in?" below. */
+  {
+    q: "What do people use a tiny home for?",
+    a: "Buyers use them as a granny flat for a parent or an adult child, a unit to let or a guest suite, staff accommodation or a site office, or a home of their own. Setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built. Allow around 90 days from deposit to move-in.",
+  },
   {
     q: "How much does delivery cost?",
     a: `${site.deliveryNote} Ask about our turnkey service and we can arrange the groundwork, connections and installation for you too.`,

@@ -313,12 +313,12 @@ export const products: Product[] = [
     // open-plan price on a 2-bedroom home, and the lead of the description
     // already carries the from-price read from startingPrice.
     seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
-    sizesHeading: "Modular home sizes and prices, from open plan to 2 bedrooms",
+    sizesHeading: "Granny pod and modular home prices, from open plan to 2 bedrooms",
     metaSummary:
       "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
     tagline: "One module that expands on site within hours.",
     summary:
-      "A prefabricated granny flat, family home or office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
+      "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
       "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
@@ -368,7 +368,7 @@ export const products: Product[] = [
        *  inserted lines higher up in blog.ts. */
       {
         title: "Granny flat",
-        body: "Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done, and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a kitchen (basic stainless-steel cabinetry and a sink, with no appliances) already in it, and it expands on site within hours rather than tying up the garden for months.",
+        body: "Room for a parent or an adult child, or a unit to let, on the stand you already have. Building a granny flat conventionally is priced per square metre, and that rate moves with the province, the finish and how much of the site work is already done, and it is a construction rate, so the land, professional fees, municipal connections and site works are commonly on top. A 74 m² expandable home is R599 900 ex VAT with two to four bedrooms, a fitted bathroom and a kitchen (basic stainless-steel cabinetry and a sink, with no appliances) already in it, and it expands on site within hours rather than tying up the garden for months.",
       },
       {
         title: "Family home",
@@ -676,7 +676,7 @@ export const products: Product[] = [
       "Capsule houses with 270° floor-to-ceiling glazing and the bathroom standard, 18.6 to 38 m², delivered fully built.",
     tagline: "270° of glass, with the bathroom as standard.",
     summary:
-      "Capsule houses wrapped in 270° of oversized floor-to-ceiling double glazing, built for glamping. The bathroom, its premium fittings and a geyser are standard on every model. There's a core range from R689 900 ex VAT, and a more premium Space range with a much longer options list.",
+      "Capsule houses wrapped in 270° of oversized floor-to-ceiling double glazing, built for glamping sites that let to paying guests. The bathroom, its premium fittings and a geyser are standard on every model. There's a core range from R689 900 ex VAT, and a more premium Space range with a much longer options list.",
     description:
       "Glamping Capsules are the flagship of the Tiny Homes SA range: luxury capsule houses we deliver to beaches, bush settings and vineyards. The rooms sit either side of the bathroom. Each one is wrapped in 270-degree oversized floor-to-ceiling double-glazed windows, with room for a queen bed, a lounge area and full amenities. Multi-layer thermal insulation, premium bathroom fittings, complete plumbing and electrical, interior and exterior lighting, a geyser and intelligent front-door access all come standard. The kitchen and air conditioning are extras, so you only pay for what you need. There are two ranges. The core range comes in 18.6 m² from R689 900 ex VAT, 30.4 m² at R849 900 or 37 m² with a balcony at R949 900. The Space range is a more premium build with a far wider options list, from R849 900 for the 8.5 m Space D5 to R1 099 900 for the 38 m² Space D7. The six models here are a sample of the most popular layouts. Both ranges build other sizes and layouts to order, and there are far more options than we can list, so tell us what you need and we'll check. Each capsule arrives at your site fully built, so there's no construction on site and it's ready to occupy straight away.",
     startingPrice: 689900,

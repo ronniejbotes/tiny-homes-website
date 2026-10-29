@@ -193,8 +193,9 @@ export default function AboutPage() {
                 <p>
                   Building the conventional way takes too long, costs too much and leaves too
                   much to chance. Our answer is precision factory building: steel-framed,
-                  insulated homes finished indoors, trucked to your site and standing in anything from
-                  minutes to a few days. Deposit to move-in takes around 90 days, and
+                  insulated homes finished indoors, trucked to your site and set up fast: an X-Fold
+                  unfolds in minutes, an expandable home is set up the day it arrives, and cabins
+                  and capsules arrive fully built. Deposit to move-in takes around 90 days, and
                   every home we supply comes with a {site.guarantee}.
                 </p>
                 <p>

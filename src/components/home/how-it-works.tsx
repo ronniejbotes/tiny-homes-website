@@ -25,7 +25,7 @@ const steps = [
   {
     number: "04",
     title: "Move in",
-    body: "Setup runs from minutes for an X-Fold to professional on-site assembly for cabins and capsules. Move in, or hand the keys to your first paying guests.",
+    body: "Setup runs from minutes for an X-Fold to the day it arrives for an expandable home; cabins and capsules arrive fully built and are placed on a prepared site. Move in, or hand the keys to your first paying guests.",
   },
 ];
 
