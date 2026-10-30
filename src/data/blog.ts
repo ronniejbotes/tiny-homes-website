@@ -2616,7 +2616,7 @@ export const blogPosts: BlogPost[] = [
     title: "What is a modular home? Modular, prefab and flat-pack explained",
     description:
       "What is a modular home, and how is it different from prefab or flat-pack? Plain definitions, which of our units is which, and what approval it needs.",
-    datePublished: "2026-09-09",
+    datePublished: "2026-10-07",
     dateModified: "2026-10-29",
     keywords: [
       "what is a modular home",
@@ -2756,7 +2756,7 @@ export const blogPosts: BlogPost[] = [
     title: "What is included in a prefab house price?",
     description:
       "What is included in a prefab house price: what our two-bedroom units come with as standard, which upgrades cost extra, and how to compare two quotes.",
-    datePublished: "2026-09-16",
+    datePublished: "2026-10-07",
     dateModified: "2026-10-07",
     keywords: [
       "what is included in a prefab house price",
@@ -2893,7 +2893,7 @@ export const blogPosts: BlogPost[] = [
     title: "Mobile homes in South Africa: what can you buy, and which units can be moved again?",
     description:
       "Mobile homes in South Africa: what the law calls a mobile home, which prefab units can be moved again, and what a move needs at each end.",
-    datePublished: "2026-09-30",
+    datePublished: "2026-10-07",
     dateModified: "2026-10-29",
     keywords: [
       "mobile homes South Africa",
