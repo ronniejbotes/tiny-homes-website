@@ -3166,6 +3166,129 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  /* =============================================================== 18 ==== */
+  {
+    slug: "before-you-pay-a-deposit-on-a-tiny-home",
+    seoTitle: `Before You Pay a Deposit on a Tiny Home`,
+    title: `What to check before you pay a deposit on a tiny home`,
+    description:
+      `Before you pay a deposit on a tiny home: see it in person, check who you are paying, get the whole job in writing and know what cancelling would cost.`,
+    datePublished: "2026-10-30",
+    keywords: [
+      "how to buy a tiny home safely",
+      "tiny home deposit",
+      "deposit on a tiny home",
+      "before you pay a deposit",
+      "Consumer Protection Act deposit",
+    ],
+    imageProduct: "expandable-homes",
+    readingMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: `Stand inside the home, check who you're paying, get the whole job in writing, and know what cancelling would cost. Do all of that before any money leaves your account. Run the same checks if you're ordering units for a business, such as staff housing or a lodge.`,
+      },
+      {
+        type: "p",
+        text: `Our own process works the same way. You [choose and customise your home](/) and see the price as you build it, then you confirm the order with a deposit. That's the point where your home goes into production. So everything below belongs before it.`,
+      },
+      { type: "h2", text: `See it, measure it, then decide` },
+      {
+        type: "p",
+        text: `Photographs are kind to small buildings. A render is kinder still. The only way to know whether the bedroom takes your bed, whether the ceiling feels low, or how the doors close, is to stand inside the real thing.`,
+      },
+      {
+        type: "p",
+        text: `That's why our homes are standing at our showroom in Centurion. To view a unit, [email us](/contact#viewing) and tell us why you're interested, what the units will be used for, where they'll go and how many units you're looking at. If you do come out, bring a tape. Open the cupboards, look at the joins, check the door widths.`,
+      },
+      {
+        type: "p",
+        text: `If a seller can't show you the actual unit, or something built to the same specification, ask yourself why before you pay.`,
+      },
+      { type: "h2", text: `Check who you're actually paying` },
+      {
+        type: "p",
+        text: `A website and a set of photographs prove very little. A registered company name, a physical place you can visit and a phone number a person answers prove a lot more.`,
+      },
+      {
+        type: "p",
+        text: `Our registered name, Tiny Homes (Pty) Ltd, is on our home page. Whoever you buy from, you can look a company up on the [Companies and Intellectual Property Commission's company search](https://www.cipc.co.za/) and check that the name on the invoice is a real, registered business.`,
+      },
+      {
+        type: "p",
+        text: `Then check where the money goes. Criminals can [break into a business's email account and write as if they were that business](https://www.sabric.co.za/how-to-stay-safe/), so an email saying a seller's banking details have changed deserves a phone call before you act on it. If you ever get a message like that, from us or anyone else, phone the business on the number printed on its website, not the number in the email, and confirm before you pay.`,
+      },
+      { type: "h2", text: `Get the whole job on paper, base and delivery included` },
+      {
+        type: "p",
+        text: `Whoever you buy from, the work around the unit (the base, the connections, delivery and offloading) belongs in the paperwork before the deposit. Our [terms](/terms) set out what our prices cover. We've written about [what a prefab house price includes and how to compare quotes](/blog/what-is-included-in-a-prefab-house-price), so here's the short version for the deposit stage.`,
+      },
+      {
+        type: "p",
+        text: `On our side, the online quote lists its own terms at the foot of the quote, so read them alongside the list below. Before you pay a deposit, to us or anyone, make sure the paperwork shows:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `The exact model, size and specification, including finishes and any extras you chose.`,
+          `What's included and what's excluded, line by line, with VAT shown.`,
+          `Delivery to your address, offloading and any craneage.`,
+          `Who prepares the base and connects water, sewerage and power.`,
+          `What the deposit secures, and what happens to it if you cancel.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `The law backs you on this. Where the Consumer Protection Act applies, a written consumer agreement has to come with [a copy of its terms in plain language, setting out an itemised breakdown of what you owe](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). The Act covers individual buyers and smaller businesses, but [not a company whose asset value or annual turnover reaches the threshold the Minister sets](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf), so a larger business buyer relies on what its own contract says. And if you buy solely on a description or a sample, the Act says [what's delivered must match it in all material respects](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). That's a good reason to keep the specification you were quoted on.`,
+      },
+      { type: "h2", text: `Settle the site before the money` },
+      {
+        type: "p",
+        text: `The other questions to settle are about your property: whether the municipality wants plans, what the home will stand on, and whether a truck can reach the spot.`,
+      },
+      {
+        type: "p",
+        text: `Our [terms](/terms) set out who prepares the site and what happens if a truck can't reach your spot, so read them before you order. We'd much rather you sent us photographs of the route in before you order. Our guide on [where you can put a housing pod](/blog/where-can-you-put-a-housing-pod) walks through the municipality, the base, services and access in the order they matter.`,
+      },
+      {
+        type: "p",
+        text: `Ask about delivery terms too. Unless the agreement says otherwise, the Act makes it an implied condition that [goods are delivered on the agreed date at the agreed place, and stay at the supplier's risk until you accept delivery](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). Read what your agreement says before you sign it.`,
+      },
+      { type: "h2", text: `Sort out finance before you commit` },
+      {
+        type: "p",
+        text: `If you need finance, get the answer before you pay a deposit, not after. Finance on our homes is through a third-party provider, subject to credit approval, and the decision is theirs. Our [guide to financing a prefab home](/blog/prefab-home-finance-south-africa) explains why these homes are usually financed differently from a house with a bond.`,
+      },
+      {
+        type: "p",
+        text: `Whoever offers you credit, check that they're on the [National Credit Regulator's register of credit providers](https://www.ncr.org.za/register_of_registrants/registered_cp.php). The NCR is [the body that registers credit providers](https://www.ncr.org.za/index.php/departments/registrations-compliance), and the register can be searched by name. If anyone offers to let you pay off a home in instalments before it's yours, our [rent-to-own guide](/blog/rent-to-own-tiny-home-south-africa) lists the questions to ask.`,
+      },
+      { type: "h2", text: `What the deposit does, and what cancelling could cost` },
+      {
+        type: "p",
+        text: `With us, the deposit is the moment your home goes into production, so before you pay it, ask us what happens to the deposit if you cancel, and get the answer in writing.`,
+      },
+      {
+        type: "p",
+        text: `Where the Consumer Protection Act applies, it gives you a right to [cancel an advance order, and lets a supplier ask for a reasonable deposit and charge a reasonable cancellation fee](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). What counts as a reasonable cancellation charge depends on things like how much notice you give and the general practice in the industry. That right doesn't cover special-order goods, which the Act defines as goods a supplier was required or expected to procure, create or alter specifically to satisfy your requirements. A home configured to your specification may fall into that category. If the cancellation terms matter to your decision, have someone qualified read them before you sign.`,
+      },
+      {
+        type: "p",
+        text: `While a supplier holds your deposit, the Act says it [must not treat that money as its own and must look after it with reasonable care](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf).`,
+      },
+      { type: "h2", text: `If something goes wrong` },
+      {
+        type: "p",
+        text: `Start with the supplier, in writing, and keep copies of everything: the quotation, the agreement, proof of payment and any emails. If that doesn't resolve it, you can [escalate the complaint to the Consumer Goods and Services Ombud](https://www.cgso.org.za/), the industry ombud set up in line with the Consumer Protection Act. This is general information, not legal advice. For your own contract, speak to a qualified person.`,
+      },
+      { type: "h2", text: `Ask us the awkward questions before you pay` },
+      {
+        type: "p",
+        text: `Start with the paperwork. If you're buying units for a business, [send us a business enquiry](/contact#business) with your company name, what the units will be used for, where they'll go and how many you need, and we'll come back to you with a formal quotation. If you're buying a home for yourself, [build your quote](/quote) and you'll see every extra listed line by line. Then check what you have against the list above, and ask us about anything that isn't clear before you pay a deposit.`,
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------- accessors */
