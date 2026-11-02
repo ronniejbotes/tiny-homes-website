@@ -452,7 +452,7 @@ export const products: Product[] = [
     slug: "nature-cabins",
     name: "Nature Cabins",
     shortName: "Nature Cabin",
-    h1: "Prefab nature cabins",
+    h1: "Prefab nature cabins for sale",
     seoTitle: "Prefab Cabins South Africa from R810 900",
     // "Cabin house" is the search the home page wins and this page should own;
     // every word after it is already on this page (fully built, bathroom,
