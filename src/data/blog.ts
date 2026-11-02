@@ -326,7 +326,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Transport.** Quoted on distance and site access, not included in any advertised figure. It is not a small line on a long run. Ask for it in writing before you commit.`,
-          `**Groundwork.** A level concrete slab or properly levelled precast plinths. Level is the operative word: a pod is a rigid finished box, and a base that is out shows up in the doors and windows.`,
+          `**Groundwork.** A level concrete slab or properly levelled precast plinths. Level is the operative word: a pod is a rigid finished box, and a base that is out shows up in the doors and windows. Our guide to [where you can put a housing pod](/blog/where-can-you-put-a-housing-pod) covers the plans, the base, the services and the delivery access.`,
           `**Connections.** Water, sewerage and the tie-in to your DB board. The unit may arrive with plumbing installed, but something still has to connect it to the property.`,
           `**Approval.** Where your municipality requires plans for a second structure, that is a cost and a timeline of its own.`,
         ],
