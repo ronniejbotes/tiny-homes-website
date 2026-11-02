@@ -508,6 +508,13 @@ export default function HousingPodsPage() {
               >
                 where you can put a housing pod
               </Link>
+              ,{" "}
+              <Link
+                href="/blog/housing-pod-cost-south-africa"
+                className="font-medium text-clay underline underline-offset-4 hover:text-clay-dark"
+              >
+                what a housing pod costs
+              </Link>
               , and{" "}
               <Link
                 href="/blog/housing-pod-vs-container-home-vs-wendy-house"

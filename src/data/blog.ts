@@ -654,7 +654,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `In every case, something still has to connect the unit to the property: a water feed, a sewer or conservancy connection, and a tie-in to your DB board. That work is quoted separately and it is not trivial if the pod is a long way from the house.`,
+        text: `In every case, something still has to connect the unit to the property: a water feed, a sewer or conservancy connection, and a tie-in to your DB board. That work is quoted separately and it is not trivial if the pod is a long way from the house. Our guide to [what a housing pod costs](/blog/housing-pod-cost-south-africa) sets out the costs that are not on the price tag.`,
       },
       {
         type: "p",
