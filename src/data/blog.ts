@@ -2512,7 +2512,7 @@ export const blogPosts: BlogPost[] = [
           `An access bond or further advance, if you already own property with equity. It's usually the cheapest money available and the longest term, because the bank is lending against the house it already holds rather than against the new unit. It's worth checking before anything else.`,
           `Third-party asset finance, the route most of our customers use and the one the movable-asset structure above describes. ${site.finance}. Ask us when you request a quote and we'll point you to the provider.`,
           `A personal loan from your own bank. Depending on your circumstances and its lending criteria, your existing bank may simply lend you the money as an unsecured personal loan. It's faster and less fussy about what you're buying, at a rate that reflects that, and realistic at the lower end of the range rather than for a capsule.`,
-          `Cash, in stages. That works here in a way it never does with conventional building, because the units are separate products with published prices. An [outdoor kitchen](/outdoor-kitchens) or an X-Fold now and a second unit later is a real plan, not a fantasy.`,
+          `Cash, in stages. That works here in a way it never does with [conventional building](/blog/prefab-vs-building-a-house-south-africa), because the units are separate products with published prices. An [outdoor kitchen](/outdoor-kitchens) or an X-Fold now and a second unit later is a real plan, not a fantasy.`,
         ],
       },
 
@@ -2670,7 +2670,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `So the approval question is the same for a modular home as for a brick one. The detail of which route applies, a permanent building or a temporary one, is in our [guide to building approval](/blog/building-approval-south-africa-what-you-need).`,
+        text: `So the approval question is the same for a modular home as for a brick one. The detail of which route applies, a permanent building or a temporary one, is in our [guide to building approval](/blog/building-approval-south-africa-what-you-need). For the wider choice between the two, our guide to [prefab versus building a house](/blog/prefab-vs-building-a-house-south-africa) weighs the money, time, paperwork, finance and resale of each route.`,
       },
 
       { type: "h2", text: "How does a modular home show it meets the building regulations?" },
