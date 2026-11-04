@@ -6,7 +6,6 @@ import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
-import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
 
@@ -18,22 +17,15 @@ const heroImage = {
   src: "/images/brand/hero-apple-cabin.jpg",
   alt: "Apple Cabin with full-height glazing glowing at dusk on a timber deck, beside a plunge pool and sunken firepit lounge above a mountain lake.",
 };
-/* Price-on-request products carry a 0 sentinel, exclude them from the range.
-   Garages are a DIY steel-kit line, not a home; keep their R139 900 entry price
-   out of the "tiny homes from …" headline so it stays the cheapest actual home. */
-const lowestStartingPrice = Math.min(
-  ...products
-    .filter((p) => !p.priceOnRequest && p.slug !== "garages")
-    .map((p) => p.startingPrice),
-);
-
 /* CSS-only staggered entrance (animate-rise-in in globals.css) so the headline,
    copy and CTAs are visible before JavaScript hydrates. The two headline lines
    carry their own delays for a multi-line reveal. */
 const rise = (delay: number): CSSProperties =>
   ({ "--rise-delay": `${delay}s` }) as CSSProperties;
 
-export function Hero() {
+/* lowestStartingPrice comes from page.tsx: importing products.ts here put the
+   whole catalogue in the browser's JavaScript for this one number. */
+export function Hero({ lowestStartingPrice }: { lowestStartingPrice: number }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
