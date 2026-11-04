@@ -29,6 +29,11 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+/* prefetch={false} on every link here: this footer is on every page, and each
+   link that scrolled into view fetched its target page in the background, for
+   links few people tap. Measured on /contact at phone width, 4 November 2026:
+   55 background requests and 160 KB before, 11 and 38 KB after. The links work
+   the same; the page is fetched when one is tapped. */
 export function Footer() {
   return (
     <footer className="bg-forest text-cream">
@@ -82,6 +87,7 @@ export function Footer() {
               {nav.products.map((p) => (
                 <li key={p.slug}>
                   <Link
+                    prefetch={false}
                     href={`/${p.slug}`}
                     className="inline-flex min-h-11 items-center text-cream/80 transition-colors hover:text-cream"
                   >
@@ -98,6 +104,7 @@ export function Footer() {
               {nav.resources.map((r) => (
                 <li key={r.href}>
                   <Link
+                    prefetch={false}
                     href={r.href}
                     className="inline-flex min-h-11 items-center text-cream/80 transition-colors hover:text-cream"
                   >
@@ -148,12 +155,14 @@ export function Footer() {
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
+                prefetch={false}
                 href={BUSINESS_ENQUIRY_HREF}
                 className="inline-flex h-11 items-center rounded-full bg-clay px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:bg-clay-dark"
               >
                 Business enquiry
               </Link>
               <Link
+                prefetch={false}
                 href="/contact"
                 className="inline-flex h-11 items-center rounded-full border border-cream/30 px-6 text-[0.9375rem] font-medium text-cream transition-colors hover:border-cream/70 hover:bg-cream/10"
               >
@@ -182,6 +191,7 @@ export function Footer() {
             <p className="text-cream/80">
               Viewings by email only.{" "}
               <Link
+                prefetch={false}
                 href={VIEWING_HREF}
                 className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
               >
@@ -218,16 +228,16 @@ export function Footer() {
               row breaks after Contact and a separator was left dangling at the
               end of the first line. The 28px gap matches the old dot spacing. */}
           <p className="flex flex-wrap gap-x-7">
-            <Link href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+            <Link prefetch={false} href="/about" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               About
             </Link>
-            <Link href="/contact" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+            <Link prefetch={false} href="/contact" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Contact
             </Link>
-            <Link href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+            <Link prefetch={false} href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+            <Link prefetch={false} href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Terms
             </Link>
           </p>
@@ -243,7 +253,7 @@ export function Footer() {
           is quoted separately. Prices are for the product only and exclude earthworks or the
           provision of services, which are quoted separately. Site preparation and access are the
           customer&apos;s responsibility. Prices can change without notice.{" "}
-          <Link href="/terms" className="underline underline-offset-2 transition-colors hover:text-cream">
+          <Link prefetch={false} href="/terms" className="underline underline-offset-2 transition-colors hover:text-cream">
             T&apos;s and C&apos;s apply
           </Link>
           . E&amp;OE.

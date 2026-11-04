@@ -2,20 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
-import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { EASE, Stagger, StaggerItem } from "@/components/ui/reveal";
-
-/* Price-on-request products carry a 0 sentinel, exclude them from the range.
-   Garages are a DIY steel-kit line, not a home; their R139 900 entry price stays
-   out of the homes starting-price stat. */
-const lowestPrice = Math.min(
-  ...products
-    .filter((p) => !p.priceOnRequest && p.slug !== "garages")
-    .map((p) => p.startingPrice),
-);
 
 /* Stats are structured (not pre-formatted strings) so the numeric portion can
    count up on view while its prefix/suffix stay put. `full` is the finished,
@@ -29,7 +19,7 @@ type Stat = {
   label: string;
 };
 
-const stats: Stat[] = [
+const buildStats = (lowestPrice: number, productCount: number): Stat[] => [
   {
     prefix: "From ",
     to: lowestPrice,
@@ -38,9 +28,9 @@ const stats: Stat[] = [
     label: "Starting price, ex VAT",
   },
   {
-    to: products.length,
+    to: productCount,
     suffix: " styles",
-    full: `${products.length} styles`,
+    full: `${productCount} styles`,
     label: "Folding homes to glamping capsules",
   },
   {
@@ -99,7 +89,16 @@ function CountUp({ stat }: { stat: Stat }) {
   );
 }
 
-export function StatsStrip() {
+/* Both figures come from page.tsx: importing products.ts here put the whole
+   catalogue in the browser's JavaScript for two numbers. */
+export function StatsStrip({
+  lowestPrice,
+  productCount,
+}: {
+  lowestPrice: number;
+  productCount: number;
+}) {
+  const stats = buildStats(lowestPrice, productCount);
   return (
     <section aria-label="Key facts" className="border-y border-border bg-parchment">
       <Container>

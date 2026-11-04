@@ -9,6 +9,7 @@ import { HowItWorks } from "@/components/home/how-it-works";
 import { DeliveryCoverage } from "@/components/home/delivery-coverage";
 import { WhyTinyLiving } from "@/components/home/why-tiny-living";
 import { GalleryStrip } from "@/components/home/gallery-strip";
+import { galleryShots } from "@/components/home/gallery-shots";
 import { VideoCarousel } from "@/components/home/video-carousel";
 import { ShowroomInvite } from "@/components/home/showroom-invite";
 import { homeFaqs } from "@/components/home/home-faqs";
@@ -32,7 +33,8 @@ const heroImage =
 
 /* A price-on-request product would carry a 0 sentinel; never let it win the
    range. Garages are a DIY steel-kit line, not a home, excluded so the "From …" CTA
-   under "Your tiny home starts here" names the cheapest actual home. */
+   under "Your tiny home starts here", the hero sentence and the stats strip all
+   name the cheapest actual home. */
 const lowestStartingPrice = Math.min(
   ...products
     .filter((p) => !p.priceOnRequest && p.slug !== "garages")
@@ -102,15 +104,15 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      <Hero />
-      <StatsStrip />
+      <Hero lowestStartingPrice={lowestStartingPrice} />
+      <StatsStrip lowestPrice={lowestStartingPrice} productCount={products.length} />
       <ForBusinesses />
       <HomesShowcase />
       <CustomiseTeaser />
       <HowItWorks />
       <WhyTinyLiving />
       <DeliveryCoverage />
-      <GalleryStrip />
+      <GalleryStrip shots={galleryShots} />
       <VideoCarousel />
       <ShowroomInvite />
 
@@ -119,7 +121,7 @@ export default function HomePage() {
           <SectionHeading
             id="faq-heading"
             eyebrow="Questions, answered"
-            title="Frequently asked questions"
+            title="Frequently asked questions about tiny homes"
             intro="The practical details: delivery, timelines, foundations and pricing, answered straight."
           />
           <Reveal className="mt-10 lg:mt-14" delay={0.1}>

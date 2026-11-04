@@ -107,6 +107,8 @@ export default function BlogIndexPage() {
       </section>
 
       <section aria-label="Articles" className="py-20 sm:py-28">
+        {/* prefetch={false} on the three links in each card: scrolling this list
+            fetched every guide in the background for a reader who opens one. */}
         <Container>
           <Stagger className="grid gap-8 lg:grid-cols-2" as="ul">
             {blogPostsByDate.map((post) => {
@@ -115,7 +117,7 @@ export default function BlogIndexPage() {
                 <StaggerItem key={post.slug} as="li">
                   <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment">
                     {image && (
-                      <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/9]">
+                      <Link prefetch={false} href={`/blog/${post.slug}`} className="relative block aspect-[16/9]">
                         <Image
                           src={image.src}
                           alt={image.alt}
@@ -137,6 +139,7 @@ export default function BlogIndexPage() {
                       </p>
                       <h2 className="mt-3 font-display text-2xl leading-snug text-ink">
                         <Link
+                          prefetch={false}
                           href={`/blog/${post.slug}`}
                           className="transition-colors hover:text-clay"
                         >
@@ -145,6 +148,7 @@ export default function BlogIndexPage() {
                       </h2>
                       <p className="mt-4 leading-relaxed text-stone">{post.description}</p>
                       <Link
+                        prefetch={false}
                         href={`/blog/${post.slug}`}
                         className="mt-auto inline-flex items-center gap-2 pt-6 font-medium text-clay transition-colors hover:text-clay-dark"
                       >

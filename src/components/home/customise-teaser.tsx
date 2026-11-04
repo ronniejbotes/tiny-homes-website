@@ -29,7 +29,7 @@ export function CustomiseTeaser() {
           <Reveal>
             <p className="text-eyebrow text-sage">Online configurator</p>
             <h2 className="text-display mt-4 text-4xl text-cream sm:text-5xl lg:text-6xl">
-              Design it your way
+              Design your tiny home online
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-cream/75">
               Every home in the range can be customised online. Choose your finishes,
