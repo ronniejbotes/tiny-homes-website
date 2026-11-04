@@ -119,7 +119,7 @@ export default function HomePage() {
           <SectionHeading
             id="faq-heading"
             eyebrow="Questions, answered"
-            title="Frequently asked questions"
+            title="Frequently asked questions about tiny homes"
             intro="The practical details: delivery, timelines, foundations and pricing, answered straight."
           />
           <Reveal className="mt-10 lg:mt-14" delay={0.1}>

@@ -252,7 +252,7 @@ export function VideoCarousel() {
           <SectionHeading
             id="video-carousel-heading"
             eyebrow="See them for real"
-            title="Our homes, in motion"
+            title="Our tiny homes, in motion"
             intro="A rolling look at real builds: set-up, finishes and the spaces themselves, straight from site."
             className="max-w-2xl"
           />

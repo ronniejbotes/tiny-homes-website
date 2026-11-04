@@ -159,7 +159,7 @@ export function HomesShowcase() {
             outdoor kitchens (not a house). Cheapest first. */}
         <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
           <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
-            Prefab house price list
+            Prefab house price list, ex VAT
           </h3>
           <table className="mt-5 w-full border-collapse text-left text-sm">
             <caption className="text-eyebrow mb-4 text-left text-clay-dark">
