@@ -31,7 +31,9 @@ const gaSecondMeasurementId = "G-YDLZNN0TGG";
 /**
  * Microsoft Clarity (heatmaps and session recordings), approved by the owner
  * on 14 October 2026 for every site. Disclosed in section 8 of /privacy; if
- * this is ever removed, take it out of the privacy policy too.
+ * this is ever removed, take it out of the privacy policy too. Loads after the
+ * page has finished loading (lazyOnload, 4 November 2026): nothing a visitor
+ * sees depends on it, so it no longer competes with the page on a phone.
  */
 const clarityProjectId = "yxic0ngpza";
 
@@ -131,7 +133,7 @@ export default function RootLayout({
         <Script id="ga-second-config" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('config', '${gaSecondMeasurementId}');`}
         </Script>
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${clarityProjectId}");`}
         </Script>
       </body>
