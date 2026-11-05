@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { nav, site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
@@ -242,6 +243,26 @@ export function Footer() {
             </Link>
           </p>
         </div>
+
+        {/* Google's own "Add as a preferred source" badge (owner, 5 November
+            2026). The deeplink, not Google's script. The file goes out as it
+            is: the size is set, so nothing shifts as it loads. */}
+        <a
+          className="pref-source mt-6 inline-block leading-[0]"
+          href="https://www.google.com/preferences/source?q=tinyhomesa.com"
+          target="_blank"
+          rel="noopener"
+          aria-label="Add Tiny Homes SA as a preferred source on Google"
+        >
+          <Image
+            src="/images/brand/google-preferred-source-light.png"
+            width={190}
+            height={60}
+            alt="Add as a preferred source on Google"
+            loading="lazy"
+            unoptimized
+          />
+        </a>
 
         {/* pb-20 on phones: the floating WhatsApp badge (56px, 12px off the
             bottom on phones) otherwise sits on the last lines of this note.
