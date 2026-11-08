@@ -28,7 +28,7 @@ export function UseCaseChips({ product }: { product: Product }) {
                 className="rounded-3xl border border-border bg-parchment p-6"
               >
                 <h3 className="font-display text-xl text-ink">{useCase.title}</h3>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+                <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
                   {useCase.body}
                 </p>
               </li>

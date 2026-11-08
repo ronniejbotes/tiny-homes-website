@@ -60,11 +60,17 @@ export function ProductHero({
             <p className="mt-4 font-display text-xl text-clay sm:text-2xl">
               {product.tagline}
             </p>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone max-sm:order-1 max-sm:mt-8">
+            {/* max-sm:pr-12 on the summary and the chip row: on the first
+                phone screen the floating WhatsApp badge (56px, 12px off the
+                edge) sat on the summary's last words and clipped the second
+                chip (final checks, 7 and 8 Nov 2026). With the padding the
+                lines end before the badge and the second chip wraps under
+                the first. */}
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone max-sm:order-1 max-sm:mt-8 max-sm:pr-12">
               {product.summary}
             </p>
 
-            <ul className="mt-7 flex flex-wrap gap-2.5 max-sm:order-1">
+            <ul className="mt-7 flex flex-wrap gap-2.5 max-sm:order-1 max-sm:pr-12">
               {chips.map(({ icon: Icon, label }) => (
                 <li
                   key={label}

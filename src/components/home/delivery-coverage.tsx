@@ -34,7 +34,7 @@ export function DeliveryCoverage() {
               <Truck className="h-5 w-5 text-clay" aria-hidden="true" />
               All nine South African provinces
             </h3>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+            <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
               From Cape Town and the Garden Route to the Limpopo bushveld. If a truck and a crane can reach the
               site, we can put a home on it.
             </p>
@@ -52,7 +52,7 @@ export function DeliveryCoverage() {
 
           <Reveal delay={0.08} className="rounded-3xl border border-border bg-forest p-6 text-cream sm:p-8">
             <h3 className="font-display text-xl text-cream">Across southern Africa</h3>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/75">
+            <p className="mt-3 text-base leading-relaxed text-cream/75 sm:text-[0.9375rem]">
               We deliver across the border too. Each run is quoted per project, including the
               transport and the customs paperwork, so tell us where the site is and we will price it.
             </p>

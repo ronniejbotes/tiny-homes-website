@@ -141,12 +141,12 @@ function OptionToggle({
             )}
           </span>
           {option.provisional && price > 0 && (
-            <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
+            <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-stone">
               provisional
             </span>
           )}
         </span>
-        <span className="mt-1 block text-sm leading-relaxed text-stone">{option.description}</span>
+        <span className="mt-1 block text-base leading-relaxed text-stone sm:text-sm">{option.description}</span>
         {helper && <span className="mt-1.5 block text-xs font-medium text-clay-dark">{helper}</span>}
       </span>
       {/* Visual switch track */}
@@ -289,7 +289,7 @@ function CatalogPlansView({
           );
         })}
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-stone">
+      <p className="mt-3 text-base leading-relaxed text-stone sm:text-sm">
         {selectable
           ? "Every layout costs the same and includes a fitted bathroom: toilet, vanity and a shower or tub as drawn. Pick one and it carries through to your quote; window and door placement can be customised there too."
           : "Every layout includes a fitted bathroom: toilet, vanity and a shower or tub as drawn. Window and door placement can be customised on your quote."}
@@ -449,7 +449,7 @@ function PhotosPanel({
           ))}
         </div>
       ) : (
-        <p className="py-8 text-center text-sm leading-relaxed text-stone">
+        <p className="py-8 text-center text-base leading-relaxed text-stone sm:text-sm">
           Photos of this unit are on their way; the cutaway and floor plan views show your full
           configuration in the meantime.
         </p>
@@ -785,7 +785,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
               ))}
             </AnimatePresence>
             {chips.length === 0 && (
-              <span className="text-sm text-stone sm:text-xs">Base configuration: add options to see them appear.</span>
+              <span className="text-base text-stone sm:text-xs">Base configuration: add options to see them appear.</span>
             )}
           </div>
         </div>
@@ -826,7 +826,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                 })}
               </div>
               {activeVariant && (
-                <p className="mt-2 text-sm leading-relaxed text-stone">{activeVariant.description}</p>
+                <p className="mt-2 text-base leading-relaxed text-stone sm:text-sm">{activeVariant.description}</p>
               )}
             </fieldset>
           )}
@@ -878,7 +878,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                 <p className="mt-3 text-display text-4xl text-ink sm:text-5xl">
                   Price on request
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-stone">
+                <p className="mt-4 text-base leading-relaxed text-stone sm:text-sm">
                   Configured to your site and brief at a consultation, then quoted itemised.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -892,7 +892,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                 <p className="mt-3 text-display text-4xl text-ink sm:text-5xl">
                   Price on request
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-stone">
+                <p className="mt-4 text-base leading-relaxed text-stone sm:text-sm">
                   Configured to your site and brief at a consultation, then quoted itemised.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -913,8 +913,8 @@ export function ProductConfigurator({ product }: { product: Product }) {
                   </span>
                   <span className="text-sm font-medium text-stone">ex VAT</span>
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-stone">{site.deliveryNote}</p>
-                <p className="mt-2 text-sm leading-relaxed text-stone sm:text-xs">
+                <p className="mt-4 text-base leading-relaxed text-stone sm:text-sm">{site.deliveryNote}</p>
+                <p className="mt-2 text-base leading-relaxed text-stone sm:text-xs">
                   Optional extras carry provisional pricing and will be confirmed on your final
                   quote.
                 </p>

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/container";
 import { Stagger, StaggerItem } from "@/components/ui/reveal";
+import { GalleryPhoto } from "./gallery-photo";
 import type { ProductImage } from "./product-images";
 
 /**
@@ -61,10 +61,11 @@ export function ProductGallery({
                   isLast && fillLastSm && "sm:col-span-2",
                 )}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
+                {/* A tap or click opens the photo full size (29 Oct 2026
+                    review, Fix-now item 8): the hover zoom promised it, and
+                    the taps were Clarity dead clicks. */}
+                <GalleryPhoto
+                  image={image}
                   // A last tile stretched across two columns from sm up is as
                   // wide as the feature image (784px at 1440), so it gets the
                   // same sm-up slot; "33vw" fetched a 640px file for it. The
@@ -76,7 +77,6 @@ export function ProductGallery({
                         ? "(min-width: 640px) 62vw, 50vw"
                         : "(min-width: 640px) 33vw, 50vw"
                   }
-                  className="object-cover transition-transform duration-300 ease-[var(--ease-smooth)] group-hover:scale-105"
                 />
               </StaggerItem>
             );

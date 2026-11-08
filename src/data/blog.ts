@@ -3292,7 +3292,7 @@ export const blogPosts: BlogPost[] = [
   /* =============================================================== 19 ==== */
   {
     slug: "buying-prefab-buildings-for-a-business",
-    seoTitle: `Buying Prefab Buildings for a Business: What to Have Ready`,
+    seoTitle: `Buying Prefab Buildings for a Business in SA`,
     title: `Buying prefab buildings for a business: what to have ready before you ask for a quote`,
     description:
       `Buying prefab buildings for staff, guests or a site? What to tell us, what to settle on site and what to ask the municipality before we quote.`,

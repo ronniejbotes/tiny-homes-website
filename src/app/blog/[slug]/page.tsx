@@ -191,14 +191,14 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               <h2 id="post-sources" className="font-display text-2xl text-ink">
                 Sources
               </h2>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+              <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
                 Figures we quote from outside our own price list, and where they came
                 from. Prices for our own units come from the same catalogue the product
                 pages use.
               </p>
               <ol className="mt-6 space-y-4">
                 {post.references.map((ref, i) => (
-                  <li key={ref.url} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                  <li key={ref.url} className="flex gap-3 text-base leading-relaxed sm:text-[0.9375rem]">
                     <span
                       aria-hidden="true"
                       className="nums-tabular mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sand text-xs font-medium text-ink"
@@ -276,12 +276,12 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                         {next.title}
                       </Link>
                     </h3>
-                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+                    <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
                       {next.description}
                     </p>
                     <Link
                       href={`/blog/${next.slug}`}
-                      className="mt-5 inline-flex items-center gap-2 font-medium text-clay transition-colors hover:text-clay-dark"
+                      className="mt-5 inline-flex min-h-11 items-center gap-2 font-medium text-clay transition-colors hover:text-clay-dark"
                     >
                       Read it
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />

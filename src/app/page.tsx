@@ -46,7 +46,7 @@ const homeTitle = "Tiny Homes SA | Prefab Houses & Cabins South Africa";
  *  flag it. The provinces and cross-border detail live in the page copy and in
  *  the LocalBusiness areaServed schema, which is where they actually rank. */
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT: X-Folds, cabins, expandable homes and glamping capsules. Delivered nationwide, with a showroom in Centurion, Gauteng.";
+  "Prefab tiny homes from R54 900 ex VAT: X-Folds, cabins, expandable homes and capsules, delivered across South Africa. Showroom in Centurion, Gauteng.";
 
 export const metadata: Metadata = {
   title: {

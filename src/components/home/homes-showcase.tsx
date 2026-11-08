@@ -192,7 +192,7 @@ export function HomesShowcase() {
             </tbody>
           </table>
           {/* In the words of the guide it links, so the two never disagree. */}
-          <p className="mt-4 text-[0.9375rem] leading-relaxed text-stone">
+          <p className="mt-4 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
             Each price is for the unit alone. Treat everything around it as outside the
             price until a quote says otherwise: the base it stands on, the connections to
             water, sewerage and power,{" "}
@@ -212,7 +212,7 @@ export function HomesShowcase() {
               37 m² and 74 m² with layouts and prices), but the home page ranks
               for them too. One line in the searcher's words sends them on. No
               price here: the size is read from products.ts, like the table. */}
-          <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone">
+          <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
             Two bedrooms come standard from the {twoBedroomSize} expandable home: see the{" "}
             <Link href="/expandable-homes" className={footnoteLink}>
               2-bedroom tiny house prices
@@ -230,7 +230,7 @@ export function HomesShowcase() {
             others rather than singled out. Small type on purpose — the ranges
             are what this section is selling. */}
         <Reveal delay={0.1} className="mt-12">
-          <p className="mx-auto max-w-2xl text-center text-[0.9375rem] leading-relaxed text-stone">
+          <p className="mx-auto max-w-2xl text-center text-base leading-relaxed text-stone sm:text-[0.9375rem]">
             People call these tiny houses, prefab or prefabricated houses, modular homes,{" "}
             <Link href="/blog/mobile-homes-south-africa" className={footnoteLink}>
               mobile homes

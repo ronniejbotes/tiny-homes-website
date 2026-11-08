@@ -423,6 +423,13 @@ export function productItemListSchema(
                   "@type": "Offer",
                   price: product.startingPrice,
                   priceCurrency: "ZAR",
+                  // Ex VAT, as on the product pages' own offers.
+                  priceSpecification: {
+                    "@type": "PriceSpecification",
+                    price: product.startingPrice,
+                    priceCurrency: "ZAR",
+                    valueAddedTaxIncluded: false,
+                  },
                   availability: productAvailability(product),
                   seller: { "@id": ORG_ID },
                 },

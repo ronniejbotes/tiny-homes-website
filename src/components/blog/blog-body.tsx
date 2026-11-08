@@ -140,7 +140,7 @@ export function BlogBody({ blocks }: { blocks: BlogBlock[] }) {
                           ) : (
                             <td
                               key={k}
-                              className="mt-2.5 block text-[0.9375rem] text-stone sm:mt-0 sm:table-cell sm:px-5 sm:py-4"
+                              className="mt-2.5 block text-base text-stone sm:mt-0 sm:table-cell sm:px-5 sm:py-4 sm:text-[0.9375rem]"
                             >
                               {block.head[k] ? <PhoneLabel>{block.head[k]}</PhoneLabel> : null}
                               {cell}

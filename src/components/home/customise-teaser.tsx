@@ -55,7 +55,7 @@ export function CustomiseTeaser() {
               {capabilities.map((capability) => (
                 <StaggerItem as="li" key={capability} className="flex items-start gap-3">
                   <Check className="mt-0.5 h-4.5 w-4.5 shrink-0 text-sage" aria-hidden="true" />
-                  <span className="text-[0.9375rem] leading-relaxed text-cream/80">
+                  <span className="text-base leading-relaxed text-cream/80 sm:text-[0.9375rem]">
                     {capability}
                   </span>
                 </StaggerItem>

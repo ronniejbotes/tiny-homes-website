@@ -50,7 +50,7 @@ export function RelatedProducts({ current }: { current: Product }) {
                         {p.sizeLabel}
                       </p>
                     </div>
-                    <p className="mt-3 text-sm leading-relaxed text-stone">
+                    <p className="mt-3 text-base leading-relaxed text-stone sm:text-sm">
                       {p.tagline}
                     </p>
                     <div className="mt-auto flex items-center justify-between gap-3 pt-5">
@@ -83,7 +83,7 @@ export function RelatedProducts({ current }: { current: Product }) {
         {/* Three cards show only part of the range. This sends the rest of the
             way to the home page grid and its price table, in the words people
             search ("prefab houses"), rather than a bare "Home". */}
-        <p className="mt-10 text-center text-[0.9375rem] text-stone">
+        <p className="mt-10 text-center text-base text-stone sm:text-[0.9375rem]">
           Or see{" "}
           <Link
             href="/#homes"
