@@ -3289,6 +3289,118 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  /* =============================================================== 19 ==== */
+  {
+    slug: "buying-prefab-buildings-for-a-business",
+    seoTitle: `Buying Prefab Buildings for a Business: What to Have Ready`,
+    title: `Buying prefab buildings for a business: what to have ready before you ask for a quote`,
+    description:
+      `Buying prefab buildings for staff, guests or a site? What to tell us, what to settle on site and what to ask the municipality before we quote.`,
+    datePublished: "2026-11-08",
+    keywords: [
+      "prefab buildings for sale",
+      "modular site buildings",
+      "prefab buildings for a business",
+      "buying prefab buildings",
+      "prefab site office and staff units",
+    ],
+    imageProduct: "folding-homes",
+    readingMinutes: 5,
+    body: [
+      {
+        type: "p",
+        text: `When a company asks us for prefab buildings, the quotation we send back can only be as exact as the enquiry it answers. So the business enquiry on our [contact page](/contact#business) asks for the same things every time: your company name, what the units will be used for, where they will go, and how many you're looking at, with the range if you know it. We'll come back to you with a formal quotation.`,
+      },
+      {
+        type: "p",
+        text: `Those questions look short. Each of them hides decisions, and the more of them you've made before you write, the closer the quote is to the job you're actually planning. Here's what sits behind each answer.`,
+      },
+      { type: "h2", text: `The use you name decides which range you're pricing` },
+      {
+        type: "p",
+        text: `Our ranges were built for different work, and the use you give us usually narrows the choice on its own.`,
+      },
+      {
+        type: "ul",
+        items: [
+          `**Rooms for on-site staff, farm workers or construction and mining crews.** That's the [X-Fold](/folding-homes): an insulated room that arrives flat on a truck and can be stacked where ground space is tight. It comes wired for electricity, with no plumbing.`,
+          `**Self-contained staff units.** [Expandable homes](/expandable-homes) give mine, lodge, security or estate staff their own bathroom and kitchen in each unit, so there's no shared ablution block to build.`,
+          `**A site office.** An X-Fold unfolds into a weather-tight site office and folds back down for the next site. If you need something closer to a permanent office than a site cabin, an expandable home arrives with plumbing, electrics and a bathroom.`,
+          `**Guest suites for a lodge or resort.** [Glamping capsules](/glamping-capsules), [nature cabins](/nature-cabins) and [Apple Cabins](/apple-cabins) arrive fully built, so you add suites without a building site.`,
+          `**Shared facilities on an estate.** [Outdoor kitchens](/outdoor-kitchens) give an estate or apartment scheme a repeatable communal braai facility.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `If the job is housing staff, decide on ablutions before you count units. Shared block or a bathroom in every unit changes which range you want and what else goes on site, and our [staff accommodation guide](/blog/staff-accommodation-units-south-africa) works through that choice properly.`,
+      },
+      {
+        type: "p",
+        text: `A lodge might want guest suites and staff rooms on the same property. If that's you, list them separately in the enquiry, because each range has its own site needs.`,
+      },
+      { type: "h2", text: `Where they will go: the site behind the town name` },
+      {
+        type: "p",
+        text: `The enquiry asks for the town and province, and the more we know about the site and the last stretch of road, the better we can plan the delivery.`,
+      },
+      {
+        type: "p",
+        text: `What we'll want to know about the site itself:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `**How a truck gets in.** X-Folds arrive flat on a truck and are offloaded by crane or forklift. Expandable homes arrive as a module and need a truck close by. Nature cabins come on an oversized cargo truck, so if the road in is a track that needs an off-road vehicle, the cabin can't be delivered there.`,
+          `**What each unit stands on.** A level slab or properly levelled plinths for every unit. On a temporary site too: a unit that stands out of level doesn't close properly.`,
+          `**Which services are ready, and who's doing them.** Ask us what has to be ready on site before delivery for the range you're buying, and put the groundwork on your programme from the start.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `If the units are split across sites, give us every address. Staff housing at a farm yard and a site office at a quarry down the road are different deliveries, so list each address with its own access notes.`,
+      },
+      { type: "h2", text: `How many, and in what order` },
+      {
+        type: "p",
+        text: `Give us the full number you're planning, even if you'll want them in stages, and tell us how you'd like the phases to fall. Staff rooms before the guest suites, the site office before everything else, a block of units per building phase on an estate: whatever matches the way your project actually runs.`,
+      },
+      { type: "h2", text: `Ask the municipality before you sign off the order` },
+      {
+        type: "p",
+        text: `A prefab unit is still a building in law. The [National Building Regulations and Building Standards Act](https://www.gov.za/sites/default/files/gcis_document/201504/act-103-1977.pdf) defines a building as any structure, temporary or permanent, used for accommodating people, for storing or selling goods, or for rendering a service. That covers staff housing, but it also covers a site office and a lockable storeroom. The same Act says nobody may put up a building that needs plans without the local authority's prior written approval.`,
+      },
+      {
+        type: "p",
+        text: `There's a land-use question too. Under the [Spatial Planning and Land Use Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/367305-8act16of20.pdf), land may be used only for the purposes its land use scheme allows, and a permitted use can be changed with the approval of a Municipal Planning Tribunal, or of a municipal official where the municipality has authorised one to decide that kind of application. Housing a crew on farmland or adding guest suites to a property can be a zoning matter as well as a building one.`,
+      },
+      {
+        type: "p",
+        text: `This is general information. The municipality's building control and planning offices decide what your units need, and housing workers on your own land carries obligations that belong with your own legal adviser. Our [building approval guide](/blog/building-approval-south-africa-what-you-need) sets out the routes in more detail, so you know what to ask.`,
+      },
+      { type: "h2", text: `What to put in the email` },
+      {
+        type: "p",
+        text: `Copy this list into your enquiry and fill in what you can. Blanks are fine: they tell us what to ask you next.`,
+      },
+      {
+        type: "ol",
+        items: [
+          `Company name, and your name and phone number.`,
+          `What the units are for: staff rooms, self-contained staff units, site offices, guest suites or shared facilities.`,
+          `The range, if you know it.`,
+          `Every site address, with town and province.`,
+          `How a truck reaches each site, and anything that makes the last stretch hard.`,
+          `What the units will stand on, and which services are in or planned.`,
+          `How many units in total, and how you'd like the phases to fall.`,
+          `Where you are with the municipality.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Email a business enquiry from our [contact page](/contact#business) with those answers, and we'll come back to you with a formal quotation.`,
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------- accessors */

@@ -15,6 +15,7 @@ const GUIDES: Record<string, string[]> = {
     "housing-pod-vs-container-home-vs-wendy-house",
     "where-can-you-put-a-housing-pod",
     "mobile-homes-south-africa",
+    "buying-prefab-buildings-for-a-business",
   ],
   "expandable-homes": [
     "granny-flat-cost-south-africa",
