@@ -481,7 +481,15 @@ export default function HousingPodsPage() {
               },
               {
                 h: "Where are the services coming from?",
-                p: "A pod is only self-contained once water, sewerage and power reach it. Some ranges arrive with plumbing installed at the factory and some (the X-Fold) carry electrics only. Off-grid is a real option across the range: solar, gas geysers and rainwater tanks are sized and quoted for your site.",
+                p: (
+                  <>
+                    A pod is only self-contained once water, sewerage and power reach it. Some ranges arrive with plumbing installed at the factory and some (the X-Fold) carry electrics only. Off-grid is a real option across the range: solar, gas geysers and rainwater tanks are sized and quoted for your site. Our{" "}
+                    <Link href="/blog/off-grid-tiny-home-south-africa" className="underline underline-offset-2 hover:text-ink">
+                      off-grid guide
+                    </Link>{" "}
+                    takes power, water and sewerage in turn.
+                  </>
+                ),
               },
               {
                 h: "Does your municipality want plans?",
