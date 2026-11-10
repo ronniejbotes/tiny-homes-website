@@ -848,7 +848,7 @@ export const products: Product[] = [
       },
       {
         title: "Developer amenity",
-        body: "A repeatable, fixed-price communal braai facility for an estate or apartment scheme, at 500 to 750 kg depending on length, delivered complete on a cement-board base with an outdoor distribution box and leakage protection.",
+        body: "A fixed-price communal braai facility for an estate or apartment scheme, at 500 to 750 kg depending on length, delivered complete on a cement-board base with an outdoor distribution box and leakage protection.",
       },
       {
         title: "Garden bar",

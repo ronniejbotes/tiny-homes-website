@@ -79,7 +79,7 @@ const uses = [
         <Link href="/outdoor-kitchens" className={linkClasses}>
           Outdoor kitchens
         </Link>{" "}
-        give an estate or apartment scheme a repeatable communal braai facility.
+        give an estate or apartment scheme a communal braai facility.
       </>
     ),
   },

@@ -178,7 +178,7 @@ export function HomesShowcase() {
                   <th scope="row" className="py-3 pr-4 font-normal">
                     <Link
                       href={`/${p.slug}`}
-                      className="text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-clay"
+                      className="-my-3 inline-block py-3 text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-clay"
                     >
                       {p.name}
                     </Link>

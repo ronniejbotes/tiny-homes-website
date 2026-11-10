@@ -86,7 +86,7 @@ export function Hero({ lowestStartingPrice }: { lowestStartingPrice: number }) {
         >
           <Link
             href="/blog/modular-homes-south-africa-explained"
-            className="underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"
+            className="-my-3 inline-block py-3 underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"
           >
             Prefab &amp; modular housing
           </Link>{" "}
