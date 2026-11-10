@@ -20,7 +20,7 @@ import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
  * that, each on its own query.
  */
 
-const title = "Guides & Advice";
+const title = "Prefab Home Buying Guides for South Africa";
 const description =
   "Practical guides to buying a prefab tiny home, housing pod or cabin in South Africa: what they cost, how the options compare, and what your site needs.";
 
@@ -93,7 +93,7 @@ export default function BlogIndexPage() {
       <section className="bg-forest bg-grain pt-36 pb-20 text-cream sm:pt-44 sm:pb-24">
         <Container>
           <Reveal className="max-w-3xl">
-            <p className="text-eyebrow text-sage">Guides &amp; advice</p>
+            <p className="text-eyebrow text-sage">Prefab and tiny home guides</p>
             <h1 className="text-display mt-4 text-4xl sm:text-6xl">
               Everything worth knowing before you buy
             </h1>

@@ -559,7 +559,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Where Can You Put a Housing Pod in SA?",
     title: "Where can you put a housing pod? Plans, foundations and services in South Africa",
     description:
-      "Before you buy a pod: what to ask your municipality, what base it needs, how services reach it, and the access problems that stop a delivery at the gate.",
+      "Where can you put a housing pod? What to ask your municipality, what base it needs, how services reach it, and the access problems that stop a delivery.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -756,7 +756,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Is a Prefab Home Cheaper Than Building?",
     title: "Is a prefab home cheaper than building in South Africa?",
     description:
-      "Our own rand-per-square-metre figures set against what a conventional build costs, including the cases where prefab is the more expensive option.",
+      "Is a prefab home cheaper than building in South Africa? Our own rand-per-square-metre prices against a conventional build, and when prefab costs more.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -1825,7 +1825,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Prefab vs Building a House in South Africa",
     title: "Prefab vs building a house in South Africa: the pros and cons",
     description:
-      "An honest list of what each route gives you and what it costs you (money, time, paperwork, finance and resale) and which situations each one suits.",
+      "Prefab vs building a house in South Africa: what each route costs you in money, time, paperwork, finance and resale, and which situations each one suits.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -1851,7 +1851,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `A conventional build is a project you run: you appoint people, approve drawings, carry the risk of variation, and end up with something drawn for your site. A prefab is a product you buy: [fixed specification, fixed price](/blog/what-is-included-in-a-prefab-house-price), delivered. Almost every advantage and disadvantage below flows from that one distinction.`,
+        text: `A conventional build is a project you run: you appoint people, approve drawings, carry the risk of variation, and end up with something drawn for your site. A prefab is a product you buy: [a set specification at a quoted price](/blog/what-is-included-in-a-prefab-house-price), delivered. Almost every advantage and disadvantage below flows from that one distinction.`,
       },
 
       { type: "h2", text: "Building conventionally: the case for" },
@@ -3040,10 +3040,10 @@ export const blogPosts: BlogPost[] = [
   /* =============================================================== 17 ==== */
   {
     slug: "prefab-homes-coast-salt-air",
-    seoTitle: "Prefab Homes on the Coast: Salt Air & Specs",
+    seoTitle: "Coastal Prefab Homes in SA: Salt Air & Specs",
     title: "Prefab homes on the coast: what does salt air do, and what should you specify?",
     description:
-      "Buying a prefab home for the coast? What salt air does to steel, the exterior panel we require near the sea, and the coastal rules to check first.",
+      "Buying a prefab home for the South African coast? What salt air does to steel, the exterior panel we require near the sea, and the coastal rules to check.",
     datePublished: "2026-10-07",
     dateModified: "2026-10-29",
     keywords: [
