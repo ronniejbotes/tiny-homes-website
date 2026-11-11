@@ -563,10 +563,10 @@ export const products: Product[] = [
     h1: "Apple cabin eco pods",
     sizesHeading: "Eco pods for sale, in three sizes",
     seoTitle: "Eco Pods South Africa from R449 900",
-    tagline: "Floor-to-ceiling glass, luxury bathroom fittings, ready within hours.",
+    tagline: "Add guest suites to a resort or wine estate without a building site.",
     // Written to fit 155 characters after the "Apple Cabin from <price> ex VAT. " lead.
     metaSummary:
-      "An eco pod wrapped in panoramic glass, with luxurious bathroom fittings and smart-lock entry, ready within hours.",
+      "An eco pod that adds suites to a resort or wine estate without a building site. Panoramic glass, ready within hours.",
     summary:
       "An eco pod with a futuristic look, wrapped in floor-to-ceiling panoramic glass, with luxurious bathroom fittings and smart-lock entry. It arrives fully assembled and is ready within hours. From R449 900 ex VAT.",
     description:
