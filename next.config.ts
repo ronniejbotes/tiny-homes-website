@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // No "X-Powered-By: Next.js" header (12 Nov 2026): it tells a visitor, or a
+  // scanner, which framework to look up known holes for, and nothing uses it.
+  poweredByHeader: false,
   experimental: {
     // Why this exists: on 5 October 2026 Hostinger's build of this site died
     // in Turbopack's PostCSS step for src/app/globals.css with "node process
@@ -80,9 +83,26 @@ const nextConfig: NextConfig = {
       // first, raised to 31536000 (one year) on 26 October 2026 after ten
       // days with no problems. No includeSubDomains and no preload: the DNS changed in the
       // email move and nobody has checked that every subdomain serves https.
+      //
+      // Security headers (12 Nov 2026), the same four as positionxero.com's.
+      // Nothing a visitor sees changes: no sniffing of file types, no framing
+      // by other sites, only the domain (not the full address) sent to other
+      // sites as the referrer, and no camera, microphone or location access
+      // (the showroom map is an embed and needs none). No Content-Security-
+      // Policy on purpose: a strict one can break the maps and the analytics
+      // tags.
       {
         source: "/:path*",
-        headers: [{ key: "Strict-Transport-Security", value: "max-age=31536000" }],
+        headers: [
+          { key: "Strict-Transport-Security", value: "max-age=31536000" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Permissions-Policy",
+            value: "geolocation=(), microphone=(), camera=()",
+          },
+        ],
       },
     ];
   },
