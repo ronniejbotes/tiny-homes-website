@@ -559,7 +559,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Where Can You Put a Housing Pod in SA?",
     title: "Where can you put a housing pod? Plans, foundations and services in South Africa",
     description:
-      "Where can you put a housing pod? What to ask your municipality, what base it needs, how services reach it, and the access problems that stop a delivery.",
+      "Before you put a housing pod on your land: what to ask the municipality, the base it needs, how services reach it, and what can stop a delivery.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -756,7 +756,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Is a Prefab Home Cheaper Than Building?",
     title: "Is a prefab home cheaper than building in South Africa?",
     description:
-      "Is a prefab home cheaper than building in South Africa? Our own rand-per-square-metre prices against a conventional build, and when prefab costs more.",
+      "Our own rand-per-square-metre prices against a conventional build in South Africa: when prefab is cheaper than building, and when it costs more.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -1825,7 +1825,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Prefab vs Building a House in South Africa",
     title: "Prefab vs building a house in South Africa: the pros and cons",
     description:
-      "Prefab vs building a house in South Africa: what each route costs you in money, time, paperwork, finance and resale, and which situations each one suits.",
+      "What prefab and building a house each cost you in South Africa: money, time, paperwork, finance and resale, and which situations each one suits.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
