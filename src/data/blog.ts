@@ -3325,7 +3325,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**Rooms for on-site staff, farm workers or construction and mining crews.** That's the [X-Fold](/folding-homes): an insulated room that arrives flat on a truck and can be stacked where ground space is tight. It comes wired for electricity, with no plumbing.`,
           `**Self-contained staff units.** [Expandable homes](/expandable-homes) give mine, lodge, security or estate staff their own bathroom and kitchen in each unit, so there's no shared ablution block to build.`,
-          `**A site office.** An X-Fold unfolds into a weather-tight site office and folds back down for the next site. If you need something closer to a permanent office than a site cabin, an expandable home arrives with plumbing, electrics and a bathroom.`,
+          `**A site office.** An X-Fold unfolds into a weather-tight site office and folds back down for the next site, so it moves with the work as a relocatable building. If you need something closer to a permanent office than a site cabin, an expandable home arrives with plumbing, electrics and a bathroom.`,
           `**Guest suites for a lodge or resort.** [Glamping capsules](/glamping-capsules), [nature cabins](/nature-cabins) and [Apple Cabins](/apple-cabins) arrive fully built, so you add suites without a building site.`,
           `**Shared facilities on an estate.** [Outdoor kitchens](/outdoor-kitchens) give an estate or apartment scheme a communal braai facility.`,
         ],
