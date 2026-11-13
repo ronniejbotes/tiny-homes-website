@@ -78,7 +78,7 @@ export default function PrivacyPage() {
           until you press send, and then it travels to us by WhatsApp or email, the same way a
           message from your phone would.
         </p>
-        <p className="mt-4 text-sm text-stone">Last updated: 14 October 2026</p>
+        <p className="mt-4 text-sm text-stone">Last updated: 13 November 2026</p>
 
         <div className="mt-14 space-y-12">
           <Clause n={1} title="Who we are">
@@ -90,8 +90,8 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                {site.address.streetAddress}, {site.address.locality}, {site.address.city},{" "}
-                {site.address.region}, {site.address.country}
+                {site.showroom.name}, {site.address.locality}, {site.address.city},{" "}
+                {site.address.region}, {site.address.postalCode}, {site.address.country}
               </li>
               <li>
                 Phone:{" "}

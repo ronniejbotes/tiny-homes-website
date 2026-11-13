@@ -4,6 +4,7 @@ import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { nav, site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
 import { CurrentYear } from "@/components/layout/current-year";
+import { HOURS_LABEL } from "@/lib/hours";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -137,18 +138,17 @@ export function Footer() {
                   {site.email}
                 </a>
               </li>
-              {/* Full street address, not just the suburb: Google matches the
-                  site to the Business Profile on a complete, visible NAP, and
-                  an address without a street line does not register as one.
-                  Labelled since the showroom map went in below: this is the
-                  head office, and the pin on the map is somewhere else. */}
+              {/* The one address, the showroom (owner, 13 November 2026). The
+                  registered office on Gouws Ave used to be printed here and
+                  people drove there; it must never come back. Same suburb,
+                  town and postcode as the Business Profile. */}
               <li className="flex items-start gap-3 text-cream/80">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" />
                 <address className="not-italic">
-                  <span className="block text-sm text-sage">Registered office</span>
-                  {site.address.streetAddress}, {site.address.locality}
+                  <span className="block text-sm text-sage">Showroom</span>
+                  {site.showroom.name}, {site.address.locality}
                   <br />
-                  {site.address.city}, {site.address.region}
+                  {site.address.city}, {site.address.region}, {site.address.postalCode}
                   <br />
                   {site.address.country}
                 </address>
@@ -174,9 +174,9 @@ export function Footer() {
         </div>
 
         {/* The showroom on a map, on every page (owner, 29 October 2026). The
-            pin is the showroom, where visitors go, not the registered office
-            above. Named, not addressed, as on /contact: the showroom has no
-            street address. Lazy, so Google's half megabyte of map script only
+            pin is the showroom in Sunderland Ridge, where visitors go (the
+            only address since 13 November 2026). The showroom has no street
+            address, so the pin is the location. Lazy, so Google's half megabyte of map script only
             loads when someone scrolls this far. Viewings are by email only
             (owner, 29 October 2026), so this says so and links to how. */}
         <div className="mt-14 grid overflow-hidden rounded-3xl border border-cream/15 lg:grid-cols-3">
@@ -186,11 +186,11 @@ export function Footer() {
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sage" aria-hidden="true" />
               <span>
                 <span className="block font-medium text-cream">{site.showroom.name}</span>
-                {site.showroom.city}, {site.showroom.region}
+                {site.showroom.locality}, {site.showroom.city}
               </span>
             </p>
             <p className="text-cream/80">
-              Viewings by email only.{" "}
+              Viewings {HOURS_LABEL}, arranged by email.{" "}
               <Link
                 prefetch={false}
                 href={VIEWING_HREF}
@@ -212,7 +212,7 @@ export function Footer() {
           <div className="relative aspect-[4/3] border-t border-cream/15 sm:aspect-[21/9] lg:col-span-2 lg:aspect-auto lg:h-72 lg:border-t-0 lg:border-l">
             <iframe
               src={showroomMapEmbedUrl}
-              title={`Map showing the ${site.name} showroom in ${site.showroom.city}, ${site.showroom.region}`}
+              title={`Map showing the ${site.name} showroom in ${site.showroom.locality}, ${site.showroom.city}`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

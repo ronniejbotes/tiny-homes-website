@@ -32,7 +32,7 @@ const proofs = [
   {
     icon: MapPin,
     label: "A real showroom, not a PO box",
-    value: `${site.showroom.name}, ${site.showroom.city}, ${site.showroom.region}`,
+    value: `${site.showroom.name}, ${site.showroom.locality}, ${site.showroom.city}`,
   },
   {
     icon: Building2,

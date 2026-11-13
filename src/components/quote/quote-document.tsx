@@ -240,7 +240,7 @@ export function QuoteDocument({
             <p className="mt-2 text-sm leading-relaxed text-stone">
               {site.legalName}
               <br />
-              {site.address.streetAddress}, {site.address.locality}
+              {site.showroom.name}, {site.address.locality}
               <br />
               {site.address.city}, {site.address.region}
               <br />

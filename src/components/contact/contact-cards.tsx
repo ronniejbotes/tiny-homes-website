@@ -94,10 +94,9 @@ export function ContactCards() {
       <ContactCard
         icon={<MapPin className="h-5 w-5" aria-hidden="true" />}
         label="Our base"
-        // Suburb and street number deliberately left off: a visitor only needs
-        // to know we are in Centurion. The exact address belongs on the
-        // showroom map, where someone who is actually coming out will look.
-        value={`${site.address.city}, ${site.address.region}`}
+        // The showroom's suburb and town (owner, 13 November 2026: one
+        // address, Sunderland Ridge). The exact spot is the pin on the map below.
+        value={`${site.address.locality}, ${site.address.city}`}
         detail="Every home leaves from here, and we deliver nationwide."
         delay={0.24}
       />
@@ -107,8 +106,8 @@ export function ContactCards() {
       <ContactCard
         icon={<Eye className="h-5 w-5" aria-hidden="true" />}
         label="Viewings"
-        value="By email only"
-        detail="Tell us why you're interested, what the units are for, where they'll go and how many you need."
+        value="Weekdays 09:00 – 16:00"
+        detail="Arranged by email: tell us why you're interested, what the units are for, where they'll go and how many you need."
         href={VIEWING_HREF}
         delay={0.28}
       />

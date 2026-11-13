@@ -19,15 +19,13 @@ export type SchemaObject = Record<string, unknown>;
 const ORG_ID = `${site.url}/#organization`;
 const LOCAL_ID = `${site.url}/#localbusiness`;
 
-/** Registered head office. The Organization node's address — NOT the showroom. */
+/**
+ * The Organization node's address. Since 13 November 2026 the business has one
+ * address, the showroom (owner: never 187 Gouws Ave again), so this is the
+ * same postal address the LocalBusiness node carries.
+ */
 function postalAddress(): SchemaObject {
-  return {
-    "@type": "PostalAddress",
-    streetAddress: `${site.address.streetAddress}, ${site.address.locality}`,
-    addressLocality: site.address.city,
-    addressRegion: site.address.region,
-    addressCountry: site.address.countryCode,
-  };
+  return showroomPostalAddress();
 }
 
 /**
@@ -129,8 +127,8 @@ export function localBusinessSchema(): SchemaObject {
     sameAs: [site.social.facebook, site.social.instagram, site.social.tiktok],
     areaServed: areaServed(),
     // The showroom's opening hours, the same as the Google Business Profile
-    // and the hours line on /contact (all three read src/lib/hours.ts). The
-    // Friday is its own span because the showroom shuts at 13:00. Viewings
+    // and the hours line on /contact (all three read src/lib/hours.ts):
+    // weekdays 09:00 to 16:00 since 13 November 2026 (owner). Viewings
     // are arranged by email only (owner, 29 October 2026); these are the
     // hours the showroom is open, not bookable slots.
     openingHoursSpecification: OPENING_HOURS.map((span) => ({

@@ -143,6 +143,6 @@ export const homeFaqs: HomeFaq[] = [
      owner's four questions, in the same words as /contact#viewing. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes. Our homes are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and viewings are arranged by email only. To view a unit, email us at ${site.email} and tell us why you're interested, what the units will be used for, where they will go, and how many units you're looking at.`,
+    a: `Yes. Our homes are on site at our showroom in ${site.showroom.locality}, ${site.showroom.city}. Viewings are on weekdays from 09:00 to 16:00 and are arranged by email first. To view a unit, email us at ${site.email} and tell us why you're interested, what the units will be used for, where they will go, and how many units you're looking at.`,
   },
 ];

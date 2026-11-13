@@ -14,7 +14,7 @@
  * Server-only.
  */
 
-import { site } from "@/lib/site";
+import { site, showroomPin } from "@/lib/site";
 import { formatZAR } from "@/lib/format";
 import { optionPrice } from "@/data/products";
 import { coastalBody, coastalHeadline, type CoastalRisk } from "@/lib/coastal";
@@ -257,9 +257,7 @@ export function quoteEmailHtml(input: QuoteEmailInput): string {
       ${esc(address.province.trim())}, ${esc(address.postal.trim())}
     </p>
     <p style="margin:10px 0 0;font-size:14px">
-      <a href="https://www.google.com/maps/dir/${encodeURIComponent(
-        `${site.address.streetAddress}, ${site.address.city}`,
-      )}/${encodeURIComponent(formatDeliveryLocation(address))}" style="color:#9a4522">Route from the yard →</a>
+      <a href="https://www.google.com/maps/dir/${showroomPin}/${encodeURIComponent(formatDeliveryLocation(address))}" style="color:#9a4522">Route from the yard →</a>
     </p>
 
     <h2 style="margin:28px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b4552d">Product to be delivered (${totals.totalUnits} ${totals.totalUnits === 1 ? "unit" : "units"})</h2>
@@ -390,7 +388,7 @@ export function customerQuoteText(input: QuoteEmailInput): string {
   out.push("");
   out.push(`Questions? Reply to this email, call ${site.phoneDisplay}, or message us on WhatsApp.`);
   out.push("");
-  out.push(`${site.legalName} · ${site.address.streetAddress}, ${site.address.locality}, ${site.address.city}`);
+  out.push(`${site.legalName} · ${site.showroom.name}, ${site.address.locality}, ${site.address.city}`);
   return out.join("\n");
 }
 
@@ -485,7 +483,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             <tr>
               <td style="padding-top:8px;font-size:13px;line-height:1.6;color:#67635a">
                 ${esc(site.legalName)}<br>
-                ${esc(site.address.streetAddress)}, ${esc(site.address.locality)}<br>
+                ${esc(site.showroom.name)}, ${esc(site.address.locality)}<br>
                 ${esc(site.address.city)}, ${esc(site.address.region)}<br>
                 ${esc(site.phoneDisplay)} · ${esc(site.email)}
               </td>
@@ -612,7 +610,7 @@ export function customerQuoteHtml(input: QuoteEmailInput): string {
             or <a href="${esc(site.whatsapp)}" style="color:#9a4522;font-weight:600;text-decoration:none">message us on WhatsApp</a>.
           </p>
           <p style="margin:14px 0 0;font-size:12px;line-height:1.6;color:#67635a">
-            ${esc(site.legalName)} · ${esc(site.address.streetAddress)}, ${esc(site.address.locality)}, ${esc(site.address.city)}<br>
+            ${esc(site.legalName)} · ${esc(site.showroom.name)}, ${esc(site.address.locality)}, ${esc(site.address.city)}<br>
             <a href="${esc(site.url)}" style="color:#9a4522;text-decoration:none">tinyhomesa.com</a>
           </p>
         </td></tr>

@@ -190,7 +190,7 @@ export default function AboutPage() {
                   </ButtonLink>
                 </div>
                 <p>
-                  From our base in Raslouw, Centurion, we supply high-end prefab tiny homes
+                  From our showroom in Sunderland Ridge, Centurion, we supply high-end prefab tiny homes
                   (X-Folds, expandable homes, nature cabins, apple cabins and glamping
                   capsules) plus outdoor kitchens, and we deliver anywhere
                   in South Africa. Customers call them tiny houses, granny pods or prefab
@@ -359,7 +359,7 @@ export default function AboutPage() {
               <StaggerItem className="flex items-start gap-4 rounded-2xl border border-cream/15 bg-forest-light/40 p-6">
                 <MapPin className="mt-1 h-6 w-6 shrink-0 text-sage" aria-hidden="true" />
                 <div>
-                  <h3 className="font-display text-xl">Based in Raslouw, Centurion</h3>
+                  <h3 className="font-display text-xl">Based in Sunderland Ridge, Centurion</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
                     Based in Gauteng, at the centre of the national road network, well placed
                     to reach any province.

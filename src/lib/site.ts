@@ -23,72 +23,52 @@ export const site = {
    */
   email: "admin@tinyhomesa.com",
   /**
-   * REGISTERED HEAD OFFICE. Not the place visitors come to.
+   * THE ONE ADDRESS: the showroom in Sunderland Ridge. The units stand there,
+   * every visitor goes there, and it is the only address any page, quotation
+   * or email shows.
    *
-   * Owner, 2026-08-10: "that is our registered address for our head office,
-   * not the site — people do not want to come see our offices, they want to
-   * view the showroom." Use this only for the legal entity: the privacy page,
-   * the quotation letterhead and the company details in the footer.
+   * Owner, 13 November 2026: "make sure everywhere the location is not in
+   * gouws avenue, and it is all at the one in sunderland ridge ... people keep
+   * going to the gouws avenue address and get annoyed they have to drive
+   * elsewhere." 187 Gouws Ave (the registered office) used to sit here and was
+   * printed in the footer of every page, on the privacy page and on every
+   * quotation and quote email. It is gone from the site on purpose: never
+   * render it again, anywhere.
    *
-   * Anything a visitor navigates to must use `showroom` below. Until
-   * 2026-08-10 this address was rendered on the old book-a-viewing page (gone
-   * since 29 October 2026), so people who booked a viewing were sent to the
-   * office.
+   * No street address: the showroom has none (owner, August 2026), so the pin
+   * in `geo` is the authoritative location. "Sunderland Ridge" is the owner's
+   * own name for the place (13 November 2026); OpenStreetMap labels the pin
+   * Raslouw, the suburb next door, but visitors follow the pin. 0157 is the
+   * postcode the Google Business Profile carries.
    */
   address: {
-    streetAddress: "187 Gouws Ave",
-    locality: "Raslouw AH",
+    locality: "Sunderland Ridge",
     city: "Centurion",
     region: "Gauteng",
+    postalCode: "0157",
     country: "South Africa",
     countryCode: "ZA",
   },
-  /**
-   * THE SHOWROOM — where the units stand and where every visitor goes.
-   * Viewings are arranged by email only (owner, 29 October 2026).
-   *
-   * Deliberately carries no street address. The owner confirmed one does not
-   * exist ("there is no street address for the showroom"), and the pin is the
-   * authoritative location: `geo` below, plus `mapsLink`.
-   *
-   * `locality` and `postalCode` are GEOCODED, not owner-confirmed — the owner
-   * does not know the showroom's address. Reverse-geocoding the pin on
-   * 2026-08-11 returned Raslouw / 0173 consistently at every zoom level, with
-   * Rudolf Street and Poole Avenue as the nearest named roads. It is
-   * corroborated by the head office being in "Raslouw AH", i.e. the same
-   * suburb. The contact page previously asserted "Sunderland Ridge"; nothing
-   * supports that and it has been removed.
-   *
-   * Suburb only, never a street number: a wrong suburb is a slightly vague
-   * label next to an exact pin, whereas a wrong street number sends someone
-   * to a stranger's gate.
-   */
+  /** The showroom's display name; `address` above is where it is. */
   showroom: {
     name: "Tiny Homes Showroom",
-    locality: "Raslouw",
+    locality: "Sunderland Ridge",
     city: "Centurion",
     region: "Gauteng",
-    postalCode: "0173",
+    postalCode: "0157",
   },
   geo: {
-    // Showroom pin, owner-supplied 2026-08-06: 25°50'49.6"S 28°06'21.6"E.
-    // Feeds the LocalBusiness schema, the map on /contact and the footer map
-    // and directions link, so the coordinates Google is told about and the
-    // ones a visitor navigates to are the same point.
-    // 28.106002, not 28.106: Google's LocalBusiness reference requires at
-    // least five decimal places on both, and the truncated value also
-    // disagreed with the DMS reading recorded above by about 20 cm.
-    latitude: -25.847111,
-    longitude: 28.106002,
+    // Showroom pin, owner-supplied 13 November 2026
+    // (https://maps.google.com/?q=-25.847040,28.106272), about 28 m east of
+    // the August pin (-25.847111, 28.106002). Feeds the LocalBusiness schema,
+    // the map on /contact, the footer map and every directions link, so the
+    // point Google is told about and the one a visitor drives to are the same.
+    // Five decimal places minimum, as Google's LocalBusiness reference asks.
+    latitude: -25.84704,
+    longitude: 28.106272,
   },
-  /**
-   * The owner's own Google Maps pin, short form.
-   *
-   * Kept alongside the coordinates rather than instead of them: this one is
-   * short enough to paste into WhatsApp or read down a phone, while the
-   * lat/long drives everything a machine reads.
-   */
-  mapsLink: "https://maps.app.goo.gl/bwxLfQVs4CZxpNuG9",
+  /** The owner's own Google Maps link for the pin (13 November 2026). */
+  mapsLink: "https://maps.google.com/?q=-25.847040,28.106272",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61587151281004",
     instagram: "https://www.instagram.com/tinyhomes.sa/",
@@ -139,7 +119,7 @@ export const site = {
 
 /* ------------------------------------------------------------ the showroom */
 
-/** `-25.847111,28.106` — the pin, in the form every Google Maps URL wants. */
+/** `-25.84704,28.106272`: the pin, in the form every Google Maps URL wants. */
 export const showroomPin = `${site.geo.latitude},${site.geo.longitude}`;
 
 /**
