@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { JsonLd, blogSchema, breadcrumbSchema } from "@/lib/schema";
-import { getHeroImage } from "@/components/product/product-images";
+import { getHeroImage, getPostLeadImage } from "@/components/product/product-images";
 import { blogPostsByDate } from "@/data/blog";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
@@ -26,7 +26,9 @@ const description =
 
 /* Share card: the newest post's own image, so the index never falls back to
    no image at all and never needs a separate asset kept in step with it. */
-const shareImage = getHeroImage(blogPostsByDate[0]?.imageProduct ?? "apple-cabins");
+const shareImage = blogPostsByDate[0]
+  ? getPostLeadImage(blogPostsByDate[0])
+  : getHeroImage("apple-cabins");
 
 export const metadata: Metadata = {
   title,
@@ -112,7 +114,7 @@ export default function BlogIndexPage() {
         <Container>
           <Stagger className="grid gap-8 lg:grid-cols-2" as="ul">
             {blogPostsByDate.map((post) => {
-              const image = getHeroImage(post.imageProduct);
+              const image = getPostLeadImage(post);
               return (
                 <StaggerItem key={post.slug} as="li">
                   <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment">

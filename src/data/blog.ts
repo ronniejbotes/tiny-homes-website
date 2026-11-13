@@ -49,7 +49,25 @@ export type BlogBlock =
       head: string[];
       rows: string[][];
     }
-  | { type: "cta"; text: RichText; href: string; label: string };
+  | { type: "cta"; text: RichText; href: string; label: string }
+  | { type: "img"; image: BlogImage; caption?: string };
+
+/**
+ * A picture in a post (owner, 13 Nov 2026: every post gets a relevant lead
+ * image and one to three inline ones where they help the reader).
+ *
+ * Width and height are the source file's real pixel size, so the browser
+ * reserves the space and nothing shifts as the page loads. `alt` says what is
+ * in the picture, plainly. Our own product images come first; free-licence
+ * stock (each file logged in seo-program plans/tiny-homes/images/SOURCES.md)
+ * only shows a general scene and is never presented as our work or our units.
+ */
+export interface BlogImage {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}
 
 /**
  * An outside source a post leans on.
@@ -96,6 +114,12 @@ export interface BlogPost {
   keywords: string[];
   /** Product slug whose hero image illustrates the post. */
   imageProduct: string;
+  /**
+   * The post's own lead picture, when the product hero is not the best fit.
+   * It is also the share image and the BlogPosting `image`. Falls back to the
+   * hero of `imageProduct`.
+   */
+  leadImage?: BlogImage;
   /** Rough read time, shown on the card. */
   readingMinutes: number;
   body: BlogBlock[];
@@ -230,7 +254,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Ask what a housing pod costs in South Africa and the honest answer is that there is no single price: the cheapest thing sold as a pod and the most expensive one are barely the same product, though they frequently look near-identical in the photographs. That spread is not a market failing to settle on a price. It is the market selling three genuinely different things under one word.`,
+        text: `There is no single price for a housing pod in South Africa: the cheapest thing sold as a pod and the most expensive one are barely the same product, though they frequently look near-identical in the photographs. The spread is that wide because the market sells three different things under one word.`,
       },
       {
         type: "p",
@@ -252,10 +276,6 @@ export const blogPosts: BlogPost[] = [
        *  a visible link to where it came from and the date somebody opened
        *  it. Our own catalogue prices, rendered through R(), are not affected:
        *  they come off products.ts. */
-      {
-        type: "p",
-        text: `You will not find other suppliers' prices in this guide. We cannot check them, they move, and a competitor's figure we have not verified is worth nothing to you. What we can give you is our own price in each tier and the thing that actually separates the tiers, which is the part that decides what you should be paying.`,
-      },
 
       { type: "h3", text: "Tier 1: the insulated shell (a room, and nothing else)" },
       {
@@ -263,18 +283,28 @@ export const blogPosts: BlogPost[] = [
         text: `A weatherproof, insulated room with electrics and nothing else. No bathroom, no kitchen, usually no plumbing at all. You are buying enclosed, comfortable floor area and doing the rest yourself.`,
       },
       {
+        type: "img",
+        image: { src: "/images/products/folding-homes/interior-shell-empty-v2.jpg", width: 2000, height: 1333, alt: "Empty X-Fold interior with white wall boards, a grey vinyl floor, a steel door, a window and a small DB board on the wall." },
+        caption: "Tier 1, as it arrives: an X-Fold with wall boards, floor, door, window and a small DB board, and nothing else.",
+      },
+      {
         type: "p",
         text: `Our entry here is the [X-Fold](/folding-homes) at ${R(folding)} ex VAT for 15 m². It ships flat, and two people unfold it into a finished room in minutes: four steps, no specialist crew. It comes with upgraded floor beams, EPS insulation and a basic electrical setup: two plug points, a light fitting and a small DB board. It stacks two units high, and it folds back down if you move.`,
       },
       {
         type: "p",
-        text: `What it does not have is plumbing. If you want a shower and a toilet, a local installer fits them on site, and that cost is yours. This tier is honest value for a home office, a site office, staff accommodation or a storeroom. It is a poor choice for a granny flat, because the plumbing you add afterwards is the expensive half.`,
+        text: `What it does not have is plumbing. If you want a shower and a toilet, a local installer fits them on site, and that cost is yours. This tier is fair value for a home office, a site office, staff accommodation or a storeroom. It is a poor choice for a granny flat, because the plumbing you add afterwards is the expensive half.`,
       },
 
       { type: "h3", text: "Tier 2: the self-contained dwelling (bathroom and kitchen already in it)" },
       {
         type: "p",
         text: `A pod somebody can actually live in without using the main house: its own bathroom, its own kitchen, plumbing and electrics installed at the factory. This is what most people picture when they search for a granny pod or a second dwelling for the garden.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/expandable-homes/brochure-interior-1.jpg", width: 970, height: 868, alt: "Open-plan living room and kitchen inside an Expandable Home, with a sofa, dining table and wall-mounted air conditioner." },
+        caption: "Tier 2: an Expandable Home with its own kitchen and living space.",
       },
       {
         type: "p",
@@ -289,6 +319,11 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `Built to be looked at, and built to be let. Panoramic glazing, premium bathroom fittings, smart-lock entry, finishes chosen so the unit itself is the reason somebody books it. At this tier the pod is a revenue asset rather than a shelter, and it is priced accordingly.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/apple-cabins/interior-pod-length.jpg", width: 1200, height: 896, alt: "Inside an Apple Cabin: a bed, walnut kitchenette and armchair along a wall of full-height glass." },
+        caption: "Tier 3: an Apple Cabin, finished to be let.",
       },
       {
         type: "p",
@@ -307,7 +342,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["X-Fold", "15 m²", R(folding), "No, add locally", "No"],
           ["Expandable home", "18 – 74 m²", R(expandable), "Yes, from the 18 m²", "Yes, basic from the 18 m²"],
-          ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on 9 m and 11.8 m"],
+          ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on the two larger sizes (9 m and 11.8 m)"],
           ["Glamping capsule", "18.6 – 38 m²", R(capsule), "Yes, every model", "Optional extra"],
           ["Nature cabin", "21 m² + terrace", R(nature), "Yes, fully fitted", "Yes, fitted as standard"],
         ],
@@ -315,6 +350,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `All prices exclude VAT. They are for the product only: earthworks, the provision of services and transport to your site are quoted separately.`,
+      },
+      {
+        type: "p",
+        text: `You will not find other suppliers' prices in this guide. We cannot check them, they move, and a competitor's figure we have not verified is worth nothing to you. What we can give you is our own price in each tier and the thing that actually separates the tiers, which is the part that decides what you should be paying.`,
       },
 
       { type: "h2", text: "The costs that are not on the price tag" },
@@ -368,7 +407,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a housing pod cheaper than building a room?",
-        a: "Usually on time, and often on total cost, but the honest comparison includes the groundwork, connections and transport that conventional building also carries. What a pod reliably beats is the timeline and the disruption: the building work happens in a factory, and the unit is on your property and enclosed in days rather than months.",
+        a: "Usually on time, and often on total cost, but a fair comparison includes the groundwork, connections and transport that conventional building also carries. What a pod reliably beats is the timeline and the disruption: the building work happens in a factory, and the unit is on your property and enclosed in days rather than months.",
       },
     ],
     references: [
@@ -410,7 +449,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. If you are looking for a wendy house alternative, the first two are the usual candidates. They get compared constantly and usually badly, because the comparison is almost always made on sticker price alone.`,
+        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. If you have ruled out a wendy house, the first two are the usual candidates. They get compared constantly and usually badly, because the comparison is almost always made on sticker price alone.`,
       },
       {
         type: "p",
@@ -456,6 +495,11 @@ export const blogPosts: BlogPost[] = [
         text: `A shipping container is 2.44 m wide externally, and the internal width after lining is meaningfully less. That constraint is fixed, and it is unforgiving in a bathroom or a bedroom where a door has to swing. It also means the layout of a container home is largely decided by the container rather than by you.`,
       },
       {
+        type: "img",
+        image: { src: "/images/products/expandable-homes/interior-lounge.jpg", width: 1195, height: 896, alt: "Lounge inside an Expandable Home with a grey sofa, white coffee table, dining nook and kitchenette on a wood-look floor." },
+        caption: "Inside an Expandable Home, the range that reaches 74 m².",
+      },
+      {
         type: "p",
         text: `Pods and wendy houses are drawn as rooms first. Our expandable homes reach 74 m² and up to four bedrooms precisely because nothing about the format forces a 2.44 m width; the [glamping capsules](/glamping-capsules) put rooms either side of a central bathroom in a way a container cannot.`,
       },
@@ -480,7 +524,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `On resale, all three do better than a built room in one specific way: they can leave with you. A pod folds down or lifts out, a container lifts out, and a wendy house can sometimes be dismantled. A brick room cannot. If there is any chance you will move, that optionality is worth real money.`,
+        text: `On resale, all three do better than a built room in one specific way: they can leave with you. A pod folds down or lifts out, a container lifts out, and a wendy house can sometimes be dismantled. A brick room cannot. If there is any chance you will move, being able to take it with you is worth real money.`,
       },
 
       { type: "h2", text: "Where a pod is the wrong answer" },
@@ -500,7 +544,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "The comparison that actually decides it" },
       {
         type: "p",
-        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and, for a container, the conversion and lining. That is the number that differs from the advertised one by the largest margin, and it is the only one that lets you compare a R60 000 quote to a R250 000 quote honestly.`,
+        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and, for a container, the conversion and lining. That total is the figure furthest from the advertised price, and it is the only one that lets you compare a R60 000 quote to a R250 000 quote honestly.`,
       },
       {
         type: "p",
@@ -571,6 +615,7 @@ export const blogPosts: BlogPost[] = [
       "prefab home site preparation",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/scenic-bushveld.jpg", width: 2000, height: 1500, alt: "White Expandable Home on a timber deck in golden bushveld with acacia trees at sunset." },
     readingMinutes: 9,
     body: [
       {
@@ -587,10 +632,10 @@ export const blogPosts: BlogPost[] = [
         text: `Building approval in South Africa is administered locally, and requirements genuinely differ between municipalities. Nothing below replaces a call to your own building control department, and where this article and your municipality disagree, your municipality is right.`,
       },
 
-      { type: "h2", text: "1. Does your municipality want plans?" },
+      { type: "h2", text: "1. Do you need plans for a housing pod?" },
       {
         type: "p",
-        text: `The honest answer is: ask them, and ask before you commit to anything.`,
+        text: `Frequently, and your municipality decides, so ask them before you commit to anything.`,
       },
       {
         type: "p",
@@ -625,8 +670,13 @@ export const blogPosts: BlogPost[] = [
         text: `Most units sit on a **level concrete slab** or on **properly levelled precast plinths**. The larger cabins and capsules arrive fully built and are placed onto a prepared foundation. We confirm the exact requirement for your model and site when you order.`,
       },
       {
+        type: "img",
+        image: { src: "/images/products/folding-homes/exterior-forest-render.jpg", width: 1600, height: 1600, alt: "Render of a grey-panel X-Fold with a white door and window, standing on a level paved base on a lawn." },
+        caption: "A render of an X-Fold on a level paved base.",
+      },
+      {
         type: "p",
-        text: `The word doing the work in both of those is *level*. A pod is a rigid, finished box that arrives square. Stand it on a base that is out and the box does not adjust: the doors bind, the windows stop closing cleanly, and in a unit with panoramic glazing the consequences get expensive. This is the one site error that is genuinely difficult and costly to correct afterwards, because fixing it means lifting the unit off again.`,
+        text: `The word doing the work in both of those is level. A pod is a rigid, finished box that arrives square. Stand it on a base that is out and the box does not adjust: the doors bind, the windows stop closing cleanly, and in a unit with panoramic glazing the consequences get expensive. This is the one site error that is genuinely difficult and costly to correct afterwards, because fixing it means lifting the unit off again.`,
       },
       {
         type: "p",
@@ -768,6 +818,7 @@ export const blogPosts: BlogPost[] = [
       "prefab home price per square metre",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/exterior-deployed-lawn.jpg", width: 2400, height: 1018, alt: "Expandable Home opened out on a lawn, with glass doors and windows along its length." },
     readingMinutes: 9,
     body: [
       {
@@ -776,7 +827,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `So here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
+        text: `The short answer: per square metre ex VAT, our expandable homes land at or below a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. Here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
       },
 
       { type: "h2", text: "What a conventional build costs per square metre" },
@@ -806,7 +857,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Read that table honestly and it does not say "prefab is cheaper". It says three different things.`,
+        text: `Read that table carefully and it does not say "prefab is cheaper". It says three different things.`,
       },
 
       { type: "h3", text: "The shell is dramatically cheaper, because it is a shell" },
@@ -814,15 +865,25 @@ export const blogPosts: BlogPost[] = [
         type: "p",
         text: `At ${perM2("folding-homes")} per square metre the [X-Fold](/folding-homes) is a fraction of any conventional rate. It is also a room with two plug points, a light and no plumbing. Compare it to building a bare insulated room, not to building a house, and the comparison is fair. Compare it to a granny flat and it is not.`,
       },
+      {
+        type: "img",
+        image: { src: "/images/products/folding-homes/interior-shell-empty.jpg", width: 2000, height: 1333, alt: "Empty X-Fold interior: white wall boards, a vinyl floor, two windows, a steel door, a ceiling light and a small DB board." },
+        caption: "The X-Fold shell: two plug points, a light and no plumbing.",
+      },
 
       { type: "h3", text: "The mid-range lands at or below the conventional band" },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, at or below the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis the 18 m² is roughly a wash, and the two bigger sizes come in under it.`,
+        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, at or below the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis the 18 m² is roughly level with it, and the two bigger sizes come in under it.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/expandable-homes/interior-lounge.jpg", width: 1195, height: 896, alt: "Lounge inside an Expandable Home with a grey sofa, white coffee table, dining nook and kitchenette on a wood-look floor." },
+        caption: "An Expandable Home lounge, with the kitchenette at the back.",
       },
       {
         type: "p",
-        text: `Where it stops being a wash is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead, but not by the multiple the marketing in this industry implies.`,
+        text: `What tips the balance is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead, but not by the multiple the marketing in this industry implies.`,
       },
 
       { type: "h3", text: "The premium units cost more per square metre, and should" },
@@ -832,7 +893,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "callout",
-        title: "The small-building penalty nobody mentions",
+        title: "The small-building penalty",
         text: `Rand per square metre rises sharply as buildings get smaller, whichever way you build. A bathroom costs roughly the same whether it sits in 18 m² or 180 m², but in the small unit it is a much larger share of the total. This is why a 74 m² expandable is cheaper per square metre than an 18 m² one, and why comparing a tiny home's rate to a full house's rate flatters the house.`,
       },
 
@@ -933,6 +994,7 @@ export const blogPosts: BlogPost[] = [
       "prefab granny flat price",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/exterior-family-evening.jpg", width: 1264, height: 848, alt: "Expandable Home lit up at dusk in a garden clearing, with a lantern-lit dinner table outside." },
     readingMinutes: 9,
     body: [
       {
@@ -970,7 +1032,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [prefab granny flats](/expandable-homes), the expandable homes, are the range bought for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell: it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
+        text: `Our [prefab granny flats](/expandable-homes) are the expandable homes, the range people buy for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell: it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
       },
       {
         type: "p",
@@ -1002,7 +1064,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Does it pay for itself?" },
       {
         type: "p",
-        text: `Often, and this is the real reason the search volume is what it is. Run the arithmetic yourself rather than trusting anyone's headline yield:`,
+        text: `Often, and that is the real reason so many people ask. Run the arithmetic yourself rather than trusting anyone's headline yield:`,
       },
       {
         type: "ol",
@@ -1027,6 +1089,11 @@ export const blogPosts: BlogPost[] = [
           `**A family, or a permanent second home**: the 74 m² at ${R(expandable12m)}, with layouts up to four bedrooms.`,
           `**A guest suite rather than a let**: an [Apple Cabin](/apple-cabins) from ${R(apple)} ex VAT, if the unit is going to be looked at as much as lived in.`,
         ],
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/expandable-homes/brochure-dollhouse.jpg", width: 1360, height: 1166, alt: "Cutaway drawing of a two-bedroom Expandable Home showing the bedrooms, bathroom, kitchen and living area." },
+        caption: "A two-bedroom Expandable Home, roof off: bedrooms, bathroom, kitchen and living area in one unit.",
       },
       {
         type: "cta",
@@ -1100,6 +1167,7 @@ export const blogPosts: BlogPost[] = [
       "tiny home finance South Africa",
     ],
     imageProduct: "nature-cabins",
+    leadImage: { src: "/images/products/nature-cabins/exterior-timber-render.jpg", width: 2400, height: 1018, alt: "Render of a Nature Cabin with an arched timber gable and glass front in a misty mountain meadow." },
     readingMinutes: 8,
     body: [
       {
@@ -1157,7 +1225,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
           `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available, and the bank is lending against the house it already holds, not against the new unit.`,
-          `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a capsule.`,
+          `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a glamping capsule.`,
           `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)}.`,
         ],
       },
@@ -1256,7 +1324,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Glamping is a growing accommodation category in South Africa. Market research updated in June 2026 puts the local glamping market at **USD 28.1 million in 2025, forecast to reach USD 76.5 million by 2034**, a compound growth rate above 11%.`,
+        text: `The units in this guide start at ${R(apple)} ex VAT (Apple Cabin), and the price table is below. First, the market: glamping is a growing accommodation category in South Africa. Market research updated in June 2026 puts the local glamping market at **USD 28.1 million in 2025, forecast to reach USD 76.5 million by 2034**, a compound growth rate above 11%.`,
       },
       {
         type: "p",
@@ -1269,7 +1337,7 @@ export const blogPosts: BlogPost[] = [
         caption: "Tiny Homes SA accommodation units for a glamping or lodge operation",
         head: ["Unit", "From (ex VAT)", "Size", "Standard inclusions", "Suits"],
         rows: [
-          ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings all sizes; kitchenette on 9 m and 11.8 m", "Entry to the premium end; strong photography"],
+          ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings in all sizes; kitchenette on the 9 m and 11.8 m models", "Entry to the premium end; strong photography"],
           ["Glamping Capsule", R(capsule), "18.6 – 38 m²", "Bathroom + premium fittings, geyser, insulation, smart entry", "Flagship units where the room is the reason for the booking"],
           ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater: all fitted", "Longer stays; nothing left to add"],
         ],
@@ -1321,6 +1389,10 @@ export const blogPosts: BlogPost[] = [
       },
 
       { type: "h2", text: "What makes a unit book" },
+      {
+        type: "img",
+        image: { src: "/images/products/glamping-capsules/interior-bed-bushveld-view.jpg", width: 1200, height: 896, alt: "Double bed inside a Glamping Capsule facing black-framed panoramic glass over golden bushveld grass." },
+      },
       {
         type: "p",
         text: `The reason this category grew is that the accommodation itself became the product. A guest chooses a pod over a perfectly good hotel room because it photographs unlike anything else and because it puts them somewhere a hotel cannot. Practically, that means:`,
@@ -1400,6 +1472,7 @@ export const blogPosts: BlogPost[] = [
       "off grid living South Africa",
     ],
     imageProduct: "nature-cabins",
+    leadImage: { src: "/images/products/nature-cabins/exterior-timber-render.jpg", width: 2400, height: 1018, alt: "Render of a Nature Cabin with an arched timber gable and glass front in a misty mountain meadow." },
     readingMinutes: 9,
     body: [
       {
@@ -1414,7 +1487,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Power" },
       {
         type: "p",
-        text: `Solar sizing is driven by what you run, not by the size of the building. The pattern that catches people out is that the small, boring loads (a fridge running all day, a geyser element, a kettle) dominate, while lights barely register.`,
+        text: `Solar sizing is driven by what you run, not by the size of the building. The pattern that catches people out is that the everyday loads (a fridge running all day, a geyser element, a kettle) dominate, while lights barely register.`,
       },
       {
         type: "ul",
@@ -1547,6 +1620,7 @@ export const blogPosts: BlogPost[] = [
       "prefab staff housing cost",
     ],
     imageProduct: "folding-homes",
+    leadImage: { src: "/images/products/folding-homes/site-installations-aerial.jpg", width: 2000, height: 1116, alt: "Render of rows of white X-Fold units on a cleared site in dry bushveld, seen from above." },
     readingMinutes: 8,
     body: [
       {
@@ -1558,7 +1632,7 @@ export const blogPosts: BlogPost[] = [
         text: `Here is how the range prices out for that job.`,
       },
 
-      { type: "h2", text: "The two units that suit it" },
+      { type: "h2", text: "The two units that suit staff housing" },
       {
         type: "table",
         caption: "Units for staff accommodation and site offices",
@@ -1578,6 +1652,11 @@ export const blogPosts: BlogPost[] = [
         text: `For volume deployment the [X-Fold](/folding-homes) at ${R(folding)} ex VAT is the workhorse. It ships flat (which matters when you are moving twenty of them) and two people unfold it in minutes with no specialist crew. It carries upgraded floor beams, EPS insulation and a basic electrical setup, and it stacks two high where ground space is tight.`,
       },
       {
+        type: "img",
+        image: { src: "/images/products/folding-homes/folding-mechanism.png", width: 1600, height: 1421, alt: "X-Fold half-folded, its hinged wall panels opening in an X shape." },
+        caption: "The X-Fold half-folded. It travels flat, which is why it reaches sites a module can't.",
+      },
+      {
         type: "p",
         text: `The [expandable homes](/expandable-homes) from ${R(expandable)} are the answer where staff need self-contained accommodation rather than a room: bathroom, small basic kitchen and installed services from the 18 m² up. Larger sizes suit family accommodation or a supervisor's unit.`,
       },
@@ -1590,6 +1669,11 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `The X-Fold arrives **wired but not plumbed**. That is deliberate and it is what keeps the price where it is. It gives you two routes: a **shared ablution block** serving several units, or a local installer fitting a wet room into each. Shared blocks are almost always cheaper per bed at any scale, and they concentrate the plumbing into one civil job rather than twenty. Per-unit fit-out buys privacy and suits family or supervisor accommodation.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/folding-homes/interior-shell-empty-v2.jpg", width: 2000, height: 1333, alt: "Empty X-Fold interior with white wall boards, a vinyl floor, a steel door, a window and a small DB board, and no plumbing." },
+        caption: "An X-Fold as it arrives: wired, with a small DB board, and no plumbing.",
       },
       {
         type: "callout",
@@ -1620,7 +1704,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `For volume orders, tell us the number of units and the site and we will quote the delivery as one run rather than unit by unit.`,
+        text: `Ordering several? We quote the delivery as one run rather than unit by unit.`,
       },
       {
         type: "cta",
@@ -1706,6 +1790,10 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        type: "img",
+        image: { src: "/images/products/outdoor-kitchens/kitchen-storage-detail.jpg", width: 2000, height: 1500, alt: "Outdoor Kitchen cabinets and a drawer open under the LED canopy, with plates, glassware and linen stacked inside." },
+      },
+      {
         type: "p",
         text: `All four are 0.8 m deep and 2.4 m high, in a wide range of custom colours. Every one arrives with the same core specification: a **remote-controlled motorised lift-up roof**, a quartz stone countertop with a water-barrier edge, a stainless-steel sink with a pull-out faucet, embedded plumbing and electrical with an outdoor distribution box, recessed lighting and an adjustable LED ambient strip.`,
       },
@@ -1717,7 +1805,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Building versus buying" },
       {
         type: "p",
-        text: `A masonry braai area is genuinely the better answer in some cases: if it has to match existing brickwork, tuck into an awkward corner, or form part of a larger renovation already underway. What it is not is quicker or more predictable.`,
+        text: `A masonry braai area is the better answer in some cases: if it has to match existing brickwork, tuck into an awkward corner, or form part of a larger renovation already underway. What it is not is quicker or more predictable.`,
       },
       {
         type: "ul",
@@ -1732,7 +1820,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Two things to sort before delivery",
-        text: `A level base (these are 500 to 750 kg units) and where water and power come from. The plumbing and electrical are embedded in the unit, but something still has to feed them. Sort both while the order is in production and delivery day is a delivery rather than the start of another project.`,
+        text: `A level base (these are 500 to 750 kg units) and where water and power come from. The plumbing and electrical are embedded in the unit, but something still has to feed them. Sort both while the order is in production, so that delivery day is just a delivery and not the start of another project.`,
       },
 
       { type: "h2", text: "Which extras are worth it" },
@@ -1837,6 +1925,7 @@ export const blogPosts: BlogPost[] = [
       "brick vs prefab South Africa",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/exterior-mid-expansion.jpg", width: 2000, height: 1333, alt: "Expandable Home part-way through opening out on site, its side sections folding down." },
     readingMinutes: 9,
     body: [
       {
@@ -1864,6 +1953,10 @@ export const blogPosts: BlogPost[] = [
           `**Valuation and resale are well understood.** Valuers, insurers and buyers have decades of comparable data on brick. Prefab has thinner data, which shows up as caution.`,
           `**Marginal cost falls if you are already building.** Contractors on site for a bigger job can add a room more cheaply than a separate delivered unit with its own transport and groundwork.`,
         ],
+      },
+      {
+        type: "img",
+        image: { src: "/images/blog/builder-laying-cement-blocks.webp", width: 1200, height: 799, alt: "A builder's hands setting a cement block on a fresh bed of mortar." },
       },
 
       { type: "h2", text: "Building conventionally: the case against" },
@@ -2032,6 +2125,7 @@ export const blogPosts: BlogPost[] = [
       "do I need plans for a prefab structure",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/blog/pencil-on-a-construction-drawing.webp", width: 1600, height: 899, alt: "A pencil and scale ruler on a printed construction drawing with dimensions." },
     readingMinutes: 12,
     body: [
       {
@@ -2045,7 +2139,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `There are **two different legal routes**, and which one you are on changes everything. But first, the question underneath all of this.`,
+        text: `There are **two different legal routes**, and which one you are on changes everything. First, though, a question that comes before either route.`,
       },
 
       { type: "h2", text: "Does a movable structure need plans?" },
@@ -2064,7 +2158,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `And section 4(1) is equally blunt: *"No person shall without the prior approval in writing of the local authority in question, erect any building in respect of which plans and specifications are to be drawn and submitted in terms of this Act."*`,
+        text: `And section 4(1) is equally blunt: "No person shall without the prior approval in writing of the local authority in question, erect any building in respect of which plans and specifications are to be drawn and submitted in terms of this Act."`,
       },
       {
         type: "p",
@@ -2095,7 +2189,15 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "Step 2: Plans, drawn by someone specific" },
       {
         type: "p",
-        text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person**, registered in an appropriate category under the Architectural Profession Act, the Engineering Profession Act or another relevant act. For architectural services, that means the **South African Council for the Architectural Profession (SACAP)**: a person who is not registered with SACAP is not legally allowed to provide them. Its four professional categories are Professional Architect, Professional Senior Architectural Technologist, Professional Architectural Technologist and Professional Architectural Draughtsperson, and which of them may design a project depends on its complexity and the sensitivity of the site. SACAP's Code of Conduct requires them to use their title and SACAP registration number in their architectural reports and other documentation, and practising in any of those categories without being registered in it is an offence under the Architectural Profession Act.`,
+        text: `You cannot draw them yourself. Building plans must be prepared and submitted by a **competent person**, registered in an appropriate category under the Architectural Profession Act, the Engineering Profession Act or another relevant act. For architectural services, that means the **South African Council for the Architectural Profession (SACAP)**: a person who is not registered with SACAP is not legally allowed to provide them.`,
+      },
+      {
+        type: "p",
+        text: `Its four professional categories are Professional Architect, Professional Senior Architectural Technologist, Professional Architectural Technologist and Professional Architectural Draughtsperson, and which of them may design a project depends on its complexity and the sensitivity of the site.`,
+      },
+      {
+        type: "p",
+        text: `SACAP's Code of Conduct requires them to use their title and SACAP registration number in their architectural reports and other documentation, and practising in any of those categories without being registered in it is an offence under the Architectural Profession Act.`,
       },
       {
         type: "p",
@@ -2130,7 +2232,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs: no warranty cover, and restrictions on selling the property for a period afterwards.`,
+        text: `An owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs: no warranty cover, and restrictions on selling the property for a period afterwards.`,
       },
 
       { type: "h3", text: "Step 5: Certificates, at the end" },
@@ -2143,7 +2245,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "callout",
-        title: "The honest summary of route 1",
+        title: "Route 1 in one paragraph",
         text: `Land use decision, plans by a registered competent person, a 30- or 60-day municipal clock, NHBRC enrolment 15 days before you break ground, inspections through construction, an electrical certificate and an occupancy certificate at the end. None of it is optional, and the occupancy certificate is the one that bites at resale.`,
       },
 
@@ -2154,7 +2256,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one *"so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time"*, explicitly excluding a builder's shed.`,
+        text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one "so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time", explicitly excluding a builder's shed.`,
       },
       {
         type: "p",
@@ -2190,7 +2292,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `One more thing this route is not: a loophole. A temporary building is one *"so declared by the owner"* for a *"specified purpose for a specified limited period"*. Declaring a permanent home temporary to dodge the approval path is a misdeclaration with a demolition clause attached to it.`,
+        text: `One more thing this route is not: a loophole. A temporary building is one "so declared by the owner" for a "specified purpose for a specified limited period". Declaring a permanent home temporary to dodge the approval path is a misdeclaration with a demolition clause attached to it.`,
       },
 
       { type: "h2", text: "What minor building work does, and does not, cover" },
@@ -2213,7 +2315,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Read that list carefully and the crucial point is what is **absent from it: a dwelling**. Minor building work covers sheds, carports, playhouses and walls, not habitable accommodation. A tiny home someone sleeps in does not become exempt because it is small. And even where the exemption applies, the work must still comply with the National Building Regulations; you are excused the plans, not the standards.`,
+        text: `Read that list carefully and notice what is **missing from it: a dwelling**. Minor building work covers sheds, carports, playhouses and walls, not habitable accommodation. A tiny home someone sleeps in does not become exempt because it is small. And even where the exemption applies, the work must still comply with the National Building Regulations; you are excused the plans, not the standards.`,
       },
 
       { type: "h2", text: "Which route applies to which unit" },
@@ -2225,9 +2327,9 @@ export const blogPosts: BlogPost[] = [
           ["Granny flat, permanently founded", "Route 1, in full", "A dwelling intended to stay; plus consent use for a second dwelling"],
           ["Site office for a 14-month project", "Route 2 (A23)", "Genuinely temporary, specified period, removed at the end"],
           ["Rental cabin on a farm, staying", "Route 1", "Permanent accommodation, plus a land-use question for the use itself"],
-          ["Staff accommodation, this site only", "Route 2 (A23)", "Time-bound, relocates with the operation"],
-          ["Home office in the garden", "Ask the BCO", "Depends on foundation, permanence and whether anyone sleeps in it"],
-          ["Tool store under 10 m²", "Minor building work", "Listed category, written exemption from the BCO"],
+          ["Staff accommodation for one site, then moved on", "Route 2 (A23)", "Time-bound, relocates with the operation"],
+          ["Home office in the garden", "Ask the building control officer", "Depends on foundation, permanence and whether anyone sleeps in it"],
+          ["Tool store under 10 m²", "Minor building work", "Listed category, written exemption from the building control officer"],
         ],
       },
       {
@@ -2412,6 +2514,7 @@ export const blogPosts: BlogPost[] = [
       "prefab home instalments",
     ],
     imageProduct: "folding-homes",
+    leadImage: { src: "/images/products/folding-homes/exterior-timber-door.jpg", width: 2000, height: 857, alt: "Timber-clad X-Fold with a steel door and window, on a lawn at golden hour." },
     readingMinutes: 8,
     body: [
       {
@@ -2435,7 +2538,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "If another supplier does offer it, ask these three things",
-        text: `Who owns the unit while you're paying, what happens to the money you've already paid if you miss an instalment, and whether the supplier is registered with the National Credit Regulator as a credit provider. A registered credit provider has an NCR registration number, and you can look it up on the regulator's website. Paying for movable goods in instalments, with interest or fees on top, is a credit agreement under the National Credit Act whatever the flyer calls it, and the Act generally requires whoever extends that credit to be a registered credit provider.`,
+        text: `One: who owns the unit while you're paying? Two: what happens to the money you've already paid if you miss an instalment? Three: whether the supplier is registered with the National Credit Regulator as a credit provider. A registered credit provider has an NCR registration number, and you can look it up on the regulator's website. Paying for movable goods in instalments, with interest or fees on top, is a credit agreement under the National Credit Act whatever the flyer calls it, and the Act generally requires whoever extends that credit to be a registered credit provider.`,
       },
 
       { type: "h2", text: "Why a new home loan usually won't cover it" },
@@ -2502,7 +2605,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "What this should change about how you shop",
-        text: `Work out what you can service **over five years** and shop for that number, not the one you could service over twenty. It's the difference between the [X-Fold](/folding-homes) end of the range and the [glamping capsule](/glamping-capsules) end, and it's far better to find that out before you've chosen a unit than after.`,
+        text: `Work out what you can service **over five years** and shop for that number, not the one you could service over twenty. The gap between those two numbers is the gap between the [X-Fold](/folding-homes) end of the range and the [glamping capsule](/glamping-capsules) end, and it's far better to find that out before you've chosen a unit than after.`,
       },
 
       { type: "h2", text: "The routes that exist, cheapest money first" },
@@ -2637,13 +2740,18 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `This guide says what each word usually means and what modular does and does not change about approval. It also shows which of our own units fits which word, and what to ask before you buy. If you came here shopping for [modular homes in South Africa](/), our home page shows every range we sell. This guide is about the words.`,
+        text: `This guide says what each word usually means and what modular does and does not change about approval. It also shows which of our own units fits which word, and what to ask before you buy. If you came here shopping for [modular homes in South Africa](/), our home page shows every range we sell. This one sticks to what the words mean.`,
       },
 
       { type: "h2", text: "What is the difference between modular, prefab and flat-pack?" },
       {
         type: "p",
         text: `Prefab is the widest of the three, and a modular home is one kind of prefab. Flat-pack is another kind: it arrives in panels or folded, not as a finished section. The table sets out how each word is usually used.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/folding-homes/unfold-mechanism-diagram.jpg", width: 1000, height: 1000, alt: "Diagram of the X-Fold assembled, flat-packed for transport, and unfolding." },
+        caption: "Flat-pack in practice: the X-Fold assembled, folded flat for the truck, and unfolding.",
       },
       {
         type: "table",
@@ -2676,7 +2784,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "How does a modular home show it meets the building regulations?" },
       {
         type: "p",
-        text: `Where the way it is built is not covered by the South African National Standards, it does so through a rational design or an Agrément certificate. A building control officer will want to know how the system shows it meets the regulations.`,
+        text: `If the way it is built is not covered by the South African National Standards, it shows it meets the regulations through a rational design or an Agrément certificate. A building control officer will want to know how the system shows it meets the regulations.`,
       },
       {
         type: "p",
@@ -2730,7 +2838,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The [Apple Cabins](/apple-cabins), [Glamping Capsules](/glamping-capsules) and [Nature Cabins](/nature-cabins) are fully built modules, and they arrive complete. The Apple Cabins arrive fully assembled. The Glamping Capsules are delivered and placed on site with no on-site construction. The Nature Cabin arrives fully built and needs only its final connections to services. Because it comes on an oversized cargo truck, the site has to be reachable without 4x4 access.`,
+        text: `The [Apple Cabins](/apple-cabins), [Glamping Capsules](/glamping-capsules) and [Nature Cabins](/nature-cabins) are fully built modules. Here is how each one arrives. The Apple Cabins arrive fully assembled. The Glamping Capsules are delivered and placed on site with no on-site construction. The Nature Cabin arrives fully built and needs only its final connections to services. Because it comes on an oversized cargo truck, the site has to be reachable on roads that don't need a 4x4.`,
       },
       {
         type: "p",
@@ -2766,11 +2874,12 @@ export const blogPosts: BlogPost[] = [
       "prefab house hidden costs",
     ],
     imageProduct: "glamping-capsules",
+    leadImage: { src: "/images/products/expandable-homes/exterior-hero-dusk.jpg", width: 2000, height: 857, alt: "Long white Expandable Home with lit windows and glass doors at dusk." },
     readingMinutes: 7,
     body: [
       {
         type: "p",
-        text: `What is included in a prefab house price is set by the specification behind it. Read the price as the unit and the fittings that specification lists as standard, and nothing around the unit unless the quote says otherwise. On our two-bedroom units, the price includes insulated walls, double glazing, a bathroom, and the plumbing and wiring inside, with a kitchen on the expandable homes. The base, the connections to services, council approval, transport to your site and VAT come on top.`,
+        text: `What a prefab house price includes depends on the specification behind it. Read the price as the unit and the fittings that specification lists as standard, and nothing around the unit unless the quote says otherwise. On our two-bedroom units, the price includes insulated walls, double glazing, a bathroom, and the plumbing and wiring inside, with a kitchen on the expandable homes. The base, the connections to services, council approval, transport to your site and VAT come on top.`,
       },
       {
         type: "p",
@@ -2798,7 +2907,11 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "What comes standard in a two-bedroom glamping capsule?" },
       {
         type: "p",
-        text: `A bathroom with premium fittings, a geyser, multi-layer insulation, complete plumbing and electrical, interior and exterior lighting, what the page calls intelligent front-door access, and the double glazing. All of that is standard on every capsule model. The glazing runs from floor to ceiling and wraps around each room.`,
+        text: `A bathroom with premium fittings, a geyser, multi-layer insulation, complete plumbing and electrical, interior and exterior lighting, what our glamping capsules page calls intelligent front-door access, and the double glazing. All of that is standard on every capsule model. The glazing runs from floor to ceiling and wraps around each room.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/glamping-capsules/interior-ensuite.jpg", width: 1200, height: 896, alt: "Ensuite bathroom inside a Glamping Capsule with a rain shower and a stone basin on a floating vanity." },
       },
       {
         type: "p",
@@ -2816,7 +2929,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `One of those is not optional everywhere. The page says the metal carved board [resists salt-air corrosion](/blog/prefab-homes-coast-salt-air) and is required on coastal sites. If you are pricing a 6m for a plot in Ballito, price it with that panel from the start, because the standard wall is not the one you will be buying.`,
+        text: `One of those is not optional everywhere. Our expandable homes page says the metal carved board [resists salt-air corrosion](/blog/prefab-homes-coast-salt-air) and is required on coastal sites. If you are pricing a 6m for a plot in Ballito, price it with that panel from the start, because the standard wall is not the one you will be buying.`,
       },
       {
         type: "p",
@@ -2875,7 +2988,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Transport to your site is quoted separately, on distance and access. Installation on site is quoted separately too, as part of your quotation. Ask whether our turnkey service covers your area and your unit. Where it does, we can arrange the groundwork, connections and installation, or you can use your own contractors. Nothing in this post is a quotation.`,
+        text: `Transport to your site is quoted separately, on distance and access. Installation on site is its own line too, within your quotation. Ask whether our turnkey service covers your area and your unit. Where it does, we can arrange the groundwork, connections and installation, or you can use your own contractors. Nothing in this post is a quotation.`,
       },
 
       { type: "h2", text: "Where do you start pricing a two-bedroom unit?" },
@@ -2902,11 +3015,12 @@ export const blogPosts: BlogPost[] = [
       "can you move a prefab home",
     ],
     imageProduct: "folding-homes",
+    leadImage: { src: "/images/products/folding-homes/exterior-lawn-1.jpg", width: 1584, height: 672, alt: "White X-Fold with a barred window and steel door in a suburban garden." },
     readingMinutes: 8,
     body: [
       {
         type: "p",
-        text: `Mobile homes in South Africa are not the same thing as caravans. Where municipal by-laws define the two, a caravan is a vehicle and a mobile home is an approved dwelling with its services connected. You can move one, but the building law counts putting it up again as erecting it, so check with building control at the new address before the move. Of our own ranges, the X-Fold is the one designed to fold back down and move.`,
+        text: `In South Africa, a mobile home is not the same thing as a caravan. Where municipal by-laws define the two, a caravan is a vehicle and a mobile home is an approved dwelling with its services connected. You can move one, but the building law counts putting it up again as erecting it, so check with building control at the new address before the move. Of our own ranges, the X-Fold is the one designed to fold back down and move.`,
       },
       {
         type: "p",
@@ -2924,7 +3038,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Take Drakenstein Municipality's Parks for Caravans and Mobile Homes By-law, published in the Western Cape Provincial Gazette in 2007. It defines a caravan as "any vehicle permanently fitted out for use by persons for living and sleeping purposes, whether or not such a vehicle is a trailer". A mobile home is a structure assembled off site and approved by the municipality, with its services connected. In the by-law's words, it is "designed to be used as a permanent dwelling". [Cederberg Municipality's by-law on the same subject](https://www.westerncape.gov.za/department-premier/files/wcg-blob-files?file=documents/gazette-2004-10-6181-provin04ex-exgaz6181-1c54bafb.pdf&type=file#page=197), gazetted in 2004, defines both words the same way.`,
+        text: `Take Drakenstein Municipality's Parks for Caravans and Mobile Homes By-law, published in the Western Cape Provincial Gazette in 2007. It defines a caravan as "any vehicle permanently fitted out for use by persons for living and sleeping purposes, whether or not such a vehicle is a trailer".`,
+      },
+      {
+        type: "p",
+        text: `A mobile home is a structure assembled off site and approved by the municipality, with its services connected. In the by-law's words, it is "designed to be used as a permanent dwelling". [Cederberg Municipality's by-law on the same subject](https://www.westerncape.gov.za/department-premier/files/wcg-blob-files?file=documents/gazette-2004-10-6181-provin04ex-exgaz6181-1c54bafb.pdf&type=file#page=197), gazetted in 2004, defines both words the same way.`,
       },
       {
         type: "p",
@@ -2953,6 +3071,11 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `Some can, and in our range the one designed for it is the [X-Fold folding home](/folding-homes). It travels flat and unfolds where it will stand, without a specialist crew. When it needs to go somewhere else, you fold it back down, load it and set it up at the new site. That is the point of the design.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/folding-homes/unfold-mechanism-diagram.jpg", width: 1000, height: 1000, alt: "Diagram of the X-Fold assembled, flat-packed for transport, and unfolding." },
+        caption: "The X-Fold assembled, folded flat for the truck, and unfolding again.",
       },
       {
         type: "p",
@@ -3054,6 +3177,7 @@ export const blogPosts: BlogPost[] = [
       "prefab homes KZN",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/scenic-coastal.jpg", width: 2000, height: 1500, alt: "White Expandable Home in coastal dunes at sunset with the sea behind." },
     readingMinutes: 6,
     body: [
       {
@@ -3071,6 +3195,10 @@ export const blogPosts: BlogPost[] = [
         text: `It speeds up rust. Metal corrodes when a film of moisture sits on it, and sea salt dissolved in that film [makes the reaction much faster](https://www.branz.co.nz/documents/1207/FS_Metal_Corrosion_1_v3.pdf). The [international standard](https://www.evs.ee/en/iso-9223-2012) that classifies how corrosive the air is in a given place names airborne salinity as a key factor, alongside humidity and sulphur dioxide.`,
       },
       {
+        type: "img",
+        image: { src: "/images/blog/rust-streaks-on-painted-steel.webp", width: 1000, height: 666, alt: "Rust streaks running down a painted steel panel below a corroded bolt." },
+      },
+      {
         type: "p",
         text: `Galvanising doesn't make a frame immune, either. In tests by BRANZ, New Zealand's building research body, galvanised steel at its coastal site generally corroded faster than the same parts at its rural site. Salt travels, too. Wind off the sea carries it inland, so a plot with no sea view can still be exposed.`,
       },
@@ -3084,13 +3212,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `It's the same reason a metal sheet can be [recommended for a roof in a harsh coastal setting and not for wall cladding](https://www.branz.co.nz/documents/1207/FS_Metal_Corrosion_1_v3.pdf). So when you compare units for the coast, ask what the walls are made of as well as the roof.`,
+        text: `That's also why the same metal sheet can be [recommended for a roof in a harsh coastal setting but not for wall cladding](https://www.branz.co.nz/documents/1207/FS_Metal_Corrosion_1_v3.pdf). So when you compare units for the coast, ask what the walls are made of as well as the roof.`,
       },
 
       { type: "h2", text: "What we specify on each range" },
       {
         type: "p",
-        text: `It depends on the range. If you're still deciding between kinds of prefab home, our guide to [what a modular home is](/blog/modular-homes-south-africa-explained) explains how they compare. On ours, near the sea, it works like this.`,
+        text: `It depends on the range. On ours, near the sea, it works like this.`,
       },
       {
         type: "p",
@@ -3102,7 +3230,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The [Nature Cabin](/nature-cabins) has a steel structure behind its timber-look exterior, and for a coastal site we specify it for salt air on the quotation.`,
+        text: `The [Nature Cabin](/nature-cabins) has a steel structure behind its timber-look exterior, and for a coastal site we specify the cabin for salt air on the quotation.`,
       },
       {
         type: "p",
@@ -3111,6 +3239,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `Our [outdoor kitchens](/outdoor-kitchens) have a corrosion-resistant galvanised steel frame, an aluminium-alloy shell and rust-resistant aluminium switches and sockets. Resistant is the honest word. Salt still settles on them, so they need the same rinsing as anything else near the sea.`,
+      },
+      {
+        type: "p",
+        text: `If you're still deciding between kinds of prefab home, our guide to [what a modular home is](/blog/modular-homes-south-africa-explained) explains how they compare.`,
       },
 
       { type: "h2", text: "How the quote knows your site is coastal" },
@@ -3130,7 +3262,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Looking after it by the sea" },
       {
         type: "p",
-        text: `Rinse off the salt that rain can't reach. Washing down surfaces exposed to wind-driven salt spray, and recoating protective finishes, are both [basic maintenance](https://www.branz.co.nz/documents/1209/FS_Metal_Corrosion_3_v2.pdf). Get the maintenance recommendations for each product and follow them. For a unit on the coast, that means:`,
+        text: `Rinse off the salt that rain can't reach. Washing down surfaces exposed to wind-driven salt spray is [basic maintenance](https://www.branz.co.nz/documents/1209/FS_Metal_Corrosion_3_v2.pdf), and so is recoating protective finishes. Get the maintenance recommendations for each product and follow them. For a unit on the coast, that means:`,
       },
       {
         type: "ul",
@@ -3183,6 +3315,7 @@ export const blogPosts: BlogPost[] = [
       "Consumer Protection Act deposit",
     ],
     imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/exterior-front-elevation.jpg", width: 2000, height: 1333, alt: "Front of an Expandable Home with a gabled roof, glass doors and two windows." },
     readingMinutes: 6,
     body: [
       {
@@ -3191,7 +3324,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our own process works the same way. You [choose and customise your home](/) and see the price as you build it, then you confirm the order with a deposit. That's the point where your home goes into production. So everything below belongs before it.`,
+        text: `Here's where the deposit sits in our own process. You [choose and customise your home](/) and see the price as you build it, then you confirm the order with a deposit. That's the point where your home goes into production. So everything below belongs before it.`,
       },
       { type: "h2", text: `See it, measure it, then decide` },
       {
@@ -3200,7 +3333,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `That's why our homes are standing at our showroom in Centurion. To view a unit, [email us](/contact#viewing) and tell us why you're interested, what the units will be used for, where they'll go and how many units you're looking at. If you do come out, bring a tape. Open the cupboards, look at the joins, check the door widths.`,
+        text: `That's why our homes are standing at our showroom in Centurion. To view a unit, [email us](/contact#viewing) with what the units will be used for, where they'll go, how many units you're looking at and why you're interested. If you do come out, bring a tape. Open the cupboards, look at the joins, check the door widths.`,
       },
       {
         type: "p",
@@ -3240,7 +3373,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The law backs you on this. Where the Consumer Protection Act applies, a written consumer agreement has to come with [a copy of its terms in plain language, setting out an itemised breakdown of what you owe](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). The Act [doesn't apply to a sale where the buyer is a company, trust or other juristic person whose asset value or annual turnover reaches the threshold the Minister sets](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf), so a buyer like that can't count on the rights in this post and should check what its own contract says. And if you buy solely on a description or a sample, the Act says [what's delivered must match it in all material respects](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). That's a good reason to keep the specification you were quoted on.`,
+        text: `The law backs you on this. Where the Consumer Protection Act applies, a written consumer agreement has to come with [a copy of its terms in plain language, setting out an itemised breakdown of what you owe](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf).`,
+      },
+      {
+        type: "p",
+        text: `Buying through a company or trust? Read this part. The Act [doesn't apply to a sale where the buyer is a company, trust or other juristic person whose asset value or annual turnover reaches the threshold the Minister sets](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf), so a buyer like that can't count on the rights in this post and should check what its own contract says. And if you buy solely on a description or a sample, the Act says [what's delivered must match it in all material respects](https://www.gov.za/sites/default/files/gcis_document/201409/321864670.pdf). That's a good reason to keep the specification you were quoted on.`,
       },
       { type: "h2", text: `Settle the site before the money` },
       {
@@ -3285,7 +3422,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: `Ask us the awkward questions before you pay` },
       {
         type: "p",
-        text: `Start with the paperwork. If you're buying units for a business, [send us a business enquiry](/contact#business) with your company name, what the units will be used for, where they'll go and how many you need, and we'll come back to you with a formal quotation. If you're buying a home for yourself, [build your quote](/quote) and you'll see every extra listed line by line. Then check what you have against the list above, and ask us about anything that isn't clear before you pay a deposit.`,
+        text: `Start with the paperwork. If you're buying units for a business, [send us a business enquiry](/contact#business) using the button below, and we'll come back to you with a formal quotation. If you're buying a home for yourself, [build your quote](/quote) and you'll see every extra listed line by line. Then check what you have against the list above, and ask us about anything that isn't clear before you pay a deposit.`,
       },
     ],
   },
@@ -3305,11 +3442,12 @@ export const blogPosts: BlogPost[] = [
       "prefab site office and staff units",
     ],
     imageProduct: "folding-homes",
+    leadImage: { src: "/images/products/folding-homes/site-installations-collage.png", width: 1376, height: 768, alt: "Render of rows of white X-Fold units laid out in a grid on an open site at sunrise." },
     readingMinutes: 5,
     body: [
       {
         type: "p",
-        text: `When a company asks us for prefab buildings, the quotation we send back can only be as exact as the enquiry it answers. So the business enquiry on our [contact page](/contact#business) asks for the same things every time: your company name, what the units will be used for, where they will go, and how many you're looking at, with the range if you know it. We'll come back to you with a formal quotation.`,
+        text: `If you're buying prefab buildings for a business, the quotation we send back can only be as exact as your enquiry. So the business enquiry on our [contact page](/contact#business) asks for the same things every time: your company name, what the units will be used for, where they will go, and how many you're looking at, with the range if you know it. We'll come back to you with a formal quotation.`,
       },
       {
         type: "p",
@@ -3329,6 +3467,11 @@ export const blogPosts: BlogPost[] = [
           `**Guest suites for a lodge or resort.** [Glamping capsules](/glamping-capsules), [nature cabins](/nature-cabins) and [Apple Cabins](/apple-cabins) arrive fully built, so you add suites without a building site.`,
           `**Shared facilities on an estate.** [Outdoor kitchens](/outdoor-kitchens) give an estate or apartment scheme a communal braai facility.`,
         ],
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/glamping-capsules/exterior-capsule-row-dusk.jpg", width: 1376, height: 768, alt: "Render of three white Glamping Capsules with lit interiors on wooden decks at dusk." },
+        caption: "A render of Glamping Capsules set out as lodge guest suites.",
       },
       {
         type: "p",
@@ -3371,11 +3514,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `There's a land-use question too. Under the [Spatial Planning and Land Use Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/367305-8act16of20.pdf), land may be used only for the purposes its land use scheme allows, and a permitted use can be changed with the approval of a Municipal Planning Tribunal, or of a municipal official where the municipality has authorised one to decide that kind of application. Housing a crew on farmland or adding guest suites to a property can be a zoning matter as well as a building one.`,
+        text: `There's a land-use question too. Under the [Spatial Planning and Land Use Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/367305-8act16of20.pdf), land may be used only for the purposes its land use scheme allows. A permitted use can be changed with the approval of a Municipal Planning Tribunal, or of a municipal official where the municipality has authorised one to decide that kind of application. Housing a crew on farmland or adding guest suites to a property can be a zoning matter as well as a building one.`,
       },
       {
         type: "p",
-        text: `This is general information. The municipality's building control and planning offices decide what your units need, and housing workers on your own land carries obligations that belong with your own legal adviser. Our [building approval guide](/blog/building-approval-south-africa-what-you-need) sets out the routes in more detail, so you know what to ask.`,
+        text: `This is general information. The municipality's building control and planning offices decide what your units need, and housing workers on your own land carries obligations to take up with your own legal adviser. Our [building approval guide](/blog/building-approval-south-africa-what-you-need) sets out the routes in more detail, so you know what to ask.`,
       },
       { type: "h2", text: `What to put in the email` },
       {

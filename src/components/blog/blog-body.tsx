@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { BlogBlock } from "@/data/blog";
 import { ButtonLink } from "@/components/ui/button";
@@ -171,6 +172,29 @@ export function BlogBody({ blocks }: { blocks: BlogBlock[] }) {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ButtonLink>
               </div>
+            );
+
+          case "img":
+            // Inline pictures sit in the reading column. next/image lazy-loads
+            // them (no `priority`), sets width and height from the source so
+            // the page doesn't jump, and serves AVIF or WebP at the size the
+            // screen needs. The lead picture above the body is the eager one.
+            return (
+              <figure key={i} className="my-8 max-w-[68ch]">
+                <Image
+                  src={block.image.src}
+                  alt={block.image.alt}
+                  width={block.image.width}
+                  height={block.image.height}
+                  sizes="(min-width: 768px) 720px, 100vw"
+                  className="h-auto w-full rounded-3xl"
+                />
+                {block.caption ? (
+                  <figcaption className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
+                    <RichText text={block.caption} />
+                  </figcaption>
+                ) : null}
+              </figure>
             );
         }
       })}

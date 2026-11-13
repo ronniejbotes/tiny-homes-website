@@ -35,3 +35,15 @@ export function getGalleryImages(slug: string): ProductImage[] {
 // carries the real per-size plans, and it now lets a customer pick one, which a
 // grid of pictures never did. The diagram images themselves are still used, by
 // the brochure generator in scripts/brochure/.
+
+/**
+ * A blog post's lead picture: its own `leadImage` when it has one, otherwise
+ * the hero of the product it is filed under. One function, so the post page,
+ * its share card and the guides index always show the same picture.
+ */
+export function getPostLeadImage(post: {
+  leadImage?: { src: string; width: number; height: number; alt: string };
+  imageProduct: string;
+}): { src: string; width: number; height: number; alt: string } | undefined {
+  return post.leadImage ?? getHeroImage(post.imageProduct);
+}

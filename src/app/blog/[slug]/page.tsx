@@ -15,7 +15,7 @@ import {
 } from "@/lib/schema";
 import { BlogBody } from "@/components/blog/blog-body";
 import { toPlainText } from "@/components/blog/rich-text";
-import { getHeroImage } from "@/components/product/product-images";
+import { getPostLeadImage } from "@/components/product/product-images";
 import { blogSlugs, getBlogPost, relatedPosts } from "@/data/blog";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const post = getBlogPost(slug);
   if (!post) return {};
 
-  const image = getHeroImage(post.imageProduct);
+  const image = getPostLeadImage(post);
   const path = `/blog/${post.slug}`;
 
   return {
@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   const post = getBlogPost(slug);
   if (!post) notFound();
 
-  const image = getHeroImage(post.imageProduct);
+  const image = getPostLeadImage(post);
   const path = `/blog/${post.slug}`;
   const more = relatedPosts(post.slug);
 
