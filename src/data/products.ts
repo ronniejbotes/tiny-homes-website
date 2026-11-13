@@ -309,7 +309,7 @@ export const products: Product[] = [
     summary:
       "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
     description:
-      "Expandable homes are the fastest way to put a real, full-size home on the ground: your space, your way. Delivered as a single module, each home expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
+      "An expandable home arrives on your site as one module: your space, your way. The 6m and 12m homes expand on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics, and the compact 18 m² is ready to place and connect. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
     sizeLabel: "18 – 74 m²",
     bedrooms: "Open plan – 4 bedrooms",
@@ -848,7 +848,7 @@ export const products: Product[] = [
       },
       {
         title: "Developer amenity",
-        body: "A fixed-price communal braai facility for an estate or apartment scheme, at 500 to 750 kg depending on length, delivered complete on a cement-board base with an outdoor distribution box and leakage protection.",
+        body: "A communal braai facility for an estate or apartment scheme, at 500 to 750 kg depending on length, delivered complete on a cement-board base with an outdoor distribution box and leakage protection.",
       },
       {
         title: "Garden bar",

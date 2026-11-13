@@ -776,7 +776,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `So here are our own numbers, per square metre, against what a conventional build costs. Every figure in the first column comes off the same price list the product pages use.`,
+        text: `So here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
       },
 
       { type: "h2", text: "What a conventional build costs per square metre" },
