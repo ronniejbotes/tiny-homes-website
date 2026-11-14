@@ -317,7 +317,7 @@ export default function SiteOfficesPage() {
                           {unit.name}
                         </Link>
                       </th>
-                      <td className="nums-tabular mt-3 block text-base text-stone sm:mt-0 sm:table-cell sm:px-6 sm:py-5">
+                      <td className="nums-tabular mt-3 block text-base text-stone sm:mt-0 sm:table-cell sm:whitespace-nowrap sm:px-6 sm:py-5">
                         <PhoneLabel>Floor area</PhoneLabel>
                         {unit.size}
                       </td>
