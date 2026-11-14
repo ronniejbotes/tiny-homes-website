@@ -36,7 +36,7 @@ export function ConfiguratorSection({ product }: { product: Product }) {
             product.priceOnRequest
               ? "Look inside, empty and furnished. Layouts, decks and finishes are settled with you at consultation rather than picked here, and the whole configuration is quoted per project."
               : nothingToAdd
-                ? `${hasSizes ? "Pick a size to see its plan and price. " : ""}Look inside, empty and furnished. There are no options or extras to pick here. Every price shown excludes VAT.`
+                ? `${hasSizes ? "Pick a size to see its plan and price. " : ""}Look inside, empty and furnished. Pictures are styled; the specification on this page lists what comes as standard, and there are no options or extras to pick here. Every price shown excludes VAT.`
                 : "Choose your finishes and modules and watch the total update as you go. Extras pricing is provisional and will be confirmed line by line on your formal quotation. Every price shown excludes VAT."
           }
         />

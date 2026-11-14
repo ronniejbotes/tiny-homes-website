@@ -449,7 +449,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. If you have ruled out a wendy house, the first two are the usual candidates. They get compared constantly and usually badly, because the comparison is almost always made on sticker price alone.`,
+        text: `If you want another room on your property in South Africa and you do not want to build it brick by brick, you have three realistic options: a factory-built pod, a converted shipping container, or a wendy house. If you have ruled out a wendy house, the first two are the usual candidates. They are often compared on sticker price alone, which misses most of the cost.`,
       },
       {
         type: "p",
