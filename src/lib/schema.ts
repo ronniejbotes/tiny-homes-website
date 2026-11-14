@@ -129,8 +129,8 @@ export function localBusinessSchema(): SchemaObject {
     // The showroom's opening hours, the same as the Google Business Profile
     // and the hours line on /contact (all three read src/lib/hours.ts):
     // weekdays 09:00 to 16:00 since 13 November 2026 (owner). Viewings
-    // are arranged by email only (owner, 29 October 2026); these are the
-    // hours the showroom is open, not bookable slots.
+    // are walk-in in these hours, no appointment (owner, 13 November 2026);
+    // there are no bookable slots.
     openingHoursSpecification: OPENING_HOURS.map((span) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: span.days.map((weekday) => `https://schema.org/${weekdayName(weekday)}`),

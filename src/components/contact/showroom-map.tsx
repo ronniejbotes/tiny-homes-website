@@ -1,4 +1,4 @@
-import { ExternalLink, Mail, MapPin } from "lucide-react";
+import { ExternalLink, MapPin, Navigation } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonAnchor } from "@/components/ui/button";
 import { site, showroomDirectionsUrl, showroomMapEmbedUrl } from "@/lib/site";
@@ -9,12 +9,11 @@ import { HOURS_LABEL } from "@/lib/hours";
  * Where the showroom actually is, and how to view a unit there.
  *
  * `id="viewing"` is the target of every viewing link on the site, and of the
- * 301 from the old /book-a-viewing page. The online booker is gone: owner,
- * 29 October 2026, "If they want to view, they need to send an email and state
- * why they are interested, what it will be used for, where it will be and how
- * many potential units will be purchased." The opening sentence below is that
- * instruction in the site's voice, and the button opens an email carrying the
- * same four questions (src/lib/enquiry.ts).
+ * 301 from the old /book-a-viewing page. Viewings are walk-in since
+ * 13 November 2026 (owner: "allow walk in visits from 9 am to 4 pm, no email
+ * necessary"): Monday to Friday, 09:00 to 16:00, no appointment. That replaced
+ * the 29 October rule that a viewing was asked for by email first. The email
+ * stays, as an option, for anyone who wants someone to walk them round.
  *
  * The map and both directions links stay exactly as they were: the owner
  * wants people who find the showroom on Google Maps to land on the site.
@@ -35,28 +34,39 @@ export function ShowroomMap() {
         <Reveal>
           <p className="text-eyebrow mb-4 text-clay">Viewings</p>
           <h2 id="showroom-heading" className="text-display text-3xl text-ink sm:text-4xl">
-            Viewing a unit at our showroom
+            Walk-in viewings at our showroom
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone">
-            To view a unit, email us at{" "}
+            Come and stand inside the units at our showroom in {site.showroom.locality},{" "}
+            {site.showroom.city}. Walk in any weekday between 09:00 and 16:00: there&apos;s
+            no appointment to book and no need to email first.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone">
+            Viewing times: {HOURS_LABEL}. Closed on weekends and public holidays. The
+            showroom has no street address, so use the pin below to find it.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <ButtonAnchor
+              href={showroomDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="accent"
+              size="lg"
+            >
+              <Navigation className="h-4 w-4" aria-hidden="true" />
+              Get directions
+            </ButtonAnchor>
+          </div>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone">
+            Would you like someone to walk you round, or are you coming to look at units for a
+            business? You can email us first if you&apos;d like, at{" "}
             <a
-              href={`mailto:${site.email}`}
+              href={viewingMailto}
               className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
             >
               {site.email}
-            </a>{" "}
-            and tell us why you&apos;re interested, what the units will be used for, where they
-            will go, and how many units you&apos;re looking at.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-            <ButtonAnchor href={viewingMailto} variant="accent" size="lg">
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              Email to arrange a viewing
-            </ButtonAnchor>
-            <p className="text-base text-stone">Opens an email with these questions in it.</p>
-          </div>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone">
-            Viewing times: {HOURS_LABEL}, arranged by email first.
+            </a>
+            , and we&apos;ll make sure the right person is there.
           </p>
         </Reveal>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -11,7 +12,7 @@ import { BUSINESS_QUESTIONS, businessEnquiryMailto } from "@/lib/enquiry";
 import images from "@/data/images.json";
 
 const pageDescription =
-  "Call or WhatsApp 083 660 3743 for a quote on prefab tiny homes. Business and volume enquiries, and viewings at our Centurion showroom, by email.";
+  "Call or WhatsApp 083 660 3743 for a quote on prefab tiny homes. Business enquiries by email, and walk-in viewings at our Centurion showroom on weekdays.";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Tiny Homes SA | Get a Prefab Home Quote" },
@@ -126,7 +127,14 @@ export default function ContactPage() {
               </ul>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-cream/80">
                 We&apos;ll come back to you with a formal quotation. The button opens an email with
-                these questions already in it.
+                these questions already in it. Our guide to{" "}
+                <Link
+                  href="/blog/buying-prefab-buildings-for-a-business"
+                  className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+                >
+                  buying prefab buildings for a business
+                </Link>{" "}
+                explains what to have ready for each of these.
               </p>
             </div>
           </Reveal>
@@ -139,6 +147,21 @@ export default function ContactPage() {
               configuration and plan delivery anywhere in South Africa, typically within 90 days
               of deposit. If you would rather put your details down in writing, the quote builder
               takes them and prices your unit on screen at the same time.
+            </p>
+            {/* Walk-in viewings since 13 Nov 2026 (owner). A jump link this
+                high up, so someone who came to visit doesn't scroll past the
+                business card and the contact cards to find the times (14 Nov
+                reader review). */}
+            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-stone">
+              Want to see the units first? Walk in any weekday between 09:00 and 16:00, no
+              appointment needed:{" "}
+              <Link
+                href="#viewing"
+                className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+              >
+                showroom times and directions
+              </Link>
+              .
             </p>
           </Reveal>
 

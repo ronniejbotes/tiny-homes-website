@@ -266,6 +266,13 @@ export const products: Product[] = [
         a: "Yes. That is what the X-Fold is: a ready-made, insulated 15 m² room that arrives flat on a truck and unfolds in minutes, wired with two plug points, a light fitting and a small DB board, for R54 900 ex VAT. It folds back down when you move, so it also works as a mobile or portable room for a garden, a farm or a site. It has no plumbing, so if someone will live in it, a local installer adds the shower and toilet.",
       },
       {
+        // Owner, 13 Nov 2026: "yes you can call them 'container homes' even
+        // though it isnt, it might help with seo". Worded so it never claims
+        // the X-Fold is a shipping container.
+        q: "Is the X-Fold a container home?",
+        a: "Not a converted shipping container, but it does the same job as a small container home. If you've searched for a foldable container house, this is that kind of unit, built as a room from the start: a steel-framed, EPS-insulated 15 m² room that arrives flat on a truck and unfolds on site in minutes, wired with two plug points, a light fitting and a small DB board, for R54 900 ex VAT. It folds back down when you move. It has no plumbing, so if you want a container-style home with its own bathroom and kitchen, look at our [expandable homes](/expandable-homes).",
+      },
+      {
         q: "Does the X-Fold come with a bathroom or kitchen?",
         a: "No. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, we recommend arranging a local installer to fit one on site.",
       },
@@ -387,6 +394,14 @@ export const products: Product[] = [
         title: "Developer and rental projects",
         body: "Predictable unit costs and a fixed factory build make expandable homes straightforward to repeat across a rental or resort scheme. Order in volume, take delivery in phases, and finish each unit identically, from R199 900 ex VAT per unit, delivered nationwide.",
       },
+      {
+        // Owner, 13 Nov 2026: "yes you can call them 'container homes' even
+        // though it isnt, it might help with seo". Never say they ARE
+        // shipping containers, or that they are built to container sizes
+        // (the 6m folds to 3.3 m wide for transport).
+        title: "Container home alternative",
+        body: "Searching for container homes? An expandable home does the same job: a steel-framed unit delivered on a truck and set up on site, but built as a home from the start rather than converted from a shipping container. The 6m and 12m homes open out within hours to 37 m² or 74 m², with two bedrooms, a bathroom and a kitchen as standard, and the insulated walls, double glazing, plumbing and electrics are part of the build.",
+      },
     ],
     variants: [
       { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable: an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
@@ -432,6 +447,12 @@ export const products: Product[] = [
         q: "Is an expandable home the same as a granny pod?",
         a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and expand on site within hours.",
       },
+      {
+        // Owner, 13 Nov 2026: may be called container homes for search, worded
+        // honestly (see the "Container home alternative" use case above).
+        q: "Are your expandable homes container homes?",
+        a: "Not converted shipping containers, but they do the same job. If you're looking at container homes for sale in South Africa, an expandable home is the closest thing we sell: a steel-framed unit that arrives on a truck as one module and is set up on site, built as a home from the start rather than converted from a shipping container. The frame is galvanised steel, the walls are 75 mm EPS insulated panels, every size has a bathroom, and the plumbing and electrics are installed in the factory. The 6m and 12m homes open out on site within hours to 37 m² or 74 m², with two bedrooms as standard, and the compact 18 m² starts at R199 900 ex VAT. Our guide to [housing pods, container homes and wendy houses](/blog/housing-pod-vs-container-home-vs-wendy-house) compares the three.",
+      },
     ],
     seoKeywords: [
       "prefab granny flat South Africa",
@@ -444,6 +465,7 @@ export const products: Product[] = [
       "prefab home Gauteng",
       "modular classroom clinic South Africa",
       "2 bedroom expandable container home",
+      "container homes for sale South Africa",
       "granny pod South Africa",
       "living pod for sale",
     ],

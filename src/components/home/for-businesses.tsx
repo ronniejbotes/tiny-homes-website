@@ -45,7 +45,11 @@ const uses = [
           Expandable homes
         </Link>{" "}
         are self-contained units for mine, lodge, security or estate staff, each with its own
-        bathroom and kitchen.
+        bathroom and kitchen. Our{" "}
+        <Link href="/blog/staff-accommodation-units-south-africa" className={linkClasses}>
+          staff accommodation guide
+        </Link>{" "}
+        sets out what a unit costs and how to plan the ablutions.
       </>
     ),
   },
@@ -65,7 +69,12 @@ const uses = [
         <Link href="/apple-cabins" className={linkClasses}>
           Apple Cabins
         </Link>{" "}
-        arrive fully built, so a lodge or resort adds suites without a building site.
+        arrive fully built, so a lodge or resort adds suites without a building site. Our guide
+        to{" "}
+        <Link href="/blog/start-a-glamping-business-south-africa" className={linkClasses}>
+          starting a glamping business
+        </Link>{" "}
+        sets out what the units cost, and the costs that are not the unit.
       </>
     ),
   },

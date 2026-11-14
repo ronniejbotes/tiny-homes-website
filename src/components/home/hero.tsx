@@ -135,7 +135,7 @@ export function Hero({ lowestStartingPrice }: { lowestStartingPrice: number }) {
           </ButtonLink>
         </div>
         {/* A link rather than a third button, where the showroom-viewing line
-            used to be: viewings are by email only now (see /contact#viewing). */}
+            used to be (viewings are walk-in now, see /contact#viewing). */}
         <p
           className="animate-rise-in mt-6 max-w-xl text-base text-cream/75"
           style={rise(0.72)}

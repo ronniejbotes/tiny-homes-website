@@ -177,8 +177,9 @@ export function Footer() {
             pin is the showroom in Sunderland Ridge, where visitors go (the
             only address since 13 November 2026). The showroom has no street
             address, so the pin is the location. Lazy, so Google's half megabyte of map script only
-            loads when someone scrolls this far. Viewings are by email only
-            (owner, 29 October 2026), so this says so and links to how. */}
+            loads when someone scrolls this far. Viewings are walk-in on
+            weekdays, no appointment (owner, 13 November 2026; email first
+            until then), so this says so and links to the times and directions. */}
         <div className="mt-14 grid overflow-hidden rounded-3xl border border-cream/15 lg:grid-cols-3">
           <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
             <p className="text-eyebrow text-sage">Our showroom</p>
@@ -190,13 +191,13 @@ export function Footer() {
               </span>
             </p>
             <p className="text-cream/80">
-              Viewings {HOURS_LABEL}, arranged by email.{" "}
+              Walk-in viewings {HOURS_LABEL}, no appointment needed.{" "}
               <Link
                 prefetch={false}
                 href={VIEWING_HREF}
                 className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
               >
-                How to arrange one
+                How to find us
               </Link>
             </p>
             <a

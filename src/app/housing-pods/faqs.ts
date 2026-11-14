@@ -72,6 +72,6 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "Can I see a housing pod before I buy one?",
-    a: `Yes, and it is the single best use of an hour you will spend on this decision. Photographs flatten the size of a small building, and fifteen minutes standing inside a ${formatZAR(capsuleFrom)} capsule or a ${formatZAR(appleFrom)} cabin settles the question no spec sheet can. The units are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}, and viewings are arranged by email only: email ${site.email} and tell us why you're interested, what the units will be used for, where they will go, and how many units you're looking at.`,
+    a: `Yes, and it is the single best use of an hour you will spend on this decision. Photographs flatten the size of a small building, and fifteen minutes standing inside a ${formatZAR(capsuleFrom)} capsule or a ${formatZAR(appleFrom)} cabin settles the question no spec sheet can. The units are on site at our showroom in ${site.showroom.city}, ${site.showroom.region}: walk in any weekday between 09:00 and 16:00, with no appointment and no need to email first. If you'd like someone to walk you round, email ${site.email} before you come.`,
   },
 ];

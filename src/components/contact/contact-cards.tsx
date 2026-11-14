@@ -100,14 +100,15 @@ export function ContactCards() {
         detail="Every home leaves from here, and we deliver nationwide."
         delay={0.24}
       />
-      {/* Was "Book a viewing", a link to the online booker. Viewings are by
-          email only since 29 Oct 2026 (owner); this points at the section
-          below that says what to put in the email. */}
+      {/* Was "Book a viewing", a link to the online booker (gone 29 Oct
+          2026). Walk-in since 13 Nov 2026 (owner: "allow walk in visits from
+          9 am to 4 pm, no email necessary"); this points at the section below
+          with the times and directions. */}
       <ContactCard
         icon={<Eye className="h-5 w-5" aria-hidden="true" />}
-        label="Viewings"
+        label="Walk-in viewings"
         value="Weekdays 09:00 – 16:00"
-        detail="Arranged by email: tell us why you're interested, what the units are for, where they'll go and how many you need."
+        detail="Just walk in: no appointment and no email needed. Closed weekends and public holidays."
         href={VIEWING_HREF}
         delay={0.28}
       />

@@ -113,8 +113,8 @@ export function Navbar() {
             wrapped onto two lines ("083 660 / 3743"). Up to xl the burger menu
             below carries the same links, phone number and buttons.
 
-            29 Oct 2026 (owner): "Book a viewing" is gone (viewings are by
-            email only), and the business enquiry is the main button, for the
+            29 Oct 2026 (owner): "Book a viewing" is gone (viewings are
+            walk-in since 13 Nov 2026), and the business enquiry is the main button, for the
             larger companies buying several units that are now the main
             target. "Get a quote" stays beside it, smaller, for anyone buying
             one for themselves. */}

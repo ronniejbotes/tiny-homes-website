@@ -6,8 +6,9 @@
  * The Google Business Profile carries the same hours. (Until then: Mon–Thu
  * 08:00–16:00, Fri 08:00–13:00.) They are not bookable slots.
  * The online booker that used to offer viewing slots was removed on
- * 29 October 2026 (owner): a viewing is now arranged by email only, through the
- * #viewing section of /contact.
+ * 29 October 2026 (owner). Since 13 November 2026 these are walk-in viewing
+ * times (owner: "allow walk in visits from 9 am to 4 pm, no email
+ * necessary"); the #viewing section of /contact says so.
  */
 
 /** 09:00, the door (owner, 13 November 2026). */

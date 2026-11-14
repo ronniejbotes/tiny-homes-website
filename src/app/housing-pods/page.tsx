@@ -569,13 +569,15 @@ export default function HousingPodsPage() {
             <p className="mx-auto mt-6 max-w-xl text-lg text-cream/75">
               Photographs of pods all look the same. Fifteen minutes in one tells you
               whether the size works for you. The units are on site at our showroom in{" "}
-              {site.showroom.city}, and viewings are arranged by email.
+              {site.showroom.city}: walk in any weekday between 09:00 and 16:00, no
+              appointment needed.
             </p>
-            {/* Viewings by email only (owner, 29 Oct 2026): the first button
-                goes to the section of /contact that says what to send. */}
+            {/* Walk-in viewings since 13 Nov 2026 (owner; email first from
+                29 Oct until then): the first button goes to the section of
+                /contact with the times and directions. */}
             <div className="mt-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row">
               <ButtonLink href={VIEWING_HREF} variant="accent" size="lg">
-                Arrange a viewing
+                Plan your visit
               </ButtonLink>
               <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="outline-dark" size="lg">
                 Business enquiry

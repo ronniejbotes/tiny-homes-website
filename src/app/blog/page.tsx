@@ -175,9 +175,9 @@ export default function BlogIndexPage() {
                 href={VIEWING_HREF}
                 className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
               >
-                email us to view one of the units
+                walk in and see the units
               </Link>{" "}
-              in {site.showroom.city}.
+              at our showroom in {site.showroom.city} on any weekday.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <ButtonLink href={BUSINESS_ENQUIRY_HREF} variant="primary" size="lg">

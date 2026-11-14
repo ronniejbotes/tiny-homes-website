@@ -17,7 +17,7 @@ export const site = {
   whatsapp: "https://wa.me/27836603743",
   /**
    * admin@ is the only mailbox confirmed to exist; swap to sales@ once that one
-   * is provisioned. Business enquiries and viewing requests both come here
+   * is provisioned. Business enquiries and the optional pre-visit emails both come here
    * (src/lib/enquiry.ts). The safari-tent address that sat beside this one went
    * with the tents on 29 October 2026.
    */

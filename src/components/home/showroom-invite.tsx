@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { BadgeCheck, Building2, Mail, MapPin, PhoneCall } from "lucide-react";
+import { BadgeCheck, Building2, MapPin, Navigation, PhoneCall } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonAnchor } from "@/components/ui/button";
-import { site } from "@/lib/site";
-import { VIEWING_HREF, viewingMailto } from "@/lib/enquiry";
+import { site, showroomDirectionsUrl } from "@/lib/site";
+import { VIEWING_HREF } from "@/lib/enquiry";
+import { HOURS_LABEL } from "@/lib/hours";
 
 /**
  * The trust section.
@@ -16,11 +17,10 @@ import { VIEWING_HREF, viewingMailto } from "@/lib/enquiry";
  * doubt into the strongest thing this business has: units you can go and stand
  * inside.
  *
- * Viewings are arranged by email only since 29 October 2026 (owner: "If they
- * want to view, they need to send an email and state why they are interested,
- * what it will be used for, where it will be and how many potential units will
- * be purchased"). The online booker, its slots and its "Free · No obligation ·
- * hours" line are gone.
+ * Viewings are walk-in since 13 November 2026 (owner: "allow walk in visits
+ * from 9 am to 4 pm, no email necessary"): Monday to Friday, 09:00 to 16:00,
+ * no appointment. That replaced the 29 October rule that a viewing was asked
+ * for by email first. The online booker and its slots stay gone.
  *
  * Placed straight after the video carousel on purpose. Footage is exactly the
  * kind of proof a sceptical reader discounts, so the pivot from "here's our
@@ -79,15 +79,21 @@ export function ShowroomInvite() {
               it.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-cream/75">
-              Our homes are standing at our showroom in Centurion. To view one, email us and
-              tell us why you&apos;re interested, what the units will be used for, where they
-              will go, and how many units you&apos;re looking at.
+              Our homes are standing at our showroom in {site.showroom.locality},{" "}
+              {site.showroom.city}. Walk in any weekday between 09:00 and 16:00 and see one
+              for yourself. There&apos;s no appointment to book and no need to email first.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <ButtonAnchor href={viewingMailto} variant="accent" size="lg">
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Email to arrange a viewing
+              <ButtonAnchor
+                href={showroomDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="accent"
+                size="lg"
+              >
+                <Navigation className="h-4 w-4" aria-hidden="true" />
+                Get directions
               </ButtonAnchor>
               <ButtonAnchor
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
@@ -100,7 +106,8 @@ export function ShowroomInvite() {
             </div>
 
             <p className="mt-6 text-base text-cream/75">
-              Viewings are arranged by email only, at{" "}
+              Walk-in viewings {HOURS_LABEL}. If you&apos;d like someone to walk you round,
+              you can email us first at{" "}
               <a
                 href={`mailto:${site.email}`}
                 className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
@@ -112,7 +119,7 @@ export function ShowroomInvite() {
                 href={VIEWING_HREF}
                 className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
               >
-                How it works
+                How to find us
               </Link>
             </p>
           </Reveal>

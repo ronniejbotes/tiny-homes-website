@@ -139,10 +139,11 @@ export const homeFaqs: HomeFaq[] = [
      It earns its place in the FAQ twice over: it is a real objection to a
      large purchase made online, and it is the phrasing that gets typed into
      a search box and quoted back by an AI assistant. */
-  /* Viewings by email only since 29 Oct 2026 (owner). The answer is the
-     owner's four questions, in the same words as /contact#viewing. */
+  /* Walk-in viewings since 13 Nov 2026 (owner: "allow walk in visits from
+     9 am to 4 pm, no email necessary"); email first from 29 Oct until then.
+     Same wording as /contact#viewing. */
   {
     q: "Can I see a tiny home in person before I buy?",
-    a: `Yes. Our homes are on site at our showroom in ${site.showroom.locality}, ${site.showroom.city}. Viewings are on weekdays from 09:00 to 16:00 and are arranged by email first. To view a unit, email us at ${site.email} and tell us why you're interested, what the units will be used for, where they will go, and how many units you're looking at.`,
+    a: `Yes. Our homes are on site at our showroom in ${site.showroom.locality}, ${site.showroom.city}. Walk in any weekday between 09:00 and 16:00 to view them: there's no appointment to book and no need to email first. The showroom has no street address, so use the map pin on our contact page to find it. If you'd like someone to walk you round, or you're looking at several units for a business, you can email us at ${site.email} before you come.`,
   },
 ];

@@ -387,7 +387,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Whatever tier you land on, go and stand inside one before you pay a deposit. Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site at our showroom in ${site.showroom.city}, and viewings are arranged by email: [here is what to send](/contact#viewing).`,
+        text: `Whatever tier you land on, go and stand inside one before you pay a deposit. Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site at our showroom in ${site.showroom.city}, and you can walk in on any weekday between 09:00 and 16:00: [here is how to find it](/contact#viewing).`,
       },
       {
         type: "cta",
@@ -556,9 +556,9 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        text: `Our units are on site at our showroom in ${site.showroom.city}, and viewings are arranged by email.`,
+        text: `Our units are on site at our showroom in ${site.showroom.city}. Walk in any weekday between 09:00 and 16:00, no appointment needed.`,
         href: "/contact#viewing",
-        label: "How to arrange a viewing",
+        label: "Viewing times and directions",
       },
     ],
     faqs: [
@@ -1345,6 +1345,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: `A note on the [glamping capsules](/glamping-capsules): the bathroom, its premium fittings, a geyser, multi-layer insulation, plumbing and electrics, lighting and intelligent front-door access are standard on every model. The **kitchen and air conditioning are extras**. For a glamping operation that is usually the right way round (most sites feed guests centrally and do not want a kitchen in every unit), but price it deliberately rather than assuming.`,
+      },
+      /* The supplier's old two-size floor-plan sheet sat here until the 13 Nov
+         2026 reader review: its 27.2 and 36.8 m² labels are the pre-July 2026
+         8.5 m and 11.5 m × 3.2 m capsules, replaced when the owner's price
+         spreadsheet set the current range (site ea42e28, 16 Jul 2026). This is
+         the current 9.5 m plan the configurator shows, sizes from products.ts. */
+      {
+        type: "img",
+        image: { src: "/images/products/glamping-capsules/plans/capsule-9-5.svg", width: 2056, height: 976, alt: "Floor plan of the 9.5 m Glamping Capsule: two bedrooms with double beds at either end, separated by a central bathroom with a shower, toilet, washbasin and a utility cupboard." },
+        caption: `The 9.5 m Glamping Capsule, 30.4 m², ${R(variantPrice("glamping-capsules", "capsule-8-5"))} ex VAT: two bedrooms either side of a central bathroom. The range runs from the 18.6 m² entry capsule at ${R(capsule)} up to the largest, the 38 m² Space D7.`,
       },
       {
         type: "p",
@@ -2848,7 +2858,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Where can you see the difference for yourself?" },
       {
         type: "p",
-        text: `The labels matter less once you can see the ranges next to each other. Our [housing pods guide](/housing-pods) puts our homes and cabins side by side, with their prices and what a unit price does and does not include. Start there if you are still choosing between a folding room, an expandable home and a fully built cabin. You can also browse [every range we sell](/) from the home page. If you are in or near Gauteng, [email us to arrange a viewing at our showroom in Centurion](/contact#viewing) and look at the build quality for yourself.`,
+        text: `The labels matter less once you can see the ranges next to each other. Our [housing pods guide](/housing-pods) puts our homes and cabins side by side, with their prices and what a unit price does and does not include. Start there if you are still choosing between a folding room, an expandable home and a fully built cabin. You can also browse [every range we sell](/) from the home page. If you are in or near Gauteng, [walk in to our showroom in Centurion](/contact#viewing) on any weekday between 09:00 and 16:00 and look at the build quality for yourself.`,
       },
       {
         type: "p",
@@ -3151,7 +3161,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Then make two calls before any money changes hands. One is to building control where the unit will first stand. The other is to whoever will move it, with photographs of the way in to the site. Our [showroom in Centurion](/contact#viewing) has units you can stand inside before you decide, and viewings are arranged by email.`,
+        text: `Then make two calls before any money changes hands. One is to building control where the unit will first stand. The other is to whoever will move it, with photographs of the way in to the site. Our [showroom in Centurion](/contact#viewing) has units you can stand inside before you decide, and you can walk in on any weekday between 09:00 and 16:00.`,
       },
       {
         type: "p",
@@ -3294,7 +3304,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Make a couple of calls early, too. Ask the municipality's building control office about approval and any coastal line on the plot, and ask us to confirm the coastal specification for the unit you have in mind. And if you're near Centurion, [email us to arrange a viewing](/contact#viewing) and stand inside our units at the showroom before you decide.`,
+        text: `Make a couple of calls early, too. Ask the municipality's building control office about approval and any coastal line on the plot, and ask us to confirm the coastal specification for the unit you have in mind. And if you're near Centurion, [walk in to our showroom](/contact#viewing) on any weekday between 09:00 and 16:00 and stand inside our units before you decide.`,
       },
     ],
   },
@@ -3333,7 +3343,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `That's why our homes are standing at our showroom in Centurion. To view a unit, [email us](/contact#viewing) with what the units will be used for, where they'll go, how many units you're looking at and why you're interested. If you do come out, bring a tape. Open the cupboards, look at the joins, check the door widths.`,
+        text: `That's why our homes are standing at our showroom in Centurion. You can walk in on any weekday between 09:00 and 16:00, with no appointment: [here's how to find it](/contact#viewing). When you come out, bring a tape. Open the cupboards, look at the joins, check the door widths.`,
       },
       {
         type: "p",
