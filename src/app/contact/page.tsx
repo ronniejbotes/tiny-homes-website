@@ -195,7 +195,7 @@ export default function ContactPage() {
                     and VAT included. A copy lands in your inbox moments later, and we follow up
                     with a delivery price for your address.
                   </p>
-                  <ul className="mt-6 space-y-2.5 text-[0.9375rem] leading-relaxed text-stone">
+                  <ul className="mt-6 space-y-2.5 text-base leading-relaxed text-stone">
                     {[
                       "A real price on screen, not a callback promise",
                       "Every extra listed line by line",
@@ -224,7 +224,7 @@ export default function ContactPage() {
                       {site.phoneDisplay}
                     </ButtonAnchor>
                   </div>
-                  <p className="mt-5 text-sm leading-relaxed text-stone">
+                  <p className="mt-5 text-base leading-relaxed text-stone">
                     Prefer email? Write to{" "}
                     <a
                       href={`mailto:${site.email}`}

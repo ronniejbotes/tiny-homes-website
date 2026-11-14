@@ -6,6 +6,7 @@ import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
+import { ButtonAnchor } from "@/components/ui/button";
 import images from "@/data/images.json";
 
 const pageDescription =
@@ -78,14 +79,23 @@ export default function QuotePage() {
               seven words. */}
           <QuoteForm
             intro={
-              <Reveal className="max-w-3xl">
+              /* max-sm:pr-12: the floating WhatsApp badge (56px, 12px off the
+                 edge) sat on the end of the business line on the first phone
+                 screen (final check, 13 Nov 2026). */
+              <Reveal className="max-w-3xl max-sm:pr-12">
                 <p className="mt-6 text-lg leading-relaxed text-stone">
                   Choose your home, size and extras, then add your details, and your quote appears on
                   screen straight away, with VAT included and every extra itemised, and a copy
                   lands in your inbox moments later.
                 </p>
+                {/* Phones only: at 390x844 the first screen held the heading
+                    and the intro, and step 1 began at 884px, so there was no
+                    quote control above the fold (final check, 13 Nov 2026). */}
+                <ButtonAnchor href="#choose-home" variant="accent" size="lg" className="mt-6 sm:hidden">
+                  Choose your home
+                </ButtonAnchor>
                 <p className="mt-4 text-lg leading-relaxed text-stone">
-                  That price already includes shipping into South Africa. What it doesn&apos;t
+                  The quoted price already includes shipping into South Africa. What it doesn&apos;t
                   include is road delivery to your site, because that depends on where you are, so
                   we price it separately and email that quote through to you. We pass it on at cost
                   with no markup, so you&apos;re welcome to arrange your own truck too.

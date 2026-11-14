@@ -228,7 +228,7 @@ function Step({
         <h2 className="text-display text-2xl text-ink sm:text-3xl">{title}</h2>
       </div>
       {description && (
-        <p className="ml-11 mt-2 text-sm leading-relaxed text-stone">{description}</p>
+        <p className="ml-11 mt-2 text-base leading-relaxed text-stone">{description}</p>
       )}
       <div className="ml-0 mt-6 sm:ml-11">{children}</div>
     </Reveal>
@@ -345,7 +345,7 @@ function CoastalQuestion({
               *
             </span>
           </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-stone">{COASTAL_QUESTION_HELP}</p>
+          <p className="mt-1.5 text-base leading-relaxed text-stone">{COASTAL_QUESTION_HELP}</p>
           <div
             role="radiogroup"
             aria-labelledby="quote-near-sea-label"
@@ -397,7 +397,7 @@ function CoastalNotice({ risk }: { risk: CoastalRisk }) {
         <p className={cn("font-display text-base", required ? "text-clay-dark" : "text-ink")}>
           {headline}
         </p>
-        <p className="mt-1.5 text-sm leading-relaxed text-stone">{body}</p>
+        <p className="mt-1.5 text-base leading-relaxed text-stone">{body}</p>
       </div>
     </div>
   );
@@ -625,6 +625,16 @@ function QuoteFormInner({
       setEditingId(id);
     }
     setProductError(null);
+    // Phones only (under the sm breakpoint): bring the next step into view
+    // once the new choice has rendered. Two frames: the first lets React
+    // commit the size, layout and extras blocks for the picked home.
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches) {
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() =>
+          document.getElementById("quote-configure")?.scrollIntoView({ block: "start" }),
+        ),
+      );
+    }
   };
 
   const handleSelectVariant = (id: string) => {
@@ -913,7 +923,7 @@ function QuoteFormInner({
             description="Configure a unit, then add it to your order. Need more than one? Add another unit, or bump the quantity on any line, and mix and match as many homes as you like."
           >
             <p className="text-eyebrow mb-3 text-clay-dark">{editorHeading}</p>
-            <div ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
+            <div id="choose-home" ref={pickerRef} tabIndex={-1} className="scroll-mt-24 focus:outline-none">
               <ProductPicker
                 products={products}
                 selectedSlug={slug}
@@ -925,6 +935,12 @@ function QuoteFormInner({
                 </p>
               )}
             </div>
+            {/* Where a pick lands on a phone: the size, layout and extras
+                steps open about 2,000px below the card that was tapped
+                (under the other cards), so a tap looked like it did nothing
+                and Clarity counted dead clicks on /quote (final check, 13 Nov
+                2026). handleSelectProduct scrolls here on narrow screens. */}
+            <div id="quote-configure" aria-hidden="true" className="scroll-mt-24" />
 
             {product?.variants && product.variants.length > 0 && (
               <div className="mt-8">
@@ -940,7 +956,7 @@ function QuoteFormInner({
             {layouts.length > 0 && (
               <div className="mt-8">
                 <p className="text-eyebrow mb-3 text-clay-dark">Choose your layout</p>
-                <p className="mb-4 text-sm leading-relaxed text-stone">
+                <p className="mb-4 text-base leading-relaxed text-stone">
                   Every layout costs the same, so pick the arrangement that suits how you&apos;ll
                   live. Window and door placement is yours to choose and is confirmed on your
                   quotation.
@@ -957,7 +973,7 @@ function QuoteFormInner({
             {product && product.options.length > 0 && (
               <div className="mt-8">
                 <p className="text-eyebrow mb-3 text-clay-dark">Add extras</p>
-                <p className="mb-4 text-sm leading-relaxed text-stone">
+                <p className="mb-4 text-base leading-relaxed text-stone">
                   Every extra is provisional and confirmed line by line on your formal quotation.
                   Items shown as &ldquo;priced on quotation&rdquo; are quoted per site.
                 </p>
@@ -985,7 +1001,7 @@ function QuoteFormInner({
                     {totals.totalUnits} {totals.totalUnits === 1 ? "unit" : "units"}
                   </span>
                 </div>
-                <p className="mb-4 mt-1 text-sm leading-relaxed text-stone">
+                <p className="mb-4 mt-1 text-base leading-relaxed text-stone">
                   Adjust the quantity, edit a configuration or remove a unit at any time.
                 </p>
                 <UnitsList
@@ -1146,7 +1162,7 @@ function QuoteFormInner({
                 "Get my instant quote"
               )}
             </Button>
-            <p className="mt-3 text-sm leading-relaxed text-stone">
+            <p className="mt-3 text-base leading-relaxed text-stone">
               Your quote appears on screen straight away and lands in your inbox moments later,
               covering your units, extras and VAT, including shipping into South Africa. Road
               delivery to your site is quoted separately, and we&apos;ll email that through once

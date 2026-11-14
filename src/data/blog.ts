@@ -433,7 +433,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Housing Pod vs Container Home vs Wendy House",
     title: "Housing pod vs container home vs wendy house: what is actually different",
     description:
-      "Three ways to add a room in South Africa, compared honestly on insulation, size, lifespan, resale and cost, including where a pod is the wrong answer.",
+      "Need a wendy house alternative in South Africa? How a housing pod and a container home compare on insulation, size, lifespan, resale and cost.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -492,7 +492,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "The shape of the space" },
       {
         type: "p",
-        text: `A shipping container is 2.44 m wide externally, and the internal width after lining is meaningfully less. That constraint is fixed, and it is unforgiving in a bathroom or a bedroom where a door has to swing. It also means the layout of a container home is largely decided by the container rather than by you.`,
+        text: `A shipping container's width is fixed by the shipping standard, and the internal width after lining is meaningfully less. That constraint is unforgiving in a bathroom or a bedroom where a door has to swing. It also means the layout of a container home is largely decided by the container rather than by you.`,
       },
       {
         type: "img",
@@ -501,7 +501,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Pods and wendy houses are drawn as rooms first. Our expandable homes reach 74 m² and up to four bedrooms precisely because nothing about the format forces a 2.44 m width; the [glamping capsules](/glamping-capsules) put rooms either side of a central bathroom in a way a container cannot.`,
+        text: `Pods and wendy houses are drawn as rooms first. Our expandable homes reach 74 m² and up to four bedrooms precisely because nothing about the format forces a container's width; the [glamping capsules](/glamping-capsules) put rooms either side of a central bathroom in a way a container cannot.`,
       },
       {
         type: "callout",
@@ -544,7 +544,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "The comparison that actually decides it" },
       {
         type: "p",
-        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and, for a container, the conversion and lining. That total is the figure furthest from the advertised price, and it is the only one that lets you compare a R60 000 quote to a R250 000 quote honestly.`,
+        text: `Set the sticker prices aside and compare **delivered, standing, connected and usable**. Add transport, groundwork, connections and, for a container, the conversion and lining. That total is the figure furthest from the advertised price, and it is the only one that lets you compare a cheap quote with an expensive one honestly.`,
       },
       {
         type: "p",
@@ -1172,7 +1172,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `This is the question that quietly ends more prefab purchases than price does, and most suppliers are vague about it. So, plainly: **a conventional bond on a prefabricated home is harder to get in South Africa than a bond on a brick house, and some major banks will not do it at all.**`,
+        text: `Settle this before you choose a unit. Plainly: **a conventional bond on a prefabricated home is harder to get in South Africa than a bond on a brick house, and some major banks will not do it at all.**`,
       },
       {
         type: "p",
@@ -1226,7 +1226,7 @@ export const blogPosts: BlogPost[] = [
           `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
           `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available, and the bank is lending against the house it already holds, not against the new unit.`,
           `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a glamping capsule.`,
-          `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)}.`,
+          `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)} ex VAT.`,
         ],
       },
 
@@ -1264,6 +1264,10 @@ export const blogPosts: BlogPost[] = [
       {
         q: "Why is it harder to finance a prefab home?",
         a: "Because a bond is secured against something the bank could sell. A structure that can be lifted onto a truck is weaker security than a brick house, and there is less resale data to value it against over a twenty-year term. Fixing the unit to a permanent foundation and getting it approved addresses most of that concern.",
+      },
+      {
+        q: "Can you get a home loan for a mobile home?",
+        a: "Not usually while it can still be moved. A bond is secured against something the bank could sell, and a unit that can be lifted onto a truck is weak security. FNB has been reported as open to bonding a prefab home, on condition that it is fixed to a foundation and complies with the National Building Regulations. If the unit will stay movable, one route that works is finance through a third-party provider, subject to credit approval, which finances it as a movable asset rather than as property.",
       },
       {
         q: "How can I finance a tiny home if I cannot get a bond?",
@@ -1308,7 +1312,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Starting a Glamping Business in South Africa",
     title: "Starting a glamping business in South Africa: what the units cost",
     description:
-      "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping site actually pays.",
+      "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping business in South Africa actually pays.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -1344,7 +1348,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `A note on the [glamping capsules](/glamping-capsules): the bathroom, its premium fittings, a geyser, multi-layer insulation, plumbing and electrics, lighting and intelligent front-door access are standard on every model. The **kitchen and air conditioning are extras**. For a glamping operation that is usually the right way round (most sites feed guests centrally and do not want a kitchen in every unit), but price it deliberately rather than assuming.`,
+        text: `A note on the [glamping capsules](/glamping-capsules): the bathroom, its premium fittings, a geyser, multi-layer insulation, plumbing and electrics, lighting and intelligent front-door access are standard on every model. The **kitchen and air conditioning are extras**. For a glamping operation that is usually the right way round (many sites feed guests centrally and do not want a kitchen in every unit), but price it deliberately rather than assuming.`,
       },
       /* The supplier's old two-size floor-plan sheet sat here until the 13 Nov
          2026 reader review: its 27.2 and 36.8 m² labels are the pre-July 2026
@@ -1379,7 +1383,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Build the model on the units you can fund now",
-        text: `Occupancy of 43.9% nationally in July 2026 means the difference between three units and six is not a doubling of profit. It is a doubling of fixed cost against a market that may not fill either. Most successful small sites start with a couple of units, learn their real occupancy and rate, then add. That is also the cheaper mistake if the location turns out not to work.`,
+        text: `Occupancy of 43.9% nationally in July 2026 means the difference between three units and six is not a doubling of profit. It is a doubling of fixed cost against a market that may not fill either. Starting with a couple of units lets you learn your real occupancy and rate before you add more, and it is the cheaper mistake if the location turns out not to work.`,
       },
 
       { type: "h2", text: "The arithmetic that decides it" },
@@ -1622,7 +1626,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Staff Accommodation Unit Costs & Site Offices",
     title: "Staff accommodation and site offices: what a unit costs",
     description:
-      "Costing accommodation for farm, mine and construction staff: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
+      "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
     dateModified: "2026-10-29",
     keywords: [
@@ -1656,9 +1660,9 @@ export const blogPosts: BlogPost[] = [
           ["Floor area", "15 m²", "18 – 74 m²"],
           ["Plumbing", "None: shared ablutions or local fit-out", "Bathroom and services installed"],
           ["Electrics", "2 plugs, light, small DB board", "Full installation"],
-          ["Setup", "Unfolds in minutes, 2 people", "Expands on site within hours"],
+          ["Setup", "Unfolds in minutes, 2 people", "6m and 12m expand on site within hours; the 18 m² is placed and connected"],
           ["Stackable", "Two units high", "No"],
-          ["Relocatable", "Folds down and moves", "Moves, but not folded"],
+          ["Relocatable", "Folds down and moves", "Ask us before you order"],
         ],
       },
       {
@@ -1682,7 +1686,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The X-Fold arrives **wired but not plumbed**. That is deliberate and it is what keeps the price where it is. It gives you two routes: a **shared ablution block** serving several units, or a local installer fitting a wet room into each. Shared blocks are almost always cheaper per bed at any scale, and they concentrate the plumbing into one civil job rather than twenty. Per-unit fit-out buys privacy and suits family or supervisor accommodation.`,
+        text: `The X-Fold arrives **wired but not plumbed**. That is deliberate and it is what keeps the price where it is. It gives you two routes: a **shared ablution block** serving several units, or a local installer fitting a wet room into each. Shared blocks are usually cheaper per bed once you house more than a few people, and they concentrate the plumbing into one civil job rather than twenty. Per-unit fit-out buys privacy and suits family or supervisor accommodation.`,
       },
       {
         type: "img",
@@ -1718,7 +1722,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Ordering several? We quote the delivery as one run rather than unit by unit. Our page on [staff accommodation units](/staff-accommodation) sets out what a multi-unit order involves, from the site to the timeline.`,
+        text: `Ordering several? We quote the delivery for the whole order. Our page on [staff accommodation units](/staff-accommodation) sets out what a multi-unit order involves, from the site to the timeline.`,
       },
       {
         type: "cta",
@@ -1738,7 +1742,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Can the units be moved to the next site?",
-        a: "Yes. The X-Fold folds back down and travels flat, which is what makes it work for construction and mining where the site changes. Expandable homes relocate too, though not folded down to the same footprint.",
+        a: "The X-Fold can: it folds back down and travels flat, which is what makes it work for construction and mining where the site changes. For an expandable home, ask us before you order.",
       },
       {
         q: "Is it cheaper to buy or hire a site office?",
@@ -1767,7 +1771,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "What Does an Outdoor Kitchen Cost in SA?",
     title: "What does an outdoor kitchen cost in South Africa?",
     description:
-      "Building a braai area or buying a delivered outdoor kitchen: what each length costs, which extras are worth it, and the ones only larger units can take.",
+      "Building a braai area or buying a delivered outdoor kitchen: what the lengths cost, which extras are worth it, and the ones only larger units can take.",
     datePublished: "2026-09-02",
     // New prices, the 3.5 m and 3.9 m on request, and the pizza oven extra.
     dateModified: "2026-10-26",
@@ -1784,7 +1788,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `South Africans entertain outside, so the built-in braai area is one of the most common home projects in the country, and one of the most reliably over-budget. Bricklaying, a countertop, plumbing to a sink, an electrician for lights and plugs, and a roof over the whole thing: it is four trades and a project manager for what people imagine is a weekend job.`,
+        text: `South Africans entertain outside, so a built-in braai area is a popular home project, and an easy one to under-budget. Bricklaying, a countertop, plumbing to a sink, an electrician for lights and plugs, and a roof over the whole thing: it is four trades and a project manager for what people imagine is a weekend job.`,
       },
       {
         type: "p",
@@ -1862,14 +1866,14 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The constraint worth planning around: **the double gas grill and the kettle grill are only available on the 3.5 m and 3.9 m units.** If you braai over charcoal as well as gas, that decides your length before anything else does. Choosing the 2.9 m to save money and then wanting a kettle grill is the one regret this product reliably produces.`,
+        text: `The constraint worth planning around: **the double gas grill and the kettle grill are only available on the 3.5 m and 3.9 m units**, and each unit takes one cooking method. If you braai over charcoal, that decides your length before anything else does. Choosing the 2.9 m to save money and then wanting a kettle grill is the regret to avoid.`,
       },
 
       { type: "h2", text: "How to choose a length" },
       {
         type: "ol",
         items: [
-          `**Start with how you cook.** Charcoal as well as gas means 3.5 m or larger, because of the kettle grill restriction above.`,
+          `**Start with how you cook.** Charcoal means 3.5 m or larger, because of the kettle grill restriction above, and each unit takes one cooking method.`,
           `**Then count the people.** Prep space is what runs out when you are feeding twelve, not cooking surface.`,
           `**Then check the wall.** 0.8 m deep and 2.4 m high, so you need the run of space and the height clearance for the roof to lift.`,
           `**Then add storage.** Extra cabinet modules at ${R(optionOf("outdoor-kitchens", "extra-cabinets"))} per metre are cheap next to the unit and get used every single time.`,
@@ -1889,7 +1893,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "How much does an outdoor kitchen cost in South Africa?",
-        a: `Ours run from ${R(variantPrice("outdoor-kitchens", "ok-2-5"))} ex VAT for the 2.5 m to ${R(variantPrice("outdoor-kitchens", "ok-2-9"))} for the 2.9 m, and the 3.5 m and 3.9 m are priced on request. Each is delivered ready to use with the motorised roof, quartz countertop, stainless-steel sink and embedded plumbing and electrics included. Cooking appliances are extras, from ${R(optionOf("outdoor-kitchens", "gas-grill-single"))} for a single gas grill.`,
+        a: `Ours run from ${R(variantPrice("outdoor-kitchens", "ok-2-5"))} ex VAT for the 2.5 m to ${R(variantPrice("outdoor-kitchens", "ok-2-9"))} for the 2.9 m, and the 3.5 m and 3.9 m are priced on request. Each is delivered ready to use with the motorised roof, quartz countertop, stainless-steel sink and embedded plumbing and electrics included. Cooking appliances are extras, from ${R(optionOf("outdoor-kitchens", "gas-grill-single"))} ex VAT for a single gas grill.`,
       },
       {
         q: "Is it cheaper to build a braai area or buy one?",
@@ -3145,7 +3149,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `If the home is for a parent at the bottom of the garden and will stay put, being able to move it matters less than what is inside. A bathroom and a kitchen of its own will count for more, and the expandable homes include both on every size.`,
+        text: `If the home is for a parent at the bottom of the garden and will stay put, being able to move it matters less than what is inside. A bathroom and a kitchen of its own will count for more, and the expandable homes include both on every size. If you will need finance, our guide to [home loans for prefab homes](/blog/prefab-home-finance-south-africa) explains why a unit that can move is financed differently.`,
       },
 
       { type: "h2", text: "What do we do, and what do you arrange?" },

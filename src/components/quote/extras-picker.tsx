@@ -81,7 +81,7 @@ function ExtraToggle({
             </span>
           )}
         </span>
-        <span className="mt-1 block text-sm leading-relaxed text-stone">{option.description}</span>
+        <span className="mt-1 block text-base leading-relaxed text-stone">{option.description}</span>
         {helper && <span className="mt-1.5 block text-xs font-medium text-clay-dark">{helper}</span>}
       </span>
       {/* Visual switch track */}

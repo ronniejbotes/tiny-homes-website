@@ -89,7 +89,7 @@ export function ShowroomMap() {
                     href={site.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 inline-block text-sm font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
+                    className="inline-flex min-h-11 items-center text-base font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
                   >
                     Open the pin in Google Maps
                   </a>

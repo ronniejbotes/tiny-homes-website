@@ -193,7 +193,7 @@ const sectors = [
   {
     icon: Tractor,
     title: "Farms",
-    body: "Expandable homes reach remote farms as a single load and open out within hours, with no local build crew to organise. Each is insulated and double-glazed, with a bathroom and a kitchen. X-Folds give farm workers an insulated room where the ablutions are shared.",
+    body: "Expandable homes reach remote farms as a single load, with no local build crew to organise, and the 6m and 12m open out within hours. Each is insulated and double-glazed, with a bathroom and a kitchen. X-Folds give farm workers an insulated room where the ablutions are shared.",
   },
   {
     icon: BedDouble,
@@ -594,7 +594,7 @@ export default function StaffAccommodationPage() {
                     your company name, what the units will be used for, where they will go and
                     how many you&rsquo;re looking at, with the range if you know it. Give us the
                     full number even if you want them in phases. We come back with a formal
-                    quotation, with the delivery quoted as one run rather than unit by unit.
+                    quotation, with the delivery quoted for the whole order.
                   </>
                 ),
               },

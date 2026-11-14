@@ -66,7 +66,7 @@ function ProductCard({
       </div>
       <div className="flex flex-1 flex-col p-4">
         <h3 className="font-display text-lg text-ink">{product.name}</h3>
-        <p className="mt-0.5 text-sm text-stone">{product.tagline}</p>
+        <p className="mt-0.5 text-base text-stone">{product.tagline}</p>
         <p className={cn("mt-3 text-sm font-medium", selected ? "text-forest" : "text-clay-dark")}>
           {priceLabel}
           {!product.priceOnRequest && <span className="font-normal text-stone"> ex VAT</span>}
@@ -148,7 +148,7 @@ export function VariantPicker({
                 </span>
               </span>
             )}
-            <span className={cn("mt-3 text-sm leading-relaxed", active ? "text-cream/80" : "text-stone")}>
+            <span className={cn("mt-3 text-base leading-relaxed", active ? "text-cream/80" : "text-stone")}>
               {variant.description}
             </span>
           </button>

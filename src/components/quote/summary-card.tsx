@@ -43,7 +43,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
       <p className="text-eyebrow text-clay-dark">Your estimate</p>
 
       {lines.length === 0 ? (
-        <p className="mt-4 text-sm leading-relaxed text-stone">
+        <p className="mt-4 text-base leading-relaxed text-stone">
           Choose a home above to build your estimate. We&apos;ll add each unit, its size and any
           extras here as you go.
         </p>
@@ -85,7 +85,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
                   <span className="text-sm font-medium text-stone">incl VAT</span>
                 </p>
                 {someOnRequest && (
-                  <p className="mt-2 text-sm leading-relaxed text-stone">
+                  <p className="mt-2 text-base leading-relaxed text-stone">
                     Plus any units priced after consultation, quoted separately.
                   </p>
                 )}
@@ -95,7 +95,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
                 <p className="text-display text-2xl text-ink sm:text-3xl">
                   Priced after consultation
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-stone">
+                <p className="mt-2 text-base leading-relaxed text-stone">
                   Every unit here is configured to your site and brief, so there&apos;s no fixed
                   price. We send an itemised quotation after a short consultation.
                 </p>
@@ -103,7 +103,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
             )}
           </div>
 
-          <p className="mt-5 text-sm leading-relaxed text-stone">
+          <p className="mt-5 text-base leading-relaxed text-stone">
             Shipping into South Africa is included. Road delivery to your site is
             <span className="font-medium text-ink"> not</span>
             {". "}

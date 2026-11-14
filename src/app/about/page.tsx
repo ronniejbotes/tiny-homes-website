@@ -109,7 +109,7 @@ const values = [
   {
     icon: Leaf,
     title: "Sustainability that works",
-    body: "Solar, battery, gas geysers and rainwater tanks can be paired with most homes, quoted for your site, built to keep running through load-shedding.",
+    body: "Solar, battery, gas geysers and rainwater tanks can be paired with most homes, quoted for your site.",
   },
   {
     icon: ShieldCheck,
@@ -176,7 +176,7 @@ export default function AboutPage() {
               <h1 id="about-heading" className="text-display text-5xl text-ink sm:text-6xl lg:text-7xl">
                 Rethinking how South Africa builds homes
               </h1>
-              <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-stone">
+              <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-stone max-sm:pr-12">
                 <p>
                   Tiny Homes SA started with one question: could housing be done better
                   and faster than the usual way? We believe a dignified home
@@ -193,7 +193,9 @@ export default function AboutPage() {
                   From our showroom in Sunderland Ridge, Centurion, we supply high-end prefab tiny homes
                   (X-Folds, expandable homes, nature cabins, apple cabins and glamping
                   capsules) plus outdoor kitchens, and we deliver anywhere
-                  in South Africa. Customers call them tiny houses, granny pods or prefab
+                  in South Africa. We work with businesses buying several units, for staff
+                  accommodation, a lodge or glamping site, or a development or estate, as well
+                  as with homeowners. Customers call them tiny houses, granny pods or prefab
                   cabins. Whatever you call them, they&rsquo;re built to the same standard.
                 </p>
                 <p>

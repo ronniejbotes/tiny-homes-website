@@ -190,7 +190,7 @@ export const products: Product[] = [
     summary:
       "The X-Fold is a foldable house that flips from flat-pack to a fully enclosed, EPS-insulated 15 m² room in minutes. It's the most affordable home in the Tiny Homes SA range, at R54 900 ex VAT. It arrives wired for electricity, ready for you to add plumbing locally.",
     description:
-      "The X-Fold is a foldable house and the cost-smart start to tiny living: act today, be ready tomorrow. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes: two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Waterproof, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa, all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
+      "The X-Fold is a foldable house and the cost-smart start to tiny living. Each unit arrives flat on a truck and unfolds into a weather-tight 15 m² home in minutes: two workers, four steps. It comes standard with upgraded floor beams for added support, EPS insulation to keep it warmer in winter and cooler in summer, and a basic electrical setup: two plug points, a light fitting and a small DB board. The X-Fold arrives wired for electricity but without plumbing. If you'd like a bathroom or wet room, it's best to have a local installer fit one on site. Weather-tight, insulated and stackable two units high, the X-Fold suits garden rooms, site offices, guest suites, rental units and rapid-deployment housing anywhere in South Africa, all at R54 900 ex VAT and backed by our 1-year limited guarantee.",
     startingPrice: 54900,
     sizeLabel: "15 m²",
     setupTime: "Unfolds in minutes",
@@ -328,7 +328,7 @@ export const products: Product[] = [
     dims: { length: 12, width: 6.3, height: 2.5 },
     specs: [
       { label: "Sizes", value: "18 m², 37 m² or 74 m²" },
-      { label: "Deployment", value: "Arrives as one module, expands on site, move-in ready within hours on a prepared site" },
+      { label: "Deployment", value: "Arrives as one module; the 6m and 12m expand on site within hours, and the 18 m² is placed and connected" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
       { label: "Walls", value: "75 mm EPS insulated panels, standard (polyurethane metal carved board upgrade available, required on coastal sites)" },
       { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor, standard (waterproof SPC laminate upgrade available)" },
@@ -376,7 +376,7 @@ export const products: Product[] = [
       },
       {
         title: "Farm cottage and farmworker housing",
-        body: "Insulated, double-glazed housing that reaches remote farms as a single load and opens out within hours, with no local build crew to organise. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink (no appliances) for R329 900.",
+        body: "Insulated, double-glazed housing that reaches remote farms as a single load, with no local build crew to organise; the 6m and 12m open out on site within hours. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink (no appliances) for R329 900.",
       },
       {
         title: "Staff accommodation and living quarters",
@@ -481,12 +481,15 @@ export const products: Product[] = [
     shortName: "Nature Cabin",
     h1: "Prefab nature cabins for sale",
     seoTitle: "Prefab Cabins South Africa from R810 900",
-    // "Cabin house" is the search the home page wins and this page should own;
-    // every word after it is already on this page (fully built, bathroom,
-    // kitchen, Midea air conditioning).
+    // "Cabin house" is the search the home page wins and this page should own.
+    // Problem first since the 13 Nov 2026 final check (owner, 28 Oct: name the
+    // buyer's problem, not the look): the lodge and guest-farm uses are this
+    // page's own use cases and FAQ. Not "Guest suites without a building
+    // site": the Apple Cabin tagline says nearly that, beside it on the home
+    // range cards.
     metaSummary:
-      "A prefab cabin house: 21 m² plus a viewing terrace, delivered fully built with bathroom, kitchen and air conditioning.",
-    tagline: "A timber look on a steel frame, delivered fully built.",
+      "A prefab cabin house that adds a room to a lodge or guest farm, delivered fully built with bathroom and kitchen.",
+    tagline: "Extra rooms for a lodge or guest farm, delivered fully built.",
     summary:
       "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:

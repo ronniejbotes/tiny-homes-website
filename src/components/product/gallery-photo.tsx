@@ -17,7 +17,19 @@ import type { ProductImage } from "./product-images";
  * is open, so the page HTML carries no second copy of each photo and nothing
  * extra downloads until someone asks for it.
  */
-export function GalleryPhoto({ image, sizes }: { image: ProductImage; sizes: string }) {
+export function GalleryPhoto({
+  image,
+  sizes,
+  priority = false,
+  imgClassName,
+}: {
+  image: ProductImage;
+  sizes: string;
+  /** The product hero is the LCP image: it keeps next/image's priority. */
+  priority?: boolean;
+  /** Replaces the tile's hover-zoom classes (the hero keeps its ken-burns). */
+  imgClassName?: string;
+}) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -39,7 +51,11 @@ export function GalleryPhoto({ image, sizes }: { image: ProductImage; sizes: str
           alt={image.alt}
           fill
           sizes={sizes}
-          className="object-cover transition-transform duration-300 ease-[var(--ease-smooth)] group-hover:scale-105"
+          priority={priority}
+          className={
+            imgClassName ??
+            "object-cover transition-transform duration-300 ease-[var(--ease-smooth)] group-hover:scale-105"
+          }
         />
       </button>
 

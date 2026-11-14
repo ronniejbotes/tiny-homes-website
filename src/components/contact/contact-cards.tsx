@@ -97,7 +97,14 @@ export function ContactCards() {
         // The showroom's suburb and town (owner, 13 November 2026: one
         // address, Sunderland Ridge). The exact spot is the pin on the map below.
         value={`${site.address.locality}, ${site.address.city}`}
-        detail="Every home leaves from here, and we deliver nationwide."
+        // "Every home leaves from here" until 14 Nov 2026: unconfirmed, and the
+        // footer says prices are quoted as delivered in Durban (PLAN T-18,
+        // owner question 4). The card now opens the pin, so it is no longer
+        // the one card of five that looked tappable and wasn't (final check,
+        // 13 Nov 2026).
+        detail="Our showroom. We deliver nationwide."
+        href={site.mapsLink}
+        external
         delay={0.24}
       />
       {/* Was "Book a viewing", a link to the online booker (gone 29 Oct
@@ -113,7 +120,7 @@ export function ContactCards() {
         delay={0.28}
       />
       <Reveal delay={0.3}>
-        <p className="px-1 pt-1 text-sm text-stone">
+        <p className="px-1 pt-1 text-base text-stone">
           Call or WhatsApp us: the fastest way to reach the team.
         </p>
       </Reveal>

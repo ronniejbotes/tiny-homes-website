@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Bed, Ruler, Timer } from "lucide-react";
 import type { Product } from "@/data/products";
@@ -8,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import type { ProductImage } from "./product-images";
+import { GalleryPhoto } from "./gallery-photo";
 
 export function ProductHero({
   product,
@@ -70,11 +70,14 @@ export function ProductHero({
               {product.summary}
             </p>
 
-            <ul className="mt-7 flex flex-wrap gap-2.5 max-sm:order-1 max-sm:pr-12">
+            {/* Plain facts, not pills: as bordered pills they looked like
+                filter buttons and were one of the likely dead-click targets
+                on the product pages (final check, 13 Nov 2026). */}
+            <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 max-sm:order-1 max-sm:pr-12">
               {chips.map(({ icon: Icon, label }) => (
                 <li
                   key={label}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-parchment px-4 py-2 text-sm font-medium text-ink"
+                  className="inline-flex items-center gap-2 py-1 text-sm font-medium text-ink"
                 >
                   <Icon className="h-4 w-4 text-clay" aria-hidden="true" />
                   {label}
@@ -141,15 +144,18 @@ export function ProductHero({
               ken-burns settle as the landing hero (globals.css): a gentle
               scale-only zoom that starts after paint, so LCP timing is
               unaffected, and is fully removed for prefers-reduced-motion. */}
+          {/* The hero photo opens full size on a tap, like the 19 gallery
+              photos below it. It was the only large photo that did nothing
+              on a tap, and the most likely dead-click target on the product
+              pages (final check, 13 Nov 2026). GalleryPhoto keeps priority
+              and the ken-burns class, so LCP is unchanged. */}
           {image && (
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[var(--shadow-lifted)]">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
+              <GalleryPhoto
+                image={image}
                 priority
                 sizes="(min-width: 1024px) 48vw, 92vw"
-                className="animate-hero-kenburns object-cover"
+                imgClassName="animate-hero-kenburns object-cover"
               />
             </div>
           )}

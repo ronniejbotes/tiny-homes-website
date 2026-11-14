@@ -63,7 +63,7 @@ export const staffFaqs: ProductFaq[] = [
   },
   {
     q: "Can staff units be stacked, or moved to the next site?",
-    a: "X-Folds stack up to two units high where ground space is tight, and they fold back down and travel flat, so they can follow a construction or mining job from one site to the next. Expandable homes don't stack. They can be relocated, though not folded down to the same footprint.",
+    a: "X-Folds stack up to two units high where ground space is tight, and they fold back down and travel flat, so they can follow a construction or mining job from one site to the next. Expandable homes don't stack. If you may want to move one to a new site later, ask us before you order.",
   },
   {
     q: "Can you install a multi-unit order for us?",
@@ -71,6 +71,6 @@ export const staffFaqs: ProductFaq[] = [
   },
   {
     q: "Do you deliver staff units to remote sites?",
-    a: `We deliver to all nine provinces, and across the border into ${countryList}, quoted per project. Delivery is quoted for your site on distance and access, and for a multi-unit order we quote it as one run rather than unit by unit. X-Folds travel flat and are offloaded by crane or forklift, which we arrange and quote with the delivery. Expandable homes arrive as a module and need a truck close by.`,
+    a: `We deliver to all nine provinces, and across the border into ${countryList}, quoted per project. Delivery is quoted for your site on distance and access, and for a multi-unit order we quote it for the whole order. X-Folds travel flat and are offloaded by crane or forklift, which we arrange and quote with the delivery. Expandable homes arrive as a module and need a truck close by.`,
   },
 ];
