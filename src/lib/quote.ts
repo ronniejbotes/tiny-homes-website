@@ -74,6 +74,8 @@ export interface QuoteRequestBody {
   /** The customer's answer to "is the site within 30 km of the sea?". */
   nearSea?: boolean | null;
   /** Honeypot: a real person never fills this in. */
+  hp?: string;
+  /** The honeypot's name before 14 Nov 2026, read for pages loaded earlier. */
   company?: string;
 }
 

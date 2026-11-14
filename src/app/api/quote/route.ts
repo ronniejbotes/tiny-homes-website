@@ -117,7 +117,9 @@ export async function POST(request: Request) {
 
   // Honeypot: a field hidden from people and irresistible to form bots. Answer
   // 200 so the bot has nothing to tune against, but send no mail.
-  if (str(body.company)) {
+  // The field is "hp" since 14 Nov 2026 ("company" drew browser autofill from
+  // real business buyers); "company" is still read for a page loaded before then.
+  if (str(body.hp) || str(body.company)) {
     return NextResponse.json({ reference: makeQuoteReference(), delivered: true, copySent: true });
   }
 

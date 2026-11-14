@@ -533,7 +533,10 @@ function QuoteFormInner({
   const [address, setAddress] = useState<AddressValues>(EMPTY_ADDRESS);
   const [notes, setNotes] = useState("");
   // Honeypot. Left empty by every human; form bots fill every field they find.
-  const [company, setCompany] = useState("");
+  // Named "hp" since 14 Nov 2026: as "company" with the label "Company", a
+  // business buyer's browser autofill could fill it, and the API would then
+  // show a success and send nothing (final check note, 13 Nov 2026).
+  const [hp, setHp] = useState("");
   // The customer's own answer to the near-the-sea question. null = not asked yet.
   const [nearSea, setNearSea] = useState<boolean | null>(null);
   const [nearSeaError, setNearSeaError] = useState<string | null>(null);
@@ -849,7 +852,7 @@ function QuoteFormInner({
           contact,
           address,
           notes,
-          company,
+          hp,
           coastal,
           nearSea,
           units: items.map(toUnit),
@@ -1129,15 +1132,15 @@ function QuoteFormInner({
 
           {/* Honeypot: off-screen rather than display:none, which some bots skip. */}
           <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
-            <label htmlFor="quote-company">Company (leave blank)</label>
+            <label htmlFor="quote-hp">Leave this empty</label>
             <input
-              id="quote-company"
-              name="company"
+              id="quote-hp"
+              name="hp_field"
               type="text"
               tabIndex={-1}
               autoComplete="off"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
             />
           </div>
 

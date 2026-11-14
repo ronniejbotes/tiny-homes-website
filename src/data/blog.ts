@@ -435,7 +435,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Need a wendy house alternative in South Africa? How a housing pod and a container home compare on insulation, size, lifespan, resale and cost.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-14",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -1157,7 +1157,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Which South African banks will bond a prefab home and which will not, the conditions FNB and Nedbank attach, and what works when a bond does not.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-07",
+    dateModified: "2026-11-14",
     keywords: [
       "home loan prefab house South Africa",
       "bond for prefab home",
@@ -1314,7 +1314,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping business in South Africa actually pays.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-14",
     keywords: [
       "start a glamping business South Africa",
       "glamping business setup cost",
@@ -1628,7 +1628,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-14",
     keywords: [
       "staff accommodation units South Africa",
       "farm worker housing South Africa",
@@ -1773,8 +1773,9 @@ export const blogPosts: BlogPost[] = [
     description:
       "Building a braai area or buying a delivered outdoor kitchen: what the lengths cost, which extras are worth it, and the ones only larger units can take.",
     datePublished: "2026-09-02",
-    // New prices, the 3.5 m and 3.9 m on request, and the pizza oven extra.
-    dateModified: "2026-10-26",
+    // 26 Oct 2026: new prices, the 3.5 m and 3.9 m on request, and the pizza
+    // oven extra. 14 Nov 2026: final-check wording (one cooking method, ex VAT).
+    dateModified: "2026-11-14",
     keywords: [
       "outdoor kitchen South Africa",
       "outdoor kitchen cost",
@@ -3025,7 +3026,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Mobile homes in South Africa: what the law calls a mobile home, which prefab units can be moved again, and what a move needs at each end.",
     datePublished: "2026-10-07",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-14",
     keywords: [
       "mobile homes South Africa",
       "mobile homes for sale",
