@@ -80,7 +80,7 @@ export function ShowroomInvite() {
             </p>
             <p className="mt-4 text-lg leading-relaxed text-cream/75">
               Our homes are standing at our showroom in {site.showroom.locality},{" "}
-              {site.showroom.city}. Walk in any weekday between 09:00 and 16:00 and see one
+              {site.showroom.city}, between Pretoria and Johannesburg. Walk in any weekday between 09:00 and 16:00 and see one
               for yourself. There&apos;s no appointment to book and no need to email first.
             </p>
 

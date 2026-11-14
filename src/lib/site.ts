@@ -164,6 +164,9 @@ export const nav = {
        2026). Footer only, like /housing-pods: it draws on two ranges that
        already have their own nav entries. */
     { href: "/staff-accommodation", label: "Staff Accommodation" },
+    /* The commercial page for site offices (W13, 15 Nov 2026), footer only
+       for the same reason. */
+    { href: "/site-offices", label: "Site Offices" },
     { href: "/blog", label: "Guides & Advice" },
     { href: "/quote", label: "Get a Quote" },
   ],

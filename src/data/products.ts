@@ -220,6 +220,7 @@ export const products: Product[] = [
       {
         title: "Site office",
         body: "Two workers unfold an X-Fold into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands instead of a fortnight later. Two plug points, a light fitting and a small DB board arrive already wired. When the job finishes, fold it back down and send it to the next site.",
+        link: { href: "/site-offices", label: "Site offices for business" },
       },
       {
         title: "Staff accommodation and living quarters",
@@ -392,6 +393,7 @@ export const products: Product[] = [
       {
         title: "Site office and project office",
         body: "A 37 m² or 74 m² office that expands within hours and arrives with plumbing, electrics, double glazing and a bathroom, closer to a permanent office than a site cabin. Office layouts are available alongside the residential ones, and a full glass front wall can be added for a reception frontage.",
+        link: { href: "/site-offices", label: "Site offices for business" },
       },
       {
         title: "Clinic, classroom or community centre",

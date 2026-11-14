@@ -188,7 +188,18 @@ const sectors = [
   {
     icon: HardHat,
     title: "Mines and construction sites",
-    body: "X-Folds give construction and mining crews an insulated room. They ship flat, stack two high where ground is tight, and fold back down when the job moves on. An X-Fold also works as the site office, wired and open the day it lands. For mine staff who stay put, expandable homes give each unit its own bathroom and kitchen.",
+    body: (
+      <>
+        X-Folds give construction and mining crews an insulated room. They ship flat, stack two
+        high where ground is tight, and fold back down when the job moves on. An X-Fold also
+        works as the{" "}
+        <Link href="/site-offices" className={linkClasses}>
+          site office
+        </Link>
+        , wired and open the day it lands. For mine staff who stay put, expandable homes give
+        each unit its own bathroom and kitchen.
+      </>
+    ),
   },
   {
     icon: Tractor,

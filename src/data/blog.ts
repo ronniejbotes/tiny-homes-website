@@ -1622,8 +1622,10 @@ export const blogPosts: BlogPost[] = [
     // Was "Staff Accommodation Units in South Africa" until 14 Nov 2026: the
     // new /staff-accommodation page now carries that commercial search, so the
     // guide's title leads with what it answers (the cost) to avoid two pages
-    // with one title (T-109).
-    seoTitle: "Staff Accommodation Unit Costs & Site Offices",
+    // with one title (T-109). "& Site Offices" came off on 15 Nov 2026: the
+    // new /site-offices page carries that commercial search (W13), and this
+    // guide links to it from its "Site offices" section.
+    seoTitle: "Staff Accommodation Unit Costs in South Africa",
     title: "Staff accommodation and site offices: what a unit costs",
     description:
       "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
@@ -1632,7 +1634,6 @@ export const blogPosts: BlogPost[] = [
     keywords: [
       "staff accommodation units South Africa",
       "farm worker housing South Africa",
-      "site office for sale South Africa",
       "construction site accommodation",
       "mine accommodation units",
       "prefab staff housing cost",
@@ -1702,7 +1703,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Site offices" },
       {
         type: "p",
-        text: `The same unit does this job. An X-Fold unfolds into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands rather than a fortnight later, with plug points, a light and a small DB board already wired. When the job finishes it [folds back down and goes to the next site](/blog/mobile-homes-south-africa).`,
+        text: `The same unit does this job. An X-Fold unfolds into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands rather than a fortnight later, with plug points, a light and a small DB board already wired. When the job finishes it [folds back down and goes to the next site](/blog/mobile-homes-south-africa). Our page on [site offices](/site-offices) compares it with the expandable units, which come with their own bathroom.`,
       },
       {
         type: "p",

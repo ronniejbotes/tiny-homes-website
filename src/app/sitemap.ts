@@ -45,6 +45,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
+    /* The commercial page for site offices (W13, 15 Nov 2026), beside the
+       staff page. */
+    {
+      url: `${site.url}/site-offices`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
     {
       url: `${site.url}/blog`,
       lastModified,

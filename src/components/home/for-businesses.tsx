@@ -53,7 +53,11 @@ const uses = [
         <Link href="/blog/staff-accommodation-units-south-africa" className={linkClasses}>
           staff accommodation guide
         </Link>{" "}
-        what a unit costs and how to plan the ablutions.
+        what a unit costs and how to plan the ablutions. Need the office on site too? See our{" "}
+        <Link href="/site-offices" className={linkClasses}>
+          site offices
+        </Link>
+        .
       </>
     ),
   },
