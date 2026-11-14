@@ -242,6 +242,15 @@ export function Footer() {
             <Link prefetch={false} href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
               Terms
             </Link>
+            {/* The agency credit every client site we built carries (owner,
+                15 October 2026; kept 13 November 2026). A normal followed
+                link, same wording as the other client sites. */}
+            <span className="inline-flex min-h-11 items-center gap-1">
+              Website by{" "}
+              <a href="https://www.positionxero.com/" className="inline-flex min-h-11 items-center transition-colors hover:text-cream">
+                Position Xero
+              </a>
+            </span>
           </p>
         </div>
 

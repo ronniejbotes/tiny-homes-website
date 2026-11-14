@@ -1709,7 +1709,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ol",
         items: [
-          `**Access for the delivery.** X-Folds ship flat and can be carried in, which is why they work on sites nothing else reaches. Expandables arrive as a module and need a truck close by.`,
+          `**Access for the delivery.** X-Folds arrive flat on a truck and are offloaded by crane or forklift, which we arrange and quote with the delivery. Expandables arrive as a module and need a truck close by.`,
           `**Ground and base.** Level slab or properly levelled plinths, per unit. On a temporary site this is still not optional: a unit standing out of level does not close properly.`,
           `**Ablutions and services**, per the section above. Settle this first.`,
           `**Approval.** Even temporary staff accommodation can be a land-use and building question. Ask the local authority.`,
