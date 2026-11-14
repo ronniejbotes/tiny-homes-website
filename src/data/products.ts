@@ -315,10 +315,12 @@ export const products: Product[] = [
     seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
     sizesHeading: "Granny pod and modular home prices, from open plan to 2 bedrooms",
     metaSummary:
-      "Open-plan granny flats to 2-bedroom prefab houses up to 74 m², one module that expands on site within hours.",
+      "Open-plan granny flats to 2-bedroom prefab houses up to 74 m²; the 37 m² and 74 m² expand on site within hours.",
     tagline: "One module that expands on site within hours.",
+    // The 18 m² is placed and connected, not expanded (Deployment spec, farm use
+    // case): only the 37 m² and 74 m² open out (final check, 14 Nov 2026).
     summary:
-      "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office that arrives as one compact module and expands on site into as much as 74 m² of living space, with bedrooms, bathroom and kitchen included, move-in ready within hours, from R199 900 ex VAT.",
+      "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office, delivered as one compact module with a bathroom and kitchen in every size. The 37 m² and 74 m² homes expand on site within hours, with bedrooms included; the open-plan 18 m² is placed and connected. From R199 900 ex VAT.",
     description:
       "An expandable home arrives on your site as one module: your space, your way. The 6m and 12m homes expand on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics, and the compact 18 m² is ready to place and connect. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
     startingPrice: 199900,
@@ -339,7 +341,7 @@ export const products: Product[] = [
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
-      "Full home delivered as one compact module, expanding within hours",
+      "Full home delivered as one compact module; the 6m and 12m expand within hours",
       "Bathroom and kitchen included on every size; in the 6m and 12m models the kitchen is basic stainless-steel cabinetry and a sink, with no appliances",
       // The count of finishes came from no source we can find. Restore an exact
       // number only with a supplier document and the date it was issued.

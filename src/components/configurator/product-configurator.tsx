@@ -784,7 +784,7 @@ export function ProductConfigurator({ product }: { product: Product }) {
                 </motion.span>
               ))}
             </AnimatePresence>
-            {chips.length === 0 && (
+            {chips.length === 0 && product.options.length > 0 && (
               <span className="text-base text-stone sm:text-xs">Base configuration: add options to see them appear.</span>
             )}
           </div>
@@ -914,18 +914,25 @@ export function ProductConfigurator({ product }: { product: Product }) {
                   <span className="text-sm font-medium text-stone">ex VAT</span>
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-stone sm:text-sm">{site.deliveryNote}</p>
-                <p className="mt-2 text-base leading-relaxed text-stone sm:text-xs">
-                  Optional extras carry provisional pricing and will be confirmed on your final
-                  quote.
-                </p>
+                {/* No options (Nature and Apple Cabins): no extras to price and,
+                    with one size, nothing for Reset to undo beyond the furnished
+                    view, which has its own Empty shell button (14 Nov 2026). */}
+                {product.options.length > 0 && (
+                  <p className="mt-2 text-base leading-relaxed text-stone sm:text-xs">
+                    Optional extras carry provisional pricing and will be confirmed on your final
+                    quote.
+                  </p>
+                )}
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <ButtonLink href={quoteHref} variant="accent">
                     Request this configuration
                   </ButtonLink>
-                  <Button variant="ghost" onClick={reset}>
-                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
-                    Reset
-                  </Button>
+                  {(product.options.length > 0 || (product.variants?.length ?? 0) > 1) && (
+                    <Button variant="ghost" onClick={reset}>
+                      <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                      Reset
+                    </Button>
+                  )}
                 </div>
               </>
             )}

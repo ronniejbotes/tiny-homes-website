@@ -467,7 +467,7 @@ export const blogPosts: BlogPost[] = [
           ["Insulation", "Built in", "Added during conversion", "Often none as standard"],
           ["Shape of the space", "Designed as a room", "Fixed by the container", "Designed as a room"],
           ["Time on your property", "Hours to a few days", "Days", "Days"],
-          ["Can it be moved later", "Yes", "Yes", "Sometimes, with damage"],
+          ["Can it be moved later", "The X-Fold folds down; ask us about the others", "Yes", "Sometimes, with damage"],
         ],
       },
 
@@ -524,7 +524,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `On resale, all three do better than a built room in one specific way: they can leave with you. A pod folds down or lifts out, a container lifts out, and a wendy house can sometimes be dismantled. A brick room cannot. If there is any chance you will move, being able to take it with you is worth real money.`,
+        text: `On resale, all three can do better than a built room in one specific way: they can leave with you. Our X-Fold folds back down and travels flat, a container lifts out, and a wendy house can sometimes be dismantled. A brick room cannot. If there is any chance you will move, being able to take it with you is worth real money. If you may want to move one of our other units later, ask us before you order.`,
       },
 
       { type: "h2", text: "Where a pod is the wrong answer" },
@@ -564,7 +564,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Is a container home cheaper than a housing pod?",
-        a: "An unconverted container is cheaper than any pod. A properly converted, insulated and lined container home frequently is not, because the conversion is where the cost sits. Compare finished, insulated, connected units rather than a bare container against a finished pod.",
+        a: "A bare, unconverted container can cost less than a pod. A properly converted, insulated and lined container home often does not, because the conversion is where the cost sits. Compare finished, insulated, connected units rather than a bare container against a finished pod.",
       },
       {
         q: "Is a housing pod better than a wendy house?",
