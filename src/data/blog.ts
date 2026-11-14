@@ -1615,7 +1615,11 @@ export const blogPosts: BlogPost[] = [
   /* ================================================================ 9 ==== */
   {
     slug: "staff-accommodation-units-south-africa",
-    seoTitle: "Staff Accommodation Units in South Africa",
+    // Was "Staff Accommodation Units in South Africa" until 14 Nov 2026: the
+    // new /staff-accommodation page now carries that commercial search, so the
+    // guide's title leads with what it answers (the cost) to avoid two pages
+    // with one title (T-109).
+    seoTitle: "Staff Accommodation Unit Costs & Site Offices",
     title: "Staff accommodation and site offices: what a unit costs",
     description:
       "Costing accommodation for farm, mine and construction staff: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
@@ -1714,7 +1718,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Ordering several? We quote the delivery as one run rather than unit by unit.`,
+        text: `Ordering several? We quote the delivery as one run rather than unit by unit. Our page on [staff accommodation units](/staff-accommodation) sets out what a multi-unit order involves, from the site to the timeline.`,
       },
       {
         type: "cta",
@@ -3485,7 +3489,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `If the job is housing staff, decide on ablutions before you count units. Shared block or a bathroom in every unit changes which range you want and what else goes on site, and our [staff accommodation guide](/blog/staff-accommodation-units-south-africa) works through that choice properly.`,
+        text: `If the job is housing staff, decide on ablutions before you count units. Shared block or a bathroom in every unit changes which range you want and what else goes on site, and our [staff accommodation guide](/blog/staff-accommodation-units-south-africa) works through that choice properly. Our page on [staff accommodation units](/staff-accommodation) compares the units side by side.`,
       },
       {
         type: "p",

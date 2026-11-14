@@ -37,6 +37,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     },
+    /* The commercial page for business buyers housing staff (T-109, 14 Nov
+       2026): above the pod hub, below the product pages it sells. */
+    {
+      url: `${site.url}/staff-accommodation`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
     {
       url: `${site.url}/blog`,
       lastModified,

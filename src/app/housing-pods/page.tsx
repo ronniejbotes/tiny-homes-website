@@ -530,7 +530,14 @@ export default function HousingPodsPage() {
               >
                 how a pod compares to a container home or a wendy house
               </Link>
-              .
+              . Housing staff on a mine, farm, lodge or building site? Our page on{" "}
+              <Link
+                href="/staff-accommodation"
+                className="font-medium text-clay underline underline-offset-4 hover:text-clay-dark"
+              >
+                staff accommodation units
+              </Link>{" "}
+              sets out which units suit and what a multi-unit order involves.
             </p>
           </Reveal>
         </Container>

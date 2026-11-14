@@ -160,6 +160,10 @@ export const nav = {
    */
   resources: [
     { href: "/housing-pods", label: "Housing Pods" },
+    /* The commercial page for business buyers housing staff (T-109, 14 Nov
+       2026). Footer only, like /housing-pods: it draws on two ranges that
+       already have their own nav entries. */
+    { href: "/staff-accommodation", label: "Staff Accommodation" },
     { href: "/blog", label: "Guides & Advice" },
     { href: "/quote", label: "Get a Quote" },
   ],

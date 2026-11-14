@@ -99,6 +99,9 @@ export interface UseCase {
   title: string;
   /** How this product serves that job. Must stay true to the spec above. */
   body: string;
+  /** Optional link under the paragraph, to the page that covers this job for
+   *  business buyers (the staff accommodation cards, T-109). */
+  link?: { href: string; label: string };
 }
 
 export interface Product {
@@ -221,6 +224,7 @@ export const products: Product[] = [
       {
         title: "Staff accommodation and living quarters",
         body: "A 15 m² insulated room for on-site staff, farm workers or construction and mining crews. EPS panels keep it warmer in winter and cooler in summer, and units stack two high where ground space is tight. It ships wired but without plumbing, so ablutions are either a shared block or a local plumber's fit-out.",
+        link: { href: "/staff-accommodation", label: "Staff accommodation units for business" },
       },
       {
         title: "Wendy house alternative",
@@ -377,6 +381,7 @@ export const products: Product[] = [
       {
         title: "Staff accommodation and living quarters",
         body: "Self-contained units for mine, lodge, security or estate staff, each with its own bathroom and kitchen, so there is no shared ablution block to build. 75 mm EPS insulated walls come standard, upgradeable to polyurethane, which holds heat in better in winter and out better in summer on exposed sites.",
+        link: { href: "/staff-accommodation", label: "Staff accommodation units for business" },
       },
       {
         title: "Student accommodation",

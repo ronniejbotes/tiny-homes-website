@@ -45,11 +45,15 @@ const uses = [
           Expandable homes
         </Link>{" "}
         are self-contained units for mine, lodge, security or estate staff, each with its own
-        bathroom and kitchen. Our{" "}
+        bathroom and kitchen. Our page on{" "}
+        <Link href="/staff-accommodation" className={linkClasses}>
+          staff accommodation units
+        </Link>{" "}
+        sets out what a multi-unit order involves, and our{" "}
         <Link href="/blog/staff-accommodation-units-south-africa" className={linkClasses}>
           staff accommodation guide
         </Link>{" "}
-        sets out what a unit costs and how to plan the ablutions.
+        what a unit costs and how to plan the ablutions.
       </>
     ),
   },

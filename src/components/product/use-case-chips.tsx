@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { Product } from "@/data/products";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -31,6 +33,15 @@ export function UseCaseChips({ product }: { product: Product }) {
                 <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
                   {useCase.body}
                 </p>
+                {useCase.link && (
+                  <Link
+                    href={useCase.link.href}
+                    className="mt-4 inline-flex min-h-11 items-center gap-2 font-medium text-clay transition-colors hover:text-clay-dark"
+                  >
+                    {useCase.link.label}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
