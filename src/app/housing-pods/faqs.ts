@@ -60,7 +60,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "How long does delivery take, and can a truck reach my site?",
-    a: `Around 90 days from deposit to move-in for most units. Every pod here except the X-Fold arrives as a finished unit that must be lifted or rolled into its final position, so site access decides more than people expect: gate width, overhead cables, slope and ground firmness all matter. Send us photographs of the approach and we will confirm it before you order. ${site.deliveryNote}`,
+    a: `Around 90 days from deposit to move-in for most units. Every pod here except the X-Fold arrives as a finished unit that must be lifted or rolled into its final position (the X-Fold arrives folded flat, but it too comes off the truck by crane or forklift), so site access decides more than people expect: gate width, overhead cables, slope and ground firmness all matter. Send us photographs of the approach and we will confirm it before you order. ${site.deliveryNote}`,
   },
   {
     q: "Can a housing pod run off-grid?",

@@ -536,7 +536,7 @@ export const blogPosts: BlogPost[] = [
         type: "ol",
         items: [
           `**You need storage, not a room.** If nobody will sit in it, insulation and finishes are money spent on nothing. Buy a wendy house.`,
-          `**Nothing can reach the site.** Pods arrive whole and have to be lifted or rolled into place. A steep, narrow or overgrown approach can make delivery impossible, and something assembled on site is then the only option. Our X-Fold is the exception (it ships flat and is carried in), but the rest need access.`,
+          `**Nothing can reach the site.** Pods arrive whole and have to be lifted or rolled into place. A steep, narrow or overgrown approach can make delivery impossible, and something assembled on site is then the only option. The X-Fold helps a little (it arrives folded flat and unfolds on site), but it still comes off the truck by crane or forklift, so every range needs a way in.`,
           `**Your budget is genuinely fixed below the entry price.** Do not stretch to the cheapest pod by cutting the groundwork or the connections. A well-built wendy house on a proper base beats a pod standing on an inadequate one.`,
         ],
       },
@@ -718,7 +718,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Every range here except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position. The truck has to get close enough, and the unit has to travel the last stretch. Things that end deliveries:`,
+        text: `Every range here except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position. The X-Fold arrives folded flat, but it still comes off the truck by crane or forklift. The truck has to get close enough, and the unit has to travel the last stretch. Things that end deliveries:`,
       },
       {
         type: "ul",
@@ -2010,7 +2010,7 @@ export const blogPosts: BlogPost[] = [
           `**Finance is harder.** Some major South African banks do not currently bond prefabricated structures at all. If you need a bond rather than cash or third-party finance, check this before anything else.`,
           `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land at or below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
           `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
-          `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
+          `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place, and the X-Fold still needs a crane or forklift to come off the truck. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
           `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling, by everyone.`,
           `**Approval is not automatically avoided.** A permanently founded prefab dwelling generally faces the same municipal approval as any other dwelling. The lighter route exists only for genuinely temporary structures, and it is time-limited.`,
           `**Extras add up.** The advertised price is factory-gate. Transport, groundwork and service connections are yours, and on a distant or awkward site they are not small.`,

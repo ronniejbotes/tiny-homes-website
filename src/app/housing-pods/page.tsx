@@ -473,7 +473,7 @@ export default function HousingPodsPage() {
             {[
               {
                 h: "Can a truck reach the spot?",
-                p: "A pod is delivered whole. Every one of these ranges except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position, so the route in (gate width, overhead cables, slope, soft ground) decides as much as the plot itself. Send us photos of the access and we will tell you before you order, not after.",
+                p: "A pod is delivered whole. Every one of these ranges except the X-Fold arrives as a finished unit that has to be lifted or rolled into its final position (the X-Fold arrives folded flat, but it too comes off the truck by crane or forklift), so the route in (gate width, overhead cables, slope, soft ground) decides as much as the plot itself. Send us photos of the access and we will tell you before you order, not after.",
               },
               {
                 h: "What is the base standing on?",
