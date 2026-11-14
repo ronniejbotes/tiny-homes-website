@@ -171,7 +171,9 @@ export default function AboutPage() {
       <section className="pt-28 sm:pt-36" aria-labelledby="about-heading">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
-            <Reveal>
+            {/* CSS entrance, not <Reveal> (T-67, 14 Nov 2026): Reveal waits
+                for JavaScript, so the H1 was blank until the page hydrated. */}
+            <div className="animate-rise-in">
               <p className="text-eyebrow mb-4 text-clay">About Tiny Homes SA</p>
               <h1 id="about-heading" className="text-display text-5xl text-ink sm:text-6xl lg:text-7xl">
                 Rethinking how South Africa builds homes
@@ -213,7 +215,7 @@ export default function AboutPage() {
                   kitchens. {site.finance}.
                 </p>
               </div>
-            </Reveal>
+            </div>
             {/* LCP image: rendered statically (no Reveal) so the preloaded
                 hero can paint before hydration. */}
             <div className="relative">

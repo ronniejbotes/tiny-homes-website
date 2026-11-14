@@ -119,7 +119,10 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       {/* --------------------------------------------------------- header */}
       <header className="bg-parchment pt-32 pb-12 sm:pt-40 sm:pb-16">
         <Container>
-          <Reveal className="max-w-[68ch]">
+          {/* CSS entrance, not <Reveal> (T-67, 14 Nov 2026): Reveal starts at
+              opacity 0 and waits for JavaScript, so the H1 was blank until the
+              page hydrated. animate-rise-in shows before JS runs. */}
+          <div className="animate-rise-in max-w-[68ch]">
             <nav aria-label="Breadcrumb">
               {/* min-h-11 makes the tap target 44px tall (it was 20px);
                   -my-3 hands the extra 24px back so the header doesn't move. */}
@@ -151,13 +154,15 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 Business enquiry
               </ButtonLink>
             </div>
-          </Reveal>
+          </div>
         </Container>
       </header>
 
       {image && (
         <Container>
-          <Reveal className="relative aspect-[21/9] overflow-hidden rounded-3xl">
+          {/* The lead picture is the post's LCP element: no entrance, so it
+              paints as soon as it loads instead of after hydration (T-67). */}
+          <div className="relative aspect-[21/9] overflow-hidden rounded-3xl">
             <Image
               src={image.src}
               alt={image.alt}
@@ -166,7 +171,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               sizes="(min-width: 1280px) 76rem, 100vw"
               className="object-cover"
             />
-          </Reveal>
+          </div>
         </Container>
       )}
 

@@ -21,9 +21,11 @@ street address of its own, so always send visitors to the pin. Delivery is
 nationwide and is quoted separately based on location and site accessibility. Every home
 carries a 1-year limited guarantee, and full after-sales support is provided across the range.
 Finance is available through a third-party provider, subject to credit approval; otherwise a home is
-paid for in full. Tiny Homes can also arrange a full turnkey installation — groundwork,
-plinths, electrical/water/sewerage connections, erection and handover — or clients can use their
-own contractors with a Tiny Homes site manager guiding the process. Typical timeline is
+paid for in full. For X-Folds, the Tiny Homes team unfolds and sets up each unit on the
+buyer's prepared, level base as part of the delivery; installing the other units is quoted
+separately. Where the turnkey service covers the area and the units, Tiny Homes can arrange the
+groundwork, plinths, connections and installation; buyers can also use their own contractors.
+Typical timeline is
 ±90 days from deposit to move-in. Contact: phone 083 660 3743, email
 admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 
@@ -64,7 +66,8 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   container house: it does that job, but it is a steel-framed room built as one from the
   start, not a converted shipping container.
 - [Expandable Homes](https://tinyhomesa.com/expandable-homes): 18–74 m² homes that
-  arrive as one module and expand on site within hours. From R199 900 ex VAT (compact 18 m²,
+  arrive as one module; the 6m (37 m²) and 12m (74 m²) expand on site within hours, and the
+  compact 18 m² is placed and connected. From R199 900 ex VAT (compact 18 m²,
   open plan with a bathroom and a small basic kitchen); R329 900 (6m Expandable Home, 37 m²,
   2 bedrooms, bathroom and a kitchen of basic stainless-steel cabinetry and a sink included,
   with no appliances); R599 900 (12m Expandable
@@ -155,8 +158,8 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   Comparison. Insulation is the main structural difference — a pod has it in the panel, a
   container conversion adds it internally (at the cost of already-tight internal space, and
   with condensation as the failure mode if done poorly), and a wendy house typically has
-  none. A shipping container's 2.44 m external width fixes the layout; pods and wendy houses
-  are drawn as rooms. Containers genuinely win where a unit will be repeatedly craned and
+  none. A shipping container's width is fixed by the shipping standard, so the container
+  largely decides the layout; pods and wendy houses are drawn as rooms. Containers genuinely win where a unit will be repeatedly craned and
   moved. A pod is the wrong buy for pure storage, for sites a delivery vehicle cannot reach,
   and where the budget only stretches by cutting the groundwork.
 - [Where can you put a housing pod? Plans, foundations and
@@ -221,9 +224,10 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   and construction housing. X-Fold R54 900 ex VAT for an insulated wired 15 m² room — ships
   flat, unfolds in minutes with two people, stacks two high, relocatable, NO plumbing.
   Expandable homes from R199 900 for self-contained accommodation with bathroom and services.
-  The ablution decision drives the budget: a shared block is almost always cheaper per bed at
-  scale than per-unit wet rooms. Cost per bed, not cost per unit, is the number that matters.
-  Buying beats hiring a site office over long programmes. Housing farm workers carries legal
+  The ablution decision drives the budget: a shared block is usually cheaper per bed once more
+  than a few people are housed, while per-unit wet rooms buy privacy. Cost per bed, not cost
+  per unit, is the number that matters. Over a short project, hire a site office; over a long
+  programme, buying usually wins. Housing farm workers carries legal
   obligations beyond the building — a question for a legal advisor.
 - [What does an outdoor kitchen cost in South
   Africa?](https://tinyhomesa.com/blog/outdoor-kitchen-cost-south-africa): Four lengths: the 2.5 m
@@ -231,9 +235,18 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   0.8 m deep × 2.4 m high, delivered with the motorised lift-up roof, quartz countertop, stainless-steel sink and embedded plumbing and
   electrics. Cooking appliances are extras from R9 300 for a single gas grill. IMPORTANT
   CONSTRAINT: the double gas grill and the kettle grill (R8 200) are available on the 3.5 m and
-  3.9 m units ONLY, so charcoal braaiing sets the minimum length. A built masonry braai needs
+  3.9 m units ONLY, and each unit takes one cooking method, so charcoal braaiing sets the
+  minimum length. A built masonry braai needs
   four trades and has no fixed final price; the unit needs a level base (500–750 kg) and two
   connections.
+- [Can you rent-to-own a tiny home in South
+  Africa?](https://tinyhomesa.com/blog/rent-to-own-tiny-home-south-africa): Tiny Homes SA does
+  not offer rent-to-own, in-house financing or instalments: a home is paid for in full or
+  financed through an outside provider, whose credit decision is theirs. Covers three questions
+  to ask a supplier that does offer rent-to-own (who owns the unit while you pay, what happens to
+  money already paid if an instalment is missed, and whether it is registered with the National
+  Credit Regulator), why a new home loan usually won't cover the unit, and what a five-year term
+  does to the monthly figure.
 - [Prefab vs building a house in South Africa: the pros and
   cons](https://tinyhomesa.com/blog/prefab-vs-building-a-house-south-africa): The choice is
   between a construction project and a purchase. Conventional building wins for bespoke

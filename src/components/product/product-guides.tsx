@@ -16,9 +16,11 @@ const GUIDES: Record<string, string[]> = {
     "where-can-you-put-a-housing-pod",
     "mobile-homes-south-africa",
     "buying-prefab-buildings-for-a-business",
+    "modular-homes-south-africa-explained",
   ],
   "expandable-homes": [
     "granny-flat-cost-south-africa",
+    "is-a-prefab-home-cheaper-than-building",
     "building-approval-south-africa-what-you-need",
     "prefab-home-finance-south-africa",
     "what-is-included-in-a-prefab-house-price",

@@ -94,7 +94,10 @@ export default function BlogIndexPage() {
 
       <section className="bg-forest bg-grain pt-36 pb-20 text-cream sm:pt-44 sm:pb-24">
         <Container>
-          <Reveal className="max-w-3xl">
+          {/* CSS entrance, not <Reveal> (T-67, 14 Nov 2026): Reveal starts at
+              opacity 0 and waits for JavaScript, so the H1 and intro were blank
+              until the page hydrated. animate-rise-in shows before JS runs. */}
+          <div className="animate-rise-in max-w-3xl">
             <p className="text-eyebrow text-sage">Prefab and tiny home guides</p>
             <h1 className="text-display mt-4 text-4xl sm:text-6xl">
               Everything worth knowing before you buy
@@ -104,7 +107,7 @@ export default function BlogIndexPage() {
               smoothly. Written by the people who deliver these units, with the numbers
               taken straight off our own price list.
             </p>
-          </Reveal>
+          </div>
         </Container>
       </section>
 
@@ -112,11 +115,15 @@ export default function BlogIndexPage() {
         {/* prefetch={false} on the three links in each card: scrolling this list
             fetched every guide in the background for a reader who opens one. */}
         <Container>
+          {/* The first row (one card on a phone, two on a laptop) is a plain
+              <li>, visible from the first paint, and the first card's picture
+              loads eagerly at high priority: it is the page's LCP element on
+              phones (Lighthouse, 14 Nov 2026), and inside the stagger it stayed
+              at opacity 0 until the page hydrated. Later cards still fade up. */}
           <Stagger className="grid gap-8 lg:grid-cols-2" as="ul">
-            {blogPostsByDate.map((post) => {
+            {blogPostsByDate.map((post, index) => {
               const image = getPostLeadImage(post);
-              return (
-                <StaggerItem key={post.slug} as="li">
+              const card = (
                   <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-parchment">
                     {image && (
                       <Link prefetch={false} href={`/blog/${post.slug}`} className="relative block aspect-[16/9]">
@@ -126,6 +133,8 @@ export default function BlogIndexPage() {
                           fill
                           sizes="(min-width: 1024px) 40rem, 100vw"
                           className="object-cover"
+                          loading={index === 0 ? "eager" : undefined}
+                          fetchPriority={index === 0 ? "high" : undefined}
                         />
                       </Link>
                     )}
@@ -159,6 +168,12 @@ export default function BlogIndexPage() {
                       </Link>
                     </div>
                   </article>
+              );
+              return index < 2 ? (
+                <li key={post.slug}>{card}</li>
+              ) : (
+                <StaggerItem key={post.slug} as="li">
+                  {card}
                 </StaggerItem>
               );
             })}

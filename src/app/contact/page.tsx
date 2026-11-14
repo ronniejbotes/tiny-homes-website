@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Mail, Phone } from "lucide-react";
@@ -61,7 +62,10 @@ export default function ContactPage() {
 
       <section className="pb-20 pt-28 sm:pb-28 sm:pt-36" aria-labelledby="contact-heading">
         <Container>
-          <Reveal className="max-w-3xl">
+          {/* CSS entrances on the first screen, not <Reveal> (T-67, 14 Nov
+              2026): Reveal waits for JavaScript, so the H1 and the business
+              card were blank until the page hydrated. */}
+          <div className="animate-rise-in max-w-3xl">
             <p className="text-eyebrow mb-4 text-clay">Contact</p>
             <h1
               id="contact-heading"
@@ -69,7 +73,7 @@ export default function ContactPage() {
             >
               Let&apos;s plan your tiny home
             </h1>
-          </Reveal>
+          </div>
 
           {/* Business and volume enquiries, first on the page (owner, 29 Oct
               2026: "Our main target for tiny homes now is to deal with larger
@@ -79,7 +83,7 @@ export default function ContactPage() {
               site, so the privacy page's account of this page stays true.
               The button comes before the list so it sits on the first phone
               screen (at 390x844 it was at 1,166px below the list). */}
-          <Reveal delay={0.05}>
+          <div className="animate-rise-in" style={{ "--rise-delay": "0.05s" } as CSSProperties}>
             <div
               id="business"
               className="mt-8 scroll-mt-24 rounded-3xl bg-forest bg-grain p-6 text-cream sm:mt-10 sm:p-10"
@@ -137,7 +141,7 @@ export default function ContactPage() {
                 explains what to have ready for each of these.
               </p>
             </div>
-          </Reveal>
+          </div>
 
           {/* The page's original standfirst, moved below the business card so
               the business button reaches the first phone screen. */}

@@ -2759,7 +2759,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `This guide says what each word usually means and what modular does and does not change about approval. It also shows which of our own units fits which word, and what to ask before you buy. If you came here shopping for [modular homes in South Africa](/), our home page shows every range we sell. This one sticks to what the words mean.`,
+        text: `This guide says what each word usually means and what modular does and does not change about approval. It also shows which of our own units fits which word, and what to ask before you buy. If you came here shopping for [modular homes in South Africa](/), our home page shows every range we sell.`,
       },
 
       { type: "h2", text: "What is the difference between modular, prefab and flat-pack?" },
@@ -2825,7 +2825,7 @@ export const blogPosts: BlogPost[] = [
         text: `Agrément also says its certificates can help a system gain acceptance with regulatory authorities and with financial institutions. If you will need a loan, ask the lender about this before you choose a unit.`,
       },
 
-      { type: "h2", text: "What should you ask about any modular home?" },
+      { type: "h2", text: "How do you choose the best modular home?" },
       {
         type: "p",
         text: `Whichever supplier you are talking to, including us, these questions separate one offer from another.`,
@@ -2987,7 +2987,7 @@ export const blogPosts: BlogPost[] = [
           `the bathroom: a shower or a bath, and what heats the water (a geyser is standard in our capsules)`,
           `what the walls are insulated with and, on a coastal site, whether the exterior is made for salt air`,
           `the windows and doors: how many there are, and whether they are double-glazed`,
-          `the floor area, because a lower headline price on a much smaller unit can work out dearer per square metre`,
+          `the floor area, because a lower headline price on a much smaller unit can work out [dearer per square metre](/blog/is-a-prefab-home-cheaper-than-building)`,
           `what the guarantee covers, and for how long`,
         ],
       },
@@ -3339,7 +3339,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Stand inside the home, check who you're paying, get the whole job in writing, and know what cancelling would cost. Do all of that before any money leaves your account. Run the same checks if you're ordering units for a business, such as staff housing or a lodge.`,
+        text: `Stand inside the home, check who you're paying, get the whole job in writing, and know what cancelling would cost. Do all of that before any money leaves your account. Run the same checks if you're ordering units for a business, such as [staff housing](/staff-accommodation) or a lodge.`,
       },
       {
         type: "p",
