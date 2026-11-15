@@ -981,10 +981,11 @@ export const blogPosts: BlogPost[] = [
     slug: "granny-flat-cost-south-africa",
     seoTitle: "Granny Flat Cost in SA: Building vs Prefab",
     title: "How much does a granny flat cost in South Africa?",
+    // W45 (15 Nov 2026): the answer first in the snippet ("granny flat" 273 impr. at 5.1, 1% CTR).
     description:
-      "What a granny flat costs built conventionally or delivered as a prefab, side by side, which council approvals you need, and how to tell if it pays.",
+      "A cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 to build (checked Oct 2026); our open-plan 18 m² prefab is R199 900 ex VAT.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-22",
+    dateModified: "2026-11-15",
     keywords: [
       "granny flat cost South Africa",
       "how much does a granny flat cost",
@@ -999,7 +1000,7 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Nobody can price a granny flat for you over the phone. "Granny flat" covers everything from a converted garage to a two-bedroom cottage with its own kitchen, and even a one-bedroom unit built conventionally has a wide spread: an industry cost guide put a mid-range build at R150 000 to R300 000 in October 2026, and the full range at R50 000 to over R500 000.`,
+        text: `Those numbers are a starting point, not a quote: nobody can price a granny flat for you over the phone. "Granny flat" covers everything from a converted garage to a two-bedroom cottage with its own kitchen, and even a one-bedroom unit built conventionally has a wide spread: the same guide put the full range at R50 000 to over R500 000.`,
       },
       {
         type: "p",
@@ -1022,7 +1023,7 @@ export const blogPosts: BlogPost[] = [
         caption: "Granny flat routes compared on cost, timeline and certainty",
         head: ["", "Conventional build", "Delivered unit"],
         rows: [
-          ["Typical outlay", "R150 000 – R300 000 for a mid-range one-bedroom (Oct 2026 guide)", `From ${R(expandable)} ex VAT`],
+          ["Typical outlay", "R150 000 – R300 000 for a mid-range one-bedroom (guide checked Oct 2026)", `From ${R(expandable)} ex VAT`],
           ["Quoted as", "A rate plus a scope", "A price for a finished unit"],
           ["Time on your property", "Months", "Hours to a few days"],
           ["Layout freedom", "Whatever you can draw", "Catalogue sizes"],
@@ -1105,7 +1106,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "How much does a granny flat cost in South Africa?",
-        a: `Conventionally built, an industry cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 in October 2026, with budget builds from R50 000 and the top end past R500 000, depending on finishes and scope. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 18 m² with its own bathroom and a small basic kitchen. Add transport, groundwork and service connections to either figure.`,
+        a: `Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000, with budget builds from R50 000 and the top end past R500 000, depending on finishes and scope. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 18 m² with its own bathroom and a small basic kitchen. Add transport, groundwork and service connections to either figure.`,
       },
       {
         q: "Do I need council approval for a granny flat?",
@@ -1113,7 +1114,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What is the cheapest way to build a granny flat in South Africa?",
-        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, an industry cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 in October 2026; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
+        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",

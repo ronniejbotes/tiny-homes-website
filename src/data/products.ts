@@ -428,6 +428,12 @@ export const products: Product[] = [
         a: "Three sizes: the compact 18 m² from R199 900 ex VAT (open plan, with a bathroom and a small basic kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), with layouts up to four bedrooms on the 12m.",
       },
       {
+        // W45 (15 Nov 2026): "3 bedroom prefab house price south africa" sits at 6.0 on this page.
+        q: "Is there a 3-bedroom prefab house, and what does it cost?",
+        // Fact check (W45): the 6m also takes 3-bed layouts (quote picker "3 Bed A/B", 20ft catalogue), and every layout costs the same.
+        a: "Yes. Both the 6m and 12m Expandable Homes can be laid out with three bedrooms instead of the standard two, at the same price: the 37 m² 6m at R329 900 ex VAT and the 74 m² 12m at R599 900 ex VAT. Both have a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances).",
+      },
+      {
         q: "How long does installation take?",
         a: "The 6m and 12m homes arrive as one module and expand on site within hours. On a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect.",
       },

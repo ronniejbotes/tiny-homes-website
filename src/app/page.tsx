@@ -41,12 +41,15 @@ const lowestStartingPrice = Math.min(
     .map((p) => p.startingPrice),
 );
 
-const homeTitle = "Tiny Homes SA | Prefab Houses & Cabins South Africa";
+/* W45 striking distance (15 Nov 2026): search phrase first, brand last. Search Console
+   28 days: "prefab houses south africa" 4.2, "modular homes south africa" 5.2, "prefab
+   homes" 6.5 on this page; the brand-first title named neither "modular homes". */
+const homeTitle = "Prefab Houses & Modular Homes South Africa | Tiny Homes SA";
 /** Kept to 120–160 characters: Google truncates beyond that, and SEO auditors
  *  flag it. The provinces and cross-border detail live in the page copy and in
  *  the LocalBusiness areaServed schema, which is where they actually rank. */
 const homeDescription =
-  "Prefab tiny homes from R54 900 ex VAT: X-Folds, cabins, expandable homes and capsules, delivered across South Africa. Showroom in Centurion, Gauteng.";
+  "Prefab houses and modular homes from R54 900 ex VAT: X-Folds, cabins, expandable homes and capsules, delivered across South Africa. Showroom in Centurion.";
 
 export const metadata: Metadata = {
   title: {
