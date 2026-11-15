@@ -3565,6 +3565,138 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "prefab-homes-on-estates-south-africa",
+    seoTitle: `Prefab Homes on an Estate: What to Settle Before You Order`,
+    title: `Putting prefab homes on an estate or resort scheme: what to settle before you order`,
+    description:
+      `Putting prefab units on an estate or resort scheme in South Africa? What the estate's rules, zoning and building approval ask of you before you order.`,
+    datePublished: "2026-11-15",
+    keywords: [
+      "prefab homes for estates south africa",
+      "prefab units on an estate",
+      "prefab units for a resort scheme",
+      "estate rules for prefab homes",
+      "prefab homes body corporate approval",
+    ],
+    imageProduct: "expandable-homes",
+    leadImage: { src: "/images/products/expandable-homes/scenic-bushveld.jpg", width: 2000, height: 1500, alt: "Render of an Expandable Home on a timber deck among acacia trees and aloes in the bushveld." },
+    readingMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: `Before you order prefab units for an estate or a resort scheme, find out who has to say yes, and in what order. On an estate, that means its own rules first, then the municipality: whether the land may be used this way, and whether the units need approved plans. Then work out how water, sewer and power reach every unit. A quotation can price the units. It can't tell you whether the estate will let them in.`,
+      },
+      {
+        type: "p",
+        text: `Here's how we'd work through it with you.`,
+      },
+      { type: "h2", text: `The estate's rules come before the council's` },
+      {
+        type: "p",
+        text: `An estate run by an association or a body corporate is a community scheme in law. The [Community Schemes Ombud Service Act](https://www.gov.za/sites/default/files/gcis_document/201409/a92011.pdf) defines a community scheme as any arrangement with shared use of and responsibility for land and buildings. It names a sectional title scheme, a share block company and a home or property owners' association established to administer a property development among them. The same Act calls the scheme's rules, constitution, conditions and similar provisions its governance documentation: the papers that control how private areas and common areas are used and occupied.`,
+      },
+      {
+        type: "p",
+        text: `On a sectional title scheme, the [Sectional Titles Schemes Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/a82011.pdf) says the scheme is run by rules covering the use and enjoyment of the sections and the common property, and those rules bind the body corporate, the owners and anyone living in a section.`,
+      },
+      {
+        type: "p",
+        text: `So before you choose a range, ask the managing agent or the association for those documents and read them for:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `Rules on exterior finishes, colours, roof shapes and materials.`,
+          `Whether plans go to the estate, for example to an aesthetics or architectural committee, before they go to the municipality.`,
+          `Where on a property a structure may stand, and what may go on common ground.`,
+          `Rules on contractors, heavy vehicles and access through the gate.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `If you and the association disagree about how the scheme is being run, the Ombud Service provides a dispute resolution service for disputes about the administration of a community scheme between people with a material interest in it.`,
+      },
+      {
+        type: "p",
+        text: `[Expandable homes](/expandable-homes) come in a wide choice of exterior colours and finishes: brick, timber-grain, plain or textured. Outdoor kitchens come in colours from white and navy to grey, charcoal and green, chosen to match existing buildings. Send us the guidelines with your enquiry. Extras you choose are confirmed line by line on your formal quotation, which you can then show the committee.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/expandable-homes/brochure-hero.jpg", width: 2000, height: 1201, alt: "Render of an Expandable Home in a timber-grain finish on a deck beside a lake at sunset." },
+      },
+      { type: "h2", text: `Then the land use scheme: is this use allowed at all?` },
+      {
+        type: "p",
+        text: `Rental units, guest suites for a resort, staff housing and a shared braai area are all uses of land, and the municipality's land use scheme decides which uses a property may have. Under the [Spatial Planning and Land Use Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/367305-8act16of20.pdf), an approved land use scheme has the force of law and binds every owner and user of land, and land may be used only for the purposes the scheme permits. A permitted use can be changed with the approval of a Municipal Planning Tribunal, or of a municipal official where the municipality has authorised one to decide that kind of application.`,
+      },
+      {
+        type: "p",
+        text: `If you're the developer, check whether the approvals the estate already holds cover what you want to add. If you're the estate's managing body adding units to common ground, the same question applies to that ground. The municipality's town planning office is the place to ask.`,
+      },
+      { type: "h2", text: `And building approval for the units themselves` },
+      {
+        type: "p",
+        text: `A prefab unit is a building in law. The [National Building Regulations and Building Standards Act](https://www.gov.za/sites/default/files/gcis_document/201504/act-103-1977.pdf) defines a building as any structure, temporary or permanent and whatever it's made of, used to accommodate people, and it says nobody may put up a building that needs plans without the local authority's prior written approval.`,
+      },
+      {
+        type: "p",
+        text: `Our [building approval guide](/blog/building-approval-south-africa-what-you-need) sets out the routes in more detail, so you know what to ask building control. On an estate, line the estate's sign-off and the council's up so neither is waiting on the other.`,
+      },
+      {
+        type: "p",
+        text: `This is general information. The estate's managing body and the municipality decide what your scheme needs, and the legal questions belong with your own attorney or town planner.`,
+      },
+      { type: "h2", text: `Plan water, sewer and power to every unit before the units arrive` },
+      {
+        type: "p",
+        text: `The units we'd suggest for an estate come with their services built in. Every expandable home has its plumbing and electrics installed in the factory, with a bathroom and kitchen in every size. An [outdoor kitchen](/outdoor-kitchens) has its plumbing and electrical embedded. It comes with an outdoor distribution box with leakage protection and a cement-board base, and arrives ready to use when it's connected.`,
+      },
+      {
+        type: "p",
+        text: `What the scheme has to sort out is getting water, sewer and power to the spot where each unit will stand. On a sectional title scheme, the body corporate controls, manages and administers the common property for the benefit of all owners. So where those routes cross common property, speak to the body corporate before any trench crosses it. Each expandable home also needs a level slab or properly levelled plinths of its own.`,
+      },
+      {
+        type: "p",
+        text: `Ask us what has to be ready on site before delivery for the range you're buying, and put the groundwork on your programme from the start.`,
+      },
+      { type: "h2", text: `Rooms for estate staff, and the braai everyone shares` },
+      {
+        type: "p",
+        text: `An estate or resort may need rooms for its own people as well as homes or suites for owners and guests. Expandable homes work as self-contained units for estate staff, each with its own bathroom and kitchen, so there's no shared ablution block to build. Our [staff accommodation guide](/blog/staff-accommodation-units-south-africa) works through that choice in full.`,
+      },
+      {
+        type: "p",
+        text: `For residents, an outdoor kitchen gives an estate or apartment scheme a communal braai facility. Because it will stand on ground everyone shares, get the association's or the body corporate's approval for where it goes before you order.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/outdoor-kitchens/kitchen-braai-dusk.jpg", width: 2000, height: 1500, alt: "Render of an Outdoor Kitchen with its lit canopy raised over a braai, sink and cabinets, beside a house at dusk." },
+      },
+      {
+        type: "p",
+        text: `If you're also buying units for other sites, our guide to [buying prefab buildings for a business](/blog/buying-prefab-buildings-for-a-business) covers the rest of the enquiry.`,
+      },
+      { type: "h2", text: `What to send with your enquiry` },
+      {
+        type: "p",
+        text: `Our business enquiry asks for your company name, what the units will be used for, where they will go and how many you're looking at. For an estate, add:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `The estate or scheme's name, the town and province, and where on the property each unit will stand.`,
+          `The range, if you know it, and whether every unit should be finished the same way.`,
+          `The estate's design guidelines and any rules that touch new structures.`,
+          `Where you are with the estate's approval and with the municipality.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Email a business enquiry from our [contact page](/contact#business) with the estate's guidelines attached, and we'll come back to you with a formal quotation.`,
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------- accessors */
