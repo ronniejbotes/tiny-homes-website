@@ -91,8 +91,11 @@ const uses = [
     title: "Developers and estates",
     body: (
       <>
-        Expandable homes are straightforward to repeat across a rental or resort scheme: order
-        in volume, take delivery in phases, and finish each unit identically.{" "}
+        Expandable homes are straightforward to repeat across a{" "}
+        <Link href="/blog/prefab-homes-on-estates-south-africa" className={linkClasses}>
+          rental or resort scheme
+        </Link>
+        : order in volume, take delivery in phases, and finish each unit identically.{" "}
         <Link href="/outdoor-kitchens" className={linkClasses}>
           Outdoor kitchens
         </Link>{" "}

@@ -387,7 +387,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Whatever tier you land on, go and stand inside one before you pay a deposit. Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site at our showroom in ${site.showroom.city}, and you can walk in on any weekday between 09:00 and 16:00: [here is how to find it](/contact#viewing).`,
+        text: `Whatever tier you land on, go and stand inside one [before you pay a deposit](/blog/before-you-pay-a-deposit-on-a-tiny-home). Small buildings photograph much larger than they measure, and fifteen minutes inside a 15 m² unit tells you something no floor plan will. Ours are on site at our showroom in ${site.showroom.city}, and you can walk in on any weekday between 09:00 and 16:00: [here is how to find it](/contact#viewing).`,
       },
       {
         type: "cta",
@@ -863,7 +863,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "The shell is dramatically cheaper, because it is a shell" },
       {
         type: "p",
-        text: `At ${perM2("folding-homes")} per square metre the [X-Fold](/folding-homes) is a fraction of any conventional rate. It is also a room with two plug points, a light and no plumbing. Compare it to building a bare insulated room, not to building a house, and the comparison is fair. Compare it to a granny flat and it is not.`,
+        text: `At ${perM2("folding-homes")} per square metre the [X-Fold](/folding-homes) is a fraction of any conventional rate. It is also a room with two plug points, a light and no plumbing. Compare it to building a bare insulated room, not to building a house, and the comparison is fair. Compare it to [a granny flat](/blog/granny-flat-cost-south-africa) and it is not.`,
       },
       {
         type: "img",
@@ -1059,7 +1059,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Both are decided by your local authority, not by a national rule and not by us. Phone your building control department before you commit. It is a free call and everything else depends on it. If you are in a complex or estate, your body corporate or HOA rules can be stricter than the municipality's. We supply the unit's dimensions and specifications for your submission. There is more detail in [where can you put a housing pod](/blog/where-can-you-put-a-housing-pod), which covers plans, foundations and site access in full.`,
+        text: `Both are decided by your local authority, not by a national rule and not by us. Phone your building control department before you commit. It is a free call and everything else depends on it. If you are in a complex or estate, [your body corporate or HOA rules](/blog/prefab-homes-on-estates-south-africa) can be stricter than the municipality's. We supply the unit's dimensions and specifications for your submission. There is more detail in [where can you put a housing pod](/blog/where-can-you-put-a-housing-pod), which covers plans, foundations and site access in full.`,
       },
 
       { type: "h2", text: "Does it pay for itself?" },
@@ -1237,7 +1237,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `Decide fixed-and-approved versus relocatable. Everything else follows.`,
           `Talk to your municipality about approval for the structure you have in mind.`,
-          `Speak to a bond originator or your own bank **before** paying a deposit, and ask specifically about a prefabricated structure, not about "a home".`,
+          `Speak to a bond originator or your own bank **before** [paying a deposit](/blog/before-you-pay-a-deposit-on-a-tiny-home), and ask specifically about a prefabricated structure, not about "a home".`,
           `Get the total delivered, standing and connected cost in writing, since that is what has to be funded, not the unit price.`,
           `Then ask us about the third-party finance option if a bond is not going to work.`,
         ],
@@ -2063,7 +2063,7 @@ export const blogPosts: BlogPost[] = [
           `You want the building usable in months rather than a year.`,
           `You cannot live through a construction site: a working farm, a lodge taking bookings, a home with small children.`,
           `The use might change, or you might move, and a relocatable asset is worth something to you.`,
-          `The job is a standard one: a granny flat, a guest unit, staff accommodation, a site office, a rental cabin.`,
+          `The job is a standard one: [a granny flat](/blog/granny-flat-cost-south-africa), a guest unit, staff accommodation, a site office, a rental cabin.`,
         ],
       },
       {
@@ -3486,7 +3486,7 @@ export const blogPosts: BlogPost[] = [
           `**Self-contained staff units.** [Expandable homes](/expandable-homes) give mine, lodge, security or estate staff their own bathroom and kitchen in each unit, so there's no shared ablution block to build.`,
           `**A site office.** An X-Fold unfolds into a weather-tight site office and folds back down for the next site, so it moves with the work as a relocatable building. If you need something closer to a permanent office than a site cabin, an expandable home arrives with plumbing, electrics and a bathroom.`,
           `**Guest suites for a lodge or resort.** [Glamping capsules](/glamping-capsules), [nature cabins](/nature-cabins) and [Apple Cabins](/apple-cabins) arrive fully built, so you add suites without a building site.`,
-          `**Shared facilities on an estate.** [Outdoor kitchens](/outdoor-kitchens) give an estate or apartment scheme a communal braai facility.`,
+          `**Shared facilities on an estate.** [Outdoor kitchens](/outdoor-kitchens) give [an estate or apartment scheme](/blog/prefab-homes-on-estates-south-africa) a communal braai facility.`,
         ],
       },
       {
