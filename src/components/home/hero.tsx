@@ -23,9 +23,19 @@ const heroImage = {
 const rise = (delay: number): CSSProperties =>
   ({ "--rise-delay": `${delay}s` }) as CSSProperties;
 
-/* lowestStartingPrice comes from page.tsx: importing products.ts here put the
-   whole catalogue in the browser's JavaScript for this one number. */
-export function Hero({ lowestStartingPrice }: { lowestStartingPrice: number }) {
+/* The prices and floor areas come from page.tsx: importing products.ts here put
+   the whole catalogue in the browser's JavaScript for a few numbers. */
+export function Hero({
+  lowestStartingPrice,
+  highestPrice,
+  smallestArea,
+  largestArea,
+}: {
+  lowestStartingPrice: number;
+  highestPrice: number;
+  smallestArea: number;
+  largestArea: number;
+}) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
@@ -108,14 +118,26 @@ export function Hero({ lowestStartingPrice }: { lowestStartingPrice: number }) {
             for South Africa
           </span>
         </h1>
+        {/* W56 (15 Nov 2026): the first screen answers "prefab houses south
+            africa" (989 impressions at 4.2) with the whole range, price and
+            size, read from products.ts in page.tsx; "up to four bedrooms" is
+            the 12m expandable's layouts (products.ts bedrooms "Open plan – 4
+            bedrooms"). The link jumps to the price list (price-list.tsx). */}
         <p
           className="animate-rise-in mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl"
           style={rise(0.48)}
         >
-          High-end prefab tiny homes from{" "}
-          <span className="nums-tabular">{formatZAR(lowestStartingPrice)}</span> ex VAT, designed
-          for affordable, sustainable living and delivered anywhere in South Africa in around
-          90 days.
+          Prefab houses from{" "}
+          <span className="nums-tabular whitespace-nowrap">{formatZAR(lowestStartingPrice)}</span>{" "}
+          to <span className="nums-tabular whitespace-nowrap">{formatZAR(highestPrice)}</span> ex
+          VAT, {smallestArea} to <span className="whitespace-nowrap">{largestArea} m²</span> with
+          up to four bedrooms, delivered anywhere in South Africa in around 90 days.{" "}
+          <Link
+            href="#prices"
+            className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
+          >
+            See every price
+          </Link>
         </p>
         {/* Business buyers lead (owner, 29 Oct 2026: "Our main target for tiny
             homes now is to deal with larger companies that will buy multiple

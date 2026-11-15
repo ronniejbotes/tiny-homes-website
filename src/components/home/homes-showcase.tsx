@@ -47,25 +47,6 @@ const spanClasses = [
   "lg:col-span-7",
 ];
 
-/* The houses with a published price, for the price table: no price-on-request
-   line, and no outdoor kitchens. */
-const pricedHouses = products
-  .filter((p) => !p.priceOnRequest && p.slug !== "outdoor-kitchens")
-  .sort((a, b) => a.startingPrice - b.startingPrice);
-
-/* The smallest expandable size with two bedrooms as standard (variant b20,
-   the same one home-faqs.ts names). Throws at build time rather than
-   rendering "undefined" into the sentence under the price list. The space
-   becomes a non-breaking one so "37" and "m²" never split across lines on a
-   phone (they did at 360px). */
-const twoBedroomSize = (() => {
-  const size = products
-    .find((p) => p.slug === "expandable-homes")
-    ?.variants?.find((v) => v.id === "b20")?.size;
-  if (!size) throw new Error('homes-showcase.tsx: no size for expandable-homes variant "b20"');
-  return size.replace(/ /g, "\u00a0");
-})();
-
 const footnoteLink =
   "font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay";
 
@@ -151,75 +132,9 @@ export function HomesShowcase() {
           })}
         </Stagger>
 
-        {/* The cards above, again as one plain table, because "prefab house
-            prices" is what a large share of visitors searched for and a table
-            is what both they and Google read fastest. Nothing is typed here:
-            every name, size and price comes off products.ts, so it can never
-            disagree with the cards or the product pages. Left out: the
-            outdoor kitchens (not a house). Cheapest first. */}
-        <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl">
-          <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
-            Prefab house price list, ex VAT
-          </h3>
-          <table className="mt-5 w-full border-collapse text-left text-sm">
-            <caption className="text-eyebrow mb-4 text-left text-clay-dark">
-              Every home for sale, cheapest first (all prices exclude VAT)
-            </caption>
-            <thead>
-              <tr className="border-b border-border">
-                <th scope="col" className="py-3 pr-4 font-medium text-ink">Range</th>
-                <th scope="col" className="py-3 pr-4 font-medium text-ink">Size</th>
-                <th scope="col" className="py-3 font-medium text-ink">From</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pricedHouses.map((p) => (
-                <tr key={p.slug} className="border-b border-border">
-                  <th scope="row" className="py-3 pr-4 font-normal">
-                    <Link
-                      href={`/${p.slug}`}
-                      className="-my-3 inline-block py-3 text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-clay"
-                    >
-                      {p.name}
-                    </Link>
-                  </th>
-                  <td className="py-3 pr-4 text-stone">{p.sizeLabel}</td>
-                  <td className="nums-tabular whitespace-nowrap py-3 text-ink">
-                    {formatZAR(p.startingPrice)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {/* In the words of the guide it links, so the two never disagree. */}
-          <p className="mt-4 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
-            Each price is for the unit alone. Treat everything around it as outside the
-            price until a quote says otherwise: the base it stands on, the connections to
-            water, sewerage and power,{" "}
-            <Link
-              href="/blog/building-approval-south-africa-what-you-need"
-              className={footnoteLink}
-            >
-              council approval
-            </Link>
-            , transport to your site and VAT, as our guide to{" "}
-            <Link href="/blog/what-is-included-in-a-prefab-house-price" className={footnoteLink}>
-              what is included in a prefab house price
-            </Link>{" "}
-            sets out.
-          </p>
-          {/* The 2-bedroom searches belong to /expandable-homes (it sells the
-              37 m² and 74 m² with layouts and prices), but the home page ranks
-              for them too. One line in the searcher's words sends them on. No
-              price here: the size is read from products.ts, like the table. */}
-          <p className="mt-3 text-base leading-relaxed text-stone sm:text-[0.9375rem]">
-            Two bedrooms come standard from the {twoBedroomSize} expandable home: see the{" "}
-            <Link href="/expandable-homes" className={footnoteLink}>
-              2-bedroom tiny house prices
-            </Link>
-            .
-          </p>
-        </Reveal>
+        {/* The price list that sat here (cards again as one plain table) is
+            its own section above these cards since W56, 15 Nov 2026:
+            price-list.tsx, linked from the hero as #prices. */}
 
         {/* A vocabulary footnote, not a billboard. The cards above are named
             for the catalogue, and buyers arrive using other words for the same

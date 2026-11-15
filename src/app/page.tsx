@@ -4,6 +4,8 @@ import { Hero } from "@/components/home/hero";
 import { StatsStrip } from "@/components/home/stats-strip";
 import { ForBusinesses } from "@/components/home/for-businesses";
 import { HomesShowcase } from "@/components/home/homes-showcase";
+import { PriceList } from "@/components/home/price-list";
+import { houseHighPrice, largestArea, smallestArea } from "@/components/home/price-range";
 import { CustomiseTeaser } from "@/components/home/customise-teaser";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { DeliveryCoverage } from "@/components/home/delivery-coverage";
@@ -23,6 +25,7 @@ import { productItemListSchema } from "@/lib/schema";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
+import { toPlainText } from "@/components/blog/rich-text";
 import images from "@/data/images.json";
 
 /* Same manifest image the visible hero uses (hero.tsx), the 2048px night-pool shot. */
@@ -87,7 +90,8 @@ const faqJsonLd = {
   mainEntity: homeFaqs.map((f) => ({
     "@type": "Question",
     name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
+    /* Plain text: an answer may carry a [label](/path) link for the page. */
+    acceptedAnswer: { "@type": "Answer", text: toPlainText(f.a) },
   })),
 };
 
@@ -107,9 +111,16 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      <Hero lowestStartingPrice={lowestStartingPrice} />
+      <Hero
+        lowestStartingPrice={lowestStartingPrice}
+        highestPrice={houseHighPrice}
+        smallestArea={smallestArea}
+        largestArea={largestArea}
+      />
       <StatsStrip lowestPrice={lowestStartingPrice} productCount={products.length} />
       <ForBusinesses />
+      {/* W56: the answer to "prefab houses south africa" prices, before the cards. */}
+      <PriceList />
       <HomesShowcase />
       <CustomiseTeaser />
       <HowItWorks />
@@ -124,7 +135,7 @@ export default function HomePage() {
           <SectionHeading
             id="faq-heading"
             eyebrow="Questions, answered"
-            title="Frequently asked questions about tiny homes"
+            title="Questions about prefab houses and tiny homes"
             intro="The practical details: delivery, timelines, foundations and pricing, answered straight."
           />
           <Reveal className="mt-10 lg:mt-14" delay={0.1}>

@@ -1,6 +1,10 @@
-import { pricedVariants, products } from "@/data/products";
+import { products } from "@/data/products";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
+import { dearestHouse, houseHighPrice } from "./price-range";
+
+/* "Space D7 (11.5 m)" reads as "the 38 m² Space D7", as in the price list. */
+const dearestName = dearestHouse.variant?.name.replace(/\s*\(.*\)$/, "") ?? dearestHouse.product.name;
 
 /**
  * Homepage FAQ content. Rendered by the accordion AND serialised into
@@ -17,15 +21,11 @@ export interface HomeFaq {
    for an X-Fold" answer keeps naming the genuine cheapest home. */
 const pricedProducts = products.filter((p) => !p.priceOnRequest && p.slug !== "garages");
 const lowestStartingPrice = Math.min(...pricedProducts.map((p) => p.startingPrice));
-/* Highest price across every variant (not just startingPrice), the top of
-   the range is the 11.5 m glamping capsule variant, not its base price.
-   Price-on-request sizes carry a 0 sentinel and are left out too. */
-const highestPrice = Math.max(
-  ...pricedProducts.flatMap((p) => {
-    const priced = pricedVariants(p);
-    return priced.length ? priced.map((v) => v.price) : [p.startingPrice];
-  }),
-);
+/* The top of the range (the VAT answer) is houseHighPrice from price-range.ts,
+   the same figure and unit (dearestHouse) the price list and the cost answer
+   name, so the three can never point at different capsules. Since W56 the
+   answer names the 38 m² Space D7: "the 11.5 m glamping capsule" fitted two
+   models (the core 11.5 m is R 949 900). */
 /* The expandable range is the answer to the granny flat / granny pod question,
    so its entry price is read from products.ts rather than typed here. */
 const expandableFrom = Math.min(
@@ -46,6 +46,16 @@ function sizeOf(slug: string, variantId?: string): string {
 }
 
 export const homeFaqs: HomeFaq[] = [
+  /* The price question, in the words buyers search ("prefab houses south
+     africa prices"). First since W56 (15 Nov 2026): the home page ranks for
+     "prefab houses south africa" and its price searches, and the first answer
+     is the one open by default. Every price and size comes from products.ts,
+     the same source as the price list (price-list.tsx), and the last sentence
+     keeps to the words of the line under that list. */
+  {
+    q: "How much does a prefab house cost in South Africa?",
+    a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A self-contained unit with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20-slim")} expandable home), and a two-bedroom home starts at ${formatZAR(twoBedroomFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20")} size). The largest glamping capsule, the ${dearestHouse.variant?.size} ${dearestName}, is ${formatZAR(houseHighPrice)} ex VAT. The [price list on this page](/#prices) gives the price range of every home we sell. Each price is for the unit alone: unless a quote says otherwise, the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top.`,
+  },
   /* The vocabulary question. "Tiny house" and "granny pod" are what a large
      share of searchers type, but neither phrase appears anywhere else on the
      site: the copy says "tiny home" and "granny flat" throughout. Answering
@@ -54,14 +64,6 @@ export const homeFaqs: HomeFaq[] = [
   {
     q: "What's the difference between a tiny house, a granny pod and a granny flat?",
     a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT. The 37 m² and 74 m² sizes come with 2 bedrooms as standard, the 37 m² from ${formatZAR(twoBedroomFrom)} ex VAT.`,
-  },
-  /* The price question, in the words buyers search ("prefab houses south
-     africa prices"). Every price and size comes from products.ts, the same
-     source as the price list above the FAQ, and the last sentence keeps to
-     the words of the line under that list. */
-  {
-    q: "How much does a prefab house cost in South Africa?",
-    a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A granny flat with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20-slim")} expandable home), and a two-bedroom home starts at ${formatZAR(twoBedroomFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20")} size). The price list on this page gives the from-price of every home we sell. Each price is for the unit alone, so the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top until a quote says otherwise.`,
   },
   /* The problem question (owner, 28 Oct 2026: pages name the problem the
      buyer has, not only the product). Every use is one the site already
@@ -91,7 +93,19 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "Do prices include VAT?",
-    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(highestPrice)} ex VAT for the 11.5 m glamping capsule.`,
+    a: `No. All prices on this site exclude VAT. The homes range starts at ${formatZAR(lowestStartingPrice)} ex VAT for an X-Fold and extends to ${formatZAR(houseHighPrice)} ex VAT for the ${dearestHouse.variant?.size} ${dearestName} glamping capsule.`,
+  },
+  /* The downsides question (W56, 15 Nov 2026). "What are the disadvantages
+     of prefabricated homes?" is on the page that ranks first for "prefab
+     houses south africa", and an honest answer is what a buyer trusts. Every
+     point restates "Prefab: the case against" in the prefab-vs-building
+     guide (blog.ts), in its words: some banks don't bond prefabs; permanent
+     dwellings face the same approval; the unit price leaves out the base,
+     connections, transport and VAT (the price list's own line); gate width,
+     cables, slope and soft ground decide whether a truck can reach the site. */
+  {
+    q: "What are the downsides of a prefab house?",
+    a: "Four to check before you order. **Bond finance is harder:** some major South African banks don't currently bond prefabricated structures at all, so if you need a bond rather than cash or third-party finance, check that first. **Council approval still applies:** a prefab home founded permanently on your property generally needs the same municipal approval as any other dwelling. **The unit price isn't the whole bill:** the base, the connections to water, sewerage and power, transport to your site and VAT come on top. **The site has to be reachable:** gate width, overhead cables, slope and soft ground decide whether the delivery truck can get there. Our guide to [prefab vs building a house](/blog/prefab-vs-building-a-house-south-africa) sets out the pros and cons side by side.",
   },
   {
     q: "What foundations do I need?",
