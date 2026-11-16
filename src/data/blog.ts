@@ -3023,7 +3023,7 @@ export const blogPosts: BlogPost[] = [
   /* =============================================================== 16 ==== */
   {
     slug: "mobile-homes-south-africa",
-    seoTitle: "Mobile Homes in South Africa: Can They Move?",
+    seoTitle: "Mobile Homes South Africa: What Can You Buy?",
     title: "Mobile homes in South Africa: what can you buy, and which units can be moved again?",
     description:
       "Mobile homes in South Africa: what the law calls a mobile home, which prefab units can be moved again, and what a move needs at each end.",
