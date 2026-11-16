@@ -273,7 +273,7 @@
         "src": "/images/products/nature-cabins/exterior-timber-cabin-deck.jpg",
         "width": 2000,
         "height": 1500,
-        "alt": "Timber Nature Cabin with glass gable and railed deck over a misty South African valley.",
+        "alt": "Timber-look Nature Cabin with glass gable and railed deck over a misty South African valley.",
         "kind": "exterior",
         "hero": false
       },
@@ -289,7 +289,7 @@
         "src": "/images/products/nature-cabins/interior-fireplace-lounge.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Nature Cabin lounge with a glowing wood stove on a slate hearth and a glazed gable wall facing misty forest.",
+        "alt": "Styled Nature Cabin lounge with a glazed gable wall facing misty forest, shown with a wood stove on a slate hearth.",
         "kind": "interior",
         "hero": false
       },
@@ -305,7 +305,7 @@
         "src": "/images/products/nature-cabins/interior-bathtub-view.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Steaming freestanding bathtub beside a Nature Cabin's floor-to-ceiling gable window, overlooking a misty indigenous forest.",
+        "alt": "Styled scene: a freestanding bathtub by a Nature Cabin's floor-to-ceiling gable window, overlooking a misty indigenous forest.",
         "kind": "interior",
         "hero": false
       },
@@ -313,7 +313,7 @@
         "src": "/images/products/nature-cabins/detail-timber-window.jpg",
         "width": 1024,
         "height": 1024,
-        "alt": "Close-up of a Nature Cabin's honey-toned timber cladding and black-framed window corner in golden morning light.",
+        "alt": "Close-up of a Nature Cabin's honey-toned timber-look cladding and black-framed window corner in golden morning light.",
         "kind": "detail",
         "hero": false
       },
@@ -321,7 +321,7 @@
         "src": "/images/products/nature-cabins/exterior-dusk-firepit.jpg",
         "width": 1264,
         "height": 848,
-        "alt": "Timber-clad Nature Cabin with a glowing glazed gable and railed deck at dusk, a stone fire pit in the foreground.",
+        "alt": "Timber-look Nature Cabin with a glowing glazed gable and railed deck at dusk, a stone fire pit in the foreground.",
         "kind": "exterior",
         "hero": false
       },
@@ -329,7 +329,7 @@
         "src": "/images/products/nature-cabins/exterior-forest-aerial.jpg",
         "width": 1376,
         "height": 768,
-        "alt": "Aerial view of a timber-clad Nature Cabin with a glazed gable end and railed deck in a misty forest clearing.",
+        "alt": "Aerial view of a timber-look Nature Cabin with a glazed gable end and railed deck in a misty forest clearing.",
         "kind": "exterior",
         "hero": false
       }
@@ -916,7 +916,7 @@
         "src": "/images/products/nature-cabins/interior-fireplace-lounge.jpg",
         "width": 1200,
         "height": 896,
-        "alt": "Furnished Nature Cabin lounge with a green sofa, armchair and coffee table around the wood stove in the same shell."
+        "alt": "Styled Nature Cabin lounge with a green sofa, armchair and coffee table in the same shell, shown with a wood stove."
       },
       "video": {
         "furnish": "/videos/configurator/nature-furnish.mp4",

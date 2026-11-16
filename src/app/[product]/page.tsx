@@ -142,7 +142,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         ]}
       />
       <ProductHero product={product} image={hero} />
-      <ProductGallery productName={product.name} images={gallery} />
+      <ProductGallery productName={product.name} images={gallery} note={product.galleryNote} />
       <OverviewSpecs product={product} />
       <VariantCards product={product} />
       {/* Configurator renders when there is something to configure or show:

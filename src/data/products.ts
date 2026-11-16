@@ -162,6 +162,13 @@ export interface Product {
   options: CustomOption[];
   faqs: ProductFaq[];
   seoKeywords: string[];
+  /**
+   * One line under the photo gallery. Set it when the gallery shows styled
+   * pictures with things the specification does not include, so the note
+   * sits beside the pictures and not only screens further down (final
+   * check, 16 Nov 2026: the Nature Cabin stove, bath and timber walls).
+   */
+  galleryNote?: string;
 }
 
 /* --------------------------------------------------------------------------
@@ -233,7 +240,7 @@ export const products: Product[] = [
       },
       {
         title: "Garden room and home office",
-        body: "A separate 15 m² room at the bottom of the garden, far enough from the house to take calls in. It needs a level slab or precast plinths and no council-scale building work, and the electrics are already in: two plugs, a light and a small DB board ready to connect.",
+        body: "A separate 15 m² room at the bottom of the garden, far enough from the house to take calls in. It needs only a level slab or precast plinths, and the electrics are already in: two plugs, a light and a small DB board ready to connect. Before you order, ask your municipality's building control department which approval applies.",
       },
       {
         title: "Guest room or rental unit",
@@ -510,6 +517,7 @@ export const products: Product[] = [
      *  is no on-site assembly programme. The old "under 3 days" figure is
      *  superseded and must not reappear in copy, FAQs or brochures. */
     setupTime: "Delivered fully built",
+    galleryNote: "Pictures are styled: the wood stove, freestanding bath and timber-lined walls are not part of the standard cabin. The specification below lists what is.",
     dims: { length: 8.1, width: 3.2, height: 3.4 },
     specs: [
       { label: "Floor area", value: "21 m² cabin plus a 1.5 × 3.2 m viewing terrace: 26 m² in total" },

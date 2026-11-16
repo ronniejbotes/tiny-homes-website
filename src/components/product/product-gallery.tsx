@@ -19,9 +19,12 @@ import type { ProductImage } from "./product-images";
 export function ProductGallery({
   productName,
   images,
+  note,
 }: {
   productName: string;
   images: ProductImage[];
+  /** One line under the grid, e.g. that the pictures are styled. */
+  note?: string;
 }) {
   const count = images.length;
   if (count < 2) return null;
@@ -82,6 +85,11 @@ export function ProductGallery({
             );
           })}
         </Stagger>
+        {/* Plain text, no entrance animation: it must be readable without
+            JavaScript, like the post headers since T-67 (14 Nov 2026). */}
+        {note ? (
+          <p className="mt-4 text-base text-stone">{note}</p>
+        ) : null}
       </Container>
     </section>
   );

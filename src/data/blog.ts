@@ -1158,7 +1158,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Which South African banks will bond a prefab home and which will not, the conditions FNB and Nedbank attach, and what works when a bond does not.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-14",
+    dateModified: "2026-11-16",
     keywords: [
       "home loan prefab house South Africa",
       "bond for prefab home",
@@ -1224,7 +1224,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ol",
         items: [
-          `**Third-party finance.** ${site.finance}. This is the route most of our customers use. The provider we refer buyers to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
+          `**Third-party finance.** ${site.finance}. This is the route we point buyers to. The provider we refer them to finances the unit as a movable asset rather than as property, broadly the same lending category as a truck or earthmoving equipment, which is why it works where a bond does not. The term is typically around five years, against the twenty years or more of a bond. That term, far more than the rate, is what sets the instalment: [what five years does to the monthly figure](/blog/rent-to-own-tiny-home-south-africa) is worth understanding before you choose a unit. You will need a valid SA ID or passport, your latest three months' bank statements, payslips or proof of income and a good credit record; a deposit may be required depending on the unit.`,
           `**Access bond or further advance.** If you already own property with equity, drawing against an existing bond is often the cheapest money available, and the bank is lending against the house it already holds, not against the new unit.`,
           `**Personal or unsecured lending.** Faster and less fussy about what you buy, but the interest rate reflects that. Realistic for the lower end of the range rather than a glamping capsule.`,
           `**Cash, in stages.** Uncommon with conventional building, but a genuine option here: the units are discrete products with published prices, so buying a smaller one now and a second later is a real plan rather than a fantasy. An [X-Fold](/folding-homes) at ${R(folding)} ex VAT is a very different funding problem from a [glamping capsule](/glamping-capsules) at ${R(capsule)} ex VAT.`,
@@ -1627,11 +1627,11 @@ export const blogPosts: BlogPost[] = [
     // new /site-offices page carries that commercial search (W13), and this
     // guide links to it from its "Site offices" section.
     seoTitle: "Staff Accommodation Unit Costs in South Africa",
-    title: "Staff accommodation and site offices: what a unit costs",
+    title: "Staff quarters and accommodation units: what each one costs",
     description:
       "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-14",
+    dateModified: "2026-11-16",
     keywords: [
       "staff accommodation units South Africa",
       "farm worker housing South Africa",
@@ -1674,7 +1674,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "img",
         image: { src: "/images/products/folding-homes/folding-mechanism.png", width: 1600, height: 1421, alt: "X-Fold half-folded, its hinged wall panels opening in an X shape." },
-        caption: "The X-Fold half-folded. It travels flat, which is why it reaches sites a module can't.",
+        caption: "The X-Fold half-folded. Several stack flat on one truck, and the hinged walls open out on site.",
       },
       {
         type: "p",
@@ -1740,7 +1740,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Does the X-Fold have a bathroom?",
-        a: "No. It arrives wired for electricity (two plug points, a light fitting and a small DB board) but with no plumbing. For staff accommodation that usually means a shared ablution block, which is cheaper per bed at scale, or a local installer fitting a wet room into individual units.",
+        a: "No. It arrives wired for electricity (two plug points, a light fitting and a small DB board) but with no plumbing. For staff accommodation that means either a shared ablution block, which is usually cheaper per bed once you house more than a few people, or a local installer fitting a wet room into individual units.",
       },
       {
         q: "Can the units be moved to the next site?",
@@ -2136,7 +2136,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Do you need building plans in South Africa? Zoning, who draws the plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-16",
+    dateModified: "2026-11-16",
     keywords: [
       "building plans approval South Africa",
       "what permits do I need to build South Africa",
@@ -2156,7 +2156,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Most of this industry answers "do I need plans?" with "ask your municipality" and stops there. That is true but useless. Here is the actual framework, so you know what you are asking about and can tell whether the answer you get sounds right.`,
+        text: `"Ask your municipality" is the right first step, and it helps to know the framework before you phone. Here it is, so you know what you are asking about and can tell whether the answer you get sounds right.`,
       },
       {
         type: "p",
@@ -2166,7 +2166,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Does a movable structure need plans?" },
       {
         type: "p",
-        text: `This is where most of the bad advice in this market lives, so here is the Act itself. Section 1 of the National Building Regulations and Building Standards Act 103 of 1977 defines a building as including:`,
+        text: `The Act answers this directly. Section 1 of the National Building Regulations and Building Standards Act 103 of 1977 defines a building as including:`,
       },
       {
         type: "callout",
@@ -2188,7 +2188,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Do not confuse a tiny home with a caravan",
-        text: `Caravans and trailers are road vehicles, registered under road traffic law, and are treated differently. A tiny home delivered on a truck and set down on plinths is not a caravan: it has no wheels, no registration and it stays put. A great deal of "tiny homes need no permits" content online is American or Australian and describes homes on registered road trailers. It does not transfer to a unit standing on your plot in South Africa.`,
+        text: `Caravans and trailers are road vehicles, registered under road traffic law, and are treated differently. A tiny home delivered on a truck and set down on plinths is not a caravan: it has no wheels, no registration and it stays put. Advice that tiny homes need no permits often comes from the US or Australia and describes homes on registered road trailers. It does not transfer to a unit standing on your plot in South Africa.`,
       },
 
       { type: "h2", text: "Route 1: a permanent building" },
@@ -2273,10 +2273,6 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Route 2: a temporary building" },
       {
         type: "p",
-        text: `This is the route most people asking about tiny homes have never heard of, and it is genuinely different.`,
-      },
-      {
-        type: "p",
         text: `**Regulation A23** of the National Building Regulations deals with temporary buildings. A temporary building is defined as one "so declared by the owner and that is being used or is to be used for a specified purpose for a specified limited period of time", explicitly excluding a builder's shed.`,
       },
       {
@@ -2319,7 +2315,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "What minor building work does, and does not, cover" },
       {
         type: "p",
-        text: `The third thing people hope applies. A building control officer may exempt an owner in writing from submitting plans for **minor building work**, and authorise it subject to conditions. The listed categories carry size thresholds:`,
+        text: `There is also a third possibility. A building control officer may exempt an owner in writing from submitting plans for **minor building work**, and authorise it subject to conditions. The listed categories carry size thresholds:`,
       },
       {
         type: "table",
@@ -2405,7 +2401,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a tiny home the same as a caravan for planning purposes?",
-        a: "No. Caravans and trailers are road vehicles registered under road traffic law. A tiny home delivered by truck and set down on plinths has no wheels and no registration, and is a structure on your land. Much of the \"tiny homes need no permits\" material online is American or Australian and describes homes on registered road trailers; it does not apply to a unit standing on a plot in South Africa.",
+        a: "No. Caravans and trailers are road vehicles registered under road traffic law. A tiny home delivered by truck and set down on plinths has no wheels and no registration, and is a structure on your land. Advice that tiny homes need no permits often comes from the US or Australia and describes homes on registered road trailers; it does not apply to a unit standing on a plot in South Africa.",
       },
       {
         q: "What is a temporary building under regulation A23?",
@@ -2525,7 +2521,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "The honest answer on rent-to-own, why a tiny home is financed as a movable asset instead of a bond, and what a five-year term does to the monthly figure.",
     datePublished: "2026-09-21",
-    dateModified: "2026-10-07",
+    dateModified: "2026-11-16",
     keywords: [
       "rent to own tiny homes South Africa",
       "tiny home finance South Africa",
@@ -2634,7 +2630,7 @@ export const blogPosts: BlogPost[] = [
         type: "ol",
         items: [
           `An access bond or further advance, if you already own property with equity. It's usually the cheapest money available and the longest term, because the bank is lending against the house it already holds rather than against the new unit. It's worth checking before anything else.`,
-          `Third-party asset finance, the route most of our customers use and the one the movable-asset structure above describes. ${site.finance}. Ask us when you request a quote and we'll point you to the provider.`,
+          `Third-party asset finance, the movable-asset structure described above. ${site.finance}. Ask us when you request a quote and we'll point you to the provider.`,
           `A personal loan from your own bank. Depending on your circumstances and its lending criteria, your existing bank may simply lend you the money as an unsecured personal loan. It's faster and less fussy about what you're buying, at a rate that reflects that, and realistic at the lower end of the range rather than for a capsule.`,
           `Cash, in stages. That works here in a way it never does with [conventional building](/blog/prefab-vs-building-a-house-south-africa), because the units are separate products with published prices. An [outdoor kitchen](/outdoor-kitchens) or an X-Fold now and a second unit later is a real plan, not a fantasy.`,
         ],
