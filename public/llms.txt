@@ -273,8 +273,9 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
 - [What you actually need to put a building on your land in South
   Africa](https://tinyhomesa.com/blog/building-approval-south-africa-what-you-need): There are
   TWO legal routes. ROUTE 1, permanent building (National Building Regulations and Building
-  Standards Act 103 of 1977): land use first (SPLUMA — a second dwelling on Residential 1
-  usually needs consent use, which lapses when the property is sold); plans must be drawn and
+  Standards Act 103 of 1977): land use first (SPLUMA: the municipality's land use scheme says
+  whether a second dwelling on Residential 1 needs consent use, a rezoning or neither, and a
+  consent use can carry conditions that end it, so read them); plans must be drawn and
   submitted by a registered competent person (for architectural services, registered with
   SACAP; practising in a SACAP category unregistered is an offence under sections 18(2) and
   41(1) of the Architectural Profession Act 44 of 2000); the local authority must grant or
@@ -284,18 +285,19 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   Act 95 of 1998, with section 10(1) requiring home-builder registration and section 21
   carrying a fine up to R25 000 or a year's imprisonment per charge; an electrical certificate
   of compliance under the OHS Act; and a section 14 occupancy certificate, which the authority
-  must issue within 14 days of a written request and without which nobody may lawfully occupy.
+  must issue within 14 days of a written request and without which nobody may lawfully occupy
+  unless the authority has given written permission to use the building first.
   ROUTE 2, temporary building (regulation A23): a building declared by the owner for a
   specified purpose and specified limited period. Instead of a full plan set you submit the
   period required, a site plan, layout drawings (size, form, materials) and any structural
-  safety details; a safety certificate from a competent person is mandatory if the public will
-  access it. What is granted is PROVISIONAL authorisation for a limited period, and two
+  safety details; the authority weighs the intended use and life of the building, the area and
+  whether suitable materials are available. What is granted is PROVISIONAL authorisation for a limited period, and two
   distinct mechanisms follow: A23(4) allows extensions of the period (with a competent
   person's structural certificate where the public has access), and A23(5)-(6) allow
   CONVERSION TO PERMANENT by submitting, before the period ends, the further plans the
   authority needs to consider a full section 4 application, followed by an affidavit
   confirming what was built matches them. Under A23(7), if those plans are not submitted or
-  are refused, the owner "shall forthwith remove or demolish" the building. IMPORTANT: "minor building work" (tool sheds under 10 m², greenhouses to 15 m²,
+  are refused, the owner "shall forthwith remove or demolish" the building. IMPORTANT: "minor building work" (tool sheds to 10 m², greenhouses to 15 m²,
   carports to 40 m², playhouses to 5 m², aviaries to 20 m², freestanding walls to 1.8 m) does
   NOT include a dwelling — being small does not exempt habitable accommodation from approval.
 - [About](https://tinyhomesa.com/about): Company profile — Centurion-based prefab home

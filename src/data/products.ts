@@ -226,7 +226,7 @@ export const products: Product[] = [
     useCases: [
       {
         title: "Site office",
-        body: "Two workers unfold an X-Fold into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands instead of a fortnight later. Two plug points, a light fitting and a small DB board arrive already wired. When the job finishes, fold it back down and send it to the next site.",
+        body: "Two workers unfold an X-Fold into a weather-tight 15 m² site office in minutes, so the project office is open the day the unit lands. Two plug points, a light fitting and a small DB board arrive already wired. When the job finishes, fold it back down and send it to the next site.",
         link: { href: "/site-offices", label: "Site offices for business" },
       },
       {
@@ -380,7 +380,7 @@ export const products: Product[] = [
       },
       {
         title: "Family home",
-        body: "A complete house delivered as one module: up to 74 m², layouts to four bedrooms, a fully fitted bathroom with a separate shower, a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and plumbing and electrics installed in the factory. On a prepared slab you can move in the same day it arrives.",
+        body: "A complete house delivered as one module: up to 74 m², layouts to four bedrooms, a fully fitted bathroom with a separate shower, a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and plumbing and electrics installed in the factory. On a prepared slab it is ready the day it arrives; where your municipality requires an occupancy certificate, you move in once it is issued, or sooner only with the municipality's written permission.",
       },
       {
         title: "Farm cottage and farmworker housing",
@@ -439,7 +439,7 @@ export const products: Product[] = [
       },
       {
         q: "How long does installation take?",
-        a: "Both sizes arrive as one module and expand on site within hours. On a prepared site you can move in the same day.",
+        a: "Both sizes arrive as one module and expand on site within hours. On a prepared site the home is ready the day it arrives. Where your municipality requires an occupancy certificate, nobody may move in before it is issued without the municipality's written permission; our [building approval guide](/blog/building-approval-south-africa-what-you-need) explains when that applies.",
       },
       {
         q: "What's included as standard?",
@@ -464,7 +464,7 @@ export const products: Product[] = [
       },
       {
         q: "Is an expandable home the same as a granny pod?",
-        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the 37 m² at R329 900 ex VAT or the 74 m² at R599 900 ex VAT, each with two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and both expand on site within hours.",
+        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and an expandable home can be exactly that. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the 37 m² at R329 900 ex VAT or the 74 m² at R599 900 ex VAT, each with two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and both expand on site within hours.",
       },
       {
         // Owner, 13 Nov 2026: may be called container homes for search, worded
@@ -507,7 +507,7 @@ export const products: Product[] = [
     summary:
       "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. The stylish gateway into premium capsule accommodation for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it now arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
+      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. Made for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
     sizeLabel: "21 m² + terrace",
     /** Owner-confirmed 2026-08-04: units are now imported fully built, so there

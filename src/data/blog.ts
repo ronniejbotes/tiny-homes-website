@@ -2135,7 +2135,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Do you need building plans in South Africa? Zoning, who draws the plans, NHBRC and the occupancy certificate, against the lighter temporary-building route.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-16",
+    dateModified: "2026-11-17",
     keywords: [
       "building plans approval South Africa",
       "what permits do I need to build South Africa",
@@ -2203,7 +2203,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `For a second dwelling on a Residential 1 stand, the usual mechanism is **consent use** rather than rezoning: permission to use the property for something beyond its zoning, granted to you rather than to the land. Two consequences worth knowing: it is decided by the municipal planning authority, and **consent use generally lapses when the property is sold**, so a buyer has to reapply. Rezoning permanently changes the zoning and is the heavier application.`,
+        text: `For a second dwelling on a Residential 1 stand, your municipality's land use scheme decides whether it is allowed outright, needs **consent use** (permission under the scheme for a use the zoning allows only with the municipality's consent) or needs a rezoning. Consent use is decided by the municipal planning authority and can come with conditions, including ones that end it if, for example, the use is not started within a set period, so read the conditions in the approval. Rezoning permanently changes the zoning and is the heavier application.`,
       },
 
       { type: "h3", text: "Step 2: Plans, drawn by someone specific" },
@@ -2252,15 +2252,15 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `An owner-builder exemption exists, but it must be applied for **before construction starts**, and it comes with real trade-offs: no warranty cover, and restrictions on selling the property for a period afterwards.`,
+        text: `An owner-builder exemption exists, applied for to the NHBRC, and it comes with real trade-offs: no warranty cover, and an undertaking not to sell the home for five years. Apply **before you build**: if construction has started, the NHBRC asks for a competent person's report and certificates for the stages already built.`,
       },
 
       { type: "h3", text: "Step 5: Certificates, at the end" },
       {
         type: "ul",
         items: [
-          `**Electrical certificate of compliance.** Required under the Occupational Health and Safety Act and the Electrical Installation Regulations, issued by a registered person holding a wireman's licence. Valid two years unless the installation is altered, and required before a property transfers.`,
-          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it, and it is the document that surfaces years later when you sell.`,
+          `**Electrical certificate of compliance.** Required under the Occupational Health and Safety Act and the Electrical Installation Regulations, issued by a registered person holding a wireman's licence. A property cannot transfer on a certificate older than two years, and any addition or alteration needs a certificate for at least that work.`,
+          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it unless the municipality has given written permission to use it first, and it is the document that surfaces years later when you sell.`,
         ],
       },
       {
@@ -2289,7 +2289,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The local authority assesses the intended use and lifespan, the location, and the suitability of the materials. If the public will have access to the building, a safety certificate from an approved competent person is mandatory.`,
+        text: `The local authority assesses the intended use and life of the building, the area it will stand in, and whether suitable materials are available to build it.`,
       },
       {
         type: "p",
@@ -2321,7 +2321,7 @@ export const blogPosts: BlogPost[] = [
         caption: "Examples of minor building work and their thresholds",
         head: ["Structure", "Threshold"],
         rows: [
-          ["Tool shed", "Under 10 m²"],
+          ["Tool shed", "Max 10 m²"],
           ["Greenhouse", "Max 15 m²"],
           ["Open-sided carport or shelter", "Max 40 m²"],
           ["Children's playhouse", "Max 5 m²"],
@@ -2340,12 +2340,12 @@ export const blogPosts: BlogPost[] = [
         caption: "How the two routes map onto real uses",
         head: ["What you are doing", "Likely route", "Why"],
         rows: [
-          ["Granny flat, permanently founded", "Route 1, in full", "A dwelling intended to stay; plus consent use for a second dwelling"],
+          ["Granny flat, permanently founded", "Route 1, in full", "A dwelling intended to stay; plus the land-use question for a second dwelling"],
           ["Site office for a 14-month project", "Route 2 (A23)", "Genuinely temporary, specified period, removed at the end"],
           ["Rental cabin on a farm, staying", "Route 1", "Permanent accommodation, plus a land-use question for the use itself"],
           ["Staff accommodation for one site, then moved on", "Route 2 (A23)", "Time-bound, relocates with the operation"],
           ["Home office in the garden", "Ask the building control officer", "Depends on foundation, permanence and whether anyone sleeps in it"],
-          ["Tool store under 10 m²", "Minor building work", "Listed category, written exemption from the building control officer"],
+          ["Tool store up to 10 m²", "Minor building work", "Listed category, written exemption from the building control officer"],
         ],
       },
       {
@@ -2388,11 +2388,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do I need an occupancy certificate?",
-        a: "For a permanent building, yes. Section 14 of the Act requires the local authority to issue one within 14 days of the owner requesting it in writing after completion, and nobody may lawfully occupy the building without it. It is also the document that surfaces when you sell.",
+        a: "For a permanent building, yes. Section 14 of the Act requires the local authority to issue one within 14 days of the owner requesting it in writing after completion, and nobody may lawfully occupy the building without it unless the local authority has given written permission to use it first. It is also the document that surfaces when you sell.",
       },
       {
         q: "Does a tiny home count as minor building work?",
-        a: "Not if anyone lives in it. The minor building work categories are sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds. Habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
+        a: "Not if anyone lives in it. The minor building work categories include sheds, carports, playhouses, aviaries, greenhouses and freestanding walls, with size thresholds. Habitable accommodation is not on the list. Being small does not exempt a dwelling. The lighter route for a genuinely temporary structure is regulation A23, not minor building work.",
       },
       {
         q: "Does a movable or relocatable structure need building plans in South Africa?",
@@ -2408,15 +2408,15 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do I need building plans for a wendy house?",
-        a: "It depends on what the wendy house is for. Used as a tool shed under 10 m² or a children's playhouse of up to 5 m², it falls under minor building work, and the building control officer can exempt you in writing from submitting plans, though it must still meet the National Building Regulations. A wendy house that someone lives or sleeps in is a building under the Act whatever it is made of, and minor building work does not cover it. Phone your municipality's building control department, describe the structure and its use, and ask which route applies before you buy.",
+        a: "It depends on what the wendy house is for. Used as a tool shed of up to 10 m² or a children's playhouse of up to 5 m², it falls under minor building work, and the building control officer can exempt you in writing from submitting plans, though it must still meet the National Building Regulations. A wendy house that someone lives or sleeps in is a building under the Act whatever it is made of, and minor building work does not cover it. Phone your municipality's building control department, describe the structure and its use, and ask which route applies before you buy.",
       },
       {
         q: "Are tiny homes legal in South Africa?",
-        a: "Yes, on the same terms as any other building. A tiny home someone lives in is a building under the National Building Regulations and Building Standards Act, whether it is temporary, movable or steel-framed, so it needs the local authority's permission: approved plans for a permanent home, or provisional authorisation under regulation A23 for a genuinely temporary one. Your zoning also has to allow the use, which for a second dwelling usually means consent use.",
+        a: "Yes, on the same terms as any other building. A tiny home someone lives in is a building under the National Building Regulations and Building Standards Act, whether it is temporary, movable or steel-framed, so it needs the local authority's permission: approved plans for a permanent home, or provisional authorisation under regulation A23 for a genuinely temporary one. Your zoning also has to allow the use: your municipality's land use scheme says whether a second dwelling needs consent use, a rezoning or neither.",
       },
       {
         q: "Does a prefab home need NHBRC enrolment?",
-        a: "If it is a new home, the Housing Consumers Protection Measures Act requires enrolment 15 days before construction commences, with inspection access throughout. Section 10(1) also requires anyone carrying on business as a home builder to be registered, with a fine of up to R25 000 or a year's imprisonment per charge for failing to do so. Owner-builder exemption must be applied for before construction starts.",
+        a: "If it is a new home, the Housing Consumers Protection Measures Act requires enrolment 15 days before construction commences, with inspection access throughout. Section 10(1) also requires anyone carrying on business as a home builder to be registered, with a fine of up to R25 000 or a year's imprisonment per charge for failing to do so. An owner builder can apply to the NHBRC for exemption, best before building starts; an exempt home has no warranty cover, and the owner undertakes not to sell it for five years.",
       },
     ],
     references: [
@@ -2437,6 +2437,20 @@ export const blogPosts: BlogPost[] = [
         publisher: "SAFLII (consolidated legislation)",
         url: "https://www.saflii.org/za/legis/consol_act/hcpma1998443/",
         note: "Source for NHBRC enrolment, the section 10(1) registration requirement and the section 21 penalties.",
+      },
+      {
+        title: "National Home Builders Registration Council Rules",
+        publisher: "National Home Builders Registration Council (NHBRC)",
+        url: "https://www.nhbrc.org.za/wp-content/uploads/2019/05/2.2.2-NHBRC-Rules.pdf",
+        note: "Rule 3(a): a home is submitted for enrolment 15 days before construction commences and is available for inspection throughout construction. Rule 14(3): on a late enrolment, the Council can require an additional late enrolment fee for a special inspection.",
+        checked: "2026-11-17",
+      },
+      {
+        title: "Owner Builder Application Form (30 November 2018)",
+        publisher: "National Home Builders Registration Council (NHBRC)",
+        url: "https://www.nhbrc.org.za/wp-content/uploads/2021/05/Owner-Builder-Application-Form-30-November-2018.pdf",
+        note: "The owner undertakes not to sell the house within five years of exemption (item 5) and accepts that there is no warranty protection (item 6); if construction has started, a competent person's report and certificates for completed stages are attached (item 14).",
+        checked: "2026-11-17",
       },
       {
         title: "Temporary buildings",
@@ -2494,11 +2508,25 @@ export const blogPosts: BlogPost[] = [
         note: "The regulations behind the electrical certificate of compliance requirement.",
       },
       {
+        title: "Electrical Installation Regulations, 2009: 7. Certificate of compliance",
+        publisher: "Acts Online",
+        url: "https://www.acts.co.za/occupational-health-/ei2009_nr242_7__certificate_of_compliance",
+        note: "Regulation 7(4): an addition or alteration needs a certificate of compliance for at least that work. Regulation 7(5): a change of ownership may not be allowed on a certificate older than two years.",
+        checked: "2026-11-17",
+      },
+      {
         title: "Spatial Planning and Land Use Management Act 16 of 2013",
         publisher: "South African Government",
         url: "https://www.gov.za/documents/spatial-planning-and-land-use-management-act",
         note: "The land use framework behind zoning, consent use and rezoning applications.",
         checked: "2026-10-16",
+      },
+      {
+        title: "The City of Johannesburg Municipal Planning By-law, 2016",
+        publisher: "City of Johannesburg",
+        url: "https://cpms.joburg.org.za/asset_uplds/docs/Laws%20and%20Regulations/The%20City%20of%20JHB%20Municipal%20Planning%20By-law.pdf",
+        note: "An example of how one municipality handles consent use: section 19(1) lets an owner apply for consent use as the City's land use scheme provides, and section 19(7) lets the approval carry conditions under which the consent lapses, such as the use not starting within a stated period.",
+        checked: "2026-11-17",
       },
     ],
   },
