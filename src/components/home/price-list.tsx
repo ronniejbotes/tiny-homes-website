@@ -59,22 +59,26 @@ if (dearestHouse.product.slug !== "glamping-capsules" || !dearestHouse.variant) 
 const dearestName = dearestHouse.variant.name.replace(/\s*\(.*\)$/, "");
 const dearestSize = dearestHouse.variant.size;
 
-/* The self-contained and two-bedroom entry points, the same expandable sizes
-   home-faqs.ts names (b20-slim and b20). Throws rather than rendering
-   "undefined" into the intro. */
+/* The self-contained entry point, the same expandable size home-faqs.ts names
+   (b20, the 37 m² with two bedrooms as standard; the compact 18 m² was
+   withdrawn on 17 Nov 2026). Throws rather than rendering "undefined" into
+   the intro, and stops the build if b20 stops being the range's from-price. */
 function expandable(variantId: string) {
   const v = products.find((p) => p.slug === "expandable-homes")?.variants?.find((x) => x.id === variantId);
   if (!v) throw new Error(`price-list.tsx: no expandable-homes variant "${variantId}"`);
   return v;
 }
-const selfContained = expandable("b20-slim");
-const twoBedroom = expandable("b20");
+const selfContained = expandable("b20");
+const expandableRange = products.find((p) => p.slug === "expandable-homes");
+if (!expandableRange || selfContained.price !== expandableRange.startingPrice) {
+  throw new Error("price-list.tsx: the 37 m² is no longer the cheapest expandable size; rewrite the intro");
+}
 
 /* Non-breaking spaces so "37" and "m²", or "R" and "54 900", never split
    across lines on a phone. */
 const nb = (s: string) => s.replace(/ /g, " ");
 
-const intro = `Our prefab houses cost from ${nb(formatZAR(houseLowPrice))} ex VAT for a ${nb(cheapest.sizeLabel)} X-Fold room to ${nb(formatZAR(houseHighPrice))} ex VAT for the ${nb(dearestSize)} ${nb(dearestName)}, the largest of our glamping capsules. A self-contained unit with its own bathroom and kitchen starts at ${nb(formatZAR(selfContained.price))} ex VAT (the ${nb(selfContained.size)} expandable home), and a two-bedroom home at ${nb(formatZAR(twoBedroom.price))} ex VAT (the ${nb(twoBedroom.size)} size).`;
+const intro = `Our prefab houses cost from ${nb(formatZAR(houseLowPrice))} ex VAT for a ${nb(cheapest.sizeLabel)} X-Fold room to ${nb(formatZAR(houseHighPrice))} ex VAT for the ${nb(dearestSize)} ${nb(dearestName)}, the largest of our glamping capsules. A self-contained home with its own bathroom and kitchen starts at ${nb(formatZAR(selfContained.price))} ex VAT: the ${nb(selfContained.size)} expandable home, with two bedrooms as standard.`;
 
 const noteLink =
   "font-medium text-clay underline decoration-clay/30 underline-offset-4 transition-colors hover:text-clay-dark hover:decoration-clay";
@@ -167,7 +171,7 @@ export function PriceList() {
                   page ranks for them too. One line in the searcher's words
                   sends them on. */}
               <p className="mt-3 text-base leading-relaxed text-stone">
-                Two bedrooms come standard from the {nb(twoBedroom.size)} expandable home: see the{" "}
+                Two bedrooms come standard from the {nb(selfContained.size)} expandable home: see the{" "}
                 <Link href="/expandable-homes" className={noteLink}>
                   2-bedroom tiny house prices
                 </Link>

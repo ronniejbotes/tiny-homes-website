@@ -78,7 +78,7 @@ export async function generateMetadata({
 
   const hero = getHeroImage(slug);
   // A use-case-led title where the product defines one, "Prefab Granny Flats
-  // & Homes from R199 900" is searched for; "Expandable Homes from R199 900"
+  // & Homes from R329 900" is searched for; "Expandable Homes from R329 900"
   // is not. Products without one keep the generated brand-and-price form.
   const title =
     product.seoTitle ??

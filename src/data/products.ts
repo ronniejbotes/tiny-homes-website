@@ -317,40 +317,38 @@ export const products: Product[] = [
     shortName: "Expandable Home",
     h1: "Expandable prefab houses and granny flats",
     // Led by the 2-bedroom price searches the page already ranks for. No
-    // price in the title: "2-Bedroom ... from R199 900" would pin the 18 m²
-    // open-plan price on a 2-bedroom home, and the lead of the description
-    // already carries the from-price read from startingPrice.
+    // price in the title: the lead of the description already carries the
+    // from-price read from startingPrice. (The compact 18 m² size was
+    // withdrawn on 17 Nov 2026; the 37 m² two-bedroom is now the entry size.)
     seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
-    sizesHeading: "Granny pod and modular home prices, from open plan to 2 bedrooms",
+    sizesHeading: "Granny pod and 2-bedroom modular home prices",
     metaSummary:
-      "Open-plan granny flats to 2-bedroom prefab houses up to 74 m²; the 37 m² and 74 m² expand on site within hours.",
+      "2-bedroom granny flats and prefab houses, 37 m² or 74 m², that expand on site within hours. Layouts to 4 bedrooms.",
     tagline: "One module that expands on site within hours.",
-    // The 18 m² is placed and connected, not expanded (Deployment spec, farm use
-    // case): only the 37 m² and 74 m² open out (final check, 14 Nov 2026).
     summary:
-      "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office, delivered as one compact module with a bathroom and kitchen in every size. The 37 m² and 74 m² homes expand on site within hours, with bedrooms included; the open-plan 18 m² is placed and connected. From R199 900 ex VAT.",
+      "A prefabricated granny flat for a parent or an adult child, a unit to let, a family home or an office, delivered as one compact module with a bathroom and kitchen in every size. The 37 m² and 74 m² homes expand on site within hours, with two bedrooms as standard. From R329 900 ex VAT.",
     description:
-      "An expandable home arrives on your site as one module: your space, your way. The 6m and 12m homes expand on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics, and the compact 18 m² is ready to place and connect. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the compact 18 m² at R199 900 ex VAT, an open-plan space with a bathroom and a small basic kitchen, then step up to the fully fitted 6m Expandable Home at R329 900 with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. On the 6m and 12m, the kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
-    startingPrice: 199900,
-    sizeLabel: "18 – 74 m²",
+      "An expandable home arrives on your site as one module: your space, your way. It expands on site within hours, revealing insulated rooms with double-glazed windows and factory-installed plumbing and electrics. Every size comes standard with 75 mm EPS insulated walls, vinyl flooring and double-glazed windows and a door. Start with the fully fitted 6m Expandable Home at R329 900 ex VAT, 37 m² with two bedrooms, bathroom and kitchen included, or go all the way to the 74 m² 12m Expandable Home from R599 900 with layouts up to four bedrooms. The kitchen is basic stainless-steel cabinetry and a sink, with no appliances. Upgrade the walls to polyurethane insulation, the floor to waterproof SPC laminate or add a full glass front wall.",
+    startingPrice: 329900,
+    sizeLabel: "37 – 74 m²",
     bedrooms: "Open plan – 4 bedrooms",
     setupTime: "Expands within hours",
     dims: { length: 12, width: 6.3, height: 2.5 },
     specs: [
-      { label: "Sizes", value: "18 m², 37 m² or 74 m²" },
-      { label: "Deployment", value: "Arrives as one module; the 6m and 12m expand on site within hours, and the 18 m² is placed and connected" },
+      { label: "Sizes", value: "37 m² or 74 m²" },
+      { label: "Deployment", value: "Arrives as one module and expands on site within hours" },
       { label: "Structure", value: "Galvanised steel frame (Q235)" },
       { label: "Walls", value: "75 mm EPS insulated panels, standard (polyurethane metal carved board upgrade available, required on coastal sites)" },
       { label: "Flooring", value: "Timber-look vinyl on a magnesium concrete composite floor, standard (waterproof SPC laminate upgrade available)" },
       { label: "Windows & doors", value: "Aluminium double-glazed windows with fly screens and a sliding glass entry door, standard" },
       { label: "Layouts", value: "Open-plan to 4 bedrooms, including laundry, walk-in-wardrobe and office layouts" },
       { label: "Utilities", value: "Plumbing and electrical factory-installed on every size" },
-      { label: "Bathroom & kitchen", value: "Included on every size: the 18 m² has a bathroom and small basic kitchen; the 6m and 12m have a kitchen of basic stainless-steel cabinetry and a sink, with no appliances" },
+      { label: "Bathroom & kitchen", value: "Included on every size: a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances" },
       { label: "Foundation", value: "Level concrete slab or precast plinths" },
     ],
     features: [
-      "Full home delivered as one compact module; the 6m and 12m expand within hours",
-      "Bathroom and kitchen included on every size; in the 6m and 12m models the kitchen is basic stainless-steel cabinetry and a sink, with no appliances",
+      "Full home delivered as one compact module that expands within hours",
+      "Bathroom and kitchen included on every size; the kitchen is basic stainless-steel cabinetry and a sink, with no appliances",
       // The count of finishes came from no source we can find. Restore an exact
       // number only with a supplier document and the date it was issued.
       "A wide choice of exterior colours and finishes: brick, timber-grain, plain or textured",
@@ -386,7 +384,7 @@ export const products: Product[] = [
       },
       {
         title: "Farm cottage and farmworker housing",
-        body: "Insulated, double-glazed housing that reaches remote farms as a single load, with no local build crew to organise; the 6m and 12m open out on site within hours. The compact 18 m² starts at R199 900 ex VAT with its own bathroom and small kitchen; the 37 m² adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink (no appliances) for R329 900.",
+        body: "Insulated, double-glazed housing that reaches remote farms as a single load, with no local build crew to organise, and opens out on site within hours. The 37 m² has two bedrooms, a bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances) for R329 900 ex VAT.",
       },
       {
         title: "Staff accommodation and living quarters",
@@ -408,7 +406,7 @@ export const products: Product[] = [
       },
       {
         title: "Developer and rental projects",
-        body: "Predictable unit costs and a fixed factory build make expandable homes straightforward to repeat across a rental or resort scheme. Order in volume, take delivery in phases, and finish each unit identically, from R199 900 ex VAT per unit, delivered nationwide.",
+        body: "Predictable unit costs and a fixed factory build make expandable homes straightforward to repeat across a rental or resort scheme. Order in volume, take delivery in phases, and finish each unit identically, from R329 900 ex VAT per unit, delivered nationwide.",
       },
       {
         // Owner, 13 Nov 2026: "yes you can call them 'container homes' even
@@ -420,7 +418,6 @@ export const products: Product[] = [
       },
     ],
     variants: [
-      { id: "b20-slim", name: "Compact 18 m²", size: "18 m²", areaM2: 18, price: 199900, description: "2.95 × 6.3 × 2.5 m, 18 m². The compact, budget-friendly expandable: an open-plan space with a bathroom and a small basic kitchen, plus 75 mm EPS walls, vinyl flooring, double-glazed windows and a door as standard." },
       { id: "b20", name: "6m Expandable Home", size: "37 m²", areaM2: 37, price: 329900, description: "5.8 × 6.3 × 2.5 m expanded, 5.8 × 3.3 × 2.5 m folded for transport. Two bedrooms as standard, with a fully fitted bathroom (toilet, sink and separate shower), kitchen, four windows and all electrics." },
       { id: "b40", name: "12m Expandable Home", size: "74 m²", areaM2: 74, price: 599900, description: "12 × 6.3 × 2.5 m expanded, 12 × 2.2 × 2.5 m folded for transport. Fully fitted bathroom and kitchen with two bedrooms standard and layouts up to four; eight double-glazed windows, plumbing and electrical included." },
     ],
@@ -432,7 +429,7 @@ export const products: Product[] = [
     faqs: [
       {
         q: "What sizes and prices are available?",
-        a: "Three sizes: the compact 18 m² from R199 900 ex VAT (open plan, with a bathroom and a small basic kitchen), the 37 m² 6m Expandable Home at R329 900 and the 74 m² 12m Expandable Home at R599 900. The 6m and 12m homes include two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), with layouts up to four bedrooms on the 12m.",
+        a: "Two sizes: the 37 m² 6m Expandable Home at R329 900 ex VAT and the 74 m² 12m Expandable Home at R599 900 ex VAT. Both include two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), with layouts up to four bedrooms on the 12m.",
       },
       {
         // W45 (15 Nov 2026): "3 bedroom prefab house price south africa" sits at 6.0 on this page.
@@ -442,11 +439,11 @@ export const products: Product[] = [
       },
       {
         q: "How long does installation take?",
-        a: "The 6m and 12m homes arrive as one module and expand on site within hours. On a prepared site you can move in the same day. The compact 18 m² ships as a single module, ready to place and connect.",
+        a: "Both sizes arrive as one module and expand on site within hours. On a prepared site you can move in the same day.",
       },
       {
         q: "What's included as standard?",
-        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, double-glazed glass windows and a door, a bathroom and factory-installed plumbing and electrics. The compact 18 m² is open plan with a bathroom and a small basic kitchen; the 6m and 12m homes add two bedrooms, a fully fitted bathroom with separate shower and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances.",
+        a: "Every size comes standard with 75 mm EPS insulated walls, vinyl flooring, double-glazed glass windows and a door, two bedrooms, a fully fitted bathroom with separate shower, a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and factory-installed plumbing and electrics.",
       },
       {
         q: "What upgrades can I add to an expandable home?",
@@ -467,13 +464,13 @@ export const products: Product[] = [
       },
       {
         q: "Is an expandable home the same as a granny pod?",
-        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the compact 18 m² from R199 900 ex VAT, or the 37 m² and 74 m² homes, which add two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and expand on site within hours.",
+        a: "In practice, yes. A granny pod is a self-contained second dwelling in the garden of an existing house, and it is one of the most common things an expandable home is bought for. Every size is self-contained, with its own bathroom and kitchen, so nobody has to share the main house: the 37 m² at R329 900 ex VAT or the 74 m² at R599 900 ex VAT, each with two bedrooms, a fully fitted bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), and both expand on site within hours.",
       },
       {
         // Owner, 13 Nov 2026: may be called container homes for search, worded
         // honestly (see the "Container home alternative" use case above).
         q: "Are your expandable homes container homes?",
-        a: "Not converted shipping containers, but they do the same job. If you're looking at container homes for sale in South Africa, an expandable home is the closest thing we sell: a steel-framed unit that arrives on a truck as one module and is set up on site, built as a home from the start rather than converted from a shipping container. The frame is galvanised steel, the walls are 75 mm EPS insulated panels, every size has a bathroom, and the plumbing and electrics are installed in the factory. The 6m and 12m homes open out on site within hours to 37 m² or 74 m², with two bedrooms as standard, and the compact 18 m² starts at R199 900 ex VAT. Our guide to [housing pods, container homes and wendy houses](/blog/housing-pod-vs-container-home-vs-wendy-house) compares the three.",
+        a: "Not converted shipping containers, but they do the same job. If you're looking at container homes for sale in South Africa, an expandable home is the closest thing we sell: a steel-framed unit that arrives on a truck as one module and is set up on site, built as a home from the start rather than converted from a shipping container. The frame is galvanised steel, the walls are 75 mm EPS insulated panels, every size has a bathroom, and the plumbing and electrics are installed in the factory. The 6m and 12m homes open out on site within hours to 37 m² or 74 m², with two bedrooms as standard, from R329 900 ex VAT. Our guide to [housing pods, container homes and wendy houses](/blog/housing-pod-vs-container-home-vs-wendy-house) compares the three.",
       },
     ],
     seoKeywords: [

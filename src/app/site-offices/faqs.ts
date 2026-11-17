@@ -47,7 +47,6 @@ function optionOf(slug: string, optionId: string) {
 
 export const xFold = productOf("folding-homes");
 export const expandable = productOf("expandable-homes");
-export const compact = variantOf("expandable-homes", "b20-slim");
 export const sixMetre = variantOf("expandable-homes", "b20");
 export const twelveMetre = variantOf("expandable-homes", "b40");
 export const glassFront = optionOf("expandable-homes", "glass-front-wall");
@@ -55,7 +54,7 @@ export const glassFront = optionOf("expandable-homes", "glass-front-wall");
 export const siteOfficeFaqs: ProductFaq[] = [
   {
     q: "How much does a site office cost?",
-    a: `An X-Fold site office is ${formatZAR(xFold.startingPrice)} ex VAT: an insulated 15 m² room, wired with two plug points, a light fitting and a small DB board, with no plumbing. An expandable unit with its own bathroom starts at ${formatZAR(compact.price)} ex VAT for the open-plan 18 m². The 37 m² 6m is ${formatZAR(sixMetre.price)} and the 74 m² 12m is ${formatZAR(twelveMetre.price)}, both ex VAT. VAT, transport, the base each unit stands on and the service connections come on top of the unit price.`,
+    a: `An X-Fold site office is ${formatZAR(xFold.startingPrice)} ex VAT: an insulated 15 m² room, wired with two plug points, a light fitting and a small DB board, with no plumbing. An expandable unit with its own bathroom and kitchen is ${formatZAR(sixMetre.price)} ex VAT for the 37 m² 6m and ${formatZAR(twelveMetre.price)} ex VAT for the 74 m² 12m. VAT, transport, the base each unit stands on and the service connections come on top of the unit price.`,
   },
   {
     q: "Does a site office come with a toilet?",
@@ -63,7 +62,7 @@ export const siteOfficeFaqs: ProductFaq[] = [
   },
   {
     q: "How quickly can a site office be working?",
-    a: `Allow around ${site.leadTimeDays} days from deposit to move-in. On delivery day, an X-Fold is offloaded by crane or forklift and two workers unfold it in minutes, so the office can open the day it lands. The 6m (37 m²) and 12m (74 m²) expandable units open out on site within hours, and the compact 18 m² is placed and connected. Connecting the wiring needs a certificate of compliance from a registered electrician.`,
+    a: `Allow around ${site.leadTimeDays} days from deposit to move-in. On delivery day, an X-Fold is offloaded by crane or forklift and two workers unfold it in minutes, so the office can open the day it lands. The 6m (37 m²) and 12m (74 m²) expandable units open out on site within hours. Connecting the wiring needs a certificate of compliance from a registered electrician.`,
   },
   {
     q: "Can a site office move to the next job?",

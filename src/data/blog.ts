@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     title: "How much does a housing pod cost in South Africa?",
     description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT: what each tier includes, and what it quietly leaves out.`,
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-17",
     keywords: [
       "how much does a housing pod cost",
       "housing pod price South Africa",
@@ -308,7 +308,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable)} ex VAT for the compact 18 m² (which is not a bare shell; it includes a bathroom and a small basic kitchen) up to ${R(expandable12m)} for 74 m² with up to four bedrooms. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
+        text: `Our [expandable homes](/expandable-homes) cover this tier, from ${R(expandable6m)} ex VAT for the 37 m² up to ${R(expandable12m)} for 74 m² with up to four bedrooms. Both come with two bedrooms as standard, a bathroom and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances. Every size includes 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and a door.`,
       },
       {
         type: "p",
@@ -341,7 +341,7 @@ export const blogPosts: BlogPost[] = [
         head: ["Range", "Size", "From (ex VAT)", "Bathroom", "Kitchen"],
         rows: [
           ["X-Fold", "15 m²", R(folding), "No, add locally", "No"],
-          ["Expandable home", "18 – 74 m²", R(expandable), "Yes, from the 18 m²", "Yes, basic from the 18 m²"],
+          ["Expandable home", "37 – 74 m²", R(expandable), "Yes, every size", "Yes, basic, every size"],
           ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on the two larger sizes (9 m and 11.8 m)"],
           ["Glamping capsule", "18.6 – 38 m²", R(capsule), "Yes, every model", "Optional extra"],
           ["Nature cabin", "21 m² + terrace", R(nature), "Yes, fully fitted", "Yes, fitted as standard"],
@@ -435,7 +435,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Need a wendy house alternative in South Africa? How a housing pod and a container home compare on insulation, size, lifespan, resale and cost.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-14",
+    dateModified: "2026-11-17",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -572,7 +572,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "I want a wendy house with a bathroom and kitchen. What should I look at?",
-        a: `A self-contained unit rather than a standard wendy house, which in its common form is panels and a roof. Our expandable homes arrive with a bathroom and a small basic kitchen from ${R(expandable)} ex VAT, and the nature cabins arrive fully fitted, with bathroom, kitchen and air conditioning. The X-Fold, the unit closest to a wendy house in price, carries electrics only, so a local installer fits the shower and toilet. Either way, budget for connecting water and sewerage to the property, and check with your municipality whether you need plans before anyone moves in.`,
+        a: `A self-contained unit rather than a standard wendy house, which in its common form is panels and a roof. Our expandable homes arrive with a bathroom and a basic kitchen from ${R(expandable)} ex VAT, and the nature cabins arrive fully fitted, with bathroom, kitchen and air conditioning. The X-Fold, the unit closest to a wendy house in price, carries electrics only, so a local installer fits the shower and toilet. Either way, budget for connecting water and sewerage to the property, and check with your municipality whether you need plans before anyone moves in.`,
       },
       {
         q: "Can you insulate a shipping container properly?",
@@ -605,7 +605,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Before you put a housing pod on your land: what to ask the municipality, the base it needs, how services reach it, and what can stop a delivery.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-17",
     keywords: [
       "do you need plans for a housing pod",
       "building plans prefab home South Africa",
@@ -696,7 +696,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `[X-Fold](/folding-homes): **electrics only** (two plug points, a light fitting and a small DB board). No plumbing. A bathroom or wet room is fitted by a local installer.`,
-          `[Expandable homes](/expandable-homes): **bathroom and factory-installed plumbing and electrical** from the 18 m² up.`,
+          `[Expandable homes](/expandable-homes): **bathroom and factory-installed plumbing and electrical** in every size.`,
           `[Nature cabins](/nature-cabins): fully fitted (bathroom, kitchen, air conditioning and a storage water heater as standard).`,
           `[Apple Cabins](/apple-cabins): **integrated lighting and plumbing**, with bathroom fittings included in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): **complete plumbing and electrical** with the bathroom, its fittings and a geyser standard on every model.`,
@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre prices against a conventional build in South Africa: when prefab is cheaper than building, and when it costs more.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-17",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -827,7 +827,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The short answer: per square metre ex VAT, our expandable homes land at or below a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. Here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
+        text: `The short answer: per square metre ex VAT, our expandable homes land below a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. Here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
       },
 
       { type: "h2", text: "What a conventional build costs per square metre" },
@@ -847,7 +847,6 @@ export const blogPosts: BlogPost[] = [
         head: ["Unit", "Floor area", "Price ex VAT", "Per m²", "What that buys"],
         rows: [
           ["X-Fold", "15 m²", R(folding), perM2("folding-homes"), "Insulated shell, electrics only, no plumbing"],
-          ["Expandable 18 m²", "18 m²", R(expandable), perM2("expandable-homes", "b20-slim"), "Self-contained: bathroom, basic kitchen, services in"],
           ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "Up to 4 bedrooms, fitted throughout"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
@@ -871,10 +870,10 @@ export const blogPosts: BlogPost[] = [
         caption: "The X-Fold shell: two plug points, a light and no plumbing.",
       },
 
-      { type: "h3", text: "The mid-range lands at or below the conventional band" },
+      { type: "h3", text: "The mid-range lands below the conventional band" },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, at or below the R10 000–R15 000 band a conventional mid-range build is quoted at. On a per-square-metre basis the 18 m² is roughly level with it, and the two bigger sizes come in under it.`,
+        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, below the R10 000–R15 000 band a conventional mid-range build is quoted at. Both sizes come in under it, and they arrive with the bathroom, kitchen and services already installed.`,
       },
       {
         type: "img",
@@ -894,7 +893,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "The small-building penalty",
-        text: `Rand per square metre rises sharply as buildings get smaller, whichever way you build. A bathroom costs roughly the same whether it sits in 18 m² or 180 m², but in the small unit it is a much larger share of the total. This is why a 74 m² expandable is cheaper per square metre than an 18 m² one, and why comparing a tiny home's rate to a full house's rate flatters the house.`,
+        text: `Rand per square metre rises sharply as buildings get smaller, whichever way you build. A bathroom costs roughly the same whether it sits in 18 m² or 180 m², but in the small unit it is a much larger share of the total. This is why a 74 m² expandable is cheaper per square metre than a 37 m² one, and why comparing a tiny home's rate to a full house's rate flatters the house.`,
       },
 
       { type: "h2", text: "Where prefab wins, and it is not mainly price" },
@@ -938,11 +937,11 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Is prefab always cheaper than brick in South Africa?",
-        a: `No. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre of a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
+        a: `No. Per square metre ex VAT, our expandable homes land below the R10 000 to R15 000 per square metre of a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
       },
       {
         q: "What is the cheapest way to build a house in South Africa?",
-        a: `Compare complete prices rather than rates. The cheapest home we sell is the X-Fold, at ${perM2("folding-homes")} per square metre ex VAT, but it is an insulated room with no plumbing, so it replaces a bare room rather than a house. For a home with its own bathroom and kitchen, our expandable homes run from ${perM2("expandable-homes", "b20-slim")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up: a bigger building costs less per square metre, whichever way you build, but more in total. Then add what sits outside each price (transport, groundwork and connections for a prefab; fees, connections and contingency for a conventional build), because delivered, standing, connected and usable is the only fair comparison.`,
+        a: `Compare complete prices rather than rates. The cheapest home we sell is the X-Fold, at ${perM2("folding-homes")} per square metre ex VAT, but it is an insulated room with no plumbing, so it replaces a bare room rather than a house. For a home with its own bathroom and kitchen, our expandable homes run from ${perM2("expandable-homes", "b20")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up: a bigger building costs less per square metre, whichever way you build, but more in total. Then add what sits outside each price (transport, groundwork and connections for a prefab; fees, connections and contingency for a conventional build), because delivered, standing, connected and usable is the only fair comparison.`,
       },
       {
         q: "What is the cheapest prefab option per square metre?",
@@ -983,9 +982,9 @@ export const blogPosts: BlogPost[] = [
     title: "How much does a granny flat cost in South Africa?",
     // W45 (15 Nov 2026): the answer first in the snippet ("granny flat" 273 impr. at 5.1, 1% CTR).
     description:
-      "A cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 to build (checked Oct 2026); our open-plan 18 m² prefab is R199 900 ex VAT.",
+      "A cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 to build (checked Oct 2026); our 2-bedroom 37 m² prefab is R329 900 ex VAT.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-15",
+    dateModified: "2026-11-17",
     keywords: [
       "granny flat cost South Africa",
       "how much does a granny flat cost",
@@ -1033,7 +1032,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `Our [prefab granny flats](/expandable-homes) are the expandable homes, the range people buy for this job. The compact 18 m² at ${R(expandable)} ex VAT is not a bare shell: it includes a bathroom and a small basic kitchen, with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics. The 37 m² at ${R(expandable6m)} adds two bedrooms and a kitchen of basic stainless-steel cabinetry and a sink, with no appliances; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
+        text: `Our [prefab granny flats](/expandable-homes) are the expandable homes, the range people buy for this job. The 37 m² at ${R(expandable6m)} ex VAT is not a bare shell: it has two bedrooms, a bathroom and a kitchen of basic stainless-steel cabinetry and a sink (no appliances), with 75 mm EPS insulated walls, vinyl flooring, double-glazed windows and factory-installed plumbing and electrics; the 74 m² at ${R(expandable12m)} goes up to four bedrooms.`,
       },
       {
         type: "p",
@@ -1085,8 +1084,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          `**One person, or a parent nearby**: the 18 m² compact at ${R(expandable)} ex VAT. Self-contained, and the smallest footprint that still counts as a dwelling.`,
-          `**A couple, or a lettable unit**: the 37 m² at ${R(expandable6m)} (two bedrooms, a fitted bathroom and a stainless-steel kitchen without appliances). This is the size most rental demand sits at.`,
+          `**A parent, a couple, or a lettable unit**: the 37 m² at ${R(expandable6m)} (two bedrooms, a fitted bathroom and a stainless-steel kitchen without appliances). This is the size most rental demand sits at.`,
           `**A family, or a permanent second home**: the 74 m² at ${R(expandable12m)}, with layouts up to four bedrooms.`,
           `**A guest suite rather than a let**: an [Apple Cabin](/apple-cabins) from ${R(apple)} ex VAT, if the unit is going to be looked at as much as lived in.`,
         ],
@@ -1106,7 +1104,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "How much does a granny flat cost in South Africa?",
-        a: `Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000, with budget builds from R50 000 and the top end past R500 000, depending on finishes and scope. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 18 m² with its own bathroom and a small basic kitchen. Add transport, groundwork and service connections to either figure.`,
+        a: `Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000, with budget builds from R50 000 and the top end past R500 000, depending on finishes and scope. As a delivered unit, our expandable homes start at ${R(expandable)} ex VAT for a self-contained 37 m² with two bedrooms, its own bathroom and a basic kitchen. Add transport, groundwork and service connections to either figure.`,
       },
       {
         q: "Do I need council approval for a granny flat?",
@@ -1114,11 +1112,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "What is the cheapest way to build a granny flat in South Africa?",
-        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000; our compact 18 m² expandable home is ${R(expandable)} ex VAT with its bathroom and small basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
+        a: `Build less, and price it complete. The bathroom and kitchen are the expensive parts and cost roughly the same in 18 m² as in 60 m², so the lowest total comes from the smallest unit that still has both. Conventionally built, an industry cost guide (checked October 2026) put a mid-range one-bedroom granny flat at R150 000 to R300 000; our 37 m² expandable home is ${R(expandable)} ex VAT with two bedrooms, its bathroom and a basic kitchen already in. Add transport, groundwork, connections and plans to either figure before you compare.`,
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",
-        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre that our [cost comparison](/blog/is-a-prefab-home-cheaper-than-building) uses for a mid-range conventional build; the difference is that our rate already includes insulation, glazing, a fitted bathroom and installed services.",
+        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre ex VAT, our expandable homes land below the R10 000 to R15 000 per square metre that our [cost comparison](/blog/is-a-prefab-home-cheaper-than-building) uses for a mid-range conventional build; the difference is that our rate already includes insulation, glazing, a fitted bathroom and installed services.",
       },
       {
         q: "Can I get a bond for a granny flat?",
@@ -1478,6 +1476,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What running a prefab home off-grid involves (solar sizing, water supply, waste treatment) and the decisions to make before the unit is built.",
     datePublished: "2026-09-02",
+    dateModified: "2026-11-17",
     keywords: [
       "off grid tiny home South Africa",
       "off grid cabin South Africa",
@@ -1552,7 +1551,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `[X-Fold](/folding-homes): electrics only (two plug points, a light fitting and a small DB board). **No plumbing.** The blankest canvas here, and the cheapest to adapt.`,
-          `[Expandable homes](/expandable-homes): bathroom with factory-installed plumbing and electrical from the 18 m² up.`,
+          `[Expandable homes](/expandable-homes): bathroom with factory-installed plumbing and electrical in every size.`,
           `[Apple Cabins](/apple-cabins): integrated lighting and plumbing, bathroom fittings in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): complete plumbing and electrics, bathroom and geyser standard on every model.`,
           `[Nature cabins](/nature-cabins): the most complete (bathroom, kitchen, air conditioning and a storage water heater fitted as standard).`,
@@ -1631,7 +1630,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-16",
+    dateModified: "2026-11-17",
     keywords: [
       "staff accommodation units South Africa",
       "farm worker housing South Africa",
@@ -1659,10 +1658,10 @@ export const blogPosts: BlogPost[] = [
         head: ["", "X-Fold", "Expandable home"],
         rows: [
           ["From (ex VAT)", R(folding), R(expandable)],
-          ["Floor area", "15 m²", "18 – 74 m²"],
+          ["Floor area", "15 m²", "37 – 74 m²"],
           ["Plumbing", "None: shared ablutions or local fit-out", "Bathroom and services installed"],
           ["Electrics", "2 plugs, light, small DB board", "Full installation"],
-          ["Setup", "Unfolds in minutes, 2 people", "6m and 12m expand on site within hours; the 18 m² is placed and connected"],
+          ["Setup", "Unfolds in minutes, 2 people", "Expands on site within hours"],
           ["Stackable", "Two units high", "No"],
           ["Relocatable", "Folds down and moves", "Ask us before you order"],
         ],
@@ -1678,7 +1677,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) from ${R(expandable)} are the answer where staff need self-contained accommodation rather than a room: bathroom, small basic kitchen and installed services from the 18 m² up. Larger sizes suit family accommodation or a supervisor's unit.`,
+        text: `The [expandable homes](/expandable-homes) from ${R(expandable)} are the answer where staff need self-contained accommodation rather than a room: two bedrooms, a bathroom, a basic kitchen and installed services in every size. The 74 m² suits family accommodation or a supervisor's unit.`,
       },
 
       { type: "h2", text: "The ablution question decides your budget" },
@@ -1736,7 +1735,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "What does staff accommodation cost per unit in South Africa?",
-        a: `Our X-Fold is ${R(folding)} ex VAT for an insulated, wired 15 m² room: the volume-deployment option, stackable two high and relocatable. Self-contained accommodation with its own bathroom and kitchen starts at ${R(expandable)} ex VAT for an 18 m² expandable home. Add transport, groundwork and ablutions or connections to both.`,
+        a: `Our X-Fold is ${R(folding)} ex VAT for an insulated, wired 15 m² room: the volume-deployment option, stackable two high and relocatable. Self-contained accommodation with its own bathroom and kitchen starts at ${R(expandable)} ex VAT for a two-bedroom 37 m² expandable home. Add transport, groundwork and ablutions or connections to both.`,
       },
       {
         q: "Does the X-Fold have a bathroom?",
@@ -1936,7 +1935,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What prefab and building a house each cost you in South Africa: money, time, paperwork, finance and resale, and which situations each one suits.",
     datePublished: "2026-09-02",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-17",
     keywords: [
       "prefab vs building a house",
       "prefab home pros and cons",
@@ -2015,7 +2014,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Finance is harder.** Some major South African banks do not currently bond prefabricated structures at all. If you need a bond rather than cash or third-party finance, check this before anything else.`,
-          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land at or below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
+          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
           `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
           `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place, and the X-Fold still needs a crane or forklift to come off the truck. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
           `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling, by everyone.`,

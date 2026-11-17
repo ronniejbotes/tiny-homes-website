@@ -8,6 +8,6 @@ export interface SceneProps {
    */
   visuals: Partial<Record<VisualKey, boolean>>;
   furnished: boolean;
-  /** Active size-variant id for products with variants (e.g. "b20-slim"). */
+  /** Active size-variant id for products with variants (e.g. "b20"). */
   variantId?: string;
 }

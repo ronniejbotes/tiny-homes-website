@@ -38,10 +38,8 @@ function variantOf(slug: string, variantId: string) {
 
 export const xFold = productOf("folding-homes");
 export const expandable = productOf("expandable-homes");
-export const compact = variantOf("expandable-homes", "b20-slim");
 export const sixMetre = variantOf("expandable-homes", "b20");
 export const twelveMetre = variantOf("expandable-homes", "b40");
-export const compactPrice = compact.price;
 export const sixMetrePrice = sixMetre.price;
 export const twelveMetrePrice = twelveMetre.price;
 
@@ -51,7 +49,7 @@ const countryList = `${countries.slice(0, -1).join(", ")} and ${countries[countr
 export const staffFaqs: ProductFaq[] = [
   {
     q: "How much does a staff accommodation unit cost?",
-    a: `An X-Fold is ${formatZAR(xFold.startingPrice)} ex VAT per unit: an insulated, wired 15 m² room with no plumbing. A self-contained expandable home starts at ${formatZAR(compactPrice)} ex VAT for the 18 m² open-plan unit with its own bathroom and small basic kitchen. The two-bedroom 6m (37 m²) is ${formatZAR(sixMetrePrice)} and the 12m (74 m²) is ${formatZAR(twelveMetrePrice)}. On top of the unit price come VAT, transport, the base each unit stands on and the service connections, and for X-Folds the ablutions.`,
+    a: `An X-Fold is ${formatZAR(xFold.startingPrice)} ex VAT per unit: an insulated, wired 15 m² room with no plumbing. A self-contained expandable home, with its own bathroom and kitchen and two bedrooms as standard, is ${formatZAR(sixMetrePrice)} ex VAT for the 6m (37 m²) and ${formatZAR(twelveMetrePrice)} for the 12m (74 m²). On top of the unit price come VAT, transport, the base each unit stands on and the service connections, and for X-Folds the ablutions.`,
   },
   {
     q: "Which staff units come with a bathroom?",

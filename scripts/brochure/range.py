@@ -69,7 +69,7 @@ PAGES = {
                   "site into as much as 74 m&sup2; of living space. Bedrooms, a fitted bathroom and a kitchen "
                   "are built in at the factory, with 75 mm EPS insulated walls, vinyl flooring and "
                   "double-glazed windows standard on every size."),
-        "facts": [("18 – 74 m&sup2;", "Floor area"), ("Hours", "To expand"),
+        "facts": [("37 – 74 m&sup2;", "Floor area"), ("Hours", "To expand"),
                   ("Up to 4", "Bedrooms"), ("107", "Exterior finishes")],
         "ticks": ["Bathroom and kitchen included on every size",
                   "Stainless-steel kitchen cabinetry and a sink in the 6m and 12m, no appliances",

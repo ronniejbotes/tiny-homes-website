@@ -226,7 +226,7 @@ CONFIG = {
         "h1": "Expandable Homes",
         "eyebrow": "Expandable homes",
         "sub": "One module. A whole house.",
-        "stats": [("18 – 74 m&sup2;", "Floor area"), ("Hours", "To expand"),
+        "stats": [("37 – 74 m&sup2;", "Floor area"), ("Hours", "To expand"),
                   ("Up to 4", "Bedrooms"), ("1 year", "Guarantee")],
         "h2_product": "Arrives as one module",
         "h2_uses": "What people build with it",

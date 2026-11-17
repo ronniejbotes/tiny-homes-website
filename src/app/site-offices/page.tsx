@@ -22,7 +22,6 @@ import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
 import {
-  compact,
   expandable,
   glassFront,
   siteOfficeFaqs,
@@ -79,7 +78,7 @@ const unfoldDiagram = {
 const expandableShell = manifest.configurator["expandable-homes"].empty;
 
 const title = "Site Offices for Sale in South Africa";
-const description = `Site offices for building sites, mines and farms: X-Fold offices at ${formatZAR(xFold.startingPrice)} and units with a bathroom from ${formatZAR(compact.price)}, ex VAT. Delivered nationwide.`;
+const description = `Site offices for building sites, mines and farms: X-Fold offices at ${formatZAR(xFold.startingPrice)} and units with a bathroom from ${formatZAR(expandable.startingPrice)}, ex VAT. Delivered nationwide.`;
 
 export const metadata: Metadata = {
   title,
@@ -133,15 +132,6 @@ const units = [
     services: "Wired: 2 plug points, a light, a small DB board. No plumbing",
     setup: "Unfolds in minutes, folds back down",
     price: xFold.startingPrice,
-  },
-  {
-    name: "Compact expandable",
-    href: `/${expandable.slug}`,
-    size: compact.size,
-    rooms: "One open-plan room",
-    services: "Bathroom and a small basic kitchen, plumbing and electrics installed",
-    setup: "Placed and connected",
-    price: compact.price,
   },
   {
     name: "6m Expandable Home",
@@ -247,7 +237,7 @@ export default function SiteOfficesPage() {
               provinces. The {xFold.shortName} is an insulated 15 m² room at{" "}
               <span className="nums-tabular">{formatZAR(xFold.startingPrice)}</span> ex VAT. It
               arrives wired, unfolds in minutes and folds back down for the next job. The expandable unit has its own bathroom and
-              kitchen, from <span className="nums-tabular">{formatZAR(compact.price)}</span> ex
+              kitchen, from <span className="nums-tabular">{formatZAR(expandable.startingPrice)}</span> ex
               VAT.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -506,7 +496,7 @@ export default function SiteOfficesPage() {
               },
               {
                 h: "Delivery and setup",
-                p: `Allow around ${site.leadTimeDays} days from deposit to move-in; several units can come in phases. Our team unfolds and sets up each X-Fold on your prepared base. The 6m and 12m expandable units open out on site within hours, the compact 18 m² is placed and connected, and installing the expandable units is quoted separately.`,
+                p: `Allow around ${site.leadTimeDays} days from deposit to move-in; several units can come in phases. Our team unfolds and sets up each X-Fold on your prepared base. The 6m and 12m expandable units open out on site within hours, and installing them is quoted separately.`,
               },
             ].map((step, i) => (
               <li key={step.h} className="flex gap-5 rounded-3xl border border-border bg-parchment p-6 sm:p-7">

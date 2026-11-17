@@ -60,7 +60,7 @@ export const podEntries: PodEntry[] = [
     slug: "expandable-homes",
     podType: "Family pod / granny pod",
     podPitch:
-      "What most people mean when they search for a pod to put in the garden for a parent or an adult child: a self-contained second dwelling with its own bathroom and kitchen, plumbing and electrics installed at the factory. It arrives as one module and expands on site within hours, from 18 m² up to 74 m².",
+      "What most people mean when they search for a pod to put in the garden for a parent or an adult child: a self-contained second dwelling with its own bathroom and kitchen, plumbing and electrics installed at the factory. It arrives as one module and expands on site within hours, to 37 m² or 74 m² with two bedrooms as standard.",
     bestFor: "A self-contained second dwelling",
     notAPod:
       "Boxy rather than rounded, and the largest sizes are bigger than the word 'pod' usually implies. Included here because a granny pod is what it is bought for.",

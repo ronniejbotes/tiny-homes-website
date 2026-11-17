@@ -33,9 +33,16 @@ const expandableFrom = Math.min(
 );
 /* The 2-bedroom searches ("2 bedroom tiny house south africa prices") land on
    the home page, which never said "bedroom". The 37 m² (b20) is the smallest
-   size with two bedrooms as standard; its price is read, never typed. */
+   expandable size, with two bedrooms as standard, and since 17 Nov 2026 the
+   only cheaper self-contained size (the compact 18 m²) is no longer sold, so
+   it is both the self-contained and the two-bedroom entry point. Its price is
+   read, never typed; the build stops if it stops being the range's from-price,
+   so the answer below gets rewritten rather than naming the wrong size. */
 const twoBedroomFrom =
   products.find((p) => p.slug === "expandable-homes")?.variants?.find((v) => v.id === "b20")?.price ?? expandableFrom;
+if (twoBedroomFrom !== expandableFrom) {
+  throw new Error("home-faqs.ts: the 37 m² is no longer the cheapest expandable size; rewrite the price answers");
+}
 /* Sizes for the prefab price question, read like the prices. Throws at build
    time rather than rendering "undefined" into the answer. */
 function sizeOf(slug: string, variantId?: string): string {
@@ -54,7 +61,7 @@ export const homeFaqs: HomeFaq[] = [
      keeps to the words of the line under that list. */
   {
     q: "How much does a prefab house cost in South Africa?",
-    a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A self-contained unit with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20-slim")} expandable home), and a two-bedroom home starts at ${formatZAR(twoBedroomFrom)} ex VAT (the ${sizeOf("expandable-homes", "b20")} size). The largest glamping capsule, the ${dearestHouse.variant?.size} ${dearestName}, is ${formatZAR(houseHighPrice)} ex VAT. The [price list on this page](/#prices) gives the price range of every home we sell. Each price is for the unit alone: unless a quote says otherwise, the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top.`,
+    a: `Our prefab houses start at ${formatZAR(lowestStartingPrice)} ex VAT for the ${sizeOf("folding-homes")} X-Fold, an insulated room wired for electricity but without plumbing. A self-contained home with its own bathroom and kitchen starts at ${formatZAR(expandableFrom)} ex VAT: the ${sizeOf("expandable-homes", "b20")} expandable home, with two bedrooms as standard. The largest glamping capsule, the ${dearestHouse.variant?.size} ${dearestName}, is ${formatZAR(houseHighPrice)} ex VAT. The [price list on this page](/#prices) gives the price range of every home we sell. Each price is for the unit alone: unless a quote says otherwise, the base it stands on, the connections to water, sewerage and power, council approval, transport to your site and VAT come on top.`,
   },
   /* The vocabulary question. "Tiny house" and "granny pod" are what a large
      share of searchers type, but neither phrase appears anywhere else on the
@@ -63,7 +70,7 @@ export const homeFaqs: HomeFaq[] = [
      find-and-replacing terms that read worse in body copy. */
   {
     q: "What's the difference between a tiny house, a granny pod and a granny flat?",
-    a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, from ${formatZAR(expandableFrom)} ex VAT. The 37 m² and 74 m² sizes come with 2 bedrooms as standard, the 37 m² from ${formatZAR(twoBedroomFrom)} ex VAT.`,
+    a: `Mostly the words, not the buildings. A tiny house and a tiny home are the same thing: a compact, fully finished home that stands on a slab or levelled plinths. A granny pod and a granny flat both mean a self-contained second dwelling on the same property as the main house, usually for a parent or an adult child. Our expandable homes are the range most people mean by either: self-contained, with a bathroom and a kitchen of their own, and 2 bedrooms as standard in both the 37 m² and 74 m² sizes, from ${formatZAR(expandableFrom)} ex VAT.`,
   },
   /* The problem question (owner, 28 Oct 2026: pages name the problem the
      buyer has, not only the product). Every use is one the site already

@@ -36,7 +36,7 @@ const capsuleFrom = priceOf("glamping-capsules");
 export const podFaqs: ProductFaq[] = [
   {
     q: "How much does a housing pod cost in South Africa?",
-    a: `Ours run from ${formatZAR(podPriceFrom)} to ${formatZAR(podPriceTo)} ex VAT, and where you land in that range depends almost entirely on how finished the unit is when it arrives. ${formatZAR(foldingFrom)} buys an insulated, wired 15 m² room with no plumbing. ${formatZAR(expandableFrom)} buys a self-contained dwelling with its own bathroom and a small basic kitchen. ${formatZAR(appleFrom)} and up buys a finished guest unit with luxurious bathroom fittings and panoramic glass, ready to let. All prices exclude VAT and exclude transport to your site, which is quoted separately on distance and access.`,
+    a: `Ours run from ${formatZAR(podPriceFrom)} to ${formatZAR(podPriceTo)} ex VAT, and where you land in that range depends almost entirely on how finished the unit is when it arrives. ${formatZAR(foldingFrom)} buys an insulated, wired 15 m² room with no plumbing. ${formatZAR(expandableFrom)} buys a self-contained two-bedroom dwelling with its own bathroom and a basic kitchen. ${formatZAR(appleFrom)} and up buys a finished guest unit with luxurious bathroom fittings and panoramic glass, ready to let. All prices exclude VAT and exclude transport to your site, which is quoted separately on distance and access.`,
   },
   {
     q: "What is the cheapest housing pod you sell?",

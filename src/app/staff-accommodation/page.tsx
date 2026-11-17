@@ -31,7 +31,7 @@ import { getBlogPost, type BlogPost } from "@/data/blog";
 import { formatZAR } from "@/lib/format";
 import { site } from "@/lib/site";
 import { BUSINESS_ENQUIRY_HREF, VIEWING_HREF } from "@/lib/enquiry";
-import { compact, compactPrice, expandable, sixMetre, staffFaqs, twelveMetre, xFold } from "./faqs";
+import { expandable, sixMetre, sixMetrePrice, staffFaqs, twelveMetre, xFold } from "./faqs";
 
 /**
  * /staff-accommodation: the commercial page for business buyers housing staff
@@ -138,14 +138,6 @@ const units = [
     rooms: "One room",
     bathroom: "None. Wired only: 2 plug points, a light, a small DB board",
     price: xFold.startingPrice,
-  },
-  {
-    name: "Compact expandable",
-    href: `/${expandable.slug}`,
-    size: compact.size,
-    rooms: "Open plan",
-    bathroom: "Bathroom and a small basic kitchen",
-    price: compact.price,
   },
   {
     name: "6m Expandable Home",
@@ -307,7 +299,7 @@ export default function StaffAccommodationPage() {
               nine provinces: the {xFold.shortName}, an insulated 15 m² room at{" "}
               <span className="nums-tabular">{formatZAR(xFold.startingPrice)}</span> ex VAT,
               and the expandable home, a self-contained unit with its own bathroom and kitchen
-              from <span className="nums-tabular">{formatZAR(compactPrice)}</span> ex VAT.
+              from <span className="nums-tabular">{formatZAR(expandable.startingPrice)}</span> ex VAT.
               Below: which unit suits which staff, what a multi-unit order involves, and what
               to have ready before you ask for a quote.
             </p>
@@ -522,9 +514,9 @@ export default function StaffAccommodationPage() {
                   <span className="nums-tabular font-medium text-ink">
                     {formatZAR(EXAMPLE_UNITS * xFold.startingPrice)}
                   </span>{" "}
-                  ex VAT for the units alone, and {EXAMPLE_WORD} compact expandable homes to{" "}
+                  ex VAT for the units alone, and {EXAMPLE_WORD} 6m expandable homes to{" "}
                   <span className="nums-tabular font-medium text-ink">
-                    {formatZAR(EXAMPLE_UNITS * compactPrice)}
+                    {formatZAR(EXAMPLE_UNITS * sixMetrePrice)}
                   </span>{" "}
                   ex VAT.
                 </p>
@@ -619,7 +611,7 @@ export default function StaffAccommodationPage() {
               },
               {
                 h: "Delivery and setup",
-                p: `Allow around ${site.leadTimeDays} days from deposit to move-in, and take delivery in phases if that suits the job. For X-Folds, our team unfolds and sets up each unit on your prepared base. The 6m (37 m²) and 12m (74 m²) expandable homes expand on site within hours, and the compact 18 m² is placed and connected; installing the expandable homes is quoted separately.`,
+                p: `Allow around ${site.leadTimeDays} days from deposit to move-in, and take delivery in phases if that suits the job. For X-Folds, our team unfolds and sets up each unit on your prepared base. The 6m (37 m²) and 12m (74 m²) expandable homes expand on site within hours; installing the expandable homes is quoted separately.`,
               },
             ].map((step, i) => (
               <li key={step.h} className="flex gap-5 rounded-3xl border border-border bg-cream p-6 sm:p-7">
