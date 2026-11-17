@@ -2260,7 +2260,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Electrical certificate of compliance.** Required under the Occupational Health and Safety Act and the Electrical Installation Regulations, issued by a registered person holding a wireman's licence. A property cannot transfer on a certificate older than two years, and any addition or alteration needs a certificate for at least that work.`,
-          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and the local authority must issue it within **14 days**. Nobody may lawfully occupy the building without it unless the municipality has given written permission to use it first, and it is the document that surfaces years later when you sell.`,
+          `**Occupancy certificate.** Section 14 of the Act. Once the building is complete you request it in writing, and within **14 days** the local authority must either issue it or tell you in writing that it refuses. Nobody may lawfully occupy the building without it unless the municipality has given written permission to use it first, and it is the document that surfaces years later when you sell.`,
         ],
       },
       {
@@ -2388,7 +2388,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Do I need an occupancy certificate?",
-        a: "For a permanent building, yes. Section 14 of the Act requires the local authority to issue one within 14 days of the owner requesting it in writing after completion, and nobody may lawfully occupy the building without it unless the local authority has given written permission to use it first. It is also the document that surfaces when you sell.",
+        a: "For a permanent building, yes. Section 14 of the Act gives the local authority 14 days from the owner's written request after completion to issue one or refuse in writing, and nobody may lawfully occupy the building without it unless the local authority has given written permission to use it first. It is also the document that surfaces when you sell.",
       },
       {
         q: "Does a tiny home count as minor building work?",
