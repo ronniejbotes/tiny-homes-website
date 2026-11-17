@@ -357,7 +357,7 @@ export default function AboutPage() {
               dark
               eyebrow="Delivery & installation"
               title="To every corner of the country"
-              intro={`Your home arrives on a flatbed truck, anywhere in South Africa. ${site.deliveryNote} We can also arrange the full turnkey install, so all you do is unlock the front door.`}
+              intro={`Your home arrives on a flatbed truck, anywhere in South Africa. ${site.deliveryNote} Ask whether our turnkey service covers your area and your home: where it does, we can arrange the groundwork, connections and installation too.`}
             />
             <Stagger className="space-y-5">
               <StaggerItem className="flex items-start gap-4 rounded-2xl border border-cream/15 bg-forest-light/40 p-6">
@@ -386,10 +386,12 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-display text-xl">Full turnkey installation</h3>
                   <p className="mt-1.5 leading-relaxed text-cream/70">
-                    We can arrange the groundwork while your home is being built: plinths,
-                    electrical, water and sewerage connections, then erect the home, connect
-                    services and hand over the same day, move-in ready. Use your own
-                    contractors, or let our site manager guide the process on ours.
+                    Where the service covers your area, we can arrange the groundwork (plinths,
+                    electrical, water and sewerage connections) while your home is being built,
+                    then set it up and connect its services, so it is ready the day it arrives. Where your municipality requires an occupancy certificate, you move
+                    in once it is issued, or sooner only with the municipality&rsquo;s written
+                    permission. You can also use your own contractors, with our site manager
+                    guiding the process.
                   </p>
                 </div>
               </StaggerItem>

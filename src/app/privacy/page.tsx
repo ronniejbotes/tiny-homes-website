@@ -1,7 +1,11 @@
 /**
  * General-purpose POPIA privacy policy describing how this site actually
- * behaves today (mailto/WhatsApp hand-off, GA4, Microsoft Clarity, self-hosted
- * media). It is not legal advice; have a legal professional review it before
+ * behaves today: the quote form POSTs to /api/quote, which emails the quotation
+ * to the visitor and a copy to the office through Hostinger mail and saves
+ * nothing (since 690ff72, 3 Aug 2026); WhatsApp and email links as the
+ * fallback; the Google Map in every footer and on /contact; GA4 on two
+ * properties (layout.tsx); Microsoft Clarity; self-hosted media and fonts.
+ * It is not legal advice; have a legal professional review it before
  * relying on it, and update it whenever the data practices described here change.
  */
 import type { Metadata } from "next";
@@ -74,11 +78,11 @@ export default function PrivacyPage() {
         <p className="mt-6 text-lg leading-relaxed text-stone">
           This policy explains what personal information Tiny Homes SA collects, why we need it,
           who it reaches and what you can ask us to do with it. The short version: this website
-          keeps no database of visitors. Everything you type into a form stays in your browser
-          until you press send, and then it travels to us by WhatsApp or email, the same way a
-          message from your phone would.
+          keeps no database of visitors. When you ask for a quote, our website emails the
+          details you entered to you and to us, and from then on they live in our mailbox. A
+          WhatsApp message or email you send us reaches us like any other message.
         </p>
-        <p className="mt-4 text-sm text-stone">Last updated: 13 November 2026</p>
+        <p className="mt-4 text-sm text-stone">Last updated: 17 November 2026</p>
 
         <div className="mt-14 space-y-12">
           <Clause n={1} title="Who we are">
@@ -95,7 +99,7 @@ export default function PrivacyPage() {
               </li>
               <li>
                 Phone:{" "}
-                <a href={telHref} className={linkClasses}>
+                <a href={telHref} className={`${linkClasses} whitespace-nowrap`}>
                   {site.phoneDisplay}
                 </a>{" "}
                 ({site.phone})
@@ -130,9 +134,9 @@ export default function PrivacyPage() {
               <Link href="/contact" className={linkClasses}>
                 contact page
               </Link>{" "}
-              no longer carries an enquiry form. It lists our phone number, WhatsApp, email address
-              and showroom, and points you to the quote form below, so nothing on that page collects
-              anything from you.
+              has no form. It lists our phone number, WhatsApp, email address and showroom, and its
+              business enquiry button opens your own email program with our questions filled in,
+              so nothing on that page asks you to type in your details.
             </p>
             <p>
               <strong className="font-semibold text-ink">Our quote form</strong> (on the{" "}
@@ -142,7 +146,8 @@ export default function PrivacyPage() {
               ) asks for your full name, email address and phone number, and the delivery address
               for your unit: street, suburb, city, province and postal code. We need the address
               to price transport and to check that a truck can reach the spot. It also carries the
-              units, sizes, extras and quantities you configured, and any notes you add.
+              units, sizes, extras and quantities you configured, your answer if it asks whether the
+              site is near the sea, and any notes you add.
             </p>
             <p>
               <strong className="font-semibold text-ink">If you contact us directly</strong>, by
@@ -152,7 +157,9 @@ export default function PrivacyPage() {
             <p>
               <strong className="font-semibold text-ink">Automatically</strong>, our hosting
               provider keeps ordinary web-server logs (IP address, browser and device type, the
-              pages requested and when), and we use analytics as described in section 8.
+              pages requested and when), and we use analytics as described in section 8. When you
+              ask for a quote, our website&apos;s server also holds your IP address in its memory,
+              never in a file or database, to limit how many quotes one connection can request.
             </p>
             <p>
               We do not ask for ID numbers, banking details or any of POPIA&apos;s special personal
@@ -163,22 +170,20 @@ export default function PrivacyPage() {
           </Clause>
 
           <Clause n={3} title="How your information reaches us: nothing is stored on this website">
-            <p>
-              This is worth spelling out, because it is unusual. Neither form posts anything to a
-              server or database that we control. There is no account, no login, and no saved
-              submission on tinyhomesa.com.
-            </p>
+            <p>This website has no account, no login and no database of submissions.</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                When you press send, your browser opens WhatsApp with the message already written
-                out, addressed to our business number. Nothing is delivered until{" "}
-                <em>you</em>{" "}
-                press send inside WhatsApp, and at that point the message travels
-                through WhatsApp&apos;s servers, like any other WhatsApp message.
+                When you press &ldquo;Get my instant quote&rdquo;, your browser sends what you
+                entered in the quote form to our website&apos;s server. The server does one thing
+                with it: it emails the quotation to you and a copy to our office mailbox, through
+                our email provider, Hostinger. It does not save your details on the website.
               </li>
               <li>
-                If you use the email link instead, your browser opens your own email program with
-                the same message pre-filled and addressed to us. Your email provider sends it.
+                If that email cannot be sent, the quote on your screen offers WhatsApp or email
+                instead. Nothing goes by WhatsApp until <em>you</em> press send inside WhatsApp,
+                and then it travels through WhatsApp&apos;s servers like any other message. The
+                email link opens your own email program with the message filled in, and your email
+                provider sends it.
               </li>
               <li>
                 Until you send it, what you have typed exists only in your browser tab. Close the
@@ -227,7 +232,7 @@ export default function PrivacyPage() {
             </p>
             <p>
               If you would rather not use a form at all, phone us on{" "}
-              <a href={telHref} className={linkClasses}>
+              <a href={telHref} className={`${linkClasses} whitespace-nowrap`}>
                 {site.phoneDisplay}
               </a>{" "}
               and tell us only what you are comfortable sharing.
@@ -250,16 +255,21 @@ export default function PrivacyPage() {
                 ours, which transmit and store emailed enquiries;
               </li>
               <li>
-                <strong className="font-semibold text-ink">Google</strong>: usage statistics
-                only, as described in section 8;
+                <strong className="font-semibold text-ink">Google</strong>: usage statistics, in
+                two Google Analytics properties (ours, and one held by Position Xero, the agency
+                that built and looks after this website), and what the showroom map receives, both
+                as described in section 8;
               </li>
               <li>
                 <strong className="font-semibold text-ink">Microsoft</strong>: how visitors use
                 the site, through Microsoft Clarity, as described in section 8;
               </li>
               <li>
-                <strong className="font-semibold text-ink">our hosting provider</strong>: which
-                serves the site and keeps standard server logs;
+                <strong className="font-semibold text-ink">
+                  our hosting and email provider (Hostinger)
+                </strong>
+                : which serves the site, keeps standard server logs, sends both emails of every
+                quotation and holds our mailbox, where our copy is kept;
               </li>
               <li>
                 <strong className="font-semibold text-ink">
@@ -294,9 +304,9 @@ export default function PrivacyPage() {
               by section 72 of POPIA.
             </p>
             <p>
-              We rely on your consent when you choose to use WhatsApp or email, and on the fact
-              that these providers are bound by data-protection laws and contractual transfer terms
-              that give protection substantially similar to POPIA. If you would prefer your
+              We rely on your consent when you choose to use the quote form, WhatsApp or email, and
+              on the fact that these providers are bound by data-protection laws and contractual
+              transfer terms that give protection substantially similar to POPIA. If you would prefer your
               information not to leave South Africa, phone us instead of using the quote form.
             </p>
           </Clause>
@@ -306,8 +316,10 @@ export default function PrivacyPage() {
               We use <strong className="font-semibold text-ink">Google Analytics 4</strong> to
               understand how the site is used: how many people visit, which homes they look at,
               roughly where they are and which pages need work. It sets cookies in your browser and
-              sends Google your IP address (which Google shortens before storing), your device and
-              browser details, and the pages you view. We look at it in aggregate; we do not use it
+              sends Google your IP address (Google says Analytics 4 does not log or store IP
+              addresses), your device and browser details, and the pages you view. These statistics
+              go to two Analytics properties: ours, and one held by Position Xero, the agency that
+              built and looks after this website. We look at them in aggregate; we do not use them
               to identify individual visitors, and we have not enabled Google&apos;s advertising or
               remarketing features.
             </p>
@@ -340,21 +352,22 @@ export default function PrivacyPage() {
               . Blocking analytics does not affect how this site works.
             </p>
             <p>
-              The{" "}
+              The footer of every page, and the{" "}
               <Link href="/contact" className={linkClasses}>
                 contact page
-              </Link>{" "}
-              embeds a <strong className="font-semibold text-ink">Google Map</strong> showing where
-              our showroom is. Loading it tells Google your IP address and lets it set its own
-              cookies, exactly as visiting Google Maps directly would. It is loaded lazily, so
-              nothing reaches Google unless you scroll down to it, and you can reach us perfectly
-              well without it: the street address is written out above the map in plain text.
+              </Link>
+              , embed a <strong className="font-semibold text-ink">Google Map</strong> showing
+              where our showroom is. Loading one tells Google your IP address and lets it set its
+              own cookies, exactly as visiting Google Maps directly would. The maps load lazily:
+              your browser fetches one only when it comes close to the part of the page you are
+              viewing. You can reach us perfectly well without them: the showroom&apos;s name and
+              area ({site.showroom.name}, {site.showroom.locality}, {site.showroom.city}) and a
+              Google Maps link are written out next to each map in plain text.
             </p>
             <p>
               Everything else on the site is served from our own domain. The videos are our own
               files played by your browser; there is no YouTube or Vimeo player, so watching one
-              does not hand you over to a third party. The interactive 3D viewer runs entirely in
-              your browser using assets hosted here, and our fonts are bundled into the site at
+              does not hand you over to a third party. Our fonts are bundled into the site at
               build time rather than fetched from Google as you browse.
             </p>
             <p>
@@ -374,10 +387,10 @@ export default function PrivacyPage() {
             </p>
             <p>
               If you buy a unit, we keep the order, delivery and invoice records for as long as
-              South African tax and company law requires: currently five years from the end of the
-              relevant tax period. Analytics data is retained by Google for the period configured
-              on our property (a maximum of 14 months at event level), and server logs are kept by
-              our host for short operational periods. When information is no longer needed, we
+              South African tax and company law requires: currently seven years, the period the
+              Companies Act sets for a company&apos;s records. Analytics data is retained by Google
+              for the period configured on each property (a maximum of 14 months at event level),
+              and server logs are kept by our host for short operational periods. When information is no longer needed, we
               delete it.
             </p>
           </Clause>
@@ -432,7 +445,7 @@ export default function PrivacyPage() {
                 {site.email}
               </a>{" "}
               or call{" "}
-              <a href={telHref} className={linkClasses}>
+              <a href={telHref} className={`${linkClasses} whitespace-nowrap`}>
                 {site.phoneDisplay}
               </a>
               . Tell us what you would like us to do and enough for us to find your enquiry. We
@@ -456,16 +469,15 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                Woodmead North Office Park, 54 Maxwell Drive, Woodmead, Johannesburg, 2191 (postal:
-                P.O. Box 31533, Braamfontein, Johannesburg, 2017)
+                Woodmead North Office Park, 54 Maxwell Drive, Woodmead, Johannesburg, 2191
               </li>
               <li>
                 Telephone:{" "}
-                <a href="tel:+27100235200" className={linkClasses}>
+                <a href="tel:+27100235200" className={`${linkClasses} whitespace-nowrap`}>
                   010 023 5200
                 </a>{" "}
                 · Toll-free:{" "}
-                <a href="tel:+27800017160" className={linkClasses}>
+                <a href="tel:+27800017160" className={`${linkClasses} whitespace-nowrap`}>
                   0800 017 160
                 </a>
               </li>

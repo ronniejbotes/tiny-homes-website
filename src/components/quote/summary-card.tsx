@@ -110,7 +110,7 @@ export function SummaryCard({ lines }: { lines: QuoteLine[] }) {
             That&apos;s quoted separately from your address, at cost, with no markup from us.
           </p>
           {hasPricedTotal && (
-            <p className="mt-2 text-xs leading-relaxed text-stone">
+            <p className="mt-2 text-base leading-relaxed text-stone">
               This is an estimate: optional extras carry provisional pricing, and your final figure
               is confirmed line by line on your formal quotation.
             </p>

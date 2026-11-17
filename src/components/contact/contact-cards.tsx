@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Eye, Phone, Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/lib/site";
-import { VIEWING_HREF } from "@/lib/enquiry";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -110,13 +109,16 @@ export function ContactCards() {
       {/* Was "Book a viewing", a link to the online booker (gone 29 Oct
           2026). Walk-in since 13 Nov 2026 (owner: "allow walk in visits from
           9 am to 4 pm, no email necessary"); this points at the section below
-          with the times and directions. */}
+          with the times and directions. A same-page "#viewing", which
+          ContactCard renders as a plain <a>: as a <Link> to /contact#viewing
+          the tap did nothing once the address already carried the hash
+          (final check, 17 Nov 2026). */}
       <ContactCard
         icon={<Eye className="h-5 w-5" aria-hidden="true" />}
         label="Walk-in viewings"
         value="Weekdays 09:00 – 16:00"
         detail="Just walk in: no appointment and no email needed. Closed weekends and public holidays."
-        href={VIEWING_HREF}
+        href="#viewing"
         delay={0.28}
       />
       <Reveal delay={0.3}>

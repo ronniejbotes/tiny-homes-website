@@ -159,12 +159,16 @@ export default function ContactPage() {
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-stone">
               Want to see the units first? Walk in any weekday between 09:00 and 16:00, no
               appointment needed:{" "}
-              <Link
+              {/* A plain <a>, not <Link>: once the address already carried
+                  #viewing (the footer's "How to find us", any /contact#viewing
+                  link), Link treated the tap as the page already open and did
+                  not scroll (final check, 17 Nov 2026). */}
+              <a
                 href="#viewing"
                 className="font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay"
               >
                 showroom times and directions
-              </Link>
+              </a>
               .
             </p>
           </Reveal>

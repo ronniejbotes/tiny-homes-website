@@ -71,12 +71,12 @@ function ExtraToggle({
             )}
           </span>
           {locked && (
-            <span className="rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-forest">
+            <span className="rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-forest">
               required
             </span>
           )}
           {option.provisional && price > 0 && (
-            <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-stone">
+            <span className="rounded-full border border-border bg-cream px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-stone">
               provisional
             </span>
           )}

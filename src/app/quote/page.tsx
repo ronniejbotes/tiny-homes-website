@@ -1,6 +1,6 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
 import { QuoteForm } from "@/components/quote/quote-form";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import Link from "next/link";
@@ -62,12 +62,16 @@ export default function QuotePage() {
           {/* Hidden on paper: when the issued quote is printed, the document's
               own letterhead is the header; a page title above it reads like a
               screenshot of a website, not a quotation. */}
-          <Reveal className="max-w-3xl print:hidden">
+          {/* CSS entrances on the first screen, not <Reveal> (as /about and
+              /contact, T-67): Reveal waits for JavaScript, so the H1, the intro
+              and "Choose your home" were blank until the page hydrated (final
+              check, 17 Nov 2026). */}
+          <div className="animate-rise-in max-w-3xl print:hidden">
             <p className="text-eyebrow mb-4 text-clay">Instant quote</p>
             <h1 id="quote-heading" className="text-display text-5xl text-ink sm:text-6xl lg:text-7xl">
               Get an instant quote now
             </h1>
-          </Reveal>
+          </div>
 
           {/* The standfirst is handed to the form rather than rendered here, so
               it can step aside once a quote has been issued, because "choose your home,
@@ -82,7 +86,10 @@ export default function QuotePage() {
               /* max-sm:pr-12: the floating WhatsApp badge (56px, 12px off the
                  edge) sat on the end of the business line on the first phone
                  screen (final check, 13 Nov 2026). */
-              <Reveal className="max-w-3xl max-sm:pr-12">
+              <div
+                className="animate-rise-in max-w-3xl max-sm:pr-12"
+                style={{ "--rise-delay": "0.05s" } as CSSProperties}
+              >
                 <p className="mt-6 text-lg leading-relaxed text-stone">
                   Choose your home, size and extras, then add your details, and your quote appears on
                   screen straight away, with VAT included and every extra itemised, and a copy
@@ -112,7 +119,7 @@ export default function QuotePage() {
                   with your company name, what the units will be used for, where they will go
                   and how many you need.
                 </p>
-              </Reveal>
+              </div>
             }
           />
         </Container>

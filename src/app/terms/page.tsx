@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
 const termsDescription =
-  "Tiny Homes SA terms and conditions: pricing, delivery and site access, site preparation responsibilities and what's included with every unit.";
+  "Tiny Homes SA terms and conditions: pricing, delivery and site access, site preparation responsibilities and what a standard delivery includes.";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",

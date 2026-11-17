@@ -248,7 +248,7 @@ function QuantityStepper({
   onChange: (next: number) => void;
 }) {
   const btn =
-    "flex h-8 w-8 items-center justify-center text-stone transition-colors hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-stone";
+    "flex h-11 w-11 items-center justify-center text-stone transition-colors hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-stone";
   return (
     <div
       role="group"
@@ -440,7 +440,7 @@ function UnitsList({
                   {line.layout ? `${line.layout.label} · ` : ""}
                   {extras === 0 ? "No extras" : `${extras} ${extras === 1 ? "extra" : "extras"}`}
                   {isEditing && (
-                    <span className="ml-2 rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-forest">
+                    <span className="ml-2 rounded-full border border-forest/40 bg-cream px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-forest">
                       Editing
                     </span>
                   )}
@@ -450,7 +450,7 @@ function UnitsList({
                 type="button"
                 onClick={() => onRemove(line.id)}
                 aria-label={`Remove ${name} from your units`}
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-stone transition-colors hover:text-clay-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-stone transition-colors hover:text-clay-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
               >
                 <Trash2 className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -474,7 +474,7 @@ function UnitsList({
                   <button
                     type="button"
                     onClick={() => onEdit(line.id)}
-                    className="text-sm font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
+                    className="inline-flex min-h-11 items-center px-2 text-base font-medium text-clay-dark underline underline-offset-4 transition-colors hover:text-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/30"
                   >
                     Edit
                   </button>
@@ -590,7 +590,10 @@ function QuoteFormInner({
   /* -------- editor handlers (operate on the editing item) */
   const scrollToPicker = () => {
     pickerRef.current?.scrollIntoView({ block: "start" });
-    pickerRef.current?.focus();
+    // preventScroll: a plain focus() re-scrolled the 2,400px picker to its
+    // centre on phones, so "Add another unit" and "Edit" landed mid-picker
+    // with the range cards out of view (final check, 17 Nov 2026).
+    pickerRef.current?.focus({ preventScroll: true });
   };
 
   const handleSelectProduct = (nextSlug: string) => {
