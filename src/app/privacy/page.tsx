@@ -180,7 +180,7 @@ export default function PrivacyPage() {
               </li>
               <li>
                 If that email cannot be sent, the quote on your screen offers WhatsApp or email
-                instead. Nothing goes by WhatsApp until <em>you</em> press send inside WhatsApp,
+                instead. Nothing goes by WhatsApp until <em>you</em>{" "}press send inside WhatsApp,
                 and then it travels through WhatsApp&apos;s servers like any other message. The
                 email link opens your own email program with the message filled in, and your email
                 provider sends it.
@@ -313,15 +313,15 @@ export default function PrivacyPage() {
 
           <Clause n={8} title="Cookies, analytics and content loaded from elsewhere">
             <p>
-              We use <strong className="font-semibold text-ink">Google Analytics 4</strong> to
+              We use <strong className="font-semibold text-ink">Google Analytics 4</strong>{" "}to
               understand how the site is used: how many people visit, which homes they look at,
               roughly where they are and which pages need work. It sets cookies in your browser and
               sends Google your IP address (Google says Analytics 4 does not log or store IP
               addresses), your device and browser details, and the pages you view. These statistics
               go to two Analytics properties: ours, and one held by Position Xero, the agency that
               built and looks after this website. We look at them in aggregate; we do not use them
-              to identify individual visitors, and we have not enabled Google&apos;s advertising or
-              remarketing features.
+              to identify individual visitors, and this website loads no advertising or remarketing
+              tags.
             </p>
             <p>
               We also use <strong className="font-semibold text-ink">Microsoft Clarity</strong> to
@@ -356,7 +356,7 @@ export default function PrivacyPage() {
               <Link href="/contact" className={linkClasses}>
                 contact page
               </Link>
-              , embed a <strong className="font-semibold text-ink">Google Map</strong> showing
+              , embed a <strong className="font-semibold text-ink">Google Map</strong>{" "}showing
               where our showroom is. Loading one tells Google your IP address and lets it set its
               own cookies, exactly as visiting Google Maps directly would. The maps load lazily:
               your browser fetches one only when it comes close to the part of the page you are
