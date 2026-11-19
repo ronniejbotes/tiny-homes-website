@@ -48,7 +48,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "Can you live in a housing pod permanently?",
-    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home are the ones that arrive with their own bathroom: an expandable home, which also has a basic kitchen and factory-installed plumbing and electrics; a glamping capsule, with its bathroom and a geyser standard; or a nature cabin, which comes fully built with its own bathroom. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has: floor area, storage and whether your municipality approves a second dwelling on that stand.",
+    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home arrive with their own bathroom, for example an expandable home, which also has a basic kitchen and factory-installed plumbing and electrics; a glamping capsule, with its bathroom and a geyser standard; or a nature cabin, which comes fully built with its own bathroom. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has: floor area, storage and whether your municipality approves a second dwelling on that stand.",
   },
   {
     q: "Do housing pods need building plans in South Africa?",

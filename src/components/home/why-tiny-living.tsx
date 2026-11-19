@@ -18,7 +18,7 @@ const values = [
   {
     icon: Truck,
     title: "A relocatable asset",
-    body: "Steel-framed and crane-ready. If you move, it can move too: fold it back down, or lift it whole onto a truck and set it up somewhere new.",
+    body: "If you move, an X-Fold can move too: it folds back down and travels flat. If you may want to move one of our other homes later, ask us before you order.",
   },
   {
     icon: BadgeCheck,
