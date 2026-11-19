@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, type CSSProperties } from "react";
-import Image from "next/image";
+import { preload } from "react-dom";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -15,8 +16,32 @@ import { BUSINESS_ENQUIRY_HREF } from "@/lib/enquiry";
    the Apple Cabin product gallery. */
 const heroImage = {
   src: "/images/brand/hero-apple-cabin.jpg",
+  portraitSrc: "/images/brand/hero-apple-cabin-portrait.jpg",
   alt: "Apple Cabin with full-height glazing glowing at dusk on a timber deck, beside a plunge pool and sunken firepit lounge above a mountain lake.",
 };
+
+/* Art direction (SEOptimer audit 19 Nov 2026). On a portrait screen
+   object-cover fills the box by height and shows only the centre columns of
+   the photo, yet phones downloaded the whole 2560px original (w=3840, 186,996
+   bytes AVIF, preloaded before first paint). On a 390x844 phone the box is
+   390 x 1,047px and the photo is drawn 1,861px wide, so four fifths of those
+   bytes never reached the screen. Portrait screens now get
+   hero-apple-cabin-portrait.jpg: the centre 1152x1440 (4:5) of the same file,
+   cut on the JPEG's 8px block grid and saved with its own quantisation
+   tables. The pixels on screen are the same; only the download is smaller.
+
+   Why a 4:5 crop under (max-aspect-ratio: 3/4): object-cover shows exactly
+   the same region only while it still scales the crop by height, which needs
+   the crop to be at least as wide, relative to its height, as the box. The
+   box is the viewport's width by 1.24 hero heights, and the hero is at least
+   100svh. When this query matches, the width is at most 3/4 of the height
+   the query measures, so the box is at most 0.75 / (1.24 x svh/height) as
+   wide as it is tall, and 4:5 (0.8) covers that until browser toolbars take
+   24% of the screen. A 3:4 crop would only have covered 19%. Every other
+   screen keeps the original file, URLs and sizes exactly as before. */
+const PORTRAIT_MEDIA = "(max-aspect-ratio: 3/4)";
+// The exact negation of PORTRAIT_MEDIA, so the two preloads never both match.
+const LANDSCAPE_MEDIA = "not all and (max-aspect-ratio: 3/4)";
 /* CSS-only staggered entrance (animate-rise-in in globals.css) so the headline,
    copy and CTAs are visible before JavaScript hydrates. The two headline lines
    carry their own delays for a multi-line reveal. */
@@ -49,6 +74,54 @@ export function Hero({
   const y = useTransform(scrollYProgress, [0, 1], ["-7%", "8%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
 
+  /* sizes, landscape file: on a portrait screen object-cover fills the box
+     by height, so the photo is drawn much wider than the viewport. The box is
+     124% of the hero's height (the -12% bleed top and bottom) and the hero is
+     at least 100svh, so the drawn width is 124vh x 16/9, about 221vh: some
+     1,860px on a 390x844 phone, where "100vw" fetched a 640px file and
+     stretched it about three times (T-83). Portrait screens wider than 3:4
+     (squarish windows, iPads in Safari) still use this file at 221vh;
+     landscape screens keep 100vw, so the desktop download is unchanged. */
+  const { props: landscape } = getImageProps({
+    src: heroImage.src,
+    alt: heroImage.alt,
+    fill: true,
+    sizes: "(orientation: portrait) 221vh, 100vw",
+    loading: "eager",
+    fetchPriority: "high",
+    className: "object-cover",
+  });
+  /* sizes, portrait crop: drawn 1.24 x 0.8 = 0.99 hero heights wide, which
+     measured 99vh on 390x844 and 103vh on 360x800, where the copy makes the
+     hero a little taller than the screen. 110vh leaves room for narrower
+     phones. At 2x and 3x every phone gets the whole 1152px crop anyway,
+     because next/image never enlarges. */
+  const { props: portrait } = getImageProps({
+    src: heroImage.portraitSrc,
+    alt: "",
+    fill: true,
+    sizes: "110vh",
+  });
+  /* Preload. next/image's `preload` knows only one srcset, so phones would
+     have preloaded the landscape file and then fetched the crop as well. Two
+     preloads instead, each carrying its <source>'s media, so every screen
+     preloads exactly the file its <picture> picks. The <img> sits inside
+     <picture>, so React adds no preload of its own for it. */
+  preload(landscape.src, {
+    as: "image",
+    imageSrcSet: landscape.srcSet,
+    imageSizes: landscape.sizes,
+    media: LANDSCAPE_MEDIA,
+    fetchPriority: "high",
+  });
+  preload(portrait.src, {
+    as: "image",
+    imageSrcSet: portrait.srcSet,
+    imageSizes: portrait.sizes,
+    media: PORTRAIT_MEDIA,
+    fetchPriority: "high",
+  });
+
   return (
     <section
       ref={ref}
@@ -63,21 +136,16 @@ export function Hero({
         {/* Separate inner element hosts the on-load ken-burns settle, so its
             CSS scale and the scroll-driven transform above never collide. */}
         <div className="animate-hero-kenburns relative h-full w-full">
-          {/* sizes: on a portrait screen object-cover fills the box by height,
-              so the photo is drawn much wider than the viewport. The box is
-              124% of the hero's height (the -12% bleed top and bottom) and the
-              hero is at least 100svh, so the drawn width is 124vh x 16/9, about
-              221vh: some 1,860px on a 390x844 phone, where "100vw" fetched a
-              640px file and stretched it about three times. Landscape screens
-              keep 100vw, so the desktop download is unchanged. */}
-          <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
-            fill
-            preload
-            sizes="(orientation: portrait) 221vh, 100vw"
-            className="object-cover"
-          />
+          {/* Portrait crop or landscape original; see the art-direction note
+              at the top of this file and the sizes notes above. */}
+          <picture>
+            <source
+              media={PORTRAIT_MEDIA}
+              srcSet={portrait.srcSet}
+              sizes={portrait.sizes}
+            />
+            <img {...landscape} alt={heroImage.alt} />
+          </picture>
         </div>
       </motion.div>
 
