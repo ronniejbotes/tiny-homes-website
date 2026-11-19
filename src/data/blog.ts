@@ -708,7 +708,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `**Off-grid is a real option** across the range: solar, gas geysers and rainwater tanks, sized and quoted for your site. Decide it early rather than retro-fitting: on the fully-fitted units the electrical layout and the water heating are installed at the factory, and specification is much easier to change before the unit is built. Our guide to [taking a tiny home off-grid](/blog/off-grid-tiny-home-south-africa) goes through power, water and sewerage in turn.`,
+        text: `**Off-grid is a real option** across the range: solar, gas geysers and rainwater tanks, sized and quoted for your site. Decide it early rather than retro-fitting: on the units that arrive fitted, the electrical layout is installed at the factory, as is the geyser on the glamping capsules, and specification is much easier to change before the unit is built. Our guide to [taking a tiny home off-grid](/blog/off-grid-tiny-home-south-africa) goes through power, water and sewerage in turn.`,
       },
 
       { type: "h2", text: "4. Can the delivery actually reach the spot?" },
@@ -1543,7 +1543,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "callout",
         title: "Decide before the unit is built, not after",
-        text: `On the fitted ranges the electrical layout and the water heating are installed at the factory. Changing the specification before it is built is a conversation; changing it after delivery is a retrofit into a finished, insulated unit. Off-grid intentions belong on the order, not on the snag list.`,
+        text: `On the ranges that arrive fitted, the electrical layout is installed at the factory, as is the geyser on the glamping capsules. Changing the specification before it is built is a conversation; changing it after delivery is a retrofit into a finished, insulated unit. Off-grid intentions belong on the order, not on the snag list.`,
       },
 
       { type: "h2", text: "What arrives ready, and what does not" },

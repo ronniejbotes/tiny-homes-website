@@ -20,7 +20,7 @@ const steps = [
   {
     number: "03",
     title: "We deliver nationwide",
-    body: "Your home travels anywhere in South Africa; delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Our turnkey service can arrange the groundwork, plinths, connections and installation while your home is being built.",
+    body: "Your home travels anywhere in South Africa; delivery is quoted separately based on your location and site accessibility. Prefer to hand it all over? Ask whether our turnkey service covers your area: where it does, we can arrange the groundwork, plinths, connections and installation while your home is being built.",
   },
   {
     number: "04",

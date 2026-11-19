@@ -321,9 +321,10 @@ export default function PrivacyPage() {
               addresses), your device and browser details, and the pages you view. Both properties
               are also set to pick up an email address, phone number, name or postal address you
               type into a form on this site, such as the quote form, and to send it to Google in
-              hashed (one-way scrambled) form. Google matches it with data it already holds, for
-              more accurate measurement, for demographic and interest reports and for its enhanced
-              conversions and Customer Match features. These statistics
+              hashed (one-way scrambled) form. Google says it matches it with data it already
+              holds, for more accurate measurement and demographic and interest reports, and, for
+              properties linked to Google Ads, for enhanced conversions and Customer Match. These
+              statistics
               go to two Analytics properties: ours, and one held by Position Xero, the agency that
               built and looks after this website. We look at them in aggregate; we do not use them
               to identify individual visitors, and this website loads no advertising or remarketing

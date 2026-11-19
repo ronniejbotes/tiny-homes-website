@@ -23,7 +23,7 @@ const values = [
   {
     icon: BadgeCheck,
     title: "Guarantee, support and finance",
-    body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation, and ${site.finance.toLowerCase()}.`,
+    body: `${site.guarantee}, with our turnkey team on hand to arrange groundwork, connections and installation where the service covers your area, and ${site.finance.toLowerCase()}.`,
   },
   {
     icon: Leaf,

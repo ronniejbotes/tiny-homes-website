@@ -546,7 +546,7 @@ export const products: Product[] = [
     useCases: [
       {
         title: "Airbnb and guest unit",
-        body: "A guest unit that arrives fully built, with a fitted bathroom, polyurethane-insulated walls and double glazing, so only its final connections stand between delivery and the first booking. A kitchen, air conditioning and a water heater are not part of the price.",
+        body: "A guest unit that arrives fully built, with a fitted bathroom, polyurethane-insulated walls and double glazing. A kitchen, air conditioning and a water heater are not part of the price.",
       },
       {
         title: "Guest farm and farm cottage",

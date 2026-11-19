@@ -92,7 +92,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "How much does delivery cost?",
-    a: `${site.deliveryNote} Ask about our turnkey service and we can arrange the groundwork, connections and installation for you too.`,
+    a: `${site.deliveryNote} Ask whether our turnkey service covers your area and your home: where it does, we can arrange the groundwork, connections and installation too.`,
   },
   {
     q: "How long until I can move in?",
@@ -116,7 +116,7 @@ export const homeFaqs: HomeFaq[] = [
   },
   {
     q: "What foundations do I need?",
-    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Larger units, cabins and capsules, arrive fully built and are placed onto a prepared foundation. We confirm the exact requirement for your model and site when you order, or our turnkey team can prepare the groundwork for you.",
+    a: "Most homes sit on a level concrete slab or properly levelled precast plinths. Larger units, cabins and capsules, arrive fully built and are placed onto a prepared foundation. We confirm the exact requirement for your model and site when you order, or, where our turnkey service covers your area, our turnkey team can prepare the groundwork for you.",
   },
   {
     q: "Can the homes run off-grid?",

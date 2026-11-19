@@ -48,7 +48,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "Can you live in a housing pod permanently?",
-    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home are the ones that arrive self-contained: an expandable home, a nature cabin or a glamping capsule, all of which include a bathroom and factory-installed plumbing and electrics. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has: floor area, storage and whether your municipality approves a second dwelling on that stand.",
+    a: "Yes, provided the unit you buy is specified for it and the site is properly serviced. The ranges that make sense as a permanent home are the ones that arrive with their own bathroom: an expandable home, which also has a basic kitchen and factory-installed plumbing and electrics; a glamping capsule, with its bathroom and a geyser standard; or a nature cabin, which comes fully built with its own bathroom. They are insulated, double-glazed on most models, and built on a steel frame. The practical limits are the ones any small home has: floor area, storage and whether your municipality approves a second dwelling on that stand.",
   },
   {
     q: "Do housing pods need building plans in South Africa?",
@@ -56,7 +56,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "What foundation does a housing pod need?",
-    a: "Most units sit on a level concrete slab or on properly levelled precast plinths, and the larger cabins and capsules arrive fully built and are placed onto a prepared foundation. Level is the word that matters: a pod is a rigid finished box, and standing it on a base that is out by more than a little shows up in the doors and windows. We confirm the exact requirement for your model and site when you order, and our turnkey team can prepare the groundwork if you would rather it was our problem.",
+    a: "Most units sit on a level concrete slab or on properly levelled precast plinths, and the larger cabins and capsules arrive fully built and are placed onto a prepared foundation. Level is the word that matters: a pod is a rigid finished box, and standing it on a base that is out by more than a little shows up in the doors and windows. We confirm the exact requirement for your model and site when you order, and where our turnkey service covers your area, our turnkey team can prepare the groundwork if you would rather it was our problem.",
   },
   {
     q: "How long does delivery take, and can a truck reach my site?",
@@ -64,7 +64,7 @@ export const podFaqs: ProductFaq[] = [
   },
   {
     q: "Can a housing pod run off-grid?",
-    a: "Yes. The range is designed to pair with solar power, gas geysers and rainwater tanks, sized and quoted for your model and your site. It is worth deciding this early rather than retro-fitting: on the fully-fitted units the electrical layout and the geyser are installed at the factory, and the specification is easier to change before it is built than after it arrives.",
+    a: "Yes. The range is designed to pair with solar power, gas geysers and rainwater tanks, sized and quoted for your model and your site. It is worth deciding this early rather than retro-fitting: on the units that arrive fitted, the electrical layout is installed at the factory, as is the geyser on the glamping capsules, and the specification is easier to change before it is built than after it arrives.",
   },
   {
     q: "Can I finance a housing pod?",

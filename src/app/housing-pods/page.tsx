@@ -260,8 +260,9 @@ export default function HousingPodsPage() {
                   ))}
                 </ul>
                 <p className="mt-7 text-sm leading-relaxed text-stone">
-                  Ask about our turnkey service and we can arrange the groundwork,
-                  connections and installation for you, or you can use your own contractors.
+                  Ask whether our turnkey service covers your area: where it does, we can arrange
+                  the groundwork, connections and installation for you. You can also use your own
+                  contractors.
                 </p>
               </div>
             </Reveal>
