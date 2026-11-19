@@ -192,13 +192,14 @@ export function Footer() {
             </p>
             <p className="text-cream/80">
               Walk-in viewings {HOURS_LABEL}, no appointment needed.{" "}
-              <Link
-                prefetch={false}
+              {/* A plain <a>, not <Link>: on /contact#viewing a Link is treated as the
+                  page already open and the tap does nothing (final check, 19 Nov 2026). */}
+              <a
                 href={VIEWING_HREF}
                 className="font-medium text-cream underline decoration-cream/40 underline-offset-4 transition-colors hover:decoration-cream"
               >
                 How to find us
-              </Link>
+              </a>
             </p>
             <a
               href={showroomDirectionsUrl}

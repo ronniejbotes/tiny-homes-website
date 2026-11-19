@@ -390,8 +390,7 @@ export default function AboutPage() {
                     electrical, water and sewerage connections) while your home is being built,
                     then set it up and connect its services, so it is ready the day it arrives. Where your municipality requires an occupancy certificate, you move
                     in once it is issued, or sooner only with the municipality&rsquo;s written
-                    permission. You can also use your own contractors, with our site manager
-                    guiding the process.
+                    permission. You can also use your own contractors.
                   </p>
                 </div>
               </StaggerItem>

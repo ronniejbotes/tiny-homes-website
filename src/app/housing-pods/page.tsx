@@ -261,8 +261,7 @@ export default function HousingPodsPage() {
                 </ul>
                 <p className="mt-7 text-sm leading-relaxed text-stone">
                   Ask about our turnkey service and we can arrange the groundwork,
-                  connections and installation for you, or you can use your own contractors
-                  with a Tiny Homes site manager guiding the process.
+                  connections and installation for you, or you can use your own contractors.
                 </p>
               </div>
             </Reveal>

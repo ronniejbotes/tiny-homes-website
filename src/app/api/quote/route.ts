@@ -195,11 +195,14 @@ export async function POST(request: Request) {
     }),
   ]);
 
+  // Log the failure code only: nodemailer's error can carry the rejected
+  // recipient's address, and /privacy says the site keeps no details.
+  const failCode = (reason: unknown) => (reason as { code?: string } | null)?.code ?? "unknown";
   if (copy.status === "rejected") {
-    console.error("[quote] customer copy failed to send:", copy.reason);
+    console.error("[quote] customer copy failed to send:", failCode(copy.reason));
   }
   if (notification.status === "rejected") {
-    console.error("[quote] shipping notification failed to send:", notification.reason);
+    console.error("[quote] shipping notification failed to send:", failCode(notification.reason));
   }
 
   return NextResponse.json({

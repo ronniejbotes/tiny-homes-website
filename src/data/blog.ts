@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     title: "How much does a housing pod cost in South Africa?",
     description: `A straight price guide to housing pods in South Africa, from ${R(podPriceFrom)} to ${R(podPriceTo)} ex VAT: what each tier includes, and what it quietly leaves out.`,
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "how much does a housing pod cost",
       "housing pod price South Africa",
@@ -331,7 +331,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT, not a pod shape at all, but the most completely finished unit we sell: 21 m² plus a viewing terrace, 26 m² in total, with the bathroom, the kitchen with its stone countertop and induction cooker, air conditioning and a storage water heater all fitted as standard rather than sold as extras.`,
+        text: `[Nature cabins](/nature-cabins) sit slightly apart at ${R(nature)} ex VAT, not a pod shape at all: 21 m² plus a viewing terrace, 26 m² in total, delivered fully built with a fully fitted bathroom. A kitchen, air conditioning and a water heater are not included in the price.`,
       },
 
       { type: "h2", text: "The prices, side by side" },
@@ -344,7 +344,7 @@ export const blogPosts: BlogPost[] = [
           ["Expandable home", "37 – 74 m²", R(expandable), "Yes, every size", "Yes, basic, every size"],
           ["Apple Cabin", "13 – 26.5 m²", R(apple), "Yes, all three sizes", "Kitchenette on the two larger sizes (9 m and 11.8 m)"],
           ["Glamping capsule", "18.6 – 38 m²", R(capsule), "Yes, every model", "Optional extra"],
-          ["Nature cabin", "21 m² + terrace", R(nature), "Yes, fully fitted", "Yes, fitted as standard"],
+          ["Nature cabin", "21 m² + terrace", R(nature), "Yes, fully fitted", "Not included"],
         ],
       },
       {
@@ -435,7 +435,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Need a wendy house alternative in South Africa? How a housing pod and a container home compare on insulation, size, lifespan, resale and cost.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "housing pod vs container home",
       "container home vs wendy house",
@@ -572,7 +572,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "I want a wendy house with a bathroom and kitchen. What should I look at?",
-        a: `A self-contained unit rather than a standard wendy house, which in its common form is panels and a roof. Our expandable homes arrive with a bathroom and a basic kitchen from ${R(expandable)} ex VAT, and the nature cabins arrive fully fitted, with bathroom, kitchen and air conditioning. The X-Fold, the unit closest to a wendy house in price, carries electrics only, so a local installer fits the shower and toilet. Either way, budget for connecting water and sewerage to the property, and check with your municipality whether you need plans before anyone moves in.`,
+        a: `A self-contained unit rather than a standard wendy house, which in its common form is panels and a roof. Our expandable homes arrive with a bathroom and a basic kitchen from ${R(expandable)} ex VAT. The X-Fold, the unit closest to a wendy house in price, carries electrics only, so a local installer fits the shower and toilet. Either way, budget for connecting water and sewerage to the property, and check with your municipality whether you need plans before anyone moves in.`,
       },
       {
         q: "Can you insulate a shipping container properly?",
@@ -605,7 +605,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Before you put a housing pod on your land: what to ask the municipality, the base it needs, how services reach it, and what can stop a delivery.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "do you need plans for a housing pod",
       "building plans prefab home South Africa",
@@ -684,7 +684,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `You can prepare the base yourself, use your own contractors with a Tiny Homes site manager guiding the process, or ask us to quote the turnkey installation: groundwork, plinths, connections, erection and handover.`,
+        text: `You can prepare the base yourself, use your own contractors, or ask us to quote the turnkey installation: groundwork, plinths, connections, erection and handover.`,
       },
 
       { type: "h2", text: "3. How do water, sewerage and power reach it?" },
@@ -697,7 +697,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `[X-Fold](/folding-homes): **electrics only** (two plug points, a light fitting and a small DB board). No plumbing. A bathroom or wet room is fitted by a local installer.`,
           `[Expandable homes](/expandable-homes): **bathroom and factory-installed plumbing and electrical** in every size.`,
-          `[Nature cabins](/nature-cabins): fully fitted (bathroom, kitchen, air conditioning and a storage water heater as standard).`,
+          `[Nature cabins](/nature-cabins): a **fully fitted bathroom** as standard. A kitchen, air conditioning and a water heater are not included in the price.`,
           `[Apple Cabins](/apple-cabins): **integrated lighting and plumbing**, with bathroom fittings included in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): **complete plumbing and electrical** with the bathroom, its fittings and a geyser standard on every model.`,
         ],
@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre prices against a conventional build in South Africa: when prefab is cheaper than building, and when it costs more.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -823,11 +823,11 @@ export const blogPosts: BlogPost[] = [
     body: [
       {
         type: "p",
-        text: `Almost every prefab supplier in South Africa will tell you their product is cheaper than building. We sell [prefab homes](/), and we think that answer is too simple to be useful: it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
+        text: `We sell [prefab homes](/), and "prefab is cheaper" is too simple an answer to be useful: it depends entirely on what you put on the other side of the comparison, and there are cases where conventional building genuinely wins.`,
       },
       {
         type: "p",
-        text: `The short answer: per square metre ex VAT, our expandable homes land below a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. Here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
+        text: `The short answer: per square metre ex VAT, our expandable homes land at or below a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. Here are our own numbers, per square metre, against what a conventional build costs. Every price in our table comes off the same price list the product pages use.`,
       },
 
       { type: "h2", text: "What a conventional build costs per square metre" },
@@ -850,7 +850,7 @@ export const blogPosts: BlogPost[] = [
           ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "Up to 4 bedrooms, fitted throughout"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
-          ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fully fitted incl. kitchen, aircon, water heater"],
+          ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fitted bathroom, polyurethane insulation, double glazing; kitchen, aircon and water heater not included"],
           ["Glamping Capsule", "18.6 m²", R(capsule), perM2("glamping-capsules", "capsule-5-85"), "270° glazing, premium bathroom, geyser"],
         ],
       },
@@ -870,10 +870,10 @@ export const blogPosts: BlogPost[] = [
         caption: "The X-Fold shell: two plug points, a light and no plumbing.",
       },
 
-      { type: "h3", text: "The mid-range lands below the conventional band" },
+      { type: "h3", text: "The mid-range lands at or below the conventional band" },
       {
         type: "p",
-        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up, below the R10 000–R15 000 band a conventional mid-range build is quoted at. Both sizes come in under it, and they arrive with the bathroom, kitchen and services already installed.`,
+        text: `The [expandable homes](/expandable-homes) run from ${perM2("expandable-homes", "b20")} down to ${perM2("expandable-homes", "b40")} per square metre ex VAT as the size goes up. Ex VAT, both sizes come in under the R10 000–R15 000 band a conventional mid-range build is quoted at. ooba does not say whether its figures include VAT; if they do, the 37 m² sits at the bottom of the band once VAT is added to ours, and the 74 m² still comes in under it. Either way, they arrive with the bathroom, kitchen and services already installed.`,
       },
       {
         type: "img",
@@ -882,13 +882,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `What tips the balance is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead, but not by the multiple the marketing in this industry implies.`,
+        text: `What tips the balance is [what is inside the number](/blog/what-is-included-in-a-prefab-house-price). That rate already includes 75 mm EPS insulated walls, vinyl flooring, double glazing, a fitted bathroom and factory-installed plumbing and electrics. A conventional R/m² construction rate is frequently quoted before some of those. Compare like with like and the expandable is usually ahead, by a margin rather than a multiple.`,
       },
 
       { type: "h3", text: "The premium units cost more per square metre, and should" },
       {
         type: "p",
-        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above any conventional residential rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate. Building that conventionally would not be cheaper. It would be considerably more, and it would take a year.`,
+        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above any conventional residential rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate.`,
       },
       {
         type: "callout",
@@ -903,7 +903,7 @@ export const blogPosts: BlogPost[] = [
           `**Time.** Around 90 days from deposit to move-in. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. A conventional build of the same size is a multi-month programme on your property.`,
           `**Price certainty.** You are quoted a figure for a finished unit. Conventional building is quoted on a rate and a scope, and the final number is the one nobody can tell you at the start.`,
           `**Disruption.** The building work happens somewhere else. There is no site, no rubble, no trades in your garden for months.`,
-          `**Relocatability.** An X-Fold folds down; a pod lifts out. A brick room stays with the property whatever happens next.`,
+          `**Relocatability.** Our X-Fold folds back down and travels flat; if you may want to move one of our other units later, ask us before you order. A brick room stays with the property whatever happens next.`,
         ],
       },
 
@@ -913,7 +913,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**You want a specific layout.** Prefab is catalogue-shaped. If the space has to fit an awkward site or an exact brief, conventional building does that and a factory unit does not.`,
           `**You are already building.** If contractors are on site for a larger project, adding a room to that scope is often cheaper than a separate delivered unit with its own transport and groundwork.`,
-          `**You need bond finance.** More banks will lend against conventional construction than against a prefab structure. This is the single most underrated cost difference, and we have written it up separately in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
+          `**You need bond finance.** More banks will lend against conventional construction than against a prefab structure. We have written it up separately in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
           `**Access is impossible.** If a truck and crane cannot reach the spot, the delivered-unit model does not work at any price.`,
         ],
       },
@@ -937,7 +937,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Is prefab always cheaper than brick in South Africa?",
-        a: `No. Per square metre ex VAT, our expandable homes land below the R10 000 to R15 000 per square metre of a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
+        a: `No. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre of a mid-range conventional build, our premium cabins and capsules sit well above it, and only the bare X-Fold shell is dramatically below. What prefab reliably beats is the timeline and the price certainty, not always the total.`,
       },
       {
         q: "What is the cheapest way to build a house in South Africa?",
@@ -957,8 +957,8 @@ export const blogPosts: BlogPost[] = [
         title: "What it costs to build a house in South Africa",
         publisher: "ooba Home Loans",
         url: "https://www.ooba.co.za/resources/cost-to-build-a-house/",
-        note: "Source for the 2025 per-square-metre estimates by province. The R10 000 to R15 000 band used throughout this article is our rounding of where most provinces sit, not a figure ooba prints.",
-        checked: "2026-10-22",
+        note: "Source for the 2025 per-square-metre estimates by province. The R10 000 to R15 000 band used throughout this article is our rounding of where most provinces sit, not a figure ooba prints. ooba does not say whether these figures include VAT; our prices are ex VAT.",
+        checked: "2026-11-19",
       },
       {
         title: "Building statistics (Statistical release P5041.1)",
@@ -984,7 +984,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "A cost guide put a mid-range one-bedroom granny flat at R150 000 to R300 000 to build (checked Oct 2026); our 2-bedroom 37 m² prefab is R329 900 ex VAT.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "granny flat cost South Africa",
       "how much does a granny flat cost",
@@ -1116,7 +1116,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Is a prefab granny flat cheaper than building one?",
-        a: "Usually on time and on certainty, and often on total cost, but not by the multiple this industry likes to imply. Per square metre ex VAT, our expandable homes land below the R10 000 to R15 000 per square metre that our [cost comparison](/blog/is-a-prefab-home-cheaper-than-building) uses for a mid-range conventional build; the difference is that our rate already includes insulation, glazing, a fitted bathroom and installed services.",
+        a: "Usually on time and on certainty, and often on total cost, by a margin rather than a multiple. Per square metre ex VAT, our expandable homes land at or below the R10 000 to R15 000 per square metre that our [cost comparison](/blog/is-a-prefab-home-cheaper-than-building) uses for a mid-range conventional build; the difference is that our rate already includes insulation, glazing, a fitted bathroom and installed services. Our prices exclude VAT, and the published figures behind that band do not say whether they include it.",
       },
       {
         q: "Can I get a bond for a granny flat?",
@@ -1313,7 +1313,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Unit costs, what is standard versus an extra, and the occupancy arithmetic that decides whether a glamping business in South Africa actually pays.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-14",
+    dateModified: "2026-11-19",
     keywords: [
       "start a glamping business South Africa",
       "glamping business setup cost",
@@ -1342,7 +1342,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["Apple Cabin", R(apple), "13 – 26.5 m²", "Luxury bathroom fittings in all sizes; kitchenette on the 9 m and 11.8 m models", "Entry to the premium end; strong photography"],
           ["Glamping Capsule", R(capsule), "18.6 – 38 m²", "Bathroom + premium fittings, geyser, insulation, smart entry", "Flagship units where the room is the reason for the booking"],
-          ["Nature Cabin", R(nature), "21 m² + terrace", "Bathroom, kitchen, air conditioning, water heater: all fitted", "Longer stays; nothing left to add"],
+          ["Nature Cabin", R(nature), "21 m² + terrace", "Fully fitted bathroom; kitchen, air conditioning and water heater not included", "Extra rooms for a lodge or guest farm, delivered fully built"],
         ],
       },
       {
@@ -1361,7 +1361,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are the most completely fitted thing we sell (kitchen, air conditioning and water heater standard), which suits longer stays.`,
+        text: `[Apple Cabins](/apple-cabins) from ${R(apple)} ex VAT are the lower-capital entry, with panoramic glazing and luxury bathroom fittings in all three sizes. [Nature cabins](/nature-cabins) at ${R(nature)} are timber-look cabins with a viewing terrace and a fully fitted bathroom, delivered fully built. A kitchen, air conditioning and a water heater are not included in the price.`,
       },
 
       { type: "h2", text: "The costs that are not the unit" },
@@ -1433,7 +1433,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Which unit is best for a glamping site?",
-        a: "Glamping capsules where the unit itself is the reason for the booking and you want the highest nightly rate; Apple Cabins where you want the premium look at lower capital per key; nature cabins for longer stays, since kitchen, air conditioning and water heater are fitted as standard.",
+        a: "Glamping capsules where the unit itself is the reason for the booking and you want the highest nightly rate; Apple Cabins where you want the premium look at lower capital per key; nature cabins where you want a timber-look cabin with its own viewing terrace, delivered fully built (a kitchen, air conditioning and a water heater are not included in its price).",
       },
       {
         q: "What occupancy should I plan for?",
@@ -1476,7 +1476,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What running a prefab home off-grid involves (solar sizing, water supply, waste treatment) and the decisions to make before the unit is built.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "off grid tiny home South Africa",
       "off grid cabin South Africa",
@@ -1554,7 +1554,7 @@ export const blogPosts: BlogPost[] = [
           `[Expandable homes](/expandable-homes): bathroom with factory-installed plumbing and electrical in every size.`,
           `[Apple Cabins](/apple-cabins): integrated lighting and plumbing, bathroom fittings in all three sizes.`,
           `[Glamping capsules](/glamping-capsules): complete plumbing and electrics, bathroom and geyser standard on every model.`,
-          `[Nature cabins](/nature-cabins): the most complete (bathroom, kitchen, air conditioning and a storage water heater fitted as standard).`,
+          `[Nature cabins](/nature-cabins): a fully fitted bathroom as standard. A kitchen, air conditioning and a water heater are not included in the price.`,
         ],
       },
       {
@@ -1595,7 +1595,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         q: "Which unit is easiest to set up off-grid?",
-        a: "The X-Fold is the blankest canvas because it arrives with electrics only and no plumbing, so nothing has to be undone. The nature cabin is the opposite: the most fitted unit, which means the off-grid specification needs to be agreed before it is built rather than retrofitted after.",
+        a: "The X-Fold is the blankest canvas because it arrives with electrics only and no plumbing, so nothing has to be undone. The nature cabin is the opposite: it arrives fully built with its bathroom fitted, which means the off-grid specification needs to be agreed before it is built rather than retrofitted after.",
       },
     ],
     references: [
@@ -1935,7 +1935,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What prefab and building a house each cost you in South Africa: money, time, paperwork, finance and resale, and which situations each one suits.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-17",
+    dateModified: "2026-11-19",
     keywords: [
       "prefab vs building a house",
       "prefab home pros and cons",
@@ -1968,7 +1968,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**It fits the site and the brief exactly.** Awkward plot, specific view, a layout your family actually needs: you can draw it. Prefab comes in catalogue sizes.`,
-          `**Finance is easier.** Far more lenders will bond conventional construction than a prefabricated structure. This is the single most underrated practical difference, and we go through the bank-by-bank position in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
+          `**Finance is easier.** Far more lenders will bond conventional construction than a prefabricated structure. We go through the bank-by-bank position in [can you get a home loan for a prefab home](/blog/prefab-home-finance-south-africa).`,
           `**It matches what is already there.** If the new building has to read as part of an existing house, masonry does that and a delivered unit does not.`,
           `**Valuation and resale are well understood.** Valuers, insurers and buyers have decades of comparable data on brick. Prefab has thinner data, which shows up as caution.`,
           `**Marginal cost falls if you are already building.** Contractors on site for a bigger job can add a room more cheaply than a separate delivered unit with its own transport and groundwork.`,
@@ -2000,7 +2000,7 @@ export const blogPosts: BlogPost[] = [
           `**Almost no disruption.** The building work happens somewhere else. Your property sees a delivery, not a site.`,
           `**Factory conditions.** Panels built indoors, to a repeated specification, out of the weather, which is a genuinely different quality-control problem from wet trades on site in February.`,
           `**Fewer people to coordinate.** A base, a delivery and two connections, rather than five trades in sequence.`,
-          `**It can move.** An X-Fold folds down; a pod lifts out. If you sell, or the use changes, the asset is not stuck.`,
+          `**It can move.** Our X-Fold folds back down and travels flat, so if you sell or the use changes, it is not stuck. If you may want to move one of our other units later, ask us before you order.`,
           `**A lighter regulatory route may exist.** A structure genuinely declared temporary follows a different and much shorter path than a permanent building, with real limits, covered in the guide linked above.`,
         ],
       },
@@ -2014,7 +2014,7 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           `**Finance is harder.** Some major South African banks do not currently bond prefabricated structures at all. If you need a bond rather than cash or third-party finance, check this before anything else.`,
-          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
+          `**It is not automatically cheaper.** Per square metre ex VAT, our [expandable homes](/expandable-homes) land at or below the R10 000 to R15 000 per square metre we use for a mid-range conventional build, but our premium cabins and capsules sit well above it. Our prices exclude VAT, and the published figures behind that band do not say whether they include it. We ran our own numbers against conventional rates in [is a prefab home cheaper than building](/blog/is-a-prefab-home-cheaper-than-building), and the answer is "sometimes".`,
           `**Catalogue sizes.** You choose from what exists. If the space has to be a specific shape, this is the wrong product.`,
           `**Delivery access can kill it.** Every range except the X-Fold arrives whole and must be lifted or rolled into place, and the X-Fold still needs a crane or forklift to come off the truck. Gate width, cables, slope and soft ground decide feasibility, and no amount of budget fixes a site a truck cannot reach.`,
           `**Resale data is thinner.** Valuers and insurers have less to go on. A relocatable unit on plinths is treated differently from a fixed, approved dwelling, by everyone.`,

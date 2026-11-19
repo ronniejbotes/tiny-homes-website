@@ -224,7 +224,9 @@ const FOLDING_PLAN: ProductPlan = {
  * The entrance is the glazed gable end, not a long wall: every product render
  * shows the double doors and the terrace on the short side, with a single
  * window down the long elevation. The interior is laid out around that,
- * bathroom and kitchen at the back, bed in the middle, lounge by the doors.
+ * bathroom at the back, bed in the middle, lounge by the doors. No kitchen or
+ * air conditioning is drawn: the owner said on 21 Sep 2026 that the cabin does
+ * not include them (final check, 19 Nov 2026).
  */
 const NATURE_PLAN: ProductPlan = {
   exterior: { w: 6.6, d: 3.2 },
@@ -239,13 +241,9 @@ const NATURE_PLAN: ProductPlan = {
   ],
   zones: [
     wetRoomZone(r(0.05, 0.05, 1.75, 1.85), true), // fully equipped bathroom included as standard
-    kitchenZone(r(0.05, 2.25, 2.35, 2.95), true), // stone counter, basin and induction cooker, included
-    cupboardZone(r(0.05, 2.25, 2.35, 2.55)),
-    airconZone(r(2.05, 0.05, 2.35, 0.3)),
   ],
   fixtures: [
     ...wetFixtures([0.5, 0.5], [0.5, 1.45], [1.35, 0.95]),
-    ...kitchenFixtures([0.75, 2.6], [1.85, 2.6]),
   ],
   furniture: [
     { id: "bed", label: "Double bed", rect: r(2.6, 0.05, 4.0, 1.95) },

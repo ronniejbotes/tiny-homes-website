@@ -29,7 +29,8 @@ import { dearestHouse, houseHighPrice, houseLowPrice, priceRangeOf, pricedHouses
  *     20 m² and 26.5 m² sizes (variants apple-9 and apple-11-8).
  *   - Glamping Capsules: Layout "One or two rooms with a bathroom"; Kitchen
  *     "Optional on every model".
- *   - Nature Cabins: Kitchen, Bathroom and Air conditioning "included".
+ *   - Nature Cabins: Bathroom "Fully fitted bathroom, included"; "Not
+ *     included": kitchen, air conditioning and a water heater (owner, 21 Sep 2026).
  * A new priced range without an entry stops the build rather than printing a
  * blank cell.
  */
@@ -38,7 +39,7 @@ const whatIsInIt: Record<string, string> = {
   "expandable-homes": "Open plan to four bedrooms, with a bathroom and a basic kitchen in every size",
   "apple-cabins": "A bathroom in every size, and a kitchenette in the 20 m² and 26.5 m² sizes",
   "glamping-capsules": "One or two rooms and a bathroom, with a kitchen as an option",
-  "nature-cabins": "Bathroom, kitchen and air conditioning included",
+  "nature-cabins": "A fitted bathroom; a kitchen, air conditioning and a water heater are not included",
 };
 for (const p of pricedHouses) {
   if (!whatIsInIt[p.slug]) throw new Error(`price-list.tsx: no "what is in it" line for "${p.slug}"`);

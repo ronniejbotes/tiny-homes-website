@@ -89,11 +89,10 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   rather than converted from shipping containers.
 - [Nature Cabins](https://tinyhomesa.com/nature-cabins): 21 m² timber-look steel cabin plus a
   1.5 × 3.2 m viewing terrace, 26 m² in total (8.1 × 3.2 × 3.4 m overall). Arrives as a fully
-  built unit; only the final connections to services are needed on site. Fully specced as
-  standard: polyurethane-insulated walls, double-glazed glass windows and doors in
-  aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted
-  bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air
-  conditioning and a 40–60 L storage electric water heater. R810 900 ex VAT.
+  built unit; only the final connections to services are needed on site. Standard:
+  polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames,
+  an 18 mm cement-fibre floor with waterproof SPC laminate and a fully fitted bathroom. A
+  kitchen, air conditioning and a water heater are NOT included in the price. R810 900 ex VAT.
 - [Apple Cabins](https://tinyhomesa.com/apple-cabins): Floor-to-ceiling panoramic glass
   cabins, luxurious bathroom fittings included, arrives fully assembled and ready within hours.
   From R449 900 ex VAT (Apple Cabin 5.8m, 13 m²); R549 900 (Apple Cabin 9m, 20 m², kitchenette
@@ -189,12 +188,12 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   Africa?](https://tinyhomesa.com/blog/is-a-prefab-home-cheaper-than-building): Cost
   comparison with rand-per-square-metre figures. Not automatically cheaper: the X-Fold is far
   below any conventional rate because it is a shell; per square metre ex VAT, the expandable
-  homes land below the R10 000–R15 000/m² band quoted for a mid-range conventional
+  homes land at or below the R10 000–R15 000/m² band quoted for a mid-range conventional
   build (and their rate already includes insulation, glazing, a fitted bathroom and installed
-  services); Apple Cabins and glamping
+  services; ooba, the source of that band, does not say whether its figures include VAT); Apple Cabins and glamping
   capsules sit well above it, which is a finish premium rather than a prefab premium. Rand per
   square metre rises as buildings get smaller, whichever way you build. Prefab reliably wins on
-  time, price certainty, disruption and relocatability rather than always on total cost.
+  time, price certainty and disruption (and, for the X-Fold, relocatability) rather than always on total cost.
   Conventional building wins for bespoke layouts, when contractors are already on site, when
   bond finance is needed, and when access is impossible.
 - [How much does a granny flat cost in South
@@ -220,7 +219,7 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   updated June 2026), but national accommodation occupancy was reported at 43.9% in July 2026
   and 40.6% in June, so model below that for a new site. Units: Apple
   Cabins from R449 900, glamping capsules from R689 900 (kitchen and air conditioning are
-  EXTRAS, not standard), nature cabins R810 900 (most fitted). Budget also for transport, a level base per unit, water, sewerage and power to each
+  EXTRAS, not standard), nature cabins R810 900 (fitted bathroom; kitchen, air conditioning and water heater NOT included). Budget also for transport, a level base per unit, water, sewerage and power to each
   site, decking and full guest fit-out. Tourist accommodation raises a land-use question as
   well as a building one.
 - [Taking a tiny home off-grid in South
@@ -231,7 +230,8 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   Sewerage options (conservancy tank, septic, package plant) depend on soil, water table and
   local authority rules. Decide before the unit is built: on fitted ranges the electrical
   layout and water heating are installed at the factory. The X-Fold is the blankest canvas
-  (electrics only, no plumbing); the nature cabin the most fitted.
+  (electrics only, no plumbing); the nature cabin arrives fully built with its bathroom fitted (a
+  kitchen, air conditioning and a water heater are not included).
 - [Staff accommodation and site
   offices](https://tinyhomesa.com/blog/staff-accommodation-units-south-africa): For farm, mine
   and construction housing. X-Fold R54 900 ex VAT for an insulated wired 15 m² room — ships
@@ -266,7 +266,7 @@ admin@tinyhomesa.com, WhatsApp https://wa.me/27836603743.
   layouts, matching existing brickwork, when contractors are already on site, when bond finance
   is needed, and where delivery vehicles cannot reach. Prefab wins on fixed known price, speed
   (~90 days), minimal disruption, factory conditions, fewer trades to coordinate, and
-  relocatability. Prefab's real disadvantages: restricted bond finance, catalogue sizes only,
+  (for the X-Fold) relocatability. Prefab's real disadvantages: restricted bond finance, catalogue sizes only,
   delivery access can make a site unworkable at any budget, thinner resale and valuation data,
   approval is NOT automatically avoided for a permanently founded dwelling, and the advertised
   price excludes transport, groundwork and connections.

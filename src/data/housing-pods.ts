@@ -81,7 +81,7 @@ export const podEntries: PodEntry[] = [
   },
   {
     slug: "nature-cabins",
-    podType: "Fully-fitted cabin",
+    podType: "Fully built cabin",
     /** Owner withdrew the "under three days" setup figure on 2026-08-04: the
      *  cabins are imported fully built and there is no on-site assembly
      *  programme. See the guard at src/data/products.ts:412. This pitch must
@@ -92,8 +92,8 @@ export const podEntries: PodEntry[] = [
      *  enclosed. Do not write "26 m² cabin" — 26 includes the terrace, and the
      *  size chip on this same page reads "21 m² + terrace" from products.ts. */
     podPitch:
-      "The alternative for a buyer who wants nothing left to do on arrival. A 21 m² timber-look steel cabin with a viewing terrace, 26 m² in total, that arrives fully built, with the bathroom, kitchen, air conditioning and a storage water heater all fitted as standard rather than sold as extras.",
-    bestFor: "Moving in with nothing left to add",
+      "A 21 m² timber-look steel cabin with a viewing terrace, 26 m² in total, that arrives fully built with a fully fitted bathroom, so only its final connections remain on site. A kitchen, air conditioning and a water heater are not included in the price.",
+    bestFor: "Extra rooms for a lodge or guest farm",
     notAPod:
       "A cabin, plainly: pitched roof, terrace, no curves. It sits on this page because it competes for the same money as a large pod and answers the same question differently.",
   },

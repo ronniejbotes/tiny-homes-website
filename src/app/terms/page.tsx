@@ -98,9 +98,10 @@ export default function TermsPage() {
             </ul>
             <p>
               Tiny Homes SA does not carry out groundwork, plumbing or electrical supply work as
-              part of a standard delivery. If you&apos;d rather not manage this yourself, our
-              turnkey team can quote separately for site preparation, but unless a turnkey
-              installation has been agreed in writing, site readiness is entirely up to you.
+              part of a standard delivery. If you&apos;d rather not manage this yourself, ask
+              whether our turnkey service covers your area: where it does, our turnkey team can
+              quote separately for site preparation. Unless a turnkey installation has been agreed
+              in writing, site readiness is entirely up to you.
             </p>
           </Term>
 

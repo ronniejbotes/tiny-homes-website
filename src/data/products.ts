@@ -451,7 +451,7 @@ export const products: Product[] = [
       },
       {
         q: "How much does delivery cost?",
-        a: "Delivery is quoted separately based on distance and site accessibility. We deliver nationwide and can arrange the full turnkey installation.",
+        a: "Delivery is quoted separately based on distance and site accessibility, and we deliver nationwide. Ask whether our turnkey service covers your area and your home: where it does, we can arrange the groundwork, connections and installation too.",
       },
       {
         // Answered from /blog/what-is-included-in-a-prefab-house-price, in its words.
@@ -502,18 +502,22 @@ export const products: Product[] = [
     // site": the Apple Cabin tagline says nearly that, beside it on the home
     // range cards.
     metaSummary:
-      "A prefab cabin house that adds a room to a lodge or guest farm, delivered fully built with bathroom and kitchen.",
+      "A prefab cabin house that adds a room to a lodge or guest farm, delivered fully built with a fitted bathroom.",
     tagline: "Extra rooms for a lodge or guest farm, delivered fully built.",
     summary:
-      "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with kitchen, Midea air conditioning and a storage geyser included, from R810 900 ex VAT.",
+      "A small 21 m² cabin house with a 1.5 × 3.2 m viewing terrace, 26 m² in total, that drops lightly into beach, bush or mountain sites, pairing the warm look of timber with the strength of steel, with a fully fitted bathroom included, from R810 900 ex VAT.",
     description:
-      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. Nothing is left on the options list: it arrives fully specced as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning and a 40–60 L storage electric water heater. Made for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
+      "Nature cabins are built for places worth waking up in: effortless luxury, naturally simple. The cabin gives 21 m² of enclosed floor, and with its 1.5 × 3.2 m viewing terrace it measures 8.1 × 3.2 × 3.4 m overall: 26 m² of total floor space including the terrace. It pairs the warm look of timber with a tough steel structure and a terrace that drops lightly into beach, bush or mountain sites. It comes as standard with polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor finished in waterproof SPC laminate and a fully fitted bathroom. A kitchen, air conditioning and a water heater are not included in the price. Made for eco-tourism ventures, Airbnb listings, nature retreats and private guest houses, it arrives as a fully built unit that needs only its final connections to services on site. Delivery is by oversized cargo truck, so the site has to be reachable without 4x4 access, and the groundwork and final connections are arranged by the client beforehand. R810 900 ex VAT.",
     startingPrice: 810900,
     sizeLabel: "21 m² + terrace",
     /** Owner-confirmed 2026-08-04: units are now imported fully built, so there
      *  is no on-site assembly programme. The old "under 3 days" figure is
      *  superseded and must not reappear in copy, FAQs or brochures. */
     setupTime: "Delivered fully built",
+    /** Owner, 21 Sep 2026, on the kitchen, air conditioning and geyser: "we do
+     *  not include those items" (tiny-homes-social config/claims.json,
+     *  not_included). Never list them as standard here, in blog.ts, housing-
+     *  pods.ts, the home price list or llms.txt (final check, 19 Nov 2026). */
     galleryNote: "Pictures are styled: the wood stove, freestanding bath and timber-lined walls are not part of the standard cabin. The specification below lists what is.",
     dims: { length: 8.1, width: 3.2, height: 3.4 },
     specs: [
@@ -524,10 +528,8 @@ export const products: Product[] = [
       { label: "Interior finish", value: "White wall boards as standard; bamboo boards available on request. The cabin is not clad in timber inside" },
       { label: "Windows & doors", value: "Double-glazed glass with aluminium frames, standard" },
       { label: "Flooring", value: "18 mm cement-fibre board with waterproof SPC laminate, standard" },
-      { label: "Kitchen", value: "Stone countertop, wash basin and induction cooker, included" },
       { label: "Bathroom", value: "Fully fitted bathroom, included" },
-      { label: "Air conditioning", value: "Midea air conditioning, included as standard" },
-      { label: "Hot water", value: "40–60 L storage electric water heater, included as standard" },
+      { label: "Not included", value: "Kitchen, air conditioning and a water heater" },
       { label: "Terrace", value: "1.5 m × 3.2 m viewing terrace, included in the 26 m² total" },
       { label: "Installation", value: "Arrives as a fully built unit; only the final connections to services are needed on site" },
       { label: "Site", value: "Groundwork (water, electricity, sewerage, foundation) and the final connections are arranged by the client" },
@@ -537,16 +539,14 @@ export const products: Product[] = [
       "Warm timber look with steel durability",
       "Polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames",
       "18 mm cement-fibre floor with waterproof SPC laminate",
-      "Kitchen included: stone countertop, wash basin and induction cooker",
       "Fully fitted bathroom included",
-      "Midea air conditioning and a 40–60 L storage electric water heater included as standard",
       "1.5 × 3.2 m viewing terrace",
       "Arrives fully built: only the final connections to services remain",
     ],
     useCases: [
       {
-        title: "Airbnb and self-catering unit",
-        body: "A guest unit that arrives able to earn from the first booking: fitted bathroom, kitchen with a stone countertop and induction cooker, air conditioning and a 40–60 L geyser all included as standard, with nothing left on an options list to budget for later.",
+        title: "Airbnb and guest unit",
+        body: "A guest unit that arrives fully built, with a fitted bathroom, polyurethane-insulated walls and double glazing, so only its final connections stand between delivery and the first booking. A kitchen, air conditioning and a water heater are not part of the price.",
       },
       {
         title: "Guest farm and farm cottage",
@@ -554,7 +554,7 @@ export const products: Product[] = [
       },
       {
         title: "Bush retreat",
-        body: "Polyurethane-insulated walls and double-glazed aluminium-framed glazing hold their temperature through bushveld heat and cold nights, with Midea air conditioning included. It sits lightly enough to drop into a site without a conventional build programme.",
+        body: "Polyurethane-insulated walls and double-glazed aluminium-framed glazing hold their temperature through bushveld heat and cold nights. It sits lightly enough to drop into a site without a conventional build programme.",
       },
       {
         title: "Coastal getaway",
@@ -562,11 +562,11 @@ export const products: Product[] = [
       },
       {
         title: "Lodge accommodation",
-        body: "Repeatable guest suites for an existing lodge, each self-contained with its own bathroom and kitchen so the main building carries less. Because every unit arrives fully built, disruption to trading guests stays short.",
+        body: "Repeatable guest suites for an existing lodge, each with its own fitted bathroom so the main building carries less. Because every unit arrives fully built, disruption to trading guests stays short.",
       },
       {
         title: "Backyard studio",
-        body: "A fully serviced 21 m² studio at the end of the garden, with bathroom, kitchen, air conditioning and hot water included, for a home office, a teenager, or a long-stay guest who needs their own front door.",
+        body: "A 21 m² studio at the end of the garden with its own fitted bathroom, for a home office, a teenager, or a long-stay guest who needs their own front door.",
       },
     ],
     options: [],
@@ -577,11 +577,11 @@ export const products: Product[] = [
       },
       {
         q: "Are nature cabins good for Airbnb and guest farms?",
-        a: "Yes. The 21 m² layout plus its viewing terrace, 26 m² in total, is designed for hospitality use, with a fitted kitchen (stone countertop, wash basin and induction cooker), a fully fitted bathroom, Midea air conditioning, a 40–60 L storage electric water heater, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard, making it easy to run as guest accommodation.",
+        a: "Yes. The 21 m² layout plus its viewing terrace, 26 m² in total, is designed for hospitality use, with a fully fitted bathroom, polyurethane-insulated walls and double-glazed aluminium windows and doors as standard. A kitchen, air conditioning and a water heater are not included in the price.",
       },
       {
         q: "What's included as standard?",
-        a: "Everything: polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom, a kitchen with a stone countertop, wash basin and induction cooker, Midea air conditioning, a 40–60 L storage electric water heater and a 1.5 × 3.2 m viewing terrace, all in the R810 900 ex VAT price.",
+        a: "Polyurethane-insulated walls, double-glazed glass windows and doors in aluminium frames, an 18 mm cement-fibre floor with waterproof SPC laminate, a fully fitted bathroom and a 1.5 × 3.2 m viewing terrace, all in the R810 900 ex VAT price. A kitchen, air conditioning and a water heater are not included.",
       },
       {
         q: "How long does installation take?",
@@ -594,7 +594,6 @@ export const products: Product[] = [
     ],
     seoKeywords: [
       "nature cabin South Africa",
-      "prefab cabin with kitchen",
       "Airbnb cabin South Africa",
       "glamping cabin for sale",
       "steel frame cabin",

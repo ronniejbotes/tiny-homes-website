@@ -82,7 +82,7 @@ export default function PrivacyPage() {
           details you entered to you and to us, and from then on they live in our mailbox. A
           WhatsApp message or email you send us reaches us like any other message.
         </p>
-        <p className="mt-4 text-sm text-stone">Last updated: 17 November 2026</p>
+        <p className="mt-4 text-sm text-stone">Last updated: 19 November 2026</p>
 
         <div className="mt-14 space-y-12">
           <Clause n={1} title="Who we are">
@@ -186,8 +186,9 @@ export default function PrivacyPage() {
                 provider sends it.
               </li>
               <li>
-                Until you send it, what you have typed exists only in your browser tab. Close the
-                tab and it is gone; we never see it.
+                Until you send it, what you have typed stays in your browser tab and we never see
+                it; closing the tab clears it. The one exception is the hashed contact details
+                Google Analytics may pick up, described in section 8.
               </li>
             </ul>
             <p>
@@ -255,8 +256,8 @@ export default function PrivacyPage() {
                 ours, which transmit and store emailed enquiries;
               </li>
               <li>
-                <strong className="font-semibold text-ink">Google</strong>: usage statistics, in
-                two Google Analytics properties (ours, and one held by Position Xero, the agency
+                <strong className="font-semibold text-ink">Google</strong>: usage statistics and the
+                hashed contact details described in section 8, in two Google Analytics properties (ours, and one held by Position Xero, the agency
                 that built and looks after this website), and what the showroom map receives, both
                 as described in section 8;
               </li>
@@ -317,7 +318,12 @@ export default function PrivacyPage() {
               understand how the site is used: how many people visit, which homes they look at,
               roughly where they are and which pages need work. It sets cookies in your browser and
               sends Google your IP address (Google says Analytics 4 does not log or store IP
-              addresses), your device and browser details, and the pages you view. These statistics
+              addresses), your device and browser details, and the pages you view. Both properties
+              are also set to pick up an email address, phone number, name or postal address you
+              type into a form on this site, such as the quote form, and to send it to Google in
+              hashed (one-way scrambled) form. Google matches it with data it already holds, for
+              more accurate measurement, for demographic and interest reports and for its enhanced
+              conversions and Customer Match features. These statistics
               go to two Analytics properties: ours, and one held by Position Xero, the agency that
               built and looks after this website. We look at them in aggregate; we do not use them
               to identify individual visitors, and this website loads no advertising or remarketing
