@@ -902,7 +902,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**Time.** Around 90 days from deposit to move-in. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. A conventional build of the same size is a multi-month programme on your property.`,
           `**Price certainty.** You are quoted a figure for a finished unit. Conventional building is quoted on a rate and a scope, and the final number is the one nobody can tell you at the start.`,
-          `**Disruption.** The unit is built somewhere else. On your property there is a slab or plinths and the connections, not months of trades and rubble.`,
+          `**Disruption.** The unit is built somewhere else. On your property you need a slab or plinths and the connections, not months of trades and rubble.`,
           `**Relocatability.** Our X-Fold folds back down and travels flat; if you may want to move one of our other units later, ask us before you order. A brick room stays with the property whatever happens next.`,
         ],
       },
