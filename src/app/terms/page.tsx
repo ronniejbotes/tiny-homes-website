@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
@@ -55,7 +54,7 @@ function Term({ n, title, children }: { n: number; title: string; children: Reac
 export default function TermsPage() {
   return (
     <div className="py-20 sm:py-28">
-      <Container className="max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl px-5 sm:px-8 lg:px-12">
         <p className="text-eyebrow text-clay">The fine print, kept fair</p>
         <h1 className="text-display mt-4 text-4xl text-ink sm:text-5xl">Terms &amp; Conditions</h1>
         <p className="mt-6 text-lg leading-relaxed text-stone">
@@ -158,7 +157,7 @@ export default function TermsPage() {
             </p>
           </Term>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }

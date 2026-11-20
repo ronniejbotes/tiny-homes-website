@@ -554,7 +554,7 @@ export const products: Product[] = [
       },
       {
         title: "Bush retreat",
-        body: "Polyurethane-insulated walls and double-glazed aluminium-framed glazing hold their temperature through bushveld heat and cold nights. It sits lightly enough to drop into a site without a conventional build programme.",
+        body: "Polyurethane-insulated walls and double-glazed, aluminium-framed glazing insulate it against bushveld heat and cold nights; air conditioning is not included in the price. It sits lightly enough to drop into a site without a conventional build programme.",
       },
       {
         title: "Coastal getaway",

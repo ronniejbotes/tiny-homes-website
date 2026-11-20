@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre prices against a conventional build in South Africa: when prefab is cheaper than building, and when it costs more.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-19",
+    dateModified: "2026-11-20",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -848,7 +848,7 @@ export const blogPosts: BlogPost[] = [
         rows: [
           ["X-Fold", "15 m²", R(folding), perM2("folding-homes"), "Insulated shell, electrics only, no plumbing"],
           ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
-          ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "Up to 4 bedrooms, fitted throughout"],
+          ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "2 to 4 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
           ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fitted bathroom, polyurethane insulation, double glazing; kitchen, aircon and water heater not included"],
           ["Glamping Capsule", "18.6 m²", R(capsule), perM2("glamping-capsules", "capsule-5-85"), "270° glazing, premium bathroom, geyser"],
@@ -888,7 +888,7 @@ export const blogPosts: BlogPost[] = [
       { type: "h3", text: "The premium units cost more per square metre, and should" },
       {
         type: "p",
-        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above any conventional residential rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate.`,
+        text: `An [Apple Cabin](/apple-cabins) at ${perM2("apple-cabins", "apple-5-8")} per square metre or a [glamping capsule](/glamping-capsules) at ${perM2("glamping-capsules", "capsule-5-85")} is well above a mid-range conventional rate. That is not a prefab premium; it is a finish premium. You are buying floor-to-ceiling panoramic glazing, premium bathroom fittings and a unit built to be photographed and let out at a nightly rate.`,
       },
       {
         type: "callout",
@@ -902,7 +902,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           `**Time.** Around 90 days from deposit to move-in. On-site setup is quick: an X-Fold unfolds in minutes, an expandable home is set up the day it arrives, and cabins and capsules arrive fully built and are placed onto a prepared site. A conventional build of the same size is a multi-month programme on your property.`,
           `**Price certainty.** You are quoted a figure for a finished unit. Conventional building is quoted on a rate and a scope, and the final number is the one nobody can tell you at the start.`,
-          `**Disruption.** The building work happens somewhere else. There is no site, no rubble, no trades in your garden for months.`,
+          `**Disruption.** The unit is built somewhere else. On your property there is a slab or plinths and the connections, not months of trades and rubble.`,
           `**Relocatability.** Our X-Fold folds back down and travels flat; if you may want to move one of our other units later, ask us before you order. A brick room stays with the property whatever happens next.`,
         ],
       },

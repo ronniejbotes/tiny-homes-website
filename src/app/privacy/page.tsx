@@ -10,7 +10,6 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
 import { site } from "@/lib/site";
 import images from "@/data/images.json";
 
@@ -72,7 +71,7 @@ export default function PrivacyPage() {
 
   return (
     <div className="py-20 sm:py-28">
-      <Container className="max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl px-5 sm:px-8 lg:px-12">
         <p className="text-eyebrow text-clay">Your information, plainly explained</p>
         <h1 className="text-display mt-4 text-4xl text-ink sm:text-5xl">Privacy Policy</h1>
         <p className="mt-6 text-lg leading-relaxed text-stone">
@@ -538,7 +537,7 @@ export default function PrivacyPage() {
             </p>
           </Clause>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
