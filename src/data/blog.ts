@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Our own rand-per-square-metre prices against a conventional build in South Africa: when prefab is cheaper than building, and when it costs more.",
     datePublished: "2026-09-02",
-    dateModified: "2026-11-20",
+    dateModified: "2026-11-21",
     keywords: [
       "is prefab cheaper than building",
       "prefab vs brick house cost South Africa",
@@ -847,7 +847,7 @@ export const blogPosts: BlogPost[] = [
         head: ["Unit", "Floor area", "Price ex VAT", "Per m²", "What that buys"],
         rows: [
           ["X-Fold", "15 m²", R(folding), perM2("folding-homes"), "Insulated shell, electrics only, no plumbing"],
-          ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
+          ["Expandable 37 m²", "37 m²", R(expandable6m), perM2("expandable-homes", "b20"), "2 or 3 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Expandable 74 m²", "74 m²", R(expandable12m), perM2("expandable-homes", "b40"), "2 to 4 bedrooms, fitted bathroom, stainless-steel kitchen, no appliances"],
           ["Apple Cabin", "13 m²", R(apple), perM2("apple-cabins", "apple-5-8"), "Panoramic glass, luxury bathroom fittings"],
           ["Nature Cabin", "21 m² + terrace", R(nature), perM2("nature-cabins"), "Fitted bathroom, polyurethane insulation, double glazing; kitchen, aircon and water heater not included"],
