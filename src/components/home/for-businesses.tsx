@@ -127,7 +127,7 @@ export function ForBusinesses() {
         <SectionHeading
           id="business-heading"
           eyebrow="For businesses"
-          title="Buying several units for your business?"
+          title="Buying several modular buildings for your business?"
           intro="Tell us your company name, what the units will be used for, where they will go and how many you need, and we'll come back to you with a formal quotation."
         />
 
