@@ -1628,7 +1628,7 @@ export const blogPosts: BlogPost[] = [
     seoTitle: "Staff Accommodation Unit Costs in South Africa",
     title: "Staff quarters and accommodation units: what each one costs",
     description:
-      "Staff quarters on a farm, mine or building site in South Africa: unit prices, what arrives wired or plumbed, and the ablution question that sets the budget.",
+      "Staff quarters on a farm, mine or building site in South Africa: unit prices, what comes wired or plumbed, and the ablution question that sets the budget.",
     datePublished: "2026-09-02",
     dateModified: "2026-11-17",
     keywords: [
