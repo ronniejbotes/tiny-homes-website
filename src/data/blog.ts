@@ -3590,7 +3590,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "prefab-homes-on-estates-south-africa",
-    seoTitle: `Prefab Homes on an Estate: What to Settle Before You Order`,
+    seoTitle: `Prefab Homes on Estates: What to Check First`,
     title: `Putting prefab homes on an estate or resort scheme: what to settle before you order`,
     description:
       `Putting prefab units on an estate or resort scheme in South Africa? What the estate's rules, zoning and building approval ask of you before you order.`,
