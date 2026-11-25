@@ -77,8 +77,11 @@ const uses = [
         <Link href="/apple-cabins" className={linkClasses}>
           Apple Cabins
         </Link>{" "}
-        arrive fully built, so a lodge or resort adds suites without a building site. Our guide
-        to{" "}
+        arrive fully built, so{" "}
+        <Link href="/blog/adding-guest-suites-to-a-lodge" className={linkClasses}>
+          a lodge or resort adds suites
+        </Link>{" "}
+        without a building site. Our guide to{" "}
         <Link href="/blog/start-a-glamping-business-south-africa" className={linkClasses}>
           starting a glamping business
         </Link>{" "}

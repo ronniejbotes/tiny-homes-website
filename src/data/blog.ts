@@ -3720,6 +3720,146 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "adding-guest-suites-to-a-lodge",
+    seoTitle: `Adding Guest Suites to a Lodge: What to Settle First`,
+    title: `Adding guest suites to a working lodge: what to settle before the units arrive`,
+    description:
+      `Adding prefab guest suites to a lodge or guest farm? What to settle on land use, building approval, delivery access and services before the units arrive.`,
+    datePublished: "2026-11-25",
+    keywords: [
+      "modular lodge",
+      "tiny house lodge",
+      "tiny homes resort",
+      "lodge accommodation units",
+      "adding guest suites to a lodge",
+    ],
+    imageProduct: "nature-cabins",
+    leadImage: { src: "/images/products/nature-cabins/exterior-two-cabins.jpg", width: 1600, height: 1200, alt: "Product picture of two timber-look Nature Cabins with glazed fronts in a misty forest clearing at dawn." },
+    readingMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: `If you want more suites at a lodge that's already taking bookings, settle the paperwork and the site before you settle the unit. Check that your land may be used for more guest accommodation, find out what building control wants for the units, plan how a delivery truck reaches each spot without crossing your guests' path, and get water, power and sewerage to every slab before anything arrives. Get those right and the day the suites arrive is short and quiet.`,
+      },
+      {
+        type: "p",
+        text: `Here's how we'd work through it with you.`,
+      },
+      { type: "h2", text: `Why units that arrive built suit a lodge that stays open` },
+      {
+        type: "p",
+        text: `The hardest thing about adding rooms to a lodge is the building site. Brickwork, deliveries of sand and cement, and a crew on the property for weeks sit badly next to guests who came for the quiet.`,
+      },
+      {
+        type: "p",
+        text: `Our [nature cabins](/nature-cabins), [glamping capsules](/glamping-capsules) and [Apple Cabins](/apple-cabins) arrive fully built. There's no on-site assembly programme for a nature cabin: after it's placed on a prepared site, only the final connections to water, electricity and sewerage remain. Capsules arrive the same way, so a lodge adds suites without closing to guests for a construction programme.`,
+      },
+      {
+        type: "p",
+        text: `Each nature cabin has its own fitted bathroom, so the main building carries less. That matters at a lodge where the ablutions are already busy.`,
+      },
+      { type: "h2", text: `Check your use rights before you choose a unit` },
+      {
+        type: "p",
+        text: `This is the question to answer first, because no quotation can answer it for you. Adding guest suites is a question about land use as much as about building.`,
+      },
+      {
+        type: "p",
+        text: `Under the [Spatial Planning and Land Use Management Act](https://www.gov.za/sites/default/files/gcis_document/201409/367305-8act16of20.pdf), your municipality's land use scheme has the force of law and binds every owner and user of land, and land may be used only for the purposes the scheme permits. A permitted use can be changed with the approval of a Municipal Planning Tribunal, or of a municipal official where the municipality has authorised one to decide that kind of application.`,
+      },
+      {
+        type: "p",
+        text: `Many schemes allow some uses only with the municipality's say-so. The Western Cape's [Land Use Planning Act](https://www.wcpp.gov.za/sites/default/files/Western%20Cape%20Land%20Use%20Planning%20Act%2C%20Act%203%20of%202014.pdf) calls this a consent use: a use permitted in a particular zoning with the approval of a municipality. And municipalities can attach conditions to guest accommodation that go beyond the zoning label. Laingsburg's [Guest Accommodation Policy](https://www.laingsburg.gov.za/sites/default/files/Notices/Guest%20Accommodation%20Policy%20-%20approved%20on%2007%20September%202010%20%28003%29-converted.pdf), for example, lets its council determine or restrict the number of units in a resort development and lay down conditions to limit their impact.`,
+      },
+      {
+        type: "p",
+        text: `So the rights your lodge trades under today may or may not cover more suites. Ask the municipality's town planning office, with your erf or farm number and the approvals you already hold, whether the extra suites fit them or need an application.`,
+      },
+      { type: "h2", text: `Building plans, and the certificate at the end` },
+      {
+        type: "p",
+        text: `A prefab suite is a building in law. The [National Building Regulations and Building Standards Act](https://www.gov.za/sites/default/files/gcis_document/201504/act-103-1977.pdf) counts any structure used to accommodate people as a building, whether it's temporary or permanent and whatever it's made of. Nobody may put up a building that needs plans without the local authority's prior written approval.`,
+      },
+      {
+        type: "p",
+        text: `Under the same Act, once a building is finished the owner asks the local authority in writing for a certificate of occupancy, and it issues one if it is satisfied the building was put up in line with the Act and the conditions of its approval, and once the certificate for the electrical installation that the Act asks for has been handed in. Ask building control what it will want to see before your new suites take paying guests, and put that on your programme next to the delivery date.`,
+      },
+      {
+        type: "p",
+        text: `Our [building approval guide](/blog/building-approval-south-africa-what-you-need) sets out the routes in more detail, so you know what to ask.`,
+      },
+      {
+        type: "p",
+        text: `This is general information. The municipality decides what your lodge needs, and the legal questions belong with your own town planner or attorney.`,
+      },
+      { type: "h2", text: `Get the truck to each spot without crossing the guest areas` },
+      {
+        type: "p",
+        text: `A nature cabin comes by oversized cargo truck, so a site that only an off-road vehicle can reach can't be served. Delivery is quoted on your location and on how easy the site is to reach.`,
+      },
+      {
+        type: "p",
+        text: `At a working lodge, that means walking the route before you pick the spots. Look at the gate, the turns on the farm road, low branches, soft ground after rain and anything overhead. Then look at where the route passes guest rooms, the pool or the dining deck. A spot with a beautiful view that the truck can't reach without driving past breakfast may not be the right spot.`,
+      },
+      {
+        type: "p",
+        text: `Tell us which spots you have in mind when you enquire, and we'll quote delivery for that site.`,
+      },
+      { type: "h2", text: `Have water, power and sewerage at every slab before delivery` },
+      {
+        type: "p",
+        text: `The suite arrives finished. The site has to be finished too. For a nature cabin, water, electricity, sewerage and the foundation are the client's responsibility and must be completed before delivery, with the final connections made after the cabin is placed. For capsules, the groundwork, electrical and plumbing are completed before delivery, and we assist with site preparation.`,
+      },
+      {
+        type: "p",
+        text: `The part that catches lodges out is the existing supply. More suites mean more showers, more kettles and more flushing on the same borehole, the same electrical supply and the same sewage system. Ask your electrician and plumber whether what the lodge has today can carry the extra suites, before you fix how many to order.`,
+      },
+      { type: "h2", text: `Which range suits which kind of guest` },
+      {
+        type: "p",
+        text: `The ranges suit different guests, so match the unit to the stay you sell.`,
+      },
+      {
+        type: "p",
+        text: `A nature cabin gives each guest a private room with its own fitted bathroom and a viewing terrace. A kitchen, air conditioning and a water heater are not part of the price, so it suits a lodge that feeds its guests in the main building.`,
+      },
+      {
+        type: "p",
+        text: `A glamping capsule puts rooms either side of the bathroom, wrapped in panoramic glazing. The bathroom and geyser are standard, and a kitchen and air conditioning are options, so a lodge that feeds its guests in the main building doesn't pay for kitchens it won't use.`,
+      },
+      {
+        type: "p",
+        text: `An Apple Cabin leads with its panoramic glass, has bathroom fittings in every size and a kitchenette in the larger sizes, and opens with a smart lock.`,
+      },
+      {
+        type: "img",
+        image: { src: "/images/products/glamping-capsules/exterior-mountain-resort.jpg", width: 1600, height: 1069, alt: "Product picture of a white Glamping Capsule with curved panoramic glazing and a railed terrace above golden grass and a rocky koppie." },
+      },
+      {
+        type: "p",
+        text: `If you're still deciding whether the numbers work at all, our guide to [starting a glamping business](/blog/start-a-glamping-business-south-africa) covers what the units cost and the costs that aren't the unit.`,
+      },
+      { type: "h2", text: `What to send with your enquiry` },
+      {
+        type: "p",
+        text: `Our business enquiry asks for your company name, what the units will be used for, where they will go and how many units you're looking at. For a lodge, add:`,
+      },
+      {
+        type: "ol",
+        items: [
+          `The lodge's name, the town and province, and a pin or sketch of where each suite will stand.`,
+          `The route a truck would take from the public road to those spots.`,
+          `Which range you're leaning towards, and whether guests will cook in the suite.`,
+          `Where you are with the municipality on land use and building plans.`,
+        ],
+      },
+      {
+        type: "p",
+        text: `Email a business enquiry from our [contact page](/contact#business) with your site sketch attached, and we'll come back to you with a formal quotation.`,
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------- accessors */
