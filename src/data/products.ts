@@ -282,7 +282,7 @@ export const products: Product[] = [
         // though it isnt, it might help with seo". Worded so it never claims
         // the X-Fold is a shipping container.
         q: "Is the X-Fold a container home?",
-        a: "Not a converted shipping container, but it does the same job as a small container home. If you've searched for a foldable container house, this is that kind of unit, built as a room from the start: a steel-framed, EPS-insulated 15 m² room that arrives flat on a truck and unfolds on site in minutes, wired with two plug points, a light fitting and a small DB board, for R54 900 ex VAT. It folds back down when you move. It has no plumbing, so if you want a container-style home with its own bathroom and kitchen, look at our [expandable homes](/expandable-homes).",
+        a: "Not a converted shipping container, but it does the same job as a small container home. If you've searched for a foldable or flat-pack container house, this is that kind of unit, built as a room from the start: a steel-framed, EPS-insulated 15 m² room that arrives flat on a truck and unfolds on site in minutes, wired with two plug points, a light fitting and a small DB board, for R54 900 ex VAT. It folds back down when you move. It has no plumbing, so if you want a container-style home with its own bathroom and kitchen, look at our [expandable homes](/expandable-homes).",
       },
       {
         q: "Does the X-Fold come with a bathroom or kitchen?",
