@@ -320,7 +320,10 @@ export const products: Product[] = [
     // price in the title: the lead of the description already carries the
     // from-price read from startingPrice. (The compact 18 m² size was
     // withdrawn on 17 Nov 2026; the 37 m² two-bedroom is now the entry size.)
-    seoTitle: "2-Bedroom Prefab House Prices & Granny Flats",
+    // 27 Nov 2026 (T-72): Google showed the H1 instead of the old title
+    // ("2-Bedroom Prefab House Prices & Granny Flats") for "2 bedroom prefab
+    // house price south africa", so the title now opens with the H1's words.
+    seoTitle: "Expandable Prefab Houses: 2-Bedroom Prices",
     sizesHeading: "Granny pod and 2-bedroom modular home prices",
     metaSummary:
       "2-bedroom granny flats and prefab houses, 37 m² or 74 m², that expand on site within hours. Layouts to 4 bedrooms.",
