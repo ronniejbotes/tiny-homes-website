@@ -497,8 +497,11 @@ export const products: Product[] = [
     name: "Nature Cabins",
     shortName: "Nature Cabin",
     h1: "Prefab nature cabins for sale",
-    seoTitle: "Prefab Cabins South Africa from R810 900",
+    seoTitle: "Prefab Cabin Houses South Africa from R810 900",
     // "Cabin house" is the search the home page wins and this page should own.
+    // 27 Nov 2026 (T-117): the home page still took it (4.4) and this page sat
+    // at 13.7, so the title now says "Cabin Houses" (was "Prefab Cabins South
+    // Africa from R810 900"); the from-price is startingPrice below.
     // Problem first since the 13 Nov 2026 final check (owner, 28 Oct: name the
     // buyer's problem, not the look): the lodge and guest-farm uses are this
     // page's own use cases and FAQ. Not "Guest suites without a building
